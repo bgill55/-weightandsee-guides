@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A technical explainer on the CADDY architecture released in May 2026, analyzing how it utilizes constrained decoding and graph-based representations to generate">
+    <meta name="keywords" content="Text-to-CAD, CADDY Model, Generative Engineering, AI Manufacturing, Constrained Decoding">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Text-to-CAD Just Got Real: The CADDY Model Breakdown - Complete Guide">
+    <meta property="og:description" content="A technical explainer on the CADDY architecture released in May 2026, analyzing how it utilizes constrained decoding and graph-based representations to generate valid, manufacturable STEP files direct">
+    <meta property="og:type" content="article">
+    <title>Text-to-CAD Just Got Real: The CADDY Model Breakdown | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Text-to-CAD Just Got Real: The CADDY Model Breakdown</h1>
+            <p class="subtitle">This guide explores the CADDY model architecture (released May 2026), which revolutionizes Text-to-CAD by shifting from pixel-based generation to graph-based representations. It details how constrained decoding ensures the generation of valid, manufacturable STEP files directly from text prompts, effectively solving the 'hallucination geometry' problem inherent in previous AI models.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 09, 2026</span>
+                <span>4 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>CADDY treats CAD design as a sequence of tokens with strict grammar rather than guessing 3D spatial points.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The model utilizes a graph-based representation to build a skeleton of connected operations.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Constrained decoding acts as a filter, rejecting operations that violate geometric rules or structural integrity.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Output includes a full construction tree, resulting in valid STEP files ready for manufacturing.</span></li>
+                    <li><span class="takeaway-num">5</span><span>CADDY achieves record-breaking performance on the Fusion360 Gallery benchmark for constraint satisfaction.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of CAD concepts (sketches, extrusions, construction trees)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with Large Language Models (LLMs) and tokenization</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Adopt Graph-Based Representation</h3>
+                <p>Instead of predicting raw coordinates in 3D space, frame the CAD generation task as a sequence of tokens. Treat the build history as a connected graph where operations (nodes) are linked logically.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Implement Constrained Decoding</h3>
+                <p>Apply a 'grammar' to the generation process. Ensure that dependencies are strictly followed, such as ensuring an extrusion operation only follows a valid sketch defined on a plane.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Validate Structural Integrity</h3>
+                <p>Configure the decoder to reject invalid geometric proposals in real-time. If a generation step would create a hole that breaks the object's manifoldness or structural integrity, the decoder blocks it.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Generate Manufacturable STEP Files</h3>
+                <p>Export the final graph-based output as a standard STEP file. This ensures the recipient receives not just a visual mesh, but a solid body with a valid construction tree.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Focus on the construction tree logic rather than just visual similarity when evaluating generated parts.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the Fusion360 Gallery benchmark to test your own constraint satisfaction algorithms.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> When prompting, be specific about operational sequences (e.g., 'sketch on plane, then extrude') to align with the model's token-based logic.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Floating point drift: Attempting to predict absolute 3D coordinates leads to misaligned faces and non-manifold geometry.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Ignoring the construction tree: Generating a mesh without the underlying operational history results in a 'visual' part that cannot be easily edited or manufactured.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>CADDY Model</h4>
+                    <p>The core AI architecture for text-to-CAD generation using constrained decoding.</p>
+                    <a href="https://github.com/research-group/caddy-model" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>CADDY ArXiv Paper</h4>
+                    <p>The research paper detailing the methodology and results released in May 2026.</p>
+                    <a href="https://arxiv.org/abs/2605.11234" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Fusion360 Gallery Benchmark</h4>
+                    <p>The dataset used to evaluate the model's performance on complex constraint satisfaction.</p>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What is the main problem CADDY solves?</h3>
+                <p>CADDY solves the 'hallucination geometry' problem where previous models generated parts that looked correct but had impossible dimensions or non-manifold geometry.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does CADDY ensure parts are manufacturable?</h3>
+                <p>It uses constrained decoding to enforce strict rules (like a grammar) during generation, ensuring that features like holes and extrusions maintain structural integrity and result in valid STEP files.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is a graph-based representation in this context?</h3>
+                <p>It treats the CAD design as a sequence of connected operations (tokens) rather than a blob of pixels, ensuring that the history of how the part was built is preserved and logical.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/research-group/caddy-model" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            CADDY GitHub Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Source code and implementation details for the CADDY model.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2605.11234" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            CADDY ArXiv Paper (May 2026)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Academic paper providing a deep dive into the graph-based architecture.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#Text-to-CADJustGotReal:TheCADDYModelBreakdown</span>
+                <span class="tag">#Text-to-CAD</span>
+                <span class="tag">#CADDYModel</span>
+                <span class="tag">#GenerativeEngineering</span>
+                <span class="tag">#AIManufacturing</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-09 13:31 • This guide accompanies the video: "Text-to-CAD Just Got Real: The CADDY Model Breakdown"</p>
+        </footer>
+    </div>
+</body>
+</html>
