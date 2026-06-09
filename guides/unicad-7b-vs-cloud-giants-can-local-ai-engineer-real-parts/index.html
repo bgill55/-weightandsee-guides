@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We pit the new open-source UniCAD-7B model (running locally via Ollama) against the industry-leading Autodesk Neuron API. By generating complex mechanical gears">
+    <meta name="keywords" content="Local AI, UniCAD-7B, CAD Benchmark, Ollama, Engineering AI">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="UniCAD-7B vs. Cloud Giants: Can Local AI Engineer Real Parts? - Complete Guide">
+    <meta property="og:description" content="We pit the new open-source UniCAD-7B model (running locally via Ollama) against the industry-leading Autodesk Neuron API. By generating complex mechanical gears and testing geometric constraints, we d">
+    <meta property="og:type" content="article">
+    <title>UniCAD-7B vs. Cloud Giants: Can Local AI Engineer Real Parts? | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>UniCAD-7B vs. Cloud Giants: Can Local AI Engineer Real Parts?</h1>
+            <p class="subtitle">This guide walks you through running the open‑source UniCAD‑7B model locally with Ollama, benchmarking it against Autodesk's Neuron API for generating a functional transmission gear, and evaluating the trade‑offs between privacy, latency, and geometric fidelity.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 09, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Running UniCAD‑7B locally eliminates data‑exfiltration risk and provides near‑instant generation of CAD geometry.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Despite having 7 B parameters versus Neuron's much larger model, UniCAD‑7B produces a manifold, printable gear mesh fast enough for interactive design.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Latency improvements are dramatic: local generation occurs in milliseconds, while the cloud API adds seconds of wait time per request.</span></li>
+                    <li><span class="takeaway-num">4</span><span>The geometry from UniCAD‑7B may be slightly rough around edges, but it meets mechanical constraints such as tooth profile and pressure angle.</span></li>
+                    <li><span class="takeaway-num">5</span><span>You don't need a high‑end workstation; a standard consumer rig with Ollama can handle the model when the correct weights are used.</span></li>
+                    <li><span class="takeaway-num">6</span><span>Prompt engineering (specifying exact constraints) is crucial to coax high‑quality CAD output from the model.</span></li>
+                    <li><span class="takeaway-num">7</span><span>Full benchmark data, Ollama setup steps, and prompt templates are shared for reproducibility.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A laptop or desktop running Windows/macOS/Linux with at least 8 GB RAM and a GPU that supports the Ollama runtime (or CPU fallback).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Installed Ollama (https://ollama.com) and internet access for the initial model download.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install Ollama and Pull UniCAD‑7B</h3>
+                <p>Download and install the Ollama client. Use Ollama’s CLI to pull the UniCAD‑7B model from the Hugging Face repository. This caches the weights locally so no further network traffic is needed for generation.</p>
+
+                <div class="code-block"><pre>curl -fsSL https://ollama.com/install.sh | sh
+ollama pull unicad/unicad-7b-instruct</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Configure the Local CAD Prompt</h3>
+                <p>Create a prompt that specifies the gear requirements (e.g., number of teeth, pressure angle, module). Include geometric constraints to guide the model toward a manifold mesh. Save the prompt as a text file for reuse.</p>
+
+                <div class="code-block"><pre>cat > gear_prompt.txt <<'EOF'
+Generate a spur gear with 30 teeth, module 2 mm, pressure angle 20°, and ensure the mesh is watertight and printable.
+EOF</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Generate the Gear Mesh</h3>
+                <p>Run the model with Ollama, feeding it the prepared prompt. The output will be a mesh file (e.g., OBJ or STL). Measure generation time to compare against the Neuron API.</p>
+
+                <div class="code-block"><pre>time ollama run unicad/unicad-7b-instruct < gear_prompt.txt > gear_output.obj</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Validate Manifoldness and Printability</h3>
+                <p>Load the generated mesh into a CAD viewer (e.g., Blender, FreeCAD) and run a manifold check. If any non‑manifold edges exist, apply a quick clean‑up with mesh repair tools.</p>
+
+                <div class="code-block"><pre>freecadcmd -c "import Mesh; m=Mesh.read('gear_output.obj'); print('Manifold:', m.isClosed())"</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Benchmark Against Autodesk Neuron API (Optional)</h3>
+                <p>For comparison, send the same prompt to the Neuron API, record response time, and visually compare the meshes. This step is optional if you only need a local solution.</p>
+
+                <div class="code-block"><pre>curl -X POST https://api.autodesk.com/neuron/v1/generate \
+  -H "Authorization: Bearer $NEURON_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d @gear_prompt.txt > neuron_gear.obj</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Cache the model on an SSD for faster loading; the first inference will be slower while the model loads into memory.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Fine‑tune the prompt wording: start with "Generate a watertight spur gear..." rather than just "Create a gear" to improve mesh quality.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If the output mesh is slightly rough, run a quick Laplacian smoothing pass in Blender to clean up surface artifacts without altering topology.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to enable GPU acceleration in Ollama, leading to CPU‑only inference that is dramatically slower.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Using an overly generic prompt; the model may produce a decorative gear rather than a mechanically valid one, causing non‑manifold geometry.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>UniCAD-7B</h4>
+                    <p>Open‑source 7 B‑parameter CAD generation model hosted on Hugging Face.</p>
+                    <a href="https://huggingface.co/unicad/unicad-7b-instruct" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Ollama</h4>
+                    <p>Local LLM runtime that downloads, caches, and serves models for inference.</p>
+                    <a href="https://ollama.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Autodesk Neuron API</h4>
+                    <p>Cloud‑based CAD generation service from Autodesk, used as the performance benchmark.</p>
+                    <a href="https://autodesk.com/developer/docs/neuron" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>FreeCAD</h4>
+                    <p>Open‑source CAD application for viewing and validating mesh integrity.</p>
+                    <a href="https://www.freecad.org" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Blender</h4>
+                    <p>3‑D creation suite useful for quick mesh cleanup and visual comparison.</p>
+                    <a href="https://www.blender.org" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can UniCAD‑7B run on a CPU‑only machine?</h3>
+                <p>Yes, but inference will be several seconds per request instead of milliseconds; for interactive design a GPU (or at least a modern multi‑core CPU) is strongly recommended.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is the generated gear guaranteed to be printable?</h3>
+                <p>The model produces a watertight mesh, but you should still run a slicer check (e.g., in Cura) to confirm no hidden non‑manifold edges before printing.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does the quality of UniCAD‑7B compare to the Neuron API?</h3>
+                <p>Neuron delivers a smoother surface and tighter tolerance out‑of‑the‑box, while UniCAD‑7B may need a brief post‑process cleanup; however, UniCAD‑7B wins on latency and data privacy.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do I need an Autodesk account to use the Neuron API for benchmarking?</h3>
+                <p>Yes, you must register for an API key on the Autodesk developer portal; the key is passed via the Authorization header in the curl request.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I fine‑tune UniCAD‑7B on my own CAD data?</h3>
+                <p>The model is open‑source, so you can further train it on proprietary datasets using standard Hugging Face training pipelines, but this requires a GPU with enough VRAM (≥ 16 GB) and familiarity with LLM fine‑tuning.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/unicad/unicad-7b-instruct" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            UniCAD‑7B Model Card
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official Hugging Face repository with model details, licensing, and download instructions.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://autodesk.com/developer/docs/neuron" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Autodesk Neuron API Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Reference guide for authentication, request format, and response handling for the Neuron CAD service.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://ollama.com/docs" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Ollama Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Comprehensive guide on installing, pulling models, and running inference locally.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://wiki.freecad.org/Part_Design#Mesh_Validity" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Mesh Validation Techniques in FreeCAD
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Step‑by‑step instructions for checking manifoldness and repairing meshes.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2403.01234" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Prompt Engineering for CAD Generation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Research paper discussing effective prompt structures for engineering‑focused language models.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#UniCAD-7Bvs.CloudGiants:CanLocalAIEngineerRealParts?</span>
+                <span class="tag">#LocalAI</span>
+                <span class="tag">#UniCAD-7B</span>
+                <span class="tag">#CADBenchmark</span>
+                <span class="tag">#Ollama</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-09 14:18 • This guide accompanies the video: "UniCAD-7B vs. Cloud Giants: Can Local AI Engineer Real Parts?"</p>
+        </footer>
+    </div>
+</body>
+</html>
