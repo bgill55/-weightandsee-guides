@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We pit three cutting‑edge 70B‑class open‑source LLMs—Qwen 3 72B, Llama 4 Scout, and Mistral 7B v2—against each other on a budget RTX 4060 using the brand‑new ML">
+    <meta name="keywords" content="Qwen 3, Llama 4 Scout, MLC LLM 2.0, GPU inference benchmark, $500 AI">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Qwen 3 72B vs Llama 4 Scout: Real‑World Speed Test on a $500 GPU - Complete Guide">
+    <meta property="og:description" content="We pit three cutting‑edge 70B‑class open‑source LLMs—Qwen 3 72B, Llama 4 Scout, and Mistral 7B v2—against each other on a budget RTX 4060 using the brand‑new MLC LLM 2.0 inference engine. The video wa">
+    <meta property="og:type" content="article">
+    <title>Qwen 3 72B vs Llama 4 Scout: Real‑World Speed Test on a $500 GPU | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Qwen 3 72B vs Llama 4 Scout: Real‑World Speed Test on a $500 GPU</h1>
+            <p class="subtitle">This guide provides a technical breakdown of running 70B-class open-source LLMs (Qwen 3 72B, Llama 4 Scout, Mistral 7B v2) on a budget RTX 4060 GPU using the MLC LLM 2.0 engine. It covers installation, model conversion, benchmarking latency and throughput, and selecting the right model architecture for specific offline development tasks.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 09, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>The MLC LLM 2.0 inference engine enables running massive 70B parameter models on consumer-grade hardware like the $500 RTX 4060.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Qwen 3 72B excels in low-latency scenarios (210ms/token), making it ideal for real-time conversational agents.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Llama 4 Scout prioritizes high throughput (1,340 tokens/second), outperforming others in long-form text and code generation tasks.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Mistral 7B v2 offers the best resource efficiency, using 30% less VRAM than the 70B models, which is crucial for multitasking.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Developers must choose between latency (Qwen) and throughput (Llama) based on whether the application is chat-based or batch-oriented.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">NVIDIA RTX 4060 GPU (or equivalent with sufficient VRAM for quantized models)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python environment configured for machine learning workloads</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">MLC LLM 2.0 inference engine installed</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install MLC LLM 2.0</h3>
+                <p>Set up the MLC LLM 2.0 inference engine which serves as the runtime environment for compiling and executing the LLMs on the GPU.</p>
+
+                <div class="code-block"><pre>pip install --pre mlc_llm</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Pull Model Weights</h3>
+                <p>Download the specific model weights for Qwen 3 72B, Llama 4 Scout, or Mistral 7B v2 from their respective repositories.</p>
+
+                <div class="code-block"><pre>mlc_llm download hf://Qwen/Qwen-3-72B</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Convert Model Format</h3>
+                <p>Convert the raw model weights into the MLC format required for optimized inference on the target GPU.</p>
+
+                <div class="code-block"><pre>mlc_llm convert ./Qwen-3-72B --output ./mlc-build/Qwen-3-72B</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Run Benchmarks</h3>
+                <p>Execute the benchmark script to measure key performance indicators such as Time to First Token (latency) and tokens generated per second (throughput).</p>
+
+                <div class="code-block"><pre>python benchmark_script.py --model ./mlc-build/Qwen-3-72B</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Analyze and Select</h3>
+                <p>Review the output data to determine which model fits your workload: low latency for chat (Qwen), high throughput for generation (Llama), or low VRAM usage (Mistral).</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use Qwen 3 72B for chatbots where 'time to first sizzle' (latency) impacts user experience directly.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Opt for Llama 4 Scout when processing bulk data, such as summarizing documents or generating large codebases.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If your development rig has limited VRAM or needs to run other background services, stick with Mistral 7B v2 to prevent OOM errors.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Ensure your GPU drivers are up to date before running MLC LLM to maximize compilation efficiency.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Misinterpreting Throughput vs. Latency: Don't select a high-throughput model like Llama 4 Scout if your application requires instant, snappy replies, as it may have higher initial latency.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Ignoring VRAM Overhead: Attempting to run 70B models alongside heavy GPU-accelerated applications without monitoring VRAM usage can cause system crashes.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Skipping Conversion: Trying to run raw Hugging Face weights directly without converting them to MLC format will result in compatibility errors.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Qwen 3 72B</h4>
+                    <p>A 70-billion parameter open-source LLM optimized for low latency.</p>
+                    <a href="https://huggingface.co/Qwen/Qwen-3-72B" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Llama 4 Scout</h4>
+                    <p>A 70B-class model designed for high throughput and long-form generation.</p>
+                    <a href="https://github.com/meta-llama/Llama-4-Scout" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Mistral 7B v2</h4>
+                    <p>A compact 7B parameter model offering high performance with lower memory consumption.</p>
+                    
+                </div>
+
+                <div class="tool-card">
+                    <h4>MLC LLM 2.0</h4>
+                    <p>A high-performance inference engine for running LLMs on consumer hardware.</p>
+                    <a href="https://mlc.ai/llm/v2" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>NVIDIA RTX 4060</h4>
+                    <p>Consumer-grade GPU ($500 price point) used for testing the models.</p>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Which model is the fastest for real-time chat?</h3>
+                <p>Qwen 3 72B is the fastest for chat due to its low latency of 210ms per token, making replies feel instantaneous.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I run a 70B parameter model on a $500 GPU?</h3>
+                <p>Yes, the video demonstrates that with the MLC LLM 2.0 engine, models like Qwen 3 and Llama 4 Scout can run locally on an RTX 4060.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Which model should I use for generating long essays?</h3>
+                <p>Llama 4 Scout is the best choice for long-form content because it delivers the highest throughput at 1,340 tokens per second.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does Mistral 7B v2 compare to the 70B models?</h3>
+                <p>While slower in raw processing speed, Mistral 7B v2 uses 30% less VRAM, making it ideal for systems with memory constraints or the need to run concurrent applications.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is the difference between latency and throughput in this context?</h3>
+                <p>Latency refers to the time it takes to generate the first token (responsiveness), while throughput refers to the total number of tokens generated per second (generation speed).</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/Qwen/Qwen-3-72B" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Qwen 3 72B Model Card
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official specifications and usage details for the Qwen 3 model.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/meta-llama/Llama-4-Scout" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Llama 4 Scout Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Source code and documentation for the Llama 4 Scout model.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://mlc.ai/llm/v2" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            MLC LLM 2.0 Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Comprehensive guide to setting up and optimizing the MLC inference engine.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#Qwen 3 72BvsLlama 4 Scout:Real‑WorldSpeedTestona$500GPU</span>
+                <span class="tag">#Qwen3</span>
+                <span class="tag">#Llama4Scout</span>
+                <span class="tag">#MLCLLM2.0</span>
+                <span class="tag">#GPUinferencebenchmark</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-09 08:35 • This guide accompanies the video: "Qwen 3 72B vs Llama 4 Scout: Real‑World Speed Test on a $500 GPU"</p>
+        </footer>
+    </div>
+</body>
+</html>
