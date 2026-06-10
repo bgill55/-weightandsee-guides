@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We move beyond messy mesh generation into the era of precise, parametric CAD. This video demonstrates how to run the new Llama 4 CAD-specialized weights locally">
+    <meta name="keywords" content="Llama 4 CAD, Local AI Deployment, Text-to-CAD, Parametric Modeling, Open Source Engineering">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Llama 4 CAD: Generate Engineering-Grade Parts Offline - Complete Guide">
+    <meta property="og:description" content="We move beyond messy mesh generation into the era of precise, parametric CAD. This video demonstrates how to run the new Llama 4 CAD-specialized weights locally to transform text prompts into producti">
+    <meta property="og:type" content="article">
+    <title>Llama 4 CAD: Generate Engineering-Grade Parts Offline | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Llama 4 CAD: Generate Engineering-Grade Parts Offline</h1>
+            <p class="subtitle">This guide details how to leverage Llama 4 CAD specialized weights to generate high-precision, parametric 3D models locally. Unlike traditional AI mesh generation, this workflow produces production-ready STEP and B-Rep files suitable for CNC milling and professional engineering while maintaining total data privacy.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 09, 2026</span>
+                <span>4 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Transition from non-functional mesh generation to precise parametric CAD modeling.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Generate production-ready STEP and B-Rep files directly from text prompts.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Maintain IP privacy by running engineering-grade inference entirely offline.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Leverage models trained on millions of standardized mechanical parts for realistic tolerances.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Achieve manifold-correct geometry that respects physical constraints like wall thickness.</span></li>
+                    <li><span class="takeaway-num">6</span><span>Utilize local workstation hardware to bypass cloud subscriptions and data harvesting.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Modern workstation with high VRAM (NVIDIA RTX 3090/4090 or A-series recommended)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Ollama or a similar GGUF-compatible local LLM runner</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic knowledge of CAD file formats (STEP, B-Rep)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Environment Setup</h3>
+                <p>Install Ollama or your preferred local inference engine to handle the Llama 4 architecture. Ensure your GPU drivers are up to date to handle the large VRAM requirements of the 70B parameter model.</p>
+
+                <div class="code-block"><pre>curl -fsSL https://ollama.com/install.sh | sh</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Pull the Llama 4 CAD Weights</h3>
+                <p>Download the specialized Llama 4 CAD weights in GGUF format. These weights are optimized for generating mathematical instructions for geometry rather than just descriptive text.</p>
+
+                <div class="code-block"><pre>ollama run llama-4-70b-cad</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Prompting for Parametric Parts</h3>
+                <p>Input specific engineering constraints into the model. Instead of visual descriptions, use technical parameters such as hole diameters, load-bearing requirements, and specific dimensions.</p>
+
+                <div class="code-block"><pre>Prompt: 'Generate a 6061 aluminum mounting bracket, 5mm wall thickness, 4x M6 clearance holes, 50mm center-to-center spacing, output in STEP format.'</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Geometry Verification</h3>
+                <p>Export the generated code into a CAD viewer or verification tool to check for manifold errors and ensure the B-Rep logic is sound before sending it to manufacturing.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Specify exact material properties in your prompt to help the model better calculate necessary wall thicknesses.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use high-quantization GGUF files (Q8_0 or higher) to minimize geometric errors caused by weight compression.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Always perform a 'manifold check' in software like FreeCAD or Rhino before committing to a CNC toolpath.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> VRAM Bottlenecks: Attempting to run the 70B model on consumer cards with less than 24GB of VRAM will lead to extreme latency or crashes.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Mesh Confusion: Do not confuse these outputs with STLs; these are parametric instructions. Converting them back to low-quality meshes loses the engineering precision.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Over-reliance on Defaults: Always explicitly state tolerances (e.g., +/- 0.1mm) or the model may default to generic 'visual' approximations.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Llama-4-70B-CAD-GGUF</h4>
+                    <p>Specialized LLM weights optimized for CAD and engineering geometry.</p>
+                    <a href="https://huggingface.co/meta-llama/Llama-4-70B-CAD" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Ollama</h4>
+                    <p>Local inference engine for running large language models on personal hardware.</p>
+                    <a href="https://github.com/ollama/ollama" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How does this differ from generating 3D models with Midjourney or DALL-E?</h3>
+                <p>Visual AI generates 'dumb' meshes (triangles) which are often physically impossible. Llama 4 CAD generates 'smart' parametric data (STEP/B-Rep) that follows engineering rules and can be edited in professional CAD software.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use these files for CNC machining?</h3>
+                <p>Yes. Because the model outputs B-Rep and STEP data, the geometry is precise enough for CAM software to generate toolpaths for CNC mills and lathes.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is my design data sent to Meta or any cloud provider?</h3>
+                <p>No. By using the GGUF weights locally via Ollama, all inference happens on your local GPU, ensuring your intellectual property never leaves your machine.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://en.wikipedia.org/wiki/Boundary_representation" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Introduction to B-Rep Modeling
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Understanding the mathematical foundation of the files generated by Llama 4 CAD.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.iso.org/standard/63141.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            STEP File Standards (ISO 10303)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The industry standard for 3D model data exchange used in this workflow.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#Llama4CAD:GenerateEngineering-GradePartsOffline</span>
+                <span class="tag">#Llama4CAD</span>
+                <span class="tag">#LocalAIDeployment</span>
+                <span class="tag">#Text-to-CAD</span>
+                <span class="tag">#ParametricModeling</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-09 23:44 • This guide accompanies the video: "Llama 4 CAD: Generate Engineering-Grade Parts Offline"</p>
+        </footer>
+    </div>
+</body>
+</html>
