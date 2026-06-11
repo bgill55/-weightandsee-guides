@@ -13,15 +13,15 @@ for every video on the [Weight and See](https://youtube.com/@WeightnSee) YouTube
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/📚_34_Guides-blue?style=for-the-badge)
-![Categories](https://img.shields.io/badge/📂_7_Categories-green?style=for-the-badge)
-![Updated](https://img.shields.io/badge/🔄_Updated_June_2026-orange?style=for-the-badge)
+![Guides](https://img.shields.io/badge/34_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
+![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
 </div>
 
 ---
 
-## 🆕 Latest Guides
+## Latest Guides
 
 <table><tr>
 <td align="center" width="33%">
@@ -46,7 +46,7 @@ for every video on the [Weight and See](https://youtube.com/@WeightnSee) YouTube
 
 ---
 
-## 🧭 Quick Navigation
+## Quick Navigation
 
 | Category | Guides |
 |----------|--------|

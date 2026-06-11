@@ -181,9 +181,10 @@ def generate_readme():
     categories_count = len(CATEGORIES)
     lines.append('<div align="center">')
     lines.append('')
-    lines.append(f'![Guides](https://img.shields.io/badge/📚_{total_guides}_Guides-blue?style=for-the-badge)')
-    lines.append(f'![Categories](https://img.shields.io/badge/📂_{categories_count}_Categories-green?style=for-the-badge)')
-    lines.append(f'![Updated](https://img.shields.io/badge/🔄_Updated_{datetime.now().strftime("%B_%Y")}-orange?style=for-the-badge)')
+    month_year = datetime.now().strftime("%B %Y").upper()
+    lines.append(f'![Guides](https://img.shields.io/badge/{total_guides}_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)')
+    lines.append(f'![Categories](https://img.shields.io/badge/{categories_count}_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)')
+    lines.append(f'![Updated](https://img.shields.io/badge/UPDATED_{month_year.replace(" ", "_")}-orange?style=for-the-badge&logo=simpleicons&logoColor=white)')
     lines.append('')
     lines.append('</div>')
     lines.append('')
@@ -199,7 +200,7 @@ def generate_readme():
             all_slugs_with_time.append((slug, mtime))
     all_slugs_with_time.sort(key=lambda x: x[1], reverse=True)
 
-    lines.append('## 🆕 Latest Guides')
+    lines.append('## Latest Guides')
     lines.append('')
     lines.append('<table><tr>')
     for slug, _ in all_slugs_with_time[:3]:
@@ -219,7 +220,7 @@ def generate_readme():
     lines.append('')
 
     # Quick nav
-    lines.append('## 🧭 Quick Navigation')
+    lines.append('## Quick Navigation')
     lines.append('')
     lines.append('| Category | Guides |')
     lines.append('|----------|--------|')
