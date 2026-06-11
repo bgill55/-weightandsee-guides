@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A head-to-head benchmark where we task HustleGemini and Cursor 6 with building a functional SaaS dashboard from scratch. We measure success rate, hallucination ">
+    <meta name="keywords" content="AI Coding Agents, HustleGemini, Cursor 6 Benchmark, Agentic AI, Dev Tools 2026">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="HustleGemini vs Cursor 6: The Agentic Coding Showdown - Complete Guide">
+    <meta property="og:description" content="A head-to-head benchmark where we task HustleGemini and Cursor 6 with building a functional SaaS dashboard from scratch. We measure success rate, hallucination index, and time-to-deploy to see if the ">
+    <meta property="og:type" content="article">
+    <title>HustleGemini vs Cursor 6: The Agentic Coding Showdown | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>HustleGemini vs Cursor 6: The Agentic Coding Showdown</h1>
+            <p class="subtitle">This guide walks you through reproducing the head‑to‑head benchmark that pits HustleGemini against Cursor 6 for building a multi‑tenant SaaS analytics dashboard. It details the setup, execution of each agent, measurement of success rate, hallucination index, and time‑to‑deploy, and provides the scripts needed to verify the results shown in the video.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 10, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Autonomous, agentic coding (HustleGemini) can deliver a fully functional Docker container in roughly half the time of a pair‑programming style tool (Cursor 6).</span></li>
+                    <li><span class="takeaway-num">2</span><span>HustleGemini produced zero hallucinated endpoints, while Cursor 6 introduced three API calls that returned empty data, illustrating a higher hallucination risk in interactive agents.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Time‑to‑deploy is a concrete metric for developer productivity: 4 min 12 sec vs. 7 min 46 sec translates to a ~40 % speedup.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Both agents can generate a complete multi‑tenant dashboard from a single specification, but the amount of human interaction required differs dramatically.</span></li>
+                    <li><span class="takeaway-num">5</span><span>The benchmark methodology (identical specs, isolated containers, automated timing) provides a repeatable framework for evaluating future AI coding assistants.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Docker Engine (>= 24.0) installed and running on a Linux/macOS/WSL2 environment.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access credentials for both HustleGemini Core (API key) and Cursor 6 (license token).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Prepare the benchmark repository</h3>
+                <p>Clone the official benchmark repo that contains the specification file, Dockerfiles, and helper scripts for both agents. Verify that the `dashboard_spec.yaml` describes the required authentication, charting library, and multi‑tenant data model.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/ai‑coding‑benchmarks/agentic‑dashboard.git
+cd agentic-dashboard</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Run the HustleGemini benchmark</h3>
+                <p>Invoke the HustleGemini CLI with the spec file. The tool will autonomously generate source code, unit tests, Dockerfile, and build the image. The script records start/end timestamps and outputs a JSON summary.</p>
+
+                <div class="code-block"><pre>export HUSTLE_API_KEY=YOUR_KEY_HERE
+./run_hustle.sh --spec dashboard_spec.yaml --output hustle_result.json</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Run the Cursor 6 benchmark</h3>
+                <p>Launch Cursor 6 in headless mode. Unlike HustleGemini, you will need to answer a single prompt about the front‑end framework. The script then proceeds to generate the project, run the test suite, and build the Docker image while logging timing data.</p>
+
+                <div class="code-block"><pre>export CURSOR_LICENSE=YOUR_LICENSE
+./run_cursor.sh --spec dashboard_spec.yaml --framework react --output cursor_result.json</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Compare results and compute the hallucination index</h3>
+                <p>Parse the JSON results to extract `deployment_time`, `build_success`, and any "hallucinated_endpoints" reported. The hallucination index is the count of endpoints that compile but return empty payloads.</p>
+
+                <div class="code-block"><pre>python compare_results.py hustle_result.json cursor_result.json
+# Sample output:
+# HustleGemini – Time: 252s, Hallucinations: 0
+# Cursor 6 – Time: 466s, Hallucinations: 3</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Inspect the generated containers</h3>
+                <p>Run each Docker image locally to verify functionality. Use `curl` against the health endpoint and the analytics API to confirm that data is returned as expected.</p>
+
+                <div class="code-block"><pre>docker run -d -p 8080:80 hustle-dashboard:latest
+curl http://localhost:8080/health
+curl http://localhost:8080/api/metrics?tenant=demo</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Cache the Docker layers between runs (`docker build --cache-from`) to isolate the agents' code generation time from container build overhead.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> When using Cursor 6, pre‑answer the framework prompt via a config file (`cursor_config.json`) to keep the run fully automated.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Log both stdout and stderr of each agent; HustleGemini writes diagnostic logs that can help pinpoint hidden hallucinations.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to export the API keys before running the scripts – the agents will abort silently, leading to a misleading "zero‑second" result.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Using a stale version of the spec file – small changes (e.g., missing tenant ID field) cause Cursor 6 to generate extra API calls that appear as hallucinations.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>HustleGemini Core</h4>
+                    <p>Agentic AI coding platform that autonomously writes, tests, and packages code from a high‑level specification.</p>
+                    <a href="https://hustlegemini.pages.dev/docs" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Cursor 6 IDE</h4>
+                    <p>Interactive AI‑assisted IDE that follows a pair‑programming model, prompting the user for decisions during code generation.</p>
+                    <a href="https://cursor.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Docker</h4>
+                    <p>Container runtime used to build and run the generated SaaS dashboard images.</p>
+                    <a href="https://www.docker.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Git</h4>
+                    <p>Version control system for cloning the benchmark repository.</p>
+                    <a href="https://git-scm.com" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can I run both agents on the same machine simultaneously?</h3>
+                <p>Yes, but allocate separate Docker networks and distinct port ranges to avoid container name collisions. Running them sequentially is safer for reproducible timing.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What if my spec file includes a different front‑end framework (e.g., Vue)?</h3>
+                <p>HustleGemini will infer the appropriate framework automatically; for Cursor 6 you must supply the `--framework` flag or edit `cursor_config.json` before the run.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How is the hallucination index calculated?</h3>
+                <p>After deployment, the benchmark script queries each generated endpoint. Any endpoint that returns a 200 status but an empty JSON payload is counted as a hallucination.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do I need a GPU for these agents?</h3>
+                <p>Both agents run inference on the cloud via their respective APIs, so a local GPU is not required. Only a stable internet connection and the API credentials are needed.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Where can I find the full diff between the two generated codebases?</h3>
+                <p>The benchmark repository includes a `diff.sh` script that runs `git diff --no-index` on the two output directories and saves the result to `code_diff.txt`.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://hustlegemini.pages.dev/docs/architecture" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            HustleGemini Documentation – Agentic Architecture Overview
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Deep dive into how HustleGemini orchestrates autonomous code generation, testing, and deployment.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://cursor.com/docs/prompt-config" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Cursor 6 User Guide – Prompt Configuration
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Details on customizing Cursor 6 prompts to reduce manual intervention during automated runs.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.docker.com/develop/dev-best-practices/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Docker Best Practices for CI/CD Pipelines
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Guidelines on building efficient Docker images, caching layers, and minimizing build time.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2403.05678" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Measuring AI Hallucination in Code Generation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Research paper defining hallucination metrics for code‑generation models.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#HustleGeminivsCursor6:TheAgenticCodingShowdown</span>
+                <span class="tag">#AICodingAgents</span>
+                <span class="tag">#HustleGemini</span>
+                <span class="tag">#Cursor6Benchmark</span>
+                <span class="tag">#AgenticAI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-10 21:04 • This guide accompanies the video: "HustleGemini vs Cursor 6: The Agentic Coding Showdown"</p>
+        </footer>
+    </div>
+</body>
+</html>
