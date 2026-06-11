@@ -243,10 +243,7 @@ def generate_readme():
             url = f"https://bgill55.github.io/-weightandsee-guides/guides/{slug}/"
             date = get_guide_date(slug)
             date_str = f" — {date}" if date else ""
-            if has_thumbnail(slug):
-                lines.append(f'- 📸 **[{title}]({url})**{date_str}')
-            else:
-                lines.append(f'- 📝 **[{title}]({url})**{date_str}')
+            lines.append(f'- **[{title}]({url})**{date_str}')
 
         lines.append('')
         lines.append('---')
