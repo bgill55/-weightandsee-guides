@@ -164,12 +164,7 @@ def generate_readme():
     # Hero section
     lines.append('<div align="center">')
     lines.append('')
-    lines.append('# 🎬 Weight and See — Guides Wiki')
-    lines.append('')
-    lines.append('**Your signal through the noise of AI**')
-    lines.append('')
-    lines.append('Comprehensive written guides, step-by-step tutorials, and resource pages')
-    lines.append('for every video on the [Weight and See](https://youtube.com/@WeightnSee) YouTube channel.')
+    lines.append('<img src="assets/hero-banner.png" width="100%" alt="Weight and See Guides Wiki">')
     lines.append('')
     lines.append('</div>')
     lines.append('')

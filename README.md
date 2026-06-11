@@ -1,11 +1,6 @@
 <div align="center">
 
-# 🎬 Weight and See — Guides Wiki
-
-**Your signal through the noise of AI**
-
-Comprehensive written guides, step-by-step tutorials, and resource pages
-for every video on the [Weight and See](https://youtube.com/@WeightnSee) YouTube channel.
+<img src="assets/hero-banner.png" width="100%" alt="Weight and See Guides Wiki">
 
 </div>
 
