@@ -48,19 +48,19 @@ for every video on the [Weight and See](https://youtube.com/@WeightnSee) YouTube
 
 ## Quick Navigation
 
-| Category | Guides |
-|----------|--------|
-| 🏆 Benchmarks & Comparisons | 8 guides |
-| 🧠 Model Deep Dives | 7 guides |
-| 💻 Local AI & Self-Hosting | 8 guides |
-| 🛡️ AI Security | 4 guides |
-| 🔧 Developer Tools & Agents | 3 guides |
-| 🎨 Image & Vision | 3 guides |
-| ⚡ No-Code & Automation | 1 guides |
+| Category | Count |
+|----------|-------|
+| **Benchmarks & Comparisons** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
+| **Model Deep Dives** | ![7](https://img.shields.io/badge/7-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
+| **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
+| **Image & Vision** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
+| **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
 ---
 
-## 🏆 Benchmarks & Comparisons
+## Benchmarks & Comparisons
 
 *Head-to-head model showdowns and real-world performance tests*
 
@@ -75,7 +75,7 @@ for every video on the [Weight and See](https://youtube.com/@WeightnSee) YouTube
 
 ---
 
-## 🧠 Model Deep Dives
+## Model Deep Dives
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
@@ -89,7 +89,7 @@ for every video on the [Weight and See](https://youtube.com/@WeightnSee) YouTube
 
 ---
 
-## 💻 Local AI & Self-Hosting
+## Local AI & Self-Hosting
 
 *Run powerful AI models on your own hardware — no cloud required*
 
@@ -104,7 +104,7 @@ for every video on the [Weight and See](https://youtube.com/@WeightnSee) YouTube
 
 ---
 
-## 🛡️ AI Security
+## AI Security
 
 *Threats, vulnerabilities, and defenses in the AI era*
 
@@ -115,7 +115,7 @@ for every video on the [Weight and See](https://youtube.com/@WeightnSee) YouTube
 
 ---
 
-## 🔧 Developer Tools & Agents
+## Developer Tools & Agents
 
 *AI-powered coding assistants, agents, and developer workflows*
 
@@ -125,7 +125,7 @@ for every video on the [Weight and See](https://youtube.com/@WeightnSee) YouTube
 
 ---
 
-## 🎨 Image & Vision
+## Image & Vision
 
 *Image generation, computer vision, and visual AI*
 
@@ -135,7 +135,7 @@ for every video on the [Weight and See](https://youtube.com/@WeightnSee) YouTube
 
 ---
 
-## ⚡ No-Code & Automation
+## No-Code & Automation
 
 *Build AI workflows without writing code*
 

@@ -9,7 +9,7 @@ REPO_DIR = os.path.dirname(os.path.abspath(__file__))
 GUIDES_DIR = os.path.join(REPO_DIR, "guides")
 
 CATEGORIES = {
-    "🏆 Benchmarks & Comparisons": {
+    "Benchmarks & Comparisons": {
         "desc": "Head-to-head model showdowns and real-world performance tests",
         "slugs": [
             "gemma-4-vs-gpt55-deepseekv4-realworld-12b-benchmark-showdown",
@@ -22,7 +22,7 @@ CATEGORIES = {
             "unicad-7b-vs-cloud-giants-can-local-ai-engineer-real-parts",
         ],
     },
-    "🧠 Model Deep Dives": {
+    "Model Deep Dives": {
         "desc": "In-depth analysis of cutting-edge AI models and architectures",
         "slugs": [
             "deep-dive-into-adahmpleng-50m-5ep-1e-4-64b-efficient-smallscale-english-model",
@@ -34,7 +34,7 @@ CATEGORIES = {
             "whispersmallhi-the-tiny-transcriber-that-beats-cloud-apis",
         ],
     },
-    "💻 Local AI & Self-Hosting": {
+    "Local AI & Self-Hosting": {
         "desc": "Run powerful AI models on your own hardware — no cloud required",
         "slugs": [
             "llama-4-turbo-local-the-48gb-vram-reality-check",
@@ -47,7 +47,7 @@ CATEGORIES = {
             "visionaryai-2026-review-8k-images-on-a-laptop-gpu",
         ],
     },
-    "🛡️ AI Security": {
+    "AI Security": {
         "desc": "Threats, vulnerabilities, and defenses in the AI era",
         "slugs": [
             "inside-the-microsoft-ai-tool-breach-timeline-exploits-and-patch-rollout",
@@ -56,7 +56,7 @@ CATEGORIES = {
             "is-outlines-30-the-ultimate-ai-firewall",
         ],
     },
-    "🔧 Developer Tools & Agents": {
+    "Developer Tools & Agents": {
         "desc": "AI-powered coding assistants, agents, and developer workflows",
         "slugs": [
             "build-a-gemini-optimized-app-on-apple-silicon-hands-on-tutorial",
@@ -64,7 +64,7 @@ CATEGORIES = {
             "claude-fable-5-desktop-test-realworld-speed-on-a-hyperv-vm",
         ],
     },
-    "🎨 Image & Vision": {
+    "Image & Vision": {
         "desc": "Image generation, computer vision, and visual AI",
         "slugs": [
             "cad-gpt-20-generating-production-ready-step-files-in-seconds",
@@ -72,7 +72,7 @@ CATEGORIES = {
             "text-to-cad-just-got-real-the-caddy-model-breakdown",
         ],
     },
-    "⚡ No-Code & Automation": {
+    "No-Code & Automation": {
         "desc": "Build AI workflows without writing code",
         "slugs": [
             "nocode-ai-orchestrators-faceoff-flowise-20-vs-n8n-ai-30-vs-autogptstudio",
@@ -89,7 +89,7 @@ all_guides = [d.name for d in os.scandir(GUIDES_DIR) if d.is_dir() and d.name !=
 uncategorized = [s for s in all_guides if s not in all_categorized]
 
 if uncategorized:
-    CATEGORIES["📚 More Guides"] = {
+    CATEGORIES["More Guides"] = {
         "desc": "Recently published guides",
         "slugs": sorted(uncategorized),
     }
@@ -222,10 +222,11 @@ def generate_readme():
     # Quick nav
     lines.append('## Quick Navigation')
     lines.append('')
-    lines.append('| Category | Guides |')
-    lines.append('|----------|--------|')
+    lines.append('| Category | Count |')
+    lines.append('|----------|-------|')
     for cat_name, cat_data in CATEGORIES.items():
-        lines.append(f'| {cat_name} | {len(cat_data["slugs"])} guides |')
+        count = len(cat_data["slugs"])
+        lines.append(f'| **{cat_name}** | ![{count}](https://img.shields.io/badge/{count}-blue?style=flat-square) |')
     lines.append('')
     lines.append('---')
     lines.append('')
