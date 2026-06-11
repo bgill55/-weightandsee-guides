@@ -10,7 +10,6 @@ GUIDES_DIR = os.path.join(REPO_DIR, "guides")
 
 CATEGORIES = {
     "🏆 Benchmarks & Comparisons": {
-        "emoji": "🏆",
         "desc": "Head-to-head model showdowns and real-world performance tests",
         "slugs": [
             "gemma-4-vs-gpt55-deepseekv4-realworld-12b-benchmark-showdown",
@@ -24,7 +23,6 @@ CATEGORIES = {
         ],
     },
     "🧠 Model Deep Dives": {
-        "emoji": "🧠",
         "desc": "In-depth analysis of cutting-edge AI models and architectures",
         "slugs": [
             "deep-dive-into-adahmpleng-50m-5ep-1e-4-64b-efficient-smallscale-english-model",
@@ -37,7 +35,6 @@ CATEGORIES = {
         ],
     },
     "💻 Local AI & Self-Hosting": {
-        "emoji": "💻",
         "desc": "Run powerful AI models on your own hardware — no cloud required",
         "slugs": [
             "llama-4-turbo-local-the-48gb-vram-reality-check",
@@ -51,7 +48,6 @@ CATEGORIES = {
         ],
     },
     "🛡️ AI Security": {
-        "emoji": "🛡️",
         "desc": "Threats, vulnerabilities, and defenses in the AI era",
         "slugs": [
             "inside-the-microsoft-ai-tool-breach-timeline-exploits-and-patch-rollout",
@@ -61,7 +57,6 @@ CATEGORIES = {
         ],
     },
     "🔧 Developer Tools & Agents": {
-        "emoji": "🔧",
         "desc": "AI-powered coding assistants, agents, and developer workflows",
         "slugs": [
             "build-a-gemini-optimized-app-on-apple-silicon-hands-on-tutorial",
@@ -70,7 +65,6 @@ CATEGORIES = {
         ],
     },
     "🎨 Image & Vision": {
-        "emoji": "🎨",
         "desc": "Image generation, computer vision, and visual AI",
         "slugs": [
             "cad-gpt-20-generating-production-ready-step-files-in-seconds",
@@ -79,13 +73,26 @@ CATEGORIES = {
         ],
     },
     "⚡ No-Code & Automation": {
-        "emoji": "⚡",
         "desc": "Build AI workflows without writing code",
         "slugs": [
             "nocode-ai-orchestrators-faceoff-flowise-20-vs-n8n-ai-30-vs-autogptstudio",
         ],
     },
 }
+
+# Find uncategorized guides
+all_categorized = set()
+for cat_data in CATEGORIES.values():
+    all_categorized.update(cat_data["slugs"])
+
+all_guides = [d.name for d in os.scandir(GUIDES_DIR) if d.is_dir() and d.name != "index.html"]
+uncategorized = [s for s in all_guides if s not in all_categorized]
+
+if uncategorized:
+    CATEGORIES["📚 More Guides"] = {
+        "desc": "Recently published guides",
+        "slugs": sorted(uncategorized),
+    }
 
 
 # Manual title overrides for slugs that need cleanup
@@ -131,7 +138,6 @@ def slug_to_title(slug):
     """Convert a URL slug to a readable title."""
     if slug in TITLE_OVERRIDES:
         return TITLE_OVERRIDES[slug]
-    # Fallback: just convert dashes to spaces and title case
     return slug.replace("-", " ").title()
 
 
@@ -141,7 +147,6 @@ def get_guide_date(slug):
     if os.path.exists(html_path):
         with open(html_path, "r", encoding="utf-8") as f:
             content = f.read(5000)
-        # Look for date patterns
         match = re.search(r'(?:date|published|created)["\s:]+(\d{4}[-/]\d{2}[-/]\d{2})', content, re.IGNORECASE)
         if match:
             return match.group(1)
@@ -265,4 +270,4 @@ if __name__ == "__main__":
     readme_path = os.path.join(REPO_DIR, "README.md")
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(readme)
-    print(f"✅ README.md generated with {sum(len(c['slugs']) for c in CATEGORIES.values())} guides in {len(CATEGORIES)} categories")
+    print(f"README.md generated with {sum(len(c['slugs']) for c in CATEGORIES.values())} guides in {len(CATEGORIES)} categories")
