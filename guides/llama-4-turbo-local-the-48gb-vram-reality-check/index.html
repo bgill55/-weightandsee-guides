@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meta's Llama 4-Turbo is the most anticipated open-weight model of 2026, promising GPT-4o class reasoning with local privacy. We benchmark the 70B parameter mode">
+    <meta name="keywords" content="Llama 4, Local LLM, VRAM benchmark, AI hardware, Meta AI">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Llama 4-Turbo Local: The 48GB VRAM Reality Check - Complete Guide">
+    <meta property="og:description" content="Meta's Llama 4-Turbo is the most anticipated open-weight model of 2026, promising GPT-4o class reasoning with local privacy. We benchmark the 70B parameter model across various quantization levels on ">
+    <meta property="og:type" content="article">
+    <title>Llama 4-Turbo Local: The 48GB VRAM Reality Check | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Llama 4-Turbo Local: The 48GB VRAM Reality Check</h1>
+            <p class="subtitle">This guide dives into the practical limits of running Meta's Llama 4‑Turbo (70 B) on a dual‑RTX 5090 workstation. It explains how VRAM, memory bandwidth, and quantization affect token throughput, context‑window size, and overall cost, helping you decide whether a local rig or a cloud API is the right choice for your workloads.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 10, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>48 GB of VRAM per GPU caps performance at roughly Q4 quantization, delivering ~30 tokens/s.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Memory bandwidth, not compute, becomes the primary bottleneck when pushing large context windows (e.g., 128 k tokens).</span></li>
+                    <li><span class="takeaway-num">3</span><span>Even with two RTX 5090s, VRAM utilization hits 99 % while compute units sit idle, indicating a bandwidth saturation point.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Running Llama 4‑Turbo locally incurs high electricity and cooling costs; cloud APIs remain cheaper for production‑scale use.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Local inference provides strong privacy guarantees, but the performance trade‑off is significant for heavy workloads.</span></li>
+                    <li><span class="takeaway-num">6</span><span>Proper quantization (e.g., 4‑bit) and tensor‑parallelism are essential to squeeze the most out of the hardware.</span></li>
+                    <li><span class="takeaway-num">7</span><span>Benchmarking tools and detailed monitoring are required to understand real‑world performance limits.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A dual‑GPU system with two RTX 5090 cards, adequate PSU (≥1200 W) and cooling.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.10+, CUDA 12+, and the vLLM benchmarking tool installed.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the Llama 4 Repository and Set Up the Environment</h3>
+                <p>Fetch the official Meta Llama 4 source code, create a virtual environment, and install required dependencies (torch, transformers, vLLM).</p>
+
+                <div class="code-block"><pre>git clone https://github.com/meta-llama/llama4.git
+cd llama4
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install vllm
+</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Download and Quantize the 70B Model</h3>
+                <p>Use the provided scripts to pull the 70‑billion‑parameter checkpoint and quantize it to 4‑bit (Q4) for the best VRAM‑throughput trade‑off.</p>
+
+                <div class="code-block"><pre>python scripts/download_model.py --model llama4-70b
+python scripts/quantize.py --input llama4-70b --output llama4-70b-q4 --bits 4</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Launch vLLM with Tensor Parallelism</h3>
+                <p>Run the model across both GPUs using tensor‑parallel size 2, specify the quantization level, and set a maximum context length for the benchmark.</p>
+
+                <div class="code-block"><pre>python -m vllm.entrypoint.run \
+  --model llama4-70b-q4 \
+  --quantization q4 \
+  --tensor-parallel-size 2 \
+  --max-context-length 32768 \
+  --port 8000</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Execute the Benchmark Suite</h3>
+                <p>Utilize the vLLM benchmark tool to measure token generation speed, VRAM usage, and memory bandwidth under different context windows and quantization settings.</p>
+
+                <div class="code-block"><pre>python -m vllm.benchmark.run \
+  --endpoint http://localhost:8000 \
+  --prompt "Explain quantum entanglement in simple terms." \
+  --num-tokens 256 \
+  --repeat 5</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Analyze Results and Adjust Settings</h3>
+                <p>Inspect the generated CSV/JSON logs, plot VRAM utilization vs. token latency, and experiment with lower context windows or higher‑bit quantization if bandwidth saturation is observed.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Enable NVLink (or PCIe 4.0 x16) between the two RTX 5090s to maximize cross‑GPU bandwidth.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> When targeting long contexts, switch to 8‑bit (Q8) quantization; it reduces bandwidth pressure at a modest accuracy cost.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Monitor GPU metrics with `nvidia-smi --query-gpu=utilization.memory,utilization.gpu,temperature.gpu --format=csv -l 1` to catch idle compute cycles.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Assuming that adding more VRAM alone will linearly increase throughput – memory bandwidth, not capacity, becomes the limiting factor after Q4.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Ignoring power and thermal constraints; a dual RTX 5090 rig can draw >600 W and generate >80 °C GPU temps, leading to throttling if cooling is insufficient.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Meta Llama 4 Repo</h4>
+                    <p>Official repository containing model weights, tokenizer, and conversion scripts for Llama 4‑Turbo.</p>
+                    <a href="https://github.com/meta-llama/llama4" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Ollama Library</h4>
+                    <p>Pre‑built Llama 4‑Turbo containers and model packages for quick local deployment.</p>
+                    <a href="https://ollama.com/library/llama4-turbo" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>vLLM Benchmarking Tool</h4>
+                    <p>High‑performance inference engine and benchmarking suite for LLMs, supporting quantization and tensor parallelism.</p>
+                    <a href="https://github.com/vllm-project/vllm" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can I run Llama 4‑Turbo with a 128k token context window on my dual‑RTX 5090 rig?</h3>
+                <p>Technically you can request a 128k context, but VRAM will saturate and token latency will increase dramatically; the rig will stall once bandwidth is exhausted.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Which quantization level gives the best trade‑off between speed and accuracy?</h3>
+                <p>Q4 (4‑bit) provides the highest throughput (~30 t/s) while keeping most of the model’s quality; Q8 is a safer fallback for very long contexts.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How much power does the dual‑RTX 5090 setup consume during inference?</h3>
+                <p>Peak power draw is around 600–650 W for the GPUs alone; with CPU and cooling, total system consumption can exceed 800 W, leading to high electricity costs.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do I need NVLink between the GPUs for optimal performance?</h3>
+                <p>NVLink dramatically improves inter‑GPU bandwidth, reducing the memory‑bandwidth bottleneck; without it, PCIe bandwidth may become the limiting factor.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is the privacy benefit of local inference worth the hardware expense?</h3>
+                <p>For highly sensitive documents, local inference eliminates data exposure to third‑party APIs, but you must weigh that against the upfront hardware cost and ongoing energy consumption.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2210.05758" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Understanding Quantization for LLMs
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — A technical overview of low‑bit quantization techniques and their impact on memory bandwidth.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/rtx-5090/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            NVIDIA RTX 5090 Architecture Deep Dive
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official specs, memory bandwidth, and NVLink capabilities for the RTX 5090.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://cloud.google.com/blog/articles/llm-cost-analysis" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Cost Comparison: On‑Prem vs Cloud LLM Inference
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Analysis of electricity, hardware depreciation, and API pricing for large language models.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#Llama4-TurboLocal:The48GBVRAMRealityCheck</span>
+                <span class="tag">#Llama4</span>
+                <span class="tag">#LocalLLM</span>
+                <span class="tag">#VRAMbenchmark</span>
+                <span class="tag">#AIhardware</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-10 18:52 • This guide accompanies the video: "Llama 4-Turbo Local: The 48GB VRAM Reality Check"</p>
+        </footer>
+    </div>
+</body>
+</html>
