@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/39_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/40_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/8_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -52,7 +52,7 @@
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Image & Vision** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
-| **More Guides** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
+| **More Guides** | ![6](https://img.shields.io/badge/6-blue?style=flat-square) |
 
 ---
 
@@ -143,6 +143,7 @@
 
 *Recently published guides*
 
+- **[Flux 2 Unleashed How The New Diffusion Engine Cuts Vram Cranks Up Speed](https://bgill55.github.io/-weightandsee-guides/guides/flux-2-unleashed-how-the-new-diffusion-engine-cuts-vram-cranks-up-speed/)**
 - **[How Flux 2S Texttovideo Engine Is Changing Creative Workflows](https://bgill55.github.io/-weightandsee-guides/guides/how-flux-2s-texttovideo-engine-is-changing-creative-workflows/)**
 - **[Nova 100M New Vs Circuit Breaker Which 2026 Model Wins The Speed Race](https://bgill55.github.io/-weightandsee-guides/guides/nova-100m-new-vs-circuit-breaker-which-2026-model-wins-the-speed-race/)**
 - **[Pentestai Review Aipowered Penetration Testing With Chatgpt V55](https://bgill55.github.io/-weightandsee-guides/guides/pentestai-review-aipowered-penetration-testing-with-chatgpt-v55/)**
