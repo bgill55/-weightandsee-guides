@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/41_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/42_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/8_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -52,7 +52,7 @@
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Image & Vision** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
-| **More Guides** | ![7](https://img.shields.io/badge/7-blue?style=flat-square) |
+| **More Guides** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
 
 ---
 
@@ -144,6 +144,7 @@
 *Recently published guides*
 
 - **[Flux 2 Unleashed How The New Diffusion Engine Cuts Vram Cranks Up Speed](https://bgill55.github.io/-weightandsee-guides/guides/flux-2-unleashed-how-the-new-diffusion-engine-cuts-vram-cranks-up-speed/)**
+- **[Gpu Showdown Chatgpt V5 Vs Llama 4 Vs Deepseek V4 On A Single Rtx 4090](https://bgill55.github.io/-weightandsee-guides/guides/gpu-showdown-chatgpt-v5-vs-llama-4-vs-deepseek-v4-on-a-single-rtx-4090/)**
 - **[How Flux 2S Texttovideo Engine Is Changing Creative Workflows](https://bgill55.github.io/-weightandsee-guides/guides/how-flux-2s-texttovideo-engine-is-changing-creative-workflows/)**
 - **[Nova 100M New Vs Circuit Breaker Which 2026 Model Wins The Speed Race](https://bgill55.github.io/-weightandsee-guides/guides/nova-100m-new-vs-circuit-breaker-which-2026-model-wins-the-speed-race/)**
 - **[Ollama Vs Lm Studio Battle For The Fastest Llama 4 Inference On A Rtx 4090](https://bgill55.github.io/-weightandsee-guides/guides/ollama-vs-lm-studio-battle-for-the-fastest-llama-4-inference-on-a-rtx-4090/)**
