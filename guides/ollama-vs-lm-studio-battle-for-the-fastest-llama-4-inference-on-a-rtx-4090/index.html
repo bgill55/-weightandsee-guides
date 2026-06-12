@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A side‑by‑side benchmark showdown that pits Ollama against LM Studio for running Llama 4 on the latest RTX 4090, revealing which stack delivers the lowest laten">
+    <meta name="keywords" content="Ollama, LM Studio, Llama 4, RTX 4090, GPU optimization">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Ollama vs LM Studio: Battle for the Fastest Llama 4 Inference on a RTX 4090 - Complete Guide">
+    <meta property="og:description" content="A side‑by‑side benchmark showdown that pits Ollama against LM Studio for running Llama 4 on the latest RTX 4090, revealing which stack delivers the lowest latency and highest throughput using 2026 GPU">
+    <meta property="og:type" content="article">
+    <title>Ollama vs LM Studio: Battle for the Fastest Llama 4 Inference on a RTX 4090 | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Ollama vs LM Studio: Battle for the Fastest Llama 4 Inference on a RTX 4090</h1>
+            <p class="subtitle">This guide walks you through benchmarking Llama 4 on an RTX 4090 using two popular local inference stacks—Ollama and LM Studio. You’ll learn how to install each tool, run the model, tweak performance settings, and interpret the results to decide which stack best fits your speed versus convenience needs.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 12, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Ollama delivers a lean memory footprint and ~85 tps out‑of‑the‑box with zero configuration.</span></li>
+                    <li><span class="takeaway-num">2</span><span>LM Studio can be manually tuned (context window, thread count) to reach ~92 tps, an ~8 % boost over Ollama’s default.</span></li>
+                    <li><span class="takeaway-num">3</span><span>The RTX 4090 remains the fastest consumer GPU for Llama 4 inference, but real‑world gains depend on software tuning.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Ollama’s “fire‑and‑forget” workflow is ideal for quick local deployment; LM Studio offers deeper control for power users.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Setup time for LM Studio is higher because you must adjust GPU and model parameters before inference.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A workstation equipped with an NVIDIA RTX 4090 (or comparable GPU) and up‑to‑date drivers.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with the command line and Python environment (for optional scripting).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install Ollama and pull Llama 4</h3>
+                <p>Download the Ollama binary for your OS, install it, and use the built‑in model manager to fetch the Llama 4 model. Ollama automatically handles quantization and GPU off‑loading.</p>
+
+                <div class="code-block"><pre>curl -fsSL https://ollama.com/install.sh | sh
+ollama pull llama4</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Install LM Studio and add Llama 4</h3>
+                <p>Grab the latest LM Studio release, launch the GUI, and import the Llama 4 model (either from Hugging Face or a local .gguf file). LM Studio stores model metadata in a `models/` directory you can edit later.</p>
+
+                <div class="code-block"><pre>wget https://github.com/lmstudio-ai/lmstudio/releases/download/v0.8.0/lmstudio-0.8.0-linux-x86_64.tar.gz
+ tar -xzf lmstudio-0.8.0-linux-x86_64.tar.gz
+ ./lmstudio</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Run a baseline benchmark with each stack</h3>
+                <p>Use a simple prompt to measure tokens‑per‑second (tps). Record the latency for 1000 tokens to get a comparable baseline.</p>
+
+                <div class="code-block"><pre>## Ollama baseline
+ollama run llama4 "Tell me a story about a GPU" --max-tokens 1000
+
+## LM Studio baseline (CLI mode)
+lmstudio run --model llama4 --prompt "Tell me a story about a GPU" --max-tokens 1000</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Optimize LM Studio settings for maximum throughput</h3>
+                <p>Open LM Studio’s settings panel and adjust the context window (e.g., 8192) and thread count (e.g., 8). Save the config, then rerun the benchmark to observe the ~92 tps result.</p>
+
+                <div class="code-block"><pre>{
+  "model": "llama4",
+  "context_window": 8192,
+  "gpu_threads": 8,
+  "gpu_offload": true
+}</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Compare results and choose your stack</h3>
+                <p>Create a small table of latency, memory usage, and setup time for both stacks. Use the data to decide whether raw speed (LM Studio) or simplicity (Ollama) aligns with your workflow.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Enable NVIDIA’s TensorFloat‑32 (TF32) mode for both stacks to squeeze extra FLOPs without precision loss.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> When using LM Studio, pin the process to the GPU’s dedicated memory using `CUDA_VISIBLE_DEVICES=0` to avoid OS‑level context switches.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Cache the model in `/dev/shm` (RAM disk) for ultra‑low latency if you have ample system memory.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to update GPU drivers – outdated drivers can throttle the RTX 4090 and skew benchmark numbers.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Leaving the default context window in LM Studio too low – it limits the amount of token history the model can attend to, capping throughput.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Ollama</h4>
+                    <p>A lightweight local inference server that auto‑optimizes LLMs for GPU execution.</p>
+                    <a href="https://ollama.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>LM Studio</h4>
+                    <p>A GUI‑first local LLM development environment with granular GPU tuning options.</p>
+                    <a href="https://lmstudio.ai" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Do I need a separate CUDA installation for Ollama or LM Studio?</h3>
+                <p>Both tools bundle a minimal CUDA runtime. However, having the latest NVIDIA driver installed on the host system is required for optimal performance.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I run both Ollama and LM Studio simultaneously on the same RTX 4090?</h3>
+                <p>Yes, but you must limit each process’s GPU memory usage (e.g., via `CUDA_VISIBLE_DEVICES` or LM Studio’s memory cap) to avoid out‑of‑memory errors.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is the 8 % speed gain in LM Studio worth the extra setup time?</h3>
+                <p>If you run high‑volume batch inference or need the absolute lowest latency, the gain is valuable. For casual chat or development, Ollama’s zero‑config approach is usually sufficient.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What’s the best context window size for Llama 4 on RTX 4090?</h3>
+                <p>8192 tokens is a good balance—large enough for most dialogues while staying within the GPU’s VRAM limits when using 4‑bit quantization.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I export the tuned LM Studio configuration for reuse on another machine?</h3>
+                <p>Yes, copy the `config.json` (or the specific model’s JSON block) to the same path on the target machine and reload the model in LM Studio.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://ollama.com/docs/models" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Ollama Documentation – Model Management
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official guide on pulling, quantizing, and serving models with Ollama.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/lmstudio-ai/lmstudio#configuration" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            LM Studio Advanced Configuration
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Details on editing the JSON config for context size, thread count, and GPU off‑loading.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://developer.nvidia.com/rtx-4090-architecture" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            NVIDIA RTX 4090 Architecture Overview (2026)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Technical deep‑dive into the GPU features leveraged by modern LLM inference.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#OllamavsLM</span>
+                <span class="tag">#Ollama</span>
+                <span class="tag">#LMStudio</span>
+                <span class="tag">#Llama4</span>
+                <span class="tag">#RTX4090</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-12 05:08 • This guide accompanies the video: "Ollama vs LM Studio: Battle for the Fastest Llama 4 Inference on a RTX 4090"</p>
+        </footer>
+    </div>
+</body>
+</html>
