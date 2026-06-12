@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/37_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/38_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/8_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -52,7 +52,7 @@
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Image & Vision** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
-| **More Guides** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
+| **More Guides** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
 
 ---
 
@@ -146,6 +146,7 @@
 - **[Nova 100M New Vs Circuit Breaker Which 2026 Model Wins The Speed Race](https://bgill55.github.io/-weightandsee-guides/guides/nova-100m-new-vs-circuit-breaker-which-2026-model-wins-the-speed-race/)**
 - **[Pentestai Review Aipowered Penetration Testing With Chatgpt V55](https://bgill55.github.io/-weightandsee-guides/guides/pentestai-review-aipowered-penetration-testing-with-chatgpt-v55/)**
 - **[Prometheus Ai Engineer Jeff Bezoss Awsready Agent Takes On Ollama 09](https://bgill55.github.io/-weightandsee-guides/guides/prometheus-ai-engineer-jeff-bezoss-awsready-agent-takes-on-ollama-09/)**
+- **[The Offline Security Stack Running Llama 4 For Pentesting](https://bgill55.github.io/-weightandsee-guides/guides/the-offline-security-stack-running-llama-4-for-pentesting/)**
 
 ---
 
