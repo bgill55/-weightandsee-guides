@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An educational video about setting up a private retrieval-augmented generation pipeline using LM Studio.">
+    <meta name="keywords" content="rag, local ai, privacy, lm studio">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="How Local RAG Works - Complete Guide">
+    <meta property="og:description" content="An educational video about setting up a private retrieval-augmented generation pipeline using LM Studio.">
+    <meta property="og:type" content="article">
+    <title>How Local RAG Works | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>How Local RAG Works</h1>
+            <p class="subtitle">This guide explains the fundamentals of implementing a Retrieval-Augmented Generation (RAG) pipeline locally using LM Studio. It covers how to connect a private, local document database to a local Large Language Model (LLM) to enable precise, secure, and offline querying of personal data.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 12, 2026</span>
+                <span>4 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Local RAG allows AI models to access and reference private files without uploading data to the cloud.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The core mechanism involves matching user queries against a local document database to retrieve relevant context.</span></li>
+                    <li><span class="takeaway-num">3</span><span>LM Studio provides the interface to run the LLM and manage the document retrieval process locally.</span></li>
+                    <li><span class="takeaway-num">4</span><span>This approach ensures data privacy and security by keeping the entire pipeline offline.</span></li>
+                    <li><span class="takeaway-num">5</span><span>RAG improves response precision by grounding the LLM's answers in specific local document chunks.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A computer with sufficient hardware resources (CPU/GPU/RAM) to run local LLMs</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">LM Studio installed on the local machine</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Local documents (e.g., text files, PDFs) to serve as the knowledge base</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Set Up the Local Environment</h3>
+                <p>Download and install LM Studio on your machine. Ensure your system meets the hardware requirements to host a local LLM effectively.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Select and Download a Local Model</h3>
+                <p>Open LM Studio and search for a suitable open-source LLM. Download the model to your local drive so it can run offline.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Configure the Document Database</h3>
+                <p>Load your private documents into the LM Studio knowledge base or designated local folder. The system will index these files to prepare for retrieval.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Execute a RAG Query</h3>
+                <p>Input a question into the LM Studio interface. The system will retrieve relevant passages from your local documents and use the LLM to generate a context-aware answer.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Organize your local documents into clear folders to improve the accuracy of information retrieval.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use models with larger context windows if you need to query longer documents or complex datasets.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Regularly update your local document index to ensure the AI has access to the latest information.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Insufficient Hardware: Running local models on inadequate hardware can lead to slow response times or system crashes.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Poor Document Formatting: Unstructured or messy text files can make it difficult for the RAG system to extract relevant information accurately.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>LM Studio</h4>
+                    <p>A desktop application for running local LLMs and setting up offline RAG pipelines.</p>
+                    <a href="https://lmstudio.ai" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Is my data sent to the cloud when using Local RAG?</h3>
+                <p>No, Local RAG processes everything on your machine. Your documents and queries never leave your local environment.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do I need an internet connection to use this setup?</h3>
+                <p>You only need an internet connection to initially download LM Studio and the LLM. Once downloaded, the system runs entirely offline.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What file formats are supported for the local database?</h3>
+                <p>Support varies by tool configuration, but generally, text-based formats like TXT, MD, and PDF are standard for local RAG implementations.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Why use RAG instead of just fine-tuning a model?</h3>
+                <p>RAG allows you to update your knowledge base instantly by adding new documents without the expensive and time-consuming process of re-training or fine-tuning a model.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://lmstudio.ai" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            LM Studio Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official guides and documentation for setting up local inference and knowledge bases.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2005.11401" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Retrieval-Augmented Generation (RAG) Explained
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The original academic paper introducing the RAG concept.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#HowLocalRAG</span>
+                <span class="tag">#rag</span>
+                <span class="tag">#localai</span>
+                <span class="tag">#privacy</span>
+                <span class="tag">#lmstudio</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-12 14:49 • This guide accompanies the video: "How Local RAG Works"</p>
+        </footer>
+    </div>
+</body>
+</html>
