@@ -8,8 +8,8 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/34_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
-![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
+![Guides](https://img.shields.io/badge/37_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Categories](https://img.shields.io/badge/8_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
 </div>
@@ -52,6 +52,7 @@
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Image & Vision** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
+| **More Guides** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 
 ---
 
@@ -135,6 +136,16 @@
 *Build AI workflows without writing code*
 
 - **[No-Code AI Orchestrators Face-Off — Flowise vs n8n vs AutoGPT Studio](https://bgill55.github.io/-weightandsee-guides/guides/nocode-ai-orchestrators-faceoff-flowise-20-vs-n8n-ai-30-vs-autogptstudio/)**
+
+---
+
+## More Guides
+
+*Recently published guides*
+
+- **[Nova 100M New Vs Circuit Breaker Which 2026 Model Wins The Speed Race](https://bgill55.github.io/-weightandsee-guides/guides/nova-100m-new-vs-circuit-breaker-which-2026-model-wins-the-speed-race/)**
+- **[Pentestai Review Aipowered Penetration Testing With Chatgpt V55](https://bgill55.github.io/-weightandsee-guides/guides/pentestai-review-aipowered-penetration-testing-with-chatgpt-v55/)**
+- **[Prometheus Ai Engineer Jeff Bezoss Awsready Agent Takes On Ollama 09](https://bgill55.github.io/-weightandsee-guides/guides/prometheus-ai-engineer-jeff-bezoss-awsready-agent-takes-on-ollama-09/)**
 
 ---
 
