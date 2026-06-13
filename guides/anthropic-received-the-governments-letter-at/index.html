@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Running video from user-supplied custom script.">
+    <meta name="keywords" content="custom script, user video, automation">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Anthropic received the government’s letter at... - Complete Guide">
+    <meta property="og:description" content="Running video from user-supplied custom script.">
+    <meta property="og:type" content="article">
+    <title>Anthropic received the government’s letter at... | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Anthropic received the government’s letter at...</h1>
+            <p class="subtitle">This guide covers the importance of AI sovereignty and how to achieve it by running AI models on your own hardware, bypassing cloud providers and their potential policy shifts. It highlights the benefits of self-hosted AI stacks, including architectural independence and optimized performance. The guide provides a step-by-step walkthrough of setting up a local AI environment using tools like Ollama, LM Studio, and llama.cpp.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 13, 2026</span>
+                <span>3 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>AI sovereignty is crucial for maintaining control over your AI models and data</span></li>
+                    <li><span class="takeaway-num">2</span><span>Cloud providers prioritize their bottom line over your ability to run models as desired</span></li>
+                    <li><span class="takeaway-num">3</span><span>Self-hosted AI stacks can match cloud latency for mid-sized models</span></li>
+                    <li><span class="takeaway-num">4</span><span>Using tools like Ollama, LM Studio, and llama.cpp can help achieve AI sovereignty</span></li>
+                    <li><span class="takeaway-num">5</span><span>Optimized quantization with llama.cpp enables efficient running on consumer-grade hardware</span></li>
+                    <li><span class="takeaway-num">6</span><span>Architectural independence is key to maintaining control over your AI environment</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of AI and machine learning concepts</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with command-line interfaces and terminal windows</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Choose Your AI Model and Framework</h3>
+                <p>Select a suitable AI model and framework that meets your requirements, such as Ollama or LM Studio</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Set Up Your Local Environment</h3>
+                <p>Install the necessary dependencies and tools, such as llama.cpp, to run your AI model on your local hardware</p>
+
+                <div class="code-block"><pre>git clone https://github.com/username/llama.cpp.git && cd llama.cpp && cmake . && make</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Configure and Optimize Your Model</h3>
+                <p>Configure your AI model for optimal performance on your local hardware, using techniques such as quantization and optimization</p>
+
+                <div class="code-block"><pre>python optimize_model.py --model_path /path/to/model --quantization_level 4</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use optimized quantization techniques to improve performance on consumer-grade hardware
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Regularly update your model and framework to ensure you have the latest features and security patches
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Consider using a desktop workstation with a powerful GPU for improved performance
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Insufficient hardware resources, leading to poor performance or model crashes
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Inadequate optimization, resulting in suboptimal performance or high latency
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Ollama</h4>
+                    <p>A tool for running AI models on local hardware</p>
+                    
+                </div>
+
+                <div class="tool-card">
+                    <h4>LM Studio</h4>
+                    <p>A framework for building and deploying AI models</p>
+                    
+                </div>
+
+                <div class="tool-card">
+                    <h4>llama.cpp</h4>
+                    <p>A C++ implementation of the LLaMA AI model</p>
+                    <a href="https://github.com/username/llama.cpp" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What is AI sovereignty and why is it important?</h3>
+                <p>AI sovereignty refers to the ability to maintain control over your AI models and data. It is important because it allows you to run your models as desired, without relying on cloud providers and their potential policy shifts.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What are the benefits of running AI models on local hardware?</h3>
+                <p>Running AI models on local hardware provides architectural independence, optimized performance, and improved security.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What are the system requirements for running AI models on local hardware?</h3>
+                <p>The system requirements for running AI models on local hardware vary depending on the specific model and framework. However, a desktop workstation with a powerful GPU and sufficient RAM is recommended.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/username/llama.cpp/blob/main/README.md" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Llama.cpp Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation for the llama.cpp project</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://example.com/optimizing-ai-models" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Optimizing AI Models for Local Hardware
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — A guide to optimizing AI models for local hardware</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-13 08:10 • This guide accompanies the video: "Anthropic received the government’s letter at..."</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/57_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/58_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/anthropic-received-the-governments-letter-at/">
+<img src="guides/anthropic-received-the-governments-letter-at/thumbnail.jpg" width="300" alt="Anthropic Received The Governments Letter At"><br>
+<b>Anthropic Received The Governments Letter At</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/">
 <img src="guides/why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/thumbnail.jpg" width="300" alt="Why Your Ai Agent Is Using The Wrong Model And How To Fix It"><br>
@@ -31,12 +37,6 @@
 <b>Ollama V090 Run Any Llm Locally In 2026 Heres What Changed</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/">
-<img src="guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/thumbnail.jpg" width="300" alt="Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model"><br>
-<b>Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **Model Deep Dives** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -108,6 +108,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Anthropic Received The Governments Letter At](https://bgill55.github.io/-weightandsee-guides/guides/anthropic-received-the-governments-letter-at/)** — 2026-06-13
 - **[Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model](https://bgill55.github.io/-weightandsee-guides/guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/)** — 2026-06-13
 - **[Nvidia Gh200 Grace Hopper Superchip What 2000 Gpulevel Ai Performance Means For](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/)** — 2026-06-13
 - **[Infrastructure Guide Running Anthropic Models Locally After A Government Ban](https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-guide-running-anthropic-models-locally-after-a-government-ban/)** — 2026-06-13
