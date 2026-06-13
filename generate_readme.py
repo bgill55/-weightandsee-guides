@@ -200,7 +200,7 @@ def generate_readme():
     lines.append('<table><tr>')
     for slug, _ in all_slugs_with_time[:3]:
         title = slug_to_title(slug)
-        url = f"https://bgill55.github.io/-weightandsee-guides/guides/{slug}/"
+        url = f"https://github.com/bgill55/-weightandsee-guides/blob/Master/README.md#{slug.lower().replace('-', '-')}"
         thumb_path = os.path.join(GUIDES_DIR, slug, "thumbnail.jpg")
         if os.path.exists(thumb_path):
             lines.append(f'<td align="center" width="33%">')
@@ -235,7 +235,7 @@ def generate_readme():
 
         for slug in cat_data["slugs"]:
             title = slug_to_title(slug)
-            url = f"https://bgill55.github.io/-weightandsee-guides/guides/{slug}/"
+            url = f"https://github.com/bgill55/-weightandsee-guides/blob/Master/README.md#{slug.lower().replace('-', '-')}"
             date = get_guide_date(slug)
             date_str = f" — {date}" if date else ""
             lines.append(f'- **[{title}]({url})**{date_str}')
