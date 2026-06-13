@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/56_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/57_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/">
+<img src="guides/why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/thumbnail.jpg" width="300" alt="Why Your Ai Agent Is Using The Wrong Model And How To Fix It"><br>
+<b>Why Your Ai Agent Is Using The Wrong Model And How To Fix It</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/ollama-v090-run-any-llm-locally-in-2026-heres-what-changed/">
 <img src="guides/ollama-v090-run-any-llm-locally-in-2026-heres-what-changed/thumbnail.jpg" width="300" alt="Ollama V090 Run Any Llm Locally In 2026 Heres What Changed"><br>
 <b>Ollama V090 Run Any Llm Locally In 2026 Heres What Changed</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/">
 <img src="guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/thumbnail.jpg" width="300" alt="Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model"><br>
 <b>Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/nvidia-h100-tensor-core-deep-dive-what-the-new-hopper-gpu-means-for-ai-workloads/">
-<img src="guides/nvidia-h100-tensor-core-deep-dive-what-the-new-hopper-gpu-means-for-ai-workloads/thumbnail.jpg" width="300" alt="Nvidia H100 Tensor Core Deep Dive What The New Hopper Gpu Means For Ai Workloads"><br>
-<b>Nvidia H100 Tensor Core Deep Dive What The New Hopper Gpu Means For Ai Workloads</b>
 </a>
 </td>
 </tr></table>
@@ -48,7 +48,7 @@
 | **Benchmarks & Comparisons** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **Model Deep Dives** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
-| **AI Security** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
+| **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
@@ -125,6 +125,7 @@
 
 *Threats, vulnerabilities, and defenses in the AI era*
 
+- **[Why Your Ai Agent Is Using The Wrong Model And How To Fix It](https://bgill55.github.io/-weightandsee-guides/guides/why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/)** — 2026-06-13
 - **[Is Outlines 3.0 the Ultimate AI Firewall?](https://bgill55.github.io/-weightandsee-guides/guides/is-outlines-30-the-ultimate-ai-firewall/)** — 2026-06-11
 
 ---

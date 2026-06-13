@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A deep-dive explainer on OpenCode Zen, a curated model platform designed specifically for coding agents. This video breaks down how it selects and optimizes mod">
+    <meta name="keywords" content="OpenCode Zen, AI coding agents, curated AI models, agentic coding, model selection for agents">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Why Your AI Agent Is Using the Wrong Model (And How to Fix It) - Complete Guide">
+    <meta property="og:description" content="A deep-dive explainer on OpenCode Zen, a curated model platform designed specifically for coding agents. This video breaks down how it selects and optimizes models for agentic workflows, why curated b">
+    <meta property="og:type" content="article">
+    <title>Why Your AI Agent Is Using the Wrong Model (And How to Fix It) | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Why Your AI Agent Is Using the Wrong Model (And How to Fix It)</h1>
+            <p class="subtitle">This guide explores why most developers are using the wrong AI models for agentic coding workflows, and how curated model platforms like OpenCode Zen solve this problem. It breaks down the difference between raw model access and purpose-built agent optimization, and provides actionable steps to align your AI-assisted coding pipeline with the right models for accuracy, speed, and cost efficiency.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 13, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Most AI agents fail not because of poor prompts, but because they're running on models not optimized for agentic workflows.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Curated model platforms like OpenCode Zen select and fine-tune models specifically for coding agents, outperforming raw access to general-purpose LLMs.</span></li>
+                    <li><span class="takeaway-num">3</span><span>A model that can read codebases and fix bugs is considered a 'national security risk' by some governments — yet GPT-5.5 with identical capabilities remains available, revealing that shutdowns are often market-driven, not safety-driven.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Using the wrong model for your agent costs you in three dimensions: accuracy (more hallucinations), speed (slower reasoning), and money (higher token costs for equivalent output).</span></li>
+                    <li><span class="takeaway-num">5</span><span>The real bottleneck in AI-assisted coding isn't model capability — it's model selection and workflow alignment.</span></li>
+                    <li><span class="takeaway-num">6</span><span>OpenCode Zen provides a curated layer that matches the right model to the right agent task, eliminating guesswork from your pipeline.</span></li>
+                    <li><span class="takeaway-num">7</span><span>Developers who switch from raw API access to curated agent-optimized models see measurable improvements in bug-fix accuracy and reduced iteration cycles.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with AI-assisted coding tools (e.g., Cursor, Copilot, or similar IDE integrations)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Understanding of how LLMs are accessed via API (tokens, model names, endpoints)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">An active coding project where you use AI for bug detection, code review, or refactoring</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Audit Your Current Agent's Model</h3>
+                <p>Identify which model your coding agent is currently using. Check your IDE plugin settings, API configuration, or agent framework config. Most developers default to whatever model is pre-selected without realizing it may be a general-purpose chat model rather than one optimized for agentic code tasks. Document the model name, provider, and any parameters like temperature or max tokens.</p>
+
+                <div class="code-block"><pre># Example: Check your agent's model config in a typical setup
+cat ~/.config/opencode/config.yaml | grep model
+# or inspect your IDE plugin settings for the active model name</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Understand Why Raw Model Access Fails for Agents</h3>
+                <p>General-purpose models (like standard GPT or Claude endpoints) are optimized for conversational turn-taking, not for the multi-step, tool-using, context-heavy workflows that coding agents perform. Agents need models that maintain coherence over long contexts, follow structured tool-call formats, and reason about code diffs — capabilities that require specific training and curation. Raw API access gives you a model; curated platforms give you a model tuned for the agent loop.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Evaluate OpenCode Zen for Your Workflow</h3>
+                <p>Visit opencode.ai/zen and review the available curated models. Compare the listed models against your current setup. Look for models specifically tagged for code analysis, bug fixing, or agentic workflows. OpenCode Zen pre-selects models that have been tested against real agent benchmarks, so you skip the trial-and-error of testing dozens of raw models yourself.</p>
+
+                <div class="code-block"><pre># Example: Switching to a Zen-curated model in your agent config
+model: opencode-zen/curated-agent-v2
+temperature: 0.1
+max_context: 128000</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Run a Side-by-Side Comparison</h3>
+                <p>Take a real bug from your codebase and run it through both your current model and a Zen-curated model. Measure: (1) time to first correct fix, (2) number of iterations needed, (3) token cost, and (4) whether the fix introduced regressions. This empirical comparison will reveal the performance gap that curation closes.</p>
+
+                <div class="code-block"><pre># Pseudocode for A/B testing models on the same bug
+bug_description = "Null pointer exception in UserService.validate()"
+
+result_current = agent.run(model="gpt-4o", prompt=bug_description)
+result_zen = agent.run(model="opencode-zen/curated-agent-v2", prompt=bug_description)
+
+compare(result_current, result_zen, metrics=["accuracy", "tokens", "latency"])</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Integrate and Monitor</h3>
+                <p>Once you've validated the curated model, update your agent configuration permanently. Set up monitoring to track model performance over time — log fix accuracy, token usage, and agent loop iterations per task. As OpenCode Zen updates its curated selections, re-evaluate quarterly to ensure you're always on the optimal model for your workflow.</p>
+
+                <div class="code-block"><pre># Example monitoring hook in your agent pipeline
+def log_agent_run(model, task, result):
+    metrics = {
+        "model": model,
+        "task_type": task.category,
+        "tokens_used": result.token_count,
+        "iterations": result.loop_count,
+        "fix_accepted": result.fix_accepted
+    }
+    analytics.log(metrics)</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Don't just swap models — also tune your agent's system prompt to match the curated model's strengths. A model optimized for code diffs performs best when your prompt explicitly asks for diff-format output.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use temperature 0.1 or lower for bug-fix tasks. Curated agent models are trained for deterministic reasoning; higher temperatures introduce noise that undermines their precision.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If your agent uses tool-calling (file reads, shell commands, test runs), verify the curated model supports your tool schema. OpenCode Zen models are pre-validated for common agent tool formats.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Track your 'fix acceptance rate' — the percentage of AI-suggested fixes you merge without modification. This single metric captures the combined effect of model quality and curation alignment.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Assuming the newest model is the best for agents. Model recency doesn't correlate with agent optimization — a smaller, curated model often outperforms a larger general-purpose one on coding tasks.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Ignoring context window requirements. Agents load entire codebases into context; if your model's context window is too small, it will truncate critical files and produce broken fixes regardless of curation quality.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Using the same model for chat and agent workflows. Your conversational AI assistant and your coding agent have fundamentally different needs — don't let convenience drive a one-model-fits-all approach.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 4: Not re-evaluating model selections. Curated platforms update their recommendations as new models launch. Sticking with a six-month-old selection means you're leaving performance on the table.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>OpenCode Zen</h4>
+                    <p>A curated model platform that selects and optimizes LLMs specifically for coding agent workflows. Provides pre-tested, agent-ready models that outperform raw general-purpose model access for bug fixing, code analysis, and multi-step agent tasks.</p>
+                    <a href="https://opencode.ai/zen" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>GPT-5.5</h4>
+                    <p>A general-purpose large language model capable of reading codebases, identifying flaws, and generating fixes. Used in the video as a comparison point to illustrate that model capability alone doesn't determine availability — market and policy factors do.</p>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Why is my current AI agent producing inaccurate code fixes?</h3>
+                <p>The most likely cause is model mismatch — you're using a general-purpose conversational model instead of one optimized for agentic coding tasks. Curated platforms like OpenCode Zen select models trained specifically for multi-step reasoning, tool use, and code diff generation, which dramatically improves fix accuracy.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is OpenCode Zen free to use?</h3>
+                <p>OpenCode Zen offers curated model access with pricing that varies by model and usage tier. Visit opencode.ai/zen for current pricing. The cost is typically offset by reduced token waste from fewer failed iterations.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use OpenCode Zen with my existing IDE or agent framework?</h3>
+                <p>Yes. OpenCode Zen provides model endpoints compatible with standard LLM API formats, so you can plug them into Cursor, custom agent scripts, or any framework that accepts configurable model endpoints.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How is a 'curated' model different from just picking a model from the Hugging Face leaderboard?</h3>
+                <p>Leaderboard rankings measure general benchmarks (math, reasoning, knowledge). Curated agent models are selected and tested against agent-specific benchmarks — tool-call accuracy, multi-step coherence, context retention over long codebases, and fix acceptance rate. A model ranked #10 on a general leaderboard may outperform the #1 model in an agent workflow.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>The video mentions government shutdowns of AI models. Should I be worried about my agent's model being restricted?</h3>
+                <p>Model availability can change due to policy decisions, as the video illustrates. Using a curated platform like OpenCode Zen mitigates this risk — if one model is restricted, the platform can redirect you to an equivalent alternative without rebuilding your entire pipeline.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://opencode.ai/zen" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OpenCode Zen Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official platform page for curated agent-optimized models, including model selection guides and integration instructions.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2402.07925" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Agentic AI Workflows: A Technical Overview
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Academic paper on the architecture and requirements of AI agents, including why model selection critically impacts agent performance.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://opencode.ai/blog/model-agnostic-myth" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            The Myth of Model Agnosticism in AI-Assisted Development
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Blog post from OpenCode explaining why treating all LLMs as interchangeable leads to suboptimal agent outcomes.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#OpenCodeZen</span>
+                <span class="tag">#AIcodingagents</span>
+                <span class="tag">#curatedAImodels</span>
+                <span class="tag">#agenticcoding</span>
+                <span class="tag">#AI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-13 07:20 • This guide accompanies the video: "Why Your AI Agent Is Using the Wrong Model (And How to Fix It)"</p>
+        </footer>
+    </div>
+</body>
+</html>
