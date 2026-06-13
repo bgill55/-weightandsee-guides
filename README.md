@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/55_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/56_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/ollama-v090-run-any-llm-locally-in-2026-heres-what-changed/">
+<img src="guides/ollama-v090-run-any-llm-locally-in-2026-heres-what-changed/thumbnail.jpg" width="300" alt="Ollama V090 Run Any Llm Locally In 2026 Heres What Changed"><br>
+<b>Ollama V090 Run Any Llm Locally In 2026 Heres What Changed</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/">
 <img src="guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/thumbnail.jpg" width="300" alt="Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model"><br>
@@ -31,12 +37,6 @@
 <b>Nvidia H100 Tensor Core Deep Dive What The New Hopper Gpu Means For Ai Workloads</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-ai-inference-a-real-cost-and-performance-comparison/">
-<img src="guides/local-vs-cloud-ai-inference-a-real-cost-and-performance-comparison/thumbnail.jpg" width="300" alt="Local Vs Cloud Ai Inference A Real Cost And Performance Comparison"><br>
-<b>Local Vs Cloud Ai Inference A Real Cost And Performance Comparison</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
-| **Model Deep Dives** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
+| **Model Deep Dives** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -90,6 +90,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Ollama V090 Run Any Llm Locally In 2026 Heres What Changed](https://bgill55.github.io/-weightandsee-guides/guides/ollama-v090-run-any-llm-locally-in-2026-heres-what-changed/)** — 2026-06-13
 - **[Nvidia H100 Tensor Core Deep Dive What The New Hopper Gpu Means For Ai Workloads](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-h100-tensor-core-deep-dive-what-the-new-hopper-gpu-means-for-ai-workloads/)** — 2026-06-13
 - **[The Ai That Built This Video Inside Youtube Factory Pipeline](https://bgill55.github.io/-weightandsee-guides/guides/the-ai-that-built-this-video-inside-youtube-factory-pipeline/)** — 2026-06-13
 - **[Chatgpt V5 The New Ai Weapon For Autonomous Penetration Testing](https://bgill55.github.io/-weightandsee-guides/guides/chatgpt-v5-the-new-ai-weapon-for-autonomous-penetration-testing/)** — 2026-06-12

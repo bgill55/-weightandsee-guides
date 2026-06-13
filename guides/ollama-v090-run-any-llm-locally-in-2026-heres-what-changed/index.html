@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ollama just dropped v0.9.0 and it fundamentally changes how local LLM inference works on consumer hardware. This video breaks down the new model loading archite">
+    <meta name="keywords" content="Ollama, local LLM, offline AI, GPU inference, privacy AI">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Ollama v0.9.0: Run Any LLM Locally in 2026 — Here's What Changed - Complete Guide">
+    <meta property="og:description" content="Ollama just dropped v0.9.0 and it fundamentally changes how local LLM inference works on consumer hardware. This video breaks down the new model loading architecture, the expanded GPU support matrix, ">
+    <meta property="og:type" content="article">
+    <title>Ollama v0.9.0: Run Any LLM Locally in 2026 — Here's What Changed | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Ollama v0.9.0: Run Any LLM Locally in 2026 — Here's What Changed</h1>
+            <p class="subtitle">This guide covers the key features and improvements in Ollama v0.9.0, focusing on how the update transforms local LLM inference on consumer hardware. It explains the new model loading architecture, expanded GPU support, and multi-modal pipeline capabilities introduced in this release.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 13, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Ollama v0.9.0 introduces a fundamentally new model loading architecture for local LLM inference</span></li>
+                    <li><span class="takeaway-num">2</span><span>Expanded GPU support matrix enables running 70B parameter models on a single consumer GPU like RTX 4070</span></li>
+                    <li><span class="takeaway-num">3</span><span>New multi-modal pipeline allows processing beyond text without requiring terminal commands</span></li>
+                    <li><span class="takeaway-num">4</span><span>Local AI inference offers privacy advantages over cloud APIs for security-conscious developers</span></li>
+                    <li><span class="takeaway-num">5</span><span>Acceptable token throughput is now achievable on mid-range consumer hardware for large models</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A consumer GPU (RTX 4070 or equivalent recommended for optimal performance)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of large language models and inference concepts</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Ollama installed on your local machine</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install or Update to Ollama v0.9.0</h3>
+                <p>Download the latest version of Ollama from the official website. If you have a previous version, update to v0.9.0 to access the new model loading architecture and expanded GPU support.</p>
+
+                <div class="code-block"><pre>curl -fsSL https://ollama.com/install.sh | sh</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Verify GPU Compatibility</h3>
+                <p>Check the expanded GPU support matrix to confirm your hardware is supported. Ollama v0.9.0 broadens compatibility for consumer GPUs, enabling efficient inference on mid-range cards like the RTX 4070.</p>
+
+                <div class="code-block"><pre>ollama --version</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Pull and Run a Large Language Model</h3>
+                <p>Use Ollama's model management to pull a 70B parameter model. The new architecture allows running such large models on a single consumer GPU with acceptable token throughput.</p>
+
+                <div class="code-block"><pre>ollama pull llama2:70b</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Utilize the Multi-Modal Pipeline</h3>
+                <p>Explore the new multi-modal pipeline capabilities that allow processing of non-text inputs without needing to interact with the terminal directly.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Benchmark Performance on Your Hardware</h3>
+                <p>Test token throughput on your specific setup. On a mid-range RTX 4070 laptop, you should see acceptable performance for a 70B parameter model.</p>
+
+                <div class="code-block"><pre>ollama run llama2:70b "Your test prompt here"</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> For privacy-conscious developers, local inference via Ollama eliminates data sent to cloud APIs
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> The new model loading architecture optimizes memory usage, enabling larger models on consumer hardware
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Monitor GPU utilization during inference to find optimal batch sizes for your specific card
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Insufficient VRAM: Attempting to run 70B models on GPUs with less than recommended VRAM will result in out-of-memory errors
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Not updating from older versions: The new architecture requires v0.9.0; older versions lack the performance improvements
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Ignoring GPU driver updates: Ensure your GPU drivers are current to benefit from the expanded support matrix
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Ollama</h4>
+                    <p>Tool for running large language models locally on consumer hardware with expanded GPU support and multi-modal capabilities</p>
+                    <a href="https://ollama.com" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What GPU do I need to run a 70B parameter model locally?</h3>
+                <p></p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do I need to use the terminal to use Ollama v0.9.0?</h3>
+                <p>No, Ollama v0.9.0 introduces capabilities that allow interaction without requiring terminal commands, including the new multi-modal pipeline.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does local AI inference compare to cloud APIs?</h3>
+                <p>Local inference via Ollama provides superior privacy since data never leaves your machine, making it ideal for privacy-conscious developers and sensitive workloads.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What changed in the model loading architecture?</h3>
+                <p>Ollama v0.9.0 introduces a fundamentally redesigned model loading architecture that optimizes memory usage and enables running larger models on consumer-grade GPUs.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://ollama.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Ollama Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation for Ollama including installation guides, model references, and API documentation</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#Ollamav090</span>
+                <span class="tag">#Ollama</span>
+                <span class="tag">#localLLM</span>
+                <span class="tag">#offlineAI</span>
+                <span class="tag">#GPUinference</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-13 07:14 • This guide accompanies the video: "Ollama v0.9.0: Run Any LLM Locally in 2026 — Here's What Changed"</p>
+        </footer>
+    </div>
+</body>
+</html>
