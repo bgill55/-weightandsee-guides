@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anthropic's release of Mythos Access represents a fundamental shift from static context windows to dynamic, persistent memory for AI agents. This video breaks d">
+    <meta name="keywords" content="Anthropic Mythos, AI Memory Architecture, Persistent Context, Agentic Automation, 2026 AI Breakthrough">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Automating Your Business with Fable and Mythos - Complete Guide">
+    <meta property="og:description" content="Anthropic's release of Mythos Access represents a fundamental shift from static context windows to dynamic, persistent memory for AI agents. This video breaks down the technical architecture of Mythos">
+    <meta property="og:type" content="article">
+    <title>Automating Your Business with Fable and Mythos | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Automating Your Business with Fable and Mythos</h1>
+            <p class="subtitle">This guide explains how Anthropic's Mythos Access transforms static token windows into a dynamic, persistent memory layer for AI agents. It covers the underlying architecture, why it eliminates the forgetting problem, and provides a practical walkthrough to integrate Mythos into your automation workflows.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 13, 2026</span>
+                <span>4 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Mythos replaces static context windows with a dynamic memory store, dramatically reducing token overhead.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Persistent memory enables autonomous agents to retain state across hours or days without re‑prompting.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Only the relevant pieces of state are retrieved on demand, similar to a smart traffic system that adapts in real time.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Integration is handled via the Anthropic SDK, which abstracts serialization and endpoint communication.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Enabling Mythos Access requires an Anthropic account and a simple configuration of the agent’s state store.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">An active Anthropic account with Mythos Access enabled.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with the Anthropic SDK (Python or Node.js) and how to create/modify agents.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Enable Mythos Access in Your Anthropic Account</h3>
+                <p>Log in to the Anthropic developer portal, navigate to the Mythos Access section, and toggle the feature on. This provisions a dedicated persistent memory endpoint for your account.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Install and Configure the Anthropic SDK</h3>
+                <p>Add the SDK to your project and set the `state_store` URL provided by Anthropic. The SDK will handle serialization of any JSON‑serializable object you choose to persist.</p>
+
+                <div class="code-block"><pre>pip install anthropic-sdk
+
+import anthropic
+
+client = anthropic.Client(api_key="YOUR_API_KEY")
+client.state_store = "https://my-mythos-endpoint.anthropic.com/v1/state"</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Define and Persist Agent State</h3>
+                <p>Identify the pieces of information you want to keep across requests (e.g., task progress, user preferences). Use the SDK’s `save_state` and `load_state` helpers to write to and read from the persistent store.</p>
+
+                <div class="code-block"><pre>state = {
+    "task_id": "order-123",
+    "progress": "step_2",
+    "user_preferences": {"language": "en", "currency": "USD"}
+}
+client.save_state(state)
+
+# Later, retrieve the persisted state
+restored_state = client.load_state()
+print(restored_state["progress"])  # => "step_2"</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Run Your Agent with Persistent Context</h3>
+                <p>When invoking the model, omit the full conversation history. Instead, inject the loaded state into the prompt or system message, allowing the model to continue where it left off.</p>
+
+                <div class="code-block"><pre>prompt = f"You are continuing task {restored_state['task_id']}. Current step: {restored_state['progress']}."
+response = client.completions.create(
+    model="claude-3-sonnet",
+    prompt=prompt,
+    max_tokens=1024
+)
+print(response.completion)</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Cache frequently accessed state locally for sub‑second latency, syncing back to Mythos only on changes.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Version your persisted objects; include a schema version field to ease future migrations.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Store only what you need—large blobs inflate token costs when retrieved for prompt construction.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to handle serialization errors. The SDK expects JSON‑serializable data; custom objects must be converted to dicts or strings.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Over‑persisting state. Saving the entire conversation each cycle defeats the token‑saving purpose and can hit rate limits.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Anthropic Mythos Access</h4>
+                    <p>Persistent memory layer for Anthropic AI agents, enabling dynamic context retrieval.</p>
+                    <a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Anthropic SDK</h4>
+                    <p>Official client library for interacting with Anthropic models and the Mythos state store.</p>
+                    <a href="https://github.com/anthropic/anthropic-sdk" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Do I still need to include a prompt context when using Mythos?</h3>
+                <p>Yes, but only the minimal prompt needed for the current reasoning step. The persistent state is injected separately, so you avoid sending the full conversation each call.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is the latency impact of reading from the Mythos endpoint?</h3>
+                <p>Typical read latency is under 150 ms. For latency‑sensitive workflows, cache the state locally and sync back only when modifications occur.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I share the same Mythos state store across multiple agents?</h3>
+                <p>You can, but you should namespace keys (e.g., `agentA/task123`) to avoid collisions and ensure each agent only accesses its own slice of the store.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is there a size limit on the persisted state?</h3>
+                <p>Mythos enforces a soft limit of 1 MB per stored object. Split large datasets into multiple keyed entries or store bulk data in external storage (e.g., object store) and keep references in Mythos.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does billing work for Mythos Access?</h3>
+                <p>You are charged based on the number of read/write operations and the total storage used, separate from the per‑token model usage fees.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Anthropic Mythos Access Announcement
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official blog post detailing the capabilities and pricing of Mythos Access.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.anthropic.com/sdk" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Anthropic SDK Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Comprehensive guide on using the SDK, including state store APIs and best practices.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2403.01567" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Designing Persistent Agents
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Research paper discussing architectural patterns for long‑running AI agents with external memory.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#MythosAccess</span>
+                <span class="tag">#AnthropicMythos</span>
+                <span class="tag">#AIMemoryArchitecture</span>
+                <span class="tag">#PersistentContext</span>
+                <span class="tag">#AgenticAutomation</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-13 16:08 • This guide accompanies the video: "Automating Your Business with Fable and Mythos"</p>
+        </footer>
+    </div>
+</body>
+</html>
