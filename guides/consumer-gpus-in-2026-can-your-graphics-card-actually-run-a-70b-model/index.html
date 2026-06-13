@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ollama just dropped v0.9.0 with native tool calling, multi-modal model loading, and a reworked backend that makes running powerful LLMs on consumer hardware dra">
+    <meta name="keywords" content="Ollama v0.9.0, local AI, run LLM on PC, offline AI models, GPU inference speed">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Consumer GPUs in 2026: Can Your Graphics Card Actually Run a 70B Model? - Complete Guide">
+    <meta property="og:description" content="Ollama just dropped v0.9.0 with native tool calling, multi-modal model loading, and a reworked backend that makes running powerful LLMs on consumer hardware dramatically faster. This video breaks down">
+    <meta property="og:type" content="article">
+    <title>Consumer GPUs in 2026: Can Your Graphics Card Actually Run a 70B Model? | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Consumer GPUs in 2026: Can Your Graphics Card Actually Run a 70B Model?</h1>
+            <p class="subtitle">This guide examines the implications of the U.S. government's suspension of OpenAI's Codex CLI on national security grounds, exploring the technical and market dynamics behind the directive. It breaks down what capabilities were affected, why similar tools remain available, and what this means for developers relying on local-first AI coding workflows.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 13, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>The U.S. Department of Commerce suspended OpenAI's Codex CLI citing national security concerns over a prompt that simply asked the model to read and fix code in a codebase.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The flagged 'jailbreak' — asking a code model to fix software flaws — is a core, intended function of coding AI agents, not an exploit.</span></li>
+                    <li><span class="takeaway-num">3</span><span>GPT-5.5 retains the exact same codebase-reading and bug-fixing capabilities but was not subject to the same directive, suggesting the action targeted a specific tool rather than a capability.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Codex CLI was notable as an open-weight, local-friendly coding agent that did not lock users into OpenAI's proprietary ecosystem.</span></li>
+                    <li><span class="takeaway-num">5</span><span>This directive signals a potential trend of government intervention in AI tool availability, making it critical for developers to track which tools remain accessible.</span></li>
+                    <li><span class="takeaway-num">6</span><span>Developers should evaluate local-first and open-weight alternatives to reduce dependency on tools that may be subject to sudden regulatory action.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with AI coding assistants and CLI-based development tools</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Understanding of the difference between open-weight/local models and cloud-hosted proprietary models</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Awareness of current U.S. AI regulatory landscape and national security directives</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Understand What Codex CLI Was</h3>
+                <p>Codex CLI was OpenAI's command-line coding agent designed to read, analyze, and modify codebases locally. Unlike cloud-only tools, it offered a more open-weight, local-friendly workflow that didn't require full lock-in into OpenAI's hosted ecosystem. Review the official documentation and GitHub repository to understand its architecture and intended use cases before evaluating alternatives.</p>
+
+                <div class="code-block"><pre># Example of a typical Codex CLI interaction
+codex read ./src --fix-flags
+# This type of prompt was cited in the national security directive</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Review the Directive Language</h3>
+                <p>Obtain the full text of the Department of Commerce directive through the links provided in the video description. Pay close attention to the specific language used to describe the 'vulnerability' — the phrase 'asking the model to read a specific codebase and fix any software flaws' was flagged. Compare this language against the capabilities of other tools like GPT-5.5 to understand the scope and selectivity of the action.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Assess Your Current AI Coding Toolchain</h3>
+                <p>Audit which AI coding tools you currently depend on and classify them by deployment model (cloud-hosted vs. local), provider (OpenAI, Anthropic, open-source), and regulatory exposure. Identify single points of failure where a government directive could disrupt your workflow overnight.</p>
+
+                <div class="code-block"><pre># Example audit checklist
+- [ ] Codex CLI (SUSPENDED)
+- [ ] GPT-5.5 via API (Active)
+- [ ] Local Ollama models (Active)
+- [ ] Claude Code (Active)</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Evaluate Local-First Alternatives</h3>
+                <p>Explore open-weight, locally-run coding agents as replacements or supplements to cloud-hosted tools. Tools like Ollama (v0.9.0+) with native tool calling and multi-modal support allow you to run powerful LLMs on consumer hardware without dependency on any single provider's API. Test these alternatives against your actual codebase to validate capability parity.</p>
+
+                <div class="code-block"><pre># Running a local coding agent with Ollama
+ollama run codellama:70b "Read the ./api/ directory and identify any security vulnerabilities"
+
+# Using Ollama's new native tool calling (v0.9.0+)
+ollama run llama3.1:70b --tools ./tools/code-analysis.json</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Monitor Regulatory Developments</h3>
+                <p>Subscribe to official channels, GitHub repositories, and policy trackers to stay informed about future directives. The video explicitly notes this will not be the last tool affected. Set up alerts for Department of Commerce announcements, AI executive orders, and changes to export control lists that may impact AI tool availability.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Diversify your AI tooling across multiple providers and deployment models — never rely on a single cloud-hosted agent for mission-critical development workflows.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Local-first tools like Ollama with consumer GPUs (tested up to 70B parameter models) can provide capability parity with cloud agents while eliminating regulatory single points of failure.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Keep archived copies of tool documentation, model weights, and configuration files for any AI tool you depend on — access can be revoked without notice.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> The selective enforcement pattern (Codex CLI suspended while GPT-5.5 remains active) suggests that open-weight, local-friendly tools may face disproportionate regulatory scrutiny compared to proprietary cloud alternatives.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Assuming capability-based regulation: The directive did not target a unique capability — it targeted a specific tool. Do not assume that because your current tool has the same features, it is safe from future action.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Ignoring local-first alternatives: Many developers continue relying exclusively on cloud-hosted agents despite viable local options that offer greater resilience against regulatory disruption.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Failing to audit dependencies: If your CI/CD pipeline or development workflow depends on a specific AI tool's API, a suspension like Codex CLI's can break your entire pipeline without warning.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>OpenAI Codex CLI</h4>
+                    <p>Command-line coding agent for reading, analyzing, and fixing codebases. Suspended via Department of Commerce national security directive.</p>
+                    <a href="https://github.com/openai/codex" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>GPT-5.5</h4>
+                    <p>OpenAI's cloud-hosted model with codebase reading and bug-fixing capabilities identical to Codex CLI. Not subject to the same directive.</p>
+                    <a href="https://openai.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Ollama v0.9.0</h4>
+                    <p>Local LLM runtime with native tool calling, multi-modal model loading, and reworked backend for running powerful LLMs on consumer hardware. Positioned as a local-first alternative.</p>
+                    <a href="https://github.com/ollama/ollama/releases" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Code Llama</h4>
+                    <p>Open-weight coding model by Meta that can be run locally via Ollama as an alternative to proprietary coding agents.</p>
+                    <a href="https://ai.meta.com/llama/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Why was Codex CLI suspended but GPT-5.5 was not, if they have the same capabilities?</h3>
+                <p></p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What exactly was the 'jailbreak' that triggered the national security concern?</h3>
+                <p>The flagged prompt was: 'Read this codebase and fix any software flaws.' This is a standard, intended use case for a coding AI agent — not a jailbreak or exploit. The directive treated this basic functionality as a national security vulnerability.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I still run Codex CLI locally if I already have it installed?</h3>
+                <p>The directive revoked access to Codex CLI's backend services. If the tool relies on cloud-based model inference, it may no longer function. However, local-weight versions or forks may still operate if they do not depend on OpenAI's suspended infrastructure.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What are the best local-first alternatives to Codex CLI?</h3>
+                <p>Ollama v0.9.0+ running open-weight coding models like Code Llama 70B or similar is the most capable local alternative. Ollama's new native tool calling and multi-modal support in v0.9.0 make it a strong replacement for cloud-dependent coding agents.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Will more AI tools be suspended under similar national security directives?</h3>
+                <p>The video explicitly states 'this won't be the last one.' The pattern of targeting open-weight, local-friendly tools while leaving proprietary cloud alternatives untouched suggests developers should prepare for continued regulatory action by diversifying their toolchains.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/ollama/ollama/releases" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Ollama GitHub Releases (v0.9.0)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Release notes and changelog for Ollama v0.9.0, including native tool calling and multi-modal support for local LLM workflows.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.commerce.gov" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Department of Commerce AI Directives
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official source for national security directives and export control policies affecting AI tools and models.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/ollama/ollama" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Running 70B Models on Consumer GPUs in 2026
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Guide to benchmarking and running large language models locally on consumer hardware using Ollama's optimized backend.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#Ollamav090</span>
+                <span class="tag">#localAI</span>
+                <span class="tag">#runLLMonPC</span>
+                <span class="tag">#offlineAImodels</span>
+                <span class="tag">#AI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-13 07:11 • This guide accompanies the video: "Consumer GPUs in 2026: Can Your Graphics Card Actually Run a 70B Model?"</p>
+        </footer>
+    </div>
+</body>
+</html>

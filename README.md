@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/54_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/55_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/">
+<img src="guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/thumbnail.jpg" width="300" alt="Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model"><br>
+<b>Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/nvidia-h100-tensor-core-deep-dive-what-the-new-hopper-gpu-means-for-ai-workloads/">
 <img src="guides/nvidia-h100-tensor-core-deep-dive-what-the-new-hopper-gpu-means-for-ai-workloads/thumbnail.jpg" width="300" alt="Nvidia H100 Tensor Core Deep Dive What The New Hopper Gpu Means For Ai Workloads"><br>
@@ -31,12 +37,6 @@
 <b>Local Vs Cloud Ai Inference A Real Cost And Performance Comparison</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/">
-<img src="guides/nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/thumbnail.jpg" width="300" alt="Nvidia Gh200 Grace Hopper Superchip What 2000 Gpulevel Ai Performance Means For"><br>
-<b>Nvidia Gh200 Grace Hopper Superchip What 2000 Gpulevel Ai Performance Means For</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **Model Deep Dives** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -107,6 +107,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model](https://bgill55.github.io/-weightandsee-guides/guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/)** — 2026-06-13
 - **[Nvidia Gh200 Grace Hopper Superchip What 2000 Gpulevel Ai Performance Means For](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/)** — 2026-06-13
 - **[Infrastructure Guide Running Anthropic Models Locally After A Government Ban](https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-guide-running-anthropic-models-locally-after-a-government-ban/)** — 2026-06-13
 - **[Jailbreak Resistance Is Impossible The Math Anthropic Told Us](https://bgill55.github.io/-weightandsee-guides/guides/jailbreak-resistance-is-impossible-the-math-anthropic-told-us/)** — 2026-06-13
