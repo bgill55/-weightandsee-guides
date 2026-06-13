@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/51_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/52_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/">
+<img src="guides/nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/thumbnail.jpg" width="300" alt="Nvidia Gh200 Grace Hopper Superchip What 2000 Gpulevel Ai Performance Means For"><br>
+<b>Nvidia Gh200 Grace Hopper Superchip What 2000 Gpulevel Ai Performance Means For</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/flux-core-vs-rendermax-3d-generation-showdown/">
 <img src="guides/flux-core-vs-rendermax-3d-generation-showdown/thumbnail.jpg" width="300" alt="Flux Core Vs Rendermax 3D Generation Showdown"><br>
@@ -31,12 +37,6 @@
 <b>Infrastructure Guide Running Anthropic Models Locally After A Government Ban</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/jailbreak-resistance-is-impossible-the-math-anthropic-told-us/">
-<img src="guides/jailbreak-resistance-is-impossible-the-math-anthropic-told-us/thumbnail.jpg" width="300" alt="Jailbreak Resistance Is Impossible The Math Anthropic Told Us"><br>
-<b>Jailbreak Resistance Is Impossible The Math Anthropic Told Us</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **Model Deep Dives** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
 | **AI Security** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -105,6 +105,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Nvidia Gh200 Grace Hopper Superchip What 2000 Gpulevel Ai Performance Means For](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/)** — 2026-06-13
 - **[Infrastructure Guide Running Anthropic Models Locally After A Government Ban](https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-guide-running-anthropic-models-locally-after-a-government-ban/)** — 2026-06-13
 - **[Jailbreak Resistance Is Impossible The Math Anthropic Told Us](https://bgill55.github.io/-weightandsee-guides/guides/jailbreak-resistance-is-impossible-the-math-anthropic-told-us/)** — 2026-06-13
 - **[How Local Rag Works](https://bgill55.github.io/-weightandsee-guides/guides/how-local-rag-works/)** — 2026-06-12
