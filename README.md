@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/46_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/47_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/8_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -52,7 +52,7 @@
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Image & Vision** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
-| **More Guides** | ![12](https://img.shields.io/badge/12-blue?style=flat-square) |
+| **More Guides** | ![13](https://img.shields.io/badge/13-blue?style=flat-square) |
 
 ---
 
@@ -144,6 +144,7 @@
 *Recently published guides*
 
 - **[Chatgpt V5 The New Ai Weapon For Autonomous Penetration Testing](https://github.com/bgill55/-weightandsee-guides/blob/Master/README.md#chatgpt-v5-the-new-ai-weapon-for-autonomous-penetration-testing)**
+- **[Flux 2 The New Standard For Realtime Ai Video Generation](https://github.com/bgill55/-weightandsee-guides/blob/Master/README.md#flux-2-the-new-standard-for-realtime-ai-video-generation)**
 - **[Flux 2 Unleashed How The New Diffusion Engine Cuts Vram Cranks Up Speed](https://github.com/bgill55/-weightandsee-guides/blob/Master/README.md#flux-2-unleashed-how-the-new-diffusion-engine-cuts-vram-cranks-up-speed)**
 - **[Gpt 55 Vs Llama 4 Safety Guardrails Which Handles Coldstart Better](https://github.com/bgill55/-weightandsee-guides/blob/Master/README.md#gpt-55-vs-llama-4-safety-guardrails-which-handles-coldstart-better)**
 - **[Gpu Showdown Chatgpt V5 Vs Llama 4 Vs Deepseek V4 On A Single Rtx 4090](https://github.com/bgill55/-weightandsee-guides/blob/Master/README.md#gpu-showdown-chatgpt-v5-vs-llama-4-vs-deepseek-v4-on-a-single-rtx-4090)**
