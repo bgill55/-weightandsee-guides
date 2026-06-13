@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A deep‑dive into Hugging Face’s ToolSense framework, showing how it lets developers probe, score, and visualize an LLM’s understanding of external tools, turnin">
+    <meta name="keywords" content="ToolSense, LLM tool auditing, agent debugging, AI safety, parametric tool knowledge">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="ToolSense Review – Is This the Ultimate Debugger for LLM Agents? - Complete Guide">
+    <meta property="og:description" content="A deep‑dive into Hugging Face’s ToolSense framework, showing how it lets developers probe, score, and visualize an LLM’s understanding of external tools, turning vague failures into actionable debug d">
+    <meta property="og:type" content="article">
+    <title>ToolSense Review – Is This the Ultimate Debugger for LLM Agents? | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>ToolSense Review – Is This the Ultimate Debugger for LLM Agents?</h1>
+            <p class="subtitle">This guide walks you through using Hugging Face’s ToolSense framework to audit, score, and visualize the behavior of LLM agents when they interact with external tools. By the end, you’ll be able to turn opaque failures into concrete debugging data.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 13, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>ToolSense provides a live, metric‑driven view of an agent’s tool‑calling logic, pinpointing exactly where reasoning breaks down.</span></li>
+                    <li><span class="takeaway-num">2</span><span>It scores each “intersection” of the agent’s decision flow, distinguishing genuine tool knowledge from blind guesses.</span></li>
+                    <li><span class="takeaway-num">3</span><span>The framework works with any LLM – whether you run a local model or call a hosted API – without requiring model‑specific changes.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Visual dashboards turn raw logs into actionable insights, enabling data‑driven debugging instead of guesswork.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Integrating ToolSense is as simple as wrapping your existing agent code and invoking an audit run.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with building LLM agents that call external APIs or functions.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A Python 3.8+ environment with pip installed.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install ToolSense</h3>
+                <p>Add the ToolSense package to your Python environment. The library pulls in the core auditing engine and optional visualisation helpers.</p>
+
+                <div class="code-block"><pre>pip install toolsense</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Instrument Your Agent</h3>
+                <p>Wrap the function that sends prompts to the LLM with ToolSense’s `audit_agent` decorator. This records each call, the chosen tool, and the parameters the model proposes.</p>
+
+                <div class="code-block"><pre>from toolsense import audit_agent
+
+@audit_agent
+def run_agent(prompt: str) -> str:
+    # Your existing LLM call – could be OpenAI, Anthropic, or a local model
+    response = llm.generate(prompt)
+    return response</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Define the Tool Catalog</h3>
+                <p>Provide ToolSense with a JSON/YAML description of every external tool your agent can invoke. Include name, required parameters, and a short schema so the auditor can validate the model’s output.</p>
+
+                <div class="code-block"><pre>tool_catalog = {
+    "search": {
+        "description": "Web search via Bing",
+        "parameters": {"query": {"type": "string", "description": "Search query"}}
+    },
+    "calculator": {
+        "description": "Simple arithmetic evaluator",
+        "parameters": {"expression": {"type": "string", "description": "Math expression"}}
+    }
+}
+
+from toolsense import register_tools
+register_tools(tool_catalog)</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Run an Audit Session</h3>
+                <p>Execute a batch of agent queries while ToolSense records the interaction graph. After the run, call the `generate_report` method to obtain scores and visualisations.</p>
+
+                <div class="code-block"><pre>from toolsense import Auditor
+
+auditor = Auditor()
+
+prompts = [
+    "Find the latest price of Tesla stock and calculate the 5‑day moving average.",
+    "Summarize the key points from the Wikipedia page for Quantum Computing."
+]
+
+for p in prompts:
+    run_agent(p)
+
+report = auditor.generate_report()
+report.save_html("audit_report.html")</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Interpret the Dashboard</h3>
+                <p>Open the generated HTML report. The UI shows a traffic‑light style score for each tool call, a heat‑map of parameter mismatches, and a timeline of where the agent fell back to guessing. Use the insights to refine prompts, add missing tool definitions, or adjust the agent’s decision policy.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Log the raw LLM response alongside the audited version; differences often reveal subtle hallucinations that scoring alone misses.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Create a minimal reproducible test case for each failing intersection – a single prompt that consistently trips the same tool error.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If you’re using a local model, enable the `--enable‑token‑stats` flag in ToolSense to capture token‑level confidence scores for deeper analysis.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to register every tool. Unregistered tools are treated as “unknown” and will always score poorly, masking real logic errors.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Running the auditor on a single‑shot prompt only. ToolSense shines when you feed a realistic batch of queries; otherwise the heat‑map lacks statistical relevance.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>ToolSense</h4>
+                    <p>Hugging Face framework for auditing, scoring, and visualizing LLM agents' tool‑calling behavior.</p>
+                    <a href="https://github.com/huggingface/ToolSense" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Hugging Face</h4>
+                    <p>Platform hosting the ToolSense library and a suite of LLM models/APIs.</p>
+                    <a href="https://huggingface.co" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can ToolSense be used with proprietary, self‑hosted LLMs?</h3>
+                <p>Yes. ToolSense interacts with the LLM through a generic generate() call, so any model exposed via an HTTP endpoint or local inference library can be audited.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do I need to modify my existing agent code heavily?</h3>
+                <p>No. Adding the `@audit_agent` decorator and registering your tool catalog are the only required changes; the rest of your logic stays untouched.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What performance impact does the auditor have?</h3>
+                <p>ToolSense adds a small overhead (≈5‑10 ms per call) for logging and validation. For large‑scale batch runs you can disable visualisation generation and enable it only for targeted debugging sessions.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How are the scores calculated?</h3>
+                <p>Scores combine parameter‑validation (does the model’s output match the tool schema?), confidence‑level (token probability), and execution success (did the API call succeed?). The final metric is normalized to a 0‑100 traffic‑light scale.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is there a way to automatically fix low‑scoring intersections?</h3>
+                <p>ToolSense itself does not rewrite code, but the report highlights exact mismatched parameters and suggests schema updates or prompt refinements that you can apply programmatically.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/docs/toolsense" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            ToolSense Official Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Comprehensive guide covering installation, API reference, and advanced visualisation options.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2403.01234" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Debugging LLM Agents: Patterns and Practices
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Academic paper that outlines common failure modes in tool‑using agents and how metric‑driven debugging helps.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Building Function‑Calling Agents with OpenAI Functions
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Relevant for developers who want to compare OpenAI’s native function‑calling with ToolSense auditing.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#DebugYourLLM</span>
+                <span class="tag">#ToolSense</span>
+                <span class="tag">#LLMtoolauditing</span>
+                <span class="tag">#agentdebugging</span>
+                <span class="tag">#AIsafety</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-13 13:30 • This guide accompanies the video: "ToolSense Review – Is This the Ultimate Debugger for LLM Agents?"</p>
+        </footer>
+    </div>
+</body>
+</html>

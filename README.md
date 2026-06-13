@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/54_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/55_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/toolsense-review-is-this-the-ultimate-debugger-for-llm-agents/">
+<img src="guides/toolsense-review-is-this-the-ultimate-debugger-for-llm-agents/thumbnail.jpg" width="300" alt="Toolsense Review Is This The Ultimate Debugger For Llm Agents"><br>
+<b>Toolsense Review Is This The Ultimate Debugger For Llm Agents</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/kimik27code-vs-copilot-vs-codewhisperer-who-wins-the-coding-race/">
 <img src="guides/kimik27code-vs-copilot-vs-codewhisperer-who-wins-the-coding-race/thumbnail.jpg" width="300" alt="Kimik27Code Vs Copilot Vs Codewhisperer Who Wins The Coding Race"><br>
@@ -31,12 +37,6 @@
 <b>Why Your Ai Agent Is Using The Wrong Model And How To Fix It</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/ollama-v090-run-any-llm-locally-in-2026-heres-what-changed/">
-<img src="guides/ollama-v090-run-any-llm-locally-in-2026-heres-what-changed/thumbnail.jpg" width="300" alt="Ollama V090 Run Any Llm Locally In 2026 Heres What Changed"><br>
-<b>Ollama V090 Run Any Llm Locally In 2026 Heres What Changed</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **Model Deep Dives** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -109,6 +109,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Toolsense Review Is This The Ultimate Debugger For Llm Agents](https://bgill55.github.io/-weightandsee-guides/guides/toolsense-review-is-this-the-ultimate-debugger-for-llm-agents/)** — 2026-06-13
 - **[Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model](https://bgill55.github.io/-weightandsee-guides/guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/)** — 2026-06-13
 - **[Nvidia Gh200 Grace Hopper Superchip What 2000 Gpulevel Ai Performance Means For](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/)** — 2026-06-13
 - **[How Local Rag Works](https://bgill55.github.io/-weightandsee-guides/guides/how-local-rag-works/)** — 2026-06-12
