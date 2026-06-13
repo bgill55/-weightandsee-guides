@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/47_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/48_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/8_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -52,7 +52,7 @@
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Image & Vision** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
-| **More Guides** | ![13](https://img.shields.io/badge/13-blue?style=flat-square) |
+| **More Guides** | ![14](https://img.shields.io/badge/14-blue?style=flat-square) |
 
 ---
 
@@ -155,6 +155,7 @@
 - **[Ollama Vs Lm Studio Vs Localai 2026 Local Llm Performance Showdown](https://github.com/bgill55/-weightandsee-guides/blob/Master/README.md#ollama-vs-lm-studio-vs-localai-2026-local-llm-performance-showdown)**
 - **[Pentestai Review Aipowered Penetration Testing With Chatgpt V55](https://github.com/bgill55/-weightandsee-guides/blob/Master/README.md#pentestai-review-aipowered-penetration-testing-with-chatgpt-v55)**
 - **[Prometheus Ai Engineer Jeff Bezoss Awsready Agent Takes On Ollama 09](https://github.com/bgill55/-weightandsee-guides/blob/Master/README.md#prometheus-ai-engineer-jeff-bezoss-awsready-agent-takes-on-ollama-09)**
+- **[The Ai That Built This Video Inside Youtube Factory Pipeline](https://github.com/bgill55/-weightandsee-guides/blob/Master/README.md#the-ai-that-built-this-video-inside-youtube-factory-pipeline)**
 - **[The Offline Security Stack Running Llama 4 For Pentesting](https://github.com/bgill55/-weightandsee-guides/blob/Master/README.md#the-offline-security-stack-running-llama-4-for-pentesting)**
 
 ---
