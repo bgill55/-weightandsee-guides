@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/53_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/54_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/kimik27code-vs-copilot-vs-codewhisperer-who-wins-the-coding-race/">
+<img src="guides/kimik27code-vs-copilot-vs-codewhisperer-who-wins-the-coding-race/thumbnail.jpg" width="300" alt="Kimik27Code Vs Copilot Vs Codewhisperer Who Wins The Coding Race"><br>
+<b>Kimik27Code Vs Copilot Vs Codewhisperer Who Wins The Coding Race</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/">
 <img src="guides/why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/thumbnail.jpg" width="300" alt="Why Your Ai Agent Is Using The Wrong Model And How To Fix It"><br>
@@ -31,12 +37,6 @@
 <b>Ollama V090 Run Any Llm Locally In 2026 Heres What Changed</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/">
-<img src="guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/thumbnail.jpg" width="300" alt="Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model"><br>
-<b>Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **Model Deep Dives** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Kimik27Code Vs Copilot Vs Codewhisperer Who Wins The Coding Race](https://bgill55.github.io/-weightandsee-guides/guides/kimik27code-vs-copilot-vs-codewhisperer-who-wins-the-coding-race/)** — 2026-06-13
 - **[Local Vs Cloud Ai Inference A Real Cost And Performance Comparison](https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-ai-inference-a-real-cost-and-performance-comparison/)** — 2026-06-13
 - **[Flux Core Vs Rendermax 3D Generation Showdown](https://bgill55.github.io/-weightandsee-guides/guides/flux-core-vs-rendermax-3d-generation-showdown/)** — 2026-06-13
 - **[Flux 2 The New Standard For Realtime Ai Video Generation](https://bgill55.github.io/-weightandsee-guides/guides/flux-2-the-new-standard-for-realtime-ai-video-generation/)** — 2026-06-12

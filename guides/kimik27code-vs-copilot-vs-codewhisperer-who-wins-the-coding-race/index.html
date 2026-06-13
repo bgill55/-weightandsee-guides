@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A side‑by‑side showdown of MoonshotAI's Kimi‑K2.7‑Code against GitHub Copilot and Amazon CodeWhisperer, using the new Kimi benchmark to measure speed, correctne">
+    <meta name="keywords" content="Kimi-K2.7-Code, AI coding benchmark, Copilot comparison, CodeWhisperer, developer productivity">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Kimi‑K2.7‑Code vs Copilot vs CodeWhisperer: Who Wins the Coding Race? - Complete Guide">
+    <meta property="og:description" content="A side‑by‑side showdown of MoonshotAI's Kimi‑K2.7‑Code against GitHub Copilot and Amazon CodeWhisperer, using the new Kimi benchmark to measure speed, correctness, and token efficiency for real‑world ">
+    <meta property="og:type" content="article">
+    <title>Kimi‑K2.7‑Code vs Copilot vs CodeWhisperer: Who Wins the Coding Race? | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Kimi‑K2.7‑Code vs Copilot vs CodeWhisperer: Who Wins the Coding Race?</h1>
+            <p class="subtitle">This guide provides a comprehensive comparison of Kimi-K2.7-Code, GitHub Copilot, and Amazon CodeWhisperer, showcasing their performance in a coding race using the Kimi benchmark. It covers the key takeaways from the comparison, step-by-step instructions to try out the benchmark, and expert tips for optimizing performance. The guide also highlights the benefits of using Kimi-K2.7-Code, including its speed, accuracy, and low token cost.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 13, 2026</span>
+                <span>3 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Kimi-K2.7-Code outperforms GitHub Copilot and Amazon CodeWhisperer in the coding race</span></li>
+                    <li><span class="takeaway-num">2</span><span>Kimi-K2.7-Code delivers suggestions in the shortest time while maintaining the highest correctness score</span></li>
+                    <li><span class="takeaway-num">3</span><span>Copilot has higher token consumption compared to Kimi-K2.7-Code</span></li>
+                    <li><span class="takeaway-num">4</span><span>CodeWhisperer has the lowest performance, with higher token consumption and lower correctness score</span></li>
+                    <li><span class="takeaway-num">5</span><span>Kimi-K2.7-Code is an open-source model that can be self-hosted without vendor lock-in</span></li>
+                    <li><span class="takeaway-num">6</span><span>Kimi-K2.7-Code can be run on a single RTX 4090 for optimal performance</span></li>
+                    <li><span class="takeaway-num">7</span><span>The Kimi benchmark provides a comprehensive evaluation of coding assistants</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of coding assistants and their applications</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with the Kimi benchmark and its evaluation criteria</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the Repository</h3>
+                <p>Clone the Kimi-K2.7-Code repository to access the benchmark script and task list</p>
+
+                <div class="code-block"><pre>git clone https://github.com/moonshot-ai/kimi-k2.7-code.git</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Install the Quantized 7B Checkpoint</h3>
+                <p>Install the quantized 7B checkpoint to run the benchmark script</p>
+
+                <div class="code-block"><pre>pip install torch && python install_quantized_checkpoint.py</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Launch the Benchmark Script</h3>
+                <p>Launch the benchmark script with the provided task list to compare the performance of Kimi-K2.7-Code, Copilot, and CodeWhisperer</p>
+
+                <div class="code-block"><pre>python benchmark_script.py --task_list tasks.json</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use a single RTX 4090 for optimal performance
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Self-host Kimi-K2.7-Code to avoid vendor lock-in
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the Kimi benchmark to evaluate the performance of different coding assistants
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Not using the quantized 7B checkpoint, which can lead to suboptimal performance
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Not properly configuring the benchmark script, which can result in inaccurate results
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Kimi-K2.7-Code</h4>
+                    <p>An open-source coding assistant that provides fast and accurate suggestions</p>
+                    <a href="https://github.com/moonshot-ai/kimi-k2.7-code" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>GitHub Copilot</h4>
+                    <p>A coding assistant that provides suggestions based on the context of the code</p>
+                    <a href="https://github.com/features/copilot" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Amazon CodeWhisperer</h4>
+                    <p>A coding assistant that provides suggestions based on the context of the code</p>
+                    <a href="https://aws.amazon.com/codewhisperer/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What is the Kimi benchmark?</h3>
+                <p>The Kimi benchmark is a comprehensive evaluation of coding assistants, measuring their speed, correctness, and token efficiency on real-world coding tasks</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I run the Kimi-K2.7-Code benchmark script?</h3>
+                <p>To run the benchmark script, clone the Kimi-K2.7-Code repository, install the quantized 7B checkpoint, and launch the script with the provided task list</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What are the benefits of using Kimi-K2.7-Code?</h3>
+                <p>Kimi-K2.7-Code provides fast and accurate suggestions, is open-source, and can be self-hosted without vendor lock-in, making it a great choice for developers who value speed, accuracy, and flexibility</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does Kimi-K2.7-Code compare to GitHub Copilot and Amazon CodeWhisperer?</h3>
+                <p>Kimi-K2.7-Code outperforms GitHub Copilot and Amazon CodeWhisperer in the coding race, delivering suggestions in the shortest time while maintaining the highest correctness score</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use Kimi-K2.7-Code with my existing workflow?</h3>
+                <p>Yes, Kimi-K2.7-Code is designed to be integrated with existing workflows, and its open-source nature makes it easy to customize and extend</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/moonshot-ai/kimi-k2.7-code/blob/main/README.md" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Kimi-K2.7-Code Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation for Kimi-K2.7-Code, including installation instructions and usage examples</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2209.01234" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Kimi Benchmark Paper
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Research paper introducing the Kimi benchmark and its evaluation criteria</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#KimiK27CodevsCopilot</span>
+                <span class="tag">#KimiK27Code</span>
+                <span class="tag">#AIcodingbenchmark</span>
+                <span class="tag">#Copilotcomparison</span>
+                <span class="tag">#CodeWhisperer</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-13 12:56 • This guide accompanies the video: "Kimi‑K2.7‑Code vs Copilot vs CodeWhisperer: Who Wins the Coding Race?"</p>
+        </footer>
+    </div>
+</body>
+</html>

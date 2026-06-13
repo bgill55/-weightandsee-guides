@@ -66,7 +66,9 @@ CATEGORY_KEYWORDS = {
 TITLE_OVERRIDES = {
     "autovision-vs-stable-diffusion-31-edge-image-generation-showdown": "AutoVision vs Stable Diffusion 3.1 — Edge Image Generation Showdown",
     "build-a-gemini-optimized-app-on-apple-silicon-hands-on-tutorial": "Build a Gemini-Optimized App on Apple Silicon",
+    "build-a-nocode-claude-fable-5-agent-in-5-minutes-no-coding-required": "Build a No-Code Claude FABLE 5 Agent in 5 Minutes",
     "cad-gpt-20-generating-production-ready-step-files-in-seconds": "CAD-GPT 2.0 — Generating Production-Ready STEP Files in Seconds",
+    "claude-fable-5-desktop-test-realworld-speed-on-a-hyperv-vm": "Claude FABLE 5 Desktop — Real-World Speed on a Hyper-V VM",
     "deep-dive-into-adahmpleng-50m-5ep-1e-4-64b-efficient-smallscale-english-model": "Deep Dive into AdaHmpLEng — Efficient Small-Scale English Model",
     "diffusiongemma-26b-a4bit-the-new-fast-local-image-generator-for-creators": "DiffusionGemma 26B A4Bit — Fast Local Image Generator for Creators",
     "diffusiongemma-4x-faster-text-generation-how-the-new-model-breaks-speed-limits": "DiffusionGemma 4x Faster Text Generation — Speed Limits Broken",
@@ -101,6 +103,8 @@ TITLE_OVERRIDES = {
 # Explicit category overrides for slugs where content-based categorization doesn't match intent
 CATEGORY_OVERRIDES = {
     "build-a-gemini-optimized-app-on-apple-silicon-hands-on-tutorial": "Developer Tools & Agents",
+    "build-a-nocode-claude-fable-5-agent-in-5-minutes-no-coding-required": "No-Code & Automation",
+    "claude-fable-5-desktop-test-realworld-speed-on-a-hyperv-vm": "Developer Tools & Agents",
     "run-claude-35-offline-for-free-opencode-full-setup-on-a-500-pc": "Local AI & Self-Hosting",
     "running-llms-offline-a-stepbystep-guide": "Local AI & Self-Hosting",
     "run-gpt55-on-a-raspberry-pi-zero-the-ultimate-lowcost-local-ai-hack": "Local AI & Self-Hosting",
