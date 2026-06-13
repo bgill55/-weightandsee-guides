@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A deep‑dive into Anthropic’s newly suspended Fable 5 and Mythos 5 models, unpacking the US government directive, the safety rationale, and what the pause means ">
+    <meta name="keywords" content="Anthropic, Fable 5, Mythos 5, US government directive, AI safety">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Infrastructure Guide: Running Anthropic Models Locally After a Government Ban - Complete Guide">
+    <meta property="og:description" content="A deep‑dive into Anthropic’s newly suspended Fable 5 and Mythos 5 models, unpacking the US government directive, the safety rationale, and what the pause means for developers, investors, and the broad">
+    <meta property="og:type" content="article">
+    <title>Infrastructure Guide: Running Anthropic Models Locally After a Government Ban | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Infrastructure Guide: Running Anthropic Models Locally After a Government Ban</h1>
+            <p class="subtitle">This guide explains how to transition from the now‑suspended Anthropic Fable 5 and Mythos 5 models to locally‑hosted, compliance‑friendly alternatives. It covers the regulatory background, the impact on existing pipelines, and step‑by‑step instructions for re‑architecting your infrastructure.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 13, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>The US government has mandated an immediate halt to any use of Anthropic Fable 5 and Mythos 5 due to safety concerns.</span></li>
+                    <li><span class="takeaway-num">2</span><span>All API calls to the affected endpoints will now fail, forcing developers to replace them with locally‑run models or other compliant services.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Switching to smaller, open‑source models reduces regulatory risk and gives you full control over data flow.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Proper hardware provisioning (GPU, VRAM, storage) and containerized deployment are critical for a smooth migration.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Updating your codebase to abstract model calls behind an interface simplifies future regulatory pivots.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic proficiency with Python and virtual environments.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to a GPU‑enabled machine (minimum 16 GB VRAM recommended) or a cloud GPU instance.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Audit and Isolate the Fable 5/Mythos 5 Calls</h3>
+                <p>Search your codebase for any direct references to the Anthropic endpoints (e.g., `https://api.anthropic.com/v1/fable5`). Wrap those calls in a service‑layer function so they can be swapped out later without touching business logic.</p>
+
+                <div class="code-block"><pre>```python
+# old usage
+response = requests.post(
+    "https://api.anthropic.com/v1/fable5",
+    json={"prompt": user_input},
+    headers={"Authorization": f"Bearer {API_KEY}"}
+)
+```
+</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Choose a Local Replacement Model</h3>
+                <p>Select an open‑source model that matches your performance needs and is not on any watchlist (e.g., Llama‑2‑13B, Mistral‑7B, or a distilled version of Claude). Pull the model from Hugging Face or your internal model registry.</p>
+
+                <div class="code-block"><pre>```bash
+# Using Hugging Face CLI
+huggingface-cli download meta-llama/Llama-2-13b-chat-hf --repo-type model --local-dir ./models/llama2-13b
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Containerize the Model with Docker</h3>
+                <p>Create a Docker image that installs the required libraries (PyTorch, Transformers) and launches a FastAPI or vLLM server exposing a `/generate` endpoint compatible with your service‑layer wrapper.</p>
+
+                <div class="code-block"><pre>```dockerfile
+FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
+RUN apt-get update && apt-get install -y python3-pip git
+RUN pip install torch==2.2.0 transformers==4.38.0 fastapi uvicorn
+COPY ./models/llama2-13b /app/model
+COPY ./serve.py /app/serve.py
+WORKDIR /app
+EXPOSE 8000
+CMD ["uvicorn", "serve:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+```bash
+# Build and run
+docker build -t local-llama2 .
+docker run -d --gpus all -p 8000:8000 local-llama2
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Update the Service‑Layer to Point to Your Local Endpoint</h3>
+                <p>Replace the Anthropic URL with the local server address and adjust the request payload to match the new model’s API schema.</p>
+
+                <div class="code-block"><pre>```python
+# new usage (FastAPI wrapper)
+import requests
+
+def generate(prompt: str) -> str:
+    resp = requests.post(
+        "http://localhost:8000/generate",
+        json={"prompt": prompt, "max_tokens": 512},
+        timeout=30
+    )
+    resp.raise_for_status()
+    return resp.json()["generated_text"]
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Validate Performance & Compliance</h3>
+                <p>Run a suite of regression prompts to compare latency, token usage, and output quality against historical Fable 5/Mythos 5 logs. Document any deviations and, if needed, fine‑tune the local model on a curated safety dataset.</p>
+
+                <div class="code-block"><pre>```bash
+# Simple latency test
+python - <<'PY'
+import time, requests
+prompt = "Explain quantum entanglement in simple terms."
+start = time.time()
+resp = requests.post('http://localhost:8000/generate', json={"prompt": prompt})
+print('Latency:', time.time() - start)
+print('Output:', resp.json()['generated_text'][:200])
+PY
+```</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Cache model weights on a fast SSD to reduce load‑time overhead.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Wrap the generation call in a retry decorator to handle occasional GPU OOM spikes.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use `vLLM` or `text-generation-inference` for multi‑GPU scaling if you need >10 k token throughput.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to adjust the authentication header – the local server typically runs unauthenticated, so leftover `Authorization` headers cause 401 errors.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Deploying the container without GPU access (`--gpus all`) results in CPU‑only inference, dramatically increasing latency and memory pressure.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Hugging Face Hub</h4>
+                    <p>Repository for open‑source language models and versioned model files.</p>
+                    <a href="https://huggingface.co" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Docker</h4>
+                    <p>Container platform used to package the model serving stack.</p>
+                    <a href="https://www.docker.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>FastAPI</h4>
+                    <p>Lightweight web framework for exposing a model inference endpoint.</p>
+                    <a href="https://fastapi.tiangolo.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>vLLM</h4>
+                    <p>High‑throughput inference engine for LLMs on GPUs.</p>
+                    <a href="https://github.com/vllm-project/vllm" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Anthropic Directive Blog Post</h4>
+                    <p>Official statement explaining the US government suspension of Fable 5 and Mythos 5.</p>
+                    <a href="https://anthropic.com/blog/us-government-directive-fable-5-mythos-5" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Will my existing Anthropic API keys work after the suspension?</h3>
+                <p>No. All calls to the Fable 5 and Mythos 5 endpoints will return a 403 error. You must replace them with a local or alternative service.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I still use other Anthropic models like Claude 2?</h3>
+                <p>Yes, only the specifically listed models are suspended. Verify each endpoint’s status before integration.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do I need to open‑source my replacement model to stay compliant?</h3>
+                <p>Compliance depends on the model’s licensing and export classification, not on openness. Use models cleared for commercial use and verify they are not on any restricted list.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How much GPU memory does Llama‑2‑13B require?</h3>
+                <p>Approximately 26 GB VRAM for full‑precision inference; using 4‑bit or 8‑bit quantization can reduce this to 12‑16 GB.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is there a way to automatically switch between models if a future ban occurs?</h3>
+                <p>Implement a model‑registry abstraction layer that reads the target model from a config file or environment variable; updating that single source swaps the backend without code changes.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.brookings.edu/research/us-ai-export-controls/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Understanding US AI Export Controls and Model Restrictions
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Analysis of how federal policy is shaping AI model availability.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/docs/transformers/main/en/quickstart" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Running LLMs Locally with Hugging Face Transformers
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Step‑by‑step guide for loading and serving models on a single GPU.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2305.13823" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Safety‑Fine‑Tuning Open‑Source LLMs
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Research paper describing methods to align models with safety constraints.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#Fable5vs</span>
+                <span class="tag">#Anthropic</span>
+                <span class="tag">#Fable5</span>
+                <span class="tag">#Mythos5</span>
+                <span class="tag">#USgovernmentdirective</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-13 05:24 • This guide accompanies the video: "Infrastructure Guide: Running Anthropic Models Locally After a Government Ban"</p>
+        </footer>
+    </div>
+</body>
+</html>

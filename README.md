@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/49_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/50_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-guide-running-anthropic-models-locally-after-a-government-ban/">
+<img src="guides/infrastructure-guide-running-anthropic-models-locally-after-a-government-ban/thumbnail.jpg" width="300" alt="Infrastructure Guide Running Anthropic Models Locally After A Government Ban"><br>
+<b>Infrastructure Guide Running Anthropic Models Locally After A Government Ban</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/jailbreak-resistance-is-impossible-the-math-anthropic-told-us/">
 <img src="guides/jailbreak-resistance-is-impossible-the-math-anthropic-told-us/thumbnail.jpg" width="300" alt="Jailbreak Resistance Is Impossible The Math Anthropic Told Us"><br>
@@ -31,12 +37,6 @@
 <b>The Ai That Built This Video Inside Youtube Factory Pipeline</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/flux-2-the-new-standard-for-realtime-ai-video-generation/">
-<img src="guides/flux-2-the-new-standard-for-realtime-ai-video-generation/thumbnail.jpg" width="300" alt="Flux 2 The New Standard For Realtime Ai Video Generation"><br>
-<b>Flux 2 The New Standard For Realtime Ai Video Generation</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
 | **Model Deep Dives** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![7](https://img.shields.io/badge/7-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
 | **AI Security** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -104,6 +104,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Infrastructure Guide Running Anthropic Models Locally After A Government Ban](https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-guide-running-anthropic-models-locally-after-a-government-ban/)** — 2026-06-13
 - **[Jailbreak Resistance Is Impossible The Math Anthropic Told Us](https://bgill55.github.io/-weightandsee-guides/guides/jailbreak-resistance-is-impossible-the-math-anthropic-told-us/)** — 2026-06-13
 - **[How Local Rag Works](https://bgill55.github.io/-weightandsee-guides/guides/how-local-rag-works/)** — 2026-06-12
 - **[Flux 2 Unleashed How The New Diffusion Engine Cuts Vram Cranks Up Speed](https://bgill55.github.io/-weightandsee-guides/guides/flux-2-unleashed-how-the-new-diffusion-engine-cuts-vram-cranks-up-speed/)** — 2026-06-11
