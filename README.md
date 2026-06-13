@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/58_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/53_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,12 +19,6 @@
 ## Latest Guides
 
 <table><tr>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/anthropic-received-the-governments-letter-at/">
-<img src="guides/anthropic-received-the-governments-letter-at/thumbnail.jpg" width="300" alt="Anthropic Received The Governments Letter At"><br>
-<b>Anthropic Received The Governments Letter At</b>
-</a>
-</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/">
 <img src="guides/why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/thumbnail.jpg" width="300" alt="Why Your Ai Agent Is Using The Wrong Model And How To Fix It"><br>
@@ -37,6 +31,12 @@
 <b>Ollama V090 Run Any Llm Locally In 2026 Heres What Changed</b>
 </a>
 </td>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/">
+<img src="guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/thumbnail.jpg" width="300" alt="Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model"><br>
+<b>Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model</b>
+</a>
+</td>
 </tr></table>
 
 ---
@@ -47,11 +47,11 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **Model Deep Dives** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
-| **No-Code & Automation** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
+| **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
 ---
 
@@ -108,11 +108,8 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
-- **[Anthropic Received The Governments Letter At](https://bgill55.github.io/-weightandsee-guides/guides/anthropic-received-the-governments-letter-at/)** — 2026-06-13
 - **[Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model](https://bgill55.github.io/-weightandsee-guides/guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/)** — 2026-06-13
 - **[Nvidia Gh200 Grace Hopper Superchip What 2000 Gpulevel Ai Performance Means For](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/)** — 2026-06-13
-- **[Infrastructure Guide Running Anthropic Models Locally After A Government Ban](https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-guide-running-anthropic-models-locally-after-a-government-ban/)** — 2026-06-13
-- **[Jailbreak Resistance Is Impossible The Math Anthropic Told Us](https://bgill55.github.io/-weightandsee-guides/guides/jailbreak-resistance-is-impossible-the-math-anthropic-told-us/)** — 2026-06-13
 - **[How Local Rag Works](https://bgill55.github.io/-weightandsee-guides/guides/how-local-rag-works/)** — 2026-06-12
 - **[Flux 2 Unleashed How The New Diffusion Engine Cuts Vram Cranks Up Speed](https://bgill55.github.io/-weightandsee-guides/guides/flux-2-unleashed-how-the-new-diffusion-engine-cuts-vram-cranks-up-speed/)** — 2026-06-11
 - **[Run GPT-5.5 on a Raspberry Pi Zero — The Ultimate Low-Cost AI Hack](https://bgill55.github.io/-weightandsee-guides/guides/run-gpt55-on-a-raspberry-pi-zero-the-ultimate-lowcost-local-ai-hack/)** — 2026-06-11
@@ -136,7 +133,6 @@
 *AI-powered coding assistants, agents, and developer workflows*
 
 - **[Prometheus Ai Engineer Jeff Bezoss Awsready Agent Takes On Ollama 09](https://bgill55.github.io/-weightandsee-guides/guides/prometheus-ai-engineer-jeff-bezoss-awsready-agent-takes-on-ollama-09/)** — 2026-06-11
-- **[Claude FABLE 5 Desktop — Real-World Speed on a Hyper-V VM](https://bgill55.github.io/-weightandsee-guides/guides/claude-fable-5-desktop-test-realworld-speed-on-a-hyperv-vm/)** — 2026-06-11
 - **[Build a Gemini-Optimized App on Apple Silicon](https://bgill55.github.io/-weightandsee-guides/guides/build-a-gemini-optimized-app-on-apple-silicon-hands-on-tutorial/)** — 2026-06-09
 
 ---
@@ -157,7 +153,6 @@
 
 *Build AI workflows without writing code*
 
-- **[Build a No-Code Claude FABLE 5 Agent in 5 Minutes](https://bgill55.github.io/-weightandsee-guides/guides/build-a-nocode-claude-fable-5-agent-in-5-minutes-no-coding-required/)** — 2026-06-11
 - **[No-Code AI Orchestrators Face-Off — Flowise vs n8n vs AutoGPT Studio](https://bgill55.github.io/-weightandsee-guides/guides/nocode-ai-orchestrators-faceoff-flowise-20-vs-n8n-ai-30-vs-autogptstudio/)** — 2026-06-10
 
 ---
