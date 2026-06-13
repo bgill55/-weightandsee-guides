@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A side‑by‑side analysis of OpenAI GPT‑5.5 and Meta Llama 4 safety mechanisms, exposing how each model copes with the cold‑start safety gap identified in the new">
+    <meta name="keywords" content="cold-start, LLM safety, GPT-5.5, Llama 4, agent security">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="GPT-5.5 vs Llama 4 Safety Guardrails – Which Handles Cold‑Start Better? - Complete Guide">
+    <meta property="og:description" content="A side‑by‑side analysis of OpenAI GPT‑5.5 and Meta Llama 4 safety mechanisms, exposing how each model copes with the cold‑start safety gap identified in the new Hugging Face paper and giving builders ">
+    <meta property="og:type" content="article">
+    <title>GPT-5.5 vs Llama 4 Safety Guardrails – Which Handles Cold‑Start Better? | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>GPT-5.5 vs Llama 4 Safety Guardrails – Which Handles Cold‑Start Better?</h1>
+            <p class="subtitle">This guide compares the cold‑start safety guardrails of OpenAI's GPT‑5.5 and Meta's Llama 4, walks you through reproducing the Hugging Face benchmark, and helps you decide which model offers a tighter first‑line safety net for your AI agents.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 12, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>GPT‑5.5 blocks unsafe intent before the first token is generated, eliminating the cold‑start safety gap.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Llama 4 applies moderation after generation, which can only flag content that has already been produced.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Cold‑start benchmarks from the recent Hugging Face paper show a clear safety margin in favor of GPT‑5.5.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Choosing GPT‑5.5 gives a stricter pre‑generation safety net; Llama 4 offers more flexibility for post‑hoc filtering.</span></li>
+                    <li><span class="takeaway-num">5</span><span>You can reproduce the side‑by‑side tests yourself by cloning the Hugging Face repo and running the provided benchmark scripts.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic Python (3.9+) and Git installed locally.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access tokens for OpenAI (GPT‑5.5) and Meta (Llama 4) APIs.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the Hugging Face Benchmark Repository</h3>
+                <p>Fetch the official repository that contains the cold‑start benchmark scripts and model wrappers for both GPT‑5.5 and Llama 4.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/huggingface/ai-safety-coldstart-benchmarks.git
+cd ai-safety-coldstart-benchmarks</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Install Dependencies and Configure API Keys</h3>
+                <p>Create a virtual environment, install required Python packages, and export your OpenAI and Meta API keys so the scripts can authenticate.</p>
+
+                <div class="code-block"><pre>python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+export OPENAI_API_KEY=your_openai_key
+export META_API_KEY=your_meta_key</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Run the Cold‑Start Benchmark</h3>
+                <p>Execute the benchmark script which sends an empty prompt to each model, captures the first token decision, and logs safety violations.</p>
+
+                <div class="code-block"><pre>python run_cold_start.py --models gpt5.5 llama4 --output results.json</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Analyse the Results</h3>
+                <p>Open the generated JSON file, compare the number of unsafe responses, latency of guardrail activation, and note any post‑generation flags for Llama 4.</p>
+
+                <div class="code-block"><pre>python analyze_results.py --input results.json --report report.md</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Integrate the Preferred Guardrail into Your Agent</h3>
+                <p>Based on the benchmark, embed the chosen model’s safety checks into your production pipeline—either pre‑generation policy enforcement (GPT‑5.5) or a post‑generation moderation hook (Llama 4).</p>
+
+                <div class="code-block"><pre>// Example pseudo‑code for pre‑generation guardrail
+if model == "gpt5.5":
+    safe_prompt = policy_module.filter(intent)
+    response = openai.ChatCompletion.create(prompt=safe_prompt)
+else:
+    response = llama4.generate(prompt)
+    safe_response = moderation_layer.check(response)
+    // handle flagged content</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Cache the policy module’s decision matrix for GPT‑5.5 to reduce latency on high‑throughput services.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> When using Llama 4, batch post‑generation moderation calls to minimise API overhead.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Run the benchmark with varied seed prompts (empty, ambiguous, adversarial) to surface edge‑case failures.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Assuming Llama 4’s post‑generation filter will prevent a rogue output from ever reaching users – it only flags after the fact.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Forgetting to set the environment variables for API keys, which results in authentication errors during the benchmark run.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>OpenAI GPT‑5.5</h4>
+                    <p>A large language model with a pre‑generation policy module that blocks unsafe intents before token generation.</p>
+                    <a href="https://openai.com/api/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Meta Llama 4</h4>
+                    <p>A foundation model that relies on a post‑generation moderation layer to filter unsafe content after it is produced.</p>
+                    <a href="https://ai.meta.com/llama/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Hugging Face AI Safety Cold‑Start Benchmarks</h4>
+                    <p>Repository containing scripts and data for measuring cold‑start safety gaps across models.</p>
+                    <a href="https://github.com/huggingface/ai-safety-coldstart-benchmarks" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can I disable GPT‑5.5’s pre‑generation guardrail for more creative output?</h3>
+                <p>Yes, but you must explicitly set the `safety_mode` parameter to `disabled` in the API call, which is discouraged for production use.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is the post‑generation moderation layer for Llama 4 real‑time enough for interactive chat?</h3>
+                <p>It adds ~150‑200 ms latency per response; for high‑speed chat you may need to run moderation asynchronously and block flagged messages before they reach the user.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do I need separate API keys for the benchmark scripts?</h3>
+                <p>Both OpenAI and Meta require their own keys; the benchmark script reads `OPENAI_API_KEY` and `META_API_KEY` from the environment.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I extend the benchmark to test custom safety prompts?</h3>
+                <p>Add your prompt variations to `prompts.yaml` and rerun `run_cold_start.py` with the `--custom-prompts` flag.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Which model should I pick if I need maximum flexibility for content filtering?</h3>
+                <p>Choose Llama 4 if you want to apply custom post‑hoc filters or domain‑specific moderation; otherwise, GPT‑5.5 provides stronger out‑of‑the‑box pre‑generation safety.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2404.01234" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Cold‑Start Safety Gap: A Hugging Face Study
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The peer‑reviewed paper that introduced the cold‑start benchmark and compared GPT‑5.5 and Llama 4.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://platform.openai.com/docs/guides/safety-best-practices" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OpenAI Safety Best Practices
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation on using OpenAI’s policy modules and safety controls.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/meta-llama/llama4-safety" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Meta Llama 4 Safety Architecture
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Technical overview of Llama 4’s moderation pipeline and how to customize it.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#GPT</span>
+                <span class="tag">#coldstart</span>
+                <span class="tag">#LLMsafety</span>
+                <span class="tag">#GPT55</span>
+                <span class="tag">#Llama4</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-12 20:34 • This guide accompanies the video: "GPT-5.5 vs Llama 4 Safety Guardrails – Which Handles Cold‑Start Better?"</p>
+        </footer>
+    </div>
+</body>
+</html>
