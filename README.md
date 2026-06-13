@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/52_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/53_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-ai-inference-a-real-cost-and-performance-comparison/">
+<img src="guides/local-vs-cloud-ai-inference-a-real-cost-and-performance-comparison/thumbnail.jpg" width="300" alt="Local Vs Cloud Ai Inference A Real Cost And Performance Comparison"><br>
+<b>Local Vs Cloud Ai Inference A Real Cost And Performance Comparison</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/">
 <img src="guides/nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/thumbnail.jpg" width="300" alt="Nvidia Gh200 Grace Hopper Superchip What 2000 Gpulevel Ai Performance Means For"><br>
@@ -31,12 +37,6 @@
 <b>Flux Core Vs Rendermax 3D Generation Showdown</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-guide-running-anthropic-models-locally-after-a-government-ban/">
-<img src="guides/infrastructure-guide-running-anthropic-models-locally-after-a-government-ban/thumbnail.jpg" width="300" alt="Infrastructure Guide Running Anthropic Models Locally After A Government Ban"><br>
-<b>Infrastructure Guide Running Anthropic Models Locally After A Government Ban</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **Model Deep Dives** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
 | **AI Security** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Local Vs Cloud Ai Inference A Real Cost And Performance Comparison](https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-ai-inference-a-real-cost-and-performance-comparison/)** — 2026-06-13
 - **[Flux Core Vs Rendermax 3D Generation Showdown](https://bgill55.github.io/-weightandsee-guides/guides/flux-core-vs-rendermax-3d-generation-showdown/)** — 2026-06-13
 - **[Flux 2 The New Standard For Realtime Ai Video Generation](https://bgill55.github.io/-weightandsee-guides/guides/flux-2-the-new-standard-for-realtime-ai-video-generation/)** — 2026-06-12
 - **[Gpt 55 Vs Llama 4 Safety Guardrails Which Handles Coldstart Better](https://bgill55.github.io/-weightandsee-guides/guides/gpt-55-vs-llama-4-safety-guardrails-which-handles-coldstart-better/)** — 2026-06-12
