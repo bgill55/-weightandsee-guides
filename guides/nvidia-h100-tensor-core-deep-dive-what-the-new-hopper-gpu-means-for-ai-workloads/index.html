@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A side‑by‑side performance showdown between Meta's LLaMA 3 and Google's Gemini 2, using fresh 2026 benchmarks that span coding, reasoning, and multimodal tasks.">
+    <meta name="keywords" content="LLaMA 3, Gemini 2, LLM benchmark, AI performance, open-source AI">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="NVIDIA H100 Tensor Core Deep Dive: What the New Hopper GPU Means for AI Workloads - Complete Guide">
+    <meta property="og:description" content="A side‑by‑side performance showdown between Meta's LLaMA 3 and Google's Gemini 2, using fresh 2026 benchmarks that span coding, reasoning, and multimodal tasks. The hook is a clear ranking that tells ">
+    <meta property="og:type" content="article">
+    <title>NVIDIA H100 Tensor Core Deep Dive: What the New Hopper GPU Means for AI Workloads | Weight and See Guide</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #252525;
+            --text-primary: #f1f1f1;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+            --border: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>NVIDIA H100 Tensor Core Deep Dive: What the New Hopper GPU Means for AI Workloads</h1>
+            <p class="subtitle">This guide unpacks the controversial government suspension of an AI coding assistant under national security claims, examining the directive, the specific 'jailbreak' prompt cited, and the double standard that allows trillion-dollar companies to offer identical functionality. It provides the technical and policy context behind the decision and what it means for developers relying on AI-assisted coding tools.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 13, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>The suspended AI model was flagged for its ability to 'read a codebase and fix software flaws' — functionality identical to mainstream coding assistants like GPT-5.5.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The cited jailbreak vector was not generating malware or bypassing safeguards, but rather analyzing code and patching vulnerabilities.</span></li>
+                    <li><span class="takeaway-num">3</span><span>The directive specifically targeted a prompt-based workflow, raising questions about prompt-level censorship as a regulatory tool.</span></li>
+                    <li><span class="takeaway-num">4</span><span>A clear double standard exists: smaller AI tools are shut down for capabilities that remain available in products from trillion-dollar companies.</span></li>
+                    <li><span class="takeaway-num">5</span><span>The suspension sets a precedent where any AI capable of analyzing and fixing code vulnerabilities could be deemed a national security risk.</span></li>
+                    <li><span class="takeaway-num">6</span><span>Developers should audit their AI tooling for exposure to similar regulatory action based on prompt-level functionality.</span></li>
+                    <li><span class="takeaway-num">7</span><span>The controversy highlights the tension between AI safety rhetoric and market protectionism in government tech policy.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of how AI coding assistants function (code analysis, patching, vulnerability detection)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with government AI directives and national security frameworks affecting software tools</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to the full government directive (linked in the original video description)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Understand the Suspended Model's Core Functionality</h3>
+                <p>The model in question performed standard AI coding assistant tasks: ingesting a codebase, identifying software flaws (such as buffer overflows, logic errors, and security vulnerabilities), and suggesting patches. This is functionally equivalent to what tools like GitHub Copilot, GPT-5.5, and other assistants do daily. The key difference is the organization behind the model and its market position.</p>
+
+                <div class="code-block"><pre># Example of the type of prompt that triggered the directive:
+# 'read this codebase and fix any software flaws'
+# This is a standard vulnerability remediation workflow used by developers worldwide.</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Review the Government Directive and Cited Evidence</h3>
+                <p>Obtain the full government directive referenced in the video description. Look for the specific language around 'jailbreak vectors,' the prompt that was cited, and the legal framework used to justify the suspension. Pay attention to whether the directive defines a threshold for 'national security risk' based on capability alone versus intent.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Compare Functionality with Market-Allowed Alternatives</h3>
+                <p>Conduct a side-by-side comparison between the suspended model's capabilities and those of GPT-5.5 or other approved tools. Test identical prompts across both systems. Document whether the outputs are substantively different. This step reveals whether the suspension was technically justified or competitively motivated.</p>
+
+                <div class="code-block"><pre># Test prompt to run across both tools:
+# 'Analyze this Python script for security vulnerabilities and suggest fixes'
+# Compare outputs for scope, depth, and type of vulnerabilities identified</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Assess Your Own AI Tooling for Regulatory Risk</h3>
+                <p>Audit every AI tool in your development workflow. Identify which ones can analyze codebases, detect vulnerabilities, and suggest patches. Map these capabilities against the language in the directive. If your tools can perform the same function, you may need contingency plans or alternative workflows.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Develop a Contingency Workflow</h3>
+                <p>Create a backup development workflow that does not depend on a single AI tool for vulnerability analysis. This could include combining open-source static analysis tools (like Semgrep, Bandit, or CodeQL) with manual code review processes. Diversifying your tooling reduces exposure to any single-point regulatory action.</p>
+
+                <div class="code-block"><pre># Example: Replace AI patching with open-source static analysis
+# Bandit scan for Python:
+bandit -r ./src/
+
+# Semgrep rule for buffer overflow detection:
+semgrep --config=p/buffer-overflow ./src/</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Always maintain a local or self-hosted backup of your AI-assisted workflows so that cloud service suspensions don't halt your development pipeline.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Track government AI directives in your jurisdiction — they often signal coming regulatory trends before enforcement actions occur.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Document every AI tool's capabilities in writing so you can quickly assess exposure when new directives are issued.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Engage with open-source AI coding tools as alternatives; they are harder to suspend via centralized government action.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Assuming your current AI tooling is safe because it's from a large vendor — directives can shift rapidly, and precedent matters more than brand size.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Ignoring the directive language and assuming the issue is resolved — these frameworks often expand to cover more tools over time.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Relying solely on AI for vulnerability patching without human review — even allowed tools can introduce new bugs or miss context-specific issues.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 4: Conflating 'security analysis' with 'exploit generation' — the government's conflation of these two is the core of the controversy and should not be accepted uncritically.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>GPT-5.5</h4>
+                    <p>A large-scale AI model with code analysis and vulnerability patching capabilities that remains permitted despite performing the same function as the suspended model.</p>
+                    
+                </div>
+
+                <div class="tool-card">
+                    <h4>Semgrep</h4>
+                    <p>Open-source static analysis tool for detecting security vulnerabilities in code, useful as an alternative to AI-based patching.</p>
+                    <a href="https://semgrep.dev" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Bandit</h4>
+                    <p>Python-specific static security analyzer that scans for common vulnerabilities without relying on AI.</p>
+                    <a href="https://bandit.readthedocs.io" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>CodeQL</h4>
+                    <p>Semantic code analysis engine by GitHub for finding vulnerabilities across codebases.</p>
+                    <a href="https://codeql.github.com" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What was the exact 'jailbreak' prompt that triggered the model's suspension?</h3>
+                <p>The directive cited the prompt 'read this codebase and fix any software flaws' as the jailbreak vector. This is a standard developer workflow prompt, not an attempt to generate malware or bypass safeguards.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is GPT-5.5 really doing the same thing as the suspended model?</h3>
+                <p>Yes. GPT-5.5 can analyze codebases, identify security vulnerabilities, and suggest patches — the exact same functionality cited in the directive. The continued availability of GPT-5.5 while the smaller model was suspended is central to the controversy.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Should I stop using AI coding assistants entirely?</h3>
+                <p>Not necessarily, but you should diversify your tooling. Maintain workflows that combine AI assistance with open-source static analysis tools like Semgrep, Bandit, or CodeQL so you're not dependent on a single service that could be suspended.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can a government really shut down an AI model for fixing bugs?</h3>
+                <p>Under current national security frameworks, yes — if the capability is deemed a risk. This case sets a precedent for prompt-level regulation, meaning the way you phrase a request to an AI could determine whether the tool itself is considered a threat.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What's the difference between 'vulnerability analysis' and 'exploit generation' in this context?</h3>
+                <p>Vulnerability analysis means identifying and fixing security flaws in code. Exploit generation means creating code that attacks those flaws. The suspended model did the former, but the directive appears to conflate the two — a distinction that matters for both developers and policymakers.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Full Government Directive (Referenced in Video Description)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The original government directive that ordered the suspension of the AI coding model, including the specific 'jailbreak' language cited.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            National AI Security Frameworks Overview
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — A survey of how different governments define 'national security risk' in the context of AI capabilities.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://semgrep.dev/docs" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Semgrep Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Comprehensive guide to setting up Semgrep as an open-source alternative for automated vulnerability detection.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://bandit.readthedocs.io/en/latest/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Bandit Python Security Linter
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Documentation for Bandit, a tool for finding common security issues in Python code.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#LLaMA3vs</span>
+                <span class="tag">#LLaMA3</span>
+                <span class="tag">#Gemini2</span>
+                <span class="tag">#LLMbenchmark</span>
+                <span class="tag">#AIperformance</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-13 07:00 • This guide accompanies the video: "NVIDIA H100 Tensor Core Deep Dive: What the New Hopper GPU Means for AI Workloads"</p>
+        </footer>
+    </div>
+</body>
+</html>
