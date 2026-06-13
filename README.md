@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/50_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/51_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/flux-core-vs-rendermax-3d-generation-showdown/">
+<img src="guides/flux-core-vs-rendermax-3d-generation-showdown/thumbnail.jpg" width="300" alt="Flux Core Vs Rendermax 3D Generation Showdown"><br>
+<b>Flux Core Vs Rendermax 3D Generation Showdown</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-guide-running-anthropic-models-locally-after-a-government-ban/">
 <img src="guides/infrastructure-guide-running-anthropic-models-locally-after-a-government-ban/thumbnail.jpg" width="300" alt="Infrastructure Guide Running Anthropic Models Locally After A Government Ban"><br>
@@ -31,12 +37,6 @@
 <b>Jailbreak Resistance Is Impossible The Math Anthropic Told Us</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-ai-that-built-this-video-inside-youtube-factory-pipeline/">
-<img src="guides/the-ai-that-built-this-video-inside-youtube-factory-pipeline/thumbnail.jpg" width="300" alt="The Ai That Built This Video Inside Youtube Factory Pipeline"><br>
-<b>The Ai That Built This Video Inside Youtube Factory Pipeline</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **Model Deep Dives** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
 | **AI Security** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Flux Core Vs Rendermax 3D Generation Showdown](https://bgill55.github.io/-weightandsee-guides/guides/flux-core-vs-rendermax-3d-generation-showdown/)** — 2026-06-13
 - **[Flux 2 The New Standard For Realtime Ai Video Generation](https://bgill55.github.io/-weightandsee-guides/guides/flux-2-the-new-standard-for-realtime-ai-video-generation/)** — 2026-06-12
 - **[Gpt 55 Vs Llama 4 Safety Guardrails Which Handles Coldstart Better](https://bgill55.github.io/-weightandsee-guides/guides/gpt-55-vs-llama-4-safety-guardrails-which-handles-coldstart-better/)** — 2026-06-12
 - **[Ollama Vs Lm Studio Vs Localai 2026 Local Llm Performance Showdown](https://bgill55.github.io/-weightandsee-guides/guides/ollama-vs-lm-studio-vs-localai-2026-local-llm-performance-showdown/)** — 2026-06-12
