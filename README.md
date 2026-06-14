@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/60_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/61_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-future-of-reactive-audio-how-flux-2-changes-game-design/">
+<img src="guides/the-future-of-reactive-audio-how-flux-2-changes-game-design/thumbnail.jpg" width="300" alt="The Future Of Reactive Audio How Flux 2 Changes Game Design"><br>
+<b>The Future Of Reactive Audio How Flux 2 Changes Game Design</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/supertonic-review-is-local-tts-finally-viable/">
 <img src="guides/supertonic-review-is-local-tts-finally-viable/thumbnail.jpg" width="300" alt="Supertonic Review Is Local Tts Finally Viable"><br>
@@ -31,12 +37,6 @@
 <b>Supertonic 3 Beats Google Cloud Tts Ondevice Multilingual Speed Privacy Test</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/automating-your-business-with-fable-and-mythos/">
-<img src="guides/automating-your-business-with-fable-and-mythos/thumbnail.jpg" width="300" alt="Automating Your Business With Fable And Mythos"><br>
-<b>Automating Your Business With Fable And Mythos</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
-| **Model Deep Dives** | ![13](https://img.shields.io/badge/13-blue?style=flat-square) |
+| **Model Deep Dives** | ![14](https://img.shields.io/badge/14-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -93,6 +93,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[The Future Of Reactive Audio How Flux 2 Changes Game Design](https://bgill55.github.io/-weightandsee-guides/guides/the-future-of-reactive-audio-how-flux-2-changes-game-design/)** — 2026-06-13
 - **[Supertonic Review Is Local Tts Finally Viable](https://bgill55.github.io/-weightandsee-guides/guides/supertonic-review-is-local-tts-finally-viable/)** — 2026-06-13
 - **[Automating Your Business With Fable And Mythos](https://bgill55.github.io/-weightandsee-guides/guides/automating-your-business-with-fable-and-mythos/)** — 2026-06-13
 - **[Ollama V090 Run Any Llm Locally In 2026 Heres What Changed](https://bgill55.github.io/-weightandsee-guides/guides/ollama-v090-run-any-llm-locally-in-2026-heres-what-changed/)** — 2026-06-13
