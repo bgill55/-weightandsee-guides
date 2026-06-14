@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/63_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/64_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-object-detection-showdown-latency-privacy-and-cost-per-frame/">
+<img src="guides/local-vs-cloud-object-detection-showdown-latency-privacy-and-cost-per-frame/thumbnail.jpg" width="300" alt="Local Vs Cloud Object Detection Showdown Latency Privacy And Cost Per Frame"><br>
+<b>Local Vs Cloud Object Detection Showdown Latency Privacy And Cost Per Frame</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/youtube-factory-deep-dive-endtoend-ai-video-creation-on-your-own-gpu/">
 <img src="guides/youtube-factory-deep-dive-endtoend-ai-video-creation-on-your-own-gpu/thumbnail.jpg" width="300" alt="Youtube Factory Deep Dive Endtoend Ai Video Creation On Your Own Gpu"><br>
@@ -31,12 +37,6 @@
 <b>Selfhosted Youtube Factory Vs Runway Gen2 Latency Cost Privacy Battle 2026</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-future-of-reactive-audio-how-flux-2-changes-game-design/">
-<img src="guides/the-future-of-reactive-audio-how-flux-2-changes-game-design/thumbnail.jpg" width="300" alt="The Future Of Reactive Audio How Flux 2 Changes Game Design"><br>
-<b>The Future Of Reactive Audio How Flux 2 Changes Game Design</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![29](https://img.shields.io/badge/29-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
 | **Model Deep Dives** | ![14](https://img.shields.io/badge/14-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Local Vs Cloud Object Detection Showdown Latency Privacy And Cost Per Frame](https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-object-detection-showdown-latency-privacy-and-cost-per-frame/)** — 2026-06-14
 - **[Youtube Factory Deep Dive Endtoend Ai Video Creation On Your Own Gpu](https://bgill55.github.io/-weightandsee-guides/guides/youtube-factory-deep-dive-endtoend-ai-video-creation-on-your-own-gpu/)** — 2026-06-14
 - **[Selfhosted Youtube Factory Vs Runway Gen2 Latency Cost Privacy Battle 2026](https://bgill55.github.io/-weightandsee-guides/guides/selfhosted-youtube-factory-vs-runway-gen2-latency-cost-privacy-battle-2026/)** — 2026-06-13
 - **[Supertonic 3 Beats Google Cloud Tts Ondevice Multilingual Speed Privacy Test](https://bgill55.github.io/-weightandsee-guides/guides/supertonic-3-beats-google-cloud-tts-ondevice-multilingual-speed-privacy-test/)** — 2026-06-13
