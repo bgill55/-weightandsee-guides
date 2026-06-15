@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/69_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/70_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/google-vs-meta-vs-openai-the-2026-ai-search-faceoff/">
+<img src="guides/google-vs-meta-vs-openai-the-2026-ai-search-faceoff/thumbnail.jpg" width="300" alt="Google Vs Meta Vs Openai The 2026 Ai Search Faceoff"><br>
+<b>Google Vs Meta Vs Openai The 2026 Ai Search Faceoff</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/nocode-playbook-build-a-world-cup-2026-predictor-with-llms-typescript-realtime-s/">
 <img src="guides/nocode-playbook-build-a-world-cup-2026-predictor-with-llms-typescript-realtime-s/thumbnail.jpg" width="300" alt="Nocode Playbook Build A World Cup 2026 Predictor With Llms Typescript Realtime S"><br>
@@ -31,12 +37,6 @@
 <b>Creating Mac Apps With Ai A Step By Step Guide</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/">
-<img src="guides/advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/thumbnail.jpg" width="300" alt="Advantages Of On Device Ai A Deep Dive Into Jeidobanironsmith"><br>
-<b>Advantages Of On Device Ai A Deep Dive Into Jeidobanironsmith</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![31](https://img.shields.io/badge/31-blue?style=flat-square) |
 | **Model Deep Dives** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Google Vs Meta Vs Openai The 2026 Ai Search Faceoff](https://bgill55.github.io/-weightandsee-guides/guides/google-vs-meta-vs-openai-the-2026-ai-search-faceoff/)** — 2026-06-15
 - **[Local Vs Cloud Object Detection Showdown Latency Privacy And Cost Per Frame](https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-object-detection-showdown-latency-privacy-and-cost-per-frame/)** — 2026-06-14
 - **[Youtube Factory Deep Dive Endtoend Ai Video Creation On Your Own Gpu](https://bgill55.github.io/-weightandsee-guides/guides/youtube-factory-deep-dive-endtoend-ai-video-creation-on-your-own-gpu/)** — 2026-06-14
 - **[Selfhosted Youtube Factory Vs Runway Gen2 Latency Cost Privacy Battle 2026](https://bgill55.github.io/-weightandsee-guides/guides/selfhosted-youtube-factory-vs-runway-gen2-latency-cost-privacy-battle-2026/)** — 2026-06-13
