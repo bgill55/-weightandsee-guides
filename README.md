@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/66_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/67_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/">
+<img src="guides/advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/thumbnail.jpg" width="300" alt="Advantages Of On Device Ai A Deep Dive Into Jeidobanironsmith"><br>
+<b>Advantages Of On Device Ai A Deep Dive Into Jeidobanironsmith</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/youtube-factory-10-demo/">
 <img src="guides/youtube-factory-10-demo/thumbnail.jpg" width="300" alt="Youtube Factory 10 Demo"><br>
@@ -31,12 +37,6 @@
 <b>Building A Media Server Youtube Factorys Local Architecture</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-object-detection-showdown-latency-privacy-and-cost-per-frame/">
-<img src="guides/local-vs-cloud-object-detection-showdown-latency-privacy-and-cost-per-frame/thumbnail.jpg" width="300" alt="Local Vs Cloud Object Detection Showdown Latency Privacy And Cost Per Frame"><br>
-<b>Local Vs Cloud Object Detection Showdown Latency Privacy And Cost Per Frame</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
-| **Model Deep Dives** | ![16](https://img.shields.io/badge/16-blue?style=flat-square) |
+| **Model Deep Dives** | ![17](https://img.shields.io/badge/17-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -96,6 +96,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Advantages Of On Device Ai A Deep Dive Into Jeidobanironsmith](https://bgill55.github.io/-weightandsee-guides/guides/advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/)** — 2026-06-15
 - **[Youtube Factory 10 Demo](https://bgill55.github.io/-weightandsee-guides/guides/youtube-factory-10-demo/)** — 2026-06-15
 - **[Building A Media Server Youtube Factorys Local Architecture](https://bgill55.github.io/-weightandsee-guides/guides/building-a-media-server-youtube-factorys-local-architecture/)** — 2026-06-14
 - **[The Future Of Reactive Audio How Flux 2 Changes Game Design](https://bgill55.github.io/-weightandsee-guides/guides/the-future-of-reactive-audio-how-flux-2-changes-game-design/)** — 2026-06-13
