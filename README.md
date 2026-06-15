@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/67_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/68_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/creating-mac-apps-with-ai-a-step-by-step-guide/">
+<img src="guides/creating-mac-apps-with-ai-a-step-by-step-guide/thumbnail.jpg" width="300" alt="Creating Mac Apps With Ai A Step By Step Guide"><br>
+<b>Creating Mac Apps With Ai A Step By Step Guide</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/">
 <img src="guides/advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/thumbnail.jpg" width="300" alt="Advantages Of On Device Ai A Deep Dive Into Jeidobanironsmith"><br>
@@ -31,12 +37,6 @@
 <b>Youtube Factory 10 Demo</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/building-a-media-server-youtube-factorys-local-architecture/">
-<img src="guides/building-a-media-server-youtube-factorys-local-architecture/thumbnail.jpg" width="300" alt="Building A Media Server Youtube Factorys Local Architecture"><br>
-<b>Building A Media Server Youtube Factorys Local Architecture</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
 | **Model Deep Dives** | ![17](https://img.shields.io/badge/17-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -120,6 +120,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Creating Mac Apps With Ai A Step By Step Guide](https://bgill55.github.io/-weightandsee-guides/guides/creating-mac-apps-with-ai-a-step-by-step-guide/)** — 2026-06-15
 - **[Toolsense Review Is This The Ultimate Debugger For Llm Agents](https://bgill55.github.io/-weightandsee-guides/guides/toolsense-review-is-this-the-ultimate-debugger-for-llm-agents/)** — 2026-06-13
 - **[Consumer Gpus In 2026 Can Your Graphics Card Actually Run A 70B Model](https://bgill55.github.io/-weightandsee-guides/guides/consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/)** — 2026-06-13
 - **[Nvidia Gh200 Grace Hopper Superchip What 2000 Gpulevel Ai Performance Means For](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/)** — 2026-06-13
