@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/68_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/69_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/nocode-playbook-build-a-world-cup-2026-predictor-with-llms-typescript-realtime-s/">
+<img src="guides/nocode-playbook-build-a-world-cup-2026-predictor-with-llms-typescript-realtime-s/thumbnail.jpg" width="300" alt="Nocode Playbook Build A World Cup 2026 Predictor With Llms Typescript Realtime S"><br>
+<b>Nocode Playbook Build A World Cup 2026 Predictor With Llms Typescript Realtime S</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/creating-mac-apps-with-ai-a-step-by-step-guide/">
 <img src="guides/creating-mac-apps-with-ai-a-step-by-step-guide/thumbnail.jpg" width="300" alt="Creating Mac Apps With Ai A Step By Step Guide"><br>
@@ -31,12 +37,6 @@
 <b>Advantages Of On Device Ai A Deep Dive Into Jeidobanironsmith</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/youtube-factory-10-demo/">
-<img src="guides/youtube-factory-10-demo/thumbnail.jpg" width="300" alt="Youtube Factory 10 Demo"><br>
-<b>Youtube Factory 10 Demo</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
-| **Model Deep Dives** | ![17](https://img.shields.io/badge/17-blue?style=flat-square) |
+| **Model Deep Dives** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -96,6 +96,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Nocode Playbook Build A World Cup 2026 Predictor With Llms Typescript Realtime S](https://bgill55.github.io/-weightandsee-guides/guides/nocode-playbook-build-a-world-cup-2026-predictor-with-llms-typescript-realtime-s/)** — 2026-06-15
 - **[Advantages Of On Device Ai A Deep Dive Into Jeidobanironsmith](https://bgill55.github.io/-weightandsee-guides/guides/advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/)** — 2026-06-15
 - **[Youtube Factory 10 Demo](https://bgill55.github.io/-weightandsee-guides/guides/youtube-factory-10-demo/)** — 2026-06-15
 - **[Building A Media Server Youtube Factorys Local Architecture](https://bgill55.github.io/-weightandsee-guides/guides/building-a-media-server-youtube-factorys-local-architecture/)** — 2026-06-14
