@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/66_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/67_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/permavid-deep-dive-the-ai-that-never-forgets-your-video-identity/">
+<img src="guides/permavid-deep-dive-the-ai-that-never-forgets-your-video-identity/thumbnail.jpg" width="300" alt="Permavid Deep Dive The Ai That Never Forgets Your Video Identity"><br>
+<b>Permavid Deep Dive The Ai That Never Forgets Your Video Identity</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-omnivision-7-paper-why-ai-finally-understands-motion/">
 <img src="guides/the-omnivision-7-paper-why-ai-finally-understands-motion/thumbnail.jpg" width="300" alt="The OmniVision 7 Paper — Why AI Finally Understands Motion"><br>
@@ -33,7 +39,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![26](https://img.shields.io/badge/26-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
 | **Model Deep Dives** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
@@ -47,6 +53,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Permavid Deep Dive The Ai That Never Forgets Your Video Identity](https://bgill55.github.io/-weightandsee-guides/guides/permavid-deep-dive-the-ai-that-never-forgets-your-video-identity/)** — 2026-06-16
 - **[Deep Dive into AdaHmpLEng — Efficient Small-Scale English Model](https://bgill55.github.io/-weightandsee-guides/guides/deep-dive-into-adahmpleng-50m-5ep-1e-4-64b-efficient-smallscale-english-model/)** — 2026-06-15
 - **[Google Vs Meta Vs Openai The 2026 Ai Search Faceoff](https://bgill55.github.io/-weightandsee-guides/guides/google-vs-meta-vs-openai-the-2026-ai-search-faceoff/)** — 2026-06-15
 - **[Local Vs Cloud Object Detection Showdown Latency Privacy And Cost Per Frame](https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-object-detection-showdown-latency-privacy-and-cost-per-frame/)** — 2026-06-14

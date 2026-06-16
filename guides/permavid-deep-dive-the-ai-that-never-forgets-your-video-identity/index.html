@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A hands‑on review of PermaVid’s new memory‑augmented diffusion engine, showing how it preserves character and lighting consistency across edits, why it outperfo">
+    <meta name="keywords" content="permaVid, video consistency, AI diffusion memory, VFX automation, creative workflow">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="PermaVid Deep Dive: The AI That Never Forgets Your Video Identity - Complete Guide">
+    <meta property="og:description" content="A hands‑on review of PermaVid’s new memory‑augmented diffusion engine, showing how it preserves character and lighting consistency across edits, why it outperforms older diffusion tools, and what this">
+    <meta property="og:type" content="article">
+    <title>PermaVid Deep Dive: The AI That Never Forgets Your Video Identity | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>PermaVid Deep Dive: The AI That Never Forgets Your Video Identity</h1>
+            <p class="subtitle">This guide walks developers through setting up, running, and benchmarking PermaVid’s memory‑augmented diffusion engine. It covers environment preparation, Docker‑based deployment, GPU configuration, and a sample benchmark script that compares PermaVid’s consistency against legacy diffusion tools. The focus is on practical, repeatable steps for VFX artists, editors, and animators who need reliable character and lighting continuity across long video timelines.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 16, 2026</span>
+                <span>4 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>PermaVid uses a persistent tensor cache to lock character embeddings, eliminating drift across frames.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The engine requires a GPU with at least 32 GB VRAM (e.g., RTX 6000 Ada) to handle full‑resolution 4K timelines.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Docker simplifies deployment and ensures consistent runtime across machines.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Benchmarking can be automated with a Python script that pulls sample footage, runs both PermaVid and a baseline tool, and outputs error percentages.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Integrating PermaVid into an existing FastAPI pipeline allows on‑demand inference for editors.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A workstation with an NVIDIA GPU that supports CUDA 12+ and 32 GB+ VRAM.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Docker Engine (>=20.10) and Docker Compose installed.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.10+ with pip, requests, and csv modules.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">AWS credentials if you plan to store rendered frames on S3.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the PermaVid Repository</h3>
+                <p>Clone the official PermaVid repo from GitHub and navigate into the project directory. This repo contains the diffusion engine, sample scripts, and Docker configuration.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/permavid/perma-vid.git
+cd perma-vid</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Build the Docker Image</h3>
+                <p>Use the provided Dockerfile to build an image that contains the required CUDA libraries, Python runtime, and the PermaVid codebase. The image will expose a REST endpoint for inference.</p>
+
+                <div class="code-block"><pre>docker build -t permavid/perma-vid:latest .</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Configure GPU and Environment Variables</h3>
+                <p>Set environment variables for GPU visibility, API keys, and optional S3 storage. The `CUDA_VISIBLE_DEVICES` variable limits the container to the desired GPU. Use `PERMA_API_KEY` for any internal licensing checks.</p>
+
+                <div class="code-block"><pre>export CUDA_VISIBLE_DEVICES=0
+export PERMA_API_KEY=YOUR_PERMA_KEY
+export AWS_ACCESS_KEY_ID=YOUR_AWS_KEY
+export AWS_SECRET_ACCESS_KEY=YOUR_AWS_SECRET
+export S3_BUCKET=permavid-render-output</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Run the Benchmark Script</h3>
+                <p>Execute the Python benchmark script that pulls a sample 30‑minute clip, runs inference with PermaVid and a baseline tool (e.g., Runway Gen‑3), and writes a CSV report of frame‑wise error percentages. The script uses the requests library to fetch test footage and writes results to S3.</p>
+
+                <div class="code-block"><pre>python benchmark.py --video_url https://example.com/sample_clip.mp4 --baseline runway
+
+# benchmark.py
+import requests, csv
+from pathlib import Path
+
+video_url = "https://example.com/sample_clip.mp4"
+response = requests.get(video_url, stream=True)
+Path('sample_clip.mp4').write_bytes(response.content)
+
+# Placeholder: call PermaVid inference API
+# ...
+
+# Write CSV report
+with open('benchmark_report.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['Frame', 'PermaVid_Error', 'Baseline_Error'])
+    # ... populate rows
+
+# Upload to S3
+import boto3
+s3 = boto3.client('s3')
+s3.upload_file('benchmark_report.csv', os.getenv('S3_BUCKET'), 'reports/benchmark_report.csv')</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Pin the reference photo on the GPU memory using CUDA Unified Memory to reduce latency between frames.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use Docker Compose to orchestrate multiple containers: one for PermaVid inference, another for a lightweight FastAPI UI.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Enable NVIDIA Docker runtime (`--gpus all`) to ensure the container can access the full VRAM.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to set `CUDA_VISIBLE_DEVICES` leads to the container using all GPUs, causing memory contention.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Running the benchmark script without a proper baseline tool results in misleading error metrics.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>PermaVid</h4>
+                    <p>Memory‑augmented diffusion engine that preserves character and lighting consistency across video edits.</p>
+                    <a href="https://www.permavid.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>NVIDIA GPU</h4>
+                    <p>CUDA‑compatible GPU required for PermaVid inference.</p>
+                    <a href="https://developer.nvidia.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Docker</h4>
+                    <p>Container platform used to package PermaVid and its dependencies.</p>
+                    <a href="https://www.docker.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>AWS S3</h4>
+                    <p>Object storage for benchmark outputs and rendered frames.</p>
+                    <a href="https://aws.amazon.com/s3" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>AWS Lambda</h4>
+                    <p>Serverless compute for ETL pipelines (used in research context).</p>
+                    <a href="https://aws.amazon.com/lambda" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>FastAPI</h4>
+                    <p>Python web framework for exposing PermaVid inference as a REST API.</p>
+                    <a href="https://fastapi.tiangolo.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>PostgreSQL</h4>
+                    <p>Relational database for storing metadata and logs.</p>
+                    <a href="https://www.postgresql.org" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>React</h4>
+                    <p>JavaScript library for building a user interface to monitor inference jobs.</p>
+                    <a href="https://reactjs.org" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Python requests</h4>
+                    <p>HTTP library used in the benchmark script to download test footage.</p>
+                    <a href="https://docs.python-requests.org" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What GPU specifications are required for PermaVid?</h3>
+                <p>PermaVid needs a CUDA‑compatible GPU with at least 32 GB of VRAM (e.g., RTX 6000 Ada). Lower‑VRAM GPUs may experience frame drops or memory errors.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I run PermaVid inference without Docker?</h3>
+                <p>Yes, but Docker ensures consistent dependencies. If you prefer a native install, clone the repo, create a virtual environment, and install the `requirements.txt` with pip.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I integrate PermaVid with an existing video editing workflow?</h3>
+                <p>Expose the inference endpoint via FastAPI, then call it from your editor’s scripting interface (e.g., DaVinci Resolve Fusion or After Effects ExtendScript) to process selected clips.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is there a licensing cost for PermaVid?</h3>
+                <p>PermaVid is available under a commercial license. Contact sales at sales@permavid.com for pricing details.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What happens if the reference photo is not available during inference?</h3>
+                <p>PermaVid will default to a generic embedding, which can lead to drift. Always provide the pinned reference photo in the request payload.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.permavid.com/whitepaper" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            PermaVid Whitepaper – Memory‑Augmented Diffusion for Video
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Detailed technical description of the memory‑augmented architecture and training pipeline.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://developer.nvidia.com/cuda-unified-memory" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            CUDA Unified Memory Guide
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — How to allocate and manage unified memory for low‑latency GPU workloads.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.docker.com/develop/develop-images/machine-learning/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Docker for Machine Learning
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Best practices for packaging ML models in Docker containers.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://fastapi.tiangolo.com/tutorial/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            FastAPI Tutorial – Building a REST API
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Step‑by‑step guide to creating a FastAPI application.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#PermaVidDeepDive</span>
+                <span class="tag">#permaVid</span>
+                <span class="tag">#videoconsistency</span>
+                <span class="tag">#AIdiffusionmemory</span>
+                <span class="tag">#VFXautomation</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-16 02:53 • This guide accompanies the video: "PermaVid Deep Dive: The AI That Never Forgets Your Video Identity"</p>
+        </footer>
+    </div>
+</body>
+</html>
