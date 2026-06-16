@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/69_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/64_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -45,8 +45,8 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
-| **Model Deep Dives** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![28](https://img.shields.io/badge/28-blue?style=flat-square) |
+| **Model Deep Dives** | ![15](https://img.shields.io/badge/15-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -60,8 +60,6 @@
 *Head-to-head model showdowns and real-world performance tests*
 
 - **[Local Vs Cloud Object Detection Showdown Latency Privacy And Cost Per Frame](https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-object-detection-showdown-latency-privacy-and-cost-per-frame/)** — 2026-06-14
-- **[Youtube Factory Deep Dive Endtoend Ai Video Creation On Your Own Gpu](https://bgill55.github.io/-weightandsee-guides/guides/youtube-factory-deep-dive-endtoend-ai-video-creation-on-your-own-gpu/)** — 2026-06-14
-- **[Selfhosted Youtube Factory Vs Runway Gen2 Latency Cost Privacy Battle 2026](https://bgill55.github.io/-weightandsee-guides/guides/selfhosted-youtube-factory-vs-runway-gen2-latency-cost-privacy-battle-2026/)** — 2026-06-13
 - **[Supertonic 3 Beats Google Cloud Tts Ondevice Multilingual Speed Privacy Test](https://bgill55.github.io/-weightandsee-guides/guides/supertonic-3-beats-google-cloud-tts-ondevice-multilingual-speed-privacy-test/)** — 2026-06-13
 - **[Agent Reach Deep Dive Free Open Source Alternative To Paid Apis](https://bgill55.github.io/-weightandsee-guides/guides/agent-reach-deep-dive-free-open-source-alternative-to-paid-apis/)** — 2026-06-13
 - **[Kimik27Code Vs Copilot Vs Codewhisperer Who Wins The Coding Race](https://bgill55.github.io/-weightandsee-guides/guides/kimik27code-vs-copilot-vs-codewhisperer-who-wins-the-coding-race/)** — 2026-06-13
@@ -98,14 +96,11 @@
 
 - **[Nocode Playbook Build A World Cup 2026 Predictor With Llms Typescript Realtime S](https://bgill55.github.io/-weightandsee-guides/guides/nocode-playbook-build-a-world-cup-2026-predictor-with-llms-typescript-realtime-s/)** — 2026-06-15
 - **[Advantages Of On Device Ai A Deep Dive Into Jeidobanironsmith](https://bgill55.github.io/-weightandsee-guides/guides/advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/)** — 2026-06-15
-- **[Youtube Factory 10 Demo](https://bgill55.github.io/-weightandsee-guides/guides/youtube-factory-10-demo/)** — 2026-06-15
-- **[Building A Media Server Youtube Factorys Local Architecture](https://bgill55.github.io/-weightandsee-guides/guides/building-a-media-server-youtube-factorys-local-architecture/)** — 2026-06-14
 - **[The Future Of Reactive Audio How Flux 2 Changes Game Design](https://bgill55.github.io/-weightandsee-guides/guides/the-future-of-reactive-audio-how-flux-2-changes-game-design/)** — 2026-06-13
 - **[Supertonic Review Is Local Tts Finally Viable](https://bgill55.github.io/-weightandsee-guides/guides/supertonic-review-is-local-tts-finally-viable/)** — 2026-06-13
 - **[Automating Your Business With Fable And Mythos](https://bgill55.github.io/-weightandsee-guides/guides/automating-your-business-with-fable-and-mythos/)** — 2026-06-13
 - **[Ollama V090 Run Any Llm Locally In 2026 Heres What Changed](https://bgill55.github.io/-weightandsee-guides/guides/ollama-v090-run-any-llm-locally-in-2026-heres-what-changed/)** — 2026-06-13
 - **[Nvidia H100 Tensor Core Deep Dive What The New Hopper Gpu Means For Ai Workloads](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-h100-tensor-core-deep-dive-what-the-new-hopper-gpu-means-for-ai-workloads/)** — 2026-06-13
-- **[The Ai That Built This Video Inside Youtube Factory Pipeline](https://bgill55.github.io/-weightandsee-guides/guides/the-ai-that-built-this-video-inside-youtube-factory-pipeline/)** — 2026-06-13
 - **[Chatgpt V5 The New Ai Weapon For Autonomous Penetration Testing](https://bgill55.github.io/-weightandsee-guides/guides/chatgpt-v5-the-new-ai-weapon-for-autonomous-penetration-testing/)** — 2026-06-12
 - **[How Flux 2S Texttovideo Engine Is Changing Creative Workflows](https://bgill55.github.io/-weightandsee-guides/guides/how-flux-2s-texttovideo-engine-is-changing-creative-workflows/)** — 2026-06-11
 - **[Pentestai Review Aipowered Penetration Testing With Chatgpt V55](https://bgill55.github.io/-weightandsee-guides/guides/pentestai-review-aipowered-penetration-testing-with-chatgpt-v55/)** — 2026-06-11
