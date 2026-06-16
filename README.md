@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/70_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/71_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/why-minimax-m3-breaks-the-alphazero-compute-mold/">
+<img src="guides/why-minimax-m3-breaks-the-alphazero-compute-mold/thumbnail.jpg" width="300" alt="Why Minimax M3 Breaks The Alphazero Compute Mold"><br>
+<b>Why Minimax M3 Breaks The Alphazero Compute Mold</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/google-vs-meta-vs-openai-the-2026-ai-search-faceoff/">
 <img src="guides/google-vs-meta-vs-openai-the-2026-ai-search-faceoff/thumbnail.jpg" width="300" alt="Google Vs Meta Vs Openai The 2026 Ai Search Faceoff"><br>
@@ -31,12 +37,6 @@
 <b>Nocode Playbook Build A World Cup 2026 Predictor With Llms Typescript Realtime S</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/creating-mac-apps-with-ai-a-step-by-step-guide/">
-<img src="guides/creating-mac-apps-with-ai-a-step-by-step-guide/thumbnail.jpg" width="300" alt="Creating Mac Apps With Ai A Step By Step Guide"><br>
-<b>Creating Mac Apps With Ai A Step By Step Guide</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![31](https://img.shields.io/badge/31-blue?style=flat-square) |
-| **Model Deep Dives** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
+| **Model Deep Dives** | ![19](https://img.shields.io/badge/19-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -97,6 +97,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Why Minimax M3 Breaks The Alphazero Compute Mold](https://bgill55.github.io/-weightandsee-guides/guides/why-minimax-m3-breaks-the-alphazero-compute-mold/)** — 2026-06-15
 - **[Nocode Playbook Build A World Cup 2026 Predictor With Llms Typescript Realtime S](https://bgill55.github.io/-weightandsee-guides/guides/nocode-playbook-build-a-world-cup-2026-predictor-with-llms-typescript-realtime-s/)** — 2026-06-15
 - **[Advantages Of On Device Ai A Deep Dive Into Jeidobanironsmith](https://bgill55.github.io/-weightandsee-guides/guides/advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/)** — 2026-06-15
 - **[Youtube Factory 10 Demo](https://bgill55.github.io/-weightandsee-guides/guides/youtube-factory-10-demo/)** — 2026-06-15
