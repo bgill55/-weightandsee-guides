@@ -7,28 +7,31 @@
     <meta name="keywords" content="Prometheus AI, Ollama, AWS, AI coding assistant, LLM benchmark">
     <meta name="author" content="Weight and See">
     <meta property="og:title" content="Prometheus AI Engineer: Jeff Bezos’s AWS‑Ready Agent Takes on Ollama 0.9 - Complete Guide">
-    <meta property="og:description" content="We break down the freshly announced Prometheus AI Engineer, Jeff Bezos’s internal AWS‑integrated coding agent, compare its performance and roadmap to Ollama 0.9, and show why it could become the defau">
+    <meta property="og:description" content="We break down the freshly announced Prometheus AI Engineer, Jeff Bezos’s internal AWS‑integrated coding agent, compare its performance and roadmap to Ollama 0.9">
     <meta property="og:type" content="article">
     <title>Prometheus AI Engineer: Jeff Bezos’s AWS‑Ready Agent Takes on Ollama 0.9 | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0f0f0f;
-            --bg-secondary: #1a1a1a;
-            --bg-card: #252525;
-            --text-primary: #f1f1f1;
-            --text-secondary: #a0a0a0;
-            --accent: #6366f1;
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
             --accent-light: #818cf8;
-            --green: #22c55e;
-            --yellow: #eab308;
+            --green: #10b981;
+            --yellow: #f59e0b;
             --red: #ef4444;
-            --border: #333;
+            --border: #374151;
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
@@ -317,10 +320,10 @@
         <header class="header">
             <span class="badge">Complete Guide</span>
             <h1>Prometheus AI Engineer: Jeff Bezos’s AWS‑Ready Agent Takes on Ollama 0.9</h1>
-            <p class="subtitle">This guide compares Prometheus AI Engineer and Ollama 0.9, highlighting how Prometheus integrates with AWS to automate coding tasks, deployment, and monitoring, making it a potential default AI assistant for cloud-first developers.</p>
+            <p class="subtitle">This guide explores the Prometheus AI Engineer, a cloud-native coding agent designed to generate and deploy microservices using AWS infrastructure. We cover the setup of AWS Bedrock and Lambda environments, the automated generation of code and CI pipelines, and the deployment process, contrasting this approach with local runners like Ollama 0.9.</p>
             <div class="meta">
                 <span>By Weight and See</span>
-                <span>June 11, 2026</span>
+                <span>June 15, 2026</span>
                 <span>3 Steps</span>
             </div>
         </header>
@@ -329,13 +332,12 @@
             <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
             <div class="card">
                 <ul class="takeaway-list">
-                    <li><span class="takeaway-num">1</span><span>Prometheus AI Engineer automates coding tasks and integrates seamlessly with AWS services like Bedrock and Lambda.</span></li>
-                    <li><span class="takeaway-num">2</span><span>It generates ready-to-run microservices, auto-generated READMEs, test suites, and CI pipelines.</span></li>
-                    <li><span class="takeaway-num">3</span><span>Prometheus offers automated deployment, monitoring, and scaling, whereas Ollama 0.9 requires manual intervention.</span></li>
-                    <li><span class="takeaway-num">4</span><span>Pricing for Prometheus is based on API calls and compute hours, scaling with usage, while Ollama 0.9 involves upfront hardware and model license costs.</span></li>
-                    <li><span class="takeaway-num">5</span><span>Prometheus acts as a workflow partner that anticipates the next step in cloud development.</span></li>
-                    <li><span class="takeaway-num">6</span><span>The tool reduces the need for manual configuration and restocking of models and dependencies.</span></li>
-                    <li><span class="takeaway-num">7</span><span>Prometheus could become the default AI assistant for cloud-first developers due to its integration and automation capabilities.</span></li>
+                    <li><span class="takeaway-num">1</span><span>Prometheus AI Engineer leverages AWS Bedrock for LLM inference and Lambda for serverless compute, contrasting with Ollama's local execution model.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The agent automates the full microservice lifecycle, including README generation, test suite creation, and CI pipeline configuration.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Deployment is handled natively within the AWS ecosystem, providing integrated monitoring and automatic scaling capabilities.</span></li>
+                    <li><span class="takeaway-num">4</span><span>The system includes built-in cost-optimization features to manage cloud resource usage effectively.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Users must have specific AWS IAM permissions configured for Bedrock and Lambda to utilize the agent's capabilities.</span></li>
+                    <li><span class="takeaway-num">6</span><span>Prometheus supports multiple programming languages, auto-generating scaffolding tailored to the user's choice.</span></li>
                 </ul>
             </div>
         </section>
@@ -344,8 +346,9 @@
             <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
             <div class="card">
                 <ul>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of AWS services like Bedrock, Lambda, and CloudFormation.</li>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with coding practices and deployment workflows.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Active AWS Account with Business or Enterprise support tier (recommended for Bedrock access)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">AWS CLI installed and configured with valid credentials</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">IAM User permissions for Amazon Bedrock (InvokeModel) and AWS Lambda (CreateFunction, UpdateFunctionCode)</li>
                 </ul>
             </div>
         </section>
@@ -355,20 +358,54 @@
 
             <div class="step">
                 <span class="step-num">1</span>
-                <h3>Step 1: Setting Up Prometheus AI Engineer</h3>
-                <p>To get started with Prometheus, ensure you have access to AWS services, particularly Bedrock and Lambda. Configure your environment to integrate with these services.</p>
+                <h3>Step 1: Configure AWS Environment for Bedrock and Lambda</h3>
+                <p>Before using Prometheus, you must ensure your AWS environment is authenticated and has the necessary services enabled. This involves setting up the AWS CLI with a profile that has permissions to access Amazon Bedrock models and create Lambda functions. Verify that Bedrock is enabled in your specific region.</p>
+
+                <div class="code-block"><pre># Install AWS CLI if not present
+# pip install awscli
+
+# Configure credentials
+aws configure --profile prometheus-engineer
+
+# Verify Bedrock access (ensure models are enabled in console)
+aws bedrock list-foundation-models --region us-east-1 --profile prometheus-engineer</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">2</span>
-                <h3>Step 2: Generating a Microservice with Prometheus</h3>
-                <p>Press a button in the Prometheus interface to generate a ready-to-run microservice. The system will auto-generate a README, test suite, and CI pipeline tailored to your language of choice.</p>
+                <h3>Step 2: Generate Microservice Scaffolding</h3>
+                <p>Interact with the Prometheus interface to generate your microservice. While the agent handles the 'Press a button' workflow, it outputs a standard project structure including a SAM template (for Lambda), a package.json (for Node.js), or a requirements.txt (for Python). Below is an example of the SAM template structure the agent typically generates to define the infrastructure.</p>
+
+                <div class="code-block"><pre># template.yaml (Generated by Prometheus)
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Auto-generated microservice by Prometheus
+
+Resources:
+  MyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.handler
+      Runtime: python3.9
+      CodeUri: ./src
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">3</span>
-                <h3>Step 3: Deploying and Monitoring with Prometheus</h3>
-                <p>Prometheus seamlessly integrates with AWS to deploy your microservice, handle monitoring, and scaling. The system also provides cost-optimization suggestions.</p>
+                <h3>Step 3: Deploy and Monitor via AWS Console</h3>
+                <p>Once the code is generated, Prometheus triggers the deployment process. You can verify the deployment and monitor the microservice using the AWS CLI or CloudWatch. The agent typically sets up a CloudWatch Log Group automatically. Use the following command to tail the logs of the deployed service.</p>
+
+                <div class="code-block"><pre># Deploy the generated stack (if using SAM CLI)
+sam deploy --guided
+
+# Monitor logs for the specific function
+aws logs tail /aws/lambda/MyFunction --follow --profile prometheus-engineer</pre></div>
             </div>
         </section>
 
@@ -376,15 +413,15 @@
             <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Leverage Prometheus's automation capabilities to streamline your coding and deployment workflow.
+                <strong>Pro Tip:</strong> Enable Cost Anomaly Detection in AWS Billing Console to work in tandem with Prometheus's cost-optimization suggestions.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Utilize the auto-generated documentation and test suites to ensure high-quality code.
+                <strong>Pro Tip:</strong> Use AWS Bedrock's 'Provisioned Throughput' if your generated microservice requires high consistency and low latency for LLM calls.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Take advantage of Prometheus's seamless AWS integration for efficient cost management.
+                <strong>Pro Tip:</strong> Regularly review the IAM policies generated by Prometheus to ensure the principle of least privilege is maintained.
             </div>
         </section>
 
@@ -392,11 +429,15 @@
             <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 1: Underestimating the learning curve for setting up and fully utilizing Prometheus's integration with AWS services.
+                <strong>Watch Out:</strong> Pitfall 1: Missing Model Access. Users often forget to explicitly request access to specific foundation models (like Claude 3 or Titan) in the AWS Bedrock console, causing the agent to fail during inference.
             </div>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 2: Not fully exploring the automation capabilities of Prometheus, leading to missed opportunities for workflow optimization.
+                <strong>Watch Out:</strong> Pitfall 2: Region Mismatch. Prometheus might default to us-east-1 for Bedrock, but if your Lambda or S3 buckets are in us-west-2, latency and cross-region costs will increase.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Timeout Settings. Generated Lambda functions often default to 3-second timeouts, which is insufficient for LLM inference; ensure the agent sets timeouts to at least 30-60 seconds.
             </div>
         </section>
 
@@ -405,27 +446,27 @@
             <div class="tool-grid">
 
                 <div class="tool-card">
-                    <h4>Prometheus AI Engineer</h4>
-                    <p>An AI-powered coding assistant that integrates with AWS services to automate coding tasks and deployment.</p>
-                    
-                </div>
-
-                <div class="tool-card">
-                    <h4>Ollama 0.9</h4>
-                    <p>A coding assistant that requires manual intervention for model updates and deployment.</p>
-                    
-                </div>
-
-                <div class="tool-card">
                     <h4>AWS Bedrock</h4>
-                    <p>A service used for building and deploying machine learning models.</p>
+                    <p>Fully managed service for building generative AI applications with foundation models.</p>
                     <a href="https://aws.amazon.com/bedrock/" target="_blank">View Resource →</a>
                 </div>
 
                 <div class="tool-card">
                     <h4>AWS Lambda</h4>
-                    <p>A serverless compute service for running code.</p>
+                    <p>Serverless compute service that runs code in response to events and automatically manages compute resources.</p>
                     <a href="https://aws.amazon.com/lambda/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Prometheus AI Engineer</h4>
+                    <p>AWS-integrated coding agent for generating microservices.</p>
+                    
+                </div>
+
+                <div class="tool-card">
+                    <h4>Ollama 0.9</h4>
+                    <p>Tool for running large language models locally.</p>
+                    <a href="https://ollama.com/" target="_blank">View Resource →</a>
                 </div>
             </div>
         </section>
@@ -434,18 +475,18 @@
             <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
 
             <div class="faq-item card">
-                <h3>What are the main differences between Prometheus AI Engineer and Ollama 0.9?</h3>
-                <p>Prometheus AI Engineer offers automated coding, deployment, and monitoring with seamless AWS integration, while Ollama 0.9 requires manual intervention for these tasks.</p>
+                <h3>How does Prometheus AI Engineer differ from using Ollama 0.9?</h3>
+                <p>Prometheus is a cloud-native agent tightly integrated with AWS services like Bedrock and Lambda, designed for enterprise-grade deployment and scalability. Ollama 0.9 focuses on running open-source models locally on your hardware, offering privacy and zero cloud costs but lacking enterprise infrastructure integration.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>How does Prometheus AI Engineer integrate with AWS services?</h3>
-                <p>Prometheus integrates with services like Bedrock and Lambda to automate coding tasks, deployment, and monitoring.</p>
+                <h3>Do I need to write a Dockerfile to use Prometheus?</h3>
+                <p>Not necessarily. While Prometheus can generate containerized deployments, it primarily focuses on serverless architectures using AWS Lambda (Zip deployment), which abstracts the OS layer away from the user.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>What is the pricing model for Prometheus AI Engineer?</h3>
-                <p>Prometheus bills per API call to Bedrock and per compute hour, scaling with usage.</p>
+                <h3>What programming languages does the Prometheus agent support?</h3>
+                <p>The agent is designed to be language-agnostic but commonly generates scaffolding for Node.js, Python, and Go, aligning with AWS Lambda's primary runtimes.</p>
             </div>
         </section>
 
@@ -455,17 +496,17 @@
                 <ul>
 
                     <li style="padding: 8px 0;">
-                        <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/what-is.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            AWS Bedrock Documentation
+                        <a href="https://docs.aws.amazon.com/lambda/latest/dg/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            AWS Lambda Developer Guide
                         </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Detailed documentation on using AWS Bedrock for machine learning tasks.</span>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation on deploying and configuring Lambda functions.</span>
                     </li>
 
                     <li style="padding: 8px 0;">
-                        <a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            AWS Lambda Documentation
+                        <a href="https://docs.aws.amazon.com/bedrock/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Amazon Bedrock Documentation
                         </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Comprehensive guide to deploying and managing serverless applications with AWS Lambda.</span>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Guide to integrating foundation models into applications.</span>
                     </li>
                 </ul>
             </div>
@@ -477,13 +518,8 @@
                 <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
             </p>
             <div class="tags">
-                <span class="tag">#PrometheusAIEngineer</span>
-                <span class="tag">#PrometheusAI</span>
-                <span class="tag">#Ollama</span>
-                <span class="tag">#AWS</span>
-                <span class="tag">#AIcodingassistant</span>
             </div>
-            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-11 13:03 • This guide accompanies the video: "Prometheus AI Engineer: Jeff Bezos’s AWS‑Ready Agent Takes on Ollama 0.9"</p>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-15 18:47 • This guide accompanies the video: "Prometheus AI Engineer: Jeff Bezos’s AWS‑Ready Agent Takes on Ollama 0.9"</p>
         </footer>
     </div>
 </body>

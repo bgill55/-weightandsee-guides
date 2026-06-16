@@ -7,28 +7,31 @@
     <meta name="keywords" content="PromptFlow, no‑code AI, GPT‑5.5, Llama‑4, workflow automation">
     <meta name="author" content="Weight and See">
     <meta property="og:title" content="AutoVision vs Stable Diffusion 3.1: Edge Image Generation Showdown - Complete Guide">
-    <meta property="og:description" content="Show how PromptFlow, the newest no‑code platform released this week on ShowHN, lets you stitch GPT‑5.5 and Llama‑4 into autonomous business workflows. The video walks through its visual editor, API co">
+    <meta property="og:description" content="Show how PromptFlow, the newest no‑code platform released this week on ShowHN, lets you stitch GPT‑5.5 and Llama‑4 into autonomous business workflows. The video">
     <meta property="og:type" content="article">
     <title>AutoVision vs Stable Diffusion 3.1: Edge Image Generation Showdown | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0f0f0f;
-            --bg-secondary: #1a1a1a;
-            --bg-card: #252525;
-            --text-primary: #f1f1f1;
-            --text-secondary: #a0a0a0;
-            --accent: #6366f1;
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
             --accent-light: #818cf8;
-            --green: #22c55e;
-            --yellow: #eab308;
+            --green: #10b981;
+            --yellow: #f59e0b;
             --red: #ef4444;
-            --border: #333;
+            --border: #374151;
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
@@ -317,10 +320,10 @@
         <header class="header">
             <span class="badge">Complete Guide</span>
             <h1>AutoVision vs Stable Diffusion 3.1: Edge Image Generation Showdown</h1>
-            <p class="subtitle">This guide compares AutoVision and Stable Diffusion 3.1 for edge image generation, exploring their capabilities, and use cases. It also introduces PromptFlow, a no-code platform for creating autonomous business workflows with AI models like GPT-5.5 and Llama-4. The guide helps determine which model is best for specific projects.</p>
+            <p class="subtitle">This guide walks you through comparing AutoVision and Stable Diffusion 3.1 for edge image generation, and shows how to build a no‑code AI workflow using PromptFlow. It covers setting up API access, creating a workflow, and tips for optimizing image quality.</p>
             <div class="meta">
                 <span>By Weight and See</span>
-                <span>June 11, 2026</span>
+                <span>June 15, 2026</span>
                 <span>3 Steps</span>
             </div>
         </header>
@@ -329,11 +332,11 @@
             <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
             <div class="card">
                 <ul class="takeaway-list">
-                    <li><span class="takeaway-num">1</span><span>AutoVision and Stable Diffusion 3.1 are cutting-edge models for edge image generation</span></li>
-                    <li><span class="takeaway-num">2</span><span>PromptFlow is a no-code platform for creating autonomous business workflows with AI models</span></li>
-                    <li><span class="takeaway-num">3</span><span>AutoVision produces images with crisp details and vibrant colors</span></li>
-                    <li><span class="takeaway-num">4</span><span>Stable Diffusion 3.1 produces images with a more rustic, artistic feel</span></li>
-                    <li><span class="takeaway-num">5</span><span>The choice between AutoVision and Stable Diffusion 3.1 depends on specific use cases and performance requirements</span></li>
+                    <li><span class="takeaway-num">1</span><span>AutoVision delivers high‑resolution, vibrant images with crisp details, ideal for commercial graphics.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Stable Diffusion 3.1 offers a more artistic, rustic style and can be run locally or via the Hugging Face Inference API.</span></li>
+                    <li><span class="takeaway-num">3</span><span>PromptFlow lets you combine multiple AI models into autonomous workflows without writing code.</span></li>
+                    <li><span class="takeaway-num">4</span><span>You can drag‑and‑drop API connectors in PromptFlow to mix AutoVision and Stable Diffusion outputs.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Testing workflows live in PromptFlow helps quickly iterate on prompt and model selection.</span></li>
                 </ul>
             </div>
         </section>
@@ -342,8 +345,8 @@
             <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
             <div class="card">
                 <ul>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of AI models and edge computing</li>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with no-code platforms and workflow management</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">API keys for AutoVision, Stable Diffusion 3.1 (Hugging Face), and PromptFlow.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of REST APIs and JSON payloads.</li>
                 </ul>
             </div>
         </section>
@@ -353,20 +356,68 @@
 
             <div class="step">
                 <span class="step-num">1</span>
-                <h3>Step 1: Understanding AutoVision and Stable Diffusion 3.1</h3>
-                <p>AutoVision is like a high-tech oven, producing images with crisp details and vibrant colors. Stable Diffusion 3.1 is like a classic stove, producing images with a more rustic, artistic feel.</p>
+                <h3>Step 1: Set Up API Credentials</h3>
+                <p>Create accounts on AutoVision, Hugging Face, and PromptFlow. Store the API keys in environment variables for secure access. On a Unix shell, export them as:</p>
+
+                <div class="code-block"><pre>```bash
+export AUTOVISION_API_KEY=your_autovision_key
+export HF_API_KEY=your_huggingface_key
+export PROMPTFLOW_TOKEN=your_promptflow_token
+```</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">2</span>
-                <h3>Step 2: Introduction to PromptFlow</h3>
-                <p>PromptFlow is a no-code platform that lets you stitch AI models like GPT-5.5 and Llama-4 into autonomous business workflows. With PromptFlow, you can create custom workflows without writing a line of code.</p>
+                <h3>Step 2: Test Image Generation APIs</h3>
+                <p>Verify that each image model is reachable by sending a simple POST request. Use curl or a small Python script to generate a test image.</p>
+
+                <div class="code-block"><pre>```bash
+# AutoVision
+curl -X POST https://api.autovision.com/v1/generate \
+  -H "Authorization: Bearer $AUTOVISION_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "A futuristic city skyline", "size": "1024x1024"}' > autovision.png
+
+# Stable Diffusion 3.1 via Hugging Face
+curl -X POST https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-3.1 \
+  -H "Authorization: Bearer $HF_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"inputs": "A fantasy landscape"}' > sd3.1.png
+```</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">3</span>
-                <h3>Step 3: Creating a Workflow with PromptFlow</h3>
-                <p>Simply drag and drop API connectors, add your models, and test them live. This allows you to mix and match different AI models to create custom workflows.</p>
+                <h3>Step 3: Build a PromptFlow Workflow</h3>
+                <p>Log into PromptFlow’s web UI, create a new workflow named "Edge Image Generator", and drag connectors for AutoVision and Stable Diffusion. Configure each step to accept a prompt, pass the result to the next step, and store the image URLs in a final output node. After building, click the "Run" button to execute the workflow and preview images side‑by‑side.</p>
+
+                <div class="code-block"><pre>```json
+{
+  "name": "Edge Image Generator",
+  "steps": [
+    {
+      "id": "auto",
+      "type": "api",
+      "connector": "AutoVision",
+      "inputs": {"prompt": "{{prompt}}", "size": "1024x1024"}
+    },
+    {
+      "id": "sd",
+      "type": "api",
+      "connector": "StableDiffusion3.1",
+      "inputs": {"prompt": "{{prompt}}", "size": "1024x1024"}
+    },
+    {
+      "id": "output",
+      "type": "output",
+      "inputs": {
+        "autoImage": "{{auto.image_url}}",
+        "sdImage": "{{sd.image_url}}"
+      }
+    }
+  ]
+}
+```</pre></div>
             </div>
         </section>
 
@@ -374,15 +425,15 @@
             <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Consider the specific use case and performance requirements when choosing between AutoVision and Stable Diffusion 3.1
+                <strong>Pro Tip:</strong> Use PromptFlow’s built‑in parameter tuning to adjust temperature and guidance scale for each model to balance creativity and fidelity.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Use PromptFlow's visual editor and live-testing mode to streamline workflow creation and testing
+                <strong>Pro Tip:</strong> Cache image outputs in a CDN or cloud storage to reduce API call costs during repeated comparisons.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Explore the possibilities of edge image generation with AI models like AutoVision and Stable Diffusion 3.1
+                <strong>Pro Tip:</strong> Leverage PromptFlow’s branching logic to route prompts to the model that historically produces better results for a given category (e.g., landscapes vs portraits).
             </div>
         </section>
 
@@ -390,11 +441,11 @@
             <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 1: Not considering the specific use case and performance requirements when choosing between AutoVision and Stable Diffusion 3.1
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to set the correct image size in the API payload; this can lead to truncated or low‑resolution images.
             </div>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 2: Underestimating the potential of no-code platforms like PromptFlow for creating autonomous business workflows
+                <strong>Watch Out:</strong> Pitfall 2: Exceeding API rate limits by running multiple parallel workflows; always monitor quota usage in the dashboard.
             </div>
         </section>
 
@@ -404,32 +455,26 @@
 
                 <div class="tool-card">
                     <h4>PromptFlow</h4>
-                    <p>A no-code platform for creating autonomous business workflows with AI models</p>
-                    
+                    <p>A no‑code platform for building AI‑driven workflows by connecting APIs and models.</p>
+                    <a href="https://www.promptflow.io" target="_blank">View Resource →</a>
                 </div>
 
                 <div class="tool-card">
                     <h4>AutoVision</h4>
-                    <p>A cutting-edge model for edge image generation</p>
-                    
+                    <p>An edge image generation API that produces high‑resolution, vibrant images.</p>
+                    <a href="https://api.autovision.com" target="_blank">View Resource →</a>
                 </div>
 
                 <div class="tool-card">
                     <h4>Stable Diffusion 3.1</h4>
-                    <p>A cutting-edge model for edge image generation</p>
-                    
+                    <p>Open‑source text‑to‑image model with artistic, rustic output.</p>
+                    <a href="https://github.com/Stability-AI/stablediffusion" target="_blank">View Resource →</a>
                 </div>
 
                 <div class="tool-card">
-                    <h4>GPT-5.5</h4>
-                    <p>A powerful AI model</p>
-                    
-                </div>
-
-                <div class="tool-card">
-                    <h4>Llama-4</h4>
-                    <p>A powerful AI model</p>
-                    
+                    <h4>Hugging Face Inference API</h4>
+                    <p>Hosted API for running models like Stable Diffusion.</p>
+                    <a href="https://huggingface.co/inference" target="_blank">View Resource →</a>
                 </div>
             </div>
         </section>
@@ -438,18 +483,52 @@
             <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
 
             <div class="faq-item card">
-                <h3>What is edge image generation?</h3>
-                <p>Edge image generation refers to the process of generating images at the edge of a network, without relying on a centralized server or cloud infrastructure.</p>
+                <h3>Can I run Stable Diffusion 3.1 locally instead of using the Hugging Face API?</h3>
+                <p>Yes, download the model weights from Hugging Face and run them on a GPU‑enabled machine using the official Stable Diffusion repo.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>What is PromptFlow?</h3>
-                <p>PromptFlow is a no-code platform for creating autonomous business workflows with AI models like GPT-5.5 and Llama-4.</p>
+                <h3>How do I compare image quality metrics between AutoVision and Stable Diffusion?</h3>
+                <p>Use perceptual similarity metrics like LPIPS or SSIM on a set of test prompts, and store the scores in PromptFlow’s output node for analysis.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>How do I choose between AutoVision and Stable Diffusion 3.1?</h3>
-                <p>The choice between AutoVision and Stable Diffusion 3.1 depends on your specific use case and performance requirements. AutoVision produces images with crisp details and vibrant colors, while Stable Diffusion 3.1 produces images with a more rustic, artistic feel.</p>
+                <h3>What if my prompt includes copyrighted text or imagery?</h3>
+                <p>Both AutoVision and Stable Diffusion enforce content policies; ensure your prompts comply with their terms of service to avoid rejection.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I integrate other models, such as DALL‑E 3, into the same PromptFlow workflow?</h3>
+                <p>Yes, add a new API connector for DALL‑E 3 and configure the workflow to route prompts to it based on user selection.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.promptflow.io" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            PromptFlow Documentation – Building Workflows
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Comprehensive guide to creating and testing workflows in PromptFlow.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://api.autovision.com/docs" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            AutoVision API Reference
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Details on endpoints, parameters, and usage limits.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/Stability-AI/stablediffusion/releases/tag/v3.1" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Stable Diffusion 3.1 Release Notes
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — New features, improvements, and deployment options for SD 3.1.</span>
+                    </li>
+                </ul>
             </div>
         </section>
 
@@ -459,13 +538,8 @@
                 <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
             </p>
             <div class="tags">
-                <span class="tag">#PromptFlow</span>
-                <span class="tag">#nocodeAI</span>
-                <span class="tag">#GPT55</span>
-                <span class="tag">#Llama4</span>
-                <span class="tag">#AI</span>
             </div>
-            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-11 09:34 • This guide accompanies the video: "AutoVision vs Stable Diffusion 3.1: Edge Image Generation Showdown"</p>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-15 18:46 • This guide accompanies the video: "AutoVision vs Stable Diffusion 3.1: Edge Image Generation Showdown"</p>
         </footer>
     </div>
 </body>

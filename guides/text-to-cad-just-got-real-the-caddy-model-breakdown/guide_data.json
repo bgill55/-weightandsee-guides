@@ -1,0 +1,95 @@
+{
+  "overview": "This guide explores the CADDY architecture, a breakthrough in Text-to-CAD generation released in May 2026. It details how to transition from raw coordinate prediction to graph-based representations, implement constrained decoding to ensure logical build sequences, and validate geometry to produce manufacturable STEP files.",
+  "key_takeaways": [
+    "CADDY replaces raw coordinate regression with a graph-based representation of CAD build history.",
+    "The generation process treats CAD operations as a sequence of tokens connected in a logical dependency graph.",
+    "Constrained decoding applies a strict 'grammar' to ensure operations like extrusions only follow valid sketches.",
+    "Real-time validation blocks geometric proposals that would break manifoldness or structural integrity.",
+    "The final output is a standard STEP file containing a solid body with a valid construction tree, not just a visual mesh."
+  ],
+  "prerequisites": [
+    "Python 3.9+ environment with PyTorch for model inference.",
+    "Basic understanding of CAD topology (B-Rep, sketches, extrusions).",
+    "A CAD kernel library (e.g., PythonOCC or OpenCascade) to handle geometry processing."
+  ],
+  "step_by_step": [
+    {
+      "title": "Step 1: Define the Graph-Based Representation",
+      "description": "Instead of predicting 3D coordinates directly, structure your data model to represent the CAD build history as a directed acyclic graph (DAG). Each node in the graph represents a distinct operation (e.g., Sketch, Extrude, Fillet), and edges represent dependencies. This allows the model to generate a sequence of tokens that define these operations and their relationships.",
+      "code_example": "class OperationNode:\n    def __init__(self, op_type, parent_id=None, parameters=None):\n        self.op_type = op_type  # e.g., 'sketch', 'extrude'\n        self.parent_id = parent_id # Dependency link\n        self.parameters = parameters # Dimensions, constraints\n\nclass CADGraph:\n    def __init__(self):\n        self.nodes = []\n        self.root = OperationNode('origin')\n\n    def add_operation(self, op_type, parent_id, params):\n        new_node = OperationNode(op_type, parent_id, params)\n        self.nodes.append(new_node)\n        return new_node"
+    },
+    {
+      "title": "Step 2: Implement Constrained Decoding Logic",
+      "description": "Integrate a grammar-based validator into the token generation loop. This function must check the current state of the graph to ensure the next token is valid. For example, an 'Extrude' operation is grammatically invalid if the previous node was not a 'Sketch' or a planar face.",
+      "code_example": "def is_valid_transition(graph, current_node_type, next_token):\n    # Define grammar rules\n    valid_transitions = {\n        'sketch': ['extrude', 'revolve', 'cut'],\n        'extrude': ['fillet', 'chamfer', 'boolean_union'],\n        'origin': ['sketch']\n    }\n    \n    if current_node_type in valid_transitions:\n        return next_token in valid_transitions[current_node_type]\n    return False\n\n# Usage during generation loop\nif is_valid_transition(graph, last_node.op_type, predicted_token):\n    graph.add_operation(predicted_token, ...)"
+    },
+    {
+      "title": "Step 3: Configure Real-Time Geometric Validation",
+      "description": "Set up a geometry kernel to validate the physical result of the proposed operation before committing it to the graph. If the decoder proposes an extrusion that results in a self-intersecting mesh or breaks manifoldness (e.g., creating a hole with zero thickness), the decoder must reject the token and sample a new one.",
+      "code_example": "import OCC.Core.BRepCheck as BRepCheck\n\ndef validate_geometry(brep_object):\n    checker = BRepCheck.BRepCheck_Analyzer(brep_object)\n    # Returns True if the shape is valid (manifold, closed)\n    is_valid = checker.IsValid() \n    \n    if not is_valid:\n        print(\"Invalid geometry detected: Rejected by decoder.\")\n        return False\n    return True\n\n# Inside the generation step\nproposed_shape = kernel.apply_operation(graph, new_node)\nif validate_geometry(proposed_shape):\n    graph.commit(new_node)"
+    },
+    {
+      "title": "Step 4: Export Graph to Manufacturable STEP File",
+      "description": "Once the sequence of operations is generated and validated, traverse the final graph to reconstruct the solid body using the CAD kernel. Export this body as a STEP (Standard for the Exchange of Product Data) file. This ensures the output retains the construction tree and is compatible with industrial CAM/CAE software.",
+      "code_example": "from OCC.Core.STEPControl import STEPControl_Writer\nfrom OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity\n\ndef export_step(graph_shape, filename=\"output.step\"):\n    step_writer = STEPControl_Writer()\n    step_writer.Transfer(graph_shape, STEPControl_AsIs)\n    \n    status = step_writer.Write(filename)\n    if status == IFSelect_RetDone:\n        print(f\"Successfully exported {filename}\")\n    else:\n        print(\"Failed to export STEP file.\")"
+    }
+  ],
+  "pro_tips": [
+    "Cache intermediate geometric states during graph traversal to speed up the real-time validation process.",
+    "Use a separate, lightweight B-Rep checker for the initial grammar pass before running the full kernel validation to optimize inference speed.",
+    "When defining the token vocabulary, include explicit parameter tokens (e.g., 'distance=10mm') rather than just continuous values to make constrained decoding more robust."
+  ],
+  "common_pitfalls": [
+    "Circular Dependencies: Creating a graph where a child node references a parent that hasn't been finalized yet, causing the geometry kernel to crash.",
+    "Ignoring Tolerance: Failing to set appropriate geometric modeling tolerances can lead to 'valid' shapes that fail in downstream manufacturing software.",
+    "Over-constraining: Making the grammar too strict can prevent the model from generating complex, valid organic shapes that break standard rules."
+  ],
+  "tools_mentioned": [
+    {
+      "name": "CADDY Model",
+      "description": "The specific Text-to-CAD architecture utilizing graph-based representations and constrained decoding.",
+      "url": ""
+    },
+    {
+      "name": "STEP (ISO 10303)",
+      "description": "Standard file format for 3D CAD data exchange, ensuring manufacturable solid body output.",
+      "url": "https://en.wikipedia.org/wiki/ISO_10303"
+    },
+    {
+      "name": "PythonOCC",
+      "description": "A Python wrapper for the OpenCascade CAD kernel, used for geometry processing and STEP export.",
+      "url": "https://github.com/tpaviot/pythonocc-core"
+    },
+    {
+      "name": "PyTorch",
+      "description": "Machine learning framework used for running the CADDY model inference.",
+      "url": "https://pytorch.org/"
+    }
+  ],
+  "further_reading": [
+    {
+      "title": "Constrained Decoding for Structured Prediction",
+      "url": "https://arxiv.org/abs/2109.01234",
+      "description": "Academic paper on applying grammars and constraints to neural decoding."
+    },
+    {
+      "title": "Understanding B-Rep Topology",
+      "url": "https://dev.opencascade.org/doc/overview/html/occt_user_guides__modeling_data.html",
+      "description": "Documentation on Boundary Representation (B-Rep) essential for validating CAD geometry."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Why use a graph-based representation instead of point clouds?",
+      "answer": "Graph-based representations capture the construction history and logical dependencies between features (e.g., a fillet depends on an edge), which is necessary for generating editable, parametric CAD files rather than static visual meshes."
+    },
+    {
+      "question": "What happens if the decoder generates an invalid operation?",
+      "answer": "The constrained decoding logic identifies the violation based on the predefined grammar or geometric check, rejects the token, and forces the model to sample the next best token until a valid operation is proposed."
+    },
+    {
+      "question": "Can CADDY generate assemblies or only single parts?",
+      "answer": "The architecture is designed for single-part generation via a construction graph. Generating assemblies would require an additional hierarchy layer to manage part relationships and mating conditions."
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "overview": "This guide provides a forensic methodology for detecting and remediating the 'torch-utils-plus' malicious dependency injection within the Microsoft AI-Forge scaffolding. It covers cryptographic hash verification, post-install hook analysis, and immediate credential rotation protocols.",
+  "key_takeaways": [
+    "Supply chain attacks can inject malicious packages into trusted scaffolding like AI-Forge.",
+    "Always verify installed package hashes against a known-good manifest to detect swaps.",
+    "Malicious packages often use 'postinstall' scripts to exfiltrate environment variables immediately upon installation.",
+    "Automated local audit scripts can identify discrepancies faster than manual inspection.",
+    "Root cause remediation requires purging the malicious package and rotating all exposed API keys."
+  ],
+  "prerequisites": [
+    "Python environment with affected AI-Forge packages installed",
+    "Access to the official Microsoft AI-Forge hash manifest",
+    "Administrative access to modify system environment variables"
+  ],
+  "step_by_step": [
+    {
+      "title": "Step 1: Audit Against Known-Good Manifest",
+      "description": "Generate a hash list of every installed package in your environment and compare it against the official Microsoft AI-Forge manifest. This ensures that no packages have been swapped or modified. You will need to calculate the SHA256 hash for the package metadata or contents and diff them against the trusted list.",
+      "code_example": "cd /path/to/your/venv/lib/pythonX.X/site-packages\nsha256sum */*-dist.info/RECORD > local_hashes.txt\ndiff local_hashes.txt official_ai_forge_hashes.txt"
+    },
+    {
+      "title": "Step 2: Scan for Post-Install Hooks",
+      "description": "Malicious dependencies often execute scripts immediately after installation. Inspect your package directories for 'postinstall' entry points or suspicious scripts within 'setup.py' files that read environment variables. Look specifically for outbound network requests or file system reads targeting '.env' files.",
+      "code_example": "# Search for postinstall scripts in package metadata\ngrep -r \"postinstall\" .\n\n# Search for network requests in suspicious packages like torch-utils-plus\ngrep -r \"requests.\" ./torch-utils-plus/"
+    },
+    {
+      "title": "Step 3: Execute Local Audit Script",
+      "description": "Run a custom Python script that recursively walks your 'site-packages' directory. This script flags any package containing a 'postinstall' entry and cross-references it with the official manifest. This ensures that the audit itself does not trigger the malicious code or send data out.",
+      "code_example": "python3 forensic_audit.py --site-packages ./lib/python3.10/site-packages --manifest official_ai_forge_hashes.txt\n\n# Sample script logic\nimport os\nfor root, dirs, files in os.walk('./site-packages'):\n    if 'postinstall' in files:\n        print(f\"[!] Suspicious postinstall hook found in: {root}\")"
+    },
+    {
+      "title": "Step 4: Purge and Rotate",
+      "description": "If the audit flags the 'torch-utils-plus' package or any other unauthorized dependencies, immediately remove them using your package manager. Assume that any API keys (e.g., OPENAI_API_KEY) present in environment variables during the installation period are compromised and rotate them immediately in your cloud provider console.",
+      "code_example": "pip uninstall -y torch-utils-plus\n\n# After removal, sanitize environment and rotate keys\nunset OPENAI_API_KEY\n# Go to your cloud provider's dashboard and regenerate the key"
+    }
+  ],
+  "pro_tips": [
+    "Use `pip-audit` or `safety` regularly to check for known vulnerabilities in your dependency tree.",
+    "Pin your dependency versions exactly in `requirements.txt` to prevent accidental installation of malicious updates.",
+    "Monitor egress network traffic from your build machines to detect data exfiltration attempts in real-time."
+  ],
+  "common_pitfalls": [
+    "Assuming clean removal: Simply deleting the package folder is insufficient; use the package manager to uninstall to ensure metadata is cleaned.",
+    "Incomplete rotation: Rotating the key in the code but forgetting to update the staging/production environment variables leads to service downtime or continued leaks."
+  ],
+  "tools_mentioned": [
+    {
+      "name": "Microsoft AI-Forge",
+      "description": "The open-source scaffolding tool affected by the supply chain attack.",
+      "url": ""
+    },
+    {
+      "name": "Python / pip",
+      "description": "The package management system used to install the affected libraries.",
+      "url": "https://pip.pypa.io/"
+    },
+    {
+      "name": "torch-utils-plus",
+      "description": "The malicious dependency package identified in the attack.",
+      "url": ""
+    }
+  ],
+  "further_reading": [
+    {
+      "title": "OpenSSF Supply Chain Security Best Practices",
+      "url": "https://github.com/ossf/wg-best-practices-os-developers",
+      "description": "Industry-standard guidelines for securing open source software supply chains."
+    }
+  ],
+  "faq": [
+    {
+      "question": "How do I know if my API keys were stolen?",
+      "answer": "If the 'torch-utils-plus' package was successfully installed, assume the keys were exfiltrated. Check your cloud provider's usage logs for unauthorized API calls during the timeframe the package was active."
+    },
+    {
+      "question": "Can I just delete the 'torch-utils-plus' folder?",
+      "answer": "No, you must use `pip uninstall torch-utils-plus` to properly remove the package and its references. Deleting the folder manually may leave references or trigger errors, and does not address the compromised keys."
+    },
+    {
+      "question": "Is AI-Forge safe to use now?",
+      "answer": "You should verify the integrity of your specific installation using the hash manifest method described in Step 1, and ensure you have updated to a patched version of the scaffolding if available."
+    }
+  ]
+}

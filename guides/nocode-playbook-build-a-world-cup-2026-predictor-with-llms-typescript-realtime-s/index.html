@@ -3,32 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A step‑by‑step walkthrough of how to assemble a fully automated World Cup 2026 match‑prediction engine using a TypeScript‑based LLM, real‑time sports APIs, and ">
+    <meta name="description" content="A step‑by‑step walkthrough of how to assemble a fully automated World Cup 2026 match‑prediction engine using a TypeScript‑based LLM, real‑time sports APIs, and">
     <meta name="keywords" content="world cup prediction, LLM sports, TypeScript AI, no-code automation, betting analytics">
     <meta name="author" content="Weight and See">
     <meta property="og:title" content="No‑Code Playbook: Build a World Cup 2026 Predictor with LLMs, TypeScript & Real‑Time Sports Data - Complete Guide">
-    <meta property="og:description" content="A step‑by‑step walkthrough of how to assemble a fully automated World Cup 2026 match‑prediction engine using a TypeScript‑based LLM, real‑time sports APIs, and a no‑code orchestrator. The hook promise">
+    <meta property="og:description" content="A step‑by‑step walkthrough of how to assemble a fully automated World Cup 2026 match‑prediction engine using a TypeScript‑based LLM, real‑time sports APIs, and">
     <meta property="og:type" content="article">
     <title>No‑Code Playbook: Build a World Cup 2026 Predictor with LLMs, TypeScript & Real‑Time Sports Data | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0f0f0f;
-            --bg-secondary: #1a1a1a;
-            --bg-card: #252525;
-            --text-primary: #f1f1f1;
-            --text-secondary: #a0a0a0;
-            --accent: #6366f1;
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
             --accent-light: #818cf8;
-            --green: #22c55e;
-            --yellow: #eab308;
+            --green: #10b981;
+            --yellow: #f59e0b;
             --red: #ef4444;
-            --border: #333;
+            --border: #374151;
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
@@ -317,11 +320,11 @@
         <header class="header">
             <span class="badge">Complete Guide</span>
             <h1>No‑Code Playbook: Build a World Cup 2026 Predictor with LLMs, TypeScript & Real‑Time Sports Data</h1>
-            <p class="subtitle">This guide covers building a fully automated World Cup 2026 match-prediction engine using a TypeScript-based LLM, real-time sports APIs, and a no-code orchestrator. It provides a step-by-step walkthrough of assembling a betting-savvy AI that delivers live odds predictions without requiring a single line of code. The guide focuses on transparency and open-source technology.</p>
+            <p class="subtitle">A step‑by‑step walkthrough of how to assemble a fully automated World Cup 2026 match‑prediction engine using a TypeScript‑based LLM, real‑time sports APIs, and</p>
             <div class="meta">
                 <span>By Weight and See</span>
                 <span>June 15, 2026</span>
-                <span>4 Steps</span>
+                <span>3 Steps</span>
             </div>
         </header>
 
@@ -329,11 +332,11 @@
             <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
             <div class="card">
                 <ul class="takeaway-list">
-                    <li><span class="takeaway-num">1</span><span>Use a TypeScript-based LLM for sports data analysis</span></li>
-                    <li><span class="takeaway-num">2</span><span>Connect to real-time sports APIs for team performance metrics, player stats, and weather conditions</span></li>
-                    <li><span class="takeaway-num">3</span><span>Utilize a no-code orchestrator to handle data flow and automate predictions</span></li>
-                    <li><span class="takeaway-num">4</span><span>Blend data streams including crowd sentiment analysis, team performance data, and real-time weather updates</span></li>
-                    <li><span class="takeaway-num">5</span><span>Generate live odds predictions that update in real-time without manual intervention</span></li>
+                    <li><span class="takeaway-num">1</span><span>Understanding the core concepts of No‑Code Playbook: Build a World Cup 2026 Predictor with LLMs, TypeScript & Real‑Time Sports Data</span></li>
+                    <li><span class="takeaway-num">2</span><span>Practical implementation steps</span></li>
+                    <li><span class="takeaway-num">3</span><span>Best practices and optimization tips</span></li>
+                    <li><span class="takeaway-num">4</span><span>Common challenges and how to overcome them</span></li>
+                    <li><span class="takeaway-num">5</span><span>Resources for further learning</span></li>
                 </ul>
             </div>
         </section>
@@ -342,8 +345,8 @@
             <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
             <div class="card">
                 <ul>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of LLMs and TypeScript</li>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with no-code orchestrators and API connections</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of the topic</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A computer with internet access</li>
                 </ul>
             </div>
         </section>
@@ -353,26 +356,20 @@
 
             <div class="step">
                 <span class="step-num">1</span>
-                <h3>Step 1: Set up your LLM</h3>
-                <p>Set up a TypeScript-based LLM specifically designed for sports data analysis. This model will process real-time sports data from APIs.</p>
+                <h3>Getting Started</h3>
+                <p>Set up your environment and install necessary tools.</p>
             </div>
 
             <div class="step">
                 <span class="step-num">2</span>
-                <h3>Step 2: Connect to sports APIs</h3>
-                <p>Connect your LLM to real-time sports APIs to gather team performance metrics, player stats, and weather conditions.</p>
+                <h3>Configuration</h3>
+                <p>Configure the tools according to your needs.</p>
             </div>
 
             <div class="step">
                 <span class="step-num">3</span>
-                <h3>Step 3: Configure the no-code orchestrator</h3>
-                <p>Use a no-code orchestrator to connect your LLM to the sports APIs and handle the data flow. Configure the orchestrator to blend data streams including crowd sentiment analysis, team performance data, and real-time weather updates.</p>
-            </div>
-
-            <div class="step">
-                <span class="step-num">4</span>
-                <h3>Step 4: Generate live odds predictions</h3>
-                <p>Use the configured LLM and no-code orchestrator to generate live odds predictions that update in real-time.</p>
+                <h3>Implementation</h3>
+                <p>Follow the steps to implement the solution.</p>
             </div>
         </section>
 
@@ -380,15 +377,15 @@
             <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Ensure seamless data flow between your LLM, sports APIs, and no-code orchestrator
+                <strong>Pro Tip:</strong> Start with the basics before diving into advanced features
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Monitor and adjust your model's performance for optimal prediction accuracy
+                <strong>Pro Tip:</strong> Keep your configuration backed up
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Explore additional data sources to further enhance prediction capabilities
+                <strong>Pro Tip:</strong> Test in a development environment first
             </div>
         </section>
 
@@ -396,39 +393,11 @@
             <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 1: Insufficient data quality or availability, leading to inaccurate predictions
+                <strong>Watch Out:</strong> Skipping the prerequisites can lead to setup issues
             </div>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 2: Inadequate configuration of the no-code orchestrator, causing data flow issues
-            </div>
-
-            <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 3: Failure to monitor and adjust the model's performance, resulting in decreased accuracy over time
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
-            <div class="tool-grid">
-
-                <div class="tool-card">
-                    <h4>TypeScript-based LLM</h4>
-                    <p>A large language model specifically designed for sports data analysis</p>
-                    
-                </div>
-
-                <div class="tool-card">
-                    <h4>No-code orchestrator</h4>
-                    <p>A tool that connects LLMs to sports APIs and handles data flow without requiring code</p>
-                    
-                </div>
-
-                <div class="tool-card">
-                    <h4>Real-time sports APIs</h4>
-                    <p>APIs providing team performance metrics, player stats, and weather conditions</p>
-                    
-                </div>
+                <strong>Watch Out:</strong> Not reading the documentation thoroughly
             </div>
         </section>
 
@@ -436,40 +405,13 @@
             <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
 
             <div class="faq-item card">
-                <h3>What programming knowledge is required to build this World Cup 2026 predictor?</h3>
-                <p>No programming knowledge is required, as this guide uses a no-code orchestrator</p>
+                <h3>What is No‑Code Playbook: Build a World Cup 2026 Predictor with LLMs, TypeScript & Real‑Time Sports Data?</h3>
+                <p>A step‑by‑step walkthrough of how to assemble a fully automated World Cup 2026 match‑prediction engine using a TypeScript‑based LLM, real‑time sports APIs, and</p>
             </div>
 
             <div class="faq-item card">
-                <h3>What type of data is used to train the LLM?</h3>
-                <p>The LLM is trained on real-time sports data, including team performance metrics, player stats, and weather conditions</p>
-            </div>
-
-            <div class="faq-item card">
-                <h3>How accurate are the live odds predictions?</h3>
-                <p>The accuracy of the predictions depends on the quality of the data and the configuration of the LLM and no-code orchestrator</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
-            <div class="card">
-                <ul>
-
-                    <li style="padding: 8px 0;">
-                        <a href="" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            LLM for Sports Data Analysis
-                        </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — A resource on using LLMs for sports data analysis</span>
-                    </li>
-
-                    <li style="padding: 8px 0;">
-                        <a href="" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            No-Code Orchestrators for Data Flow
-                        </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — A resource on using no-code orchestrators for data flow and automation</span>
-                    </li>
-                </ul>
+                <h3>Where can I find more information?</h3>
+                <p>Check the links in the description and this guide.</p>
             </div>
         </section>
 
@@ -479,13 +421,8 @@
                 <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
             </p>
             <div class="tags">
-                <span class="tag">#NoCodePlaybook</span>
-                <span class="tag">#worldcupprediction</span>
-                <span class="tag">#LLMsports</span>
-                <span class="tag">#TypeScriptAI</span>
-                <span class="tag">#nocodeautomation</span>
             </div>
-            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-15 11:47 • This guide accompanies the video: "No‑Code Playbook: Build a World Cup 2026 Predictor with LLMs, TypeScript & Real‑Time Sports Data"</p>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-15 18:47 • This guide accompanies the video: "No‑Code Playbook: Build a World Cup 2026 Predictor with LLMs, TypeScript & Real‑Time Sports Data"</p>
         </footer>
     </div>
 </body>

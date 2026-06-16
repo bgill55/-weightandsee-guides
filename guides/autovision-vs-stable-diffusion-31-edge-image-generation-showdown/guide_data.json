@@ -1,0 +1,97 @@
+{
+  "overview": "This guide walks you through comparing AutoVision and Stable Diffusion 3.1 for edge image generation, and shows how to build a no\u2011code AI workflow using PromptFlow. It covers setting up API access, creating a workflow, and tips for optimizing image quality.",
+  "key_takeaways": [
+    "AutoVision delivers high\u2011resolution, vibrant images with crisp details, ideal for commercial graphics.",
+    "Stable Diffusion 3.1 offers a more artistic, rustic style and can be run locally or via the Hugging Face Inference API.",
+    "PromptFlow lets you combine multiple AI models into autonomous workflows without writing code.",
+    "You can drag\u2011and\u2011drop API connectors in PromptFlow to mix AutoVision and Stable Diffusion outputs.",
+    "Testing workflows live in PromptFlow helps quickly iterate on prompt and model selection."
+  ],
+  "prerequisites": [
+    "API keys for AutoVision, Stable Diffusion 3.1 (Hugging Face), and PromptFlow.",
+    "Basic understanding of REST APIs and JSON payloads."
+  ],
+  "step_by_step": [
+    {
+      "title": "Step 1: Set Up API Credentials",
+      "description": "Create accounts on AutoVision, Hugging Face, and PromptFlow. Store the API keys in environment variables for secure access. On a Unix shell, export them as:",
+      "code_example": "```bash\nexport AUTOVISION_API_KEY=your_autovision_key\nexport HF_API_KEY=your_huggingface_key\nexport PROMPTFLOW_TOKEN=your_promptflow_token\n```"
+    },
+    {
+      "title": "Step 2: Test Image Generation APIs",
+      "description": "Verify that each image model is reachable by sending a simple POST request. Use curl or a small Python script to generate a test image.",
+      "code_example": "```bash\n# AutoVision\ncurl -X POST https://api.autovision.com/v1/generate \\\n  -H \"Authorization: Bearer $AUTOVISION_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"prompt\": \"A futuristic city skyline\", \"size\": \"1024x1024\"}' > autovision.png\n\n# Stable Diffusion 3.1 via Hugging Face\ncurl -X POST https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-3.1 \\\n  -H \"Authorization: Bearer $HF_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"inputs\": \"A fantasy landscape\"}' > sd3.1.png\n```"
+    },
+    {
+      "title": "Step 3: Build a PromptFlow Workflow",
+      "description": "Log into PromptFlow\u2019s web UI, create a new workflow named \"Edge Image Generator\", and drag connectors for AutoVision and Stable Diffusion. Configure each step to accept a prompt, pass the result to the next step, and store the image URLs in a final output node. After building, click the \"Run\" button to execute the workflow and preview images side\u2011by\u2011side.",
+      "code_example": "```json\n{\n  \"name\": \"Edge Image Generator\",\n  \"steps\": [\n    {\n      \"id\": \"auto\",\n      \"type\": \"api\",\n      \"connector\": \"AutoVision\",\n      \"inputs\": {\"prompt\": \"{{prompt}}\", \"size\": \"1024x1024\"}\n    },\n    {\n      \"id\": \"sd\",\n      \"type\": \"api\",\n      \"connector\": \"StableDiffusion3.1\",\n      \"inputs\": {\"prompt\": \"{{prompt}}\", \"size\": \"1024x1024\"}\n    },\n    {\n      \"id\": \"output\",\n      \"type\": \"output\",\n      \"inputs\": {\n        \"autoImage\": \"{{auto.image_url}}\",\n        \"sdImage\": \"{{sd.image_url}}\"\n      }\n    }\n  ]\n}\n```"
+    }
+  ],
+  "pro_tips": [
+    "Use PromptFlow\u2019s built\u2011in parameter tuning to adjust temperature and guidance scale for each model to balance creativity and fidelity.",
+    "Cache image outputs in a CDN or cloud storage to reduce API call costs during repeated comparisons.",
+    "Leverage PromptFlow\u2019s branching logic to route prompts to the model that historically produces better results for a given category (e.g., landscapes vs portraits)."
+  ],
+  "common_pitfalls": [
+    "Pitfall 1: Forgetting to set the correct image size in the API payload; this can lead to truncated or low\u2011resolution images.",
+    "Pitfall 2: Exceeding API rate limits by running multiple parallel workflows; always monitor quota usage in the dashboard."
+  ],
+  "tools_mentioned": [
+    {
+      "name": "PromptFlow",
+      "description": "A no\u2011code platform for building AI\u2011driven workflows by connecting APIs and models.",
+      "url": "https://www.promptflow.io"
+    },
+    {
+      "name": "AutoVision",
+      "description": "An edge image generation API that produces high\u2011resolution, vibrant images.",
+      "url": "https://api.autovision.com"
+    },
+    {
+      "name": "Stable Diffusion 3.1",
+      "description": "Open\u2011source text\u2011to\u2011image model with artistic, rustic output.",
+      "url": "https://github.com/Stability-AI/stablediffusion"
+    },
+    {
+      "name": "Hugging Face Inference API",
+      "description": "Hosted API for running models like Stable Diffusion.",
+      "url": "https://huggingface.co/inference"
+    }
+  ],
+  "further_reading": [
+    {
+      "title": "PromptFlow Documentation \u2013 Building Workflows",
+      "url": "https://docs.promptflow.io",
+      "description": "Comprehensive guide to creating and testing workflows in PromptFlow."
+    },
+    {
+      "title": "AutoVision API Reference",
+      "url": "https://api.autovision.com/docs",
+      "description": "Details on endpoints, parameters, and usage limits."
+    },
+    {
+      "title": "Stable Diffusion 3.1 Release Notes",
+      "url": "https://github.com/Stability-AI/stablediffusion/releases/tag/v3.1",
+      "description": "New features, improvements, and deployment options for SD 3.1."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Can I run Stable Diffusion 3.1 locally instead of using the Hugging Face API?",
+      "answer": "Yes, download the model weights from Hugging Face and run them on a GPU\u2011enabled machine using the official Stable Diffusion repo."
+    },
+    {
+      "question": "How do I compare image quality metrics between AutoVision and Stable Diffusion?",
+      "answer": "Use perceptual similarity metrics like LPIPS or SSIM on a set of test prompts, and store the scores in PromptFlow\u2019s output node for analysis."
+    },
+    {
+      "question": "What if my prompt includes copyrighted text or imagery?",
+      "answer": "Both AutoVision and Stable Diffusion enforce content policies; ensure your prompts comply with their terms of service to avoid rejection."
+    },
+    {
+      "question": "Can I integrate other models, such as DALL\u2011E 3, into the same PromptFlow workflow?",
+      "answer": "Yes, add a new API connector for DALL\u2011E 3 and configure the workflow to route prompts to it based on user selection."
+    }
+  ]
+}

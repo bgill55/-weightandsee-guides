@@ -1,0 +1,52 @@
+{
+  "overview": "A step\u2011by\u2011step walkthrough of how to assemble a fully automated World Cup 2026 match\u2011prediction engine using a TypeScript\u2011based LLM, real\u2011time sports APIs, and",
+  "key_takeaways": [
+    "Understanding the core concepts of No\u2011Code Playbook: Build a World Cup 2026 Predictor with LLMs, TypeScript & Real\u2011Time Sports Data",
+    "Practical implementation steps",
+    "Best practices and optimization tips",
+    "Common challenges and how to overcome them",
+    "Resources for further learning"
+  ],
+  "prerequisites": [
+    "Basic understanding of the topic",
+    "A computer with internet access"
+  ],
+  "step_by_step": [
+    {
+      "title": "Getting Started",
+      "description": "Set up your environment and install necessary tools.",
+      "code_example": ""
+    },
+    {
+      "title": "Configuration",
+      "description": "Configure the tools according to your needs.",
+      "code_example": ""
+    },
+    {
+      "title": "Implementation",
+      "description": "Follow the steps to implement the solution.",
+      "code_example": ""
+    }
+  ],
+  "pro_tips": [
+    "Start with the basics before diving into advanced features",
+    "Keep your configuration backed up",
+    "Test in a development environment first"
+  ],
+  "common_pitfalls": [
+    "Skipping the prerequisites can lead to setup issues",
+    "Not reading the documentation thoroughly"
+  ],
+  "tools_mentioned": [],
+  "further_reading": [],
+  "faq": [
+    {
+      "question": "What is No\u2011Code Playbook: Build a World Cup 2026 Predictor with LLMs, TypeScript & Real\u2011Time Sports Data?",
+      "answer": "A step\u2011by\u2011step walkthrough of how to assemble a fully automated World Cup 2026 match\u2011prediction engine using a TypeScript\u2011based LLM, real\u2011time sports APIs, and"
+    },
+    {
+      "question": "Where can I find more information?",
+      "answer": "Check the links in the description and this guide."
+    }
+  ]
+}

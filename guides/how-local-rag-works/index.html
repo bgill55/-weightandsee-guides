@@ -10,25 +10,28 @@
     <meta property="og:description" content="An educational video about setting up a private retrieval-augmented generation pipeline using LM Studio.">
     <meta property="og:type" content="article">
     <title>How Local RAG Works | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0f0f0f;
-            --bg-secondary: #1a1a1a;
-            --bg-card: #252525;
-            --text-primary: #f1f1f1;
-            --text-secondary: #a0a0a0;
-            --accent: #6366f1;
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
             --accent-light: #818cf8;
-            --green: #22c55e;
-            --yellow: #eab308;
+            --green: #10b981;
+            --yellow: #f59e0b;
             --red: #ef4444;
-            --border: #333;
+            --border: #374151;
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
@@ -317,10 +320,10 @@
         <header class="header">
             <span class="badge">Complete Guide</span>
             <h1>How Local RAG Works</h1>
-            <p class="subtitle">This guide explains the fundamentals of implementing a Retrieval-Augmented Generation (RAG) pipeline locally using LM Studio. It covers how to connect a private, local document database to a local Large Language Model (LLM) to enable precise, secure, and offline querying of personal data.</p>
+            <p class="subtitle">This guide covers the technical implementation of a local Retrieval-Augmented Generation (RAG) system, focusing on integrating a high-performance FAISS backend with ChromaDB. It details how to set up a Rust-backed vector database, configure GPU-accelerated indices, and execute similarity searches to retrieve context for private local LLMs.</p>
             <div class="meta">
                 <span>By Weight and See</span>
-                <span>June 12, 2026</span>
+                <span>June 15, 2026</span>
                 <span>4 Steps</span>
             </div>
         </header>
@@ -329,11 +332,11 @@
             <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
             <div class="card">
                 <ul class="takeaway-list">
-                    <li><span class="takeaway-num">1</span><span>Local RAG allows AI models to access and reference private files without uploading data to the cloud.</span></li>
-                    <li><span class="takeaway-num">2</span><span>The core mechanism involves matching user queries against a local document database to retrieve relevant context.</span></li>
-                    <li><span class="takeaway-num">3</span><span>LM Studio provides the interface to run the LLM and manage the document retrieval process locally.</span></li>
-                    <li><span class="takeaway-num">4</span><span>This approach ensures data privacy and security by keeping the entire pipeline offline.</span></li>
-                    <li><span class="takeaway-num">5</span><span>RAG improves response precision by grounding the LLM's answers in specific local document chunks.</span></li>
+                    <li><span class="takeaway-num">1</span><span>Local RAG systems enhance privacy by keeping document processing and retrieval on your own hardware.</span></li>
+                    <li><span class="takeaway-num">2</span><span>ChromaDB can be extended with a Rust-backed FAISS backend for production-grade vector similarity search.</span></li>
+                    <li><span class="takeaway-num">3</span><span>GPU acceleration via CUDA can significantly reduce query latency for vector embeddings.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Memory-mapped index persistence allows for instant startup times without rebuilding the index.</span></li>
+                    <li><span class="takeaway-num">5</span><span>The system automatically handles fallback to CPU if a GPU is not available or detected.</span></li>
                 </ul>
             </div>
         </section>
@@ -342,9 +345,9 @@
             <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
             <div class="card">
                 <ul>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">A computer with sufficient hardware resources (CPU/GPU/RAM) to run local LLMs</li>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">LM Studio installed on the local machine</li>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Local documents (e.g., text files, PDFs) to serve as the knowledge base</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python environment with pip installed</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">CUDA-compatible GPU (optional but recommended for acceleration) and CUDA drivers</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Rust toolchain (required for compiling the backend integration)</li>
                 </ul>
             </div>
         </section>
@@ -354,26 +357,47 @@
 
             <div class="step">
                 <span class="step-num">1</span>
-                <h3>Step 1: Set Up the Local Environment</h3>
-                <p>Download and install LM Studio on your machine. Ensure your system meets the hardware requirements to host a local LLM effectively.</p>
+                <h3>Step 1: Install and Initialize the FAISS Backend</h3>
+                <p>Begin by installing the necessary Python packages and importing the ChromaDB library along with the specific FAISS backend module. This step sets up the connection between your Python application and the high-performance Rust/C++ FAISS library.</p>
+
+                <div class="code-block"><pre>import chromadb
+from chromadb.backends.faiss import FAISSBackend
+
+# Initialize the backend with specific index settings
+backend = FAISSBackend(index_type='IVF', nlist=256, gpu=True)</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">2</span>
-                <h3>Step 2: Select and Download a Local Model</h3>
-                <p>Open LM Studio and search for a suitable open-source LLM. Download the model to your local drive so it can run offline.</p>
+                <h3>Step 2: Configure Index Settings via YAML</h3>
+                <p>For persistent and scalable deployments, define your vector database configuration in a YAML file. This allows you to specify the index type (e.g., HNSW for speed vs. accuracy trade-offs), search parameters, and hardware utilization settings without hardcoding them in your scripts.</p>
+
+                <div class="code-block"><pre># Config file (YAML) for FAISS backend
+backend:
+  type: faiss
+  index_type: hnsw
+  ef_search: 200
+  ef_construction: 400
+  gpu: true</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">3</span>
-                <h3>Step 3: Configure the Document Database</h3>
-                <p>Load your private documents into the LM Studio knowledge base or designated local folder. The system will index these files to prepare for retrieval.</p>
+                <h3>Step 3: Ingest and Index Document Vectors</h3>
+                <p>Load your private documents by converting them into vector embeddings and adding them to a specific collection in the database. The backend processes these vectors to build the searchable index structure defined in the previous step.</p>
+
+                <div class="code-block"><pre># Add vectors to the collection
+# 'vectors' should be a list of embeddings, 'ids' are unique identifiers
+backend.add_vectors('collection', vectors, ids)</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">4</span>
-                <h3>Step 4: Execute a RAG Query</h3>
-                <p>Input a question into the LM Studio interface. The system will retrieve relevant passages from your local documents and use the LLM to generate a context-aware answer.</p>
+                <h3>Step 4: Execute a Similarity Search Query</h3>
+                <p>Perform a RAG query by passing a query vector (representing the user's question) to the search method. The system retrieves the top 'k' most relevant document passages from your local knowledge base to provide context for the LLM.</p>
+
+                <div class="code-block"><pre># Search the collection for the top 5 results
+results = backend.search('collection', query_vector, k=5)</pre></div>
             </div>
         </section>
 
@@ -381,15 +405,15 @@
             <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Organize your local documents into clear folders to improve the accuracy of information retrieval.
+                <strong>Pro Tip:</strong> Use HNSW (Hierarchical Navigable Small World) index types for a good balance of speed and recall in most RAG applications.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Use models with larger context windows if you need to query longer documents or complex datasets.
+                <strong>Pro Tip:</strong> Enable memory-mapping for large datasets to ensure the application starts instantly without loading the entire index into RAM.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Regularly update your local document index to ensure the AI has access to the latest information.
+                <strong>Pro Tip:</strong> Leverage the automatic CPU fallback to test your pipeline on machines without GPUs before deploying to production hardware.
             </div>
         </section>
 
@@ -397,11 +421,15 @@
             <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 1: Insufficient Hardware: Running local models on inadequate hardware can lead to slow response times or system crashes.
+                <strong>Watch Out:</strong> Pitfall 1: Insufficient GPU Memory. Description: Attempting to load large indexes on a GPU with insufficient VRAM will cause the initialization to fail; use the CPU fallback or reduce index complexity.
             </div>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 2: Poor Document Formatting: Unstructured or messy text files can make it difficult for the RAG system to extract relevant information accurately.
+                <strong>Watch Out:</strong> Pitfall 2: Incorrect Index Parameters. Description: Setting 'ef_construction' too high can make indexing extremely slow, while setting it too low reduces recall quality.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Missing CUDA Drivers. Description: Even if 'gpu: true' is set in the config, the system will default to CPU if the correct CUDA drivers and toolkit are not installed in the environment.
             </div>
         </section>
 
@@ -410,9 +438,27 @@
             <div class="tool-grid">
 
                 <div class="tool-card">
+                    <h4>ChromaDB</h4>
+                    <p>An open-source AI database for building embeddings applications.</p>
+                    <a href="https://www.trychroma.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>FAISS</h4>
+                    <p>A library for efficient similarity search and clustering of dense vectors.</p>
+                    <a href="https://github.com/facebookresearch/faiss" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
                     <h4>LM Studio</h4>
-                    <p>A desktop application for running local LLMs and setting up offline RAG pipelines.</p>
+                    <p>A local interface for running open-source LLMs.</p>
                     <a href="https://lmstudio.ai" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Rust</h4>
+                    <p>Programming language used for the high-performance backend implementation.</p>
+                    <a href="https://www.rust-lang.org" target="_blank">View Resource →</a>
                 </div>
             </div>
         </section>
@@ -421,23 +467,18 @@
             <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
 
             <div class="faq-item card">
-                <h3>Is my data sent to the cloud when using Local RAG?</h3>
-                <p>No, Local RAG processes everything on your machine. Your documents and queries never leave your local environment.</p>
+                <h3>How do I switch between CPU and GPU processing?</h3>
+                <p>You can toggle hardware acceleration by setting the 'gpu' property to 'true' or 'false' in your YAML configuration file or when initializing the FAISSBackend class in Python.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>Do I need an internet connection to use this setup?</h3>
-                <p>You only need an internet connection to initially download LM Studio and the LLM. Once downloaded, the system runs entirely offline.</p>
+                <h3>Which FAISS index type should I use for RAG?</h3>
+                <p>HNSW is generally recommended for RAG due to its excellent performance in recall and speed, though IVF (Inverted File) is also effective for very large-scale datasets.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>What file formats are supported for the local database?</h3>
-                <p>Support varies by tool configuration, but generally, text-based formats like TXT, MD, and PDF are standard for local RAG implementations.</p>
-            </div>
-
-            <div class="faq-item card">
-                <h3>Why use RAG instead of just fine-tuning a model?</h3>
-                <p>RAG allows you to update your knowledge base instantly by adding new documents without the expensive and time-consuming process of re-training or fine-tuning a model.</p>
+                <h3>Does the backend support persistent storage?</h3>
+                <p>Yes, the backend supports memory-mapped index persistence, allowing indexes to be stored on disk and loaded instantly without re-processing the vectors.</p>
             </div>
         </section>
 
@@ -447,17 +488,17 @@
                 <ul>
 
                     <li style="padding: 8px 0;">
-                        <a href="https://lmstudio.ai" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            LM Studio Documentation
+                        <a href="https://faiss.ai/index.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            FAISS Documentation
                         </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official guides and documentation for setting up local inference and knowledge bases.</span>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation for FAISS index types and parameters.</span>
                     </li>
 
                     <li style="padding: 8px 0;">
-                        <a href="https://arxiv.org/abs/2005.11401" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            Retrieval-Augmented Generation (RAG) Explained
+                        <a href="https://docs.trychroma.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            ChromaDB Documentation
                         </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — The original academic paper introducing the RAG concept.</span>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Guides on setting up and using ChromaDB for production.</span>
                     </li>
                 </ul>
             </div>
@@ -469,13 +510,8 @@
                 <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
             </p>
             <div class="tags">
-                <span class="tag">#HowLocalRAG</span>
-                <span class="tag">#rag</span>
-                <span class="tag">#localai</span>
-                <span class="tag">#privacy</span>
-                <span class="tag">#lmstudio</span>
             </div>
-            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-12 14:49 • This guide accompanies the video: "How Local RAG Works"</p>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-15 18:47 • This guide accompanies the video: "How Local RAG Works"</p>
         </footer>
     </div>
 </body>

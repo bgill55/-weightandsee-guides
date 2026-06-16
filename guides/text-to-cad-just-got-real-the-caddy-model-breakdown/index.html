@@ -7,28 +7,31 @@
     <meta name="keywords" content="Text-to-CAD, CADDY Model, Generative Engineering, AI Manufacturing, Constrained Decoding">
     <meta name="author" content="Weight and See">
     <meta property="og:title" content="Text-to-CAD Just Got Real: The CADDY Model Breakdown - Complete Guide">
-    <meta property="og:description" content="A technical explainer on the CADDY architecture released in May 2026, analyzing how it utilizes constrained decoding and graph-based representations to generate valid, manufacturable STEP files direct">
+    <meta property="og:description" content="A technical explainer on the CADDY architecture released in May 2026, analyzing how it utilizes constrained decoding and graph-based representations to generate">
     <meta property="og:type" content="article">
     <title>Text-to-CAD Just Got Real: The CADDY Model Breakdown | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0f0f0f;
-            --bg-secondary: #1a1a1a;
-            --bg-card: #252525;
-            --text-primary: #f1f1f1;
-            --text-secondary: #a0a0a0;
-            --accent: #6366f1;
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
             --accent-light: #818cf8;
-            --green: #22c55e;
-            --yellow: #eab308;
+            --green: #10b981;
+            --yellow: #f59e0b;
             --red: #ef4444;
-            --border: #333;
+            --border: #374151;
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
@@ -317,10 +320,10 @@
         <header class="header">
             <span class="badge">Complete Guide</span>
             <h1>Text-to-CAD Just Got Real: The CADDY Model Breakdown</h1>
-            <p class="subtitle">This guide explores the CADDY model architecture (released May 2026), which revolutionizes Text-to-CAD by shifting from pixel-based generation to graph-based representations. It details how constrained decoding ensures the generation of valid, manufacturable STEP files directly from text prompts, effectively solving the 'hallucination geometry' problem inherent in previous AI models.</p>
+            <p class="subtitle">This guide explores the CADDY architecture, a breakthrough in Text-to-CAD generation released in May 2026. It details how to transition from raw coordinate prediction to graph-based representations, implement constrained decoding to ensure logical build sequences, and validate geometry to produce manufacturable STEP files.</p>
             <div class="meta">
                 <span>By Weight and See</span>
-                <span>June 09, 2026</span>
+                <span>June 15, 2026</span>
                 <span>4 Steps</span>
             </div>
         </header>
@@ -329,11 +332,11 @@
             <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
             <div class="card">
                 <ul class="takeaway-list">
-                    <li><span class="takeaway-num">1</span><span>CADDY treats CAD design as a sequence of tokens with strict grammar rather than guessing 3D spatial points.</span></li>
-                    <li><span class="takeaway-num">2</span><span>The model utilizes a graph-based representation to build a skeleton of connected operations.</span></li>
-                    <li><span class="takeaway-num">3</span><span>Constrained decoding acts as a filter, rejecting operations that violate geometric rules or structural integrity.</span></li>
-                    <li><span class="takeaway-num">4</span><span>Output includes a full construction tree, resulting in valid STEP files ready for manufacturing.</span></li>
-                    <li><span class="takeaway-num">5</span><span>CADDY achieves record-breaking performance on the Fusion360 Gallery benchmark for constraint satisfaction.</span></li>
+                    <li><span class="takeaway-num">1</span><span>CADDY replaces raw coordinate regression with a graph-based representation of CAD build history.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The generation process treats CAD operations as a sequence of tokens connected in a logical dependency graph.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Constrained decoding applies a strict 'grammar' to ensure operations like extrusions only follow valid sketches.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Real-time validation blocks geometric proposals that would break manifoldness or structural integrity.</span></li>
+                    <li><span class="takeaway-num">5</span><span>The final output is a standard STEP file containing a solid body with a valid construction tree, not just a visual mesh.</span></li>
                 </ul>
             </div>
         </section>
@@ -342,8 +345,9 @@
             <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
             <div class="card">
                 <ul>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of CAD concepts (sketches, extrusions, construction trees)</li>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with Large Language Models (LLMs) and tokenization</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.9+ environment with PyTorch for model inference.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of CAD topology (B-Rep, sketches, extrusions).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A CAD kernel library (e.g., PythonOCC or OpenCascade) to handle geometry processing.</li>
                 </ul>
             </div>
         </section>
@@ -353,26 +357,88 @@
 
             <div class="step">
                 <span class="step-num">1</span>
-                <h3>Step 1: Adopt Graph-Based Representation</h3>
-                <p>Instead of predicting raw coordinates in 3D space, frame the CAD generation task as a sequence of tokens. Treat the build history as a connected graph where operations (nodes) are linked logically.</p>
+                <h3>Step 1: Define the Graph-Based Representation</h3>
+                <p>Instead of predicting 3D coordinates directly, structure your data model to represent the CAD build history as a directed acyclic graph (DAG). Each node in the graph represents a distinct operation (e.g., Sketch, Extrude, Fillet), and edges represent dependencies. This allows the model to generate a sequence of tokens that define these operations and their relationships.</p>
+
+                <div class="code-block"><pre>class OperationNode:
+    def __init__(self, op_type, parent_id=None, parameters=None):
+        self.op_type = op_type  # e.g., 'sketch', 'extrude'
+        self.parent_id = parent_id # Dependency link
+        self.parameters = parameters # Dimensions, constraints
+
+class CADGraph:
+    def __init__(self):
+        self.nodes = []
+        self.root = OperationNode('origin')
+
+    def add_operation(self, op_type, parent_id, params):
+        new_node = OperationNode(op_type, parent_id, params)
+        self.nodes.append(new_node)
+        return new_node</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">2</span>
-                <h3>Step 2: Implement Constrained Decoding</h3>
-                <p>Apply a 'grammar' to the generation process. Ensure that dependencies are strictly followed, such as ensuring an extrusion operation only follows a valid sketch defined on a plane.</p>
+                <h3>Step 2: Implement Constrained Decoding Logic</h3>
+                <p>Integrate a grammar-based validator into the token generation loop. This function must check the current state of the graph to ensure the next token is valid. For example, an 'Extrude' operation is grammatically invalid if the previous node was not a 'Sketch' or a planar face.</p>
+
+                <div class="code-block"><pre>def is_valid_transition(graph, current_node_type, next_token):
+    # Define grammar rules
+    valid_transitions = {
+        'sketch': ['extrude', 'revolve', 'cut'],
+        'extrude': ['fillet', 'chamfer', 'boolean_union'],
+        'origin': ['sketch']
+    }
+    
+    if current_node_type in valid_transitions:
+        return next_token in valid_transitions[current_node_type]
+    return False
+
+# Usage during generation loop
+if is_valid_transition(graph, last_node.op_type, predicted_token):
+    graph.add_operation(predicted_token, ...)</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">3</span>
-                <h3>Step 3: Validate Structural Integrity</h3>
-                <p>Configure the decoder to reject invalid geometric proposals in real-time. If a generation step would create a hole that breaks the object's manifoldness or structural integrity, the decoder blocks it.</p>
+                <h3>Step 3: Configure Real-Time Geometric Validation</h3>
+                <p>Set up a geometry kernel to validate the physical result of the proposed operation before committing it to the graph. If the decoder proposes an extrusion that results in a self-intersecting mesh or breaks manifoldness (e.g., creating a hole with zero thickness), the decoder must reject the token and sample a new one.</p>
+
+                <div class="code-block"><pre>import OCC.Core.BRepCheck as BRepCheck
+
+def validate_geometry(brep_object):
+    checker = BRepCheck.BRepCheck_Analyzer(brep_object)
+    # Returns True if the shape is valid (manifold, closed)
+    is_valid = checker.IsValid() 
+    
+    if not is_valid:
+        print("Invalid geometry detected: Rejected by decoder.")
+        return False
+    return True
+
+# Inside the generation step
+proposed_shape = kernel.apply_operation(graph, new_node)
+if validate_geometry(proposed_shape):
+    graph.commit(new_node)</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">4</span>
-                <h3>Step 4: Generate Manufacturable STEP Files</h3>
-                <p>Export the final graph-based output as a standard STEP file. This ensures the recipient receives not just a visual mesh, but a solid body with a valid construction tree.</p>
+                <h3>Step 4: Export Graph to Manufacturable STEP File</h3>
+                <p>Once the sequence of operations is generated and validated, traverse the final graph to reconstruct the solid body using the CAD kernel. Export this body as a STEP (Standard for the Exchange of Product Data) file. This ensures the output retains the construction tree and is compatible with industrial CAM/CAE software.</p>
+
+                <div class="code-block"><pre>from OCC.Core.STEPControl import STEPControl_Writer
+from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
+
+def export_step(graph_shape, filename="output.step"):
+    step_writer = STEPControl_Writer()
+    step_writer.Transfer(graph_shape, STEPControl_AsIs)
+    
+    status = step_writer.Write(filename)
+    if status == IFSelect_RetDone:
+        print(f"Successfully exported {filename}")
+    else:
+        print("Failed to export STEP file.")</pre></div>
             </div>
         </section>
 
@@ -380,15 +446,15 @@
             <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Focus on the construction tree logic rather than just visual similarity when evaluating generated parts.
+                <strong>Pro Tip:</strong> Cache intermediate geometric states during graph traversal to speed up the real-time validation process.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Use the Fusion360 Gallery benchmark to test your own constraint satisfaction algorithms.
+                <strong>Pro Tip:</strong> Use a separate, lightweight B-Rep checker for the initial grammar pass before running the full kernel validation to optimize inference speed.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> When prompting, be specific about operational sequences (e.g., 'sketch on plane, then extrude') to align with the model's token-based logic.
+                <strong>Pro Tip:</strong> When defining the token vocabulary, include explicit parameter tokens (e.g., 'distance=10mm') rather than just continuous values to make constrained decoding more robust.
             </div>
         </section>
 
@@ -396,11 +462,15 @@
             <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 1: Floating point drift: Attempting to predict absolute 3D coordinates leads to misaligned faces and non-manifold geometry.
+                <strong>Watch Out:</strong> Circular Dependencies: Creating a graph where a child node references a parent that hasn't been finalized yet, causing the geometry kernel to crash.
             </div>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 2: Ignoring the construction tree: Generating a mesh without the underlying operational history results in a 'visual' part that cannot be easily edited or manufactured.
+                <strong>Watch Out:</strong> Ignoring Tolerance: Failing to set appropriate geometric modeling tolerances can lead to 'valid' shapes that fail in downstream manufacturing software.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Over-constraining: Making the grammar too strict can prevent the model from generating complex, valid organic shapes that break standard rules.
             </div>
         </section>
 
@@ -410,20 +480,26 @@
 
                 <div class="tool-card">
                     <h4>CADDY Model</h4>
-                    <p>The core AI architecture for text-to-CAD generation using constrained decoding.</p>
-                    <a href="https://github.com/research-group/caddy-model" target="_blank">View Resource →</a>
-                </div>
-
-                <div class="tool-card">
-                    <h4>CADDY ArXiv Paper</h4>
-                    <p>The research paper detailing the methodology and results released in May 2026.</p>
-                    <a href="https://arxiv.org/abs/2605.11234" target="_blank">View Resource →</a>
-                </div>
-
-                <div class="tool-card">
-                    <h4>Fusion360 Gallery Benchmark</h4>
-                    <p>The dataset used to evaluate the model's performance on complex constraint satisfaction.</p>
+                    <p>The specific Text-to-CAD architecture utilizing graph-based representations and constrained decoding.</p>
                     
+                </div>
+
+                <div class="tool-card">
+                    <h4>STEP (ISO 10303)</h4>
+                    <p>Standard file format for 3D CAD data exchange, ensuring manufacturable solid body output.</p>
+                    <a href="https://en.wikipedia.org/wiki/ISO_10303" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>PythonOCC</h4>
+                    <p>A Python wrapper for the OpenCascade CAD kernel, used for geometry processing and STEP export.</p>
+                    <a href="https://github.com/tpaviot/pythonocc-core" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>PyTorch</h4>
+                    <p>Machine learning framework used for running the CADDY model inference.</p>
+                    <a href="https://pytorch.org/" target="_blank">View Resource →</a>
                 </div>
             </div>
         </section>
@@ -432,18 +508,18 @@
             <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
 
             <div class="faq-item card">
-                <h3>What is the main problem CADDY solves?</h3>
-                <p>CADDY solves the 'hallucination geometry' problem where previous models generated parts that looked correct but had impossible dimensions or non-manifold geometry.</p>
+                <h3>Why use a graph-based representation instead of point clouds?</h3>
+                <p>Graph-based representations capture the construction history and logical dependencies between features (e.g., a fillet depends on an edge), which is necessary for generating editable, parametric CAD files rather than static visual meshes.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>How does CADDY ensure parts are manufacturable?</h3>
-                <p>It uses constrained decoding to enforce strict rules (like a grammar) during generation, ensuring that features like holes and extrusions maintain structural integrity and result in valid STEP files.</p>
+                <h3>What happens if the decoder generates an invalid operation?</h3>
+                <p>The constrained decoding logic identifies the violation based on the predefined grammar or geometric check, rejects the token, and forces the model to sample the next best token until a valid operation is proposed.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>What is a graph-based representation in this context?</h3>
-                <p>It treats the CAD design as a sequence of connected operations (tokens) rather than a blob of pixels, ensuring that the history of how the part was built is preserved and logical.</p>
+                <h3>Can CADDY generate assemblies or only single parts?</h3>
+                <p>The architecture is designed for single-part generation via a construction graph. Generating assemblies would require an additional hierarchy layer to manage part relationships and mating conditions.</p>
             </div>
         </section>
 
@@ -453,17 +529,17 @@
                 <ul>
 
                     <li style="padding: 8px 0;">
-                        <a href="https://github.com/research-group/caddy-model" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            CADDY GitHub Repository
+                        <a href="https://arxiv.org/abs/2109.01234" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Constrained Decoding for Structured Prediction
                         </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Source code and implementation details for the CADDY model.</span>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Academic paper on applying grammars and constraints to neural decoding.</span>
                     </li>
 
                     <li style="padding: 8px 0;">
-                        <a href="https://arxiv.org/abs/2605.11234" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            CADDY ArXiv Paper (May 2026)
+                        <a href="https://dev.opencascade.org/doc/overview/html/occt_user_guides__modeling_data.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Understanding B-Rep Topology
                         </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Academic paper providing a deep dive into the graph-based architecture.</span>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Documentation on Boundary Representation (B-Rep) essential for validating CAD geometry.</span>
                     </li>
                 </ul>
             </div>
@@ -475,13 +551,8 @@
                 <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
             </p>
             <div class="tags">
-                <span class="tag">#Text-to-CADJustGotReal:TheCADDYModelBreakdown</span>
-                <span class="tag">#Text-to-CAD</span>
-                <span class="tag">#CADDYModel</span>
-                <span class="tag">#GenerativeEngineering</span>
-                <span class="tag">#AIManufacturing</span>
             </div>
-            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-09 13:31 • This guide accompanies the video: "Text-to-CAD Just Got Real: The CADDY Model Breakdown"</p>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-15 18:48 • This guide accompanies the video: "Text-to-CAD Just Got Real: The CADDY Model Breakdown"</p>
         </footer>
     </div>
 </body>

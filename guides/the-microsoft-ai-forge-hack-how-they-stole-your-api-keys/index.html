@@ -7,28 +7,31 @@
     <meta name="keywords" content="AI Supply Chain, Microsoft AI-Forge, Cybersecurity, Dependency Poisoning, API Key Safety">
     <meta name="author" content="Weight and See">
     <meta property="og:title" content="The Microsoft AI-Forge Hack: How They Stole Your API Keys - Complete Guide">
-    <meta property="og:description" content="A forensic breakdown of the June 2026 supply chain attack on Microsoft's 'AI-Forge' open-source scaffolding. We visualize the malicious dependency injection that exfiltrated developer environment vari">
+    <meta property="og:description" content="A forensic breakdown of the June 2026 supply chain attack on Microsoft's 'AI-Forge' open-source scaffolding. We visualize the malicious dependency injection tha">
     <meta property="og:type" content="article">
     <title>The Microsoft AI-Forge Hack: How They Stole Your API Keys | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0f0f0f;
-            --bg-secondary: #1a1a1a;
-            --bg-card: #252525;
-            --text-primary: #f1f1f1;
-            --text-secondary: #a0a0a0;
-            --accent: #6366f1;
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
             --accent-light: #818cf8;
-            --green: #22c55e;
-            --yellow: #eab308;
+            --green: #10b981;
+            --yellow: #f59e0b;
             --red: #ef4444;
-            --border: #333;
+            --border: #374151;
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
@@ -317,10 +320,10 @@
         <header class="header">
             <span class="badge">Complete Guide</span>
             <h1>The Microsoft AI-Forge Hack: How They Stole Your API Keys</h1>
-            <p class="subtitle">This guide provides a forensic analysis of the June 2026 supply chain attack on Microsoft's AI-Forge scaffolding, where a malicious dependency named 'torch-utils-plus' exfiltrated API keys via post-install scripts. It explains the failure of standard sandboxing and provides a local Python methodology to detect compromised packages without relying on cloud scanners.</p>
+            <p class="subtitle">This guide provides a forensic methodology for detecting and remediating the 'torch-utils-plus' malicious dependency injection within the Microsoft AI-Forge scaffolding. It covers cryptographic hash verification, post-install hook analysis, and immediate credential rotation protocols.</p>
             <div class="meta">
                 <span>By Weight and See</span>
-                <span>June 09, 2026</span>
+                <span>June 15, 2026</span>
                 <span>4 Steps</span>
             </div>
         </header>
@@ -329,11 +332,11 @@
             <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
             <div class="card">
                 <ul class="takeaway-list">
-                    <li><span class="takeaway-num">1</span><span>The attack vector was a malicious dependency named 'torch-utils-plus' injected into the AI-Forge supply chain.</span></li>
-                    <li><span class="takeaway-num">2</span><span>Exfiltration occurred via a post-install script that read environment files and pinged an external server.</span></li>
-                    <li><span class="takeaway-num">3</span><span>Standard sandboxing failed because the malicious script executed after the sandbox environment was lifted.</span></li>
-                    <li><span class="takeaway-num">4</span><span>Storing API keys in flat files makes them vulnerable to supply chain attacks; OS-level secret managers are recommended.</span></li>
-                    <li><span class="takeaway-num">5</span><span>You can audit your local environment using a Python script that checks 'postinstall' entries against known-good hashes.</span></li>
+                    <li><span class="takeaway-num">1</span><span>Supply chain attacks can inject malicious packages into trusted scaffolding like AI-Forge.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Always verify installed package hashes against a known-good manifest to detect swaps.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Malicious packages often use 'postinstall' scripts to exfiltrate environment variables immediately upon installation.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Automated local audit scripts can identify discrepancies faster than manual inspection.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Root cause remediation requires purging the malicious package and rotating all exposed API keys.</span></li>
                 </ul>
             </div>
         </section>
@@ -342,9 +345,9 @@
             <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
             <div class="card">
                 <ul>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of Python package management and the 'site-packages' directory structure</li>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to a terminal or command-line interface to run audit scripts</li>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Existing installation of the AI-Forge scaffolding or similar Python environments</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python environment with affected AI-Forge packages installed</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to the official Microsoft AI-Forge hash manifest</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Administrative access to modify system environment variables</li>
                 </ul>
             </div>
         </section>
@@ -355,25 +358,49 @@
             <div class="step">
                 <span class="step-num">1</span>
                 <h3>Step 1: Audit Against Known-Good Manifest</h3>
-                <p>Compare every installed package in your environment against the official Microsoft AI-Forge hash list. This identifies unauthorized packages that may have been swapped during the install process.</p>
+                <p>Generate a hash list of every installed package in your environment and compare it against the official Microsoft AI-Forge manifest. This ensures that no packages have been swapped or modified. You will need to calculate the SHA256 hash for the package metadata or contents and diff them against the trusted list.</p>
+
+                <div class="code-block"><pre>cd /path/to/your/venv/lib/pythonX.X/site-packages
+sha256sum */*-dist.info/RECORD > local_hashes.txt
+diff local_hashes.txt official_ai_forge_hashes.txt</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">2</span>
                 <h3>Step 2: Scan for Post-Install Hooks</h3>
-                <p>Inspect your package directories for 'postinstall' entry points. Specifically, look for scripts that attempt to read environment variables or make external network requests immediately after installation.</p>
+                <p>Malicious dependencies often execute scripts immediately after installation. Inspect your package directories for 'postinstall' entry points or suspicious scripts within 'setup.py' files that read environment variables. Look specifically for outbound network requests or file system reads targeting '.env' files.</p>
+
+                <div class="code-block"><pre># Search for postinstall scripts in package metadata
+grep -r "postinstall" .
+
+# Search for network requests in suspicious packages like torch-utils-plus
+grep -r "requests." ./torch-utils-plus/</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">3</span>
                 <h3>Step 3: Execute Local Audit Script</h3>
-                <p>Run the custom Python script that walks your 'site-packages' directory. This script flags any package containing a 'postinstall' entry and cross-references it with the official manifest, ensuring no data leaves your machine during the scan.</p>
+                <p>Run a custom Python script that recursively walks your 'site-packages' directory. This script flags any package containing a 'postinstall' entry and cross-references it with the official manifest. This ensures that the audit itself does not trigger the malicious code or send data out.</p>
+
+                <div class="code-block"><pre>python3 forensic_audit.py --site-packages ./lib/python3.10/site-packages --manifest official_ai_forge_hashes.txt
+
+# Sample script logic
+import os
+for root, dirs, files in os.walk('./site-packages'):
+    if 'postinstall' in files:
+        print(f"[!] Suspicious postinstall hook found in: {root}")</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">4</span>
                 <h3>Step 4: Purge and Rotate</h3>
-                <p>If the audit flags any packages (specifically 'torch-utils-plus'), immediately purge them from your system. Assume any API keys stored in environment files during that period are compromised and rotate them immediately.</p>
+                <p>If the audit flags the 'torch-utils-plus' package or any other unauthorized dependencies, immediately remove them using your package manager. Assume that any API keys (e.g., OPENAI_API_KEY) present in environment variables during the installation period are compromised and rotate them immediately in your cloud provider console.</p>
+
+                <div class="code-block"><pre>pip uninstall -y torch-utils-plus
+
+# After removal, sanitize environment and rotate keys
+unset OPENAI_API_KEY
+# Go to your cloud provider's dashboard and regenerate the key</pre></div>
             </div>
         </section>
 
@@ -381,15 +408,15 @@
             <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Avoid storing API keys in flat .env files; use OS-level secret managers or cloud vaults that require explicit authentication.
+                <strong>Pro Tip:</strong> Use `pip-audit` or `safety` regularly to check for known vulnerabilities in your dependency tree.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Do not rely solely on cloud-based security scanners for supply chain attacks; run local audits that can inspect post-install behaviors.
+                <strong>Pro Tip:</strong> Pin your dependency versions exactly in `requirements.txt` to prevent accidental installation of malicious updates.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Always verify the provenance of sub-packages within scaffolding tools, as installers often implicitly trust dependencies.
+                <strong>Pro Tip:</strong> Monitor egress network traffic from your build machines to detect data exfiltration attempts in real-time.
             </div>
         </section>
 
@@ -397,15 +424,11 @@
             <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Assuming standard sandboxing is sufficient: Sandboxes often lift restrictions before post-install scripts run, allowing malicious code execution.
+                <strong>Watch Out:</strong> Assuming clean removal: Simply deleting the package folder is insufficient; use the package manager to uninstall to ensure metadata is cleaned.
             </div>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Trusting official repositories implicitly: Even official scaffolding like AI-Forge can fall victim to dependency confusion or typosquatting if validation is weak.
-            </div>
-
-            <div class="pitfall">
-                <strong>Watch Out:</strong> Neglecting key rotation: Finding and deleting the malicious package is not enough; any keys exfiltrated before the fix must be invalidated.
+                <strong>Watch Out:</strong> Incomplete rotation: Rotating the key in the code but forgetting to update the staging/production environment variables leads to service downtime or continued leaks.
             </div>
         </section>
 
@@ -415,26 +438,20 @@
 
                 <div class="tool-card">
                     <h4>Microsoft AI-Forge</h4>
-                    <p>The open-source scaffolding tool targeted in the supply chain attack.</p>
-                    <a href="https://github.com/microsoft/ai-forge" target="_blank">View Resource →</a>
+                    <p>The open-source scaffolding tool affected by the supply chain attack.</p>
+                    
+                </div>
+
+                <div class="tool-card">
+                    <h4>Python / pip</h4>
+                    <p>The package management system used to install the affected libraries.</p>
+                    <a href="https://pip.pypa.io/" target="_blank">View Resource →</a>
                 </div>
 
                 <div class="tool-card">
                     <h4>torch-utils-plus</h4>
-                    <p>The malicious dependency package responsible for the exfiltration of environment variables.</p>
+                    <p>The malicious dependency package identified in the attack.</p>
                     
-                </div>
-
-                <div class="tool-card">
-                    <h4>Python site-packages</h4>
-                    <p>The directory where the audit script scans for malicious post-install hooks.</p>
-                    
-                </div>
-
-                <div class="tool-card">
-                    <h4>Microsoft Security Advisory GHSA-26-06</h4>
-                    <p>Official security advisory regarding the AI-Forge vulnerability.</p>
-                    <a href="https://github.com/advisories/GHSA-2026-ai-forge" target="_blank">View Resource →</a>
                 </div>
             </div>
         </section>
@@ -443,23 +460,18 @@
             <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
 
             <div class="faq-item card">
-                <h3>Why did standard sandboxing fail to catch this attack?</h3>
-                <p>The attack utilized a post-install script that executed after the security sandbox had been lifted, bypassing the containment mechanisms that usually monitor package installation.</p>
-            </div>
-
-            <div class="faq-item card">
-                <h3>What was the name of the malicious package?</h3>
-                <p>The malicious dependency was named 'torch-utils-plus'.</p>
-            </div>
-
-            <div class="faq-item card">
-                <h3>Do I need an internet connection to audit my system?</h3>
-                <p>No, the recommended Python script runs locally. It checks file hashes and 'postinstall' entries on your disk without sending data to external cloud scanners.</p>
-            </div>
-
-            <div class="faq-item card">
                 <h3>How do I know if my API keys were stolen?</h3>
-                <p>If you had the 'torch-utils-plus' package installed, assume any keys in your environment files at that time were exfiltrated. You must rotate them immediately.</p>
+                <p>If the 'torch-utils-plus' package was successfully installed, assume the keys were exfiltrated. Check your cloud provider's usage logs for unauthorized API calls during the timeframe the package was active.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I just delete the 'torch-utils-plus' folder?</h3>
+                <p>No, you must use `pip uninstall torch-utils-plus` to properly remove the package and its references. Deleting the folder manually may leave references or trigger errors, and does not address the compromised keys.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is AI-Forge safe to use now?</h3>
+                <p>You should verify the integrity of your specific installation using the hash manifest method described in Step 1, and ensure you have updated to a patched version of the scaffolding if available.</p>
             </div>
         </section>
 
@@ -469,17 +481,10 @@
                 <ul>
 
                     <li style="padding: 8px 0;">
-                        <a href="https://github.com/advisories/GHSA-2026-ai-forge" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            Microsoft Security Advisory GHSA-26-06
+                        <a href="https://github.com/ossf/wg-best-practices-os-developers" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OpenSSF Supply Chain Security Best Practices
                         </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official technical details and mitigation steps for the AI-Forge supply chain attack.</span>
-                    </li>
-
-                    <li style="padding: 8px 0;">
-                        <a href="https://github.com/microsoft/ai-forge" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            AI-Forge Repository
-                        </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Source code and repository for the affected scaffolding tool.</span>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Industry-standard guidelines for securing open source software supply chains.</span>
                     </li>
                 </ul>
             </div>
@@ -491,13 +496,8 @@
                 <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
             </p>
             <div class="tags">
-                <span class="tag">#TheMicrosoftAI-ForgeHack:HowTheyStoleYourAPIKeys</span>
-                <span class="tag">#AISupplyChain</span>
-                <span class="tag">#MicrosoftAI-Forge</span>
-                <span class="tag">#Cybersecurity</span>
-                <span class="tag">#DependencyPoisoning</span>
             </div>
-            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-09 06:31 • This guide accompanies the video: "The Microsoft AI-Forge Hack: How They Stole Your API Keys"</p>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-15 18:48 • This guide accompanies the video: "The Microsoft AI-Forge Hack: How They Stole Your API Keys"</p>
         </footer>
     </div>
 </body>

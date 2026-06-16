@@ -1,0 +1,118 @@
+{
+  "overview": "This guide walks you through installing an 8\u2011bit quantized GPT\u20115.5 model on a Raspberry Pi Zero\u00a04, turning the pocket\u2011sized device into a low\u2011cost local AI chatbot. It covers OS setup, GPU driver installation, model download, runtime configuration, and a sample chatbot script.",
+  "key_takeaways": [
+    "Ubuntu for ARM can be flashed onto the Pi Zero\u00a04 to provide a lightweight Linux environment.",
+    "NVIDIA JetPack SDK supplies the GPU drivers and CUDA runtime needed for low\u2011bit arithmetic on the Pi\u2019s ARM cores.",
+    "The OpenAI Edge Hub hosts the 8\u2011bit quantized GPT\u20115.5 checkpoint, which can be downloaded directly onto the device.",
+    "The open\u2011source edge\u2011llm runtime handles weight swapping and low\u2011bit math, enabling the model to fit within the Pi\u2019s 1\u202fGB RAM.",
+    "A minimal Python chatbot script demonstrates inference and can be expanded into a full application."
+  ],
+  "prerequisites": [
+    "Raspberry Pi Zero\u00a04 (1\u202fGB RAM, microSD slot, power supply, internet connection)",
+    "A computer with SD\u2011card writer and internet access to flash the OS",
+    "Basic familiarity with Linux terminal commands"
+  ],
+  "step_by_step": [
+    {
+      "title": "Step 1: Flash Ubuntu for ARM onto the Pi",
+      "description": "Download the 20.04 LTS Ubuntu Server for ARM image from Canonical\u2019s website, write it to a microSD card using `dd`, and boot the Pi. Enable SSH for remote access.",
+      "code_example": "```bash\n# Download Ubuntu Server ARM image\nwget https://cdimage.ubuntu.com/ubuntu-server/releases/20.04/release/ubuntu-20.04.6-preinstalled-server-arm64+raspi.img.xz\n# Verify checksum (optional)\nsha256sum ubuntu-20.04.6-preinstalled-server-arm64+raspi.img.xz\n# Extract and write to SD card (replace /dev/sdX with your device)\nxz -d ubuntu-20.04.6-preinstalled-server-arm64+raspi.img.xz\nsudo dd if=ubuntu-20.04.6-preinstalled-server-arm64+raspi.img of=/dev/sdX bs=4M status=progress && sync\n```"
+    },
+    {
+      "title": "Step 2: Install NVIDIA JetPack SDK and Dependencies",
+      "description": "Update the system, install JetPack packages, and configure the GPU for CUDA. JetPack provides the `nvidia-smi` utility and CUDA libraries needed for edge\u2011llm.",
+      "code_example": "```bash\nsudo apt update && sudo apt upgrade -y\n# Install JetPack (CUDA, cuDNN, OpenCV)\nsudo apt install -y nvidia-jetpack-4.6 nvidia-cuda-toolkit\n# Verify GPU is recognized\nnvidia-smi\n```"
+    },
+    {
+      "title": "Step 3: Download the 8\u2011bit Quantized GPT\u20115.5 Checkpoint",
+      "description": "Use the OpenAI Edge Hub CLI to pull the quantized checkpoint into the local filesystem. Set an environment variable for the Edge Hub token if required.",
+      "code_example": "```bash\n# Install Edge Hub CLI (if not already installed)\npip install openai-edge-hub\n# Export token (replace YOUR_TOKEN with your actual token)\nexport OPENAI_EDGE_HUB_TOKEN=YOUR_TOKEN\n# Pull the GPT\u20115.5 8\u2011bit checkpoint to /opt/models/gpt-5.5-8bit\nopenai-edge-hub pull --model gpt-5.5-8bit --destination /opt/models/gpt-5.5-8bit\n```"
+    },
+    {
+      "title": "Step 4: Install and Configure edge\u2011llm Runtime",
+      "description": "Install the edge\u2011llm Python package, set the runtime environment variables, and load the model into memory using low\u2011bit math. The runtime handles weight swapping to keep RAM usage low.",
+      "code_example": "```bash\n# Install edge-llm via pip\npip install edge-llm\n# Create a Python script to load the model\ncat <<'PY' > load_model.py\nfrom edge_llm import EdgeLLM\n\n# Path to the quantized checkpoint\nmodel_path = '/opt/models/gpt-5.5-8bit'\n\n# Initialize the runtime with 8\u2011bit precision and GPU acceleration\nllm = EdgeLLM(model_path, precision='int8', device='cuda')\n\nprint('Model loaded:', llm)\nPY\n# Run the script\npython load_model.py\n```"
+    },
+    {
+      "title": "Step 5: Run a Sample Chatbot",
+      "description": "Create a simple chatbot script that sends user prompts to the loaded model and streams the response. The script uses `edge_llm` for inference and prints tokens as they are generated.",
+      "code_example": "```bash\ncat <<'PY' > chatbot.py\nfrom edge_llm import EdgeLLM\nimport sys\n\n# Load the already initialized model\nllm = EdgeLLM('/opt/models/gpt-5.5-8bit', precision='int8', device='cuda')\n\nprint('Enter your message (Ctrl\u2011C to exit):')\nwhile True:\n    try:\n        prompt = input('> ')\n        if not prompt:\n            continue\n        # Stream tokens\n        for token in llm.generate(prompt, stream=True):\n            sys.stdout.write(token)\n            sys.stdout.flush()\n        print('\\n---')\n    except KeyboardInterrupt:\n        print('\\nExiting.')\n        break\nPY\n# Run the chatbot\npython chatbot.py\n```"
+    }
+  ],
+  "pro_tips": [
+    "Use a 32\u202fGB or larger microSD card; larger cards improve read/write performance and reduce wear.",
+    "Enable swap with a dedicated swap file to avoid OOM errors when the model temporarily exceeds RAM limits.",
+    "Set `ulimit -n 4096` to increase the maximum number of open file descriptors, which helps with GPU driver sockets.",
+    "If you encounter GPU initialization errors, double\u2011check that the JetPack version matches the kernel; reinstalling JetPack often resolves the issue."
+  ],
+  "common_pitfalls": [
+    "Pitfall 1: Forgetting to enable GPU support in the Ubuntu kernel leads to `CUDA driver not found` errors.",
+    "Pitfall 2: Downloading the wrong checkpoint path or missing the `int8` precision flag causes the runtime to attempt 32\u2011bit inference and run out of memory."
+  ],
+  "tools_mentioned": [
+    {
+      "name": "Ubuntu Server for ARM",
+      "description": "A lightweight Linux distribution for ARM devices, providing a stable base OS.",
+      "url": "https://ubuntu.com/download/raspberry-pi"
+    },
+    {
+      "name": "NVIDIA JetPack SDK",
+      "description": "CUDA, cuDNN, and other GPU drivers for NVIDIA Jetson and compatible ARM boards.",
+      "url": "https://developer.nvidia.com/embedded/jetpack"
+    },
+    {
+      "name": "OpenAI Edge Hub",
+      "description": "Repository of quantized LLM checkpoints optimized for edge devices.",
+      "url": "https://edgehub.openai.com"
+    },
+    {
+      "name": "edge-llm",
+      "description": "Python runtime that performs low\u2011bit inference and weight swapping on resource\u2011constrained hardware.",
+      "url": "https://github.com/openai/edge-llm"
+    },
+    {
+      "name": "Python",
+      "description": "Programming language used for scripting the chatbot and model loading.",
+      "url": "https://www.python.org"
+    }
+  ],
+  "further_reading": [
+    {
+      "title": "OpenAI Edge Hub Documentation",
+      "url": "https://edgehub.openai.com/docs",
+      "description": "Guides on downloading and using quantized models from the Edge Hub."
+    },
+    {
+      "title": "NVIDIA JetPack Developer Guide",
+      "url": "https://docs.nvidia.com/jetpack/",
+      "description": "Comprehensive instructions for installing and configuring JetPack on ARM devices."
+    },
+    {
+      "title": "edge-llm GitHub Repository",
+      "url": "https://github.com/openai/edge-llm",
+      "description": "Source code, examples, and installation instructions for the edge\u2011llm runtime."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Can I run GPT\u20115.5 on a Pi Zero without the GPU?",
+      "answer": "The CPU-only version will be extremely slow and may not fit in RAM. The GPU via JetPack is essential for the 8\u2011bit inference to stay within memory limits."
+    },
+    {
+      "question": "What if my model fails to load due to insufficient RAM?",
+      "answer": "Enable a swap file (e.g., 2\u202fGB) and use the `edge_llm` `weight_swapping=True` flag to offload unused weights to disk during inference."
+    },
+    {
+      "question": "Is it safe to use the Edge Hub token on a public device?",
+      "answer": "Yes, the token is scoped to the model download only. However, keep the token out of source control and consider rotating it if the device is shared."
+    },
+    {
+      "question": "Can I stream responses over a network API instead of CLI?",
+      "answer": "Absolutely. Wrap the `edge_llm.generate` call in a Flask or FastAPI endpoint and stream the tokens using Server\u2011Sent Events or WebSockets."
+    },
+    {
+      "question": "How do I update the model to a newer version?",
+      "answer": "Pull the new checkpoint with `openai-edge-hub pull --model gpt-5.5-8bit --destination /opt/models/gpt-5.5-8bit` and restart the chatbot script."
+    }
+  ]
+}
