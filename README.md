@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/64_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/66_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -33,8 +33,8 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
-| **Model Deep Dives** | ![17](https://img.shields.io/badge/17-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![26](https://img.shields.io/badge/26-blue?style=flat-square) |
+| **Model Deep Dives** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
@@ -48,6 +48,7 @@
 *Head-to-head model showdowns and real-world performance tests*
 
 - **[Deep Dive into AdaHmpLEng — Efficient Small-Scale English Model](https://bgill55.github.io/-weightandsee-guides/guides/deep-dive-into-adahmpleng-50m-5ep-1e-4-64b-efficient-smallscale-english-model/)** — 2026-06-15
+- **[Google Vs Meta Vs Openai The 2026 Ai Search Faceoff](https://bgill55.github.io/-weightandsee-guides/guides/google-vs-meta-vs-openai-the-2026-ai-search-faceoff/)** — 2026-06-15
 - **[Local Vs Cloud Object Detection Showdown Latency Privacy And Cost Per Frame](https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-object-detection-showdown-latency-privacy-and-cost-per-frame/)** — 2026-06-14
 - **[Supertonic 3 Beats Google Cloud Tts Ondevice Multilingual Speed Privacy Test](https://bgill55.github.io/-weightandsee-guides/guides/supertonic-3-beats-google-cloud-tts-ondevice-multilingual-speed-privacy-test/)** — 2026-06-13
 - **[Kimik27Code Vs Copilot Vs Codewhisperer Who Wins The Coding Race](https://bgill55.github.io/-weightandsee-guides/guides/kimik27code-vs-copilot-vs-codewhisperer-who-wins-the-coding-race/)** — 2026-06-13
@@ -84,6 +85,7 @@
 - **[MetaVision 2.0 API Deep Dive — Is It Worth the Hype?](https://bgill55.github.io/-weightandsee-guides/guides/metavision-20-api-deep-dive-is-the-new-multimodal-model-worth-the-hype/)** — 2026-06-15
 - **[Advantages Of On Device Ai A Deep Dive Into Jeidobanironsmith](https://bgill55.github.io/-weightandsee-guides/guides/advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/)** — 2026-06-15
 - **[Agent Reach Deep Dive Free Open Source Alternative To Paid Apis](https://bgill55.github.io/-weightandsee-guides/guides/agent-reach-deep-dive-free-open-source-alternative-to-paid-apis/)** — 2026-06-15
+- **[Why Minimax M3 Breaks The Alphazero Compute Mold](https://bgill55.github.io/-weightandsee-guides/guides/why-minimax-m3-breaks-the-alphazero-compute-mold/)** — 2026-06-15
 - **[The Future Of Reactive Audio How Flux 2 Changes Game Design](https://bgill55.github.io/-weightandsee-guides/guides/the-future-of-reactive-audio-how-flux-2-changes-game-design/)** — 2026-06-13
 - **[Supertonic Review Is Local Tts Finally Viable](https://bgill55.github.io/-weightandsee-guides/guides/supertonic-review-is-local-tts-finally-viable/)** — 2026-06-13
 - **[Automating Your Business With Fable And Mythos](https://bgill55.github.io/-weightandsee-guides/guides/automating-your-business-with-fable-and-mythos/)** — 2026-06-13
