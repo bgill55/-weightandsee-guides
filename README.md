@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/68_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/69_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/freellmapi-test/">
+<img src="guides/freellmapi-test/thumbnail.jpg" width="300" alt="Freellmapi Test"><br>
+<b>Freellmapi Test</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/tool-review-sp-implementations-vs-classic-plugandplay-restorers/">
 <img src="guides/tool-review-sp-implementations-vs-classic-plugandplay-restorers/thumbnail.jpg" width="300" alt="Tool Review Sp Implementations Vs Classic Plugandplay Restorers"><br>
@@ -43,7 +49,7 @@
 | **Model Deep Dives** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -139,6 +145,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[Freellmapi Test](https://bgill55.github.io/-weightandsee-guides/guides/freellmapi-test/)** — 2026-06-17
 - **[Nocode Playbook Build A World Cup 2026 Predictor With Llms Typescript Realtime S](https://bgill55.github.io/-weightandsee-guides/guides/nocode-playbook-build-a-world-cup-2026-predictor-with-llms-typescript-realtime-s/)** — 2026-06-15
 - **[Creating Mac Apps With Ai A Step By Step Guide](https://bgill55.github.io/-weightandsee-guides/guides/creating-mac-apps-with-ai-a-step-by-step-guide/)** — 2026-06-15
 - **[Agent Reach Unpacked Free Allinone Internet Access For Ai Agents](https://bgill55.github.io/-weightandsee-guides/guides/agent-reach-unpacked-free-allinone-internet-access-for-ai-agents/)** — 2026-06-13
