@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SpaceX acquiring Cursor AI in an all-stock deal isn't just a business headline — it signals a radical shift in how developer tools will be trained. This video b">
+    <meta name="keywords" content="SpaceX Cursor AI acquisition, AI coding assistant aerospace, Cursor AI SpaceX developer tools, AI model training aerospace code, future of AI pair programming">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="What Happens When AI Learns to Code Like a Rocket Scientist - Complete Guide">
+    <meta property="og:description" content="SpaceX acquiring Cursor AI in an all-stock deal isn't just a business headline — it signals a radical shift in how developer tools will be trained. This video breaks down what happens when a company t">
+    <meta property="og:type" content="article">
+    <title>What Happens When AI Learns to Code Like a Rocket Scientist | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>What Happens When AI Learns to Code Like a Rocket Scientist</h1>
+            <p class="subtitle">This guide explores the technical implications of SpaceX's acquisition of Cursor AI, detailing how aerospace-grade software training data could fundamentally reshape AI-assisted code generation. We examine how safety-critical, real-time systems code from SpaceX's flight control and orbital mechanics stack could be used to fine-tune large language models, producing coding assistants that understand physics constraints, failure modes, and embedded systems — capabilities that trickle down to general-purpose development. The guide also covers the competitive dynamics this creates for tools like GitHub Copilot and Windsurf, and what developers should expect from the next generation of AI pair programming tools.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 17, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>SpaceX's acquisition of Cursor AI means Cursor's underlying models could be fine-tuned on proprietary aerospace codebases — flight control systems, orbital mechanics calculators, and real-time telemetry processors — a dataset no other AI coding assistant can access.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Fine-tuning on safety-critical code teaches models to reason about real-time constraints (e.g., hardware interrupt deadlines), failure mode handling, and physics-aware computation, which improves code quality across all domains including backend, embedded, and infrastructure.</span></li>
+                    <li><span class="takeaway-num">3</span><span>The all-stock deal gives Cursor's team direct access to SpaceX's internal simulation frameworks, testing pipelines, and proprietary tooling, creating a significant data moat over competitors trained solely on public repositories like GitHub and Stack Overflow.</span></li>
+                    <li><span class="takeaway-num">4</span><span>AI coding assistants are splitting into two categories: those trained on general-purpose open internet code (Copilot, Windsurf) and those trained on proprietary, mission-critical codebases (Cursor + SpaceX), with the latter offering deeper systems-level reasoning.</span></li>
+                    <li><span class="takeaway-num">5</span><span>For everyday developers, this means future AI coding tools will move beyond autocompleting boilerplate to understanding why a system needs deterministic timing, how to handle edge cases in concurrent systems, and how to write code that respects physical and hardware constraints.</span></li>
+                    <li><span class="takeaway-num">6</span><span>The competitive threat to GitHub Copilot and Windsurf is structural — without access to proprietary safety-critical training data, their models will lack the depth of reasoning about real-time systems, fault tolerance, and physics-informed code generation.</span></li>
+                    <li><span class="takeaway-num">7</span><span>Developers should begin exploring Cursor AI now to understand how aerospace-trained models differ in their suggestions, particularly for embedded systems, robotics, infrastructure, and any domain where correctness and timing matter.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with AI-assisted coding tools (e.g., Cursor, GitHub Copilot, or Windsurf) and how they integrate LLMs into an IDE workflow.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of fine-tuning and how training data composition affects model behavior in code generation tasks.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">General software development experience, particularly with systems-level or embedded programming concepts (real-time constraints, concurrency, fault tolerance) to appreciate the technical differentiators discussed.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Understand How Cursor AI's Architecture Enables Model Fine-Tuning</h3>
+                <p>Cursor AI is built as an IDE wrapper that routes coding prompts to large language models (GPT-4, Claude, etc.) via API calls. The key insight is that Cursor can swap or fine-tune its underlying models independently of the base LLM provider. To understand this, explore Cursor's settings where you can select different model backends. In Cursor, open Settings (Cmd/Ctrl + Shift + J) and navigate to the Models section to see available model options. This modularity is what allows SpaceX to inject aerospace-trained models into the Cursor pipeline without rebuilding the IDE from scratch.</p>
+
+                <div class="code-block"><pre># Cursor's architecture conceptually works like this:
+# User prompt → Cursor IDE → Model API → Generated code
+
+# Example: Cursor sends a completion request to an LLM API
+curl https://api.cursor.sh/v1/completions \
+  -H "Authorization: Bearer $CURSOR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "cursor-aerospace-v1",
+    "prompt": "Write a PID controller for rocket thrust vectoring with timing constraints",
+    "max_tokens": 2048,
+    "temperature": 0.1
+  }'
+
+# The model identifier 'cursor-aerospace-v1' represents a
+# SpaceX-fine-tuned model that understands real-time constraints</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Explore What Aerospace Training Data Looks Like and Why It Matters</h3>
+                <p>SpaceX's codebase includes flight software written in C/C++ and Python that handles real-time telemetry, guidance/navigation/control (GNC), and fault detection/isolation/recovery (FDIR). To understand the difference this training data makes, compare code suggestions from a general-purpose model versus what an aerospace-trained model would produce. A general model might suggest a simple loop for sensor reading; an aerospace-trained model would include watchdog timers, bounds checking, and deterministic timing guarantees. Study open-source flight software projects like NASA's Core Flight System (cFS) or SpaceX's open-source Falcon 9 simulation code to see the patterns: fixed-priority scheduling, hardware abstraction layers, and defensive programming against single-event upsets.</p>
+
+                <div class="code-block"><pre>// General-purpose model suggestion (typical Copilot output)
+float read_sensor() {
+    return analogRead(SENSOR_PIN);
+}
+
+// Aerospace-trained model suggestion (SpaceX-fine-tuned output)
+#include <stdint.h>
+#include <watchdog.h>
+
+#define SENSOR_READ_TIMEOUT_US 500
+#define SENSOR_MAX_VALID 3.3f
+#define SENSOR_MIN_VALID 0.0f
+
+typedef enum {
+    SENSOR_OK = 0,
+    SENSOR_TIMEOUT,
+    SENSOR_OUT_OF_RANGE,
+    SENSOR_FAULT
+} SensorStatus;
+
+SensorStatus read_sensor(float *out_value) {
+    uint32_t start = get_monotonic_us();
+    float raw = analogRead(SENSOR_PIN);
+    
+    if ((get_monotonic_us() - start) > SENSOR_READ_TIMEOUT_US) {
+        watchdog_pet(WD_SENSOR);
+        return SENSOR_TIMEOUT;
+    }
+    
+    if (raw < SENSOR_MIN_VALID || raw > SENSOR_MAX_VALID) {
+        log_fault(FAULT_SENSOR_RANGE, raw);
+        return SENSOR_OUT_OF_RANGE;
+    }
+    
+    *out_value = raw;
+    return SENSOR_OK;
+}</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Set Up Cursor AI and Configure It for Systems-Level Development</h3>
+                <p>Download and install Cursor from cursor.com. After installation, configure it for systems-level or embedded development by setting up custom rules and context files. Create a .cursorrules file in your project root that tells the AI about your project's constraints — real-time requirements, safety-critical patterns, and hardware interfaces. This simulates what SpaceX-trained models would do natively. Also configure Cursor's codebase indexing to understand your project's architecture, which improves the relevance of suggestions for complex systems code.</p>
+
+                <div class="code-block"><pre># .cursorrules - Place in project root
+# This file guides Cursor's AI to produce aerospace-grade code
+
+You are an expert embedded systems engineer.
+
+## Coding Standards
+- All functions must have deterministic execution time
+- Use fixed-point arithmetic where floating-point timing is non-deterministic
+- Every function returns a status code; no silent failures
+- All inputs must be validated against physical bounds
+- Use hardware watchdog timers for critical loops
+- Follow MISRA C guidelines for safety-critical code
+
+## Real-Time Constraints
+- Interrupt service routines must complete within 10ms
+- Main control loop runs at 100Hz (10ms period)
+- No dynamic memory allocation after initialization
+- No blocking calls in control path
+
+## Testing
+- Every module must have unit tests with 100% branch coverage
+- Include fault injection tests for all error paths
+- Timing analysis required for all real-time functions
+
+# Install Cursor CLI for terminal integration:
+# curl https://cursor.sh/install.sh | bash
+
+# Authenticate Cursor:
+cursor auth login
+
+# Index your codebase for better context:
+cursor index ./src</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Evaluate the Competitive Landscape — Cursor vs Copilot vs Windsurf</h3>
+                <p>To understand the strategic shift, set up a comparison test across Cursor, GitHub Copilot, and Windsurf using the same systems-level coding prompts. Create a test suite of prompts that require real-time reasoning, physics awareness, and safety-critical thinking. For each tool, measure: (1) whether the generated code includes bounds checking and error handling, (2) whether timing constraints are acknowledged, (3) whether the code follows defensive programming patterns, and (4) whether the model explains its reasoning about failure modes. Document the differences — this will become more pronounced as SpaceX fine-tunes Cursor's models on aerospace code.</p>
+
+                <div class="code-block"><pre># Comparison test prompts for AI coding assistants:
+
+# Test 1: Real-time constraint awareness
+PROMPT_1="Write a C function that reads IMU data at 1kHz with guaranteed latency under 50 microseconds. Include timing verification."
+
+# Test 2: Physics-informed code generation
+PROMPT_2="Calculate the delta-v needed for a Hohmann transfer from a 400km LEO to a 35786km GEO orbit. Use standard gravitational parameter mu=398600.4418 km^3/s^2."
+
+# Test 3: Safety-critical pattern recognition
+PROMPT_3="Implement a triple-modular redundancy voting system for flight computer sensor inputs with Byzantine fault tolerance."
+
+# Test 4: Failure mode reasoning
+PROMPT_4="Design a state machine for rocket engine shutdown that handles sensor failure, communication loss, and over-temperature conditions with graceful degradation."
+
+# Scoring rubric (1-5 for each dimension):
+# - Correctness of physics/math
+# - Real-time constraint handling
+# - Error handling completeness
+# - Defensive programming patterns
+# - Explanation of failure modes
+
+echo "Tool,Prompt,Physics,Timing,Errors,Defense,Explanation" > results.csv
+# Run each prompt through each tool and score results</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Prepare for Aerospace-Trained AI Models in Your Workflow</h3>
+                <p>As SpaceX begins fine-tuning Cursor's models, developers should prepare by understanding the patterns these models will emphasize. Start incorporating aerospace-grade practices into your own codebase so that when the AI suggests safety-critical patterns, you can evaluate them properly. Key areas to study: deterministic execution (avoid malloc in hot paths, use static allocation), fault tolerance (watchdog timers, heartbeat monitoring, graceful degradation), and formal verification basics (assertions, invariants, pre/post conditions). Also monitor Cursor's changelog and model updates for announcements about new aerospace-trained model variants.</p>
+
+                <div class="code-block"><pre>// Example: Refactoring general code to aerospace-grade patterns
+// that an AI trained on SpaceX code would suggest
+
+// BEFORE: General-purpose code
+void process_telemetry() {
+    TelemetryData *data = malloc(sizeof(TelemetryData));
+    read_sensors(data);
+    transmit(data);
+    free(data);
+}
+
+// AFTER: Aerospace-grade refactored code
+#include <assert.h>
+#include <watchdog.h>
+
+// Static allocation — no heap in real-time path
+static TelemetryData telemetry_buffer;
+static volatile bool telemetry_ready = false;
+
+void process_telemetry(void) {
+    watchdog_pet(WD_TELEMETRY);
+    
+    // Pre-condition: buffer must not be in use
+    assert(!telemetry_ready);
+    
+    SensorStatus status = read_sensors(&telemetry_buffer);
+    
+    if (status != SENSOR_OK) {
+        log_fault(FAULT_TELEMETRY_READ, (uint32_t)status);
+        telemetry_buffer.sequence_number = 0; // Mark invalid
+        telemetry_buffer.timestamp = get_monotonic_ms();
+    }
+    
+    // Invariance: sequence number always increments
+    static uint32_t expected_seq = 0;
+    if (telemetry_buffer.sequence_number != expected_seq) {
+        log_fault(FAULT_SEQ_MISMATCH, telemetry_buffer.sequence_number);
+    }
+    expected_seq = telemetry_buffer.sequence_number + 1;
+    
+    CommStatus tx_status = transmit(&telemetry_buffer);
+    if (tx_status != COMM_OK) {
+        log_fault(FAULT_TRANSMIT, (uint32_t)tx_status);
+        // Graceful degradation: store for retry
+        store_for_retry(&telemetry_buffer);
+    }
+    
+    telemetry_ready = true;
+}</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Create a .cursorrules file in every project that specifies your real-time constraints, safety requirements, and coding standards — this simulates what a SpaceX-trained model would do natively and dramatically improves suggestion quality even before aerospace fine-tuning ships.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> When evaluating AI-generated code for systems-level projects, always check for three things a general-purpose model typically misses: (1) deterministic execution time, (2) bounded memory usage with no dynamic allocation in hot paths, and (3) explicit handling of every error return code.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Monitor Cursor's model selection dropdown in Settings — when SpaceX-fine-tuned models become available, they will likely appear as new model options (e.g., 'cursor-aerospace-v1') that you can select for projects requiring safety-critical code generation.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Study NASA's Core Flight System (cFS) and ESA's satellite flight software open-source projects to understand the patterns that SpaceX-trained models will internalize — this helps you evaluate whether the AI's suggestions are genuinely aerospace-grade or just superficially similar.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> The biggest differentiator won't be syntax — it will be reasoning about failure modes. Test your AI coding assistant with prompts like 'what happens if this sensor fails mid-read?' to see if it understands fault tolerance, not just happy-path code.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Assuming all AI coding assistants will benefit equally from SpaceX's acquisition. Only Cursor AI (and potentially other SpaceX-owned tools) will have direct access to the aerospace training data. GitHub Copilot and Windsurf remain limited to public repositories unless they secure similar proprietary data partnerships.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Over-trusting aerospace-trained model output without domain expertise. A model trained on flight software will suggest patterns appropriate for safety-critical systems — but applying watchdog timers and triple-modular redundancy to a simple web API is wasteful over-engineering. Understand when aerospace patterns are appropriate.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Ignoring the timing of this transition. Fine-tuning LLMs on proprietary aerospace codebases takes months of training, validation, and safety testing. Don't expect Cursor to ship SpaceX-trained models immediately — the competitive advantage will roll out gradually over 2025-2026.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 4: Confusing model fine-tuning with prompt engineering. SpaceX's advantage comes from changing the model's weights through training on aerospace code, not from better system prompts. This means the aerospace knowledge is baked into the model's reasoning, not just injected at inference time — a fundamentally stronger approach.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 5: Neglecting to update your own coding practices. If your codebase doesn't follow any safety-critical or real-time patterns, an aerospace-trained AI's suggestions may seem alien or overly complex. Start adopting basic defensive programming practices now so you can effectively collaborate with these next-generation models.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Cursor AI</h4>
+                    <p>AI-first code editor that integrates large language models directly into the IDE for code generation, refactoring, and explanation. The primary tool affected by SpaceX's acquisition.</p>
+                    <a href="https://cursor.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>SpaceX</h4>
+                    <p>Aerospace company with proprietary flight control software, orbital mechanics systems, and real-time telemetry processing codebases that will serve as training data for fine-tuning Cursor's AI models.</p>
+                    <a href="https://spacex.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>GitHub Copilot</h4>
+                    <p>AI coding assistant by GitHub/Microsoft trained primarily on public repositories. Faces competitive pressure from Cursor's potential aerospace-trained models.</p>
+                    <a href="https://github.com/features/copilot" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Windsurf</h4>
+                    <p>AI coding assistant (formerly Codeium) that provides similar functionality to Cursor and Copilot, also trained on general-purpose codebases.</p>
+                    <a href="https://windsurf.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>NASA Core Flight System (cFS)</h4>
+                    <p>Open-source flight software framework used as a reference for aerospace-grade code patterns including real-time scheduling, fault detection, and telemetry processing.</p>
+                    <a href="https://github.com/nasa/cFS" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>GPT-4 / Claude</h4>
+                    <p>Large language models that currently power Cursor AI's code generation capabilities. These base models would be fine-tuned on SpaceX's proprietary aerospace code.</p>
+                    <a href="https://openai.com" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Will SpaceX's acquisition of Cursor AI immediately change the code suggestions I see?</h3>
+                <p>No. Fine-tuning large language models on proprietary aerospace codebases is a multi-month process involving data preparation, training, validation, and safety testing. The competitive advantage will roll out gradually, likely appearing as new model options in Cursor's settings over 2025-2026. Current Cursor users will see incremental improvements as new model versions ship.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How is training on aerospace code different from training on GitHub repositories?</h3>
+                <p>Aerospace codebases emphasize patterns that are rare in general software: deterministic execution time (no unpredictable latency), defensive programming against hardware faults, bounded memory usage (no dynamic allocation in critical paths), and explicit handling of every failure mode. GitHub repositories are dominated by web applications, scripts, and tools where these constraints don't apply. A model trained on aerospace code will naturally suggest more robust, fault-tolerant patterns even for general-purpose tasks.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Should I switch from GitHub Copilot to Cursor AI because of this acquisition?</h3>
+                <p>If you work in embedded systems, robotics, infrastructure, or any domain where correctness and real-time behavior matter, Cursor AI is worth evaluating now — especially with custom .cursorrules files. For general web development, the difference may not be significant until SpaceX-fine-tuned models ship. The key advantage is Cursor's modular architecture that allows rapid model swapping, which means they can deploy aerospace-trained models faster than competitors.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I simulate aerospace-grade AI code generation with current tools?</h3>
+                <p>Partially. You can create detailed .cursorrules or Copilot instructions files that specify safety-critical coding standards, real-time constraints, and defensive programming patterns. This uses prompt engineering rather than fine-tuning, so it's less powerful than having the knowledge baked into model weights. However, it's an effective stopgap that also prepares your codebase for when true aerospace-trained models become available.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What makes SpaceX's codebase uniquely valuable as training data compared to other companies?</h3>
+                <p>SpaceX operates at the intersection of several rare software domains: real-time control systems (rocket engine gimbaling, landing burns), orbital mechanics (trajectory optimization, rendezvous calculations), distributed systems (satellite constellation management), and extreme reliability requirements (human-rated spacecraft). Very few organizations combine all of these in a single codebase. This diversity of safety-critical, physics-informed, real-time code is what makes SpaceX's training data a structural advantage that competitors cannot easily replicate from public sources.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://cursor.com/docs" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Cursor AI Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation for Cursor AI, including setup, configuration, model selection, and .cursorrules file format for customizing AI behavior.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/nasa/cFS" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            NASA Core Flight System (cFS) on GitHub
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Open-source reference implementation of aerospace flight software patterns including real-time executive, telemetry, and event services — representative of the code patterns SpaceX-trained models will learn from.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.spacex.com/updates" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            SpaceX Software Engineering Insights
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official SpaceX updates that occasionally detail their software engineering practices, testing methodologies, and the scale of their internal tooling.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2305.14235" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Fine-Tuning LLMs for Domain-Specific Code Generation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Research paper on how fine-tuning large language models on domain-specific codebases improves code generation quality, correctness, and adherence to domain patterns.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://misra.org.uk" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            MISRA C:2012 Guidelines for Safety-Critical C Code
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Industry standard coding guidelines for safety-critical C code in aerospace and automotive — the type of patterns that would be reinforced by training on SpaceX's flight software.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#SpaceXJustBought</span>
+                <span class="tag">#SpaceXCursorAIacquisition</span>
+                <span class="tag">#AIcodingassistantaerospace</span>
+                <span class="tag">#CursorAISpaceXdevelopertools</span>
+                <span class="tag">#AImodeltrainingaerospacecode</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-17 15:25 • This guide accompanies the video: "What Happens When AI Learns to Code Like a Rocket Scientist"</p>
+        </footer>
+    </div>
+</body>
+</html>
