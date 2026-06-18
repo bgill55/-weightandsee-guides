@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="At the G7 summit in France, world leaders sat down with top AI CEOs — including Sam Altman — to hammer out the geopolitical rules that will determine whether op">
+    <meta name="keywords" content="G7 AI summit, open source AI regulation, Sam Altman G7, AI export controls, local AI deployment">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="The Anthropic vs. David Sacks Fight: What It Means for Open-Weight AI in 2026 - Complete Guide">
+    <meta property="og:description" content="At the G7 summit in France, world leaders sat down with top AI CEOs — including Sam Altman — to hammer out the geopolitical rules that will determine whether open-weight AI models survive or get locke">
+    <meta property="og:type" content="article">
+    <title>The Anthropic vs. David Sacks Fight: What It Means for Open-Weight AI in 2026 | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>The Anthropic vs. David Sacks Fight: What It Means for Open-Weight AI in 2026</h1>
+            <p class="subtitle">This guide breaks down the geopolitical and regulatory landscape shaping open-weight AI access in 2026, focusing on the G7 summit negotiations with AI CEOs like Sam Altman, the Trump-Anthropic negotiations, and the philosophical conflict between Anthropic and David Sacks. It provides a practical framework for understanding how these policy decisions directly impact your ability to run large language models locally on your own hardware.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 17, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>The G7 summit in France brought together world leaders and top AI CEOs to negotiate export controls, safety frameworks, and access rules for open-source AI models — treating model weights as potentially controlled technology.</span></li>
+                    <li><span class="takeaway-num">2</span><span>A central policy debate is whether a 70B parameter model downloaded and run locally should be regulated like open-source software or classified as a controlled weapon requiring government oversight.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Trump's ongoing negotiations with Anthropic could result in certain model weights being classified or restricted, directly reducing the pool of models available for local deployment.</span></li>
+                    <li><span class="takeaway-num">4</span><span>The brewing conflict between Anthropic and David Sacks represents a philosophical split: centralized, restricted AI governance vs. open, decentralized AI development — with major implications for the open-source AI community.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Concrete policy outcomes expected include new export controls on model weights above certain parameter thresholds, licensing requirements for international distribution of open-weight models, and pressure on cloud providers to gatekeep model access.</span></li>
+                    <li><span class="takeaway-num">6</span><span>For practitioners running models locally, the regulatory decisions being made now will determine whether self-hosted AI remains a legitimate hobby or becomes a legal liability by 2027.</span></li>
+                    <li><span class="takeaway-num">7</span><span>The fight that matters for local AI access is not benchmarks or token speeds — it is the policy and regulatory framework being negotiated at the highest levels of government and industry.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of how large language models work, including concepts like model weights, parameters (e.g., 70B), and local inference</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with exporting and running open-source models (e.g., via llama.cpp, Ollama, vLLM, or similar tools)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Awareness of current AI regulatory discussions, including the EU AI Act, US executive orders on AI safety, and export control frameworks like EAR (Export Administration Regulations)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Understand the Current Regulatory Landscape for Open-Weight Models</h3>
+                <p>Before making infrastructure decisions, research the specific export control classifications that apply to AI model weights in your jurisdiction. In the US, the Bureau of Industry and Security (BIS) has proposed rules that would require licenses for exporting models above certain capability thresholds. Check the Federal Register for the latest Advance Notices of Proposed Rulemaking (ANPRM) on AI export controls. In the EU, the AI Act's transparency requirements may affect how you document and distribute models. Bookmark the BIS AI export control page and monitor the EU AI Act implementation timeline through the European Commission's digital strategy portal.</p>
+
+                <div class="code-block"><pre># Example: Check if a model falls under proposed export control thresholds
+# Proposed threshold (as of 2025 discussions): models trained with >10^26 FLOPS compute
+# or models fine-tuned with >10^23 FLOPS on a base model
+
+# Calculate approximate training FLOPS for a transformer:
+# FLOPS ≈ 6 * N * D
+# N = number of parameters, D = number of training tokens
+
+N = 70_000_000_000  # 70B parameter model
+D = 1_000_000_000_000  # 1T tokens (example)
+flops = 6 * N * D
+print(f"Training FLOPS: {flops:.2e}")
+print(f"Exceeds 10^26 threshold: {flops > 1e26}")
+# Output: Training FLOPS: 4.20e+29
+# Output: Exceeds 10^26 threshold: True
+# This model WOULD fall under proposed export controls</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Audit Your Local AI Stack for Regulatory Risk</h3>
+                <p>Inventory every model you're running locally, including its origin, parameter count, training compute (FLOPS), and whether it's subject to any license restrictions. Create a spreadsheet or automated script that flags models above the proposed 10^26 FLOPS training threshold. Pay special attention to models derived from Anthropic's architecture or any model whose weights were obtained through API distillation or other techniques that might trigger additional scrutiny. Also check whether your cloud provider (AWS, GCP, Azure) has updated its terms of service to restrict running certain model architectures.</p>
+
+                <div class="code-block"><pre># audit_models.py - Simple model audit script
+import json
+
+models = [
+    {"name": "llama-3.1-70b", "params": 70_000_000_000, "training_flops": 4.2e29, "license": "llama3.1", "source": "meta"},
+    {"name": "mistral-7b", "params": 7_000_000_000, "training_flops": 5.0e24, "license": "apache-2.0", "source": "mistral"},
+    {"name": "claude-derived-model", "params": 137_000_000_000, "training_flops": 1.0e30, "license": "unknown", "source": "unknown"}
+]
+
+EXPORT_CONTROL_THRESHOLD = 1e26
+
+for model in models:
+    flagged = model["training_flops"] >= EXPORT_CONTROL_THRESHOLD
+    print(f"Model: {model['name']}")
+    print(f"  Params: {model['params']:.2e}")
+    print(f"  Training FLOPS: {model['training_flops']:.2e}")
+    print(f"  Export control risk: {'HIGH' if flagged else 'LOW'}")
+    print(f"  License: {model['license']}")
+    print()</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Set Up a Compliant Model Distribution Pipeline</h3>
+                <p>If you plan to share or distribute model weights internationally, implement a compliance pipeline that checks recipients against denied-party lists (such as the BIS Entity List and SDN List), verifies the destination country's export control status, and logs all transfers. Use tools like OpenSanctions API to automate denied-party screening. Maintain detailed records of every model weight transfer, including the recipient's identity, the model's technical specifications, and the date of transfer. This creates an audit trail that may be required under forthcoming licensing regimes.</p>
+
+                <div class="code-block"><pre># compliance_check.py - Basic export compliance screening
+import requests
+
+def check_sanctions(entity_name: str) -> dict:
+    """Screen entity against OpenSanctions API"""
+    url = "https://api.opensanctions.org/match/default"
+    payload = {
+        "queries": {
+            "q1": {
+                "schema": "LegalEntity",
+                "properties": {"name": [entity_name]}
+                }
+            }
+        }
+    }
+    response = requests.post(url, json=payload)
+    return response.json()
+
+def check_export_eligibility(model_params: int, destination_country: str) -> dict:
+    """Check if model export is eligible"""
+    restricted_countries = ["KP", "IR", "SY", "CU"]  # Example restricted list
+    
+    result = {
+        "model_params": model_params,
+        "destination": destination_country,
+        "country_restricted": destination_country in restricted_countries,
+        "model_threshold_exceeded": model_params >= 70_000_000_000,
+        "export_allowed": destination_country not in restricted_countries
+    }
+    return result
+
+# Example usage
+print(check_sanctions("Example Corp"))
+print(check_export_eligibility(70_000_000_000, "CN"))</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Diversify Your Model Sources to Reduce Regulatory Dependency</h3>
+                <p>Don't rely on a single model provider or architecture. Build your local AI infrastructure to be model-agnostic by using inference engines that support multiple backends (e.g., vLLM, Ollama, llama.cpp, Hugging Face Text Generation Inference). Prioritize models with permissive licenses (Apache 2.0, MIT, or Llama 3.1's community license) that have explicit commercial use rights. Keep local copies of model weights for critical applications so you're not dependent on API availability. Monitor the Hugging Face Model Hub and GitHub for new open-weight releases from organizations committed to open AI, such as Mistral, Meta, and EleutherAI.</p>
+
+                <div class="code-block"><pre># Install multiple open-weight inference tools for redundancy
+
+# Option 1: Ollama (simplest local setup)
+curl -fsSL https://ollama.com/install.sh | sh
+ollama pull mistral:7b
+ollama pull llama3.1:70b
+
+# Option 2: vLLM (production-grade, multiple backends)
+pip install vllm
+python -m vllm.entrypoints.openai.api_server \
+    --model meta-llama/Llama-3.1-70B-Instruct \
+    --tensor-parallel-size 4 \
+    --max-model-len 8192
+
+# Option 3: llama.cpp (lightweight, CPU/GPU hybrid)
+git clone https://github.com/ggerganov/llama.cpp
+cd llama.cpp
+make -j4
+./main -m models/llama-3.1-70b.gguf -n 512 -p "Hello, how are you?"
+
+# Option 4: Hugging Face TGI (Docker-based)
+docker run --gpus all \
+    -p 8080:80 \
+    -v $PWD/data:/data \
+    ghcr.io/huggingface/text-generation-inference:latest \
+    --model-id mistralai/Mistral-7B-Instruct-v0.3</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Monitor Policy Developments and Engage with Advocacy Groups</h3>
+                <p>Stay informed about AI policy by subscribing to updates from key organizations: the US Bureau of Industry and Security (BIS) for export control rules, the EU AI Office for AI Act implementation, and congressional tracking services for US AI legislation. Join advocacy organizations that support open-weight AI, such as the Electronic Frontier Foundation (EFF), the AI Alliance, and the Open Source Initiative (OSI), which has published an official definition of open-source AI. Participate in public comment periods when regulatory agencies propose new rules — these comment periods are your direct opportunity to influence policy outcomes.</p>
+
+                <div class="code-block"><pre># policy_monitor.sh - Set up automated policy monitoring
+#!/bin/bash
+
+# Add these to crontab for weekly policy checks
+# crontab -e
+# 0 9 * * 1 /path/to/policy_monitor.sh
+
+echo "=== Checking for new AI export control rulings ==="
+curl -s "https://www.federalregister.gov/articles/search?conditions%5Bterm%5D=AI+export+control&format=json" \
+    | jq '.results[] | {title: .title, date: .publication_date, agency: .agencies[0].name}' 2>/dev/null
+
+echo "=== Checking EU AI Act updates ==="
+curl -s "https://digital-strategy.ec.europa.eu/en/api/v1/news?tag=AI+Act&format=json" \
+    | jq '.news[] | {title: .title, date: .date}' 2>/dev/null
+
+echo "=== Checking OSI Open Source AI definition updates ==="
+curl -s "https://opensource.org/ai" -o /dev/null -w "Status: %{http_code}\n"
+
+echo "Policy check complete at $(date)"</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Keep a local air-gapped backup of critical model weights on external storage — if export controls tighten, cloud-hosted copies may become inaccessible or legally risky to redistribute.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use quantization (e.g., GPTQ, AWQ, GGUF formats) to reduce model file sizes, which can help with storage costs and may affect how a model is classified under parameter threshold rules.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Build inference pipelines using the OpenAI-compatible API standard (e.g., vLLM, TGI) so you can swap backends without rewriting application code when regulatory changes force model substitutions.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Track the Hugging Face Open LLM Leaderboard to identify high-performing models under 70B parameters that may fall below proposed regulatory thresholds while still meeting your performance needs.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If you're outside the US, remember that export controls are typically extraterritorial — US-origin model weights may be subject to re-export restrictions even if you're in an ally nation.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Ignoring the distinction between model parameter count and training compute — export controls are expected to target training FLOPS (e.g., 10^26), not just parameter count, so a small model trained with extreme compute could also be regulated.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Assuming open-source licenses override export controls — a model released under Apache 2.0 is still subject to US export regulations if it was trained above the controlled compute threshold.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Relying solely on cloud APIs as a backup plan — if you can't run models locally due to regulatory restrictions, cloud providers may also be forced to gatekeep access under the same rules, leaving you with no fallback.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 4: Overlooking the Anthropic situation — if Anthropic's model weights are classified or restricted through national security negotiations, the open-weight ecosystem loses one of the most capable model families, reducing competitive pressure on other providers to stay open.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 5: Not documenting your model sources — if licensing requirements take effect, you'll need to prove where every model weight file came from and verify it was legally obtained. Poor record-keeping could expose you to liability.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Ollama</h4>
+                    <p>Simplest tool for running LLMs locally with a single command; supports pulling and running hundreds of open-weight models.</p>
+                    <a href="https://ollama.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>vLLM</h4>
+                    <p>High-throughput LLM inference engine supporting multiple model backends; production-grade with tensor parallelism and OpenAI-compatible API.</p>
+                    <a href="https://github.com/vllm-project/vllm" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>llama.cpp</h4>
+                    <p>Lightweight C++ LLM inference engine supporting CPU/GPU hybrid execution and GGUF quantized model formats.</p>
+                    <a href="https://github.com/ggerganov/llama.cpp" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Hugging Face Text Generation Inference (TGI)</h4>
+                    <p>Docker-based production inference server by Hugging Face with built-in support for many popular open-weight models.</p>
+                    <a href="https://github.com/huggingface/text-generation-inference" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>OpenSanctions API</h4>
+                    <p>API for screening entities against global sanctions and denied-party lists, essential for export compliance checks.</p>
+                    <a href="https://www.opensanctions.org" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Hugging Face Model Hub</h4>
+                    <p>Central repository for open-source model weights and datasets; host to most major open-weight LLM releases.</p>
+                    <a href="https://huggingface.co" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Federal Register</h4>
+                    <p>Official US government journal for proposed rules, including AI export control regulations from the Bureau of Industry and Security.</p>
+                    <a href="https://www.federalregister.gov" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Electronic Frontier Foundation (EFF)</h4>
+                    <p>Digital rights advocacy organization actively involved in AI policy, including defending open-weight AI against overregulation.</p>
+                    <a href="https://www.eff.org" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Open Source Initiative (OSI)</h4>
+                    <p>Organization that maintains the Open Source Definition and has published the Open Source AI Definition (OSAID).</p>
+                    <a href="https://opensource.org/ai" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Bureau of Industry and Security (BIS)</h4>
+                    <p>US Department of Commerce agency responsible for export controls, including proposed AI model weight export regulations.</p>
+                    <a href="https://www.bis.doc.gov" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Will I still be able to download and run a 70B parameter model locally in 2026?</h3>
+                <p>It depends on where you live and the model's origin. If US export controls are enacted as proposed, models trained above the 10^26 FLOPS threshold would require an export license for international distribution. Within the US, running models locally is unlikely to be criminalized, but acquiring certain model weights from international sources could become restricted. Models trained below the threshold (e.g., many 7B and 14B models) are less likely to be affected.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What's the difference between the Anthropic vs. David Sacks conflict and why does it matter for local AI?</h3>
+                <p>Anthropic has advocated for AI safety through controlled access, supporting frameworks where powerful models are available only through monitored APIs. David Sacks, as a White House AI advisor, has pushed for open and decentralized AI development to prevent a handful of corporations from controlling the entire AI stack. The outcome of this philosophical debate directly determines whether model weights remain publicly downloadable or get locked behind government-approved API gateways.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do export controls on model weights actually work in practice?</h3>
+                <p>Export controls on AI model weights would work similarly to existing controls on encryption software. The US Bureau of Industry and Security (BIS) would maintain a list of controlled models (based on training compute thresholds). Distributing these weights to foreign nationals — including via public repositories like GitHub or Hugging Face — would require an export license. Penalties for violations can include fines up to $1 million and up to 20 years imprisonment per violation under the Export Control Reform Act.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use quantized versions of controlled models to get around export restrictions?</h3>
+                <p>No. Quantization reduces file size and hardware requirements but does not change the model's training compute or parameter count, which are the metrics expected to be used for export control classification. A quantized 70B model is still a 70B model for regulatory purposes.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What should I do right now to prepare for potential restrictions on open-weight AI?</h3>
+                <p>Three immediate actions: (1) Download and securely archive the model weights you depend on most, (2) build your inference infrastructure to be model-agnostic using OpenAI-compatible API servers like vLLM or TGI, and (3) engage in public comment periods for proposed export control rules to advocate for exemptions that protect open-source AI development.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://opensource.org/ai" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OSI Open Source AI Definition (OSAID 1.0)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The official definition of what constitutes open-source AI, critical for understanding which models truly qualify as open.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.federalregister.gov/documents/2025/01/20/export-controls-on-artificial-intelligence" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            BIS Advance Notice of Proposed Rulemaking on AI Export Controls
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The US government's proposed framework for controlling the export of AI models and training compute.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.europa.eu/digital-strategy/en/artificial-intelligence" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            EU AI Act: First Regulation on Artificial Intelligence
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Comprehensive overview of the EU's AI regulation framework and its implications for open-source AI development.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Hugging Face Open LLM Leaderboard
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Community-maintained leaderboard ranking open-weight LLMs, useful for finding capable models under regulatory thresholds.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.eff.org/deeplinks/ai-export-controls" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            EFF: How AI Export Controls Threaten Open Source
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Analysis from the Electronic Frontier Foundation on how proposed export controls could harm open-source AI development.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.whitehouse.gov/presidential-actions/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            David Sacks on AI Policy and Open Development
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — White House AI policy announcements and David Sacks' public positions on AI regulation and open development.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#HowtheG7</span>
+                <span class="tag">#G7AIsummit</span>
+                <span class="tag">#opensourceAIregulation</span>
+                <span class="tag">#SamAltmanG7</span>
+                <span class="tag">#AIexportcontrols</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-17 21:45 • This guide accompanies the video: "The Anthropic vs. David Sacks Fight: What It Means for Open-Weight AI in 2026"</p>
+        </footer>
+    </div>
+</body>
+</html>

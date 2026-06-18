@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/71_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/72_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-anthropic-vs-david-sacks-fight-what-it-means-for-open-weight-ai-in-2026/">
+<img src="guides/the-anthropic-vs-david-sacks-fight-what-it-means-for-open-weight-ai-in-2026/thumbnail.jpg" width="300" alt="The Anthropic Vs David Sacks Fight What It Means For Open Weight Ai In 2026"><br>
+<b>The Anthropic Vs David Sacks Fight What It Means For Open Weight Ai In 2026</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai/">
 <img src="guides/what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai/thumbnail.jpg" width="300" alt="What Happens When Ai Learns To Write Rocket Code Inside Domain Specific Llm Trai"><br>
@@ -31,12 +37,6 @@
 <b>What Happens When Ai Learns To Code Like A Rocket Scientist</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/freellmapi-test/">
-<img src="guides/freellmapi-test/thumbnail.jpg" width="300" alt="Freellmapi Test"><br>
-<b>Freellmapi Test</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![28](https://img.shields.io/badge/28-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![29](https://img.shields.io/badge/29-blue?style=flat-square) |
 | **Model Deep Dives** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[The Anthropic Vs David Sacks Fight What It Means For Open Weight Ai In 2026](https://bgill55.github.io/-weightandsee-guides/guides/the-anthropic-vs-david-sacks-fight-what-it-means-for-open-weight-ai-in-2026/)** — 2026-06-17
 - **[Tool Review Sp Implementations Vs Classic Plugandplay Restorers](https://bgill55.github.io/-weightandsee-guides/guides/tool-review-sp-implementations-vs-classic-plugandplay-restorers/)** — 2026-06-16
 - **[Permavid Deep Dive The Ai That Never Forgets Your Video Identity](https://bgill55.github.io/-weightandsee-guides/guides/permavid-deep-dive-the-ai-that-never-forgets-your-video-identity/)** — 2026-06-16
 - **[Deep Dive into AdaHmpLEng — Efficient Small-Scale English Model](https://bgill55.github.io/-weightandsee-guides/guides/deep-dive-into-adahmpleng-50m-5ep-1e-4-64b-efficient-smallscale-english-model/)** — 2026-06-15
