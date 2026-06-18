@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A head-to-head build-off between Goose (the free open-source AI coding agent from Block) and Claude Code (Anthropic's $200/month terminal-based coding assistant">
+    <meta name="keywords" content="Goose AI, Claude Code, AI coding agent, open source AI tools, developer productivity">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Goose vs Claude Code: We Built the Same Project With Both — The Results Were Shocking - Complete Guide">
+    <meta property="og:description" content="A head-to-head build-off between Goose (the free open-source AI coding agent from Block) and Claude Code (Anthropic's $200/month terminal-based coding assistant). We task both agents with building the">
+    <meta property="og:type" content="article">
+    <title>Goose vs Claude Code: We Built the Same Project With Both — The Results Were Shocking | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Goose vs Claude Code: We Built the Same Project With Both — The Results Were Shocking</h1>
+            <p class="subtitle">This guide provides a head-to-head comparison between Goose AI (free, open-source) and Claude Code ($200/month) coding agents, evaluating both on a real-world REST API build. It covers setup, benchmark methodology, and results comparing time-to-completion, lines of functional code, bug density, and developer intervention required.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 17, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Goose AI matched Claude Code in overall output quality for a complex REST API build with auth and database integration</span></li>
+                    <li><span class="takeaway-num">2</span><span>Claude Code excelled at initial setup coherence with highly disciplined boilerplate generation for API endpoints</span></li>
+                    <li><span class="takeaway-num">3</span><span>Goose AI demonstrated superior resilience during database schema changes and handled dependency linking automatically</span></li>
+                    <li><span class="takeaway-num">4</span><span>For pure speed and minimizing developer intervention, Goose showed remarkable parity with the paid Claude Code</span></li>
+                    <li><span class="takeaway-num">5</span><span>The core difference is less about capability and more about architecture flexibility</span></li>
+                    <li><span class="takeaway-num">6</span><span>Open-source AI coding agents like Goose are a viable professional alternative to expensive proprietary tools</span></li>
+                    <li><span class="takeaway-num">7</span><span>Indie hackers and budget-conscious developers should seriously consider Goose AI as a primary coding agent</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A local development environment with Node.js or Python installed for REST API development</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A terminal or command-line interface for running AI coding agents</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of REST API concepts, authentication patterns, and database integration</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to Goose AI (free, open-source) and/or Claude Code (paid subscription) installed locally</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone and Install Goose AI from GitHub</h3>
+                <p>Start by cloning the Goose AI repository from its official GitHub page and installing dependencies. Goose is a free, open-source coding agent from Block that runs locally. After cloning, install the required packages and configure your API keys for the LLM backend (OpenAI, Anthropic, or others). This gives you a zero-cost alternative to Claude Code.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/block-goose/goose.git
+cd goose
+pip install -r requirements.txt
+# or if using npm-based setup:
+npm install
+
+# Configure your LLM API key
+export OPENAI_API_KEY="your-api-key-here"
+# or for Anthropic backend:
+export ANTHROPIC_API_KEY="your-api-key-here"</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Set Up Claude Code (Terminal-Based Agent)</h3>
+                <p>Install Claude Code, Anthropic's terminal-based coding assistant, which requires a paid subscription. This agent operates directly in your terminal and leverages Claude's full capabilities for code generation, debugging, and refactoring. Ensure your API credentials are configured in your environment.</p>
+
+                <div class="code-block"><pre># Install Claude Code via npm
+npm install -g @anthropic-ai/claude-code
+
+# Authenticate with your Anthropic API key
+export ANTHROPIC_API_KEY="your-api-key-here"
+
+# Launch Claude Code in your project directory
+cd /your/project/directory
+claude-code</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Define Your Project Scope and Constraints</h3>
+                <p>Before running either agent, clearly define the project: a REST API with authentication (JWT or OAuth), database integration (PostgreSQL or SQLite), and automated tests. Write a concise prompt with specific requirements to ensure both agents build the exact same project. This controls for feature creep and enables fair comparison.</p>
+
+                <div class="code-block"><pre># Project specification prompt for both agents:
+
+"Build a REST API with the following requirements:
+- Framework: Express.js (Node.js) or FastAPI (Python)
+- Authentication: JWT-based auth with login/register endpoints
+- Database: PostgreSQL with 3 models (User, Resource, Session)
+- Endpoints: Full CRUD for User and Resource models
+- Tests: Unit tests with 80%+ coverage using Jest or pytest
+- Validation: Input validation on all endpoints
+- Error handling: Consistent JSON error responses
+
+Do not add extra features beyond this specification."</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Execute the Build and Track Metrics</h3>
+                <p>Run each agent on the identical project specification and measure three core metrics: total time to completion (from first prompt to all tests passing), total lines of functional code produced (excluding comments and blank lines), and bug density measured by the number of developer interventions required (manual fixes, re-prompts, or corrections). Use a stopwatch and log each intervention for accurate comparison.</p>
+
+                <div class="code-block"><pre># Example tracking script (run in parallel terminal)
+#!/bin/bash
+# Start timer
+echo "Build started at: $(date)" > build_log.txt
+START_TIME=$(date +%s)
+
+# After build completes:
+END_TIME=$(date +%s)
+ELAPSED=$((END_TIME - START_TIME))
+
+# Count functional lines of code (excluding comments/blanks)
+find ./src -name "*.js" -o -name "*.py" | xargs cat | grep -v "^\s*#" | grep -v "^/\*" | grep -v "^\s*$" | wc -l
+
+# Run tests to verify functionality
+npm test
+# or
+pytest --tb=short
+
+# Log results
+echo "Total time: ${ELAPSED}s" >> build_log.txt
+echo "Developer interventions: [count]" >> build_log.txt
+echo "Tests passing: [yes/no]" >> build_log.txt</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Analyze Results and Compare Architecture Differences</h3>
+                <p>After both agents complete the build, compare the results across all three metrics. Examine the generated code structure — Claude Code tends to produce more disciplined boilerplate and initial architecture, while Goose handles integration complexity and dependency linking more autonomously. Review each agent's self-correction behavior to understand architectural flexibility differences.</p>
+
+                <div class="code-block"><pre># Compare generated code structures
+# Analyze boilerplate quality
+claude-structure:
+  - Clean separation of routes/models/middleware
+  - Consistent naming conventions
+  - Well-organized config files
+
+goose-structure:
+  - More adaptive file organization
+  - Automated dependency resolution
+  - Flexible schema migration handling
+
+# Compare test output
+echo "=== Claude Code Results ===" && cat claude_build_log.txt
+echo "=== Goose AI Results ===" && cat goose_build_log.txt
+
+# Key comparison metrics:
+# | Metric              | Claude Code | Goose AI  |
+# |---------------------|-------------|-----------|
+# | Time to completion  | X minutes   | Y minutes |
+# | Lines of code       | X lines     | Y lines   |
+# | Developer fixes     | X fixes     | Y fixes   |
+# | Test pass rate      | X%          | Y%        |</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use identical prompts for both agents to ensure a fair comparison — even slight wording differences can skew results significantly
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Run each agent on a clean project directory with no pre-existing boilerplate to measure true generation capability
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Track developer interventions as discrete events (each manual fix or re-prompt counts as one), not just time spent
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Test both agents on multiple project types (CRUD API, real-time WebSocket service, data pipeline) since performance varies by task complexity
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Consider using Goose with different LLM backends (OpenAI GPT-4 vs Anthropic Claude) to isolate whether differences come from the agent framework or the underlying model
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Unequal prompts: Using different instructions for each agent invalidates the comparison. Always copy-paste the exact same prompt.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Ignoring setup time: Claude Code's initial setup coherence advantage can skew perceived speed if you don't account for the full lifecycle including integration and debugging.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Measuring only time: Speed alone is misleading — a fast build with high bug density requiring many manual fixes is actually slower in practice.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Skipping test validation: Don't trust agent claims that code works. Always run the full test suite independently to verify functional output.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Single-project bias: One REST API build isn't enough to draw conclusions. Both agents may perform differently on frontend, DevOps, or data engineering tasks.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Goose AI</h4>
+                    <p>Free, open-source AI coding agent from Block that runs locally and supports multiple LLM backends</p>
+                    <a href="https://github.com/block-goose" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Claude Code</h4>
+                    <p>Anthropic's terminal-based paid coding assistant ($200/month) with deep Claude model integration</p>
+                    <a href="https://www.anthropic.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>OpenAI API</h4>
+                    <p>LLM backend option for Goose AI providing GPT-4 model access</p>
+                    <a href="https://platform.openai.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Anthropic API</h4>
+                    <p>LLM backend for both Goose AI and Claude Code providing Claude model access</p>
+                    <a href="https://www.anthropic.com/api" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Express.js</h4>
+                    <p>Node.js web framework used for building the REST API in the comparison</p>
+                    <a href="https://expressjs.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>FastAPI</h4>
+                    <p>Python web framework alternative for building the REST API</p>
+                    <a href="https://fastapi.tiangolo.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>PostgreSQL</h4>
+                    <p>Relational database used for data persistence in the benchmark project</p>
+                    <a href="https://www.postgresql.org/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Jest</h4>
+                    <p>JavaScript testing framework used for unit and integration tests</p>
+                    <a href="https://jestjs.io/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>pytest</h4>
+                    <p>Python testing framework used for unit and integration tests</p>
+                    <a href="https://docs.pytest.org/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Is Goose AI really free to use?</h3>
+                <p></p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What specific advantages does Claude Code have over Goose AI?</h3>
+                <p>Claude Code excels at initial setup coherence — it generates more disciplined boilerplate code and cleaner architectural structure when creating API endpoints from scratch. Its output tends to follow more consistent naming conventions and file organization patterns out of the box.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Where does Goose AI outperform Claude Code?</h3>
+                <p>Goose AI demonstrates superior resilience during integration phases, particularly when handling complex database schema changes. It also handles dependency linking and tooling steps automatically within its workflow, requiring fewer manual prompts and developer interventions during the build process.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How should I measure bug density when comparing AI coding agents?</h3>
+                <p>Track the number of discrete developer interventions required — each time you need to manually fix code, re-prompt the agent, or correct an error counts as one intervention. Also run the full test suite independently and count failing tests. Combine both metrics for an accurate bug density measurement.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can Goose AI use the same Claude models that Claude Code uses?</h3>
+                <p>Yes, Goose AI supports Anthropic's Claude models as one of its LLM backends. This means you can run Goose with the same underlying model as Claude Code, allowing you to isolate whether performance differences come from the agent framework itself or the model.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is this comparison applicable to frontend or full-stack projects?</h3>
+                <p>This specific benchmark focused on backend REST API development with auth and database integration. Results may differ for frontend, mobile, or full-stack projects. It's recommended to run your own comparison on your specific use case before making a decision.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/block-goose" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Goose AI GitHub Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official repository for Goose AI with installation instructions, documentation, and community contributions</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.anthropic.com/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Anthropic Claude Code Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation for Claude Code including setup guides, pricing, and feature comparisons</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://platform.openai.com/docs" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OpenAI API Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Comprehensive API reference for integrating OpenAI models as a backend for AI coding agents</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://restfulapi.net/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            REST API Best Practices
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Guide to REST API design patterns, authentication methods, and database integration strategies</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#GoosevsClaude</span>
+                <span class="tag">#GooseAI</span>
+                <span class="tag">#ClaudeCode</span>
+                <span class="tag">#AIcodingagent</span>
+                <span class="tag">#opensourceAItools</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-17 22:18 • This guide accompanies the video: "Goose vs Claude Code: We Built the Same Project With Both — The Results Were Shocking"</p>
+        </footer>
+    </div>
+</body>
+</html>

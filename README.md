@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/72_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/73_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/goose-vs-claude-code-we-built-the-same-project-with-both-the-results-were-shocki/">
+<img src="guides/goose-vs-claude-code-we-built-the-same-project-with-both-the-results-were-shocki/thumbnail.jpg" width="300" alt="Goose Vs Claude Code We Built The Same Project With Both The Results Were Shocki"><br>
+<b>Goose Vs Claude Code We Built The Same Project With Both The Results Were Shocki</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-anthropic-vs-david-sacks-fight-what-it-means-for-open-weight-ai-in-2026/">
 <img src="guides/the-anthropic-vs-david-sacks-fight-what-it-means-for-open-weight-ai-in-2026/thumbnail.jpg" width="300" alt="The Anthropic Vs David Sacks Fight What It Means For Open Weight Ai In 2026"><br>
@@ -31,12 +37,6 @@
 <b>What Happens When Ai Learns To Write Rocket Code Inside Domain Specific Llm Trai</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/what-happens-when-ai-learns-to-code-like-a-rocket-scientist/">
-<img src="guides/what-happens-when-ai-learns-to-code-like-a-rocket-scientist/thumbnail.jpg" width="300" alt="What Happens When Ai Learns To Code Like A Rocket Scientist"><br>
-<b>What Happens When Ai Learns To Code Like A Rocket Scientist</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![29](https://img.shields.io/badge/29-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
 | **Model Deep Dives** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Goose Vs Claude Code We Built The Same Project With Both The Results Were Shocki](https://bgill55.github.io/-weightandsee-guides/guides/goose-vs-claude-code-we-built-the-same-project-with-both-the-results-were-shocki/)** — 2026-06-17
 - **[The Anthropic Vs David Sacks Fight What It Means For Open Weight Ai In 2026](https://bgill55.github.io/-weightandsee-guides/guides/the-anthropic-vs-david-sacks-fight-what-it-means-for-open-weight-ai-in-2026/)** — 2026-06-17
 - **[Tool Review Sp Implementations Vs Classic Plugandplay Restorers](https://bgill55.github.io/-weightandsee-guides/guides/tool-review-sp-implementations-vs-classic-plugandplay-restorers/)** — 2026-06-16
 - **[Permavid Deep Dive The Ai That Never Forgets Your Video Identity](https://bgill55.github.io/-weightandsee-guides/guides/permavid-deep-dive-the-ai-that-never-forgets-your-video-identity/)** — 2026-06-16
