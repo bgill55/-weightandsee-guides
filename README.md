@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/76_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/77_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-privacy-exodus-why-local-llms-are-drowning-out-the-cloud-giants/">
+<img src="guides/the-privacy-exodus-why-local-llms-are-drowning-out-the-cloud-giants/thumbnail.jpg" width="300" alt="The Privacy Exodus Why Local Llms Are Drowning Out The Cloud Giants"><br>
+<b>The Privacy Exodus Why Local Llms Are Drowning Out The Cloud Giants</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/data-ownership-battle-why-running-ai-cad-locally-is-the-engineers-new-superpower/">
 <img src="guides/data-ownership-battle-why-running-ai-cad-locally-is-the-engineers-new-superpower/thumbnail.jpg" width="300" alt="Data Ownership Battle Why Running Ai Cad Locally Is The Engineers New Superpower"><br>
@@ -31,12 +37,6 @@
 <b>What Noam Shazeer Built At Google And Why Openai Needs It Now</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/concept-3-building-your-private-ai-assistant-with-local-models/">
-<img src="guides/concept-3-building-your-private-ai-assistant-with-local-models/thumbnail.jpg" width="300" alt="Concept 3 Building Your Private Ai Assistant With Local Models"><br>
-<b>Concept 3 Building Your Private Ai Assistant With Local Models</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
 | **Model Deep Dives** | ![20](https://img.shields.io/badge/20-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![12](https://img.shields.io/badge/12-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![7](https://img.shields.io/badge/7-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -123,6 +123,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[The Privacy Exodus Why Local Llms Are Drowning Out The Cloud Giants](https://bgill55.github.io/-weightandsee-guides/guides/the-privacy-exodus-why-local-llms-are-drowning-out-the-cloud-giants/)** — 2026-06-18
 - **[Data Ownership Battle Why Running Ai Cad Locally Is The Engineers New Superpower](https://bgill55.github.io/-weightandsee-guides/guides/data-ownership-battle-why-running-ai-cad-locally-is-the-engineers-new-superpower/)** — 2026-06-18
 - **[Running LLMs Offline — A Step-by-Step Guide](https://bgill55.github.io/-weightandsee-guides/guides/running-llms-offline-a-stepbystep-guide/)** — 2026-06-15
 - **[How Local Rag Works](https://bgill55.github.io/-weightandsee-guides/guides/how-local-rag-works/)** — 2026-06-15
