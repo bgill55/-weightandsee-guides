@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/78_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/79_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/ai-solved-18-rare-disease-cases-doctors-couldnt-crack-heres-how/">
+<img src="guides/ai-solved-18-rare-disease-cases-doctors-couldnt-crack-heres-how/thumbnail.jpg" width="300" alt="Ai Solved 18 Rare Disease Cases Doctors Couldnt Crack Heres How"><br>
+<b>Ai Solved 18 Rare Disease Cases Doctors Couldnt Crack Heres How</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/suitcase-robot-meets-llm-when-physical-sensors-control-ai-randomness/">
 <img src="guides/suitcase-robot-meets-llm-when-physical-sensors-control-ai-randomness/thumbnail.jpg" width="300" alt="Suitcase Robot Meets Llm When Physical Sensors Control Ai Randomness"><br>
@@ -31,12 +37,6 @@
 <b>The Privacy Exodus Why Local Llms Are Drowning Out The Cloud Giants</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/data-ownership-battle-why-running-ai-cad-locally-is-the-engineers-new-superpower/">
-<img src="guides/data-ownership-battle-why-running-ai-cad-locally-is-the-engineers-new-superpower/thumbnail.jpg" width="300" alt="Data Ownership Battle Why Running Ai Cad Locally Is The Engineers New Superpower"><br>
-<b>Data Ownership Battle Why Running Ai Cad Locally Is The Engineers New Superpower</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
-| **Model Deep Dives** | ![21](https://img.shields.io/badge/21-blue?style=flat-square) |
+| **Model Deep Dives** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![12](https://img.shields.io/badge/12-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![7](https://img.shields.io/badge/7-blue?style=flat-square) |
@@ -96,6 +96,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Ai Solved 18 Rare Disease Cases Doctors Couldnt Crack Heres How](https://bgill55.github.io/-weightandsee-guides/guides/ai-solved-18-rare-disease-cases-doctors-couldnt-crack-heres-how/)** — 2026-06-18
 - **[Suitcase Robot Meets Llm When Physical Sensors Control Ai Randomness](https://bgill55.github.io/-weightandsee-guides/guides/suitcase-robot-meets-llm-when-physical-sensors-control-ai-randomness/)** — 2026-06-18
 - **[What Noam Shazeer Built At Google And Why Openai Needs It Now](https://bgill55.github.io/-weightandsee-guides/guides/what-noam-shazeer-built-at-google-and-why-openai-needs-it-now/)** — 2026-06-18
 - **[Concept 3 Building Your Private Ai Assistant With Local Models](https://bgill55.github.io/-weightandsee-guides/guides/concept-3-building-your-private-ai-assistant-with-local-models/)** — 2026-06-17

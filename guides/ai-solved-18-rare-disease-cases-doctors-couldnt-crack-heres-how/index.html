@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A deep-dive into how AI diagnostic models helped identify rare diseases in 18 children that had eluded medical teams for years. The video breaks down the techni">
+    <meta name="keywords" content="AI rare disease diagnosis, AI healthcare 2026, local AI hospital diagnostics, on-premise AI medical models, whole-genome sequencing AI">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="AI Solved 18 Rare Disease Cases Doctors Couldn't Crack — Here's How - Complete Guide">
+    <meta property="og:description" content="A deep-dive into how AI diagnostic models helped identify rare diseases in 18 children that had eluded medical teams for years. The video breaks down the technical methodology — from whole-genome sequ">
+    <meta property="og:type" content="article">
+    <title>AI Solved 18 Rare Disease Cases Doctors Couldn't Crack — Here's How | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>AI Solved 18 Rare Disease Cases Doctors Couldn't Crack — Here's How</h1>
+            <p class="subtitle">This guide breaks down the technical pipeline behind a landmark clinical study in which an AI diagnostic model identified rare diseases in 18 pediatric patients who had endured years of misdiagnosis. It covers the full on-premise deployment architecture — from whole-genome sequencing and variant calling to phenotype matching against OMIM and ClinVar — and explains why hospitals are moving this infrastructure behind their firewalls to protect sensitive genomic data.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 18, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Fabric Genomics is an AI diagnostic platform that cross-references whole-genome sequencing data against phenotype databases (OMIM, ClinVar) to surface candidate rare-disease diagnoses that human geneticists missed.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The entire inference pipeline was deployed on-premise at the hospital, meaning patient genomic data never left the facility — a critical requirement given that genomic data is the most sensitive category of personal health information.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Whole-genome analysis for a single patient can generate over 100 GB of raw sequencing data, requiring multi-GPU inference nodes with at least 64 GB of VRAM to process without batching patients into queues.</span></li>
+                    <li><span class="takeaway-num">4</span><span>The AI does not replace the human geneticist; it narrows thousands of candidate conditions to a ranked shortlist in minutes instead of weeks, and all 18 diagnoses in the study were confirmed by human clinicians.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Hospitals are adopting on-premise diagnostic AI not for cost savings but because cloud-based genomic analysis creates a compliance minefield under patient-data regulations.</span></li>
+                    <li><span class="takeaway-num">6</span><span>The pipeline follows a clear sequence: genome sequencing → variant calling → phenotype database matching → AI-ranked candidate list → human geneticist review → confirmatory testing.</span></li>
+                    <li><span class="takeaway-num">7</span><span>Tools like Fabric Genomics, Moon, and AlphaMissense are being actively evaluated in clinical settings where data sovereignty is non-negotiable.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to a whole-genome sequencing platform capable of producing raw FASTQ/BAM/CRAM files (e.g., Illumina NovaSeq, PacBio Revio, or Oxford Nanopore).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">On-premise GPU infrastructure with at least 64 GB of VRAM per inference node (e.g., NVIDIA A100 or H100 GPUs) and sufficient storage for 100+ GB per patient genome.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with bioinformatics variant-calling pipelines (e.g., GATK, DeepVariant) and phenotype databases (OMIM, ClinVar, HPO).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Clinical genetics expertise on staff to review AI-generated candidate diagnoses and order confirmatory testing.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Sequence the Patient's Genome and Generate Raw Data</h3>
+                <p>Obtain a patient blood or tissue sample and run it through a whole-genome sequencing (WGS) platform. The output will be raw sequencing reads in FASTQ format, typically exceeding 100 GB per patient. Ensure the sequencing facility is within the hospital's secure network or that data is transferred via encrypted physical media (e.g., encrypted USB drives or secure internal transfer) — never over public internet. Quality-control the raw reads using tools like FastQC to verify coverage depth (aim for 30x or higher for clinical-grade WGS).</p>
+
+                <div class="code-block"><pre># Quality control on raw FASTQ files
+fastqc sample_R1.fastq.gz sample_R2.fastq.gz -o ./qc_output/
+
+# Align reads to reference genome (GRCh38) using BWA-MEM
+bwa mem -t 16 -R '@RG\tID:sample1\tSM:patient001\tPL:ILLUMINA' \
+  /ref/GRCh38.fa sample_R1.fastq.gz sample_R2.fastq.gz | \
+  samtools sort -@ 8 -o patient001.sorted.bam
+
+# Mark duplicates
+samtools markdup -@ 8 patient001.sorted.bam patient001.dedup.bam</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Run the Variant-Calling Pipeline to Flag Mutations</h3>
+                <p>Process the aligned and deduplicated BAM file through a variant-calling pipeline to identify single-nucleotide variants (SNVs), insertions/deletions (indels), and structural variants. GATK HaplotypeCaller is the clinical gold standard; DeepVariant is an increasingly popular deep-learning-based alternative. The output is a VCF (Variant Call Format) file containing all candidate variants. Run this on the hospital's on-premise compute cluster — the BAM and VCF files contain identifiable genomic data and must not leave the firewall.</p>
+
+                <div class="code-block"><pre># GATK HaplotypeCaller for germline variant calling
+gatk HaplotypeCaller \
+  -R /ref/GRCh38.fa \
+  -I patient001.dedup.bam \
+  -O patient001.g.vcf.gz \
+  -ERC GVCF
+
+# Joint genotyping across multiple samples (if cohort-based)
+gatk GenotypeGVCFs \
+  -R /ref/GRCh38.fa \
+  -V patient001.g.vcf.gz \
+  -O patient001.vcf.gz
+
+# DeepVariant alternative (runs on GPU)
+deepvariant \
+  --model_type=WGS \
+  --ref=/ref/GRCh38.fa \
+  --reads=patient001.dedup.bam \
+  --output_vcf=patient001_dv.vcf.gz \
+  --num_shards=16</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Annotate Variants and Match Against Phenotype Databases</h3>
+                <p>Annotate the VCF file with clinical significance data by cross-referencing against OMIM (Online Mendelian Inheritance in Man), ClinVar, and the Human Phenotype Ontology (HPO). Tools like VEP (Variant Effect Predictor) or ANNOVAR add functional annotations. Then feed the annotated variant list into the Fabric Genomics AI engine, which ranks candidate genetic conditions by combining variant pathogenicity scores with the patient's clinical phenotype profile. This is the core AI inference step — it should run on the hospital's on-premise GPU nodes.</p>
+
+                <div class="code-block"><pre># Annotate VCF with VEP (Variant Effect Predictor)
+vep --input_file patient001.vcf.gz \
+  --output_file patient001_annotated.vcf \
+  --format vcf \
+  --vcf \
+  --symbol \
+  --terms SO \
+  --tsl \
+  --hgvs \
+  --fasta /ref/GRCh38.fa \
+  --cache --dir_cache /ref/vep_cache/ \
+  --plugin CADD,/ref/CADD/whole_genome_SNVs.tsv.gz \
+  --plugin SpliceAI,snv=/ref/spliceai/spliceai_scores.raw.snv.hg38.vcf.gz
+
+# Example Fabric Genomics API call (on-premise endpoint)
+curl -X POST https://fabric-genomics.hospital.internal/api/v1/analyze \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer <ON_PREM_API_TOKEN>' \
+  -d '{
+    "vcf_url": "file:///data/patient001_annotated.vcf",
+    "hpo_terms": ["HP:0001250", "HP:0001263", "HP:0000717"],
+    "phenotype_databases": ["OMIM", "ClinVar", "HPO"],
+    "max_candidates": 20
+  }'</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Review AI-Ranked Candidates and Order Confirmatory Testing</h3>
+                <p>The Fabric Genomics engine returns a ranked list of candidate genetic conditions with probability scores and supporting evidence (variant-phenotype associations, inheritance patterns, literature references). A board-certified clinical geneticist reviews the top candidates, correlates them with the patient's clinical presentation, and orders confirmatory tests (e.g., Sanger segregation, functional assays, or parental testing). The AI accelerates the diagnostic odyssey from weeks to minutes, but the final diagnostic call is always made by a human clinician.</p>
+
+                <div class="code-block"><pre># Example ranked output from Fabric Genomics (JSON)
+{
+  "candidates": [
+    {
+      "rank": 1,
+      "condition": "Kabuki syndrome 1",
+      "omim_id": "147920",
+      "gene": "KMT2D",
+      "probability": 0.94,
+      "supporting_variants": ["chr12:g.12345678A>G (p.Lys456Arg)"],
+      "hpo_matches": ["HP:0001250", "HP:0000717", "HP:0001519"],
+      "inheritance": "Autosomal dominant (de novo)"
+    },
+    {
+      "rank": 2,
+      "condition": "Sotos syndrome",
+      "omim_id": "117550",
+      "gene": "NSD1",
+      "probability": 0.03,
+      "supporting_variants": [],
+      "hpo_matches": ["HP:0001519"],
+      "inheritance": "Autosomal dominant"
+    }
+  ]
+}</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Deploy and Maintain the On-Premise Inference Infrastructure</h3>
+                <p>Set up a dedicated on-premise inference server within the hospital's data center. Use multi-GPU nodes (e.g., 2x NVIDIA A100 80GB or 4x H100) to handle concurrent patient analyses without queuing. Isolate the server on a VLAN with no external internet access. Deploy Fabric Genomics (or equivalent tools like Moon or AlphaMissense) in a containerized environment using Docker or Kubernetes. Implement audit logging for every inference request to satisfy HIPAA/GDPR compliance. Schedule regular model updates via air-gapped transfer from the vendor.</p>
+
+                <div class="code-block"><pre># Docker Compose for on-premise Fabric Genomics deployment
+version: '3.8'
+services:
+  fabric-genomics:
+    image: fabricgenomics/ai-engine:latest
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=0,1
+      - FABRIC_DB_PATH=/data/databases
+      - FABRIC_LOG_LEVEL=INFO
+      - FABRIC_AUDIT_LOG=/logs/audit.log
+    volumes:
+      - /secure/genomic_data:/data:ro
+      - /secure/databases:/data/databases:ro
+      - /secure/logs:/logs
+    ports:
+      - "127.0.0.1:8443:8443"
+    networks:
+      - genomic_vlan
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 2
+              capabilities: [gpu]
+
+networks:
+  genomic_vlan:
+    driver: bridge
+    internal: true</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use DeepVariant instead of GATK HaplotypeCaller if you have GPU resources available — it consistently achieves higher SNV and indel accuracy on clinical-grade WGS data, which directly improves downstream phenotype matching.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Pre-build and cache the OMIM, ClinVar, and HPO databases locally on the on-premise server. Querying remote databases introduces latency and creates a network dependency that could expose metadata about which patients are being analyzed.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Implement a tiered review workflow: have a computational biologist pre-filter the AI's top 20 candidates to the top 5 before the clinical geneticist reviews them. This reduces clinician workload without sacrificing diagnostic accuracy.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Run AlphaMissense pathogenicity predictions as a secondary annotation layer alongside ClinVar classifications. AlphaMissense provides pathogenicity scores for all possible missense variants, including variants of uncertain significance (VUS) that ClinVar may not yet classify.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Benchmark your GPU nodes with a known-positive reference genome (e.g., NA12878 from the Genome in a Bottle consortium) before going live. This validates the entire pipeline end-to-end and establishes baseline performance metrics.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Sending genomic data to a cloud API for analysis. Even with encryption in transit and at rest, transmitting identifiable genomic data to a third-party cloud endpoint creates HIPAA/GDPR compliance exposure. Always run inference on-premise for clinical genomic data.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Underestimating storage requirements. A single patient's WGS run generates 100+ GB of raw data, and you need to retain aligned BAMs, VCFs, and annotated files for clinical audit trails. Plan for at least 500 GB per patient in your storage architecture.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Treating the AI output as a definitive diagnosis. The AI ranks candidates; it does not diagnose. Every candidate must be reviewed by a qualified clinical geneticist and confirmed with orthogonal testing before any clinical action is taken.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 4: Neglecting model version management. AI diagnostic models are updated periodically as new variants and phenotypes are discovered. Running an outdated model means missing newly characterized disease-gene associations. Establish a quarterly model update process.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 5: Insufficient GPU VRAM causing batching delays. If your GPU nodes have less than 64 GB of VRAM, you may be unable to process a single patient's full genome analysis in memory, forcing you to batch patients into queues and delaying diagnoses. Size your hardware for the worst-case single-patient workload.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Fabric Genomics</h4>
+                    <p>AI-powered clinical genomics platform that analyzes whole-genome sequencing data, matches variants against phenotype databases (OMIM, ClinVar, HPO), and ranks candidate genetic diagnoses for review by clinical geneticists.</p>
+                    <a href="https://www.fabricgenomics.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>OMIM (Online Mendelian Inheritance in Man)</h4>
+                    <p>Comprehensive, authoritative database of human genes and genetic phenotypes, focusing on inherited (Mendelian) disorders. Used as a primary reference for rare-disease diagnosis.</p>
+                    <a href="https://www.omim.org" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>ClinVar</h4>
+                    <p>Public archive of relationships between genetic variants and phenotypes, with supporting evidence and clinical significance classifications (pathogenic, benign, VUS).</p>
+                    <a href="https://www.ncbi.nlm.nih.gov/clinvar/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>HPO (Human Phenotype Ontology)</h4>
+                    <p>Standardized vocabulary of phenotypic abnormalities encountered in human disease, used to encode patient symptoms for computational matching against gene-disease associations.</p>
+                    <a href="https://hpo.jax.org" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>GATK (Genome Analysis Toolkit)</h4>
+                    <p>Industry-standard bioinformatics toolkit for variant discovery and genotyping from high-throughput sequencing data. HaplotypeCaller is the primary germline SNV/indel caller.</p>
+                    <a href="https://gatk.broadinstitute.org" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>DeepVariant</h4>
+                    <p>Google-developed deep learning-based variant caller that uses a convolutional neural network to identify genetic variants from sequencing data. Achieves state-of-the-art accuracy and benefits from GPU acceleration.</p>
+                    <a href="https://github.com/google/deepvariant" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>VEP (Variant Effect Predictor)</h4>
+                    <p>Ensembl tool that annotates genetic variants with functional consequences (missense, splice site, etc.) and cross-references against ClinVar, CADD, and other databases.</p>
+                    <a href="https://www.ensembl.org/info/docs/tools/vep/index.html" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Moon</h4>
+                    <p>AI diagnostic tool evaluated in clinical settings for rare-disease diagnosis, similar to Fabric Genomics, with a focus on on-premise deployment for data sovereignty.</p>
+                    <a href="https://www.moon.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>AlphaMissense</h4>
+                    <p>DeepMind-developed model that predicts the pathogenicity of all possible missense variants in the human genome, providing scores for variants of uncertain significance that may not yet be in ClinVar.</p>
+                    <a href="https://www.science.org/doi/10.1126/science.adg7492" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>BWA-MEM</h4>
+                    <p>Burrows-Wheeler Aligner for mapping sequencing reads to a reference genome. Standard first step in the WGS analysis pipeline.</p>
+                    <a href="https://github.com/lh3/bwa" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>FastQC</h4>
+                    <p>Quality control tool for high-throughput sequencing data. Generates reports on read quality, GC content, adapter contamination, and duplication rates.</p>
+                    <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Why can't hospitals just use a cloud API like OpenAI or a hosted genomics service for this analysis?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How much compute power is actually needed to run this pipeline for a single patient?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Does the AI actually diagnose the patient, or does it just assist the doctor?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is the difference between OMIM, ClinVar, and HPO, and why are all three needed?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can smaller hospitals or clinics without GPU infrastructure still use AI for rare-disease diagnosis?</h3>
+                <p>Answer</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.fabricgenomics.com/publications" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Fabric Genomics Clinical Validation Study
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Peer-reviewed publications from Fabric Genomics detailing clinical validation of their AI diagnostic platform in pediatric rare-disease cohorts.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.omim.org" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OMIM — Online Mendelian Inheritance in Man
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The definitive catalog of human genes and genetic disorders, continuously updated with new gene-disease relationships and phenotypic descriptions.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035535932" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            GATK Best Practices for Germline Variant Discovery
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Step-by-step guide from the Broad Institute for running a clinical-grade germline variant-calling pipeline on WGS data.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/google/deepvariant" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            DeepVariant: Highly Accurate Genotypes with Deep Neural Networks
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — GitHub repository and documentation for Google's DeepVariant, including installation instructions, accuracy benchmarks, and GPU configuration.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.science.org/doi/10.1126/science.adg7492" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            AlphaMissense: Catalogue of Missense Variant Pathogenicity
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Science publication describing DeepMind's AlphaMissense model and its ability to classify 89% of all possible human missense variants.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            HIPAA Security Rule — Technical Safeguards for ePHI
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official HHS guidance on HIPAA technical safeguards, relevant for understanding why genomic data must be processed on-premise in clinical settings.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#AISolved18</span>
+                <span class="tag">#AIrarediseasediagnosis</span>
+                <span class="tag">#AIhealthcare2026</span>
+                <span class="tag">#localAIhospitaldiagnostics</span>
+                <span class="tag">#onpremiseAImedicalmodels</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-18 14:25 • This guide accompanies the video: "AI Solved 18 Rare Disease Cases Doctors Couldn't Crack — Here's How"</p>
+        </footer>
+    </div>
+</body>
+</html>
