@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/80_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/81_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-deep-dive-local-first-ai-coding-cli-with-model-routing-and-multi-agent/">
+<img src="guides/daedalus-deep-dive-local-first-ai-coding-cli-with-model-routing-and-multi-agent/thumbnail.jpg" width="300" alt="Daedalus Deep Dive Local First Ai Coding Cli With Model Routing And Multi Agent"><br>
+<b>Daedalus Deep Dive Local First Ai Coding Cli With Model Routing And Multi Agent</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/multi-agent-orchestration-in-daedalus-how-sub-agents-planner-coder-reviewer-tack/">
 <img src="guides/multi-agent-orchestration-in-daedalus-how-sub-agents-planner-coder-reviewer-tack/thumbnail.jpg" width="300" alt="Multi Agent Orchestration In Daedalus How Sub Agents Planner Coder Reviewer Tack"><br>
@@ -31,12 +37,6 @@
 <b>Ai Solved 18 Rare Disease Cases Doctors Couldnt Crack Heres How</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/suitcase-robot-meets-llm-when-physical-sensors-control-ai-randomness/">
-<img src="guides/suitcase-robot-meets-llm-when-physical-sensors-control-ai-randomness/thumbnail.jpg" width="300" alt="Suitcase Robot Meets Llm When Physical Sensors Control Ai Randomness"><br>
-<b>Suitcase Robot Meets Llm When Physical Sensors Control Ai Randomness</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
-| **Model Deep Dives** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
+| **Model Deep Dives** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![12](https://img.shields.io/badge/12-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![7](https://img.shields.io/badge/7-blue?style=flat-square) |
@@ -96,6 +96,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Daedalus Deep Dive Local First Ai Coding Cli With Model Routing And Multi Agent](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-deep-dive-local-first-ai-coding-cli-with-model-routing-and-multi-agent/)** — 2026-06-18
 - **[Multi Agent Orchestration In Daedalus How Sub Agents Planner Coder Reviewer Tack](https://bgill55.github.io/-weightandsee-guides/guides/multi-agent-orchestration-in-daedalus-how-sub-agents-planner-coder-reviewer-tack/)** — 2026-06-18
 - **[Ai Solved 18 Rare Disease Cases Doctors Couldnt Crack Heres How](https://bgill55.github.io/-weightandsee-guides/guides/ai-solved-18-rare-disease-cases-doctors-couldnt-crack-heres-how/)** — 2026-06-18
 - **[Suitcase Robot Meets Llm When Physical Sensors Control Ai Randomness](https://bgill55.github.io/-weightandsee-guides/guides/suitcase-robot-meets-llm-when-physical-sensors-control-ai-randomness/)** — 2026-06-18

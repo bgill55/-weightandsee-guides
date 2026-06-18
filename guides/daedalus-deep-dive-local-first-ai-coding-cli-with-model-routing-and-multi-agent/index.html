@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daedalus is a standalone terminal-based AI coding assistant that runs entirely on your machine — connecting to local LLM servers like Ollama, LM Studio, and lla">
+    <meta name="keywords" content="Daedalus CLI, local-first AI coding, multi-agent orchestration, model router, codebase indexing">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Daedalus Deep Dive: Local-First AI Coding CLI with Model Routing and Multi-Agent Orchestration - Complete Guide">
+    <meta property="og:description" content="Daedalus is a standalone terminal-based AI coding assistant that runs entirely on your machine — connecting to local LLM servers like Ollama, LM Studio, and llama.cpp, or remote providers like OpenAI ">
+    <meta property="og:type" content="article">
+    <title>Daedalus Deep Dive: Local-First AI Coding CLI with Model Routing and Multi-Agent Orchestration | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Daedalus Deep Dive: Local-First AI Coding CLI with Model Routing and Multi-Agent Orchestration</h1>
+            <p class="subtitle">This guide provides a technical deep dive into Daedalus, a local-first AI coding assistant CLI designed to revolutionize developer workflows by eliminating reliance on costly external cloud services. It details how to set up and utilize its advanced features, including intelligent model routing, multi-agent orchestration, and robust codebase indexing for private, efficient development.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 18, 2026</span>
+                <span>4 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Daedalus operates as a standalone CLI tool, ensuring that proprietary code never leaves the local machine, guaranteeing maximum developer privacy.</span></li>
+                    <li><span class="takeaway-num">2</span><span>It functions as a full system router, allowing seamless switching between diverse LLM backends—including Ollama, llama.cpp (local), and OpenAI/Groq (remote)—without changing the core workflow.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Multi-agent orchestration enables complex tasks (like debugging or refactoring) by spawning specialized sub-agents: one for planning, one for unit testing, and another for code review.</span></li>
+                    <li><span class="takeaway-num">4</span><span>The system incorporates FTS5-powered codebase indexing across multiple languages (TypeScript, Python, Go, Rust), enabling symbol search without transmitting the entire repository to a cloud endpoint.</span></li>
+                    <li><span class="takeaway-num">5</span><span>By running locally, developers achieve zero per-token costs for massive projects and maintain complete control over their data path and toolset availability.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with command line interfaces (CLI) and basic Git usage.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Installation of a local LLM server environment such as Ollama or llama.cpp to facilitate local model connections.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the Daedalus Repository</h3>
+                <p>Start by cloning the official Daedalus GitHub repository. This provides the core CLI framework necessary for local execution and subsequent setup.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/bgill55/daedalus.git
+cd daedalus</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Install Dependencies and Initialize Environment</h3>
+                <p>Navigate into the repository directory and install all required Node.js dependencies using npm. Developers should ensure their local LLM server (e.g., Ollama) is running in the background before proceeding to test connections.</p>
+
+                <div class="code-block"><pre>npm install
+# Example environment variable setup for a remote key (optional):
+envman set OPENAI_API_KEY='your-api-key'
+# Run initialization script if provided by the repo:
+deadalus init</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Configure Model Routing and Local Sources</h3>
+                <p>Configure Daedalus to recognize and route requests across multiple endpoints. This involves setting up environment variables or a configuration file (e.g., `daedalus.config.json`) to point to local servers like Ollama, while also listing remote API keys (OpenAI/Groq) for redundancy.</p>
+
+                <div class="code-block"><pre>daedalus config set --local-llm ollama://localhost:11434
+daedalus config set --remote-provider openai key='sk-...' model='gpt-4o'</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Execute Multi-Agent Workflow for Complex Tasks</h3>
+                <p>To perform complex operations like debugging or refactoring, invoke the Daedalus CLI with a specific task descriptor. The system will automatically spawn specialized sub-agents (Plan Agent, Test Agent, Review Agent) to execute the full lifecycle.</p>
+
+                <div class="code-block"><pre>daedalus run --task fix-bug --file ./src/service.ts
+deadalus run --task refactor-module --language Rust --path ./services/</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> For maximum efficiency, use a fast, smaller model (e.g., Phi-3) for initial drafting and prototyping, reserving larger models (like GPT-4o or Llama 3 70B) only for final security reviews and complex refactoring.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Leverage the FTS5 indexing feature by running a dedicated index command (`daedalus index --languages=typescript,python`) immediately after adding new source files to ensure symbol search accuracy.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Monitor your system resources while testing different quantization levels on local models; this helps determine the optimal balance between performance and model capability for continuous use.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Assuming a single API key is enough. Failing to configure multiple endpoints (local vs. remote) prevents the 'full system router' functionality, limiting flexibility.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Forgetting local LLM service status. If Ollama or llama.cpp is not actively running before executing Daedalus commands, the connection routing will fail, resulting in 'connection refused' errors.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Overlooking dependency updates. Since Daedalus interacts with multiple versions of libraries (e.g., TypeScript, Python), always run `npm update` after major system or library changes to prevent compatibility issues.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Daedalus CLI</h4>
+                    <p>A local-first AI coding assistant that routes requests across multiple LLMs and manages multi-agent orchestration.</p>
+                    <a href="https://github.com/bgill55/daedalus.git" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Ollama</h4>
+                    <p>A tool for running large language models (LLMs) locally on your machine, serving them via a standardized API endpoint.</p>
+                    <a href="https://ollama.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>llama.cpp</h4>
+                    <p>A highly efficient C/C++ library implementing various open-source LLMs, enabling local execution with optimized performance.</p>
+                    <a href="https://github.com/ggerganov/llama.cpp" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>FTS5</h4>
+                    <p>An extension to SQLite that provides robust full-text search capabilities, used here for fast codebase indexing and symbol searching across various languages.</p>
+                    
+                </div>
+
+                <div class="tool-card">
+                    <h4>OpenAI API / Groq API</h4>
+                    <p>Remote cloud-based providers used as fallback or high-power endpoints when local processing is insufficient.</p>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Is Daedalus compatible with my existing repository structure?</h3>
+                <p>Yes, it integrates by using FTS5-powered indexing. You run a dedicated index command that scans your specified paths (Python, Go, TypeScript, etc.) without needing to send the entire codebase externally.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is the difference between multi-agent orchestration and simple API calls?</h3>
+                <p>Simple calls generate one response. Multi-agent orchestration treats the task as a workflow: Agent 1 plans, Agent 2 executes/tests, and Agent 3 reviews—mimicking how a human team collaborates on complex code.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do I need to maintain an API key for every remote provider?</h3>
+                <p>Yes. While Daedalus is designed to route seamlessly, you must provide the necessary credentials (e.g., `OPENAI_API_KEY`, `GROQ_API_KEY`) in your environment or configuration file for the router to access them.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/bgill55/daedalus.git" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Daedalus GitHub Repo
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The primary repository containing the source code, documentation, and setup instructions for Daedalus CLI.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://ollama.com/docs" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Ollama Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official guide on setting up and managing local LLM models with Ollama.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#Daedalus</span>
+                <span class="tag">#DaedalusCLI</span>
+                <span class="tag">#localfirstAIcoding</span>
+                <span class="tag">#multiagentorchestration</span>
+                <span class="tag">#modelrouter</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-18 17:16 • This guide accompanies the video: "Daedalus Deep Dive: Local-First AI Coding CLI with Model Routing and Multi-Agent Orchestration"</p>
+        </footer>
+    </div>
+</body>
+</html>
