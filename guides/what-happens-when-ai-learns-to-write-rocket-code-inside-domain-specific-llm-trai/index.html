@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SpaceX acquiring Cursor AI in an all-stock deal isn't just a business headline — it signals a radical shift in how developer tools will be trained. This video b">
+    <meta name="keywords" content="SpaceX Cursor AI acquisition, AI coding assistant aerospace, domain-specific LLM fine-tuning, Cursor AI SpaceX developer tools, mission-critical AI code generation">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="What Happens When AI Learns to Write Rocket Code — Inside Domain-Specific LLM Training - Complete Guide">
+    <meta property="og:description" content="SpaceX acquiring Cursor AI in an all-stock deal isn't just a business headline — it signals a radical shift in how developer tools will be trained. This video breaks down what happens when a company t">
+    <meta property="og:type" content="article">
+    <title>What Happens When AI Learns to Write Rocket Code — Inside Domain-Specific LLM Training | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>What Happens When AI Learns to Write Rocket Code — Inside Domain-Specific LLM Training</h1>
+            <p class="subtitle">This guide explores the technical implications of domain-specific LLM fine-tuning for mission-critical systems, using the hypothetical scenario of a SpaceX-optimized AI coding assistant as a case study. It walks through how aerospace-grade codebases — flight control algorithms, real-time embedded C++, hardware-in-the-loop simulation code — can be used to fine-tune a base language model for fault-tolerant, safety-critical software generation. The guide covers the fine-tuning pipeline, key architectural patterns the model would learn, and how those capabilities generalize to other high-stakes engineering domains.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 17, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Domain-specific fine-tuning on aerospace flight software transforms a general-purpose coding model into a mission-critical coding AI that understands deterministic timing, fault tolerance, and safety-critical design patterns.</span></li>
+                    <li><span class="takeaway-num">2</span><span>SpaceX generates enormous volumes of high-quality training data through thousands of pre-launch simulations, including trajectory calculations, fault detection routines, and redundancy checks — all code reviewed to near-zero-defect standards.</span></li>
+                    <li><span class="takeaway-num">3</span><span>A SpaceX-optimized model would internalize patterns like triple modular redundancy, Byzantine fault tolerance, watchdog timers, and priority inheritance protocols — concepts absent from general-purpose model training.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Aerospace-grade code generation capabilities flow downstream to other domains: medical devices, autonomous vehicles, industrial robotics, and financial transaction systems all benefit from fault-tested code patterns.</span></li>
+                    <li><span class="takeaway-num">5</span><span>The competitive moat is in the hardest 20% of coding tasks — where failure is not an option — and no general-purpose tool can compete with a model trained on millions of lines of flight-critical software.</span></li>
+                    <li><span class="takeaway-num">6</span><span>Fine-tuning requires a curated, high-quality dataset, not just volume; the review culture and failure-mode analysis embedded in aerospace code makes it uniquely valuable for training.</span></li>
+                    <li><span class="takeaway-num">7</span><span>This acquisition signals a new category of 'mission-critical coding AI' that doesn't just suggest code but suggests code stress-tested against failure modes most developers never consider.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with large language model fine-tuning concepts (LoRA, QLoRA, full fine-tuning, supervised fine-tuning on instruction datasets)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of embedded systems programming concepts (real-time operating systems, deterministic execution, memory safety)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to a base code-generation model (e.g., CodeLlama, StarCoder, DeepSeek-Coder) and a fine-tuning framework (e.g., Hugging Face Transformers, Axolotl, LLaMA-Factory)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Understanding of aerospace software standards such as DO-178C and common fault-tolerant design patterns</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Curate a Domain-Specific Aerospace Code Dataset</h3>
+                <p>Collect and preprocess a high-quality dataset of aerospace-relevant code. This includes open-source flight software (e.g., NASA's Core Flight System/cFS, PX4 autopilot, ArduPilot), real-time embedded C/C++ codebases, hardware-in-the-loop simulation scripts, and fault-tolerance pattern implementations. Filter for code that demonstrates deterministic timing, watchdog patterns, triple modular redundancy, and safety-critical review standards. Format the dataset as instruction-response pairs for supervised fine-tuning, where the instruction describes a fault-tolerant coding task and the response is the hardened implementation.</p>
+
+                <div class="code-block"><pre># Clone open-source flight software repositories for dataset curation
+git clone https://github.com/nasa/cFS.git
+git clone https://github.com/PX4/PX4-Autopilot.git
+git clone https://github.com/ArduPilot/ardupilot.git
+
+# Extract C/C++ source files and pair with documentation for instruction tuning
+find . -name '*.c' -o -name '*.cpp' -o -name '*.h' | head -20
+
+# Example dataset entry format for fine-tuning (JSONL):
+{
+  "instruction": "Implement a watchdog timer pattern in C for a flight controller that resets the system if the main loop fails to pet the watchdog within 50ms.",
+  "response": "#include <stdint.h>\n#include <hardware_watchdog.h>\n\n#define WATCHDOG_TIMEOUT_MS 50\n\nvoid watchdog_init(void) {\n    hw_watchdog_configure(WATCHDOG_TIMEOUT_MS);\n    hw_watchdog_enable();\n}\n\nvoid main_loop(void) {\n    while (1) {\n        flight_control_execute();\n        hw_watchdog_pet();  // Reset watchdog counter\n    }\n}",
+  "domain": "aerospace_fault_tolerance"
+}</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Set Up the Fine-Tuning Environment with QLoRA</h3>
+                <p>Configure a parameter-efficient fine-tuning environment using QLoRA (Quantized Low-Rank Adaptation) to fine-tune a base code model on your aerospace dataset without requiring massive GPU resources. Use the Hugging Face ecosystem with bitsandbytes for 4-bit quantization and PEFT for LoRA adapter injection. This approach allows fine-tuning a 13B+ parameter model on a single A100 or even a consumer GPU with sufficient VRAM.</p>
+
+                <div class="code-block"><pre># Install required packages
+pip install transformers datasets accelerate peft trl bitsandbytes
+
+# Fine-tuning script using Hugging Face TRL with QLoRA
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+from trl import SFTTrainer
+import torch
+
+# 4-bit quantization config
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_compute_dtype=torch.float16,
+    bnb_4bit_use_double_quant=True,
+)
+
+# Load base code model (e.g., CodeLlama or DeepSeek-Coder)
+model_name = "codellama/CodeLlama-13b-hf"
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    quantization_config=bnb_config,
+    device_map="auto"
+)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+tokenizer.pad_token = tokenizer.eos_token
+
+# LoRA configuration targeting attention and feed-forward layers
+peft_config = LoraConfig(
+    r=64,
+    lora_alpha=16,
+    lora_dropout=0.05,
+    target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+    task_type="CAUSAL_LM"
+)
+
+model = prepare_model_for_kbit_training(model)
+model = get_peft_model(model, peft_config)
+
+# Configure the supervised fine-tuning trainer
+trainer = SFTTrainer(
+    model=model,
+    train_dataset=aerospace_dataset,
+    dataset_text_field="text",
+    max_seq_length=2048,
+    args=TrainingArguments(
+        output_dir="./spacex-cursor-model",
+        num_train_epochs=3,
+        per_device_train_batch_size=4,
+        gradient_accumulation_steps=4,
+        learning_rate=2e-4,
+        fp16=True,
+        logging_steps=10,
+        save_strategy="epoch",
+        warmup_ratio=0.03,
+        lr_scheduler_type="cosine",
+    ),
+    peft_config=peft_config,
+)
+
+trainer.train()</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Inject Fault-Tolerance and Real-Time Design Patterns into Training</h3>
+                <p>Beyond raw code, augment your training data with explicit examples of aerospace design patterns that general-purpose models never see. Create synthetic training examples for triple modular redundancy (TMR), Byzantine fault tolerance, priority inheritance protocols, rate-monotonic scheduling, and fail-safe state machine patterns. Include failure-mode annotations — for each code snippet, add comments explaining what happens when a sensor drops out, a thread deadlocks, or a memory allocation fails. This teaches the model not just to write code, but to reason about failure modes.</p>
+
+                <div class="code-block"><pre># Example synthetic training entry: Triple Modular Redundancy (TMR)
+tmr_example = """
+### Instruction:
+Implement Triple Modular Redundancy (TMR) for a flight-critical sensor voting system in C.
+Three independent sensors read altitude. The system must tolerate one Byzantine fault.
+
+### Response:
+#include <stdint.h>
+#include <stdbool.h>
+
+// TMR Voting with Byzantine fault tolerance
+// If one sensor diverges, the median value is selected
+// If two sensors diverge, the system enters safe mode
+
+typedef struct {
+    float sensor_a;
+    float sensor_b;
+    float sensor_c;
+} TMR_Input;
+
+typedef enum {
+    TMR_OK,
+    TMR_DEGRADED,  // One sensor fault detected
+    TMR_SAFE_MODE  // Multiple faults — enter safe mode
+} TMR_Status;
+
+float median_of_three(float a, float b, float c) {
+    if (a > b) { float t = a; a = b; b = t; }
+    if (b > c) { float t = b; b = c; c = t; }
+    if (a > b) { float t = a; a = b; b = t; }
+    return b;
+}
+
+TMR_Status tmr_vote(TMR_Input *input, float *result) {
+    float threshold = 10.0f; // Max acceptable divergence (meters)
+    
+    bool ab_close = fabsf(input->sensor_a - input->sensor_b) < threshold;
+    bool bc_close = fabsf(input->sensor_b - input->sensor_c) < threshold;
+    bool ac_close = fabsf(input->sensor_a - input->sensor_c) < threshold;
+    
+    int agree_count = (ab_close ? 1 : 0) + (bc_close ? 1 : 0) + (ac_close ? 1 : 0);
+    
+    if (agree_count >= 1) {
+        *result = median_of_three(input->sensor_a, input->sensor_b, input->sensor_c);
+        return (agree_count == 3) ? TMR_OK : TMR_DEGRADED;
+    }
+    // All sensors disagree — enter safe mode
+    *result = 0.0f;
+    return TMR_SAFE_MODE;
+}
+
+// Failure mode: If sensor B drops out mid-flight (returns NaN),
+// the median voter still produces a valid result from A and C.
+// The TMR_DEGRADED flag triggers a telemetry alert to ground control.
+"""
+
+# Save to training dataset
+with open("tmr_training.jsonl", "a") as f:
+    f.write(json.dumps({"text": tmr_example, "pattern": "TMR"}) + "\n")</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Evaluate the Fine-Tuned Model on Mission-Critical Coding Benchmarks</h3>
+                <p>After fine-tuning, evaluate the model on benchmarks that test fault-tolerant code generation, not just general coding ability. Create custom evaluation tasks: generate code with watchdog timers, implement priority inheritance for mutexes, write fail-safe state machines, and handle sensor dropout scenarios. Compare the fine-tuned model against the base model and general-purpose assistants like GPT-4 on these tasks. Measure not just correctness but also whether the generated code includes proper error handling, timing constraints, and failure-mode annotations.</p>
+
+                <div class="code-block"><pre># Evaluation script for mission-critical coding tasks
+from transformers import pipeline
+import json
+
+# Load the fine-tuned model
+model_path = "./spacex-cursor-model/final_checkpoint"
+generator = pipeline("text-generation", model=model_path, device_map="auto")
+
+# Define mission-critical evaluation prompts
+evaluation_tasks = [
+    {
+        "id": "watchdog_01",
+        "prompt": "Write a C function that implements a hardware watchdog timer for an embedded flight controller. The watchdog must reset the system if not petted within 100ms. Include initialization and pet functions.",
+        "expected_patterns": ["watchdog", "timeout", "reset", "hw_watchdog", "100"],
+        "category": "fault_tolerance"
+    },
+    {
+        "id": "priority_inheritance_01",
+        "prompt": "Implement a priority inheritance mutex in C for a real-time operating system. When a high-priority task blocks on a mutex held by a low-priority task, the low-priority task inherits the high priority until it releases the mutex.",
+        "expected_patterns": ["priority", "inheritance", "mutex", "elevate", "restore"],
+        "category": "real_time"
+    },
+    {
+        "id": "failsafe_01",
+        "prompt": "Write a C function that handles sensor dropout in an IMU. If the accelerometer stops returning valid data for more than 3 consecutive reads, switch to a backup estimation mode using only the gyroscope and log the fault.",
+        "expected_patterns": ["sensor", "dropout", "backup", "gyroscope", "fault", "consecutive"],
+        "category": "failure_handling"
+    }
+]
+
+# Run evaluation
+results = []
+for task in evaluation_tasks:
+    output = generator(task["prompt"], max_new_tokens=512, temperature=0.1)[0]["generated_text"]
+    pattern_match = sum(1 for p in task["expected_patterns"] if p.lower() in output.lower())
+    score = pattern_match / len(task["expected_patterns"])
+    results.append({
+        "task_id": task["id"],
+        "category": task["category"],
+        "pattern_score": score,
+        "output": output
+    })
+    print(f"Task {task['id']}: {score:.0%} pattern match")
+
+# Save results
+with open("evaluation_results.json", "w") as f:
+    json.dump(results, f, indent=2)</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Deploy the Domain-Specific Model as a Coding Assistant Backend</h3>
+                <p>Package the fine-tuned model as a production-ready coding assistant API that can power an IDE plugin or standalone tool. Use vLLM or Text Generation Inference (TGI) for high-throughput, low-latency serving. Configure the system prompt to emphasize fault-tolerant coding practices, and implement a retrieval-augmented generation (RAG) layer that pulls relevant aerospace design patterns from a vector database during code generation. This creates a 'mission-critical coding AI' that combines the fine-tuned model's learned patterns with on-demand retrieval of domain-specific knowledge.</p>
+
+                <div class="code-block"><pre># Deploy with vLLM for production serving
+pip install vllm
+
+# Start the model server
+python -m vllm.entrypoints.openai.api_server \
+    --model ./spacex-cursor-model/merged \
+    --dtype float16 \
+    --max-model-len 4096 \
+    --tensor-parallel-size 2 \
+    --port 8000
+
+# Example client request to the deployed model
+import openai
+
+client = openai.OpenAI(
+    base_url="http://localhost:8000/v1",
+    api_key="dummy"  # vLLM doesn't require a real key
+)
+
+response = client.chat.completions.create(
+    model="spacex-cursor-model",
+    messages=[
+        {
+            "role": "system",
+            "content": "You are a mission-critical aerospace coding assistant. You specialize in fault-tolerant embedded C/C++ code for safety-critical systems. Always consider: deterministic timing, watchdog patterns, sensor failure modes, triple modular redundancy, and fail-safe state transitions. Annotate code with failure-mode comments."
+        },
+        {
+            "role": "user",
+            "content": "Write a C function for a flight controller that reads from a barometric altitude sensor. Handle the case where the sensor returns an out-of-range value or stops responding. Include a timeout mechanism."
+        }
+    ],
+    temperature=0.1,
+    max_tokens=1024
+)
+
+print(response.choices[0].message.content)</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use a two-stage fine-tuning approach: first fine-tune on general embedded systems code to build foundational knowledge, then fine-tune on aerospace-specific fault-tolerance patterns. This prevents catastrophic forgetting of general coding ability.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Augment your dataset with failure-mode annotations as comments in the training code. Models learn to generate these annotations, which is critical for mission-critical code review workflows.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Implement a RAG pipeline alongside the fine-tuned model. Store aerospace design patterns (DO-178C requirements, NASA coding standards, fault-tolerance patterns) in a vector database like ChromaDB or Weaviate and retrieve relevant context at inference time.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Evaluate using domain-specific benchmarks, not just HumanEval or MBPP. Create your own test suite that checks for the presence of fault-tolerance patterns, timing annotations, and error-handling completeness.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Consider merging the LoRA adapter back into the base model after fine-tuning for lower-latency inference, or keep it separate for easy swapping between domain-specific adapters (aerospace, medical, automotive).
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Training on raw aerospace code without curation. Not all flight software is equally instructive — focus on modules that demonstrate fault tolerance, real-time constraints, and safety-critical patterns. Boilerplate and configuration files add noise, not signal.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Overfitting to aerospace jargon at the expense of general coding ability. If the model can no longer write a basic Python web server, you've over-tuned. Use a balanced dataset that includes general coding tasks alongside domain-specific ones.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Ignoring licensing and export control restrictions. Aerospace codebases may be subject to ITAR or other export regulations. Use only openly licensed open-source flight software (cFS, PX4, ArduPilot) for training data.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 4: Deploying without safety validation. A model that generates fault-tolerant code is not the same as a model that generates correct fault-tolerant code. Always validate generated code against formal verification tools and testing frameworks before deployment.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 5: Underestimating the importance of system prompts. The fine-tuned model's behavior is heavily influenced by the system prompt at inference time. A well-crafted system prompt that emphasizes failure-mode thinking can dramatically improve output quality.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Cursor AI</h4>
+                    <p>AI-powered code editor and coding assistant that uses large language models for code generation, editing, and debugging.</p>
+                    <a href="https://cursor.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>SpaceX</h4>
+                    <p>Aerospace manufacturer and space transportation company whose flight software and simulation pipelines represent a high-quality domain-specific dataset for fine-tuning.</p>
+                    <a href="https://spacex.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Hugging Face Transformers</h4>
+                    <p>Open-source library for loading, training, and fine-tuning transformer-based language models.</p>
+                    <a href="https://huggingface.co/docs/transformers" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>PEFT (Parameter-Efficient Fine-Tuning)</h4>
+                    <p>Hugging Face library for efficient fine-tuning methods including LoRA and QLoRA.</p>
+                    <a href="https://huggingface.co/docs/peft" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>TRL (Transformer Reinforcement Learning)</h4>
+                    <p>Hugging Face library for supervised fine-tuning, reward modeling, and RLHF of language models.</p>
+                    <a href="https://huggingface.co/docs/trl" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>vLLM</h4>
+                    <p>High-throughput LLM serving engine for production deployment of fine-tuned models.</p>
+                    <a href="https://vllm.ai" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>CodeLlama</h4>
+                    <p>Meta's code-specialized language model, suitable as a base model for domain-specific fine-tuning.</p>
+                    <a href="https://ai.meta.com/llama/code-llama/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>NASA Core Flight System (cFS)</h4>
+                    <p>Open-source flight software framework used by NASA, providing real aerospace code for training datasets.</p>
+                    <a href="https://github.com/nasa/cFS" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>PX4 Autopilot</h4>
+                    <p>Open-source flight control software for drones and other unmanned vehicles, containing real-time embedded C++ code.</p>
+                    <a href="https://github.com/PX4/PX4-Autopilot" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>ArduPilot</h4>
+                    <p>Open-source autopilot system for drones, rovers, and submarines with extensive embedded C++ codebase.</p>
+                    <a href="https://github.com/ArduPilot/ardupilot" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>bitsandbytes</h4>
+                    <p>Library for 4-bit and 8-bit quantization of models, enabling fine-tuning on consumer-grade GPUs.</p>
+                    <a href="https://github.com/TimDettmers/bitsandbytes" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What makes aerospace code different from general-purpose code for LLM training?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How much aerospace code is needed to effectively fine-tune a model for mission-critical coding?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can a domain-tuned model still write general-purpose code, or does it lose that ability?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What GPU resources are needed to fine-tune a code model on aerospace data?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How would a SpaceX-trained model handle code for non-aerospace domains like web development?</h3>
+                <p>Answer</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2106.09685" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            LoRA: Low-Rank Adaptation of Large Language Models
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The foundational paper on LoRA, the parameter-efficient fine-tuning method essential for domain-specific LLM adaptation without full retraining.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2305.14314" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            QLoRA: Efficient Finetuning of Quantized LLMs
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Paper on QLoRA, which enables fine-tuning 65B parameter models on a single 48GB GPU using 4-bit quantization with low-rank adapters.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/nasa/cFS" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            NASA Core Flight System (cFS) Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Open-source flight software framework from NASA — a real-world aerospace codebase that exemplifies the type of domain-specific training data discussed in this guide.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.rtca.org/do-178c/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            DO-178C: Software Considerations in Airborne Systems and Equipment Certification
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The primary standard for aerospace software certification. Understanding DO-178C requirements is essential for curating training data that reflects real aerospace code quality standards.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            GitHub Copilot vs. Domain-Specific Models: The Future of AI Coding Assistants
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Research on AI coding assistant effectiveness, providing context for why domain-specific fine-tuning creates a competitive advantage in mission-critical domains.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#SpaceXJustBought</span>
+                <span class="tag">#SpaceXCursorAIacquisition</span>
+                <span class="tag">#AIcodingassistantaerospace</span>
+                <span class="tag">#domainspecificLLMfinetuning</span>
+                <span class="tag">#CursorAISpaceXdevelopertools</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-17 21:13 • This guide accompanies the video: "What Happens When AI Learns to Write Rocket Code — Inside Domain-Specific LLM Training"</p>
+        </footer>
+    </div>
+</body>
+</html>

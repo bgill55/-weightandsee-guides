@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/70_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/71_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai/">
+<img src="guides/what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai/thumbnail.jpg" width="300" alt="What Happens When Ai Learns To Write Rocket Code Inside Domain Specific Llm Trai"><br>
+<b>What Happens When Ai Learns To Write Rocket Code Inside Domain Specific Llm Trai</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/what-happens-when-ai-learns-to-code-like-a-rocket-scientist/">
 <img src="guides/what-happens-when-ai-learns-to-code-like-a-rocket-scientist/thumbnail.jpg" width="300" alt="What Happens When Ai Learns To Code Like A Rocket Scientist"><br>
 <b>What Happens When Ai Learns To Code Like A Rocket Scientist</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/freellmapi-test/">
 <img src="guides/freellmapi-test/thumbnail.jpg" width="300" alt="Freellmapi Test"><br>
 <b>Freellmapi Test</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/tool-review-sp-implementations-vs-classic-plugandplay-restorers/">
-<img src="guides/tool-review-sp-implementations-vs-classic-plugandplay-restorers/thumbnail.jpg" width="300" alt="Tool Review Sp Implementations Vs Classic Plugandplay Restorers"><br>
-<b>Tool Review Sp Implementations Vs Classic Plugandplay Restorers</b>
 </a>
 </td>
 </tr></table>
@@ -49,7 +49,7 @@
 | **Model Deep Dives** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![6](https://img.shields.io/badge/6-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![7](https://img.shields.io/badge/7-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -145,6 +145,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[What Happens When Ai Learns To Write Rocket Code Inside Domain Specific Llm Trai](https://bgill55.github.io/-weightandsee-guides/guides/what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai/)** — 2026-06-17
 - **[What Happens When Ai Learns To Code Like A Rocket Scientist](https://bgill55.github.io/-weightandsee-guides/guides/what-happens-when-ai-learns-to-code-like-a-rocket-scientist/)** — 2026-06-17
 - **[Freellmapi Test](https://bgill55.github.io/-weightandsee-guides/guides/freellmapi-test/)** — 2026-06-17
 - **[Nocode Playbook Build A World Cup 2026 Predictor With Llms Typescript Realtime S](https://bgill55.github.io/-weightandsee-guides/guides/nocode-playbook-build-a-world-cup-2026-predictor-with-llms-typescript-realtime-s/)** — 2026-06-15
