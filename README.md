@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/73_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/74_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/concept-3-building-your-private-ai-assistant-with-local-models/">
+<img src="guides/concept-3-building-your-private-ai-assistant-with-local-models/thumbnail.jpg" width="300" alt="Concept 3 Building Your Private Ai Assistant With Local Models"><br>
+<b>Concept 3 Building Your Private Ai Assistant With Local Models</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/goose-vs-claude-code-we-built-the-same-project-with-both-the-results-were-shocki/">
 <img src="guides/goose-vs-claude-code-we-built-the-same-project-with-both-the-results-were-shocki/thumbnail.jpg" width="300" alt="Goose Vs Claude Code We Built The Same Project With Both The Results Were Shocki"><br>
@@ -31,12 +37,6 @@
 <b>The Anthropic Vs David Sacks Fight What It Means For Open Weight Ai In 2026</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai/">
-<img src="guides/what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai/thumbnail.jpg" width="300" alt="What Happens When Ai Learns To Write Rocket Code Inside Domain Specific Llm Trai"><br>
-<b>What Happens When Ai Learns To Write Rocket Code Inside Domain Specific Llm Trai</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
-| **Model Deep Dives** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
+| **Model Deep Dives** | ![19](https://img.shields.io/badge/19-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![7](https://img.shields.io/badge/7-blue?style=flat-square) |
@@ -96,6 +96,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Concept 3 Building Your Private Ai Assistant With Local Models](https://bgill55.github.io/-weightandsee-guides/guides/concept-3-building-your-private-ai-assistant-with-local-models/)** — 2026-06-17
 - **[The Microsoft AI Forge Hack — How They Stole Your API Keys](https://bgill55.github.io/-weightandsee-guides/guides/the-microsoft-ai-forge-hack-how-they-stole-your-api-keys/)** — 2026-06-15
 - **[The OmniVision 7 Paper — Why AI Finally Understands Motion](https://bgill55.github.io/-weightandsee-guides/guides/the-omnivision-7-paper-why-ai-finally-understands-motion/)** — 2026-06-15
 - **[MetaVision 2.0 API Deep Dive — Is It Worth the Hype?](https://bgill55.github.io/-weightandsee-guides/guides/metavision-20-api-deep-dive-is-the-new-multimodal-model-worth-the-hype/)** — 2026-06-15
