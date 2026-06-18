@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/77_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/78_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/suitcase-robot-meets-llm-when-physical-sensors-control-ai-randomness/">
+<img src="guides/suitcase-robot-meets-llm-when-physical-sensors-control-ai-randomness/thumbnail.jpg" width="300" alt="Suitcase Robot Meets Llm When Physical Sensors Control Ai Randomness"><br>
+<b>Suitcase Robot Meets Llm When Physical Sensors Control Ai Randomness</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-privacy-exodus-why-local-llms-are-drowning-out-the-cloud-giants/">
 <img src="guides/the-privacy-exodus-why-local-llms-are-drowning-out-the-cloud-giants/thumbnail.jpg" width="300" alt="The Privacy Exodus Why Local Llms Are Drowning Out The Cloud Giants"><br>
@@ -31,12 +37,6 @@
 <b>Data Ownership Battle Why Running Ai Cad Locally Is The Engineers New Superpower</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/what-noam-shazeer-built-at-google-and-why-openai-needs-it-now/">
-<img src="guides/what-noam-shazeer-built-at-google-and-why-openai-needs-it-now/thumbnail.jpg" width="300" alt="What Noam Shazeer Built At Google And Why Openai Needs It Now"><br>
-<b>What Noam Shazeer Built At Google And Why Openai Needs It Now</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
-| **Model Deep Dives** | ![20](https://img.shields.io/badge/20-blue?style=flat-square) |
+| **Model Deep Dives** | ![21](https://img.shields.io/badge/21-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![12](https://img.shields.io/badge/12-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![7](https://img.shields.io/badge/7-blue?style=flat-square) |
@@ -96,6 +96,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Suitcase Robot Meets Llm When Physical Sensors Control Ai Randomness](https://bgill55.github.io/-weightandsee-guides/guides/suitcase-robot-meets-llm-when-physical-sensors-control-ai-randomness/)** — 2026-06-18
 - **[What Noam Shazeer Built At Google And Why Openai Needs It Now](https://bgill55.github.io/-weightandsee-guides/guides/what-noam-shazeer-built-at-google-and-why-openai-needs-it-now/)** — 2026-06-18
 - **[Concept 3 Building Your Private Ai Assistant With Local Models](https://bgill55.github.io/-weightandsee-guides/guides/concept-3-building-your-private-ai-assistant-with-local-models/)** — 2026-06-17
 - **[The Microsoft AI Forge Hack — How They Stole Your API Keys](https://bgill55.github.io/-weightandsee-guides/guides/the-microsoft-ai-forge-hack-how-they-stole-your-api-keys/)** — 2026-06-15
