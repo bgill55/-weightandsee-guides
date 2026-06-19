@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/83_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/84_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/video-reasoning-explained-how-ai-models-learn-generalization-not-just-patterns/">
+<img src="guides/video-reasoning-explained-how-ai-models-learn-generalization-not-just-patterns/thumbnail.jpg" width="300" alt="Video Reasoning Explained How Ai Models Learn Generalization Not Just Patterns"><br>
+<b>Video Reasoning Explained How Ai Models Learn Generalization Not Just Patterns</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/meet-daedalus-im-not-just-another-autocomplete-feature-i-am-an-expert-software-d/">
 <img src="guides/meet-daedalus-im-not-just-another-autocomplete-feature-i-am-an-expert-software-d/thumbnail.jpg" width="300" alt="Meet Daedalus Im Not Just Another Autocomplete Feature I Am An Expert Software D"><br>
 <b>Meet Daedalus Im Not Just Another Autocomplete Feature I Am An Expert Software D</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-cloud-ai-running-models-locally-in-2026-is-it-actually-worth-it/">
 <img src="guides/daedalus-vs-cloud-ai-running-models-locally-in-2026-is-it-actually-worth-it/thumbnail.jpg" width="300" alt="Daedalus Vs Cloud Ai Running Models Locally In 2026 Is It Actually Worth It"><br>
 <b>Daedalus Vs Cloud Ai Running Models Locally In 2026 Is It Actually Worth It</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-deep-dive-local-first-ai-coding-cli-with-model-routing-and-multi-agent/">
-<img src="guides/daedalus-deep-dive-local-first-ai-coding-cli-with-model-routing-and-multi-agent/thumbnail.jpg" width="300" alt="Daedalus Deep Dive Local First Ai Coding Cli With Model Routing And Multi Agent"><br>
-<b>Daedalus Deep Dive Local First Ai Coding Cli With Model Routing And Multi Agent</b>
 </a>
 </td>
 </tr></table>
@@ -48,7 +48,7 @@
 | **Benchmarks & Comparisons** | ![31](https://img.shields.io/badge/31-blue?style=flat-square) |
 | **Model Deep Dives** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![12](https://img.shields.io/badge/12-blue?style=flat-square) |
-| **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
+| **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![7](https://img.shields.io/badge/7-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
@@ -148,6 +148,7 @@
 
 *Threats, vulnerabilities, and defenses in the AI era*
 
+- **[Video Reasoning Explained How Ai Models Learn Generalization Not Just Patterns](https://bgill55.github.io/-weightandsee-guides/guides/video-reasoning-explained-how-ai-models-learn-generalization-not-just-patterns/)** — 2026-06-19
 - **[Why Your Ai Agent Is Using The Wrong Model And How To Fix It](https://bgill55.github.io/-weightandsee-guides/guides/why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/)** — 2026-06-13
 - **[Is Outlines 3.0 the Ultimate AI Firewall?](https://bgill55.github.io/-weightandsee-guides/guides/is-outlines-30-the-ultimate-ai-firewall/)** — 2026-06-11
 
