@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/81_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/82_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-cloud-ai-running-models-locally-in-2026-is-it-actually-worth-it/">
+<img src="guides/daedalus-vs-cloud-ai-running-models-locally-in-2026-is-it-actually-worth-it/thumbnail.jpg" width="300" alt="Daedalus Vs Cloud Ai Running Models Locally In 2026 Is It Actually Worth It"><br>
+<b>Daedalus Vs Cloud Ai Running Models Locally In 2026 Is It Actually Worth It</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-deep-dive-local-first-ai-coding-cli-with-model-routing-and-multi-agent/">
 <img src="guides/daedalus-deep-dive-local-first-ai-coding-cli-with-model-routing-and-multi-agent/thumbnail.jpg" width="300" alt="Daedalus Deep Dive Local First Ai Coding Cli With Model Routing And Multi Agent"><br>
@@ -31,12 +37,6 @@
 <b>Multi Agent Orchestration In Daedalus How Sub Agents Planner Coder Reviewer Tack</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/ai-solved-18-rare-disease-cases-doctors-couldnt-crack-heres-how/">
-<img src="guides/ai-solved-18-rare-disease-cases-doctors-couldnt-crack-heres-how/thumbnail.jpg" width="300" alt="Ai Solved 18 Rare Disease Cases Doctors Couldnt Crack Heres How"><br>
-<b>Ai Solved 18 Rare Disease Cases Doctors Couldnt Crack Heres How</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![31](https://img.shields.io/badge/31-blue?style=flat-square) |
 | **Model Deep Dives** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![12](https://img.shields.io/badge/12-blue?style=flat-square) |
 | **AI Security** | ![2](https://img.shields.io/badge/2-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Daedalus Vs Cloud Ai Running Models Locally In 2026 Is It Actually Worth It](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-cloud-ai-running-models-locally-in-2026-is-it-actually-worth-it/)** — 2026-06-19
 - **[Goose Vs Claude Code We Built The Same Project With Both The Results Were Shocki](https://bgill55.github.io/-weightandsee-guides/guides/goose-vs-claude-code-we-built-the-same-project-with-both-the-results-were-shocki/)** — 2026-06-17
 - **[The Anthropic Vs David Sacks Fight What It Means For Open Weight Ai In 2026](https://bgill55.github.io/-weightandsee-guides/guides/the-anthropic-vs-david-sacks-fight-what-it-means-for-open-weight-ai-in-2026/)** — 2026-06-17
 - **[Tool Review Sp Implementations Vs Classic Plugandplay Restorers](https://bgill55.github.io/-weightandsee-guides/guides/tool-review-sp-implementations-vs-classic-plugandplay-restorers/)** — 2026-06-16
