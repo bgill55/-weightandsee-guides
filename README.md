@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/86_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/87_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server/">
+<img src="guides/concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server/thumbnail.jpg" width="300" alt="Concept 3 The Diy Approach Selecting Your Optimal Multi Node Llm Server"><br>
+<b>Concept 3 The Diy Approach Selecting Your Optimal Multi Node Llm Server</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-open-architecture-advantage-why-open-ai-models-are-harder-to-ban/">
 <img src="guides/the-open-architecture-advantage-why-open-ai-models-are-harder-to-ban/thumbnail.jpg" width="300" alt="The Open Architecture Advantage Why Open Ai Models Are Harder To Ban"><br>
 <b>The Open Architecture Advantage Why Open Ai Models Are Harder To Ban</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-computational-cost-of-consciousness-modeling-agent-welfare/">
 <img src="guides/the-computational-cost-of-consciousness-modeling-agent-welfare/thumbnail.jpg" width="300" alt="The Computational Cost Of Consciousness Modeling Agent Welfare"><br>
 <b>The Computational Cost Of Consciousness Modeling Agent Welfare</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/video-reasoning-explained-how-ai-models-learn-generalization-not-just-patterns/">
-<img src="guides/video-reasoning-explained-how-ai-models-learn-generalization-not-just-patterns/thumbnail.jpg" width="300" alt="Video Reasoning Explained How Ai Models Learn Generalization Not Just Patterns"><br>
-<b>Video Reasoning Explained How Ai Models Learn Generalization Not Just Patterns</b>
 </a>
 </td>
 </tr></table>
@@ -49,7 +49,7 @@
 | **Model Deep Dives** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![12](https://img.shields.io/badge/12-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![7](https://img.shields.io/badge/7-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -160,6 +160,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[Concept 3 The Diy Approach Selecting Your Optimal Multi Node Llm Server](https://bgill55.github.io/-weightandsee-guides/guides/concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server/)** — 2026-06-19
 - **[What Happens When Ai Learns To Write Rocket Code Inside Domain Specific Llm Trai](https://bgill55.github.io/-weightandsee-guides/guides/what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai/)** — 2026-06-17
 - **[What Happens When Ai Learns To Code Like A Rocket Scientist](https://bgill55.github.io/-weightandsee-guides/guides/what-happens-when-ai-learns-to-code-like-a-rocket-scientist/)** — 2026-06-17
 - **[Freellmapi Test](https://bgill55.github.io/-weightandsee-guides/guides/freellmapi-test/)** — 2026-06-17
