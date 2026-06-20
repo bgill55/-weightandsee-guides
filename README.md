@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/88_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/89_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/from-concept-to-production-building-your-first-reliable-ai-agent-workflow-rag-de/">
+<img src="guides/from-concept-to-production-building-your-first-reliable-ai-agent-workflow-rag-de/thumbnail.jpg" width="300" alt="From Concept To Production Building Your First Reliable Ai Agent Workflow Rag De"><br>
+<b>From Concept To Production Building Your First Reliable Ai Agent Workflow Rag De</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-computational-edge-running-physical-ai-on-local-hardware/">
 <img src="guides/the-computational-edge-running-physical-ai-on-local-hardware/thumbnail.jpg" width="300" alt="The Computational Edge Running Physical Ai On Local Hardware"><br>
@@ -31,12 +37,6 @@
 <b>Concept 3 The Diy Approach Selecting Your Optimal Multi Node Llm Server</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-open-architecture-advantage-why-open-ai-models-are-harder-to-ban/">
-<img src="guides/the-open-architecture-advantage-why-open-ai-models-are-harder-to-ban/thumbnail.jpg" width="300" alt="The Open Architecture Advantage Why Open Ai Models Are Harder To Ban"><br>
-<b>The Open Architecture Advantage Why Open Ai Models Are Harder To Ban</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![31](https://img.shields.io/badge/31-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![32](https://img.shields.io/badge/32-blue?style=flat-square) |
 | **Model Deep Dives** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![13](https://img.shields.io/badge/13-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[From Concept To Production Building Your First Reliable Ai Agent Workflow Rag De](https://bgill55.github.io/-weightandsee-guides/guides/from-concept-to-production-building-your-first-reliable-ai-agent-workflow-rag-de/)** — 2026-06-20
 - **[Daedalus Vs Cloud Ai Running Models Locally In 2026 Is It Actually Worth It](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-cloud-ai-running-models-locally-in-2026-is-it-actually-worth-it/)** — 2026-06-19
 - **[Goose Vs Claude Code We Built The Same Project With Both The Results Were Shocki](https://bgill55.github.io/-weightandsee-guides/guides/goose-vs-claude-code-we-built-the-same-project-with-both-the-results-were-shocki/)** — 2026-06-17
 - **[The Anthropic Vs David Sacks Fight What It Means For Open Weight Ai In 2026](https://bgill55.github.io/-weightandsee-guides/guides/the-anthropic-vs-david-sacks-fight-what-it-means-for-open-weight-ai-in-2026/)** — 2026-06-17
