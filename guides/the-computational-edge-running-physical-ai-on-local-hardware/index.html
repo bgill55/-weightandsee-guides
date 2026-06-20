@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This video deconstructs the leap from simulated robotic movement to real-world physical autonomy, using the AGIBOT A3 acquisition as the primary case study. We ">
+    <meta name="keywords" content="robotics, physical AI, autonomy, reinforcement learning, automation">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="The Computational Edge: Running Physical AI on Local Hardware - Complete Guide">
+    <meta property="og:description" content="This video deconstructs the leap from simulated robotic movement to real-world physical autonomy, using the AGIBOT A3 acquisition as the primary case study. We explain the underlying breakthrough conc">
+    <meta property="og:type" content="article">
+    <title>The Computational Edge: Running Physical AI on Local Hardware | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>The Computational Edge: Running Physical AI on Local Hardware</h1>
+            <p class="subtitle">This guide explores the paradigm shift from traditional, pre-programmed robotics to true physical AI and generalized autonomy. We detail how advanced systems, using concepts like sim-to-real transfer and reinforcement learning, enable robots to perform complex, adaptive tasks in the real world without explicit code for every possible state.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 20, 2026</span>
+                <span>3 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Physical AI represents a major computing breakthrough, moving intelligence from server racks (LLMs) into physical hardware and motion control.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Generalized autonomy means the system learns complex tasks, like table tennis, through iterative practice rather than requiring explicit IF/THEN code for every movement.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Reinforcement Learning (RL) is the core mechanism, where the robot maximizes a reward function in a virtual environment to develop optimal behavior policies.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Sim-to-Real Transfer decouples training from reality: models are trained millions of times in simulation and then deployed onto physical hardware.</span></li>
+                    <li><span class="takeaway-num">5</span><span>The control loop requires powerful embedded processing units capable of handling high-frequency sensor data and rapid policy inference for real-time adaptation.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Understanding of basic robotics concepts (actuators, sensors, kinematics).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with Machine Learning concepts, specifically Reinforcement Learning (RL) and Policy Networks.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to simulation environments capable of high-fidelity physics modeling (e.g., MuJoCo or Isaac Gym).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Define the Task and Environment in Simulation</h3>
+                <p>Before physical deployment, the complex task must be defined within a high-fidelity simulation environment. This involves modeling the physics of the target system (e.g., table tennis ball trajectory) and setting up the initial state space and action space for the robotic arm.</p>
+
+                <div class="code-block"><pre>Simulation Setup Snippet:
+```python
+# Initialize the virtual world
+sim = SimulationEngine(physics_model='rigid_body', gravity=9.8)
+# Define robot kinematics and joint limits
+robot = KinematicsModel('AGIBOT_A3', joints=[...])
+# Add task object (e.g., table, ball)
+table = Object(type='table', dimensions=(2.1, 0.7))
+ball = Object(type='ball', initial_position=start_coords)
+sim.add_object(robot, table, ball)
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Train the Policy Network via Reinforcement Learning</h3>
+                <p>The core training happens by allowing the agent (the robot) to interact with the environment and failing millions of times digitally. The goal is not explicit programming, but maximizing a defined reward function (e.g., keeping the ball in play). This process generates the optimal 'policy network' that dictates action given sensory input.</p>
+
+                <div class="code-block"><pre>RL Training Command:
+```bash
+# Use an RL framework like Stable Baselines 3 or PyTorch Lightning
+train_rl --agent AGIBOT_A3 
+             --environment sim_world.yaml 
+             --reward_function 'BallStayInPlay'
+             --epochs 100000 
+             --learning_rate 0.0001
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Execute Sim-to-Real Transfer and Deployment</h3>
+                <p>Once the policy network is stable in simulation, it must be transferred to the physical hardware. This requires optimizing the model's inference speed for embedded units and ensuring that sensor data (e.g., high-resolution optical arrays) can accurately map from the real world back into the simulated input format.</p>
+
+                <div class="code-block"><pre>Deployment Configuration:
+```yaml
+hardware_target: AGIBOT_A3_EmbeddedUnit
+input_stream: OpticalSensorArray(frequency=200Hz)
+policy_file: policy_network.pth
+inference_optimization: ONNX
+control_loop_rate: 500Hz # High frequency control loop
+```</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Focus on high-frequency sensor data processing (200+ Hz) to capture non-deterministic inputs, such as unexpected ball spin or tissue movement.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> When designing the reward function for RL, make it broad and goal-oriented rather than prescriptive; this encourages generalized problem-solving capabilities.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Utilize embedded computing units with specialized AI accelerators (like NPUs or dedicated GPU cores) to handle rapid policy inference required for real-time physical control.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> The Reality Gap: Assuming the physics model used in simulation perfectly matches reality. Proper domain randomization and system identification are needed.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Insufficient Control Loop Rate: Running the control loop too slowly means the robot cannot react quickly enough to fast, non-deterministic inputs.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>AGIBOT A3</h4>
+                    <p>A case study robotic system demonstrating generalized autonomy and complex physical task execution.</p>
+                    <a href="N/A (Case Study)" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Reinforcement Learning (RL)</h4>
+                    <p>A machine learning paradigm where an agent learns optimal behavior by maximizing a cumulative reward function in an environment.</p>
+                    <a href="https://openai.com/research/rl" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Sim-to-Real Transfer</h4>
+                    <p>The process of applying knowledge (trained models) derived from a simulated virtual environment to a physical, real-world system.</p>
+                    <a href="N/A (Concept)" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How is generalized autonomy different from traditional automation?</h3>
+                <p>Traditional automation requires pre-coding every possible state transition (IF/THEN). Generalized autonomy allows the system to learn a policy network that adapts and solves novel problems based on maximizing rewards, rather than following explicit code paths.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is the role of the reward function in RL?</h3>
+                <p>The reward function defines 'success' for the agent. By structuring it correctly, you guide the robot to learn desirable behaviors (e.g., keeping an object moving) without having to code those movements directly.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What computational unit is best suited for real-time physical AI?</h3>
+                <p>The requirement is powerful embedded processing units with specialized hardware accelerators (like NPUs or dedicated GPU cores) capable of sustaining high inference rates (e.g., 500 Hz control loops).</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/..." target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Deep Reinforcement Learning for Robotics
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Academic papers detailing advanced RL architectures suitable for continuous control tasks.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.mujoco.org/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            High-Fidelity Physics Simulation Tools (e.g., MuJoCo, Isaac Gym)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Platforms used to create accurate virtual environments necessary for training physical AI models.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#BeyondCode</span>
+                <span class="tag">#robotics</span>
+                <span class="tag">#physicalAI</span>
+                <span class="tag">#autonomy</span>
+                <span class="tag">#reinforcementlearning</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-20 00:01 • This guide accompanies the video: "The Computational Edge: Running Physical AI on Local Hardware"</p>
+        </footer>
+    </div>
+</body>
+</html>

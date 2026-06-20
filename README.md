@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/87_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/88_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-computational-edge-running-physical-ai-on-local-hardware/">
+<img src="guides/the-computational-edge-running-physical-ai-on-local-hardware/thumbnail.jpg" width="300" alt="The Computational Edge Running Physical Ai On Local Hardware"><br>
+<b>The Computational Edge Running Physical Ai On Local Hardware</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server/">
 <img src="guides/concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server/thumbnail.jpg" width="300" alt="Concept 3 The Diy Approach Selecting Your Optimal Multi Node Llm Server"><br>
@@ -31,12 +37,6 @@
 <b>The Open Architecture Advantage Why Open Ai Models Are Harder To Ban</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-computational-cost-of-consciousness-modeling-agent-welfare/">
-<img src="guides/the-computational-cost-of-consciousness-modeling-agent-welfare/thumbnail.jpg" width="300" alt="The Computational Cost Of Consciousness Modeling Agent Welfare"><br>
-<b>The Computational Cost Of Consciousness Modeling Agent Welfare</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![31](https://img.shields.io/badge/31-blue?style=flat-square) |
 | **Model Deep Dives** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![12](https://img.shields.io/badge/12-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![13](https://img.shields.io/badge/13-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -131,6 +131,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[The Computational Edge Running Physical Ai On Local Hardware](https://bgill55.github.io/-weightandsee-guides/guides/the-computational-edge-running-physical-ai-on-local-hardware/)** — 2026-06-20
 - **[The Privacy Exodus Why Local Llms Are Drowning Out The Cloud Giants](https://bgill55.github.io/-weightandsee-guides/guides/the-privacy-exodus-why-local-llms-are-drowning-out-the-cloud-giants/)** — 2026-06-18
 - **[Data Ownership Battle Why Running Ai Cad Locally Is The Engineers New Superpower](https://bgill55.github.io/-weightandsee-guides/guides/data-ownership-battle-why-running-ai-cad-locally-is-the-engineers-new-superpower/)** — 2026-06-18
 - **[Running LLMs Offline — A Step-by-Step Guide](https://bgill55.github.io/-weightandsee-guides/guides/running-llms-offline-a-stepbystep-guide/)** — 2026-06-15
