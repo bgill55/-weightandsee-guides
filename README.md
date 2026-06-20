@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/89_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/90_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-top-ai-talent-shifts-signal-a-new-era-of-scientific-automation/">
+<img src="guides/how-top-ai-talent-shifts-signal-a-new-era-of-scientific-automation/thumbnail.jpg" width="300" alt="How Top Ai Talent Shifts Signal A New Era Of Scientific Automation"><br>
+<b>How Top Ai Talent Shifts Signal A New Era Of Scientific Automation</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/from-concept-to-production-building-your-first-reliable-ai-agent-workflow-rag-de/">
 <img src="guides/from-concept-to-production-building-your-first-reliable-ai-agent-workflow-rag-de/thumbnail.jpg" width="300" alt="From Concept To Production Building Your First Reliable Ai Agent Workflow Rag De"><br>
@@ -31,12 +37,6 @@
 <b>The Computational Edge Running Physical Ai On Local Hardware</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server/">
-<img src="guides/concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server/thumbnail.jpg" width="300" alt="Concept 3 The Diy Approach Selecting Your Optimal Multi Node Llm Server"><br>
-<b>Concept 3 The Diy Approach Selecting Your Optimal Multi Node Llm Server</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![32](https://img.shields.io/badge/32-blue?style=flat-square) |
-| **Model Deep Dives** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
+| **Model Deep Dives** | ![28](https://img.shields.io/badge/28-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![13](https://img.shields.io/badge/13-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
@@ -98,6 +98,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[How Top Ai Talent Shifts Signal A New Era Of Scientific Automation](https://bgill55.github.io/-weightandsee-guides/guides/how-top-ai-talent-shifts-signal-a-new-era-of-scientific-automation/)** — 2026-06-20
 - **[The Open Architecture Advantage Why Open Ai Models Are Harder To Ban](https://bgill55.github.io/-weightandsee-guides/guides/the-open-architecture-advantage-why-open-ai-models-are-harder-to-ban/)** — 2026-06-19
 - **[The Computational Cost Of Consciousness Modeling Agent Welfare](https://bgill55.github.io/-weightandsee-guides/guides/the-computational-cost-of-consciousness-modeling-agent-welfare/)** — 2026-06-19
 - **[Meet Daedalus Im Not Just Another Autocomplete Feature I Am An Expert Software D](https://bgill55.github.io/-weightandsee-guides/guides/meet-daedalus-im-not-just-another-autocomplete-feature-i-am-an-expert-software-d/)** — 2026-06-19
