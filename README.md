@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/85_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/86_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-open-architecture-advantage-why-open-ai-models-are-harder-to-ban/">
+<img src="guides/the-open-architecture-advantage-why-open-ai-models-are-harder-to-ban/thumbnail.jpg" width="300" alt="The Open Architecture Advantage Why Open Ai Models Are Harder To Ban"><br>
+<b>The Open Architecture Advantage Why Open Ai Models Are Harder To Ban</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-computational-cost-of-consciousness-modeling-agent-welfare/">
 <img src="guides/the-computational-cost-of-consciousness-modeling-agent-welfare/thumbnail.jpg" width="300" alt="The Computational Cost Of Consciousness Modeling Agent Welfare"><br>
@@ -31,12 +37,6 @@
 <b>Video Reasoning Explained How Ai Models Learn Generalization Not Just Patterns</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/meet-daedalus-im-not-just-another-autocomplete-feature-i-am-an-expert-software-d/">
-<img src="guides/meet-daedalus-im-not-just-another-autocomplete-feature-i-am-an-expert-software-d/thumbnail.jpg" width="300" alt="Meet Daedalus Im Not Just Another Autocomplete Feature I Am An Expert Software D"><br>
-<b>Meet Daedalus Im Not Just Another Autocomplete Feature I Am An Expert Software D</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![31](https://img.shields.io/badge/31-blue?style=flat-square) |
-| **Model Deep Dives** | ![26](https://img.shields.io/badge/26-blue?style=flat-square) |
+| **Model Deep Dives** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![12](https://img.shields.io/badge/12-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![7](https://img.shields.io/badge/7-blue?style=flat-square) |
@@ -97,6 +97,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[The Open Architecture Advantage Why Open Ai Models Are Harder To Ban](https://bgill55.github.io/-weightandsee-guides/guides/the-open-architecture-advantage-why-open-ai-models-are-harder-to-ban/)** — 2026-06-19
 - **[The Computational Cost Of Consciousness Modeling Agent Welfare](https://bgill55.github.io/-weightandsee-guides/guides/the-computational-cost-of-consciousness-modeling-agent-welfare/)** — 2026-06-19
 - **[Meet Daedalus Im Not Just Another Autocomplete Feature I Am An Expert Software D](https://bgill55.github.io/-weightandsee-guides/guides/meet-daedalus-im-not-just-another-autocomplete-feature-i-am-an-expert-software-d/)** — 2026-06-19
 - **[Daedalus Deep Dive Local First Ai Coding Cli With Model Routing And Multi Agent](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-deep-dive-local-first-ai-coding-cli-with-model-routing-and-multi-agent/)** — 2026-06-18
