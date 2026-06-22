@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/90_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/91_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-junction-how-a-local-llm-chat-sidebar-works-for-vs-code/">
+<img src="guides/inside-junction-how-a-local-llm-chat-sidebar-works-for-vs-code/thumbnail.jpg" width="300" alt="Inside Junction How A Local Llm Chat Sidebar Works For Vs Code"><br>
+<b>Inside Junction How A Local Llm Chat Sidebar Works For Vs Code</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/how-top-ai-talent-shifts-signal-a-new-era-of-scientific-automation/">
 <img src="guides/how-top-ai-talent-shifts-signal-a-new-era-of-scientific-automation/thumbnail.jpg" width="300" alt="How Top Ai Talent Shifts Signal A New Era Of Scientific Automation"><br>
@@ -31,12 +37,6 @@
 <b>From Concept To Production Building Your First Reliable Ai Agent Workflow Rag De</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-computational-edge-running-physical-ai-on-local-hardware/">
-<img src="guides/the-computational-edge-running-physical-ai-on-local-hardware/thumbnail.jpg" width="300" alt="The Computational Edge Running Physical Ai On Local Hardware"><br>
-<b>The Computational Edge Running Physical Ai On Local Hardware</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![32](https://img.shields.io/badge/32-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![33](https://img.shields.io/badge/33-blue?style=flat-square) |
 | **Model Deep Dives** | ![28](https://img.shields.io/badge/28-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![13](https://img.shields.io/badge/13-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Inside Junction How A Local Llm Chat Sidebar Works For Vs Code](https://bgill55.github.io/-weightandsee-guides/guides/inside-junction-how-a-local-llm-chat-sidebar-works-for-vs-code/)** — 2026-06-21
 - **[From Concept To Production Building Your First Reliable Ai Agent Workflow Rag De](https://bgill55.github.io/-weightandsee-guides/guides/from-concept-to-production-building-your-first-reliable-ai-agent-workflow-rag-de/)** — 2026-06-20
 - **[Daedalus Vs Cloud Ai Running Models Locally In 2026 Is It Actually Worth It](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-cloud-ai-running-models-locally-in-2026-is-it-actually-worth-it/)** — 2026-06-19
 - **[Goose Vs Claude Code We Built The Same Project With Both The Results Were Shocki](https://bgill55.github.io/-weightandsee-guides/guides/goose-vs-claude-code-we-built-the-same-project-with-both-the-results-were-shocki/)** — 2026-06-17
