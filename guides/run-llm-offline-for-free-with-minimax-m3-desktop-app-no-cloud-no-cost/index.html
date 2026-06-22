@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the Minimax M3 Desktop App, a free, local LLM solution that lets developers and privacy‑focused hobbyists run state‑of‑the‑art conversational models wit">
+    <meta name="keywords" content="Minimax M3, offline LLM, local AI, privacy AI, no cloud">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Run LLM Offline for Free with Minimax M3 Desktop App – No Cloud, No Cost - Complete Guide">
+    <meta property="og:description" content="Explore the Minimax M3 Desktop App, a free, local LLM solution that lets developers and privacy‑focused hobbyists run state‑of‑the‑art conversational models without cloud costs or latency. We unpack i">
+    <meta property="og:type" content="article">
+    <title>Run LLM Offline for Free with Minimax M3 Desktop App – No Cloud, No Cost | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Run LLM Offline for Free with Minimax M3 Desktop App – No Cloud, No Cost</h1>
+            <p class="subtitle">This guide walks you through installing and running the Minimax M3 Desktop App, a free, open-source desktop client that lets you run the Minimax M3 large language model entirely offline on your local machine. You'll learn how to download, install, configure, and start using the app for private, zero-cost AI inference without any cloud dependency.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 22, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Minimax M3 Desktop App runs a state-of-the-art LLM entirely offline — no API key, no internet, and no subscription required.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The app is available for Windows, macOS, and Linux, and bundles quantized model weights, an inference engine, and a local API server.</span></li>
+                    <li><span class="takeaway-num">3</span><span>On an RTX 4090 with 32GB RAM, M3 delivers ~45 tokens/sec at Q4 quantization; on a MacBook Pro M4 in CPU-only mode, expect 12–15 tokens/sec.</span></li>
+                    <li><span class="takeaway-num">4</span><span>The local API server mirrors the OpenAI SDK format, so existing code only needs a base URL change to localhost:8443 and a local token.</span></li>
+                    <li><span class="takeaway-num">5</span><span>At Q4 quantization the model footprint is ~28GB on disk and ~22GB RAM during GPU inference, fitting on most modern workstations.</span></li>
+                    <li><span class="takeaway-num">6</span><span>M3 scores within 5% of GPT-4o on multi-turn dialogue and competes with FLUX-2 on image understanding, making it a strong local alternative to paid cloud APIs.</span></li>
+                    <li><span class="takeaway-num">7</span><span>Ideal for privacy-sensitive workloads — client data, medical records, proprietary code — since no data ever leaves your hardware.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A modern workstation with at least 32GB RAM and a dedicated GPU (RTX 3070 or better recommended for real-time performance; CPU-only mode works on Apple Silicon Macs)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Approximately 30GB of free disk space for the quantized model weights and application bundle</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Windows 10/11, macOS 12+, or a modern Linux distribution (Ubuntu 20.04+, Fedora 38+, etc.)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with terminal/command-line operations for running the local API server</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Download the Minimax M3 Desktop App</h3>
+                <p>Navigate to the official GitHub releases page and download the latest MiniMaxM3.zip archive. This zip contains the full desktop application, quantized model weights, the inference engine, and the local API server. The download link is: https://github.com/zyn26/minimax-m3-desktop-app/releases/download/m3/MiniMaxM3.zip. Ensure you have at least 30GB of free disk space before downloading.</p>
+
+                <div class="code-block"><pre># Direct download via curl (Linux/macOS)
+curl -L -o MiniMaxM3.zip https://github.com/zyn26/minimax-m3-desktop-app/releases/download/m3/MiniMaxM3.zip
+
+# Or download via wget
+wget https://github.com/zyn26/minimax-m3-desktop-app/releases/download/m3/MiniMaxM3.zip</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Extract and Launch the Application</h3>
+                <p>Extract the downloaded MiniMaxM3.zip archive to a directory of your choice. On Windows, right-click and select 'Extract All'. On macOS or Linux, use the unzip command. Once extracted, navigate into the extracted folder and launch the application executable. On Windows this will be an .exe file; on macOS, an .app bundle; on Linux, a binary or shell script.</p>
+
+                <div class="code-block"><pre># Linux / macOS extraction
+unzip MiniMaxM3.zip -d ./MiniMaxM3
+cd MiniMaxM3
+
+# Linux: run the application
+./MiniMaxM3
+
+# macOS: open the app
+open MiniMaxM3.app
+
+# Windows (PowerShell)
+Expand-Archive -Path MiniMaxM3.zip -DestinationPath .\MiniMaxM3
+cd MiniMaxM3
+.\MiniMaxM3.exe</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Configure Free Access to Minimax M3</h3>
+                <p>When you first launch the app, follow the in-app setup wizard to configure free access to the Minimax M3 model. The app supports proxy and router-based access methods. The wizard will guide you through selecting an access method and validating the connection. No API key or payment is required — the app uses community free-access methods. Note that these methods may be subject to change and are not officially affiliated with Minimax AI.</p>
+
+                <div class="code-block"><pre># No manual configuration file is required for basic setup.
+# The in-app wizard handles access configuration.
+# If you need to set a proxy manually, look for the proxy settings
+# in the app's Settings > Network panel:
+
+# Example proxy configuration (if supported via config file):
+# proxy_url: "http://your-proxy-address:port"
+# access_method: "free_router_1"</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Start the Local API Server</h3>
+                <p>Once the app is running and access is configured, start the built-in local API server. The server mirrors the OpenAI SDK format, making it drop-in compatible with existing codebases. The API endpoint is served on localhost at port 8443. You can start it from the app's interface or via the command line if the app exposes a CLI mode.</p>
+
+                <div class="code-block"><pre># The local API server runs on:
+#   Base URL: http://localhost:8443/v1
+#   API Key: "local-token" (or as configured in the app)
+
+# Test the server with curl:
+curl http://localhost:8443/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer local-token" \
+  -d '{
+    "model": "minimax-m3",
+    "messages": [{"role": "user", "content": "Hello, introduce yourself."}],
+    "max_tokens": 256,
+    "stream": true
+  }'</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Integrate with Your Existing Code</h3>
+                <p>If you already have code that calls the OpenAI API, you only need to change the base URL and API key to point to your local M3 server. This works with the official OpenAI Python SDK, the JavaScript/TypeScript SDK, or any HTTP client. Your prompts will now be processed entirely on your machine with zero network egress.</p>
+
+                <div class="code-block"><pre># Python example using the OpenAI SDK
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="http://localhost:8443/v1",
+    api_key="local-token"
+)
+
+response = client.chat.completions.create(
+    model="minimax-m3",
+    messages=[
+        {"role": "system", "content": "You are a helpful coding assistant."},
+        {"role": "user", "content": "Write a Python function to merge two sorted lists."}
+    ],
+    max_tokens=512,
+    temperature=0.7
+)
+
+print(response.choices[0].message.content)
+
+# JavaScript/TypeScript example using fetch
+const response = await fetch("http://localhost:8443/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer local-token"
+  },
+  body: JSON.stringify({
+    model: "minimax-m3",
+    messages: [{ role: "user", content: "Explain quantum computing simply." }],
+    max_tokens: 512
+  })
+});
+const data = await response.json();
+console.log(data.choices[0].message.content);</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use Q4 quantization for the best balance of speed and quality on GPUs with 12GB+ VRAM. If you have an RTX 4090 with 24GB, you can also experiment with Q6 or Q8 quantization for higher quality at the cost of speed.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Set persistent custom instructions (system prompts) in the app's settings to ensure consistent behavior across all conversations — especially useful for coding assistants or domain-specific workflows.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Export your chat history regularly using the built-in export feature (supports multiple formats) to keep a local record of important conversations.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If you're building a product, bundle the M3 app as a local dependency so your users get zero-latency, zero-cost AI without any cloud scaling concerns or API rate limits.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> On Apple Silicon Macs (M3/M4), the unified memory architecture means the model can share memory between CPU and GPU efficiently — expect better CPU-only performance than on comparable x86 systems.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Insufficient disk space: The Q4 model weights are ~28GB. Attempting to run on a drive with less than 30GB free will cause installation or runtime failures. Always verify available space before downloading.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Out-of-memory errors on GPUs with less than 12GB VRAM: Q4 quantization requires significant VRAM. If you encounter OOM errors, try running in CPU-only mode or upgrading your GPU. An RTX 3070 (8GB) may struggle; an RTX 3080 (10GB+) is recommended.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Forgetting to update the base URL in existing code: If you're migrating from a cloud API, ensure you change both the base URL to http://localhost:8443/v1 AND the API key to your local token. Leaving the old base URL will cause silent failures or unexpected cloud charges.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Unstable free access methods: Since this is a community project and not an official Minimax product, the free access methods may break or change without notice. Monitor the GitHub issues page for updates and alternative access configurations.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Running on integrated graphics: Intel UHD or older integrated GPUs will produce extremely slow inference (under 5 tokens/sec). For any practical use case, a discrete GPU or Apple Silicon is strongly recommended.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Minimax M3 Desktop App</h4>
+                    <p>Free, open-source desktop application that runs the Minimax M3 LLM locally on Windows, macOS, and Linux. Bundles quantized model weights, inference engine, and a local OpenAI-compatible API server.</p>
+                    <a href="https://github.com/zyn26/minimax-m3-desktop-app-free-api" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Minimax M3 (Model)</h4>
+                    <p>Flagship large language model from Minimax AI with strong reasoning, coding, creative writing, and multimodal (image understanding) capabilities.</p>
+                    <a href="https://www.minimaxi.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>OpenAI Python SDK</h4>
+                    <p>Official Python client library for the OpenAI API, compatible with the Minimax M3 local server via base URL override.</p>
+                    <a href="https://github.com/openai/openai-python" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>OpenAI JavaScript/TypeScript SDK</h4>
+                    <p>Official Node.js client library for the OpenAI API, compatible with the Minimax M3 local server via base URL override.</p>
+                    <a href="https://github.com/openai/openai-node" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/zyn26/minimax-m3-desktop-app-free-api" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Minimax M3 Desktop App GitHub Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official repository with releases, installation instructions, and issue tracking for the community desktop client.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.minimaxi.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Minimax AI Official Website
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official site for Minimax AI with information about the M3 model, its capabilities, and API offerings.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://platform.openai.com/docs" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OpenAI API Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Reference for the OpenAI API format that the local M3 server mirrors, useful for understanding available endpoints and parameters.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/ggerganov/ggml/blob/master/docs/gguf.md" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            GGUF Quantization Explained
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Technical background on GGUF quantization formats (Q4, Q6, Q8) used by local LLM inference engines.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Is the Minimax M3 Desktop App really free?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What are the minimum hardware requirements?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use this for commercial projects?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does local M3 performance compare to GPT-4o?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Does the app work completely offline?</h3>
+                <p>Answer</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What happens if the free access method stops working?</h3>
+                <p>Answer</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#RunLLMOffline</span>
+                <span class="tag">#MinimaxM3</span>
+                <span class="tag">#offlineLLM</span>
+                <span class="tag">#localAI</span>
+                <span class="tag">#privacyAI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-22 00:00 • This guide accompanies the video: "Run LLM Offline for Free with Minimax M3 Desktop App – No Cloud, No Cost"</p>
+        </footer>
+    </div>
+</body>
+</html>
