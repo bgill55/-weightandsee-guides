@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/92_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/93_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-160-launch-the-localfirst-ai-coding-assistant-that-routes-across-models/">
+<img src="guides/daedalus-160-launch-the-localfirst-ai-coding-assistant-that-routes-across-models/thumbnail.jpg" width="300" alt="Daedalus 160 Launch The Localfirst Ai Coding Assistant That Routes Across Models"><br>
+<b>Daedalus 160 Launch The Localfirst Ai Coding Assistant That Routes Across Models</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/run-llm-offline-for-free-with-minimax-m3-desktop-app-no-cloud-no-cost/">
 <img src="guides/run-llm-offline-for-free-with-minimax-m3-desktop-app-no-cloud-no-cost/thumbnail.jpg" width="300" alt="Run Llm Offline For Free With Minimax M3 Desktop App No Cloud No Cost"><br>
@@ -31,12 +37,6 @@
 <b>Inside Junction How A Local Llm Chat Sidebar Works For Vs Code</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-top-ai-talent-shifts-signal-a-new-era-of-scientific-automation/">
-<img src="guides/how-top-ai-talent-shifts-signal-a-new-era-of-scientific-automation/thumbnail.jpg" width="300" alt="How Top Ai Talent Shifts Signal A New Era Of Scientific Automation"><br>
-<b>How Top Ai Talent Shifts Signal A New Era Of Scientific Automation</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![33](https://img.shields.io/badge/33-blue?style=flat-square) |
 | **Model Deep Dives** | ![28](https://img.shields.io/badge/28-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![14](https://img.shields.io/badge/14-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![15](https://img.shields.io/badge/15-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -134,6 +134,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Daedalus 160 Launch The Localfirst Ai Coding Assistant That Routes Across Models](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-160-launch-the-localfirst-ai-coding-assistant-that-routes-across-models/)** — 2026-06-22
 - **[Run Llm Offline For Free With Minimax M3 Desktop App No Cloud No Cost](https://bgill55.github.io/-weightandsee-guides/guides/run-llm-offline-for-free-with-minimax-m3-desktop-app-no-cloud-no-cost/)** — 2026-06-22
 - **[The Computational Edge Running Physical Ai On Local Hardware](https://bgill55.github.io/-weightandsee-guides/guides/the-computational-edge-running-physical-ai-on-local-hardware/)** — 2026-06-20
 - **[The Privacy Exodus Why Local Llms Are Drowning Out The Cloud Giants](https://bgill55.github.io/-weightandsee-guides/guides/the-privacy-exodus-why-local-llms-are-drowning-out-the-cloud-giants/)** — 2026-06-18
