@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/93_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/94_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/freebeat-ai-vs-vocalmedia-ai-music-tool-benchmark-for-creators/">
+<img src="guides/freebeat-ai-vs-vocalmedia-ai-music-tool-benchmark-for-creators/thumbnail.jpg" width="300" alt="Freebeat Ai Vs Vocalmedia Ai Music Tool Benchmark For Creators"><br>
+<b>Freebeat Ai Vs Vocalmedia Ai Music Tool Benchmark For Creators</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-160-launch-the-localfirst-ai-coding-assistant-that-routes-across-models/">
 <img src="guides/daedalus-160-launch-the-localfirst-ai-coding-assistant-that-routes-across-models/thumbnail.jpg" width="300" alt="Daedalus 160 Launch The Localfirst Ai Coding Assistant That Routes Across Models"><br>
@@ -31,12 +37,6 @@
 <b>Run Llm Offline For Free With Minimax M3 Desktop App No Cloud No Cost</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-junction-how-a-local-llm-chat-sidebar-works-for-vs-code/">
-<img src="guides/inside-junction-how-a-local-llm-chat-sidebar-works-for-vs-code/thumbnail.jpg" width="300" alt="Inside Junction How A Local Llm Chat Sidebar Works For Vs Code"><br>
-<b>Inside Junction How A Local Llm Chat Sidebar Works For Vs Code</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![33](https://img.shields.io/badge/33-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **Model Deep Dives** | ![28](https://img.shields.io/badge/28-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![15](https://img.shields.io/badge/15-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Freebeat Ai Vs Vocalmedia Ai Music Tool Benchmark For Creators](https://bgill55.github.io/-weightandsee-guides/guides/freebeat-ai-vs-vocalmedia-ai-music-tool-benchmark-for-creators/)** — 2026-06-22
 - **[Inside Junction How A Local Llm Chat Sidebar Works For Vs Code](https://bgill55.github.io/-weightandsee-guides/guides/inside-junction-how-a-local-llm-chat-sidebar-works-for-vs-code/)** — 2026-06-21
 - **[From Concept To Production Building Your First Reliable Ai Agent Workflow Rag De](https://bgill55.github.io/-weightandsee-guides/guides/from-concept-to-production-building-your-first-reliable-ai-agent-workflow-rag-de/)** — 2026-06-20
 - **[Daedalus Vs Cloud Ai Running Models Locally In 2026 Is It Actually Worth It](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-cloud-ai-running-models-locally-in-2026-is-it-actually-worth-it/)** — 2026-06-19
