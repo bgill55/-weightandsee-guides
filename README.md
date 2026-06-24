@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/95_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/96_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/agent-apprenticeship-demystified-building-selfimproving-local-agents-with-glm52/">
+<img src="guides/agent-apprenticeship-demystified-building-selfimproving-local-agents-with-glm52/thumbnail.jpg" width="300" alt="Agent Apprenticeship Demystified Building Selfimproving Local Agents With Glm52"><br>
+<b>Agent Apprenticeship Demystified Building Selfimproving Local Agents With Glm52</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/baseten-unlimited-ai-employees-the-future-of-work-full-platform-review/">
 <img src="guides/baseten-unlimited-ai-employees-the-future-of-work-full-platform-review/thumbnail.jpg" width="300" alt="Baseten Unlimited Ai Employees The Future Of Work Full Platform Review"><br>
@@ -31,12 +37,6 @@
 <b>Freebeat Ai Vs Vocalmedia Ai Music Tool Benchmark For Creators</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-160-launch-the-localfirst-ai-coding-assistant-that-routes-across-models/">
-<img src="guides/daedalus-160-launch-the-localfirst-ai-coding-assistant-that-routes-across-models/thumbnail.jpg" width="300" alt="Daedalus 160 Launch The Localfirst Ai Coding Assistant That Routes Across Models"><br>
-<b>Daedalus 160 Launch The Localfirst Ai Coding Assistant That Routes Across Models</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
-| **Model Deep Dives** | ![29](https://img.shields.io/badge/29-blue?style=flat-square) |
+| **Model Deep Dives** | ![30](https://img.shields.io/badge/30-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![15](https://img.shields.io/badge/15-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
@@ -100,6 +100,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Agent Apprenticeship Demystified Building Selfimproving Local Agents With Glm52](https://bgill55.github.io/-weightandsee-guides/guides/agent-apprenticeship-demystified-building-selfimproving-local-agents-with-glm52/)** — 2026-06-23
 - **[Baseten Unlimited Ai Employees The Future Of Work Full Platform Review](https://bgill55.github.io/-weightandsee-guides/guides/baseten-unlimited-ai-employees-the-future-of-work-full-platform-review/)** — 2026-06-23
 - **[How Top Ai Talent Shifts Signal A New Era Of Scientific Automation](https://bgill55.github.io/-weightandsee-guides/guides/how-top-ai-talent-shifts-signal-a-new-era-of-scientific-automation/)** — 2026-06-20
 - **[The Open Architecture Advantage Why Open Ai Models Are Harder To Ban](https://bgill55.github.io/-weightandsee-guides/guides/the-open-architecture-advantage-why-open-ai-models-are-harder-to-ban/)** — 2026-06-19
