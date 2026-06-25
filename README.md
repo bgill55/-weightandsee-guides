@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/98_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/99_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/ltx-director-20-vs-runway-gen2-vs-pika-labs-offline-video-battle/">
+<img src="guides/ltx-director-20-vs-runway-gen2-vs-pika-labs-offline-video-battle/thumbnail.jpg" width="300" alt="Ltx Director 20 Vs Runway Gen2 Vs Pika Labs Offline Video Battle"><br>
+<b>Ltx Director 20 Vs Runway Gen2 Vs Pika Labs Offline Video Battle</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/openai-vs-deepseek-their-safety-reports-just-got-a-lot-less-voluntary/">
 <img src="guides/openai-vs-deepseek-their-safety-reports-just-got-a-lot-less-voluntary/thumbnail.jpg" width="300" alt="Openai Vs Deepseek Their Safety Reports Just Got A Lot Less Voluntary"><br>
@@ -31,12 +37,6 @@
 <b>Hot Take Metas Surveillance Shutdown Proves Ai Has A Data Ethics Problem It Cant</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/agent-apprenticeship-demystified-building-selfimproving-local-agents-with-glm52/">
-<img src="guides/agent-apprenticeship-demystified-building-selfimproving-local-agents-with-glm52/thumbnail.jpg" width="300" alt="Agent Apprenticeship Demystified Building Selfimproving Local Agents With Glm52"><br>
-<b>Agent Apprenticeship Demystified Building Selfimproving Local Agents With Glm52</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![36](https://img.shields.io/badge/36-blue?style=flat-square) |
 | **Model Deep Dives** | ![31](https://img.shields.io/badge/31-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![15](https://img.shields.io/badge/15-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Ltx Director 20 Vs Runway Gen2 Vs Pika Labs Offline Video Battle](https://bgill55.github.io/-weightandsee-guides/guides/ltx-director-20-vs-runway-gen2-vs-pika-labs-offline-video-battle/)** — 2026-06-25
 - **[Openai Vs Deepseek Their Safety Reports Just Got A Lot Less Voluntary](https://bgill55.github.io/-weightandsee-guides/guides/openai-vs-deepseek-their-safety-reports-just-got-a-lot-less-voluntary/)** — 2026-06-25
 - **[Freebeat Ai Vs Vocalmedia Ai Music Tool Benchmark For Creators](https://bgill55.github.io/-weightandsee-guides/guides/freebeat-ai-vs-vocalmedia-ai-music-tool-benchmark-for-creators/)** — 2026-06-22
 - **[Inside Junction How A Local Llm Chat Sidebar Works For Vs Code](https://bgill55.github.io/-weightandsee-guides/guides/inside-junction-how-a-local-llm-chat-sidebar-works-for-vs-code/)** — 2026-06-21
