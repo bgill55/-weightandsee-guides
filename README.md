@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/97_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/98_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/openai-vs-deepseek-their-safety-reports-just-got-a-lot-less-voluntary/">
+<img src="guides/openai-vs-deepseek-their-safety-reports-just-got-a-lot-less-voluntary/thumbnail.jpg" width="300" alt="Openai Vs Deepseek Their Safety Reports Just Got A Lot Less Voluntary"><br>
+<b>Openai Vs Deepseek Their Safety Reports Just Got A Lot Less Voluntary</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/hot-take-metas-surveillance-shutdown-proves-ai-has-a-data-ethics-problem-it-cant/">
 <img src="guides/hot-take-metas-surveillance-shutdown-proves-ai-has-a-data-ethics-problem-it-cant/thumbnail.jpg" width="300" alt="Hot Take Metas Surveillance Shutdown Proves Ai Has A Data Ethics Problem It Cant"><br>
@@ -31,12 +37,6 @@
 <b>Agent Apprenticeship Demystified Building Selfimproving Local Agents With Glm52</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/baseten-unlimited-ai-employees-the-future-of-work-full-platform-review/">
-<img src="guides/baseten-unlimited-ai-employees-the-future-of-work-full-platform-review/thumbnail.jpg" width="300" alt="Baseten Unlimited Ai Employees The Future Of Work Full Platform Review"><br>
-<b>Baseten Unlimited Ai Employees The Future Of Work Full Platform Review</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
 | **Model Deep Dives** | ![31](https://img.shields.io/badge/31-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![15](https://img.shields.io/badge/15-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Openai Vs Deepseek Their Safety Reports Just Got A Lot Less Voluntary](https://bgill55.github.io/-weightandsee-guides/guides/openai-vs-deepseek-their-safety-reports-just-got-a-lot-less-voluntary/)** — 2026-06-25
 - **[Freebeat Ai Vs Vocalmedia Ai Music Tool Benchmark For Creators](https://bgill55.github.io/-weightandsee-guides/guides/freebeat-ai-vs-vocalmedia-ai-music-tool-benchmark-for-creators/)** — 2026-06-22
 - **[Inside Junction How A Local Llm Chat Sidebar Works For Vs Code](https://bgill55.github.io/-weightandsee-guides/guides/inside-junction-how-a-local-llm-chat-sidebar-works-for-vs-code/)** — 2026-06-21
 - **[From Concept To Production Building Your First Reliable Ai Agent Workflow Rag De](https://bgill55.github.io/-weightandsee-guides/guides/from-concept-to-production-building-your-first-reliable-ai-agent-workflow-rag-de/)** — 2026-06-20
