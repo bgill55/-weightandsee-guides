@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A hands-on conceptual walkthrough of the ai-video-prompt-cookbook GitHub repository, demonstrating how open-source prompt engineering for video generation model">
+    <meta name="keywords" content="ai video prompting, prompt cookbook github, open source video generation, generative video models, prompt engineering 2026">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="The AI Video Prompt Cookbook: Open-Source Beats Big Tech - Complete Guide">
+    <meta property="og:description" content="A hands-on conceptual walkthrough of the ai-video-prompt-cookbook GitHub repository, demonstrating how open-source prompt engineering for video generation models stacks up against proprietary APIs lik">
+    <meta property="og:type" content="article">
+    <title>The AI Video Prompt Cookbook: Open-Source Beats Big Tech | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>The AI Video Prompt Cookbook: Open-Source Beats Big Tech</h1>
+            <p class="subtitle">This guide walks through the ai-video-prompt-cookbook open-source GitHub repository, which enables local AI video generation on consumer GPU hardware using curated prompt recipes. You'll learn how to install the Python wrapper, run prompt recipes like cinematic_fade on an RTX 4090, and leverage community-driven style blocks for reproducible, low-cost video generation without proprietary API dependencies.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 26, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>The ai-video-prompt-cookbook generates 10-second AI video clips locally on a single RTX 4090 without any cloud API costs or usage throttling.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The built-in benchmark suite runs each recipe three times on the same GPU, measuring frame rate, visual fidelity, and total compute cost for reproducible results.</span></li>
+                    <li><span class="takeaway-num">3</span><span>The cinematic_fade recipe achieves 30 fps output matching the default quality of leading proprietary models at under 25% of the API cost per clip.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Community contributors have added 12 new style blocks in the last month, each modifying the diffusion scheduler to reduce flicker and improve color depth.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Git version control allows pinning specific commits to reproduce identical video outputs across different machines, ensuring deterministic results.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">An NVIDIA RTX 4090 (or equivalent GPU with sufficient VRAM for local video generation models)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.9+ installed with pip package manager</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Git installed for cloning the repository</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Sufficient disk space for downloaded model weights (check repo README for exact requirements)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the Repository and Install Dependencies</h3>
+                <p>Clone the ai-video-prompt-cookbook repository from GitHub to your local machine. Navigate into the project directory and install the required Python dependencies using pip. The repo includes a lightweight Python wrapper that handles model weight downloads, prompt compilation, and frame streaming. Ensure your environment has the correct version of PyTorch or the framework specified in the repo's requirements file.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/ai-video-prompt-cookbook/ai-video-prompt-cookbook.git
+cd ai-video-prompt-cookbook
+pip install -r requirements.txt</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Run a Prompt Recipe on Your GPU</h3>
+                <p>Use the run_prompt.py script to execute a curated prompt recipe. The script automatically downloads the required model weights, compiles your selected recipe into the model's token format, and streams generated frames directly into an MP4 container file. Specify which GPU to use with the --gpu flag (use 0 for a single-GPU setup). The cinematic_fade recipe is a good starting point, producing a 10-second clip at 30 fps.</p>
+
+                <div class="code-block"><pre>python run_prompt.py --recipe cinematic_fade --gpu 0</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Run the Benchmark Suite for Reproducible Results</h3>
+                <p>Execute the built-in benchmark suite to evaluate prompt recipes quantitatively. The suite runs each recipe three times on the same GPU and records metrics including frame rate, visual fidelity scores, and total compute cost per generation. This allows you to compare output quality and cost against proprietary API equivalents. Results are output in a structured format (JSON) for easy comparison and logging.</p>
+
+                <div class="code-block"><pre>python benchmark.py --recipe cinematic_fade --runs 3 --gpu 0 --output results.json</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Pin a Commit for Cross-Machine Reproducibility</h3>
+                <p>Because the repository is version-controlled with Git, you can checkout and pin a specific commit hash to ensure identical video outputs across different machines and environments. This is critical for production workflows where deterministic output is required. Tag the commit in your own fork to maintain a stable reference point as the upstream repo evolves with new community contributions.</p>
+
+                <div class="code-block"><pre>git log --oneline | head -5
+git checkout abc1234
+# Or pin in your own fork:
+git tag v1.0-stable abc1234
+git push origin v1.0-stable</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Explore Community Style Blocks and Contribute</h3>
+                <p>Browse the style_blocks directory to explore community-contributed modifications to the diffusion scheduler that reduce flicker and improve color depth. Each style block is a self-contained configuration or code modification. You can experiment with different blocks by specifying them as additional arguments, or fork the repository to contribute your own improvements back to the community via pull requests.</p>
+
+                <div class="code-block"><pre>ls style_blocks/
+python run_prompt.py --recipe cinematic_fade --style_block reduced_flicker_v2 --gpu 0</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Pin your model weights to a specific version in addition to pinning the commit — upstream model changes can affect output even with the same code.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the benchmark suite's cost calculator to estimate per-clip expenses before running large batches; this helps compare total cost of ownership against API pricing tiers.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Chain multiple recipes sequentially by piping output from one run as input reference frames to the next, enabling longer storyboard-style compositions.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Monitor GPU thermals during extended generation sessions — the RTX 4090 can thermal throttle under sustained load, reducing frame rates mid-generation.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Insufficient VRAM: Running on GPUs below the recommended spec will cause out-of-memory errors during frame generation. Check the repo's minimum hardware requirements before attempting.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Skipping commit pinning: Without pinning a specific commit, pulling the latest changes may alter output quality or break compatibility with your saved recipes.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Ignoring dependency version conflicts: The repo may require specific versions of PyTorch, CUDA, or other libraries. Installing without checking requirements.txt can lead to silent failures or degraded output.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>ai-video-prompt-cookbook</h4>
+                    <p>Open-source GitHub repository providing curated prompt recipes, benchmarking tools, and a Python wrapper for local AI video generation on consumer GPUs.</p>
+                    <a href="https://github.com/ai-video-prompt-cookbook/ai-video-prompt-cookbook" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>RTX 4090</h4>
+                    <p>NVIDIA consumer GPU used as the primary hardware target for local video generation, providing sufficient VRAM and compute for running diffusion-based video models.</p>
+                    <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>PyTorch</h4>
+                    <p>Deep learning framework required by the repo for model inference and frame generation. Specific version requirements should be checked in requirements.txt.</p>
+                    <a href="https://pytorch.org/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Git</h4>
+                    <p>Version control system used to clone the repository, pin commits for reproducibility, and manage community contributions.</p>
+                    <a href="https://git-scm.com/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/ai-video-prompt-cookbook/ai-video-prompt-cookbook" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            ai-video-prompt-cookbook Repository README
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Full documentation including dependency list, cost calculator, supported recipes, and contribution guidelines.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2304.06125" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Diffusion Models for Video Generation: A Survey
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Academic survey covering the diffusion scheduler techniques that the cookbook's style blocks modify to reduce flicker and improve color depth.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            NVIDIA RTX 4090 Specifications
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official hardware specifications for the RTX 4090, including VRAM, CUDA cores, and thermal design power relevant to sustained generation workloads.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What GPU do I need to run the ai-video-prompt-cookbook?</h3>
+                <p>The repository targets an NVIDIA RTX 4090 as the primary benchmark GPU, but check the README for minimum VRAM requirements. GPUs with less VRAM may work with reduced resolution or shorter clip lengths but are not officially supported.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does the cost per generation compare to using a proprietary API?</h3>
+                <p>According to the benchmark results, the cinematic_fade recipe on an RTX 4090 produces a 10-second clip at under 25% of the cost of the equivalent proprietary API charge, since you only pay for electricity rather than per-clip API credits.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I reproduce the exact same video output on a different machine?</h3>
+                <p>Yes. Pin a specific Git commit hash and ensure the same model weights version is used. The repo is designed for deterministic output when the code commit and model weights are held constant across machines.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What are the community style blocks and how do I use them?</h3>
+                <p>Style blocks are community-contributed modifications to the diffusion scheduler that address issues like flickering and color depth. You can list them with `ls style_blocks/` and apply one by passing its name via the `--style_block` flag when running a recipe.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I chain multiple recipes into a longer video or storyboard?</h3>
+                <p>Run recipes sequentially, using the output MP4 from one run as a reference or starting point for the next. The video description links to a follow-up guide on chaining recipes into seamless storyboards.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#TheAIVideo</span>
+                <span class="tag">#aivideoprompting</span>
+                <span class="tag">#promptcookbookgithub</span>
+                <span class="tag">#opensourcevideogeneration</span>
+                <span class="tag">#generativevideomodels</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-26 15:17 • This guide accompanies the video: "The AI Video Prompt Cookbook: Open-Source Beats Big Tech"</p>
+        </footer>
+    </div>
+</body>
+</html>
