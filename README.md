@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/99_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/100_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/realtime-camera-style-transfer-on-edge-handson-review-of-camerarealtimestyle/">
+<img src="guides/realtime-camera-style-transfer-on-edge-handson-review-of-camerarealtimestyle/thumbnail.jpg" width="300" alt="Realtime Camera Style Transfer On Edge Handson Review Of Camerarealtimestyle"><br>
+<b>Realtime Camera Style Transfer On Edge Handson Review Of Camerarealtimestyle</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/ltx-director-20-vs-runway-gen2-vs-pika-labs-offline-video-battle/">
 <img src="guides/ltx-director-20-vs-runway-gen2-vs-pika-labs-offline-video-battle/thumbnail.jpg" width="300" alt="Ltx Director 20 Vs Runway Gen2 Vs Pika Labs Offline Video Battle"><br>
@@ -31,12 +37,6 @@
 <b>Openai Vs Deepseek Their Safety Reports Just Got A Lot Less Voluntary</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/hot-take-metas-surveillance-shutdown-proves-ai-has-a-data-ethics-problem-it-cant/">
-<img src="guides/hot-take-metas-surveillance-shutdown-proves-ai-has-a-data-ethics-problem-it-cant/thumbnail.jpg" width="300" alt="Hot Take Metas Surveillance Shutdown Proves Ai Has A Data Ethics Problem It Cant"><br>
-<b>Hot Take Metas Surveillance Shutdown Proves Ai Has A Data Ethics Problem It Cant</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![36](https://img.shields.io/badge/36-blue?style=flat-square) |
-| **Model Deep Dives** | ![31](https://img.shields.io/badge/31-blue?style=flat-square) |
+| **Model Deep Dives** | ![32](https://img.shields.io/badge/32-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![15](https://img.shields.io/badge/15-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
@@ -102,6 +102,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Realtime Camera Style Transfer On Edge Handson Review Of Camerarealtimestyle](https://bgill55.github.io/-weightandsee-guides/guides/realtime-camera-style-transfer-on-edge-handson-review-of-camerarealtimestyle/)** — 2026-06-25
 - **[Hot Take Metas Surveillance Shutdown Proves Ai Has A Data Ethics Problem It Cant](https://bgill55.github.io/-weightandsee-guides/guides/hot-take-metas-surveillance-shutdown-proves-ai-has-a-data-ethics-problem-it-cant/)** — 2026-06-25
 - **[Agent Apprenticeship Demystified Building Selfimproving Local Agents With Glm52](https://bgill55.github.io/-weightandsee-guides/guides/agent-apprenticeship-demystified-building-selfimproving-local-agents-with-glm52/)** — 2026-06-23
 - **[Baseten Unlimited Ai Employees The Future Of Work Full Platform Review](https://bgill55.github.io/-weightandsee-guides/guides/baseten-unlimited-ai-employees-the-future-of-work-full-platform-review/)** — 2026-06-23
