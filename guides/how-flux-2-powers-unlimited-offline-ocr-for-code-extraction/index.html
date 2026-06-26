@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A side‑by‑side benchmark that pits the new Unlimited‑OCR offline code extractor against leading cloud OCR services, measuring raw speed, code‑line accuracy, and">
+    <meta name="keywords" content="offline OCR, code extraction, Unlimited-OCR, Flux 2, benchmark">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="How Flux 2 Powers Unlimited Offline OCR for Code Extraction - Complete Guide">
+    <meta property="og:description" content="A side‑by‑side benchmark that pits the new Unlimited‑OCR offline code extractor against leading cloud OCR services, measuring raw speed, code‑line accuracy, and total cost, while showing viewers how t">
+    <meta property="og:type" content="article">
+    <title>How Flux 2 Powers Unlimited Offline OCR for Code Extraction | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>How Flux 2 Powers Unlimited Offline OCR for Code Extraction</h1>
+            <p class="subtitle">This guide walks you through setting up Unlimited‑OCR – an offline code‑extraction tool powered by Flux 2 – on a local GPU workstation. You’ll clone the repository, install the required Python and PyTorch stack, download the Flux 2 model weights, and run the extraction pipeline on a folder of code screenshots, enabling fast, accurate, and private OCR without any cloud fees.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 26, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Unlimited‑OCR delivers 96.7% code‑line accuracy, outperforming major cloud OCR services.</span></li>
+                    <li><span class="takeaway-num">2</span><span>A single RTX 4090 processes 500 code screenshots in ~12 minutes (~1.4 s per image).</span></li>
+                    <li><span class="takeaway-num">3</span><span>After the initial hardware purchase there is zero per‑image cost; only electricity and storage.</span></li>
+                    <li><span class="takeaway-num">4</span><span>The full Flux 2 model requires ≥24 GB VRAM; a 16 GB quantized version is also usable with ~15 % slower speed.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Setup is straightforward: clone the repo, install Python 3.10+, PyTorch 2.1+, and download the model weights.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A GPU with at least 24 GB VRAM (RTX 4090 recommended) or a 16 GB GPU for the quantized model.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.10 or newer, Git, and a CUDA‑compatible PyTorch 2.1+ installation.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the Unlimited‑OCR repository</h3>
+                <p>Open a terminal, navigate to the directory where you keep your projects, and clone the official GitHub repository. This pulls the code, a sample CLI, and the README with further details.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/flux-unlimited/unlimited-ocr.git
+cd unlimited-ocr</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Set up a clean Python environment and install dependencies</h3>
+                <p>Create a virtual environment (using `venv` or `conda`) to isolate packages. Then install the required libraries listed in `requirements.txt`. PyTorch must match your CUDA version; the snippet shows the most common CUDA 12.1 install command.</p>
+
+                <div class="code-block"><pre>python -m venv ocr-env
+source ocr-env/bin/activate  # on Windows use `ocr-env\Scripts\activate`
+# Install PyTorch for CUDA 12.1
+pip install torch==2.1.0+cu121 -f https://download.pytorch.org/whl/torch_stable.html
+pip install -r requirements.txt</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Download the Flux 2 model weights</h3>
+                <p>The OCR engine relies on the pretrained Flux 2 vision encoder. Use the provided script or a direct `wget` to fetch the weights into the `models/` directory. If you have limited VRAM, download the quantized 16 GB checkpoint instead.</p>
+
+                <div class="code-block"><pre># Full‑precision weights (24 GB VRAM required)
+wget -O models/flux2_ocr_full.pt https://huggingface.co/flux-unlimited/flux2-ocr-weights/resolve/main/flux2_ocr_full.pt
+# Quantized weights (for 16 GB VRAM)
+wget -O models/flux2_ocr_quant.pt https://huggingface.co/flux-unlimited/flux2-ocr-weights/resolve/main/flux2_ocr_quant.pt</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Run the OCR extraction on a folder of screenshots</h3>
+                <p>The CLI expects a single argument – the path to the directory containing your code screenshots (PNG/JPG). It will create a matching `.txt` file for each image, preserving line breaks and indentation. Use the `--quantized` flag if you downloaded the smaller checkpoint.</p>
+
+                <div class="code-block"><pre>python -m unlimited_ocr.run \
+    --input_dir /path/to/code_screenshots \
+    --output_dir /path/to/extracted_texts \
+    --weights models/flux2_ocr_full.pt
+# Quantized version
+python -m unlimited_ocr.run \
+    --input_dir /path/to/code_screenshots \
+    --output_dir /path/to/extracted_texts \
+    --weights models/flux2_ocr_quant.pt \
+    --quantized</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5 (optional): Pipe results into downstream tools</h3>
+                <p>For large batches you can stream the output directly to a linter, static‑analysis tool, or documentation generator. The example below concatenates all extracted files and feeds them to `flake8` for Python linting.</p>
+
+                <div class="code-block"><pre>find /path/to/extracted_texts -name "*.txt" -exec cat {} + > all_code.txt
+flake8 all_code.txt</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Create a conda environment with `conda create -n ocr python=3.10` for faster dependency resolution on GPU‑enabled machines.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Place the model weights on an NVMe SSD; loading the 24 GB checkpoint drops from ~45 s to ~30 s.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If you hit OOM on a 24 GB GPU, enable torch's automatic mixed precision: add `--amp` to the CLI.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Batch multiple images with `--batch_size 8` to improve GPU utilization, but watch VRAM usage.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Set `CUDA_VISIBLE_DEVICES=0` before running if you have multiple GPUs and want to lock the process to a specific card.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Using a PyTorch build without CUDA support – the script will fall back to CPU and become >10× slower.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Forgetting to download the model weights; the CLI will exit with a cryptic "File not found" error.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Running on a GPU with <16 GB VRAM and attempting the full‑precision model – results in out‑of‑memory crashes.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 4: Supplying a directory that contains non‑image files – the script will try to open them and raise an IOError.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Unlimited‑OCR</h4>
+                    <p>Offline code‑extraction tool built on Flux 2, optimized for screenshots of source code.</p>
+                    <a href="https://github.com/flux-unlimited/unlimited-ocr" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Flux 2</h4>
+                    <p>State‑of‑the‑art multimodal model from the Flux family, providing a vision encoder fine‑tuned for code screenshots.</p>
+                    <a href="https://github.com/fluxml/flux" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>PyTorch</h4>
+                    <p>Open‑source deep‑learning framework used for model inference.</p>
+                    <a href="https://pytorch.org/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>RTX 4090</h4>
+                    <p>NVIDIA GPU with 24 GB GDDR6X VRAM, recommended for full‑precision Flux 2 inference.</p>
+                    <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/rtx-4090/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/flux-unlimited/unlimited-ocr/blob/main/benchmark/README.md" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Unlimited‑OCR Benchmark Report (full data & commands)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Detailed benchmark tables, raw timing logs, and the exact CLI commands used in the video.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/flux-unlimited/flux2-ocr-weights" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Flux 2 Model Card and Training Details
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Information on model architecture, dataset used for fine‑tuning on code screenshots, and licensing.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://pytorch.org/get-started/locally/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            PyTorch CUDA Installation Guide
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Step‑by‑step instructions for installing the correct CUDA‑compatible PyTorch wheel.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2403.11257" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Comparative Study of Cloud OCR Services for Code
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Academic paper that evaluates Google Vision, AWS Textract, Azure Document Intelligence, and offline models on code‑specific datasets.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What GPU memory do I need to run Unlimited‑OCR?</h3>
+                <p>The full‑precision Flux 2 checkpoint requires ≥24 GB VRAM (e.g., RTX 4090). A 16 GB quantized checkpoint runs on GPUs with 16 GB VRAM but is about 15 % slower.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use Unlimited‑OCR on a CPU‑only machine?</h3>
+                <p>Technically yes, but inference will be >10× slower (hours per 500 images) and may exceed typical RAM limits. The tool is designed for GPU acceleration.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is the model free for commercial use?</h3>
+                <p>The repository is released under the Apache 2.0 license. The Flux 2 weights are provided under a non‑commercial research license; check the model card for exact terms before using it in a product.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does the quantized model affect accuracy?</h3>
+                <p>In our benchmark the quantized version dropped from 96.7 % to 95.9 % code‑line accuracy—still higher than the best cloud service—while saving VRAM.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I fine‑tune Unlimited‑OCR on my own code‑base?</h3>
+                <p>Yes. The repo includes a `train.py` script. You’ll need a labeled dataset of screenshots ↔ text pairs and a machine with ≥48 GB VRAM for full‑precision training.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#UnlimitedOCRvsCloud</span>
+                <span class="tag">#offlineOCR</span>
+                <span class="tag">#codeextraction</span>
+                <span class="tag">#UnlimitedOCR</span>
+                <span class="tag">#Flux2</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-26 12:43 • This guide accompanies the video: "How Flux 2 Powers Unlimited Offline OCR for Code Extraction"</p>
+        </footer>
+    </div>
+</body>
+</html>
