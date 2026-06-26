@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/100_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/101_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/xlayer-vs-chatgpt-v5-marketplace-who-wins-the-multiagent-race/">
+<img src="guides/xlayer-vs-chatgpt-v5-marketplace-who-wins-the-multiagent-race/thumbnail.jpg" width="300" alt="Xlayer Vs Chatgpt V5 Marketplace Who Wins The Multiagent Race"><br>
+<b>Xlayer Vs Chatgpt V5 Marketplace Who Wins The Multiagent Race</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/realtime-camera-style-transfer-on-edge-handson-review-of-camerarealtimestyle/">
 <img src="guides/realtime-camera-style-transfer-on-edge-handson-review-of-camerarealtimestyle/thumbnail.jpg" width="300" alt="Realtime Camera Style Transfer On Edge Handson Review Of Camerarealtimestyle"><br>
@@ -31,12 +37,6 @@
 <b>Ltx Director 20 Vs Runway Gen2 Vs Pika Labs Offline Video Battle</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/openai-vs-deepseek-their-safety-reports-just-got-a-lot-less-voluntary/">
-<img src="guides/openai-vs-deepseek-their-safety-reports-just-got-a-lot-less-voluntary/thumbnail.jpg" width="300" alt="Openai Vs Deepseek Their Safety Reports Just Got A Lot Less Voluntary"><br>
-<b>Openai Vs Deepseek Their Safety Reports Just Got A Lot Less Voluntary</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![36](https://img.shields.io/badge/36-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![37](https://img.shields.io/badge/37-blue?style=flat-square) |
 | **Model Deep Dives** | ![32](https://img.shields.io/badge/32-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![15](https://img.shields.io/badge/15-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Xlayer Vs Chatgpt V5 Marketplace Who Wins The Multiagent Race](https://bgill55.github.io/-weightandsee-guides/guides/xlayer-vs-chatgpt-v5-marketplace-who-wins-the-multiagent-race/)** — 2026-06-26
 - **[Ltx Director 20 Vs Runway Gen2 Vs Pika Labs Offline Video Battle](https://bgill55.github.io/-weightandsee-guides/guides/ltx-director-20-vs-runway-gen2-vs-pika-labs-offline-video-battle/)** — 2026-06-25
 - **[Openai Vs Deepseek Their Safety Reports Just Got A Lot Less Voluntary](https://bgill55.github.io/-weightandsee-guides/guides/openai-vs-deepseek-their-safety-reports-just-got-a-lot-less-voluntary/)** — 2026-06-25
 - **[Freebeat Ai Vs Vocalmedia Ai Music Tool Benchmark For Creators](https://bgill55.github.io/-weightandsee-guides/guides/freebeat-ai-vs-vocalmedia-ai-music-tool-benchmark-for-creators/)** — 2026-06-22
