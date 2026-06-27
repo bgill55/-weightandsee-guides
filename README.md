@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/108_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/109_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/godcoder-vs-claude-code-the-onprem-coding-agent-showdown/">
+<img src="guides/godcoder-vs-claude-code-the-onprem-coding-agent-showdown/thumbnail.jpg" width="300" alt="Godcoder Vs Claude Code The Onprem Coding Agent Showdown"><br>
+<b>Godcoder Vs Claude Code The Onprem Coding Agent Showdown</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/hi3d-ai-workflow-review-from-prompt-to-print-in-minutes/">
 <img src="guides/hi3d-ai-workflow-review-from-prompt-to-print-in-minutes/thumbnail.jpg" width="300" alt="Hi3D Ai Workflow Review From Prompt To Print In Minutes"><br>
@@ -31,12 +37,6 @@
 <b>Decoding Reasoning Sovereignty Architecting For 2026</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/running-deepseek-v4-locally-the-gpt-56-alternative/">
-<img src="guides/running-deepseek-v4-locally-the-gpt-56-alternative/thumbnail.jpg" width="300" alt="Running Deepseek V4 Locally The Gpt 56 Alternative"><br>
-<b>Running Deepseek V4 Locally The Gpt 56 Alternative</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![42](https://img.shields.io/badge/42-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![43](https://img.shields.io/badge/43-blue?style=flat-square) |
 | **Model Deep Dives** | ![32](https://img.shields.io/badge/32-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![17](https://img.shields.io/badge/17-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Godcoder Vs Claude Code The Onprem Coding Agent Showdown](https://bgill55.github.io/-weightandsee-guides/guides/godcoder-vs-claude-code-the-onprem-coding-agent-showdown/)** — 2026-06-27
 - **[Decoding Reasoning Sovereignty Architecting For 2026](https://bgill55.github.io/-weightandsee-guides/guides/decoding-reasoning-sovereignty-architecting-for-2026/)** — 2026-06-26
 - **[Running Deepseek V4 Locally The Gpt 56 Alternative](https://bgill55.github.io/-weightandsee-guides/guides/running-deepseek-v4-locally-the-gpt-56-alternative/)** — 2026-06-26
 - **[Openai Vs Deepseek Vs Llama Who Wins The Regulatory Race](https://bgill55.github.io/-weightandsee-guides/guides/openai-vs-deepseek-vs-llama-who-wins-the-regulatory-race/)** — 2026-06-26
