@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We walk viewers through a fully offline AI art pipeline that stitches Flux 2, ComfyUI, and Ollama together, benchmark its speed, image fidelity, and hardware co">
+    <meta name="keywords" content="offline AI art, Flux 2 benchmark, ComfyUI workflow, Ollama local LLM, zero cost AI studio">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="How to Build an Offline Creative Workflow with Flux 2, ComfyUI, and Ollama - Complete Guide">
+    <meta property="og:description" content="We walk viewers through a fully offline AI art pipeline that stitches Flux 2, ComfyUI, and Ollama together, benchmark its speed, image fidelity, and hardware cost, and then compare the results against">
+    <meta property="og:type" content="article">
+    <title>How to Build an Offline Creative Workflow with Flux 2, ComfyUI, and Ollama | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>How to Build an Offline Creative Workflow with Flux 2, ComfyUI, and Ollama</h1>
+            <p class="subtitle">This guide demonstrates how to construct a fully local, cost-free AI art generation pipeline by integrating Flux 2 for image synthesis, ComfyUI for graph-based orchestration, and Ollama for local LLM text processing. You will learn how to install these tools, configure the workflow nodes, and execute high-fidelity generative tasks without any cloud API dependencies. This setup ensures maximum privacy and data ownership while achieving speeds comparable to paid cloud services.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 27, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Eliminate recurring cloud API costs by running the entire stack locally on your own hardware.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Achieve high-fidelity image generation speeds of under ten seconds using consumer-grade GPUs.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Maintain strict data privacy and full copyright ownership since data never leaves your local network.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Utilize Ollama to automatically refine basic prompts into detailed, high-fidelity inputs for better image results.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Leverage ComfyUI's node-based interface to create a reproducible and customizable visual workflow.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A workstation with a powerful GPU (e.g., NVIDIA RTX 4090) with at least 12GB+ VRAM recommended for Flux 2.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.10 or newer installed on your operating system.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with command-line interfaces (CLI) and file directory management.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install Ollama and Run a Local LLM</h3>
+                <p>Download and install Ollama, which acts as the local Large Language Model engine to process and refine your text prompts. Once installed, open your terminal and pull a lightweight, efficient model like Llama 3 to handle text generation.</p>
+
+                <div class="code-block"><pre># Install Ollama (Linux/macOS)
+curl -fsSL https://ollama.com/install.sh | sh
+
+# Pull and run a 7B or 8B parameter model
+ollama run llama3:8b</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Clone and Install ComfyUI</h3>
+                <p>Clone the ComfyUI repository from GitHub to manage your graph-based execution flow. Navigate into the directory and install the necessary Python dependencies using pip to ensure the backend can communicate with your GPU.</p>
+
+                <div class="code-block"><pre># Clone the repository
+git clone https://github.com/comfyanonymous/ComfyUI
+
+# Navigate into the folder
+cd ComfyUI
+
+# Install Python dependencies
+pip install -r requirements.txt</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Download and Integrate Flux 2 Checkpoints</h3>
+                <p>Download the Flux 2 model checkpoint files (safetensors format). Move these files into the specific models directory within your ComfyUI folder so the inference engine can access them for image generation.</p>
+
+                <div class="code-block"><pre># Move downloaded Flux checkpoint to the ComfyUI models directory
+# Example path structure:
+# ComfyUI/models/checkpoints/flux2-dev.safetensors
+
+# Or specifically for the unet depending on your custom node setup:
+# ComfyUI/models/unet/flux2-dev.safetensors</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Wire the Workflow in ComfyUI</h3>
+                <p>Launch ComfyUI and load the workflow graph. Add an 'Ollama' node or text input node connected to your local LLM, and connect its output to the 'Prompt' input of the Flux 2 KSampler or Image Generation node. This bridges your text processing with the image synthesis engine.</p>
+
+                <div class="code-block"><pre># No CLI command needed. 
+# In the ComfyUI interface:
+# 1. Add 'OllamaPrompt' node -> Set Model: 'llama3:8b'
+# 2. Add 'FluxSampler' node -> Load Checkpoint: 'flux2-dev.safetensors'
+# 3. Connect Ollama Output -> Flux Prompt Input</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Execute Local Generation</h3>
+                <p>Ensure your network cable is unplugged or Wi-Fi disabled to verify offline status. Press the 'Queue Prompt' button in ComfyUI to execute the workflow. Your local GPU will handle the inference for both text refinement and image generation.</p>
+
+                <div class="code-block"><pre># Run ComfyUI
+python main.py --listen 0.0.0.0
+
+# Access the UI at http://127.0.0.1:8188 and click 'Queue Prompt'</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use quantized models (e.g., `q4_0`) in Ollama to reduce VRAM usage, leaving more memory available for the Flux 2 image generation process.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If you encounter Out of Memory (OOM) errors, reduce the image resolution or batch size in the ComfyUI 'Empty Latent Image' node.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Update your NVIDIA GPU drivers to the latest Studio Driver release for optimal TensorRT performance with Flux models.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Incorrect Model Paths: Placing Flux checkpoint files in the wrong folder (e.g., root directory instead of `models/checkpoints`) will cause 'File not found' errors.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Port Conflicts: Ensure Ollama is running on its default port (11434) so ComfyUI custom nodes can successfully query the local API.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Python Version Mismatch: Running ComfyUI on Python versions older than 3.10 often leads to dependency installation failures.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>ComfyUI</h4>
+                    <p>A node-based graphical user interface for Stable Diffusion and Flux pipelines.</p>
+                    <a href="https://github.com/comfyanonymous/ComfyUI" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Ollama</h4>
+                    <p>A tool for running and managing open-source large language models locally.</p>
+                    <a href="https://ollama.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Flux 2</h4>
+                    <p>A state-of-the-art image synthesis model developed by Black Forest Labs.</p>
+                    <a href="https://github.com/black-forest-labs/flux" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            ComfyUI GitHub Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation and installation instructions for ComfyUI.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://ollama.com/docs" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Ollama Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Guide on pulling models and configuring the Ollama API.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can I run this setup on a GPU with less than 12GB of VRAM?</h3>
+                <p>It is possible but difficult. You will likely need to use significantly lower image resolutions and enable CPU offloading for the LLM or the UNet, which will drastically increase generation time.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do I need an internet connection once the software is installed?</h3>
+                <p>No. Once you have downloaded the models (Ollama model, Flux checkpoint) and installed the repositories, you can disconnect your machine entirely and run the pipeline offline.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Why use Ollama instead of typing the prompt directly into ComfyUI?</h3>
+                <p>Ollama allows you to use an LLM to expand simple concepts into detailed, high-fidelity prompts automatically, acting as an AI creative director within your local pipeline.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#OfflineFlux2</span>
+                <span class="tag">#offlineAIart</span>
+                <span class="tag">#Flux2benchmark</span>
+                <span class="tag">#ComfyUIworkflow</span>
+                <span class="tag">#OllamalocalLLM</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-27 15:57 • This guide accompanies the video: "How to Build an Offline Creative Workflow with Flux 2, ComfyUI, and Ollama"</p>
+        </footer>
+    </div>
+</body>
+</html>
