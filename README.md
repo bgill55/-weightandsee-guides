@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/109_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/110_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/offline-flux-2-vs-cloud-ai-art-speed-cost-privacy-showdown/">
+<img src="guides/offline-flux-2-vs-cloud-ai-art-speed-cost-privacy-showdown/thumbnail.jpg" width="300" alt="Offline Flux 2 Vs Cloud Ai Art Speed Cost Privacy Showdown"><br>
+<b>Offline Flux 2 Vs Cloud Ai Art Speed Cost Privacy Showdown</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/godcoder-vs-claude-code-the-onprem-coding-agent-showdown/">
 <img src="guides/godcoder-vs-claude-code-the-onprem-coding-agent-showdown/thumbnail.jpg" width="300" alt="Godcoder Vs Claude Code The Onprem Coding Agent Showdown"><br>
@@ -31,12 +37,6 @@
 <b>Hi3D Ai Workflow Review From Prompt To Print In Minutes</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/decoding-reasoning-sovereignty-architecting-for-2026/">
-<img src="guides/decoding-reasoning-sovereignty-architecting-for-2026/thumbnail.jpg" width="300" alt="Decoding Reasoning Sovereignty Architecting For 2026"><br>
-<b>Decoding Reasoning Sovereignty Architecting For 2026</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![43](https://img.shields.io/badge/43-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![44](https://img.shields.io/badge/44-blue?style=flat-square) |
 | **Model Deep Dives** | ![32](https://img.shields.io/badge/32-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![17](https://img.shields.io/badge/17-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Offline Flux 2 Vs Cloud Ai Art Speed Cost Privacy Showdown](https://bgill55.github.io/-weightandsee-guides/guides/offline-flux-2-vs-cloud-ai-art-speed-cost-privacy-showdown/)** — 2026-06-27
 - **[Godcoder Vs Claude Code The Onprem Coding Agent Showdown](https://bgill55.github.io/-weightandsee-guides/guides/godcoder-vs-claude-code-the-onprem-coding-agent-showdown/)** — 2026-06-27
 - **[Decoding Reasoning Sovereignty Architecting For 2026](https://bgill55.github.io/-weightandsee-guides/guides/decoding-reasoning-sovereignty-architecting-for-2026/)** — 2026-06-26
 - **[Running Deepseek V4 Locally The Gpt 56 Alternative](https://bgill55.github.io/-weightandsee-guides/guides/running-deepseek-v4-locally-the-gpt-56-alternative/)** — 2026-06-26
