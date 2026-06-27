@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A side‑by‑side showdown of OpenAI’s constrained GPT‑5.6 rollout, DeepSeek‑V4’s open‑access stance, and Llama 4’s decentralized deployment, revealing how each mo">
+    <meta name="keywords" content="GPT-5.6, OpenAI policy, DeepSeek V4, Llama 4, AI regulation 2026">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="OpenAI vs DeepSeek vs Llama: Who Wins the Regulatory Race? - Deep Dive Analysis">
+    <meta property="og:description" content="A side‑by‑side showdown of OpenAI’s constrained GPT‑5.6 rollout, DeepSeek‑V4’s open‑access stance, and Llama 4’s decentralized deployment, revealing how each model’s policy choices shape developer fre">
+    <meta property="og:type" content="article">
+    <title>OpenAI vs DeepSeek vs Llama: Who Wins the Regulatory Race? | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Deep Dive Analysis</span>
+            <h1>OpenAI vs DeepSeek vs Llama: Who Wins the Regulatory Race?</h1>
+            <p class="subtitle">This deep dive analyzes how OpenAI's GPT-5.6, DeepSeek-V4, and Llama 4 represent three distinct regulatory strategies for deploying large language models in 2026. It examines how each model's access model, licensing terms, and deployment architecture create different compliance obligations under the EU AI Act and US executive orders, and what those differences mean for developers, enterprises, and the broader AI ecosystem.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 26, 2026</span>
+                <span>5 Findings</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
+
+            <div class="finding">
+                <h3>GPT-5.6 Centralizes Regulatory Burden on OpenAI</h3>
+                <p>GPT-5.6 is available exclusively through OpenAI's API with no local deployment option. OpenAI absorbs all regulatory compliance costs — conformity assessments, incident reporting, and transparency documentation — but in exchange, users sacrifice all flexibility. The usage policy prohibits high-risk use cases including law enforcement, military applications, and autonomous decision-making about individuals. Rate limits are tiered by organization verification level (10M tokens/month for standard tier, 100M for enterprise with a DPA). OpenAI's Q1 2026 transparency report shows 340 million API requests flagged and blocked for policy violations, with enforcement running server-side and no option to disable it. This means developers get zero compliance work but also zero control over safety filters, fine-tuning, or deployment jurisdiction.</p>
+            </div>
+
+            <div class="finding">
+                <h3>DeepSeek-V4 Shifts Full Compliance Responsibility to the Deployer</h3>
+                <p>DeepSeek-V4 releases model weights on Hugging Face under a custom permissive license that allows commercial use, modification, and redistribution with no approval process. The only usage restriction is a standard prohibition on violating local law. The full model runs at 1024B parameters, but a 671B variant fits on a single 8x H100 node. DeepSeek published a full technical report with training methodology, data pipeline details, evaluation benchmarks, red-teaming results, and a voluntary safety framework. However, enforcement is entirely on the deployer — if you run DeepSeek-V4 on your own hardware, you control the guardrails and you own the liability. This means a developer building a medical coding assistant can fine-tune on their own clinical dataset, implement custom output filtering, and document the pipeline for audit, but they must also produce their own conformity assessment if a regulator asks.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Llama 4 Uses a Revenue-Threshold License to Segment the Market</h3>
+                <p>Meta releases Llama 4 under a community license that permits commercial use for companies under $750 million annual revenue, with a separate license required above that threshold. The model ships in three sizes: Scout (17B active parameters, 128-expert MoE, runs on a single consumer GPU at 4-bit quantization), Maverick (400B, needs multi-GPU but fits on a workstation), and a dense research variant. Deployment is fully decentralized — AWS, bare-metal colo, Mac Studio with unified memory, or laptop via llama.cpp with Q4_K_M quantization. Meta provides reference implementations for vLLM and TensorRT-LLM but does not require their use. The license does not restrict use cases or inspect prompts, but large enterprises face additional legal review time due to the revenue threshold, while startups under the threshold can move fast with no approval needed.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Deployment Speed and Token Economics Vary by Orders of Magnitude</h3>
+                <p>Time to first inference differs dramatically: GPT-5.6 requires only an API key and billing account (under 5 minutes), DeepSeek-V4 on a rented GPU instance requires provisioning hardware, installing the inference stack, downloading weights, and configuring the endpoint (45 minutes to a few hours), and Llama 4 Scout on a local Mac Studio requires llama.cpp compiled with Metal support and a GGUF checkpoint (about 20 minutes). Token costs are equally divergent: GPT-5.6 costs $2.50/$10 per million input/output tokens, DeepSeek-V4 on a self-hosted H100 node costs roughly $0.15 per million tokens in electricity and amortized hardware, and Llama 4 Scout on a local M4 Ultra costs effectively zero per token after the hardware purchase.</p>
+            </div>
+
+            <div class="finding">
+                <h3>All Three Models Exceed the EU AI Act Compute Threshold, But Obligations Fall Differently</h3>
+                <p>Under the EU AI Act, general-purpose AI models trained above 10^25 FLOPs face additional transparency and safety obligations. All three models exceed this threshold. However, the obligations are distributed differently: with GPT-5.6, OpenAI as the service provider bears the full burden; with DeepSeek-V4, the deployer bears the full burden including conformity assessments and incident reporting; with Llama 4, Meta provides model cards, evaluation results, and a basic transparency report, but deployers must still conduct their own risk assessment for high-risk use cases. This creates a spectrum from full-service compliance (OpenAI) to full-self-service compliance (DeepSeek) to a hybrid model (Llama 4).</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">The regulatory landscape for AI in 2026 is defined primarily by the EU AI Act, which imposes obligations on general-purpose AI models above a training compute threshold of 10^25 FLOPs, and US executive orders on compute governance. The key technical distinction is between API-based deployment (where the model provider controls the infrastructure and is the regulated entity) and weight-based deployment (where the user downloads model parameters and becomes the deployer of record). Open-weight models like DeepSeek-V4 and Llama 4 use standard inference stacks such as vLLM, llama.cpp, and TensorRT-LLM, and can be quantized to reduce hardware requirements. The mixture-of-experts architecture used in Llama 4 Scout allows a large parameter count with a smaller active parameter count per inference, enabling single-GPU deployment.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <div class="card">
+
+                <div class="research-item">
+                    <div class="source">OpenAI Q1 2026 Transparency Report</div>
+                    <div class="detail">340 million API requests flagged and blocked for policy violations, concentrated in restricted categories including law enforcement and military applications.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">DeepSeek-V4 Technical Report</div>
+                    <div class="detail">Full training methodology, data pipeline details, evaluation benchmarks, red-teaming results, and a voluntary safety framework published alongside the model weights.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">EU AI Act (enforcement phase 2026)</div>
+                    <div class="detail">General-purpose AI models above 10^25 FLOPs training compute face transparency and safety obligations including conformity assessments and incident reporting.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Meta Llama 4 Community License</div>
+                    <div class="detail">Commercial use permitted for companies under $750 million annual revenue; separate license required above that threshold.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
+
+            <div class="implication">
+                Startups and individual developers benefit most from open-weight models (DeepSeek-V4, Llama 4 Scout) due to zero or near-zero token costs and no approval queues, but they must invest in their own compliance infrastructure if deploying in regulated industries.
+            </div>
+
+            <div class="implication">
+                Enterprises in highly regulated sectors (healthcare, finance, government) may prefer GPT-5.6's API model despite higher costs because OpenAI absorbs the regulatory burden, reducing legal exposure and compliance staffing needs.
+            </div>
+
+            <div class="implication">
+                The revenue threshold in Llama 4's license creates a two-tier market: fast-moving startups under $750M revenue versus large enterprises that must negotiate separate terms with Meta, potentially slowing adoption in the enterprise segment.
+            </div>
+
+            <div class="implication">
+                DeepSeek-V4's model of voluntary safety frameworks with deployer-side enforcement may face regulatory scrutiny if high-profile misuse incidents occur, potentially triggering stricter mandatory controls on open-weight releases.
+            </div>
+
+            <div class="implication">
+                The divergence in deployment models means that multi-model strategies are becoming a compliance tool — using GPT-5.6 for customer-facing applications requiring regulatory coverage and open-weight models for internal R&D and non-regulated workloads.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💭</span> Expert Analysis</h2>
+            <div class="analysis-block">
+                The three-model comparison reveals that the AI industry is fragmenting along regulatory lines rather than purely performance lines. OpenAI's centralized approach is the safest bet for compliance but creates vendor lock-in and single points of failure. DeepSeek-V4's open-weight model maximizes developer freedom but assumes deployers have the technical and legal capacity to self-regulate — a assumption that may not hold for smaller teams or organizations in jurisdictions with aggressive enforcement. Llama 4's revenue-threshold license is a clever market segmentation strategy but introduces legal uncertainty at the boundary. The open question is whether regulators will eventually impose mandatory safety requirements on open-weight model releases, which would fundamentally alter the DeepSeek and Llama value propositions. The 340 million blocked requests in OpenAI's Q1 2026 report suggests that server-side enforcement catches significant volume, but it also raises questions about false positives and the lack of appeal mechanisms for blocked requests.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> References & Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://artificialintelligenceact.eu/" target="_blank" style="color: var(--accent-light); text-decoration: none;">EU AI Act — Official Text and Guidance</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Full text and implementation guidance for the EU AI Act, including provisions on general-purpose AI models and the 10^25 FLOPs threshold.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/deepseek-ai" target="_blank" style="color: var(--accent-light); text-decoration: none;">DeepSeek-V4 on Hugging Face</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Model weights, technical report, and license terms for DeepSeek-V4.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://ai.meta.com/llama/" target="_blank" style="color: var(--accent-light); text-decoration: none;">Llama 4 Model Card and Community License</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Model cards, evaluation results, and community license terms for Llama 4.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://openai.com/policies" target="_blank" style="color: var(--accent-light); text-decoration: none;">OpenAI Usage Policies and Transparency Reports</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Current usage policies, rate limiting tiers, and quarterly transparency reports from OpenAI.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can I fine-tune GPT-5.6 for my specific use case?</h3>
+                <p>No. GPT-5.6 is available exclusively through OpenAI's API with no local deployment or fine-tuning option. You cannot modify the model weights, safety filters, or deployment configuration. If you need fine-tuning, you would need to use an open-weight model like DeepSeek-V4 or Llama 4.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What compliance work do I need to do if I deploy DeepSeek-V4 in the EU?</h3>
+                <p>As the deployer, you are responsible for conducting your own conformity assessment, maintaining incident reporting procedures, and producing transparency documentation for high-risk use cases under the EU AI Act. DeepSeek provides a technical report and voluntary safety framework, but the regulatory obligations fall on you. For a medical coding assistant, this means documenting your fine-tuning dataset, output filtering pipeline, and risk mitigation measures for audit.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>My company has $800M in annual revenue. Can I use Llama 4?</h3>
+                <p>Not under the standard community license. The Llama 4 community license permits commercial use only for companies under $750 million annual revenue. Above that threshold, you must negotiate a separate license agreement with Meta, which adds legal review time and potentially different terms. You should contact Meta's Llama licensing team to discuss commercial terms.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How much does it actually cost to self-host DeepSeek-V4?</h3>
+                <p>The 671B variant fits on a single node of 8x H100s. At current cloud pricing, an 8x H100 instance costs roughly $25-40/hour. Amortized over typical hardware depreciation (3-4 years) plus electricity, the per-token cost is approximately $0.15 per million tokens. This compares to GPT-5.6 at $2.50/$10 per million input/output tokens. For high-volume workloads, self-hosting is dramatically cheaper, but you must factor in engineering time for setup and ongoing maintenance.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Which model should I choose if I'm building a healthcare application in the EU?</h3>
+                <p>It depends on your organization's compliance capacity. If you have a legal team and can produce conformity assessments, DeepSeek-V4 gives you full control over the pipeline and data, which is advantageous for handling protected health information. If you lack compliance infrastructure, GPT-5.6 shifts the regulatory burden to OpenAI, but you must verify that OpenAI's usage policy permits your specific healthcare use case and that data processing agreements are in place. Llama 4 is a middle ground but requires the same deployer-side compliance work as DeepSeek-V4 for high-risk applications under the EU AI Act.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#OpenAIvsDeepSeek</span>
+                <span class="tag">#GPT56</span>
+                <span class="tag">#OpenAIpolicy</span>
+                <span class="tag">#DeepSeekV4</span>
+                <span class="tag">#Llama4</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-26 17:20 • This guide accompanies the video: "OpenAI vs DeepSeek vs Llama: Who Wins the Regulatory Race?"</p>
+        </footer>
+    </div>
+</body>
+</html>

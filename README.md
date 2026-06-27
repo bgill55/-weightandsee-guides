@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/104_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/105_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/openai-vs-deepseek-vs-llama-who-wins-the-regulatory-race/">
+<img src="guides/openai-vs-deepseek-vs-llama-who-wins-the-regulatory-race/thumbnail.jpg" width="300" alt="Openai Vs Deepseek Vs Llama Who Wins The Regulatory Race"><br>
+<b>Openai Vs Deepseek Vs Llama Who Wins The Regulatory Race</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-ai-video-prompt-cookbook-open-source-beats-big-tech/">
 <img src="guides/the-ai-video-prompt-cookbook-open-source-beats-big-tech/thumbnail.jpg" width="300" alt="The Ai Video Prompt Cookbook Open Source Beats Big Tech"><br>
@@ -31,12 +37,6 @@
 <b>Krea 2 Turbo Vs Closed Source A Creative Workflow Showdown</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-flux-2-powers-unlimited-offline-ocr-for-code-extraction/">
-<img src="guides/how-flux-2-powers-unlimited-offline-ocr-for-code-extraction/thumbnail.jpg" width="300" alt="How Flux 2 Powers Unlimited Offline Ocr For Code Extraction"><br>
-<b>How Flux 2 Powers Unlimited Offline Ocr For Code Extraction</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![39](https://img.shields.io/badge/39-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![40](https://img.shields.io/badge/40-blue?style=flat-square) |
 | **Model Deep Dives** | ![32](https://img.shields.io/badge/32-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![16](https://img.shields.io/badge/16-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Openai Vs Deepseek Vs Llama Who Wins The Regulatory Race](https://bgill55.github.io/-weightandsee-guides/guides/openai-vs-deepseek-vs-llama-who-wins-the-regulatory-race/)** — 2026-06-26
 - **[The Ai Video Prompt Cookbook Open Source Beats Big Tech](https://bgill55.github.io/-weightandsee-guides/guides/the-ai-video-prompt-cookbook-open-source-beats-big-tech/)** — 2026-06-26
 - **[Krea 2 Turbo Vs Closed Source A Creative Workflow Showdown](https://bgill55.github.io/-weightandsee-guides/guides/krea-2-turbo-vs-closed-source-a-creative-workflow-showdown/)** — 2026-06-26
 - **[Xlayer Vs Chatgpt V5 Marketplace Who Wins The Multiagent Race](https://bgill55.github.io/-weightandsee-guides/guides/xlayer-vs-chatgpt-v5-marketplace-who-wins-the-multiagent-race/)** — 2026-06-26
