@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/106_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/107_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/decoding-reasoning-sovereignty-architecting-for-2026/">
+<img src="guides/decoding-reasoning-sovereignty-architecting-for-2026/thumbnail.jpg" width="300" alt="Decoding Reasoning Sovereignty Architecting For 2026"><br>
+<b>Decoding Reasoning Sovereignty Architecting For 2026</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/running-deepseek-v4-locally-the-gpt-56-alternative/">
 <img src="guides/running-deepseek-v4-locally-the-gpt-56-alternative/thumbnail.jpg" width="300" alt="Running Deepseek V4 Locally The Gpt 56 Alternative"><br>
@@ -31,12 +37,6 @@
 <b>Openai Vs Deepseek Vs Llama Who Wins The Regulatory Race</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-ai-video-prompt-cookbook-open-source-beats-big-tech/">
-<img src="guides/the-ai-video-prompt-cookbook-open-source-beats-big-tech/thumbnail.jpg" width="300" alt="The Ai Video Prompt Cookbook Open Source Beats Big Tech"><br>
-<b>The Ai Video Prompt Cookbook Open Source Beats Big Tech</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![41](https://img.shields.io/badge/41-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![42](https://img.shields.io/badge/42-blue?style=flat-square) |
 | **Model Deep Dives** | ![32](https://img.shields.io/badge/32-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![16](https://img.shields.io/badge/16-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Decoding Reasoning Sovereignty Architecting For 2026](https://bgill55.github.io/-weightandsee-guides/guides/decoding-reasoning-sovereignty-architecting-for-2026/)** — 2026-06-26
 - **[Running Deepseek V4 Locally The Gpt 56 Alternative](https://bgill55.github.io/-weightandsee-guides/guides/running-deepseek-v4-locally-the-gpt-56-alternative/)** — 2026-06-26
 - **[Openai Vs Deepseek Vs Llama Who Wins The Regulatory Race](https://bgill55.github.io/-weightandsee-guides/guides/openai-vs-deepseek-vs-llama-who-wins-the-regulatory-race/)** — 2026-06-26
 - **[The Ai Video Prompt Cookbook Open Source Beats Big Tech](https://bgill55.github.io/-weightandsee-guides/guides/the-ai-video-prompt-cookbook-open-source-beats-big-tech/)** — 2026-06-26
