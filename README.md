@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/111_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/112_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/comfyui-flux-2-offline-fullspeed-ai-art-suite-reviewed/">
+<img src="guides/comfyui-flux-2-offline-fullspeed-ai-art-suite-reviewed/thumbnail.jpg" width="300" alt="Comfyui Flux 2 Offline Fullspeed Ai Art Suite Reviewed"><br>
+<b>Comfyui Flux 2 Offline Fullspeed Ai Art Suite Reviewed</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/how-to-build-an-offline-creative-workflow-with-flux-2-comfyui-and-ollama/">
 <img src="guides/how-to-build-an-offline-creative-workflow-with-flux-2-comfyui-and-ollama/thumbnail.jpg" width="300" alt="How To Build An Offline Creative Workflow With Flux 2 Comfyui And Ollama"><br>
@@ -31,12 +37,6 @@
 <b>Offline Flux 2 Vs Cloud Ai Art Speed Cost Privacy Showdown</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/godcoder-vs-claude-code-the-onprem-coding-agent-showdown/">
-<img src="guides/godcoder-vs-claude-code-the-onprem-coding-agent-showdown/thumbnail.jpg" width="300" alt="Godcoder Vs Claude Code The Onprem Coding Agent Showdown"><br>
-<b>Godcoder Vs Claude Code The Onprem Coding Agent Showdown</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![44](https://img.shields.io/badge/44-blue?style=flat-square) |
-| **Model Deep Dives** | ![32](https://img.shields.io/badge/32-blue?style=flat-square) |
+| **Model Deep Dives** | ![33](https://img.shields.io/badge/33-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
@@ -110,6 +110,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Comfyui Flux 2 Offline Fullspeed Ai Art Suite Reviewed](https://bgill55.github.io/-weightandsee-guides/guides/comfyui-flux-2-offline-fullspeed-ai-art-suite-reviewed/)** — 2026-06-27
 - **[Realtime Camera Style Transfer On Edge Handson Review Of Camerarealtimestyle](https://bgill55.github.io/-weightandsee-guides/guides/realtime-camera-style-transfer-on-edge-handson-review-of-camerarealtimestyle/)** — 2026-06-25
 - **[Hot Take Metas Surveillance Shutdown Proves Ai Has A Data Ethics Problem It Cant](https://bgill55.github.io/-weightandsee-guides/guides/hot-take-metas-surveillance-shutdown-proves-ai-has-a-data-ethics-problem-it-cant/)** — 2026-06-25
 - **[Agent Apprenticeship Demystified Building Selfimproving Local Agents With Glm52](https://bgill55.github.io/-weightandsee-guides/guides/agent-apprenticeship-demystified-building-selfimproving-local-agents-with-glm52/)** — 2026-06-23
