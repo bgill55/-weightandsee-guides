@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/115_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/116_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/midjourney-82-deep-dive-realworld-workflow-cost/">
+<img src="guides/midjourney-82-deep-dive-realworld-workflow-cost/thumbnail.jpg" width="300" alt="Midjourney 82 Deep Dive Realworld Workflow Cost"><br>
+<b>Midjourney 82 Deep Dive Realworld Workflow Cost</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/replace-chatgpt-v5-api-with-openfugu-the-zero-cost-switch/">
 <img src="guides/replace-chatgpt-v5-api-with-openfugu-the-zero-cost-switch/thumbnail.jpg" width="300" alt="Replace Chatgpt V5 Api With Openfugu The Zero Cost Switch"><br>
@@ -31,12 +37,6 @@
 <b>Daedalus Cli Review The Ultimate Local Coding Dashboard</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/vercel-eve-vs-saas-agents-the-latency-benchmark/">
-<img src="guides/vercel-eve-vs-saas-agents-the-latency-benchmark/thumbnail.jpg" width="300" alt="Vercel Eve Vs Saas Agents The Latency Benchmark"><br>
-<b>Vercel Eve Vs Saas Agents The Latency Benchmark</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![45](https://img.shields.io/badge/45-blue?style=flat-square) |
-| **Model Deep Dives** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
+| **Model Deep Dives** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![19](https://img.shields.io/badge/19-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
@@ -111,6 +111,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Midjourney 82 Deep Dive Realworld Workflow Cost](https://bgill55.github.io/-weightandsee-guides/guides/midjourney-82-deep-dive-realworld-workflow-cost/)** — 2026-06-28
 - **[Daedalus Cli Review The Ultimate Local Coding Dashboard](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-review-the-ultimate-local-coding-dashboard/)** — 2026-06-28
 - **[Comfyui Flux 2 Offline Fullspeed Ai Art Suite Reviewed](https://bgill55.github.io/-weightandsee-guides/guides/comfyui-flux-2-offline-fullspeed-ai-art-suite-reviewed/)** — 2026-06-27
 - **[Realtime Camera Style Transfer On Edge Handson Review Of Camerarealtimestyle](https://bgill55.github.io/-weightandsee-guides/guides/realtime-camera-style-transfer-on-edge-handson-review-of-camerarealtimestyle/)** — 2026-06-25
