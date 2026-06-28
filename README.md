@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/113_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/114_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-review-the-ultimate-local-coding-dashboard/">
+<img src="guides/daedalus-cli-review-the-ultimate-local-coding-dashboard/thumbnail.jpg" width="300" alt="Daedalus Cli Review The Ultimate Local Coding Dashboard"><br>
+<b>Daedalus Cli Review The Ultimate Local Coding Dashboard</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/vercel-eve-vs-saas-agents-the-latency-benchmark/">
 <img src="guides/vercel-eve-vs-saas-agents-the-latency-benchmark/thumbnail.jpg" width="300" alt="Vercel Eve Vs Saas Agents The Latency Benchmark"><br>
@@ -31,12 +37,6 @@
 <b>Comfyui Flux 2 Offline Fullspeed Ai Art Suite Reviewed</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-to-build-an-offline-creative-workflow-with-flux-2-comfyui-and-ollama/">
-<img src="guides/how-to-build-an-offline-creative-workflow-with-flux-2-comfyui-and-ollama/thumbnail.jpg" width="300" alt="How To Build An Offline Creative Workflow With Flux 2 Comfyui And Ollama"><br>
-<b>How To Build An Offline Creative Workflow With Flux 2 Comfyui And Ollama</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![45](https://img.shields.io/badge/45-blue?style=flat-square) |
-| **Model Deep Dives** | ![33](https://img.shields.io/badge/33-blue?style=flat-square) |
+| **Model Deep Dives** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
@@ -111,6 +111,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Daedalus Cli Review The Ultimate Local Coding Dashboard](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-review-the-ultimate-local-coding-dashboard/)** — 2026-06-28
 - **[Comfyui Flux 2 Offline Fullspeed Ai Art Suite Reviewed](https://bgill55.github.io/-weightandsee-guides/guides/comfyui-flux-2-offline-fullspeed-ai-art-suite-reviewed/)** — 2026-06-27
 - **[Realtime Camera Style Transfer On Edge Handson Review Of Camerarealtimestyle](https://bgill55.github.io/-weightandsee-guides/guides/realtime-camera-style-transfer-on-edge-handson-review-of-camerarealtimestyle/)** — 2026-06-25
 - **[Hot Take Metas Surveillance Shutdown Proves Ai Has A Data Ethics Problem It Cant](https://bgill55.github.io/-weightandsee-guides/guides/hot-take-metas-surveillance-shutdown-proves-ai-has-a-data-ethics-problem-it-cant/)** — 2026-06-25
