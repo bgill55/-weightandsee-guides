@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/116_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/117_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/astryx-vs-gemini-35-who-owns-your-design-system/">
+<img src="guides/astryx-vs-gemini-35-who-owns-your-design-system/thumbnail.jpg" width="300" alt="Astryx Vs Gemini 35 Who Owns Your Design System"><br>
+<b>Astryx Vs Gemini 35 Who Owns Your Design System</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/midjourney-82-deep-dive-realworld-workflow-cost/">
 <img src="guides/midjourney-82-deep-dive-realworld-workflow-cost/thumbnail.jpg" width="300" alt="Midjourney 82 Deep Dive Realworld Workflow Cost"><br>
@@ -31,12 +37,6 @@
 <b>Replace Chatgpt V5 Api With Openfugu The Zero Cost Switch</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-review-the-ultimate-local-coding-dashboard/">
-<img src="guides/daedalus-cli-review-the-ultimate-local-coding-dashboard/thumbnail.jpg" width="300" alt="Daedalus Cli Review The Ultimate Local Coding Dashboard"><br>
-<b>Daedalus Cli Review The Ultimate Local Coding Dashboard</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![45](https://img.shields.io/badge/45-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![46](https://img.shields.io/badge/46-blue?style=flat-square) |
 | **Model Deep Dives** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![19](https://img.shields.io/badge/19-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Astryx Vs Gemini 35 Who Owns Your Design System](https://bgill55.github.io/-weightandsee-guides/guides/astryx-vs-gemini-35-who-owns-your-design-system/)** — 2026-06-28
 - **[Vercel Eve Vs Saas Agents The Latency Benchmark](https://bgill55.github.io/-weightandsee-guides/guides/vercel-eve-vs-saas-agents-the-latency-benchmark/)** — 2026-06-27
 - **[Offline Flux 2 Vs Cloud Ai Art Speed Cost Privacy Showdown](https://bgill55.github.io/-weightandsee-guides/guides/offline-flux-2-vs-cloud-ai-art-speed-cost-privacy-showdown/)** — 2026-06-27
 - **[Godcoder Vs Claude Code The Onprem Coding Agent Showdown](https://bgill55.github.io/-weightandsee-guides/guides/godcoder-vs-claude-code-the-onprem-coding-agent-showdown/)** — 2026-06-27

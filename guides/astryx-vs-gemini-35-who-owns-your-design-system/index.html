@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A deep dive into Meta's release of Astryx, an open-protocol framework that enables Llama 4 coding agents to interpret and implement design systems with pixel-pe">
+    <meta name="keywords" content="Meta Astryx, Llama 4, Design Systems, AI Frontend, Open Protocol">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Astryx vs. Gemini 3.5: Who Owns Your Design System? - Deep Dive Analysis">
+    <meta property="og:description" content="A deep dive into Meta's release of Astryx, an open-protocol framework that enables Llama 4 coding agents to interpret and implement design systems with pixel-perfect accuracy. This video dissects how ">
+    <meta property="og:type" content="article">
+    <title>Astryx vs. Gemini 3.5: Who Owns Your Design System? | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Deep Dive Analysis</span>
+            <h1>Astryx vs. Gemini 3.5: Who Owns Your Design System?</h1>
+            <p class="subtitle">This deep dive explores Meta's release of Astryx, an open-protocol framework designed to solve the issue of AI 'hallucination' in UI generation by enforcing strict design system constraints via JSON schemas. It contrasts Astryx's transparent, locally executable architecture with the proprietary, cloud-based 'black box' approaches of competitors like Google's Gemini 3.5. The analysis covers the technical mechanism of the middleware bridge, its integration into CI/CD pipelines for automated quality assurance, and the broader implications for vendor lock-in in the AI development space.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 28, 2026</span>
+                <span>4 Findings</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
+
+            <div class="finding">
+                <h3>JSON Schema Enforcement Prevents Hallucinations</h3>
+                <p>Astryx modifies the AI input pipeline by converting design tokens (colors, spacing, typography) into a structured JSON schema. The coding agent must ingest these constraints before generating code, and schema validation immediately rejects any output that deviates from the defined values, effectively treating CSS as a strict set of constraints rather than a creative exercise.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Open-Protocol vs. Proprietary Walled Gardens</h3>
+                <p>Unlike Google's Gemini 3.5, which requires users to upload assets to a cloud-based black box that analyzes flattened raster images, Astryx runs locally. This allows developers to inspect exactly how their design system is mapped to the model's context window, providing debugging capabilities that closed-source systems actively prevent.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Model Agnosticism and Vendor Lock-in Removal</h3>
+                <p>Astryx decouples the design token format from the specific AI model provider. Developers can route Astryx tokens to Llama 4, Claude 4, or local models without changing their frontend workflow, ensuring the design system remains the source of truth regardless of API pricing changes or model updates.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Automated CI/CD Quality Assurance</h3>
+                <p>The framework integrates into CI pipelines to act as an automated gatekeeper. It can be configured to flag or reject commits that introduce 'magic numbers' or hard-coded color values, shifting the burden of design consistency from manual code review to an automated enforcement layer.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">Current AI coding agents often treat CSS generation as a probabilistic task, leading to outputs that ignore specific design tokens and semantic relationships. Astryx addresses this by acting as a middleware bridge between design files (e.g., Figma exports) and the code repository. It translates visual primitives into structured data (JSON) that the LLM uses as a rigid reference point. By running this interpretation layer locally, Astryx validates the model's output against the original design tokens, ensuring that concepts like 'medium spacing' are rendered as exact pixel values (e.g., 8px) rather than approximations.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <div class="card">
+
+                <div class="research-item">
+                    <div class="source">Meta Astryx</div>
+                    <div class="detail">The core subject of the video; described as an open-protocol framework enabling Llama 4 coding agents to interpret design systems with pixel-perfect accuracy.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Google Gemini 3.5</div>
+                    <div class="detail">Cited as the competing proprietary technology that uses a locked visual parsing engine requiring cloud uploads of design assets.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Claude 4</div>
+                    <div class="detail">Mentioned as another provider relying on visual artifacts within a closed-source ecosystem.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
+
+            <div class="implication">
+                Implication 1 — Shift Towards Local AI Processing: Astryx pushes the industry toward local execution of interpretation layers to solve data privacy and debugging concerns inherent in cloud-only solutions.
+            </div>
+
+            <div class="implication">
+                Implication 2 — Standardization of Design Languages: By enforcing a strict JSON schema, Astryx could push the industry toward standardizing how design systems are programmatically defined for AI consumption.
+            </div>
+
+            <div class="implication">
+                Implication 3 — Reduced Technical Debt: The automated enforcement of design tokens in CI pipelines could significantly lower the accumulation of 'magic number' hard-coding that typically plagues growing UI codebases.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💭</span> Expert Analysis</h2>
+            <div class="analysis-block">
+                Astryx represents a maturation in the AI-augmented development workflow, moving from simple code generation to structured, constraint-based generation. The architectural decision to separate the design interpretation protocol from the model itself is a strong counter to current vendor lock-in trends. However, the system's ultimate success depends on the willingness of major model providers (beyond Meta) to effectively adhere to these external schemas, as well as the ease of integrating the middleware bridge into complex legacy CI/CD environments.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> References & Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <strong>Search for: Meta Astryx Open Protocol</strong>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation or repository for Meta's Astryx framework.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <strong>Search for: Google Gemini 3.5 Visual Parsing</strong>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Information on Google's proprietary visual parsing capabilities for design files.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How does Astryx ensure AI doesn't guess CSS values?</h3>
+                <p>Astryx converts design tokens into a structured JSON schema that the model ingests before writing code. Schema validation then rejects any output that does not match the strict constraints defined in that schema.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use Astryx with models other than Llama 4?</h3>
+                <p>Yes, Astryx is designed to be model-agnostic, allowing you to route tokens to Claude 4, local models, or other engines without changing your frontend workflow.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Why is Astryx considered better than Google's approach for design systems?</h3>
+                <p>Astryx runs locally and exposes the interpretation layer, allowing for debugging and data privacy. In contrast, Google's Gemini 3.5 requires uploading assets to a proprietary cloud 'black box' that analyzes flattened images rather than underlying data structures.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does Astryx integrate with the development workflow?</h3>
+                <p>It runs as a middleware bridge between Figma exports and the Git repository, automatically translating design changes into code diffs and integrating with CI pipelines to flag design inconsistencies.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#MetaAstryx</span>
+                <span class="tag">#Llama4</span>
+                <span class="tag">#DesignSystems</span>
+                <span class="tag">#AIFrontend</span>
+                <span class="tag">#AI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-28 16:13 • This guide accompanies the video: "Astryx vs. Gemini 3.5: Who Owns Your Design System?"</p>
+        </footer>
+    </div>
+</body>
+</html>
