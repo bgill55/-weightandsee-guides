@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/112_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/113_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/vercel-eve-vs-saas-agents-the-latency-benchmark/">
+<img src="guides/vercel-eve-vs-saas-agents-the-latency-benchmark/thumbnail.jpg" width="300" alt="Vercel Eve Vs Saas Agents The Latency Benchmark"><br>
+<b>Vercel Eve Vs Saas Agents The Latency Benchmark</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/comfyui-flux-2-offline-fullspeed-ai-art-suite-reviewed/">
 <img src="guides/comfyui-flux-2-offline-fullspeed-ai-art-suite-reviewed/thumbnail.jpg" width="300" alt="Comfyui Flux 2 Offline Fullspeed Ai Art Suite Reviewed"><br>
@@ -31,12 +37,6 @@
 <b>How To Build An Offline Creative Workflow With Flux 2 Comfyui And Ollama</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/offline-flux-2-vs-cloud-ai-art-speed-cost-privacy-showdown/">
-<img src="guides/offline-flux-2-vs-cloud-ai-art-speed-cost-privacy-showdown/thumbnail.jpg" width="300" alt="Offline Flux 2 Vs Cloud Ai Art Speed Cost Privacy Showdown"><br>
-<b>Offline Flux 2 Vs Cloud Ai Art Speed Cost Privacy Showdown</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![44](https://img.shields.io/badge/44-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![45](https://img.shields.io/badge/45-blue?style=flat-square) |
 | **Model Deep Dives** | ![33](https://img.shields.io/badge/33-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![18](https://img.shields.io/badge/18-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Vercel Eve Vs Saas Agents The Latency Benchmark](https://bgill55.github.io/-weightandsee-guides/guides/vercel-eve-vs-saas-agents-the-latency-benchmark/)** — 2026-06-27
 - **[Offline Flux 2 Vs Cloud Ai Art Speed Cost Privacy Showdown](https://bgill55.github.io/-weightandsee-guides/guides/offline-flux-2-vs-cloud-ai-art-speed-cost-privacy-showdown/)** — 2026-06-27
 - **[Godcoder Vs Claude Code The Onprem Coding Agent Showdown](https://bgill55.github.io/-weightandsee-guides/guides/godcoder-vs-claude-code-the-onprem-coding-agent-showdown/)** — 2026-06-27
 - **[Decoding Reasoning Sovereignty Architecting For 2026](https://bgill55.github.io/-weightandsee-guides/guides/decoding-reasoning-sovereignty-architecting-for-2026/)** — 2026-06-26
