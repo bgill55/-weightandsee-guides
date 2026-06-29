@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/120_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/121_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-2026-program-repair-showdown-grok-3-vs-llama-4/">
+<img src="guides/the-2026-program-repair-showdown-grok-3-vs-llama-4/thumbnail.jpg" width="300" alt="The 2026 Program Repair Showdown Grok 3 Vs Llama 4"><br>
+<b>The 2026 Program Repair Showdown Grok 3 Vs Llama 4</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/how-generative-music-models-like-gemini-3-gpt55-adapt-to-platform-royalties/">
 <img src="guides/how-generative-music-models-like-gemini-3-gpt55-adapt-to-platform-royalties/thumbnail.jpg" width="300" alt="How Generative Music Models Like Gemini 3 Gpt55 Adapt To Platform Royalties"><br>
@@ -31,12 +37,6 @@
 <b>Qwenagentworld 35Ba3B Handson Review For Edge Deployment</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/qwen-image-20-rl-vs-flux-2-how-reinforcement-learning-cuts-gpu-costs/">
-<img src="guides/qwen-image-20-rl-vs-flux-2-how-reinforcement-learning-cuts-gpu-costs/thumbnail.jpg" width="300" alt="Qwen Image 20 Rl Vs Flux 2 How Reinforcement Learning Cuts Gpu Costs"><br>
-<b>Qwen Image 20 Rl Vs Flux 2 How Reinforcement Learning Cuts Gpu Costs</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![48](https://img.shields.io/badge/48-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![49](https://img.shields.io/badge/49-blue?style=flat-square) |
 | **Model Deep Dives** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![20](https://img.shields.io/badge/20-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[The 2026 Program Repair Showdown Grok 3 Vs Llama 4](https://bgill55.github.io/-weightandsee-guides/guides/the-2026-program-repair-showdown-grok-3-vs-llama-4/)** — 2026-06-29
 - **[How Generative Music Models Like Gemini 3 Gpt55 Adapt To Platform Royalties](https://bgill55.github.io/-weightandsee-guides/guides/how-generative-music-models-like-gemini-3-gpt55-adapt-to-platform-royalties/)** — 2026-06-29
 - **[Qwen Image 20 Rl Vs Flux 2 How Reinforcement Learning Cuts Gpu Costs](https://bgill55.github.io/-weightandsee-guides/guides/qwen-image-20-rl-vs-flux-2-how-reinforcement-learning-cuts-gpu-costs/)** — 2026-06-29
 - **[Astryx Vs Gemini 35 Who Owns Your Design System](https://bgill55.github.io/-weightandsee-guides/guides/astryx-vs-gemini-35-who-owns-your-design-system/)** — 2026-06-28

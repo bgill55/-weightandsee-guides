@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A side-by-side economic breakdown of using cloud APIs like Gemini 3.5 and Grok 3 versus self-hosting Llama 4 and DeepSeek-V4 for automated program repair. We an">
+    <meta name="keywords" content="LLM program repair, cloud vs local cost, Llama 4 economics, Gemini 3.5 API pricing, AI infrastructure 2026">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="The 2026 Program Repair Showdown: Grok 3 vs. Llama 4 - Deep Dive Analysis">
+    <meta property="og:description" content="A side-by-side economic breakdown of using cloud APIs like Gemini 3.5 and Grok 3 versus self-hosting Llama 4 and DeepSeek-V4 for automated program repair. We analyze the break-even point between month">
+    <meta property="og:type" content="article">
+    <title>The 2026 Program Repair Showdown: Grok 3 vs. Llama 4 | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Deep Dive Analysis</span>
+            <h1>The 2026 Program Repair Showdown: Grok 3 vs. Llama 4</h1>
+            <p class="subtitle">This video provides a comprehensive economic analysis comparing the cost of using cloud-based Large Language Models (Grok 3, Gemini 3.5) versus self-hosted open-source models (Llama 4, DeepSeek-V4) for automated program repair in 2026. It investigates the break-even point where the capital expenditure of local hardware becomes more viable than the operational expenditure of cloud API tokens.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 29, 2026</span>
+                <span>5 Findings</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
+
+            <div class="finding">
+                <h3>Automated Program Repair is Resource Intensive</h3>
+                <p>APR is not a simple chat interaction; it requires ingesting entire repositories, parsing abstract syntax trees, and executing failing test suites in sandboxes. This process consumes massive amounts of input tokens and often requires 5-10 API round trips per repair cycle to generate valid code patches.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Cloud APIs Scale Poorly with Volume</h3>
+                <p>While Grok 3 and Gemini 3.5 offer speed and convenience, the cost per million token adds up quickly with large codebases. High-frequency users face hidden costs like data egress, context history storage, and latency that stalls CI pipelines, making cloud costs exceed a high-end GPU's price for heavy users.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Self-Hosting Shifts Cost Structure from OPEX to CAPEX</h3>
+                <p>Llama 4 and DeepSeek-V4 require significant upfront investment in GPU hardware capable of handling 70-billion parameter models. However, once deployed, the marginal cost of processing additional files is negligible, limited only by electricity and cooling, with no API rate limits.</p>
+            </div>
+
+            <div class="finding">
+                <h3>The Break-Even Point is 6-8 Months</h3>
+                <p>The analysis identifies a clear crossover point: low-frequency users benefit from the ease of cloud APIs, but high-velocity teams with active repositories will find that local hardware depreciation becomes cheaper than cumulative cloud API fees within six to eight months.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Local Deployment Offers Security and Performance Benefits</h3>
+                <p>Beyond cost, self-hosting provides total control over model weights and source code security, which is vital for proprietary algorithms. It also eliminates network latency and rate limits, allowing for faster, parallel repair jobs.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">Automated Program Repair (APR) utilizes LLMs to diagnose and fix code bugs by analyzing the source code, error logs, and documentation within a large context window. The model must understand code dependencies (via AST parsing) and verify fixes against linting rules and test suites. This rigorous verification loop demands high throughput and low latency, distinguishing APR from simple code generation tasks.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <div class="card">
+
+                <div class="research-item">
+                    <div class="source">Internal Financial Analysis</div>
+                    <div class="detail">A comparison of Gemini 3.5 API latency and pricing against local inference benchmarks for Llama 4 and DeepSeek-V4.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Hardware Market Projections (2026)</div>
+                    <div class="detail">Analysis of the upfront cost and capabilities of inference servers equipped with sufficient VRAM to run large quantized models.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
+
+            <div class="implication">
+                High-velocity engineering teams should budget for on-premise GPU clusters rather than recurring API credits for development tools.
+            </div>
+
+            <div class="implication">
+                Enterprises concerned with data sovereignty will likely migrate away from public cloud APIs for code repair to keep sensitive algorithms on local infrastructure.
+            </div>
+
+            <div class="implication">
+                The DevOps role will expand to include managing local LLM infrastructure, including CUDA versions, driver compatibility, and container orchestration.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💭</span> Expert Analysis</h2>
+            <div class="analysis-block">
+                The analysis credibly highlights a critical inflection point in the AI-assisted development market: the 'rent vs. buy' decision. While cloud providers offer superior ease of use, the token-heavy nature of APR creates a cost curve that scales poorly for active projects. The 6-8 month break-even window is a convincing argument for self-hosting for established companies, though the operational overhead of managing local models remains a significant hurdle for smaller teams that lack dedicated infrastructure support.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> References & Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <strong>2026 Program Repair Financial Model</strong>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — A tool to calculate the ROI of self-hosting based on electricity rates and token counts. (Available in video description)</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <strong>DeepSeek-V4 Docker Benchmark Configurations</strong>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Deployment guides and Docker files used to benchmark local models against cloud competitors. (Available in video description)</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Why does automated program repair cost so much on cloud APIs?</h3>
+                <p>APR requires feeding entire codebases, error logs, and documentation into the context window. A single repair often needs 5-10 API round trips, consuming millions of tokens rapidly.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is the break-even point for switching to local models?</h3>
+                <p>For high-velocity teams running continuous integration, local hardware depreciation becomes cheaper than cloud API fees within 6 to 8 months.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What are the downsides of self-hosting Llama 4 or DeepSeek-V4?</h3>
+                <p>It requires a high upfront capital investment in hardware and adds operational complexity, such as managing CUDA versions, drivers, and container maintenance.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Does running local models provide performance advantages?</h3>
+                <p>Yes, local setups remove API rate limits, network latency, and egress fees, allowing for parallel repair jobs and faster iteration speeds.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#CloudAPIvs</span>
+                <span class="tag">#LLMprogramrepair</span>
+                <span class="tag">#cloudvslocalcost</span>
+                <span class="tag">#Llama4economics</span>
+                <span class="tag">#Gemini35APIpricing</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-29 12:29 • This guide accompanies the video: "The 2026 Program Repair Showdown: Grok 3 vs. Llama 4"</p>
+        </footer>
+    </div>
+</body>
+</html>
