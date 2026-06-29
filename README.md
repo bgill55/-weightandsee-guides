@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/121_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/122_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/cursor-goes-mobile-can-you-really-run-gpt-55-from-your-pocket/">
+<img src="guides/cursor-goes-mobile-can-you-really-run-gpt-55-from-your-pocket/thumbnail.jpg" width="300" alt="Cursor Goes Mobile Can You Really Run Gpt 55 From Your Pocket"><br>
+<b>Cursor Goes Mobile Can You Really Run Gpt 55 From Your Pocket</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-2026-program-repair-showdown-grok-3-vs-llama-4/">
 <img src="guides/the-2026-program-repair-showdown-grok-3-vs-llama-4/thumbnail.jpg" width="300" alt="The 2026 Program Repair Showdown Grok 3 Vs Llama 4"><br>
@@ -31,12 +37,6 @@
 <b>How Generative Music Models Like Gemini 3 Gpt55 Adapt To Platform Royalties</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/qwenagentworld-35ba3b-handson-review-for-edge-deployment/">
-<img src="guides/qwenagentworld-35ba3b-handson-review-for-edge-deployment/thumbnail.jpg" width="300" alt="Qwenagentworld 35Ba3B Handson Review For Edge Deployment"><br>
-<b>Qwenagentworld 35Ba3B Handson Review For Edge Deployment</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![49](https://img.shields.io/badge/49-blue?style=flat-square) |
-| **Model Deep Dives** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
+| **Model Deep Dives** | ![36](https://img.shields.io/badge/36-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![20](https://img.shields.io/badge/20-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
@@ -115,6 +115,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Cursor Goes Mobile Can You Really Run Gpt 55 From Your Pocket](https://bgill55.github.io/-weightandsee-guides/guides/cursor-goes-mobile-can-you-really-run-gpt-55-from-your-pocket/)** — 2026-06-29
 - **[Midjourney 82 Deep Dive Realworld Workflow Cost](https://bgill55.github.io/-weightandsee-guides/guides/midjourney-82-deep-dive-realworld-workflow-cost/)** — 2026-06-28
 - **[Daedalus Cli Review The Ultimate Local Coding Dashboard](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-review-the-ultimate-local-coding-dashboard/)** — 2026-06-28
 - **[Comfyui Flux 2 Offline Fullspeed Ai Art Suite Reviewed](https://bgill55.github.io/-weightandsee-guides/guides/comfyui-flux-2-offline-fullspeed-ai-art-suite-reviewed/)** — 2026-06-27
