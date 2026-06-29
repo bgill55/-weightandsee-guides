@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/117_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/118_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/qwen-image-20-rl-vs-flux-2-how-reinforcement-learning-cuts-gpu-costs/">
+<img src="guides/qwen-image-20-rl-vs-flux-2-how-reinforcement-learning-cuts-gpu-costs/thumbnail.jpg" width="300" alt="Qwen Image 20 Rl Vs Flux 2 How Reinforcement Learning Cuts Gpu Costs"><br>
+<b>Qwen Image 20 Rl Vs Flux 2 How Reinforcement Learning Cuts Gpu Costs</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/astryx-vs-gemini-35-who-owns-your-design-system/">
 <img src="guides/astryx-vs-gemini-35-who-owns-your-design-system/thumbnail.jpg" width="300" alt="Astryx Vs Gemini 35 Who Owns Your Design System"><br>
@@ -31,12 +37,6 @@
 <b>Midjourney 82 Deep Dive Realworld Workflow Cost</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/replace-chatgpt-v5-api-with-openfugu-the-zero-cost-switch/">
-<img src="guides/replace-chatgpt-v5-api-with-openfugu-the-zero-cost-switch/thumbnail.jpg" width="300" alt="Replace Chatgpt V5 Api With Openfugu The Zero Cost Switch"><br>
-<b>Replace Chatgpt V5 Api With Openfugu The Zero Cost Switch</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![46](https://img.shields.io/badge/46-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![47](https://img.shields.io/badge/47-blue?style=flat-square) |
 | **Model Deep Dives** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![19](https://img.shields.io/badge/19-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Qwen Image 20 Rl Vs Flux 2 How Reinforcement Learning Cuts Gpu Costs](https://bgill55.github.io/-weightandsee-guides/guides/qwen-image-20-rl-vs-flux-2-how-reinforcement-learning-cuts-gpu-costs/)** — 2026-06-29
 - **[Astryx Vs Gemini 35 Who Owns Your Design System](https://bgill55.github.io/-weightandsee-guides/guides/astryx-vs-gemini-35-who-owns-your-design-system/)** — 2026-06-28
 - **[Vercel Eve Vs Saas Agents The Latency Benchmark](https://bgill55.github.io/-weightandsee-guides/guides/vercel-eve-vs-saas-agents-the-latency-benchmark/)** — 2026-06-27
 - **[Offline Flux 2 Vs Cloud Ai Art Speed Cost Privacy Showdown](https://bgill55.github.io/-weightandsee-guides/guides/offline-flux-2-vs-cloud-ai-art-speed-cost-privacy-showdown/)** — 2026-06-27
