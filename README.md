@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/118_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/119_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/qwenagentworld-35ba3b-handson-review-for-edge-deployment/">
+<img src="guides/qwenagentworld-35ba3b-handson-review-for-edge-deployment/thumbnail.jpg" width="300" alt="Qwenagentworld 35Ba3B Handson Review For Edge Deployment"><br>
+<b>Qwenagentworld 35Ba3B Handson Review For Edge Deployment</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/qwen-image-20-rl-vs-flux-2-how-reinforcement-learning-cuts-gpu-costs/">
 <img src="guides/qwen-image-20-rl-vs-flux-2-how-reinforcement-learning-cuts-gpu-costs/thumbnail.jpg" width="300" alt="Qwen Image 20 Rl Vs Flux 2 How Reinforcement Learning Cuts Gpu Costs"><br>
@@ -31,12 +37,6 @@
 <b>Astryx Vs Gemini 35 Who Owns Your Design System</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/midjourney-82-deep-dive-realworld-workflow-cost/">
-<img src="guides/midjourney-82-deep-dive-realworld-workflow-cost/thumbnail.jpg" width="300" alt="Midjourney 82 Deep Dive Realworld Workflow Cost"><br>
-<b>Midjourney 82 Deep Dive Realworld Workflow Cost</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![47](https://img.shields.io/badge/47-blue?style=flat-square) |
 | **Model Deep Dives** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![19](https://img.shields.io/badge/19-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![20](https://img.shields.io/badge/20-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -155,6 +155,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Qwenagentworld 35Ba3B Handson Review For Edge Deployment](https://bgill55.github.io/-weightandsee-guides/guides/qwenagentworld-35ba3b-handson-review-for-edge-deployment/)** — 2026-06-29
 - **[Replace Chatgpt V5 Api With Openfugu The Zero Cost Switch](https://bgill55.github.io/-weightandsee-guides/guides/replace-chatgpt-v5-api-with-openfugu-the-zero-cost-switch/)** — 2026-06-28
 - **[How To Build An Offline Creative Workflow With Flux 2 Comfyui And Ollama](https://bgill55.github.io/-weightandsee-guides/guides/how-to-build-an-offline-creative-workflow-with-flux-2-comfyui-and-ollama/)** — 2026-06-27
 - **[Hi3D Ai Workflow Review From Prompt To Print In Minutes](https://bgill55.github.io/-weightandsee-guides/guides/hi3d-ai-workflow-review-from-prompt-to-print-in-minutes/)** — 2026-06-27
