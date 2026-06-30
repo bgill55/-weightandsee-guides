@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/123_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/124_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-architecture-of-autonomy-from-openclaw-squads-to-hermes/">
+<img src="guides/the-architecture-of-autonomy-from-openclaw-squads-to-hermes/thumbnail.jpg" width="300" alt="The Architecture Of Autonomy From Openclaw Squads To Hermes"><br>
+<b>The Architecture Of Autonomy From Openclaw Squads To Hermes</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-agency-the-open-source-ai-agency-that-hit-50k-stars-in-two-weeks/">
 <img src="guides/the-agency-the-open-source-ai-agency-that-hit-50k-stars-in-two-weeks/thumbnail.jpg" width="300" alt="The Agency The Open Source Ai Agency That Hit 50K Stars In Two Weeks"><br>
@@ -31,12 +37,6 @@
 <b>Cursor Goes Mobile Can You Really Run Gpt 55 From Your Pocket</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-2026-program-repair-showdown-grok-3-vs-llama-4/">
-<img src="guides/the-2026-program-repair-showdown-grok-3-vs-llama-4/thumbnail.jpg" width="300" alt="The 2026 Program Repair Showdown Grok 3 Vs Llama 4"><br>
-<b>The 2026 Program Repair Showdown Grok 3 Vs Llama 4</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![49](https://img.shields.io/badge/49-blue?style=flat-square) |
-| **Model Deep Dives** | ![37](https://img.shields.io/badge/37-blue?style=flat-square) |
+| **Model Deep Dives** | ![38](https://img.shields.io/badge/38-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![20](https://img.shields.io/badge/20-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
@@ -115,6 +115,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[The Architecture Of Autonomy From Openclaw Squads To Hermes](https://bgill55.github.io/-weightandsee-guides/guides/the-architecture-of-autonomy-from-openclaw-squads-to-hermes/)** — 2026-06-29
 - **[The Agency The Open Source Ai Agency That Hit 50K Stars In Two Weeks](https://bgill55.github.io/-weightandsee-guides/guides/the-agency-the-open-source-ai-agency-that-hit-50k-stars-in-two-weeks/)** — 2026-06-29
 - **[Cursor Goes Mobile Can You Really Run Gpt 55 From Your Pocket](https://bgill55.github.io/-weightandsee-guides/guides/cursor-goes-mobile-can-you-really-run-gpt-55-from-your-pocket/)** — 2026-06-29
 - **[Midjourney 82 Deep Dive Realworld Workflow Cost](https://bgill55.github.io/-weightandsee-guides/guides/midjourney-82-deep-dive-realworld-workflow-cost/)** — 2026-06-28
