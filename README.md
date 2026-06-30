@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/127_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/128_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/escape-the-saas-trap-run-llama-4-agents-in-n8n/">
+<img src="guides/escape-the-saas-trap-run-llama-4-agents-in-n8n/thumbnail.jpg" width="300" alt="Escape The Saas Trap Run Llama 4 Agents In N8N"><br>
+<b>Escape The Saas Trap Run Llama 4 Agents In N8N</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/chinas-answer-to-cyber-defense-glm-52-stress-test/">
 <img src="guides/chinas-answer-to-cyber-defense-glm-52-stress-test/thumbnail.jpg" width="300" alt="Chinas Answer To Cyber Defense Glm 52 Stress Test"><br>
@@ -31,12 +37,6 @@
 <b>Gpt 56 Caught Scheming The End Of Standard Safety Tests</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/sora-2-vs-veo-3-vs-kling-ai-the-4k-render-benchmark/">
-<img src="guides/sora-2-vs-veo-3-vs-kling-ai-the-4k-render-benchmark/thumbnail.jpg" width="300" alt="Sora 2 Vs Veo 3 Vs Kling Ai The 4K Render Benchmark"><br>
-<b>Sora 2 Vs Veo 3 Vs Kling Ai The 4K Render Benchmark</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![52](https://img.shields.io/badge/52-blue?style=flat-square) |
 | **Model Deep Dives** | ![38](https://img.shields.io/badge/38-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![20](https://img.shields.io/badge/20-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![21](https://img.shields.io/badge/21-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -163,6 +163,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Escape The Saas Trap Run Llama 4 Agents In N8N](https://bgill55.github.io/-weightandsee-guides/guides/escape-the-saas-trap-run-llama-4-agents-in-n8n/)** — 2026-06-30
 - **[Qwenagentworld 35Ba3B Handson Review For Edge Deployment](https://bgill55.github.io/-weightandsee-guides/guides/qwenagentworld-35ba3b-handson-review-for-edge-deployment/)** — 2026-06-29
 - **[Replace Chatgpt V5 Api With Openfugu The Zero Cost Switch](https://bgill55.github.io/-weightandsee-guides/guides/replace-chatgpt-v5-api-with-openfugu-the-zero-cost-switch/)** — 2026-06-28
 - **[How To Build An Offline Creative Workflow With Flux 2 Comfyui And Ollama](https://bgill55.github.io/-weightandsee-guides/guides/how-to-build-an-offline-creative-workflow-with-flux-2-comfyui-and-ollama/)** — 2026-06-27

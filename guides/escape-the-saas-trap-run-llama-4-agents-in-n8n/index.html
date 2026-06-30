@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stop paying monthly for make.com and OpenAI. This video breaks down how to orchestrate complex multi-agent systems using n8n and the local Llama 4 model, cuttin">
+    <meta name="keywords" content="n8n automation, Llama 4 local, AI agents, SaaS alternative, DeepSeek-V4">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Escape the SaaS Trap: Run Llama 4 Agents in n8n - Complete Guide">
+    <meta property="og:description" content="Stop paying monthly for make.com and OpenAI. This video breaks down how to orchestrate complex multi-agent systems using n8n and the local Llama 4 model, cutting API costs to zero while maintaining en">
+    <meta property="og:type" content="article">
+    <title>Escape the SaaS Trap: Run Llama 4 Agents in n8n | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Escape the SaaS Trap: Run Llama 4 Agents in n8n</h1>
+            <p class="subtitle">This guide demonstrates how to build and orchestrate complex multi-agent systems using n8n and a locally hosted Llama 4 model. By replacing cloud-based APIs like OpenAI with self-hosted inference engines such as Ollama or LM Studio, users can eliminate monthly subscription fees and drastically reduce latency. The tutorial covers installation, configuration of the n8n LLM node for localhost communication, and the creation of automated workflows for tasks like data processing and code generation.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>June 30, 2026</span>
+                <span>4 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Local inference (Llama 4) significantly outperforms cloud APIs (GPT-5.5, DeepSeek-V4) in latency due to zero network round-trip time.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Running AI agents locally eliminates variable API costs and monthly subscription fees for automation tools.</span></li>
+                    <li><span class="takeaway-num">3</span><span>n8n can seamlessly integrate with local inference engines like Ollama or LM Studio via localhost endpoints.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Self-hosting provides superior privacy by ensuring sensitive data never leaves the local environment.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Multi-agent workflows can be constructed by chaining n8n nodes with defined system prompts for specific roles (e.g., code reviewer, data formatter).</span></li>
+                    <li><span class="takeaway-num">6</span><span>Users maintain full control over model versions and weights, preventing workflow breakages from third-party API updates.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A local machine with a capable GPU (e.g., RTX 4090) for running Llama 4 efficiently.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Docker and Docker Compose installed for containerized deployment of n8n and the inference engine.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with n8n workflow automation concepts and node-based logic.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Deploy n8n via Docker</h3>
+                <p>Install n8n locally using Docker to serve as the central orchestrator for your agents. Ensure the container is configured to persist data so your workflows are saved between restarts.</p>
+
+                <div class="code-block"><pre>docker run -it --rm --name n8n -p 5678:5678 -v ~/.n8n:/home/node/.n8n n8nio/n8n</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Set Up Local Llama 4 Inference Engine</h3>
+                <p>Deploy a local inference engine like Ollama to host the Llama 4 model. This engine will handle the model loading and execution on your local GPU.</p>
+
+                <div class="code-block"><pre>docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+
+# Pull and run the model
+docker exec -it ollama ollama run llama4</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Configure n8n LLM Node for Localhost</h3>
+                <p>In the n8n interface, add an 'OpenAI Chat Model' node (or LLM node). Instead of connecting to the official API, configure it to point to your local Ollama instance. Use 'http://localhost:11434/v1' as the Base URL and enter any string for the API Key as it is required by the node structure but ignored by the local server.</p>
+
+                <div class="code-block"><pre>Configuration:
+- Provider: OpenAi (Compatible)
+- Model Name: llama4
+- Base URL: http://host.docker.internal:11434/v1
+- API Key: ollama</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Define System Prompts and Chain Agents</h3>
+                <p>Create a multi-step workflow where specific nodes act as specialized agents. Set the 'System Prompt' in each LLM node to define the agent's role (e.g., 'You are a Python code generator'). Chain these nodes using logic gates or direct connections so that the output of one agent becomes the input for the next.</p>
+
+                <div class="code-block"><pre>System Prompt Example:
+"You are a SQL expert. Convert the following natural language request into a valid SQL update query based on the schema provided."</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Assign specific, narrow roles to agents via system prompts to ensure consistent and parsable output formatting across the chain.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use an RTX 4090 or equivalent GPU with sufficient VRAM to achieve sub-200ms latency for complex tasks like summarization and code generation.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Keep your inference engine and n8n on the same machine or network bus to avoid reintroducing network latency.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the 'Webhook' node in n8n to trigger your local AI workflows from external applications without exposing your logic to the public internet.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Incorrect Base URL Configuration - Forgetting to configure the n8n LLM node with the correct localhost URL (e.g., port 11434) or using 'localhost' inside a Docker container (use 'host.docker.internal' instead) causes connection failures.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Insufficient Hardware Resources - Running Llama 4 on a GPU without enough VRAM will cause the system to swap to system RAM, drastically slowing down inference times and negating the speed benefits.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Ignoring Context Window Limits - Unlike some cloud models that might handle context switching automatically, local models have strict token limits; ensure your prompts and chained data do not exceed the Llama 4 context window.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>n8n</h4>
+                    <p>Workflow automation tool used to orchestrate multi-agent systems.</p>
+                    <a href="https://n8n.io" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Llama 4</h4>
+                    <p>Local Large Language Model used for inference.</p>
+                    <a href="https://llama.meta.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Ollama</h4>
+                    <p>Local inference engine for running Llama 4 and other models.</p>
+                    <a href="https://ollama.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>LM Studio</h4>
+                    <p>Alternative local inference engine with a GUI for model management.</p>
+                    <a href="https://lmstudio.ai" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Docker</h4>
+                    <p>Platform used to containerize and run n8n and Ollama.</p>
+                    <a href="https://www.docker.com" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.n8n.io" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            n8n Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation for configuring nodes and workflows in n8n.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://ollama.com/library" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Ollama Library
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Library of available models including Llama 4 and installation instructions.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What is the latency difference between local Llama 4 and GPT-5.5?</h3>
+                <p>According to the benchmarks in the video, local Llama 4 processed a complex email triage payload in 120 milliseconds, whereas GPT-5.5 took around 600 milliseconds due to network overhead and queuing.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I connect n8n to a local model like Llama 4?</h3>
+                <p>Use the n8n LLM or OpenAI-compatible node, set the 'Base URL' to your local inference server's address (e.g., http://localhost:11434/v1 for Ollama), and select 'llama4' as the model name.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I run this setup without an internet connection?</h3>
+                <p>Yes, once the Docker images for n8n and the Llama 4 model are pulled and stored locally, the entire automation workflow can run offline without internet access.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Why is local inference faster than cloud APIs?</h3>
+                <p>Local inference eliminates the network round-trip time required to send data to a cloud server and receive the response. The data travels only across the local machine's internal bus.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#EscapetheSaaS</span>
+                <span class="tag">#n8nautomation</span>
+                <span class="tag">#Llama4local</span>
+                <span class="tag">#AIagents</span>
+                <span class="tag">#SaaSalternative</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-06-30 15:08 • This guide accompanies the video: "Escape the SaaS Trap: Run Llama 4 Agents in n8n"</p>
+        </footer>
+    </div>
+</body>
+</html>
