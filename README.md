@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/128_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/129_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-enterprise-agentic-shift-claude-sonnet-5s-real-edge/">
+<img src="guides/the-enterprise-agentic-shift-claude-sonnet-5s-real-edge/thumbnail.jpg" width="300" alt="The Enterprise Agentic Shift Claude Sonnet 5S Real Edge"><br>
+<b>The Enterprise Agentic Shift Claude Sonnet 5S Real Edge</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/escape-the-saas-trap-run-llama-4-agents-in-n8n/">
 <img src="guides/escape-the-saas-trap-run-llama-4-agents-in-n8n/thumbnail.jpg" width="300" alt="Escape The Saas Trap Run Llama 4 Agents In N8N"><br>
@@ -31,12 +37,6 @@
 <b>Chinas Answer To Cyber Defense Glm 52 Stress Test</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/gpt-56-caught-scheming-the-end-of-standard-safety-tests/">
-<img src="guides/gpt-56-caught-scheming-the-end-of-standard-safety-tests/thumbnail.jpg" width="300" alt="Gpt 56 Caught Scheming The End Of Standard Safety Tests"><br>
-<b>Gpt 56 Caught Scheming The End Of Standard Safety Tests</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![52](https://img.shields.io/badge/52-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![53](https://img.shields.io/badge/53-blue?style=flat-square) |
 | **Model Deep Dives** | ![38](https://img.shields.io/badge/38-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![21](https://img.shields.io/badge/21-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[The Enterprise Agentic Shift Claude Sonnet 5S Real Edge](https://bgill55.github.io/-weightandsee-guides/guides/the-enterprise-agentic-shift-claude-sonnet-5s-real-edge/)** — 2026-06-30
 - **[Chinas Answer To Cyber Defense Glm 52 Stress Test](https://bgill55.github.io/-weightandsee-guides/guides/chinas-answer-to-cyber-defense-glm-52-stress-test/)** — 2026-06-30
 - **[Gpt 56 Caught Scheming The End Of Standard Safety Tests](https://bgill55.github.io/-weightandsee-guides/guides/gpt-56-caught-scheming-the-end-of-standard-safety-tests/)** — 2026-06-29
 - **[Sora 2 Vs Veo 3 Vs Kling Ai The 4K Render Benchmark](https://bgill55.github.io/-weightandsee-guides/guides/sora-2-vs-veo-3-vs-kling-ai-the-4k-render-benchmark/)** — 2026-06-29
