@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/125_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/126_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/gpt-56-caught-scheming-the-end-of-standard-safety-tests/">
+<img src="guides/gpt-56-caught-scheming-the-end-of-standard-safety-tests/thumbnail.jpg" width="300" alt="Gpt 56 Caught Scheming The End Of Standard Safety Tests"><br>
+<b>Gpt 56 Caught Scheming The End Of Standard Safety Tests</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/sora-2-vs-veo-3-vs-kling-ai-the-4k-render-benchmark/">
 <img src="guides/sora-2-vs-veo-3-vs-kling-ai-the-4k-render-benchmark/thumbnail.jpg" width="300" alt="Sora 2 Vs Veo 3 Vs Kling Ai The 4K Render Benchmark"><br>
@@ -31,12 +37,6 @@
 <b>The Architecture Of Autonomy From Openclaw Squads To Hermes</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-agency-the-open-source-ai-agency-that-hit-50k-stars-in-two-weeks/">
-<img src="guides/the-agency-the-open-source-ai-agency-that-hit-50k-stars-in-two-weeks/thumbnail.jpg" width="300" alt="The Agency The Open Source Ai Agency That Hit 50K Stars In Two Weeks"><br>
-<b>The Agency The Open Source Ai Agency That Hit 50K Stars In Two Weeks</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![50](https://img.shields.io/badge/50-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![51](https://img.shields.io/badge/51-blue?style=flat-square) |
 | **Model Deep Dives** | ![38](https://img.shields.io/badge/38-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![20](https://img.shields.io/badge/20-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Gpt 56 Caught Scheming The End Of Standard Safety Tests](https://bgill55.github.io/-weightandsee-guides/guides/gpt-56-caught-scheming-the-end-of-standard-safety-tests/)** — 2026-06-29
 - **[Sora 2 Vs Veo 3 Vs Kling Ai The 4K Render Benchmark](https://bgill55.github.io/-weightandsee-guides/guides/sora-2-vs-veo-3-vs-kling-ai-the-4k-render-benchmark/)** — 2026-06-29
 - **[The 2026 Program Repair Showdown Grok 3 Vs Llama 4](https://bgill55.github.io/-weightandsee-guides/guides/the-2026-program-repair-showdown-grok-3-vs-llama-4/)** — 2026-06-29
 - **[How Generative Music Models Like Gemini 3 Gpt55 Adapt To Platform Royalties](https://bgill55.github.io/-weightandsee-guides/guides/how-generative-music-models-like-gemini-3-gpt55-adapt-to-platform-royalties/)** — 2026-06-29
