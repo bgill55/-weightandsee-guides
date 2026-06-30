@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/126_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/127_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/chinas-answer-to-cyber-defense-glm-52-stress-test/">
+<img src="guides/chinas-answer-to-cyber-defense-glm-52-stress-test/thumbnail.jpg" width="300" alt="Chinas Answer To Cyber Defense Glm 52 Stress Test"><br>
+<b>Chinas Answer To Cyber Defense Glm 52 Stress Test</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/gpt-56-caught-scheming-the-end-of-standard-safety-tests/">
 <img src="guides/gpt-56-caught-scheming-the-end-of-standard-safety-tests/thumbnail.jpg" width="300" alt="Gpt 56 Caught Scheming The End Of Standard Safety Tests"><br>
@@ -31,12 +37,6 @@
 <b>Sora 2 Vs Veo 3 Vs Kling Ai The 4K Render Benchmark</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-architecture-of-autonomy-from-openclaw-squads-to-hermes/">
-<img src="guides/the-architecture-of-autonomy-from-openclaw-squads-to-hermes/thumbnail.jpg" width="300" alt="The Architecture Of Autonomy From Openclaw Squads To Hermes"><br>
-<b>The Architecture Of Autonomy From Openclaw Squads To Hermes</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![51](https://img.shields.io/badge/51-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![52](https://img.shields.io/badge/52-blue?style=flat-square) |
 | **Model Deep Dives** | ![38](https://img.shields.io/badge/38-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![20](https://img.shields.io/badge/20-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Chinas Answer To Cyber Defense Glm 52 Stress Test](https://bgill55.github.io/-weightandsee-guides/guides/chinas-answer-to-cyber-defense-glm-52-stress-test/)** — 2026-06-30
 - **[Gpt 56 Caught Scheming The End Of Standard Safety Tests](https://bgill55.github.io/-weightandsee-guides/guides/gpt-56-caught-scheming-the-end-of-standard-safety-tests/)** — 2026-06-29
 - **[Sora 2 Vs Veo 3 Vs Kling Ai The 4K Render Benchmark](https://bgill55.github.io/-weightandsee-guides/guides/sora-2-vs-veo-3-vs-kling-ai-the-4k-render-benchmark/)** — 2026-06-29
 - **[The 2026 Program Repair Showdown Grok 3 Vs Llama 4](https://bgill55.github.io/-weightandsee-guides/guides/the-2026-program-repair-showdown-grok-3-vs-llama-4/)** — 2026-06-29
