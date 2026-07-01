@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/129_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/130_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/flux-2-anime-mode-master-seeddriven-art-in-seconds/">
+<img src="guides/flux-2-anime-mode-master-seeddriven-art-in-seconds/thumbnail.jpg" width="300" alt="Flux 2 Anime Mode Master Seeddriven Art In Seconds"><br>
+<b>Flux 2 Anime Mode Master Seeddriven Art In Seconds</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-enterprise-agentic-shift-claude-sonnet-5s-real-edge/">
 <img src="guides/the-enterprise-agentic-shift-claude-sonnet-5s-real-edge/thumbnail.jpg" width="300" alt="The Enterprise Agentic Shift Claude Sonnet 5S Real Edge"><br>
@@ -31,12 +37,6 @@
 <b>Escape The Saas Trap Run Llama 4 Agents In N8N</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/chinas-answer-to-cyber-defense-glm-52-stress-test/">
-<img src="guides/chinas-answer-to-cyber-defense-glm-52-stress-test/thumbnail.jpg" width="300" alt="Chinas Answer To Cyber Defense Glm 52 Stress Test"><br>
-<b>Chinas Answer To Cyber Defense Glm 52 Stress Test</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![53](https://img.shields.io/badge/53-blue?style=flat-square) |
-| **Model Deep Dives** | ![38](https://img.shields.io/badge/38-blue?style=flat-square) |
+| **Model Deep Dives** | ![39](https://img.shields.io/badge/39-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![21](https://img.shields.io/badge/21-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
@@ -119,6 +119,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Flux 2 Anime Mode Master Seeddriven Art In Seconds](https://bgill55.github.io/-weightandsee-guides/guides/flux-2-anime-mode-master-seeddriven-art-in-seconds/)** — 2026-06-30
 - **[The Architecture Of Autonomy From Openclaw Squads To Hermes](https://bgill55.github.io/-weightandsee-guides/guides/the-architecture-of-autonomy-from-openclaw-squads-to-hermes/)** — 2026-06-29
 - **[The Agency The Open Source Ai Agency That Hit 50K Stars In Two Weeks](https://bgill55.github.io/-weightandsee-guides/guides/the-agency-the-open-source-ai-agency-that-hit-50k-stars-in-two-weeks/)** — 2026-06-29
 - **[Cursor Goes Mobile Can You Really Run Gpt 55 From Your Pocket](https://bgill55.github.io/-weightandsee-guides/guides/cursor-goes-mobile-can-you-really-run-gpt-55-from-your-pocket/)** — 2026-06-29
