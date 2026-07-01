@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how Loop Engineering lets AI agents debug themselves, and see why Daedalus is the local‑first cockpit that gives you AI sovereignty without a cloud cluste">
+    <meta name="keywords" content="agent loops, loop engineering, Daedalus AI, local AI development, LLM debugging">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Stop Babysitting AI: Build Self‑Debugging Agent Loops with Daedalus - Complete Guide">
+    <meta property="og:description" content="Learn how Loop Engineering lets AI agents debug themselves, and see why Daedalus is the local‑first cockpit that gives you AI sovereignty without a cloud cluster.">
+    <meta property="og:type" content="article">
+    <title>Stop Babysitting AI: Build Self‑Debugging Agent Loops with Daedalus | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Stop Babysitting AI: Build Self‑Debugging Agent Loops with Daedalus</h1>
+            <p class="subtitle">This guide walks you through setting up Daedalus, a local‑first terminal AI assistant that implements Loop Engineering. You’ll install a local LLM (Ollama or LM Studio), clone the Daedalus repository, configure it to use the model, and run the interactive TUI so the AI can draft code, automatically run compile checks, feed errors back to itself, and roll back failed patches.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 01, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Loop Engineering automates the draft‑verify‑feedback cycle so you no longer have to manually copy stack traces into the LLM.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Daedalus ships with a built‑in TUI dashboard that shows CPU/memory usage, model overrides, and a file‑tree for dynamic prompt context.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Self‑debugging works by piping compiler tools (e.g., `tsc --noEmit`, `cargo check`) into the model’s prompt, enabling automatic error‑aware revisions.</span></li>
+                    <li><span class="takeaway-num">4</span><span>If the AI exhausts its turn budget, Daedalus can roll back to the last known‑good patch using its SQLite session database.</span></li>
+                    <li><span class="takeaway-num">5</span><span>All of this runs locally—no cloud clusters required—by leveraging Ollama or LM Studio for model inference.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A recent Linux/macOS/Windows terminal with Git, Node.js (>=18) or Rust (>=1.70) installed (depending on Daedalus build system).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A local LLM runtime such as Ollama (https://ollama.com) or LM Studio (https://lmstudio.ai).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with CLI navigation and editing source code.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install a local LLM and pull a model</h3>
+                <p>Daedalus relies on a locally‑hosted LLM. Install Ollama (or LM Studio) and pull a code‑capable model such as `gemma2:2b-code`. Verify the model runs by issuing a simple prompt.
+
+For Ollama:
+```bash
+# Install Ollama (macOS example)
+brew install ollama
+# Start the Ollama daemon
+ollama serve &
+# Pull a code‑oriented model
+ollama pull gemma2:2b-code
+# Test the model
+ollama run gemma2:2b-code "Write a one‑line Python hello world"
+```</p>
+
+                <div class="code-block"><pre>ollama pull gemma2:2b-code
+ollama run gemma2:2b-code "Write a function that returns the factorial of n"</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Clone and install Daedalus</h3>
+                <p>Get the source code, install its dependencies, and build the binary. Daedalus is written in Rust, so we’ll use Cargo for the build.
+```bash
+# Clone the repo
+git clone https://github.com/daedalus-ai/daedalus.git
+cd daedalus
+# Install Rust toolchain if not present
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# Build the executable
+cargo build --release
+# Optionally add the binary to PATH
+sudo cp target/release/daedalus /usr/local/bin/
+```</p>
+
+                <div class="code-block"><pre>git clone https://github.com/daedalus-ai/daedalus.git
+cd daedalus
+cargo build --release</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Configure Daedalus to use the local model</h3>
+                <p>Create a `daedalus.toml` configuration file in `~/.config/daedalus/`. Point the `model` field to the Ollama endpoint and specify the model name. You can also set the maximum turn budget and the compiler command for your language.
+```toml
+# ~/.config/daedalus/daedalus.toml
+[model]
+endpoint = "http://localhost:11434/api/generate"
+name = "gemma2:2b-code"
+
+[loop]
+max_turns = 5
+
+[verify]
+# For TypeScript projects
+command = "tsc --noEmit"
+# For Rust projects (uncomment if needed)
+# command = "cargo check"
+```</p>
+
+                <div class="code-block"><pre>[model]
+endpoint = "http://localhost:11434/api/generate"
+name = "gemma2:2b-code"</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Launch the interactive TUI dashboard</h3>
+                <p>Start Daedalus in TUI mode. The dashboard shows a side‑by‑side view of the code editor, CPU/memory meters, and a file‑tree. Use the `c` key to open a new coding task, type a brief natural‑language request (e.g., “Add a Jest test for the `sum` function”), and hit **Enter**.
+```bash
+daedalus --tui
+```
+The assistant will draft a patch, run the verification command (`tsc --noEmit`), and, if it fails, automatically feed the compiler error back into the model for a corrected patch.</p>
+
+                <div class="code-block"><pre>daedalus --tui</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Observe the self‑debugging loop and rollback if needed</h3>
+                <p>Watch the loop in action:
+1. **Draft** – Daedalus generates a code change.
+2. **Verify** – The configured compiler runs; any error output is captured.
+3. **Feedback** – Errors are appended to the model’s prompt, prompting a revision.
+4. **Rollback** – If the model exceeds its turn budget without a successful compile, Daedalus queries its SQLite session DB, restores the previous patch, and notifies you.
+You can inspect the session history with `daedalus --history` or manually open the SQLite DB at `~/.local/share/daedalus/session.db`.
+```bash
+# View recent patches
+daedalus --history
+# Open the SQLite DB (requires sqlite3 CLI)
+sqlite3 ~/.local/share/daedalus/session.db "SELECT * FROM patches ORDER BY timestamp DESC LIMIT 5;"
+```</p>
+
+                <div class="code-block"><pre>daedalus --history</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Pin a specific model version in `daedalus.toml` (e.g., `gemma2:2b-code@v1.3`) to avoid unexpected behavior after remote updates.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If you work with multiple languages, create separate `[verify]` sections (e.g., `verify_ts`, `verify_rust`) and switch them via `daedalus --profile rust`.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Enable `log_level = "debug"` in the config to get a verbose view of the prompt‑feedback cycle; this helps tune prompt engineering.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to start the Ollama daemon before launching Daedalus – the model endpoint will be unreachable and Daedalus will time out.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Using a compiler command that emits files (e.g., `tsc` without `--noEmit`) – this can clutter the workspace with unwanted build artifacts during the loop.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Setting `max_turns` too low – the agent may abort before it can resolve a complex error, leading to premature rollbacks.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Daedalus</h4>
+                    <p>Open‑source terminal AI assistant that implements Loop Engineering for local development.</p>
+                    <a href="https://github.com/daedalus-ai/daedalus" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Ollama</h4>
+                    <p>Local LLM runtime that serves models via an HTTP API.</p>
+                    <a href="https://ollama.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>LM Studio</h4>
+                    <p>Desktop UI for running LLMs locally; can be used as an alternative to Ollama.</p>
+                    <a href="https://lmstudio.ai" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Claude Code</h4>
+                    <p>Anthropic’s code‑focused LLM, often used in prototype draft‑verify loops.</p>
+                    <a href="https://www.anthropic.com/claude" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>OpenClaw</h4>
+                    <p>Open‑source framework for building autonomous coding agents.</p>
+                    <a href="https://github.com/openclaw/openclaw" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>n8n</h4>
+                    <p>Workflow automation tool that can orchestrate distributed agent loops at scale.</p>
+                    <a href="https://n8n.io" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Kubernetes</h4>
+                    <p>Container orchestration platform for scaling agent‑loop microservices.</p>
+                    <a href="https://kubernetes.io" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>TypeScript Compiler (tsc)</h4>
+                    <p>Command‑line tool for type‑checking and compiling TypeScript projects.</p>
+                    <a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Cargo</h4>
+                    <p>Rust’s package manager and build tool, used for `cargo check` verification.</p>
+                    <a href="https://doc.rust-lang.org/cargo/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>SQLite</h4>
+                    <p>Embedded SQL database that Daedalus uses to store session history and patch data.</p>
+                    <a href="https://sqlite.org" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/daedalus-ai/daedalus" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Daedalus GitHub Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Full source code, installation instructions, and configuration reference.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://ollama.com/library" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Ollama Model Library
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Browse and pull code‑oriented LLMs compatible with Daedalus.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://medium.com/@example/loop-engineering-automation-2024" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Loop Engineering: Automating AI‑Driven Development
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Conceptual article that explains the draft‑verify‑feedback cycle.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://sqlite.org/cli.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            SQLite Documentation – CLI Usage
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — How to query the Daedalus session database from the command line.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can Daedalus work with other LLM backends besides Ollama?</h3>
+                <p>Yes. Daedalus only requires an HTTP `/generate` endpoint that follows the OpenAI‑compatible schema. You can point `model.endpoint` to an LM Studio server, a local vLLM instance, or any self‑hosted inference service.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does Daedalus decide when to rollback a patch?</h3>
+                <p>If the agent exhausts its `max_turns` without producing a compile‑passing patch, Daedalus reads the last successful patch from its SQLite `patches` table and restores the workspace to that state, then reports the rollback in the TUI.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is it safe to run Daedalus on a production codebase?</h3>
+                <p>Daedalus is designed for iterative development. It writes patches to a temporary worktree by default and only applies them to the real project after a successful verification step. For production, keep a Git branch or backup and review each patch before merging.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I customize the verification command for other languages?</h3>
+                <p>Yes. Add a `[verify]` section in `daedalus.toml` with a `command` field that runs your language’s linter or compiler (e.g., `mypy`, `golangci-lint`, `javac`). Daedalus will pipe the command’s stdout/stderr back to the model.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What does the turn budget control?</h3>
+                <p>The turn budget limits how many prompt‑response cycles the model can take for a single debugging session. Setting it lower prevents endless loops, while a higher budget gives the model more chances to self‑repair before Daedalus rolls back.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-01 10:26 • This guide accompanies the video: "Stop Babysitting AI: Build Self‑Debugging Agent Loops with Daedalus"</p>
+        </footer>
+    </div>
+</body>
+</html>

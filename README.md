@@ -8,9 +8,9 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/131_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/132_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
-![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
+![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
 </div>
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/stop-babysitting-ai-build-selfdebugging-agent-loops-with-daedalus/">
+<img src="guides/stop-babysitting-ai-build-selfdebugging-agent-loops-with-daedalus/thumbnail.jpg" width="300" alt="Stop Babysitting Ai Build Selfdebugging Agent Loops With Daedalus"><br>
+<b>Stop Babysitting Ai Build Selfdebugging Agent Loops With Daedalus</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/omni-flash-vs-gpt-55-the-latency-showdown/">
 <img src="guides/omni-flash-vs-gpt-55-the-latency-showdown/thumbnail.jpg" width="300" alt="Omni Flash Vs Gpt 55 The Latency Showdown"><br>
@@ -31,12 +37,6 @@
 <b>Flux 2 Anime Mode Master Seeddriven Art In Seconds</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-enterprise-agentic-shift-claude-sonnet-5s-real-edge/">
-<img src="guides/the-enterprise-agentic-shift-claude-sonnet-5s-real-edge/thumbnail.jpg" width="300" alt="The Enterprise Agentic Shift Claude Sonnet 5S Real Edge"><br>
-<b>The Enterprise Agentic Shift Claude Sonnet 5S Real Edge</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![54](https://img.shields.io/badge/54-blue?style=flat-square) |
 | **Model Deep Dives** | ![39](https://img.shields.io/badge/39-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![21](https://img.shields.io/badge/21-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -166,6 +166,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Stop Babysitting Ai Build Selfdebugging Agent Loops With Daedalus](https://bgill55.github.io/-weightandsee-guides/guides/stop-babysitting-ai-build-selfdebugging-agent-loops-with-daedalus/)** — 2026-07-01
 - **[Escape The Saas Trap Run Llama 4 Agents In N8N](https://bgill55.github.io/-weightandsee-guides/guides/escape-the-saas-trap-run-llama-4-agents-in-n8n/)** — 2026-06-30
 - **[Qwenagentworld 35Ba3B Handson Review For Edge Deployment](https://bgill55.github.io/-weightandsee-guides/guides/qwenagentworld-35ba3b-handson-review-for-edge-deployment/)** — 2026-06-29
 - **[Replace Chatgpt V5 Api With Openfugu The Zero Cost Switch](https://bgill55.github.io/-weightandsee-guides/guides/replace-chatgpt-v5-api-with-openfugu-the-zero-cost-switch/)** — 2026-06-28
