@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/130_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/131_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JUNE_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/omni-flash-vs-gpt-55-the-latency-showdown/">
+<img src="guides/omni-flash-vs-gpt-55-the-latency-showdown/thumbnail.jpg" width="300" alt="Omni Flash Vs Gpt 55 The Latency Showdown"><br>
+<b>Omni Flash Vs Gpt 55 The Latency Showdown</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/flux-2-anime-mode-master-seeddriven-art-in-seconds/">
 <img src="guides/flux-2-anime-mode-master-seeddriven-art-in-seconds/thumbnail.jpg" width="300" alt="Flux 2 Anime Mode Master Seeddriven Art In Seconds"><br>
@@ -31,12 +37,6 @@
 <b>The Enterprise Agentic Shift Claude Sonnet 5S Real Edge</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/escape-the-saas-trap-run-llama-4-agents-in-n8n/">
-<img src="guides/escape-the-saas-trap-run-llama-4-agents-in-n8n/thumbnail.jpg" width="300" alt="Escape The Saas Trap Run Llama 4 Agents In N8N"><br>
-<b>Escape The Saas Trap Run Llama 4 Agents In N8N</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![53](https://img.shields.io/badge/53-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![54](https://img.shields.io/badge/54-blue?style=flat-square) |
 | **Model Deep Dives** | ![39](https://img.shields.io/badge/39-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![21](https://img.shields.io/badge/21-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Omni Flash Vs Gpt 55 The Latency Showdown](https://bgill55.github.io/-weightandsee-guides/guides/omni-flash-vs-gpt-55-the-latency-showdown/)** — 2026-06-30
 - **[The Enterprise Agentic Shift Claude Sonnet 5S Real Edge](https://bgill55.github.io/-weightandsee-guides/guides/the-enterprise-agentic-shift-claude-sonnet-5s-real-edge/)** — 2026-06-30
 - **[Chinas Answer To Cyber Defense Glm 52 Stress Test](https://bgill55.github.io/-weightandsee-guides/guides/chinas-answer-to-cyber-defense-glm-52-stress-test/)** — 2026-06-30
 - **[Gpt 56 Caught Scheming The End Of Standard Safety Tests](https://bgill55.github.io/-weightandsee-guides/guides/gpt-56-caught-scheming-the-end-of-standard-safety-tests/)** — 2026-06-29
