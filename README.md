@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/133_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/134_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/gemini-spark-your-first-native-mac-ai-agent/">
+<img src="guides/gemini-spark-your-first-native-mac-ai-agent/thumbnail.jpg" width="300" alt="Gemini Spark Your First Native Mac Ai Agent"><br>
+<b>Gemini Spark Your First Native Mac Ai Agent</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/how-xs-mcp-api-hooks-enable-seamless-onprem-llm-pipelines/">
 <img src="guides/how-xs-mcp-api-hooks-enable-seamless-onprem-llm-pipelines/thumbnail.jpg" width="300" alt="How Xs Mcp Api Hooks Enable Seamless Onprem Llm Pipelines"><br>
@@ -31,12 +37,6 @@
 <b>Stop Babysitting Ai Build Selfdebugging Agent Loops With Daedalus</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/omni-flash-vs-gpt-55-the-latency-showdown/">
-<img src="guides/omni-flash-vs-gpt-55-the-latency-showdown/thumbnail.jpg" width="300" alt="Omni Flash Vs Gpt 55 The Latency Showdown"><br>
-<b>Omni Flash Vs Gpt 55 The Latency Showdown</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![54](https://img.shields.io/badge/54-blue?style=flat-square) |
-| **Model Deep Dives** | ![39](https://img.shields.io/badge/39-blue?style=flat-square) |
+| **Model Deep Dives** | ![40](https://img.shields.io/badge/40-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
@@ -120,6 +120,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Gemini Spark Your First Native Mac Ai Agent](https://bgill55.github.io/-weightandsee-guides/guides/gemini-spark-your-first-native-mac-ai-agent/)** — 2026-07-01
 - **[Flux 2 Anime Mode Master Seeddriven Art In Seconds](https://bgill55.github.io/-weightandsee-guides/guides/flux-2-anime-mode-master-seeddriven-art-in-seconds/)** — 2026-06-30
 - **[The Architecture Of Autonomy From Openclaw Squads To Hermes](https://bgill55.github.io/-weightandsee-guides/guides/the-architecture-of-autonomy-from-openclaw-squads-to-hermes/)** — 2026-06-29
 - **[The Agency The Open Source Ai Agency That Hit 50K Stars In Two Weeks](https://bgill55.github.io/-weightandsee-guides/guides/the-agency-the-open-source-ai-agency-that-hit-50k-stars-in-two-weeks/)** — 2026-06-29
