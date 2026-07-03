@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/138_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/139_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/gemini-code-assist-is-dead-migrate-to-antigravity-cli-now/">
+<img src="guides/gemini-code-assist-is-dead-migrate-to-antigravity-cli-now/thumbnail.jpg" width="300" alt="Gemini Code Assist Is Dead Migrate To Antigravity Cli Now"><br>
+<b>Gemini Code Assist Is Dead Migrate To Antigravity Cli Now</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/zcode-30-vs-copilot-x-can-glm-52-beat-gpt-55/">
 <img src="guides/zcode-30-vs-copilot-x-can-glm-52-beat-gpt-55/thumbnail.jpg" width="300" alt="Zcode 30 Vs Copilot X Can Glm 52 Beat Gpt 55"><br>
@@ -31,12 +37,6 @@
 <b>Deploying Zai Zcode 30 With Glm52 On Your Own Gpu Cluster Cost Performance And S</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/zcode-vs-cursor-vs-claude-code-vs-copilot-2026-coding-assistant-showdown/">
-<img src="guides/zcode-vs-cursor-vs-claude-code-vs-copilot-2026-coding-assistant-showdown/thumbnail.jpg" width="300" alt="Zcode Vs Cursor Vs Claude Code Vs Copilot 2026 Coding Assistant Showdown"><br>
-<b>Zcode Vs Cursor Vs Claude Code Vs Copilot 2026 Coding Assistant Showdown</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![58](https://img.shields.io/badge/58-blue?style=flat-square) |
-| **Model Deep Dives** | ![40](https://img.shields.io/badge/40-blue?style=flat-square) |
+| **Model Deep Dives** | ![41](https://img.shields.io/badge/41-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
@@ -124,6 +124,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Gemini Code Assist Is Dead Migrate To Antigravity Cli Now](https://bgill55.github.io/-weightandsee-guides/guides/gemini-code-assist-is-dead-migrate-to-antigravity-cli-now/)** — 2026-07-03
 - **[Gemini Spark Your First Native Mac Ai Agent](https://bgill55.github.io/-weightandsee-guides/guides/gemini-spark-your-first-native-mac-ai-agent/)** — 2026-07-01
 - **[Flux 2 Anime Mode Master Seeddriven Art In Seconds](https://bgill55.github.io/-weightandsee-guides/guides/flux-2-anime-mode-master-seeddriven-art-in-seconds/)** — 2026-06-30
 - **[The Architecture Of Autonomy From Openclaw Squads To Hermes](https://bgill55.github.io/-weightandsee-guides/guides/the-architecture-of-autonomy-from-openclaw-squads-to-hermes/)** — 2026-06-29

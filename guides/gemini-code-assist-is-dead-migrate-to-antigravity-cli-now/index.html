@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Google is retiring the consumer version of Gemini Code Assist on July 17, 2026, forcing a massive shift for individual developers. This video provides a technic">
+    <meta name="keywords" content="Antigravity CLI, Gemini Code Assist, Google Cloud AI, DevOps Migration, Agent Mode">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Gemini Code Assist is Dead: Migrate to Antigravity CLI Now - Complete Guide">
+    <meta property="og:description" content="Google is retiring the consumer version of Gemini Code Assist on July 17, 2026, forcing a massive shift for individual developers. This video provides a technical breakdown of the shutdown, explaining">
+    <meta property="og:type" content="article">
+    <title>Gemini Code Assist is Dead: Migrate to Antigravity CLI Now | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Gemini Code Assist is Dead: Migrate to Antigravity CLI Now</h1>
+            <p class="subtitle">This guide provides a technical walkthrough for migrating from the deprecated consumer version of Gemini Code Assist to the new Antigravity CLI before the July 17, 2026 shutdown. It covers the architectural shift from OAuth-based web integration to local API-key authentication, including steps to uninstall legacy GitHub Apps and configure the new agent-mode framework. By following these instructions, developers can maintain their AI-assisted workflows and gain the ability to script code generation in headless CI/CD environments.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 03, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>The consumer tier of Gemini Code Assist will be fully shut down on July 17, 2026, requiring mandatory migration.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The architecture pivots from a browser-based OAuth flow to a direct API-key authentication model via the Antigravity CLI.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Legacy dependencies, specifically the Gemini Code Assist GitHub App, must be manually uninstalled to prevent conflicts.</span></li>
+                    <li><span class="takeaway-num">4</span><span>The new 'agent-mode' replaces the deprecated '@' syntax, enabling persistent, stateful sessions that maintain file context.</span></li>
+                    <li><span class="takeaway-num">5</span><span>The CLI-first approach allows for automation in CI/CD pipelines by removing dependencies on graphical user interfaces.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A Google Cloud project with the Gemini API enabled to generate an API key.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python and pip (or npm) installed on the local machine to install the CLI tool.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Admin access to GitHub repositories to remove the legacy integration.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Uninstall the Legacy GitHub App</h3>
+                <p>Navigate to your repository settings on GitHub. Go to the 'Integrations & services' or 'Apps' section, find the 'Gemini Code Assist' application, and uninstall it. This clears the deprecated OAuth dependencies that will conflict with the new CLI authentication method.</p>
+
+                <div class="code-block"><pre># No CLI command needed. Perform this action via GitHub UI:
+# Settings -> Applications -> Gemini Code Assist -> Uninstall</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Install the Antigravity CLI</h3>
+                <p>Install the Antigravity CLI binary on your local development environment using Python's package manager. This tool serves as the direct client to Google's inference endpoints, replacing the thin client architecture of the old IDE extensions.</p>
+
+                <div class="code-block"><pre>pip install antigravity-cli</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Authenticate with Google Cloud</h3>
+                <p>Generate a new API key from the Google Cloud AI console. Use the login command to inject this credential into your local environment, or configure it via a setup file. This shift moves identity management from Google's servers to your local machine.</p>
+
+                <div class="code-block"><pre>antigravity login --api-key YOUR_GOOGLE_CLOUD_KEY</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Configure Agent-Mode</h3>
+                <p>Create a configuration file to enable 'agent-mode', which maintains context across your terminal session. This configuration sets your preferred model and ensures the CLI behaves as a stateful agent rather than a single-turn prompt responder.</p>
+
+                <div class="code-block"><pre>cat > antigravity.yaml <<EOF
+api_key: YOUR_GOOGLE_CLOUD_KEY
+model: gemini-1.5-pro
+agent_mode: true
+EOF</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Verify Installation and Run Review</h3>
+                <p>Validate the migration by running a code review command. This confirms that the CLI can successfully authenticate, read repository structure, and utilize the agent-mode framework to analyze code.</p>
+
+                <div class="code-block"><pre>antigravity review --repo https://github.com/example/project --pr 42</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Store your API key in environment variables (e.g., `GOOGLE_AI_KEY`) instead of hardcoding it in configuration files to enhance security.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the Antigravity CLI in your GitHub Actions workflows by passing the API key as a repository secret to enable automated linting and testing.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Test the agent-mode features in a sandbox repository first to understand how the context mapping handles your specific project structure before full deployment.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Leaving the legacy GitHub App installed, which may cause authentication conflicts or silent failures during the transition.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Attempting to use the old '@' tool syntax, which is no longer supported; all tool interactions must now go through agent-mode.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Not enabling the required APIs in Google Cloud Console before generating the key, resulting in 403 Forbidden errors during CLI usage.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Antigravity CLI</h4>
+                    <p>The new command-line interface for Google's Gemini models, supporting agent-mode and direct API key authentication.</p>
+                    <a href="https://developers.googleblog.com/en/an-important-update-transitioning-gemini-cli-to-antigravity-cli/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Google Cloud AI Platform</h4>
+                    <p>The infrastructure hosting the Gemini models and the source for API keys.</p>
+                    <a href="https://cloud.google.com/vertex-ai" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Gemini Code Assist</h4>
+                    <p>The deprecated consumer tool being shut down.</p>
+                    <a href="https://developers.google.com/gemini-code-assist/docs/deprecations" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://developers.google.com/gemini-code-assist/docs/deprecations" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Feature deprecations | Gemini Code Assist
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation regarding the shutdown timeline and feature removal.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://developers.googleblog.com/en/an-important-update-transitioning-gemini-cli-to-antigravity-cli/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Transitioning Gemini CLI to Antigravity CLI
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Detailed blog post on the architectural changes and migration steps.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://gemini.google.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Google Gemini
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Homepage for the Gemini AI platform.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What happens to my existing workflows after July 17, 2026?</h3>
+                <p>On July 17, 2026, the consumer endpoints for Gemini Code Assist will go dark. Any workflows relying on the GitHub App or OAuth-based authentication will stop working immediately.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is the Antigravity CLI free to use?</h3>
+                <p>The CLI tool itself is free, but it requires a Google Cloud API key to function. You will be charged for the usage of Gemini models based on Google Cloud's standard pay-as-you-go rates.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use Antigravity CLI in a headless CI/CD environment?</h3>
+                <p>Yes. The CLI is designed for headless operation. You can authenticate by passing your API key as an environment variable or secret, allowing for automated code generation and review in Docker containers or GitHub Actions.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does agent-mode differ from the old '@' syntax?</h3>
+                <p>The old '@' syntax invoked tools as one-off commands. Agent-mode creates a persistent session that maintains context of your file structure and imports, allowing the AI to perform multi-step reasoning and refactoring.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Are enterprise customers affected by this shutdown?</h3>
+                <p>No. This shutdown specifically applies to the consumer tier of Gemini Code Assist. Enterprise customers with specific contracts will continue to use their existing support channels.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#GeminiCodeAssist</span>
+                <span class="tag">#AntigravityCLI</span>
+                <span class="tag">#GoogleCloudAI</span>
+                <span class="tag">#DevOpsMigration</span>
+                <span class="tag">#AI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-03 10:37 • This guide accompanies the video: "Gemini Code Assist is Dead: Migrate to Antigravity CLI Now"</p>
+        </footer>
+    </div>
+</body>
+</html>
