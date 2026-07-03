@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/137_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/138_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/zcode-30-vs-copilot-x-can-glm-52-beat-gpt-55/">
+<img src="guides/zcode-30-vs-copilot-x-can-glm-52-beat-gpt-55/thumbnail.jpg" width="300" alt="Zcode 30 Vs Copilot X Can Glm 52 Beat Gpt 55"><br>
+<b>Zcode 30 Vs Copilot X Can Glm 52 Beat Gpt 55</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/deploying-zai-zcode-30-with-glm52-on-your-own-gpu-cluster-cost-performance-and-s/">
 <img src="guides/deploying-zai-zcode-30-with-glm52-on-your-own-gpu-cluster-cost-performance-and-s/thumbnail.jpg" width="300" alt="Deploying Zai Zcode 30 With Glm52 On Your Own Gpu Cluster Cost Performance And S"><br>
@@ -31,12 +37,6 @@
 <b>Zcode Vs Cursor Vs Claude Code Vs Copilot 2026 Coding Assistant Showdown</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/can-gpt-56-sol-actually-fix-your-code-the-math-connection/">
-<img src="guides/can-gpt-56-sol-actually-fix-your-code-the-math-connection/thumbnail.jpg" width="300" alt="Can Gpt 56 Sol Actually Fix Your Code The Math Connection"><br>
-<b>Can Gpt 56 Sol Actually Fix Your Code The Math Connection</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![57](https://img.shields.io/badge/57-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![58](https://img.shields.io/badge/58-blue?style=flat-square) |
 | **Model Deep Dives** | ![40](https://img.shields.io/badge/40-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Zcode 30 Vs Copilot X Can Glm 52 Beat Gpt 55](https://bgill55.github.io/-weightandsee-guides/guides/zcode-30-vs-copilot-x-can-glm-52-beat-gpt-55/)** — 2026-07-02
 - **[Deploying Zai Zcode 30 With Glm52 On Your Own Gpu Cluster Cost Performance And S](https://bgill55.github.io/-weightandsee-guides/guides/deploying-zai-zcode-30-with-glm52-on-your-own-gpu-cluster-cost-performance-and-s/)** — 2026-07-02
 - **[Zcode Vs Cursor Vs Claude Code Vs Copilot 2026 Coding Assistant Showdown](https://bgill55.github.io/-weightandsee-guides/guides/zcode-vs-cursor-vs-claude-code-vs-copilot-2026-coding-assistant-showdown/)** — 2026-07-02
 - **[Can Gpt 56 Sol Actually Fix Your Code The Math Connection](https://bgill55.github.io/-weightandsee-guides/guides/can-gpt-56-sol-actually-fix-your-code-the-math-connection/)** — 2026-07-01
