@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/139_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/140_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-metas-new-moe-architecture-how-llama-4-powers-muse-sparks-speed/">
+<img src="guides/inside-metas-new-moe-architecture-how-llama-4-powers-muse-sparks-speed/thumbnail.jpg" width="300" alt="Inside Metas New Moe Architecture How Llama 4 Powers Muse Sparks Speed"><br>
+<b>Inside Metas New Moe Architecture How Llama 4 Powers Muse Sparks Speed</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/gemini-code-assist-is-dead-migrate-to-antigravity-cli-now/">
 <img src="guides/gemini-code-assist-is-dead-migrate-to-antigravity-cli-now/thumbnail.jpg" width="300" alt="Gemini Code Assist Is Dead Migrate To Antigravity Cli Now"><br>
@@ -31,12 +37,6 @@
 <b>Zcode 30 Vs Copilot X Can Glm 52 Beat Gpt 55</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/deploying-zai-zcode-30-with-glm52-on-your-own-gpu-cluster-cost-performance-and-s/">
-<img src="guides/deploying-zai-zcode-30-with-glm52-on-your-own-gpu-cluster-cost-performance-and-s/thumbnail.jpg" width="300" alt="Deploying Zai Zcode 30 With Glm52 On Your Own Gpu Cluster Cost Performance And S"><br>
-<b>Deploying Zai Zcode 30 With Glm52 On Your Own Gpu Cluster Cost Performance And S</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![58](https://img.shields.io/badge/58-blue?style=flat-square) |
-| **Model Deep Dives** | ![41](https://img.shields.io/badge/41-blue?style=flat-square) |
+| **Model Deep Dives** | ![42](https://img.shields.io/badge/42-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
@@ -124,6 +124,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Inside Metas New Moe Architecture How Llama 4 Powers Muse Sparks Speed](https://bgill55.github.io/-weightandsee-guides/guides/inside-metas-new-moe-architecture-how-llama-4-powers-muse-sparks-speed/)** — 2026-07-03
 - **[Gemini Code Assist Is Dead Migrate To Antigravity Cli Now](https://bgill55.github.io/-weightandsee-guides/guides/gemini-code-assist-is-dead-migrate-to-antigravity-cli-now/)** — 2026-07-03
 - **[Gemini Spark Your First Native Mac Ai Agent](https://bgill55.github.io/-weightandsee-guides/guides/gemini-spark-your-first-native-mac-ai-agent/)** — 2026-07-01
 - **[Flux 2 Anime Mode Master Seeddriven Art In Seconds](https://bgill55.github.io/-weightandsee-guides/guides/flux-2-anime-mode-master-seeddriven-art-in-seconds/)** — 2026-06-30
