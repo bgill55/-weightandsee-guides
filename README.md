@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/142_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/143_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-llama4coder-the-architecture-powering-metas-new-coding-ai/">
+<img src="guides/inside-llama4coder-the-architecture-powering-metas-new-coding-ai/thumbnail.jpg" width="300" alt="Inside Llama4Coder The Architecture Powering Metas New Coding Ai"><br>
+<b>Inside Llama4Coder The Architecture Powering Metas New Coding Ai</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/how-deepseek-v4-pro-dspark-turns-spark-clusters-into-ai-factories/">
 <img src="guides/how-deepseek-v4-pro-dspark-turns-spark-clusters-into-ai-factories/thumbnail.jpg" width="300" alt="How Deepseek V4 Pro Dspark Turns Spark Clusters Into Ai Factories"><br>
@@ -31,12 +37,6 @@
 <b>Meta Muse Spark 20 Launch Ondevice Coding Assistant Shakes Up The Market</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-metas-new-moe-architecture-how-llama-4-powers-muse-sparks-speed/">
-<img src="guides/inside-metas-new-moe-architecture-how-llama-4-powers-muse-sparks-speed/thumbnail.jpg" width="300" alt="Inside Metas New Moe Architecture How Llama 4 Powers Muse Sparks Speed"><br>
-<b>Inside Metas New Moe Architecture How Llama 4 Powers Muse Sparks Speed</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![58](https://img.shields.io/badge/58-blue?style=flat-square) |
-| **Model Deep Dives** | ![43](https://img.shields.io/badge/43-blue?style=flat-square) |
+| **Model Deep Dives** | ![44](https://img.shields.io/badge/44-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
@@ -124,6 +124,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Inside Llama4Coder The Architecture Powering Metas New Coding Ai](https://bgill55.github.io/-weightandsee-guides/guides/inside-llama4coder-the-architecture-powering-metas-new-coding-ai/)** — 2026-07-04
 - **[Meta Muse Spark 20 Launch Ondevice Coding Assistant Shakes Up The Market](https://bgill55.github.io/-weightandsee-guides/guides/meta-muse-spark-20-launch-ondevice-coding-assistant-shakes-up-the-market/)** — 2026-07-03
 - **[Inside Metas New Moe Architecture How Llama 4 Powers Muse Sparks Speed](https://bgill55.github.io/-weightandsee-guides/guides/inside-metas-new-moe-architecture-how-llama-4-powers-muse-sparks-speed/)** — 2026-07-03
 - **[Gemini Code Assist Is Dead Migrate To Antigravity Cli Now](https://bgill55.github.io/-weightandsee-guides/guides/gemini-code-assist-is-dead-migrate-to-antigravity-cli-now/)** — 2026-07-03
