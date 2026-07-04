@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/143_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/144_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/metas-llama4coder-the-coding-ai-that-could-disrupt-gpt55/">
+<img src="guides/metas-llama4coder-the-coding-ai-that-could-disrupt-gpt55/thumbnail.jpg" width="300" alt="Metas Llama4Coder The Coding Ai That Could Disrupt Gpt55"><br>
+<b>Metas Llama4Coder The Coding Ai That Could Disrupt Gpt55</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-llama4coder-the-architecture-powering-metas-new-coding-ai/">
 <img src="guides/inside-llama4coder-the-architecture-powering-metas-new-coding-ai/thumbnail.jpg" width="300" alt="Inside Llama4Coder The Architecture Powering Metas New Coding Ai"><br>
@@ -31,12 +37,6 @@
 <b>How Deepseek V4 Pro Dspark Turns Spark Clusters Into Ai Factories</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/meta-muse-spark-20-launch-ondevice-coding-assistant-shakes-up-the-market/">
-<img src="guides/meta-muse-spark-20-launch-ondevice-coding-assistant-shakes-up-the-market/thumbnail.jpg" width="300" alt="Meta Muse Spark 20 Launch Ondevice Coding Assistant Shakes Up The Market"><br>
-<b>Meta Muse Spark 20 Launch Ondevice Coding Assistant Shakes Up The Market</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![58](https://img.shields.io/badge/58-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![59](https://img.shields.io/badge/59-blue?style=flat-square) |
 | **Model Deep Dives** | ![44](https://img.shields.io/badge/44-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Metas Llama4Coder The Coding Ai That Could Disrupt Gpt55](https://bgill55.github.io/-weightandsee-guides/guides/metas-llama4coder-the-coding-ai-that-could-disrupt-gpt55/)** — 2026-07-04
 - **[Zcode 30 Vs Copilot X Can Glm 52 Beat Gpt 55](https://bgill55.github.io/-weightandsee-guides/guides/zcode-30-vs-copilot-x-can-glm-52-beat-gpt-55/)** — 2026-07-02
 - **[Deploying Zai Zcode 30 With Glm52 On Your Own Gpu Cluster Cost Performance And S](https://bgill55.github.io/-weightandsee-guides/guides/deploying-zai-zcode-30-with-glm52-on-your-own-gpu-cluster-cost-performance-and-s/)** — 2026-07-02
 - **[Zcode Vs Cursor Vs Claude Code Vs Copilot 2026 Coding Assistant Showdown](https://bgill55.github.io/-weightandsee-guides/guides/zcode-vs-cursor-vs-claude-code-vs-copilot-2026-coding-assistant-showdown/)** — 2026-07-02
