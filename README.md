@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/141_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/142_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-deepseek-v4-pro-dspark-turns-spark-clusters-into-ai-factories/">
+<img src="guides/how-deepseek-v4-pro-dspark-turns-spark-clusters-into-ai-factories/thumbnail.jpg" width="300" alt="How Deepseek V4 Pro Dspark Turns Spark Clusters Into Ai Factories"><br>
+<b>How Deepseek V4 Pro Dspark Turns Spark Clusters Into Ai Factories</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/meta-muse-spark-20-launch-ondevice-coding-assistant-shakes-up-the-market/">
 <img src="guides/meta-muse-spark-20-launch-ondevice-coding-assistant-shakes-up-the-market/thumbnail.jpg" width="300" alt="Meta Muse Spark 20 Launch Ondevice Coding Assistant Shakes Up The Market"><br>
 <b>Meta Muse Spark 20 Launch Ondevice Coding Assistant Shakes Up The Market</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-metas-new-moe-architecture-how-llama-4-powers-muse-sparks-speed/">
 <img src="guides/inside-metas-new-moe-architecture-how-llama-4-powers-muse-sparks-speed/thumbnail.jpg" width="300" alt="Inside Metas New Moe Architecture How Llama 4 Powers Muse Sparks Speed"><br>
 <b>Inside Metas New Moe Architecture How Llama 4 Powers Muse Sparks Speed</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/gemini-code-assist-is-dead-migrate-to-antigravity-cli-now/">
-<img src="guides/gemini-code-assist-is-dead-migrate-to-antigravity-cli-now/thumbnail.jpg" width="300" alt="Gemini Code Assist Is Dead Migrate To Antigravity Cli Now"><br>
-<b>Gemini Code Assist Is Dead Migrate To Antigravity Cli Now</b>
 </a>
 </td>
 </tr></table>
@@ -49,7 +49,7 @@
 | **Model Deep Dives** | ![43](https://img.shields.io/badge/43-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![8](https://img.shields.io/badge/8-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -214,6 +214,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[How Deepseek V4 Pro Dspark Turns Spark Clusters Into Ai Factories](https://bgill55.github.io/-weightandsee-guides/guides/how-deepseek-v4-pro-dspark-turns-spark-clusters-into-ai-factories/)** — 2026-07-03
 - **[Concept 3 The Diy Approach Selecting Your Optimal Multi Node Llm Server](https://bgill55.github.io/-weightandsee-guides/guides/concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server/)** — 2026-06-19
 - **[What Happens When Ai Learns To Write Rocket Code Inside Domain Specific Llm Trai](https://bgill55.github.io/-weightandsee-guides/guides/what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai/)** — 2026-06-17
 - **[What Happens When Ai Learns To Code Like A Rocket Scientist](https://bgill55.github.io/-weightandsee-guides/guides/what-happens-when-ai-learns-to-code-like-a-rocket-scientist/)** — 2026-06-17

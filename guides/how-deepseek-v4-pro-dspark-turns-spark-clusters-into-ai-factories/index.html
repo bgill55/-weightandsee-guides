@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This video breaks down DeepSeek-V4-Pro-DSpark, the open-source framework that uses Apache Spark to distribute DeepSeek V4 LLM inference across thousands of GPUs">
+    <meta name="keywords" content="DeepSeek-V4-Pro-DSpark, Spark LLM inference, distributed AI serving, model sharding, GPU cluster scaling">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="How DeepSeek-V4-Pro-DSpark Turns Spark Clusters into AI Factories - Complete Guide">
+    <meta property="og:description" content="This video breaks down DeepSeek-V4-Pro-DSpark, the open-source framework that uses Apache Spark to distribute DeepSeek V4 LLM inference across thousands of GPUs. We'll explore how it achieves sub-seco">
+    <meta property="og:type" content="article">
+    <title>How DeepSeek-V4-Pro-DSpark Turns Spark Clusters into AI Factories | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>How DeepSeek-V4-Pro-DSpark Turns Spark Clusters into AI Factories</h1>
+            <p class="subtitle">This guide walks you through deploying DeepSeek-V4-Pro-DSpark to run DeepSeek V4 LLM inference on an existing Apache Spark cluster. You'll learn how to clone the repository, build the distributable JAR, configure Spark submit with GPU resources, and run inference jobs—including a CI‑pipeline example for automated test generation.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 03, 2026</span>
+                <span>4 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>DeepSeek-V4-Pro-DSpark treats each GPU as a Spark task, enabling model sharding and pipeline parallelism without custom hardware.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The framework integrates directly with Spark’s fault‑tolerant DAG engine, providing automatic retries, scaling, and resource sharing with existing ETL workloads.</span></li>
+                    <li><span class="takeaway-num">3</span><span>A single spark-submit command can reserve GPUs, define shard count, and set batch size for optimal throughput.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Performance scales linearly with GPU count until network bandwidth becomes the bottleneck, as shown in internal 96‑GPU tests.</span></li>
+                    <li><span class="takeaway-num">5</span><span>CI integration demonstrates sub‑second latency (≈900 ms per file) for on‑the‑fly unit‑test generation from pull‑request diffs.</span></li>
+                    <li><span class="takeaway-num">6</span><span>Proper configuration of spark.executor.resource.gpu.amount, shard‑count, and batch‑size is critical to avoid OOM errors and under‑utilization.</span></li>
+                    <li><span class="takeaway-num">7</span><span>Monitoring via Spark UI and adjusting batch scheduling helps maintain near‑full GPU utilization under fluctuating request rates.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A running Apache Spark cluster with GPU‑enabled worker nodes (CUDA‑capable GPUs).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Java 11+ and Maven installed for building the project.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with spark-submit and Spark cluster configuration.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to the DeepSeek V4 model files (or ability to download them via the framework).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Optional: Docker/Kubernetes if you prefer containerized execution.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the repository and build the JAR</h3>
+                <p>Clone the DeepSeek-V4-Pro-DSpark GitHub repo, then use Maven to compile the source into an executable JAR file that Spark can launch.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/deepseek/dspark.git
+cd dspark
+mvn clean package -DskipTests
+# The resulting JAR will be at target/dspark.jar</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Prepare Spark submit configuration for GPU resources</h3>
+                <p>Configure the spark-submit command to allocate the desired number of GPUs per executor, specify the main class, and point to the built JAR. Adjust --conf spark.executor.resource.gpu.amount to match the GPUs available per worker.</p>
+
+                <div class="code-block"><pre>spark-submit \
+  --master spark://cluster-master:7077 \
+  --conf spark.executor.resource.gpu.amount=4 \
+  --class com.deepseek.DSparkApp \
+  target/dspark.jar \
+  --model deepseek-v4-pro \
+  --shard-count 8 \
+  --batch-size 32</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Run an inference job (batch mode)</h3>
+                <p>Launch the Spark job to process a set of prompts. The framework will automatically shard the model across the allocated GPUs, pipeline activations, and stream token generation. Monitor progress via the Spark UI.</p>
+
+                <div class="code-block"><pre># Example: feed a JSONL file of prompts
+spark-submit \
+  --master spark://cluster-master:7077 \
+  --conf spark.executor.resource.gpu.amount=4 \
+  --class com.deepseek.DSparkApp \
+  target/dspark.jar \
+  --model deepseek-v4-pro \
+  --shard-count 8 \
+  --batch-size 32 \
+  --input prompts.jsonl \
+  --output responses.jsonl</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Integrate with CI/CD for automated test generation</h3>
+                <p>Add a Spark job to your CI pipeline that reads pull‑request diffs, runs them through DeepSeek‑V4‑Pro‑DSpark to generate unit tests, and commits the results back. The job shares the same cluster resources as your existing ETL workloads.</p>
+
+                <div class="code-block"><pre># Pseudocode for a CI step (e.g., in GitHub Actions)
+- name: Run DSpark test generation
+  run: |
+    spark-submit \
+      --master spark://cluster-master:7077 \
+      --conf spark.executor.resource.gpu.amount=4 \
+      --class com.deepseek.DSparkApp \
+      target/dspark.jar \
+      --model deepseek-v4-pro \
+      --shard-count 8 \
+      --batch-size 32 \
+      --input pr_diff.patch \
+      --output generated_tests/
+    # Commit generated tests back to the repo
+    git add generated_tests/
+    git commit -m "Add AI‑generated unit tests"
+    git push</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Match spark.executor.resource.gpu.amount to the physical GPUs per node to avoid over‑subscription; start with 1 GPU per executor and scale up.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the Spark UI’s Executors tab to view GPU utilization; if you see frequent GC pauses, increase executor memory or reduce batch size.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> When network bandwidth becomes the bottleneck (observed via rising shuffle read/write times), lower the batch size or increase shard count to reduce per‑GPU activation size.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Enable Spark’s event logging and look for ‘TaskSetManager’ logs to detect failed tasks; the framework automatically retries via DAG lineage.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> For low‑latency streaming inference, set --batch-size to a small value (e.g., 4‑8) and enable Spark’s continuous processing mode if your cluster version supports it.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> OOM errors: allocating more GPUs per executor than physically available, or setting batch size too large for GPU memory. Fix by lowering --conf spark.executor.resource.gpu.amount or --batch-size.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Under‑utilization: using too few shards relative to GPU count leaves some GPUs idle. Increase --shard-count to at least the number of GPUs per executor.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Network saturation: with many GPUs, Ethernet bandwidth can become the limiting factor, causing latency to rise. Monitor network I/O and consider upgrading to higher‑speed interconnects or reducing cross‑GPU traffic via larger shard sizes.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Missing model files: the framework expects the DeepSeek V4 weights in a accessible path (HDFS, S3, or local). Ensure the --model parameter points to a valid model directory.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Version mismatches: using an older Spark release that lacks GPU scheduling support. Verify Spark ≥3.2 with the appropriate GPU resource plugin enabled.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>DeepSeek-V4-Pro-DSpark</h4>
+                    <p>Open‑source distributed inference framework that runs DeepSeek V4 LLMs on Apache Spark clusters via model sharding and pipeline parallelism.</p>
+                    <a href="https://github.com/deepseek/dspark" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Apache Spark</h4>
+                    <p>Unified analytics engine for large‑scale data processing, now extended with GPU scheduling for AI workloads.</p>
+                    <a href="https://spark.apache.org" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Maven</h4>
+                    <p>Build automation tool used to compile the DSpark project into a JAR file.</p>
+                    <a href="https://maven.apache.org" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Docker</h4>
+                    <p>Platform for containerizing the DSpark application and its dependencies for consistent deployment.</p>
+                    <a href="https://www.docker.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Kubernetes</h4>
+                    <p>Orchestration system for managing containerized Spark workers in a cloud‑native environment.</p>
+                    <a href="https://kubernetes.io" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>DeepSpeed</h4>
+                    <p>Microsoft library for model parallelism and optimization, integrated into DSpark for tensor/pipeline parallelism.</p>
+                    <a href="https://github.com/microsoft/DeepSpeed" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Ray</h4>
+                    <p>Distributed computing framework used by DSpark for GPU worker management and fault tolerance.</p>
+                    <a href="https://www.ray.io" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/deepseek/dspark#readme" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            DeepSeek-V4-Pro-DSpark GitHub README
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Detailed setup instructions, configuration options, and benchmark scripts.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://spark.apache.org/docs/latest/running-on-yarn.html#gpu-scheduling" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Apache Spark GPU Scheduling Guide
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation on how to enable and configure GPU resources in Spark.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.deepseek.com/model/v4" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            DeepSeek V4 Model Card
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Specifications, licensing, and download links for the DeepSeek V4 language model.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.deepseek.com/blog/dspark-ai-factory" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Blog: Turning Spark Clusters into AI Factories
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The original announcement and performance results discussed in the video.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How many GPUs do I need to run DeepSeek V4 with DSpark?</h3>
+                <p>The framework can scale from a single GPU to thousands. For the 13‑billion‑parameter model, a minimum of 4‑8 GPUs is recommended to fit shards in memory; performance improves linearly with more GPUs until network bandwidth saturates.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I run DSpark on a CPU‑only Spark cluster?</h3>
+                <p>No. DSpark relies on GPU kernels for tensor operations and uses Spark’s GPU resource scheduling; without GPUs the executors cannot launch the inference kernels.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does fault tolerance work if a GPU worker fails during inference?</h3>
+                <p>Because each GPU is treated as a Spark task, Spark’s DAG engine will automatically reschedule the failed task on another healthy executor, replaying the lineage from the last successful shuffle or checkpoint.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is the difference between model sharding and pipeline parallelism in this context?</h3>
+                <p>Model sharding splits the weight matrix across GPUs so each holds a subset of parameters. Pipeline parallelism then stages the computation so that while one GPU processes a layer for a batch, the next GPU works on the previous layer for the same batch, enabling continuous token flow.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I tune the batch size for best latency vs. throughput trade‑off?</h3>
+                <p>Start with the suggested batch size (e.g., 32) and monitor end‑to‑end latency in the Spark UI. Reduce batch size if latency is too high (under load) and increase it if GPU utilization is low and you need higher throughput.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#HowDeepSeek</span>
+                <span class="tag">#DeepSeekV4ProDSpark</span>
+                <span class="tag">#SparkLLMinference</span>
+                <span class="tag">#distributedAIserving</span>
+                <span class="tag">#modelsharding</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-03 18:46 • This guide accompanies the video: "How DeepSeek-V4-Pro-DSpark Turns Spark Clusters into AI Factories"</p>
+        </footer>
+    </div>
+</body>
+</html>
