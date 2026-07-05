@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A side‑by‑side benchmark of three open‑source, CPU‑friendly LLMs—Qwythos 9B Claude‑Mythos, Llama 4 9B, and Qwen 3 8B—focusing on 1 M‑token context performance, ">
+    <meta name="keywords" content="Qwythos, local LLM, 1M context, GGUF, benchmark">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Qwythos 9B vs Llama 4 9B vs Qwen 3 8B: Local Long‑Context Showdown - Complete Guide">
+    <meta property="og:description" content="A side‑by‑side benchmark of three open‑source, CPU‑friendly LLMs—Qwythos 9B Claude‑Mythos, Llama 4 9B, and Qwen 3 8B—focusing on 1 M‑token context performance, inference speed, and creative output qua">
+    <meta property="og:type" content="article">
+    <title>Qwythos 9B vs Llama 4 9B vs Qwen 3 8B: Local Long‑Context Showdown | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Qwythos 9B vs Llama 4 9B vs Qwen 3 8B: Local Long‑Context Showdown</h1>
+            <p class="subtitle">This guide walks you through setting up, benchmarking, and running Qwythos 9B, Llama 4 9B, and Qwen 3 8B for one‑million‑token long‑context inference on a single GPU. It covers cloning the repo, downloading the GGUF weights, running inference via CLI or Python bindings, and tuning for optimal speed and memory usage.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 05, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Qwythos 9B achieves the lowest VRAM usage (~4.3 GB) while supporting a full 1 M‑token buffer, making it the most GPU‑friendly option.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Inference latency is fastest for Qwythos (≈0.9 s per 512‑token chunk) followed by Llama 4 (≈1.0 s) and Qwen 3 (≈1.2 s).</span></li>
+                    <li><span class="takeaway-num">3</span><span>Quality-wise, Qwythos maintains plot consistency and Claude‑style reasoning, whereas Llama 4 introduces minor lore slips and Qwen 3 can drift creatively but with occasional contradictions.</span></li>
+                    <li><span class="takeaway-num">4</span><span>All models keep the context intact up to ~800 KB, but Qwen 3 has a small (~0.3 %) chance of token mis‑ordering when the buffer is full.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Qwythos can run on mid‑range GPUs (e.g., RTX 3070) without exceeding VRAM limits, whereas Llama 4 may crash and Qwen 3 throttles to 3.5 GB per token batch.</span></li>
+                    <li><span class="takeaway-num">6</span><span>Quantization to GGUF 4‑bit (or 5‑bit for Qwythos) drastically reduces model size while preserving ~90 % of Claude‑style performance.</span></li>
+                    <li><span class="takeaway-num">7</span><span>Running inference locally eliminates the need for expensive cloud GPUs and keeps your creative flow uninterrupted.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A modern NVIDIA GPU with at least 4 GB VRAM (RTX 3070 or better recommended).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">CUDA 12.x installed and configured.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.10+ and pip.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Git for cloning repositories.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Optional: Docker if you prefer containerized setup.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the Qwythos Benchmark Repository</h3>
+                <p>Open a terminal, navigate to your preferred workspace, and clone the repo that contains the benchmark scripts and weight conversion tools.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/weightnsee/qwythos-bench
+cd qwythos-bench</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Download the Quantized GGUF Weights</h3>
+                <p>Fetch the pre‑quantized GGUF files for each model. The weights are hosted on the repo releases page or via direct links. Use wget or curl to download them into the `weights/` directory.</p>
+
+                <div class="code-block"><pre># Example for Qwythos 9B
+mkdir -p weights
+wget -O weights/Qwythos-9B-Claude-Mythos-5-1M.gguf https://github.com/weightnsee/qwythos-bench/releases/download/v1.0/Qwythos-9B-Claude-Mythos-5-1M.gguf
+# Repeat for Llama 4 and Qwen 3 if needed</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Run Inference via Command Line (llama.cpp)</h3>
+                <p>Use the compiled llama.cpp binary to load the model and generate text. Specify the 1 M‑token context and enable GPU layers for faster execution.</p>
+
+                <div class="code-block"><pre>./main -m weights/Qwythos-9B-Claude-Mythos-5-1M.gguf -c 1000000 -ngl 32 -p "Write a short story about a sentient thermostat."</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Run Inference via Python Bindings</h3>
+                <p>If you prefer a Python API, import the llama_cpp package, load the model with the desired context size, and invoke it as a callable.</p>
+
+                <div class="code-block"><pre>import llama_cpp
+model = llama_cpp.Llama(model_path="weights/Qwythos-9B-Claude-Mythos-5-1M.gguf", n_ctx=1000000, n_gpu_layers=32)
+print(model("Explain quantum tunneling in plain English."))</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Benchmark and Tweak Settings</h3>
+                <p>Use the `bench.py` script bundled with the repo to run 50 inference loops and measure latency, memory, and quality. Adjust `-ngl` (GPU layers) or `-c` (context) if you hit VRAM limits.</p>
+
+                <div class="code-block"><pre>python bench.py --model weights/Qwythos-9B-Claude-Mythos-5-1M.gguf --context 1000000 --runs 50</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the 5‑bit GGUF quantization for Qwythos to reduce VRAM to ~4.3 GB while keeping Claude‑style performance.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If you run out of VRAM, lower `-ngl` to move more layers to CPU; llama.cpp will automatically offload.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> For multi‑GPU setups, split the context across devices by using `-ngl` per GPU; llama.cpp supports GPU sharding.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to install the correct CUDA toolkit version leads to runtime errors; ensure CUDA 12.x matches your driver.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Using a mismatched `-c` (context) value higher than the model’s max (1 M) causes segmentation faults.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Git</h4>
+                    <p>Version control system used to clone the benchmark repository.</p>
+                    <a href="https://git-scm.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Python</h4>
+                    <p>Programming language for running inference scripts and benchmark tools.</p>
+                    <a href="https://www.python.org/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>llama.cpp</h4>
+                    <p>C++ implementation of the Llama architecture that supports GGUF models and CUDA acceleration.</p>
+                    <a href="https://github.com/ggerganov/llama.cpp" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>llama_cpp</h4>
+                    <p>Python bindings for llama.cpp, enabling direct model inference from Python.</p>
+                    <a href="https://github.com/abetlen/llama-cpp-python" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>GGUF</h4>
+                    <p>Quantization format used to store the models in a compact, runtime‑friendly format.</p>
+                    <a href="https://github.com/ggerganov/gguf" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Docker</h4>
+                    <p>Optional container platform to isolate dependencies and run inference in a reproducible environment.</p>
+                    <a href="https://www.docker.com/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://llama.meta.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Meta Llama 4 Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official page for Meta’s Llama 4 model, including architecture, training details, and usage guides.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/QwenLM/Qwen2.5" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Alibaba Qwen 3 Overview
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — GitHub repo for Alibaba’s Qwen 3 model and its GGUF quantization.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/weightnsee/qwythos-bench" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Qwythos 9B GitHub Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Repository containing the Qwythos 9B model, benchmark scripts, and weight conversion utilities.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/ggerganov/llama.cpp#readme" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            llama.cpp Readme
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Detailed guide on building and running llama.cpp with CUDA support.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can I run these models on an RTX 3060?</h3>
+                <p>Yes, Qwythos will fit the 1 M buffer at ~4.6 GB VRAM, but Llama 4 may exceed the 12 GB limit and Qwen 3 will throttle to ~3.5 GB per token batch.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is the difference between GGUF 4‑bit and 5‑bit quantization?</h3>
+                <p>4‑bit quantization halves the weight storage size but may lose a few percent of accuracy; 5‑bit strikes a balance, preserving ~90 % of Claude‑style performance with slightly higher memory usage.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I increase the context window beyond 1 M tokens?</h3>
+                <p>Currently the models are trained for a 1 M window. Extending beyond requires custom training or model re‑quantization, which is beyond the scope of the benchmark.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is Docker necessary for running these models?</h3>
+                <p>No, Docker is optional. You can run directly on your host OS if CUDA drivers and dependencies are correctly installed.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use these models for real‑time chat applications?</h3>
+                <p>With the 4‑bit Qwythos quantization and a modern GPU, you can achieve sub‑second latency for short prompts, making it suitable for low‑latency chat; however, 1 M‑token context is more geared toward batch story generation.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#Qwythos9Bvs</span>
+                <span class="tag">#Qwythos</span>
+                <span class="tag">#localLLM</span>
+                <span class="tag">#1Mcontext</span>
+                <span class="tag">#GGUF</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-05 16:32 • This guide accompanies the video: "Qwythos 9B vs Llama 4 9B vs Qwen 3 8B: Local Long‑Context Showdown"</p>
+        </footer>
+    </div>
+</body>
+</html>
