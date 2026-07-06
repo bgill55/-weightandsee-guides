@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/149_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/150_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/9router-deep-dive-unlimited-claude-4-opus-coding-sessions-reviewed/">
+<img src="guides/9router-deep-dive-unlimited-claude-4-opus-coding-sessions-reviewed/thumbnail.jpg" width="300" alt="9Router Deep Dive Unlimited Claude 4 Opus Coding Sessions Reviewed"><br>
+<b>9Router Deep Dive Unlimited Claude 4 Opus Coding Sessions Reviewed</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/stop-hitting-limits-the-rise-of-ai-middleware/">
 <img src="guides/stop-hitting-limits-the-rise-of-ai-middleware/thumbnail.jpg" width="300" alt="Stop Hitting Limits The Rise Of Ai Middleware"><br>
@@ -31,12 +37,6 @@
 <b>Gpt56 Cracks New Math Sam Altmans Biggest Reveal Yet</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/qwythos-9b-vs-llama-4-9b-vs-qwen-3-8b-local-longcontext-showdown/">
-<img src="guides/qwythos-9b-vs-llama-4-9b-vs-qwen-3-8b-local-longcontext-showdown/thumbnail.jpg" width="300" alt="Qwythos 9B Vs Llama 4 9B Vs Qwen 3 8B Local Longcontext Showdown"><br>
-<b>Qwythos 9B Vs Llama 4 9B Vs Qwen 3 8B Local Longcontext Showdown</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![63](https://img.shields.io/badge/63-blue?style=flat-square) |
-| **Model Deep Dives** | ![45](https://img.shields.io/badge/45-blue?style=flat-square) |
+| **Model Deep Dives** | ![46](https://img.shields.io/badge/46-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
@@ -129,6 +129,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[9Router Deep Dive Unlimited Claude 4 Opus Coding Sessions Reviewed](https://bgill55.github.io/-weightandsee-guides/guides/9router-deep-dive-unlimited-claude-4-opus-coding-sessions-reviewed/)** — 2026-07-06
 - **[Meta Llama4Coder What The Upcoming Release Means For Developers](https://bgill55.github.io/-weightandsee-guides/guides/meta-llama4coder-what-the-upcoming-release-means-for-developers/)** — 2026-07-04
 - **[Inside Llama4Coder The Architecture Powering Metas New Coding Ai](https://bgill55.github.io/-weightandsee-guides/guides/inside-llama4coder-the-architecture-powering-metas-new-coding-ai/)** — 2026-07-04
 - **[Meta Muse Spark 20 Launch Ondevice Coding Assistant Shakes Up The Market](https://bgill55.github.io/-weightandsee-guides/guides/meta-muse-spark-20-launch-ondevice-coding-assistant-shakes-up-the-market/)** — 2026-07-03
