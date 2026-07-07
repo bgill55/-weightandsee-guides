@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/150_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/151_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/build-nocode-ai-agents-with-geminis-toolcalling-a-stepbystep-visual-guide/">
+<img src="guides/build-nocode-ai-agents-with-geminis-toolcalling-a-stepbystep-visual-guide/thumbnail.jpg" width="300" alt="Build Nocode Ai Agents With Geminis Toolcalling A Stepbystep Visual Guide"><br>
+<b>Build Nocode Ai Agents With Geminis Toolcalling A Stepbystep Visual Guide</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/9router-deep-dive-unlimited-claude-4-opus-coding-sessions-reviewed/">
 <img src="guides/9router-deep-dive-unlimited-claude-4-opus-coding-sessions-reviewed/thumbnail.jpg" width="300" alt="9Router Deep Dive Unlimited Claude 4 Opus Coding Sessions Reviewed"><br>
@@ -31,12 +37,6 @@
 <b>Stop Hitting Limits The Rise Of Ai Middleware</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/gpt56-cracks-new-math-sam-altmans-biggest-reveal-yet/">
-<img src="guides/gpt56-cracks-new-math-sam-altmans-biggest-reveal-yet/thumbnail.jpg" width="300" alt="Gpt56 Cracks New Math Sam Altmans Biggest Reveal Yet"><br>
-<b>Gpt56 Cracks New Math Sam Altmans Biggest Reveal Yet</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![63](https://img.shields.io/badge/63-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![64](https://img.shields.io/badge/64-blue?style=flat-square) |
 | **Model Deep Dives** | ![46](https://img.shields.io/badge/46-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Build Nocode Ai Agents With Geminis Toolcalling A Stepbystep Visual Guide](https://bgill55.github.io/-weightandsee-guides/guides/build-nocode-ai-agents-with-geminis-toolcalling-a-stepbystep-visual-guide/)** — 2026-07-07
 - **[Stop Hitting Limits The Rise Of Ai Middleware](https://bgill55.github.io/-weightandsee-guides/guides/stop-hitting-limits-the-rise-of-ai-middleware/)** — 2026-07-06
 - **[Gpt56 Cracks New Math Sam Altmans Biggest Reveal Yet](https://bgill55.github.io/-weightandsee-guides/guides/gpt56-cracks-new-math-sam-altmans-biggest-reveal-yet/)** — 2026-07-06
 - **[Qwythos 9B Vs Llama 4 9B Vs Qwen 3 8B Local Longcontext Showdown](https://bgill55.github.io/-weightandsee-guides/guides/qwythos-9b-vs-llama-4-9b-vs-qwen-3-8b-local-longcontext-showdown/)** — 2026-07-05
