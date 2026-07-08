@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/152_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/153_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/2026-prompt-engineering-playbook-master-gpt55-claude-4-gemini-35-deepseekv4/">
+<img src="guides/2026-prompt-engineering-playbook-master-gpt55-claude-4-gemini-35-deepseekv4/thumbnail.jpg" width="300" alt="2026 Prompt Engineering Playbook Master Gpt55 Claude 4 Gemini 35 Deepseekv4"><br>
+<b>2026 Prompt Engineering Playbook Master Gpt55 Claude 4 Gemini 35 Deepseekv4</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/r-openai-package-deep-dive-gpt55-turbo-in-your-data-science-workflow/">
 <img src="guides/r-openai-package-deep-dive-gpt55-turbo-in-your-data-science-workflow/thumbnail.jpg" width="300" alt="R Openai Package Deep Dive Gpt55 Turbo In Your Data Science Workflow"><br>
 <b>R Openai Package Deep Dive Gpt55 Turbo In Your Data Science Workflow</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/build-nocode-ai-agents-with-geminis-toolcalling-a-stepbystep-visual-guide/">
 <img src="guides/build-nocode-ai-agents-with-geminis-toolcalling-a-stepbystep-visual-guide/thumbnail.jpg" width="300" alt="Build Nocode Ai Agents With Geminis Toolcalling A Stepbystep Visual Guide"><br>
 <b>Build Nocode Ai Agents With Geminis Toolcalling A Stepbystep Visual Guide</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/9router-deep-dive-unlimited-claude-4-opus-coding-sessions-reviewed/">
-<img src="guides/9router-deep-dive-unlimited-claude-4-opus-coding-sessions-reviewed/thumbnail.jpg" width="300" alt="9Router Deep Dive Unlimited Claude 4 Opus Coding Sessions Reviewed"><br>
-<b>9Router Deep Dive Unlimited Claude 4 Opus Coding Sessions Reviewed</b>
 </a>
 </td>
 </tr></table>
@@ -49,7 +49,7 @@
 | **Model Deep Dives** | ![47](https://img.shields.io/badge/47-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![9](https://img.shields.io/badge/9-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -224,6 +224,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[2026 Prompt Engineering Playbook Master Gpt55 Claude 4 Gemini 35 Deepseekv4](https://bgill55.github.io/-weightandsee-guides/guides/2026-prompt-engineering-playbook-master-gpt55-claude-4-gemini-35-deepseekv4/)** — 2026-07-08
 - **[How Deepseek V4 Pro Dspark Turns Spark Clusters Into Ai Factories](https://bgill55.github.io/-weightandsee-guides/guides/how-deepseek-v4-pro-dspark-turns-spark-clusters-into-ai-factories/)** — 2026-07-03
 - **[Concept 3 The Diy Approach Selecting Your Optimal Multi Node Llm Server](https://bgill55.github.io/-weightandsee-guides/guides/concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server/)** — 2026-06-19
 - **[What Happens When Ai Learns To Write Rocket Code Inside Domain Specific Llm Trai](https://bgill55.github.io/-weightandsee-guides/guides/what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai/)** — 2026-06-17
