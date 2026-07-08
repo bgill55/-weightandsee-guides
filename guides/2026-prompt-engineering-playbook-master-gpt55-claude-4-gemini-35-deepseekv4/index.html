@@ -377,11 +377,11 @@
         <header class="header">
             <span class="badge">Complete Guide</span>
             <h1>2026 Prompt Engineering Playbook: Master GPT‑5.5, Claude 4, Gemini 3.5, DeepSeek‑V4</h1>
-            <p class="subtitle">A complete, step‑by‑step guide that walks full‑stack developers through proven prompt templates for every major 2026 LLM, paired with cost‑aware usage tips and real‑world debugging tricks, all visualized with stock footage and AI‑generated graphics.</p>
+            <p class="subtitle">This guide provides a comprehensive playbook for prompt engineering with the 2026 generation of Large Language Models, including GPT-5.5, Claude 4, Gemini 3.5, and DeepSeek-V4. It focuses on architectural precision, cost-aware usage, and specific strategies for deterministic code generation, large context management, and multimodal debugging.</p>
             <div class="meta">
                 <span>By Weight and See</span>
                 <span>July 08, 2026</span>
-                <span>3 Steps</span>
+                <span>5 Steps</span>
             </div>
         </header>
 
@@ -389,11 +389,13 @@
             <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
             <div class="card">
                 <ul class="takeaway-list">
-                    <li><span class="takeaway-num">1</span><span>Understanding the core concepts of 2026 Prompt Engineering Playbook: Master GPT‑5.5, Claude 4, Gemini 3.5, DeepSeek‑V4</span></li>
-                    <li><span class="takeaway-num">2</span><span>Practical implementation steps</span></li>
-                    <li><span class="takeaway-num">3</span><span>Best practices and optimization tips</span></li>
-                    <li><span class="takeaway-num">4</span><span>Common challenges and how to overcome them</span></li>
-                    <li><span class="takeaway-num">5</span><span>Resources for further learning</span></li>
+                    <li><span class="takeaway-num">1</span><span>GPT-5.5 requires strict architectural prompts that forbid conversational filler to ensure deterministic code generation.</span></li>
+                    <li><span class="takeaway-num">2</span><span>DeepSeek-V4 is optimized for high-volume, low-stakes batch processing tasks where brevity and strict delimiters reduce costs.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Claude 4's massive context window necessitates a file manifest in the system prompt to prevent confusion with deprecated files.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Gemini 3.5 excels at cross-modal debugging, correlating visual artifacts with CSS and React logic to pinpoint layout errors.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Latency in real-time applications can be managed by configuring 'streamed reasoning' and hiding internal thought tokens from the UI.</span></li>
+                    <li><span class="takeaway-num">6</span><span>Robust applications require JSON repair instructions in system prompts to handle parsing failures gracefully.</span></li>
+                    <li><span class="takeaway-num">7</span><span>Prompts should be treated as version-controlled configuration files rather than static strings.</span></li>
                 </ul>
             </div>
         </section>
@@ -402,8 +404,9 @@
             <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
             <div class="card">
                 <ul>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of the topic</li>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">A computer with internet access</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">API access to GPT-5.5, Claude 4, Gemini 3.5, and DeepSeek-V4</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of system prompts and API parameters</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with JSON, Python, and web development (HTML/CSS/React)</li>
                 </ul>
             </div>
         </section>
@@ -413,20 +416,78 @@
 
             <div class="step">
                 <span class="step-num">1</span>
-                <h3>Getting Started</h3>
-                <p>Set up your environment and install necessary tools.</p>
+                <h3>Step 1: Configure GPT-5.5 for Deterministic Code</h3>
+                <p>To get production-grade Python scripts from GPT-5.5, you must strip conversational filler. Define the output schema, function signature, and algorithm in the system prompt. Instruct the model to return *only* the executable code block to avoid parsing markdown explanations and hallucinated imports.</p>
+
+                <div class="code-block"><pre>System Prompt:
+"You are a code generator. Return ONLY the executable Python code block. No markdown explanations, no 'Here is your code' prefacing.
+
+Define function signature: def sort_data(data: List[int]) -> List[int]
+Algorithm: Quicksort
+Type hints: Strictly enforced."</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">2</span>
-                <h3>Configuration</h3>
-                <p>Configure the tools according to your needs.</p>
+                <h3>Step 2: Implement Batch Processing with DeepSeek-V4</h3>
+                <p>Use DeepSeek-V4 for transforming large volumes of unstructured data (e.g., CSV logs) into standardized JSON. Enable low-latency mode in the API parameters. The prompt must specify exact JSON keys and use strict delimiters to handle bulk requests efficiently.</p>
+
+                <div class="code-block"><pre>System Prompt:
+"Convert the following CSV row into a JSON object.
+Required Keys: 'timestamp', 'error_code', 'user_id'.
+Output valid JSON only. No other text."
+
+API Configuration:
+{
+  "model": "deepseek-v4",
+  "low_latency_mode": true
+}</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">3</span>
-                <h3>Implementation</h3>
-                <p>Follow the steps to implement the solution.</p>
+                <h3>Step 3: Manage Large Contexts in Claude 4</h3>
+                <p>When feeding entire repositories to Claude 4, prevent the model from referencing deprecated code by including a file manifest. Explicitly prioritize the 'src' directory and provide a directory structure summary to guide the model's refactoring suggestions.</p>
+
+                <div class="code-block"><pre>System Prompt:
+"Context: The following represents the entire codebase.
+
+Directory Structure:
+- /src (Main implementation)
+- /helpers (Utility functions)
+- /deprecated (IGNORE THIS FOLDER)
+
+Priority: Use /src as the source of truth. Cross-reference /helpers. Do not suggest code from /deprecated."
+
+User Prompt:
+"Refactor the controller in /src to use the new utility in /helpers."</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Enable Multimodal Debugging with Gemini 3.5</h3>
+                <p>For UI rendering issues, upload a screenshot of the broken interface alongside the CSS and React component files. Prompt the model to analyze the visual artifact first, correlate pixel coordinates with CSS logic, and identify specific rules causing the layout shift.</p>
+
+                <div class="code-block"><pre>User Prompt:
+"1. Analyze the screenshot 'broken_ui.png'.
+2. Review 'App.css' and 'Button.jsx'.
+3. Identify the specific CSS rule causing the layout shift in the screenshot.
+4. Return the line number in 'App.css' that needs to be fixed."</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Mitigate Latency and JSON Errors</h3>
+                <p>To handle GPT-5.5 latency in chat interfaces, configure the API to stream reasoning or limit thought depth, hiding the monologue from the user. To prevent crashes from malformed JSON, add a repair instruction that outputs a specific error code ('JSON_PARSE_FAILURE') instead of guessing syntax, allowing your app to trigger a fallback.</p>
+
+                <div class="code-block"><pre>System Prompt (JSON Repair):
+"You must return valid JSON. If you cannot generate a valid JSON string, output exactly the string: 'JSON_PARSE_FAILURE'. Do not attempt to fix the syntax if you are unsure."
+
+API Configuration:
+{
+  "stream_reasoning": true,
+  "reasoning_visibility": "backend_only"
+}</pre></div>
             </div>
         </section>
 
@@ -434,15 +495,19 @@
             <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Start with the basics before diving into advanced features
+                <strong>Pro Tip:</strong> Treat your system prompts as configuration files and store them in a version-controlled repository alongside your code.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Keep your configuration backed up
+                <strong>Pro Tip:</strong> Use specific API flags to separate 'internal monologue' from 'external response' to keep UI snappy.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Test in a development environment first
+                <strong>Pro Tip:</strong> For DeepSeek-V4, write a simple filter script to catch hallucinated keys before they hit your database.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Always include type hints and function signatures in GPT-5.5 prompts to prevent hallucinated imports.
             </div>
         </section>
 
@@ -450,11 +515,15 @@
             <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Skipping the prerequisites can lead to setup issues
+                <strong>Watch Out:</strong> Pitfall 1: Conversational Fillers. Allowing GPT-5.5 to use markdown or conversational text in code outputs increases parsing complexity and token costs.
             </div>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Not reading the documentation thoroughly
+                <strong>Watch Out:</strong> Pitfall 2: Context Drift in Claude 4. Failing to provide a file manifest may cause the model to suggest functions from deprecated folders that no longer exist.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Unhandled JSON Errors. Relying on the model to always return valid JSON can crash your application; always implement a fallback mechanism for specific error codes.
             </div>
         </section>
 
@@ -463,33 +532,33 @@
             <div class="tool-grid">
 
                 <div class="tool-card">
-                    <h4>OpenAI GPT‑5.5 API</h4>
-                    <p>Referenced in the video</p>
+                    <h4>OpenAI GPT-5.5 API</h4>
+                    <p>Reasoning engine focused on deterministic code generation.</p>
                     <a href="https://platform.openai.com/docs/models/gpt-5-5" target="_blank">View Resource →</a>
                 </div>
 
                 <div class="tool-card">
+                    <h4>DeepSeek</h4>
+                    <p>Specialized tool for high-volume, low-stakes tasks and batch processing.</p>
+                    <a href="https://www.deepseek.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Google Gemini</h4>
+                    <p>Multimodal AI capable of cross-modal correlation for visual debugging.</p>
+                    <a href="https://gemini.google.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
                     <h4>Flowise AI</h4>
-                    <p>Referenced in the video</p>
+                    <p>Tool for creating LLM workflows (referenced in featured links).</p>
                     <a href="https://flowiseai.com" target="_blank">View Resource →</a>
                 </div>
 
                 <div class="tool-card">
                     <h4>n8n Automation</h4>
-                    <p>Referenced in the video</p>
+                    <p>Workflow automation tool for integrating LLM APIs (referenced in featured links).</p>
                     <a href="https://n8n.io" target="_blank">View Resource →</a>
-                </div>
-
-                <div class="tool-card">
-                    <h4>Google Gemini</h4>
-                    <p>Referenced in the video</p>
-                    <a href="https://gemini.google.com" target="_blank">View Resource →</a>
-                </div>
-
-                <div class="tool-card">
-                    <h4>DeepSeek</h4>
-                    <p>Referenced in the video</p>
-                    <a href="https://www.deepseek.com" target="_blank">View Resource →</a>
                 </div>
             </div>
         </section>
@@ -501,37 +570,23 @@
 
                     <li style="padding: 8px 0;">
                         <a href="https://platform.openai.com/docs/models/gpt-5-5" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            OpenAI GPT‑5.5 API
+                            OpenAI GPT-5.5 Documentation
                         </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official resource</span>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation for GPT-5.5 configurations and API parameters.</span>
                     </li>
 
                     <li style="padding: 8px 0;">
                         <a href="https://flowiseai.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">
                             Flowise AI
                         </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official resource</span>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Drag and drop UI for building customized LLM flows.</span>
                     </li>
 
                     <li style="padding: 8px 0;">
                         <a href="https://n8n.io" target="_blank" style="color: var(--accent-light); text-decoration: none;">
                             n8n Automation
                         </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official resource</span>
-                    </li>
-
-                    <li style="padding: 8px 0;">
-                        <a href="https://gemini.google.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            Google Gemini
-                        </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official resource</span>
-                    </li>
-
-                    <li style="padding: 8px 0;">
-                        <a href="https://www.deepseek.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            DeepSeek
-                        </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official resource</span>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Workflow automation tool to connect LLMs with other apps.</span>
                     </li>
                 </ul>
             </div>
@@ -541,13 +596,8 @@
             <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
 
             <div class="faq-item card">
-                <h3>What is 2026 Prompt Engineering Playbook: Master GPT‑5.5, Claude 4, Gemini 3.5, DeepSeek‑V4?</h3>
-                <p>A complete, step‑by‑step guide that walks full‑stack developers through proven prompt templates for every major 2026 LLM, paired with cost‑aware usage tips and real‑world debugging tricks, all visualized with stock footage and AI‑generated graphics.</p>
-            </div>
-
-            <div class="faq-item card">
-                <h3>Where can I find more information?</h3>
-                <p>Check the links in the description and this guide.</p>
+                <h3>How do I reduce latency when using GPT-5.5 in a real-time chat?</h3>
+                <p>Configure the API to use 'streamed reasoning' or restrict the 'thought' tokens to a maximum depth in the API parameters, hiding the monologue from the user.</p>
             </div>
         </section>
 
@@ -563,7 +613,7 @@
                 <span class="tag">#Claude4</span>
                 <span class="tag">#Gemini35</span>
             </div>
-            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-08 14:56 • This guide accompanies the video: "2026 Prompt Engineering Playbook: Master GPT‑5.5, Claude 4, Gemini 3.5, DeepSeek‑V4"</p>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-08 15:38 • This guide accompanies the video: "2026 Prompt Engineering Playbook: Master GPT‑5.5, Claude 4, Gemini 3.5, DeepSeek‑V4"</p>
         </footer>
     </div>
 </body>
