@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/155_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/156_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/deepmotion-animate-3d-review-is-this-the-best-nocamera-motion-capture-for-digita/">
+<img src="guides/deepmotion-animate-3d-review-is-this-the-best-nocamera-motion-capture-for-digita/thumbnail.jpg" width="300" alt="Deepmotion Animate 3D Review Is This The Best Nocamera Motion Capture For Digita"><br>
+<b>Deepmotion Animate 3D Review Is This The Best Nocamera Motion Capture For Digita</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/3x-developer-leverage-the-data-behind-2026s-ai-web-dev/">
 <img src="guides/3x-developer-leverage-the-data-behind-2026s-ai-web-dev/thumbnail.jpg" width="300" alt="3X Developer Leverage The Data Behind 2026S Ai Web Dev"><br>
@@ -31,12 +37,6 @@
 <b>2026 Prompt Engineering Guide Gpt 55 Deepseek V4 Claude 4 Templates</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/2026-prompt-engineering-playbook-master-gpt55-claude-4-gemini-35-deepseekv4/">
-<img src="guides/2026-prompt-engineering-playbook-master-gpt55-claude-4-gemini-35-deepseekv4/thumbnail.jpg" width="300" alt="2026 Prompt Engineering Playbook Master Gpt55 Claude 4 Gemini 35 Deepseekv4"><br>
-<b>2026 Prompt Engineering Playbook Master Gpt55 Claude 4 Gemini 35 Deepseekv4</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![65](https://img.shields.io/badge/65-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![66](https://img.shields.io/badge/66-blue?style=flat-square) |
 | **Model Deep Dives** | ![48](https://img.shields.io/badge/48-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Deepmotion Animate 3D Review Is This The Best Nocamera Motion Capture For Digita](https://bgill55.github.io/-weightandsee-guides/guides/deepmotion-animate-3d-review-is-this-the-best-nocamera-motion-capture-for-digita/)** — 2026-07-08
 - **[3X Developer Leverage The Data Behind 2026S Ai Web Dev](https://bgill55.github.io/-weightandsee-guides/guides/3x-developer-leverage-the-data-behind-2026s-ai-web-dev/)** — 2026-07-08
 - **[Build Nocode Ai Agents With Geminis Toolcalling A Stepbystep Visual Guide](https://bgill55.github.io/-weightandsee-guides/guides/build-nocode-ai-agents-with-geminis-toolcalling-a-stepbystep-visual-guide/)** — 2026-07-07
 - **[Stop Hitting Limits The Rise Of Ai Middleware](https://bgill55.github.io/-weightandsee-guides/guides/stop-hitting-limits-the-rise-of-ai-middleware/)** — 2026-07-06
