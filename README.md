@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/159_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/160_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/flux-22-vs-sora-2-which-ai-video-engine-wins-the-creative-race/">
+<img src="guides/flux-22-vs-sora-2-which-ai-video-engine-wins-the-creative-race/thumbnail.jpg" width="300" alt="Flux 22 Vs Sora 2 Which Ai Video Engine Wins The Creative Race"><br>
+<b>Flux 22 Vs Sora 2 Which Ai Video Engine Wins The Creative Race</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/build-a-nocode-autonomous-debugging-pipeline-with-flowise-and-gemini-3/">
 <img src="guides/build-a-nocode-autonomous-debugging-pipeline-with-flowise-and-gemini-3/thumbnail.jpg" width="300" alt="Build A Nocode Autonomous Debugging Pipeline With Flowise And Gemini 3"><br>
@@ -31,12 +37,6 @@
 <b>The Death Of The Desktop Why Agentos Replaces Your Gui</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/why-the-desktop-is-dying-inside-agentos/">
-<img src="guides/why-the-desktop-is-dying-inside-agentos/thumbnail.jpg" width="300" alt="Why The Desktop Is Dying Inside Agentos"><br>
-<b>Why The Desktop Is Dying Inside Agentos</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![67](https://img.shields.io/badge/67-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![68](https://img.shields.io/badge/68-blue?style=flat-square) |
 | **Model Deep Dives** | ![50](https://img.shields.io/badge/50-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Flux 22 Vs Sora 2 Which Ai Video Engine Wins The Creative Race](https://bgill55.github.io/-weightandsee-guides/guides/flux-22-vs-sora-2-which-ai-video-engine-wins-the-creative-race/)** — 2026-07-10
 - **[The Death Of The Desktop Why Agentos Replaces Your Gui](https://bgill55.github.io/-weightandsee-guides/guides/the-death-of-the-desktop-why-agentos-replaces-your-gui/)** — 2026-07-08
 - **[Deepmotion Animate 3D Review Is This The Best Nocamera Motion Capture For Digita](https://bgill55.github.io/-weightandsee-guides/guides/deepmotion-animate-3d-review-is-this-the-best-nocamera-motion-capture-for-digita/)** — 2026-07-08
 - **[3X Developer Leverage The Data Behind 2026S Ai Web Dev](https://bgill55.github.io/-weightandsee-guides/guides/3x-developer-leverage-the-data-behind-2026s-ai-web-dev/)** — 2026-07-08
