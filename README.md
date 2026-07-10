@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/158_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/159_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/build-a-nocode-autonomous-debugging-pipeline-with-flowise-and-gemini-3/">
+<img src="guides/build-a-nocode-autonomous-debugging-pipeline-with-flowise-and-gemini-3/thumbnail.jpg" width="300" alt="Build A Nocode Autonomous Debugging Pipeline With Flowise And Gemini 3"><br>
+<b>Build A Nocode Autonomous Debugging Pipeline With Flowise And Gemini 3</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-death-of-the-desktop-why-agentos-replaces-your-gui/">
 <img src="guides/the-death-of-the-desktop-why-agentos-replaces-your-gui/thumbnail.jpg" width="300" alt="The Death Of The Desktop Why Agentos Replaces Your Gui"><br>
@@ -31,12 +37,6 @@
 <b>Why The Desktop Is Dying Inside Agentos</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/deepmotion-animate-3d-review-is-this-the-best-nocamera-motion-capture-for-digita/">
-<img src="guides/deepmotion-animate-3d-review-is-this-the-best-nocamera-motion-capture-for-digita/thumbnail.jpg" width="300" alt="Deepmotion Animate 3D Review Is This The Best Nocamera Motion Capture For Digita"><br>
-<b>Deepmotion Animate 3D Review Is This The Best Nocamera Motion Capture For Digita</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![67](https://img.shields.io/badge/67-blue?style=flat-square) |
-| **Model Deep Dives** | ![49](https://img.shields.io/badge/49-blue?style=flat-square) |
+| **Model Deep Dives** | ![50](https://img.shields.io/badge/50-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
@@ -133,6 +133,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Build A Nocode Autonomous Debugging Pipeline With Flowise And Gemini 3](https://bgill55.github.io/-weightandsee-guides/guides/build-a-nocode-autonomous-debugging-pipeline-with-flowise-and-gemini-3/)** — 2026-07-10
 - **[Why The Desktop Is Dying Inside Agentos](https://bgill55.github.io/-weightandsee-guides/guides/why-the-desktop-is-dying-inside-agentos/)** — 2026-07-08
 - **[2026 Prompt Engineering Guide Gpt 55 Deepseek V4 Claude 4 Templates](https://bgill55.github.io/-weightandsee-guides/guides/2026-prompt-engineering-guide-gpt-55-deepseek-v4-claude-4-templates/)** — 2026-07-08
 - **[R Openai Package Deep Dive Gpt55 Turbo In Your Data Science Workflow](https://bgill55.github.io/-weightandsee-guides/guides/r-openai-package-deep-dive-gpt55-turbo-in-your-data-science-workflow/)** — 2026-07-08
