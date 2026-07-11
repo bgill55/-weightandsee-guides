@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/161_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/162_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-the-claude-code-espionage-campaign-research-breakdown/">
+<img src="guides/inside-the-claude-code-espionage-campaign-research-breakdown/thumbnail.jpg" width="300" alt="Inside The Claude Code Espionage Campaign Research Breakdown"><br>
+<b>Inside The Claude Code Espionage Campaign Research Breakdown</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-first-ai-silicon-tradesecret-battle-what-it-means-for-future-chips/">
 <img src="guides/the-first-ai-silicon-tradesecret-battle-what-it-means-for-future-chips/thumbnail.jpg" width="300" alt="The First Ai Silicon Tradesecret Battle What It Means For Future Chips"><br>
@@ -31,12 +37,6 @@
 <b>Flux 22 Vs Sora 2 Which Ai Video Engine Wins The Creative Race</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/build-a-nocode-autonomous-debugging-pipeline-with-flowise-and-gemini-3/">
-<img src="guides/build-a-nocode-autonomous-debugging-pipeline-with-flowise-and-gemini-3/thumbnail.jpg" width="300" alt="Build A Nocode Autonomous Debugging Pipeline With Flowise And Gemini 3"><br>
-<b>Build A Nocode Autonomous Debugging Pipeline With Flowise And Gemini 3</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![68](https://img.shields.io/badge/68-blue?style=flat-square) |
-| **Model Deep Dives** | ![51](https://img.shields.io/badge/51-blue?style=flat-square) |
+| **Model Deep Dives** | ![52](https://img.shields.io/badge/52-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
@@ -134,6 +134,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Inside The Claude Code Espionage Campaign Research Breakdown](https://bgill55.github.io/-weightandsee-guides/guides/inside-the-claude-code-espionage-campaign-research-breakdown/)** — 2026-07-11
 - **[The First Ai Silicon Tradesecret Battle What It Means For Future Chips](https://bgill55.github.io/-weightandsee-guides/guides/the-first-ai-silicon-tradesecret-battle-what-it-means-for-future-chips/)** — 2026-07-10
 - **[Build A Nocode Autonomous Debugging Pipeline With Flowise And Gemini 3](https://bgill55.github.io/-weightandsee-guides/guides/build-a-nocode-autonomous-debugging-pipeline-with-flowise-and-gemini-3/)** — 2026-07-10
 - **[Why The Desktop Is Dying Inside Agentos](https://bgill55.github.io/-weightandsee-guides/guides/why-the-desktop-is-dying-inside-agentos/)** — 2026-07-08
