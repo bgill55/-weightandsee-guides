@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/167_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/168_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-to-analyze-1m-messages-for-pennies-the-agnost-architecture/">
+<img src="guides/how-to-analyze-1m-messages-for-pennies-the-agnost-architecture/thumbnail.jpg" width="300" alt="How To Analyze 1M Messages For Pennies The Agnost Architecture"><br>
+<b>How To Analyze 1M Messages For Pennies The Agnost Architecture</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/juggler-vs-cursor-the-first-opensource-gui-coding-agent-takes-on-headless-bots/">
 <img src="guides/juggler-vs-cursor-the-first-opensource-gui-coding-agent-takes-on-headless-bots/thumbnail.jpg" width="300" alt="Juggler Vs Cursor The First Opensource Gui Coding Agent Takes On Headless Bots"><br>
@@ -31,12 +37,6 @@
 <b>Last30Days Skill Review The First Ai Agent That Scores Research With Realmoney O</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/google-search-2026-is-the-click-finally-dead/">
-<img src="guides/google-search-2026-is-the-click-finally-dead/thumbnail.jpg" width="300" alt="Google Search 2026 Is The Click Finally Dead"><br>
-<b>Google Search 2026 Is The Click Finally Dead</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![70](https://img.shields.io/badge/70-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![71](https://img.shields.io/badge/71-blue?style=flat-square) |
 | **Model Deep Dives** | ![54](https://img.shields.io/badge/54-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[How To Analyze 1M Messages For Pennies The Agnost Architecture](https://bgill55.github.io/-weightandsee-guides/guides/how-to-analyze-1m-messages-for-pennies-the-agnost-architecture/)** — 2026-07-14
 - **[Juggler Vs Cursor The First Opensource Gui Coding Agent Takes On Headless Bots](https://bgill55.github.io/-weightandsee-guides/guides/juggler-vs-cursor-the-first-opensource-gui-coding-agent-takes-on-headless-bots/)** — 2026-07-14
 - **[Claude Code Under Fire Realworld Espionage Risks Exposed](https://bgill55.github.io/-weightandsee-guides/guides/claude-code-under-fire-realworld-espionage-risks-exposed/)** — 2026-07-11
 - **[Flux 22 Vs Sora 2 Which Ai Video Engine Wins The Creative Race](https://bgill55.github.io/-weightandsee-guides/guides/flux-22-vs-sora-2-which-ai-video-engine-wins-the-creative-race/)** — 2026-07-10
