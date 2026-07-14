@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/164_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/165_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/google-search-2026-is-the-click-finally-dead/">
+<img src="guides/google-search-2026-is-the-click-finally-dead/thumbnail.jpg" width="300" alt="Google Search 2026 Is The Click Finally Dead"><br>
+<b>Google Search 2026 Is The Click Finally Dead</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/project-sand-reviewed-can-spacexs-office-ai-agent-beat-claude-cowork-and-microso/">
 <img src="guides/project-sand-reviewed-can-spacexs-office-ai-agent-beat-claude-cowork-and-microso/thumbnail.jpg" width="300" alt="Project Sand Reviewed Can Spacexs Office Ai Agent Beat Claude Cowork And Microso"><br>
@@ -31,12 +37,6 @@
 <b>Claude Code Under Fire Realworld Espionage Risks Exposed</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-the-claude-code-espionage-campaign-research-breakdown/">
-<img src="guides/inside-the-claude-code-espionage-campaign-research-breakdown/thumbnail.jpg" width="300" alt="Inside The Claude Code Espionage Campaign Research Breakdown"><br>
-<b>Inside The Claude Code Espionage Campaign Research Breakdown</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![69](https://img.shields.io/badge/69-blue?style=flat-square) |
-| **Model Deep Dives** | ![53](https://img.shields.io/badge/53-blue?style=flat-square) |
+| **Model Deep Dives** | ![54](https://img.shields.io/badge/54-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
@@ -135,6 +135,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Google Search 2026 Is The Click Finally Dead](https://bgill55.github.io/-weightandsee-guides/guides/google-search-2026-is-the-click-finally-dead/)** — 2026-07-14
 - **[Project Sand Reviewed Can Spacexs Office Ai Agent Beat Claude Cowork And Microso](https://bgill55.github.io/-weightandsee-guides/guides/project-sand-reviewed-can-spacexs-office-ai-agent-beat-claude-cowork-and-microso/)** — 2026-07-14
 - **[Inside The Claude Code Espionage Campaign Research Breakdown](https://bgill55.github.io/-weightandsee-guides/guides/inside-the-claude-code-espionage-campaign-research-breakdown/)** — 2026-07-11
 - **[The First Ai Silicon Tradesecret Battle What It Means For Future Chips](https://bgill55.github.io/-weightandsee-guides/guides/the-first-ai-silicon-tradesecret-battle-what-it-means-for-future-chips/)** — 2026-07-10
