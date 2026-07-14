@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/165_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/166_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/last30days-skill-review-the-first-ai-agent-that-scores-research-with-realmoney-o/">
+<img src="guides/last30days-skill-review-the-first-ai-agent-that-scores-research-with-realmoney-o/thumbnail.jpg" width="300" alt="Last30Days Skill Review The First Ai Agent That Scores Research With Realmoney O"><br>
+<b>Last30Days Skill Review The First Ai Agent That Scores Research With Realmoney O</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/google-search-2026-is-the-click-finally-dead/">
 <img src="guides/google-search-2026-is-the-click-finally-dead/thumbnail.jpg" width="300" alt="Google Search 2026 Is The Click Finally Dead"><br>
@@ -31,12 +37,6 @@
 <b>Project Sand Reviewed Can Spacexs Office Ai Agent Beat Claude Cowork And Microso</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/claude-code-under-fire-realworld-espionage-risks-exposed/">
-<img src="guides/claude-code-under-fire-realworld-espionage-risks-exposed/thumbnail.jpg" width="300" alt="Claude Code Under Fire Realworld Espionage Risks Exposed"><br>
-<b>Claude Code Under Fire Realworld Espionage Risks Exposed</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![69](https://img.shields.io/badge/69-blue?style=flat-square) |
 | **Model Deep Dives** | ![54](https://img.shields.io/badge/54-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -196,6 +196,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Last30Days Skill Review The First Ai Agent That Scores Research With Realmoney O](https://bgill55.github.io/-weightandsee-guides/guides/last30days-skill-review-the-first-ai-agent-that-scores-research-with-realmoney-o/)** — 2026-07-14
 - **[How Xs Mcp Api Hooks Enable Seamless Onprem Llm Pipelines](https://bgill55.github.io/-weightandsee-guides/guides/how-xs-mcp-api-hooks-enable-seamless-onprem-llm-pipelines/)** — 2026-07-01
 - **[Stop Babysitting Ai Build Selfdebugging Agent Loops With Daedalus](https://bgill55.github.io/-weightandsee-guides/guides/stop-babysitting-ai-build-selfdebugging-agent-loops-with-daedalus/)** — 2026-07-01
 - **[Escape The Saas Trap Run Llama 4 Agents In N8N](https://bgill55.github.io/-weightandsee-guides/guides/escape-the-saas-trap-run-llama-4-agents-in-n8n/)** — 2026-06-30
