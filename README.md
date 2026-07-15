@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/169_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/170_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-system-prompt-leaks-what-chatgpt-v5-gemini-3-are-hiding/">
+<img src="guides/the-system-prompt-leaks-what-chatgpt-v5-gemini-3-are-hiding/thumbnail.jpg" width="300" alt="The System Prompt Leaks What Chatgpt V5 Gemini 3 Are Hiding"><br>
+<b>The System Prompt Leaks What Chatgpt V5 Gemini 3 Are Hiding</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/anatomy-of-an-agent-deconstructing-the-finn-loops-3-skills/">
 <img src="guides/anatomy-of-an-agent-deconstructing-the-finn-loops-3-skills/thumbnail.jpg" width="300" alt="Anatomy Of An Agent Deconstructing The Finn Loops 3 Skills"><br>
@@ -31,12 +37,6 @@
 <b>How To Analyze 1M Messages For Pennies The Agnost Architecture</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/juggler-vs-cursor-the-first-opensource-gui-coding-agent-takes-on-headless-bots/">
-<img src="guides/juggler-vs-cursor-the-first-opensource-gui-coding-agent-takes-on-headless-bots/thumbnail.jpg" width="300" alt="Juggler Vs Cursor The First Opensource Gui Coding Agent Takes On Headless Bots"><br>
-<b>Juggler Vs Cursor The First Opensource Gui Coding Agent Takes On Headless Bots</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![71](https://img.shields.io/badge/71-blue?style=flat-square) |
-| **Model Deep Dives** | ![55](https://img.shields.io/badge/55-blue?style=flat-square) |
+| **Model Deep Dives** | ![56](https://img.shields.io/badge/56-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
@@ -137,6 +137,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[The System Prompt Leaks What Chatgpt V5 Gemini 3 Are Hiding](https://bgill55.github.io/-weightandsee-guides/guides/the-system-prompt-leaks-what-chatgpt-v5-gemini-3-are-hiding/)** — 2026-07-15
 - **[Anatomy Of An Agent Deconstructing The Finn Loops 3 Skills](https://bgill55.github.io/-weightandsee-guides/guides/anatomy-of-an-agent-deconstructing-the-finn-loops-3-skills/)** — 2026-07-14
 - **[Google Search 2026 Is The Click Finally Dead](https://bgill55.github.io/-weightandsee-guides/guides/google-search-2026-is-the-click-finally-dead/)** — 2026-07-14
 - **[Project Sand Reviewed Can Spacexs Office Ai Agent Beat Claude Cowork And Microso](https://bgill55.github.io/-weightandsee-guides/guides/project-sand-reviewed-can-spacexs-office-ai-agent-beat-claude-cowork-and-microso/)** — 2026-07-14
