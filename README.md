@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/170_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/171_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-github-copilot-local-first-ai-coding-that-keeps-your-code-private/">
+<img src="guides/daedalus-vs-github-copilot-local-first-ai-coding-that-keeps-your-code-private/thumbnail.jpg" width="300" alt="Daedalus Vs Github Copilot Local First Ai Coding That Keeps Your Code Private"><br>
+<b>Daedalus Vs Github Copilot Local First Ai Coding That Keeps Your Code Private</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-system-prompt-leaks-what-chatgpt-v5-gemini-3-are-hiding/">
 <img src="guides/the-system-prompt-leaks-what-chatgpt-v5-gemini-3-are-hiding/thumbnail.jpg" width="300" alt="The System Prompt Leaks What Chatgpt V5 Gemini 3 Are Hiding"><br>
@@ -31,12 +37,6 @@
 <b>Anatomy Of An Agent Deconstructing The Finn Loops 3 Skills</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-to-analyze-1m-messages-for-pennies-the-agnost-architecture/">
-<img src="guides/how-to-analyze-1m-messages-for-pennies-the-agnost-architecture/thumbnail.jpg" width="300" alt="How To Analyze 1M Messages For Pennies The Agnost Architecture"><br>
-<b>How To Analyze 1M Messages For Pennies The Agnost Architecture</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![71](https://img.shields.io/badge/71-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![72](https://img.shields.io/badge/72-blue?style=flat-square) |
 | **Model Deep Dives** | ![56](https://img.shields.io/badge/56-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Daedalus Vs Github Copilot Local First Ai Coding That Keeps Your Code Private](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-github-copilot-local-first-ai-coding-that-keeps-your-code-private/)** — 2026-07-15
 - **[How To Analyze 1M Messages For Pennies The Agnost Architecture](https://bgill55.github.io/-weightandsee-guides/guides/how-to-analyze-1m-messages-for-pennies-the-agnost-architecture/)** — 2026-07-14
 - **[Juggler Vs Cursor The First Opensource Gui Coding Agent Takes On Headless Bots](https://bgill55.github.io/-weightandsee-guides/guides/juggler-vs-cursor-the-first-opensource-gui-coding-agent-takes-on-headless-bots/)** — 2026-07-14
 - **[Claude Code Under Fire Realworld Espionage Risks Exposed](https://bgill55.github.io/-weightandsee-guides/guides/claude-code-under-fire-realworld-espionage-risks-exposed/)** — 2026-07-11
