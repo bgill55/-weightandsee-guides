@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/174_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/175_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-review-free-local-ai-agent-for-developers/">
+<img src="guides/lm-studio-bionic-review-free-local-ai-agent-for-developers/thumbnail.jpg" width="300" alt="Lm Studio Bionic Review Free Local Ai Agent For Developers"><br>
+<b>Lm Studio Bionic Review Free Local Ai Agent For Developers</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/grok-build-review-opensource-coding-agent-powered-by-xais-grok45/">
 <img src="guides/grok-build-review-opensource-coding-agent-powered-by-xais-grok45/thumbnail.jpg" width="300" alt="Grok Build Review Opensource Coding Agent Powered By Xais Grok45"><br>
@@ -31,12 +37,6 @@
 <b>Hallo4D Flux 2 Endtoend Ai Video Creation Review</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-deep-dive-setting-up-daedalus-sandbox-model-router/">
-<img src="guides/infrastructure-deep-dive-setting-up-daedalus-sandbox-model-router/thumbnail.jpg" width="300" alt="Infrastructure Deep Dive Setting Up Daedalus Sandbox Model Router"><br>
-<b>Infrastructure Deep Dive Setting Up Daedalus Sandbox Model Router</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![75](https://img.shields.io/badge/75-blue?style=flat-square) |
-| **Model Deep Dives** | ![56](https://img.shields.io/badge/56-blue?style=flat-square) |
+| **Model Deep Dives** | ![57](https://img.shields.io/badge/57-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
@@ -141,6 +141,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Lm Studio Bionic Review Free Local Ai Agent For Developers](https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-review-free-local-ai-agent-for-developers/)** — 2026-07-16
 - **[The System Prompt Leaks What Chatgpt V5 Gemini 3 Are Hiding](https://bgill55.github.io/-weightandsee-guides/guides/the-system-prompt-leaks-what-chatgpt-v5-gemini-3-are-hiding/)** — 2026-07-15
 - **[Anatomy Of An Agent Deconstructing The Finn Loops 3 Skills](https://bgill55.github.io/-weightandsee-guides/guides/anatomy-of-an-agent-deconstructing-the-finn-loops-3-skills/)** — 2026-07-14
 - **[Google Search 2026 Is The Click Finally Dead](https://bgill55.github.io/-weightandsee-guides/guides/google-search-2026-is-the-click-finally-dead/)** — 2026-07-14
