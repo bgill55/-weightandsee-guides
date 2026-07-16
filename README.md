@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/173_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/174_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/grok-build-review-opensource-coding-agent-powered-by-xais-grok45/">
+<img src="guides/grok-build-review-opensource-coding-agent-powered-by-xais-grok45/thumbnail.jpg" width="300" alt="Grok Build Review Opensource Coding Agent Powered By Xais Grok45"><br>
+<b>Grok Build Review Opensource Coding Agent Powered By Xais Grok45</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/hallo4d-flux-2-endtoend-ai-video-creation-review/">
 <img src="guides/hallo4d-flux-2-endtoend-ai-video-creation-review/thumbnail.jpg" width="300" alt="Hallo4D Flux 2 Endtoend Ai Video Creation Review"><br>
@@ -31,12 +37,6 @@
 <b>Infrastructure Deep Dive Setting Up Daedalus Sandbox Model Router</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-github-copilot-local-first-ai-coding-that-keeps-your-code-private/">
-<img src="guides/daedalus-vs-github-copilot-local-first-ai-coding-that-keeps-your-code-private/thumbnail.jpg" width="300" alt="Daedalus Vs Github Copilot Local First Ai Coding That Keeps Your Code Private"><br>
-<b>Daedalus Vs Github Copilot Local First Ai Coding That Keeps Your Code Private</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![74](https://img.shields.io/badge/74-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![75](https://img.shields.io/badge/75-blue?style=flat-square) |
 | **Model Deep Dives** | ![56](https://img.shields.io/badge/56-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Grok Build Review Opensource Coding Agent Powered By Xais Grok45](https://bgill55.github.io/-weightandsee-guides/guides/grok-build-review-opensource-coding-agent-powered-by-xais-grok45/)** — 2026-07-16
 - **[Hallo4D Flux 2 Endtoend Ai Video Creation Review](https://bgill55.github.io/-weightandsee-guides/guides/hallo4d-flux-2-endtoend-ai-video-creation-review/)** — 2026-07-16
 - **[Infrastructure Deep Dive Setting Up Daedalus Sandbox Model Router](https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-deep-dive-setting-up-daedalus-sandbox-model-router/)** — 2026-07-15
 - **[Daedalus Vs Github Copilot Local First Ai Coding That Keeps Your Code Private](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-github-copilot-local-first-ai-coding-that-keeps-your-code-private/)** — 2026-07-15
