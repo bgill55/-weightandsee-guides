@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/171_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/172_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-deep-dive-setting-up-daedalus-sandbox-model-router/">
+<img src="guides/infrastructure-deep-dive-setting-up-daedalus-sandbox-model-router/thumbnail.jpg" width="300" alt="Infrastructure Deep Dive Setting Up Daedalus Sandbox Model Router"><br>
+<b>Infrastructure Deep Dive Setting Up Daedalus Sandbox Model Router</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-github-copilot-local-first-ai-coding-that-keeps-your-code-private/">
 <img src="guides/daedalus-vs-github-copilot-local-first-ai-coding-that-keeps-your-code-private/thumbnail.jpg" width="300" alt="Daedalus Vs Github Copilot Local First Ai Coding That Keeps Your Code Private"><br>
@@ -31,12 +37,6 @@
 <b>The System Prompt Leaks What Chatgpt V5 Gemini 3 Are Hiding</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/anatomy-of-an-agent-deconstructing-the-finn-loops-3-skills/">
-<img src="guides/anatomy-of-an-agent-deconstructing-the-finn-loops-3-skills/thumbnail.jpg" width="300" alt="Anatomy Of An Agent Deconstructing The Finn Loops 3 Skills"><br>
-<b>Anatomy Of An Agent Deconstructing The Finn Loops 3 Skills</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![72](https://img.shields.io/badge/72-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![73](https://img.shields.io/badge/73-blue?style=flat-square) |
 | **Model Deep Dives** | ![56](https://img.shields.io/badge/56-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Infrastructure Deep Dive Setting Up Daedalus Sandbox Model Router](https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-deep-dive-setting-up-daedalus-sandbox-model-router/)** — 2026-07-15
 - **[Daedalus Vs Github Copilot Local First Ai Coding That Keeps Your Code Private](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-github-copilot-local-first-ai-coding-that-keeps-your-code-private/)** — 2026-07-15
 - **[How To Analyze 1M Messages For Pennies The Agnost Architecture](https://bgill55.github.io/-weightandsee-guides/guides/how-to-analyze-1m-messages-for-pennies-the-agnost-architecture/)** — 2026-07-14
 - **[Juggler Vs Cursor The First Opensource Gui Coding Agent Takes On Headless Bots](https://bgill55.github.io/-weightandsee-guides/guides/juggler-vs-cursor-the-first-opensource-gui-coding-agent-takes-on-headless-bots/)** — 2026-07-14
