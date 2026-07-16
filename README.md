@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/172_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/173_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/hallo4d-flux-2-endtoend-ai-video-creation-review/">
+<img src="guides/hallo4d-flux-2-endtoend-ai-video-creation-review/thumbnail.jpg" width="300" alt="Hallo4D Flux 2 Endtoend Ai Video Creation Review"><br>
+<b>Hallo4D Flux 2 Endtoend Ai Video Creation Review</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-deep-dive-setting-up-daedalus-sandbox-model-router/">
 <img src="guides/infrastructure-deep-dive-setting-up-daedalus-sandbox-model-router/thumbnail.jpg" width="300" alt="Infrastructure Deep Dive Setting Up Daedalus Sandbox Model Router"><br>
@@ -31,12 +37,6 @@
 <b>Daedalus Vs Github Copilot Local First Ai Coding That Keeps Your Code Private</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-system-prompt-leaks-what-chatgpt-v5-gemini-3-are-hiding/">
-<img src="guides/the-system-prompt-leaks-what-chatgpt-v5-gemini-3-are-hiding/thumbnail.jpg" width="300" alt="The System Prompt Leaks What Chatgpt V5 Gemini 3 Are Hiding"><br>
-<b>The System Prompt Leaks What Chatgpt V5 Gemini 3 Are Hiding</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![73](https://img.shields.io/badge/73-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![74](https://img.shields.io/badge/74-blue?style=flat-square) |
 | **Model Deep Dives** | ![56](https://img.shields.io/badge/56-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Hallo4D Flux 2 Endtoend Ai Video Creation Review](https://bgill55.github.io/-weightandsee-guides/guides/hallo4d-flux-2-endtoend-ai-video-creation-review/)** — 2026-07-16
 - **[Infrastructure Deep Dive Setting Up Daedalus Sandbox Model Router](https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-deep-dive-setting-up-daedalus-sandbox-model-router/)** — 2026-07-15
 - **[Daedalus Vs Github Copilot Local First Ai Coding That Keeps Your Code Private](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-github-copilot-local-first-ai-coding-that-keeps-your-code-private/)** — 2026-07-15
 - **[How To Analyze 1M Messages For Pennies The Agnost Architecture](https://bgill55.github.io/-weightandsee-guides/guides/how-to-analyze-1m-messages-for-pennies-the-agnost-architecture/)** — 2026-07-14
