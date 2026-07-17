@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/176_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/177_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-hands-on-the-open-source-ai-agent-that-codes-talks-and-never-ph/">
+<img src="guides/lm-studio-bionic-hands-on-the-open-source-ai-agent-that-codes-talks-and-never-ph/thumbnail.jpg" width="300" alt="Lm Studio Bionic Hands On The Open Source Ai Agent That Codes Talks And Never Ph"><br>
+<b>Lm Studio Bionic Hands On The Open Source Ai Agent That Codes Talks And Never Ph</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/roblox-ai-builder-vs-unity-10-faster-game-creation-real-indie-test/">
 <img src="guides/roblox-ai-builder-vs-unity-10-faster-game-creation-real-indie-test/thumbnail.jpg" width="300" alt="Roblox Ai Builder Vs Unity 10 Faster Game Creation Real Indie Test"><br>
@@ -31,12 +37,6 @@
 <b>Lm Studio Bionic Review Free Local Ai Agent For Developers</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/grok-build-review-opensource-coding-agent-powered-by-xais-grok45/">
-<img src="guides/grok-build-review-opensource-coding-agent-powered-by-xais-grok45/thumbnail.jpg" width="300" alt="Grok Build Review Opensource Coding Agent Powered By Xais Grok45"><br>
-<b>Grok Build Review Opensource Coding Agent Powered By Xais Grok45</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![76](https://img.shields.io/badge/76-blue?style=flat-square) |
-| **Model Deep Dives** | ![57](https://img.shields.io/badge/57-blue?style=flat-square) |
+| **Model Deep Dives** | ![58](https://img.shields.io/badge/58-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
@@ -142,6 +142,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Lm Studio Bionic Hands On The Open Source Ai Agent That Codes Talks And Never Ph](https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-hands-on-the-open-source-ai-agent-that-codes-talks-and-never-ph/)** — 2026-07-17
 - **[Lm Studio Bionic Review Free Local Ai Agent For Developers](https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-review-free-local-ai-agent-for-developers/)** — 2026-07-16
 - **[The System Prompt Leaks What Chatgpt V5 Gemini 3 Are Hiding](https://bgill55.github.io/-weightandsee-guides/guides/the-system-prompt-leaks-what-chatgpt-v5-gemini-3-are-hiding/)** — 2026-07-15
 - **[Anatomy Of An Agent Deconstructing The Finn Loops 3 Skills](https://bgill55.github.io/-weightandsee-guides/guides/anatomy-of-an-agent-deconstructing-the-finn-loops-3-skills/)** — 2026-07-14
