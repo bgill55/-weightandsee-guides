@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/175_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/176_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/roblox-ai-builder-vs-unity-10-faster-game-creation-real-indie-test/">
+<img src="guides/roblox-ai-builder-vs-unity-10-faster-game-creation-real-indie-test/thumbnail.jpg" width="300" alt="Roblox Ai Builder Vs Unity 10 Faster Game Creation Real Indie Test"><br>
+<b>Roblox Ai Builder Vs Unity 10 Faster Game Creation Real Indie Test</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-review-free-local-ai-agent-for-developers/">
 <img src="guides/lm-studio-bionic-review-free-local-ai-agent-for-developers/thumbnail.jpg" width="300" alt="Lm Studio Bionic Review Free Local Ai Agent For Developers"><br>
@@ -31,12 +37,6 @@
 <b>Grok Build Review Opensource Coding Agent Powered By Xais Grok45</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/hallo4d-flux-2-endtoend-ai-video-creation-review/">
-<img src="guides/hallo4d-flux-2-endtoend-ai-video-creation-review/thumbnail.jpg" width="300" alt="Hallo4D Flux 2 Endtoend Ai Video Creation Review"><br>
-<b>Hallo4D Flux 2 Endtoend Ai Video Creation Review</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![75](https://img.shields.io/badge/75-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![76](https://img.shields.io/badge/76-blue?style=flat-square) |
 | **Model Deep Dives** | ![57](https://img.shields.io/badge/57-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Roblox Ai Builder Vs Unity 10 Faster Game Creation Real Indie Test](https://bgill55.github.io/-weightandsee-guides/guides/roblox-ai-builder-vs-unity-10-faster-game-creation-real-indie-test/)** — 2026-07-16
 - **[Grok Build Review Opensource Coding Agent Powered By Xais Grok45](https://bgill55.github.io/-weightandsee-guides/guides/grok-build-review-opensource-coding-agent-powered-by-xais-grok45/)** — 2026-07-16
 - **[Hallo4D Flux 2 Endtoend Ai Video Creation Review](https://bgill55.github.io/-weightandsee-guides/guides/hallo4d-flux-2-endtoend-ai-video-creation-review/)** — 2026-07-16
 - **[Infrastructure Deep Dive Setting Up Daedalus Sandbox Model Router](https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-deep-dive-setting-up-daedalus-sandbox-model-router/)** — 2026-07-15
