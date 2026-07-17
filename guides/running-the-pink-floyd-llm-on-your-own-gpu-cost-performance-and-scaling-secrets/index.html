@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We unpack the surprise new Chinese large‑language model whose name pays homage to a Pink Floyd album, detailing its novel architecture, benchmark performance ag">
+    <meta name="keywords" content="Chinese LLM, Pink Floyd model, AI talent migration, Claude 3 benchmark, Gemini 2 comparison">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Running the Pink Floyd LLM on Your Own GPU: Cost, Performance, and Scaling Secrets - Deep Dive Analysis">
+    <meta property="og:description" content="We unpack the surprise new Chinese large‑language model whose name pays homage to a Pink Floyd album, detailing its novel architecture, benchmark performance against Claude 3 and Gemini 2, and what th">
+    <meta property="og:type" content="article">
+    <title>Running the Pink Floyd LLM on Your Own GPU: Cost, Performance, and Scaling Secrets | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Deep Dive Analysis</span>
+            <h1>Running the Pink Floyd LLM on Your Own GPU: Cost, Performance, and Scaling Secrets</h1>
+            <p class="subtitle">This deep dive analyzes the 'Pink Floyd LLM,' a new open-source Chinese model that challenges proprietary giants like Claude 3 and Gemini 2 by running efficiently on consumer hardware. We examine its novel dynamic routing architecture, benchmark performance in logic and coding tasks, and the significant economic implications of local inference. The analysis also covers the shift in AI investment flows and the potential end of the 'walled garden' era for SaaS AI providers.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 17, 2026</span>
+                <span>5 Findings</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
+
+            <div class="finding">
+                <h3>Novel Dynamic Routing Architecture</h3>
+                <p>The Pink Floyd LLM utilizes a unique architecture that dynamically routes computations to only relevant active layers during inference. This optimization reduces VRAM waste on inactive parameters, effectively doubling token generation throughput compared to standard Llama 4 inference on identical hardware.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Performance Parity with Proprietary Models</h3>
+                <p>Benchmark tests indicate the model performs within a negligible margin of Claude 3 and Gemini 2 on standard logic and coding tasks. It specifically excels at Python scripting and SQL query generation, demonstrating higher precision in instruction following than current top-tier Western models.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Consumer-Grade Hardware Viability</h3>
+                <p>The 70-billion parameter version can run on a single NVIDIA GeForce RTX 4090 with latency low enough to support natural, real-time voice conversations. This challenges the assumption that top-tier reasoning requires massive, expensive backend clusters.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Significant Operational Cost Savings</h3>
+                <p>Operational analysis reveals that running the model locally eliminates per-token costs. For a workload of one million tokens per day, the hardware cost of a local rig pays for itself in less than three weeks compared to using the Claude 3 API.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Efficient Training Pipeline</h3>
+                <p>The engineering team achieved high performance using a fraction of the rumored training compute budget by leveraging synthetic data more efficiently. This proves that raw compute power is no longer the sole competitive moat in AI development.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">Traditional Large Language Models (LLMs) typically load all parameters into Video RAM (VRAM) during generation cycles, regardless of whether they are active, leading to significant memory bandwidth waste. The Pink Floyd LLM introduces a dynamic computation routing mechanism that allocates bandwidth exclusively to the layers required for the current token generation. This architectural shift allows for high-parameter models (e.g., 70B) to run on consumer-grade GPUs with lower latency, effectively bypassing the memory bottlenecks that usually limit local inference.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <div class="card">
+
+                <div class="research-item">
+                    <div class="source">Pink Floyd LLM Research Team</div>
+                    <div class="detail">Chinese researchers who optimized the training pipeline using synthetic data to achieve high performance with reduced compute budget.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Industry Benchmarks</div>
+                    <div class="detail">Comparative analysis against Claude 3 (Anthropic) and Gemini 2 (Google) focusing on logic, coding, and instruction following capabilities.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Local Hardware Testing</div>
+                    <div class="detail">Performance metrics gathered running the 70B model on a single RTX 4090, measuring latency, throughput, and operational cost.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
+
+            <div class="implication">
+                Investment flows in AI are shifting from US-centric foundational model labs to regions demonstrating technical parity and engineering efficiency.
+            </div>
+
+            <div class="implication">
+                The economic model for AI startups is under pressure to pivot from renting API credits to building local infrastructure to avoid recurring costs.
+            </div>
+
+            <div class="implication">
+                SaaS AI providers face an existential threat as freely downloadable weights match proprietary performance, forcing them to either open architectures or accelerate AGI roadmaps.
+            </div>
+
+            <div class="implication">
+                The 'moat' of massive compute clusters is being breached by algorithmic efficiency, allowing smaller teams to compete with giants.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💭</span> Expert Analysis</h2>
+            <div class="analysis-block">
+                The release of the Pink Floyd LLM represents a pivotal moment in the open-source versus proprietary AI debate. While benchmark parity is impressive, the more critical factor is the architectural optimization that allows state-of-the-art performance on accessible hardware. This levels the playing field for developers who cannot afford API bills and signals that the global talent pool for AI engineering is deepening beyond Silicon Valley. However, the long-term impact will depend on the ease of use and the ecosystem support surrounding the model, as performance is only one part of the adoption equation.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> References & Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://gemini.google.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">Google Gemini</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — A proprietary AI model used as a benchmark for logic and coding performance in the script.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.anthropic.com/claude" target="_blank" style="color: var(--accent-light); text-decoration: none;">Claude 3</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — A proprietary model developed by Anthropic used for cost and performance comparison.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://llama.meta.com/" target="_blank" style="color: var(--accent-light); text-decoration: none;">Llama 4</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Meta's LLM architecture used as a baseline for throughput comparison.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What hardware is required to run the Pink Floyd LLM?</h3>
+                <p>The script specifically mentions running the 70-billion parameter version on a single NVIDIA RTX 4090, with latency low enough for real-time voice interaction.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does the performance compare to GPT-4 or Claude 3?</h3>
+                <p>The model performs within a negligible margin of Claude 3 and Gemini 2 in logic and coding benchmarks, often showing higher precision in Python and SQL tasks.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Why is this model considered economically disruptive?</h3>
+                <p>It eliminates per-token API costs. A local hardware setup can pay for itself in less than three weeks compared to the cost of using proprietary APIs for heavy workloads.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is 'dynamic routing' in this context?</h3>
+                <p>It is an architectural feature that routes computations only to the relevant active layers during inference, optimizing memory bandwidth usage and doubling throughput compared to static models.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Does this model require a data center to run?</h3>
+                <p>No, a key feature of the Pink Floyd LLM is that it ignores the need for massive data centers and can run effectively on a desktop computer with a high-end consumer GPU.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#InsidethePink</span>
+                <span class="tag">#ChineseLLM</span>
+                <span class="tag">#PinkFloydmodel</span>
+                <span class="tag">#AItalentmigration</span>
+                <span class="tag">#Claude3benchmark</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-17 13:05 • This guide accompanies the video: "Running the Pink Floyd LLM on Your Own GPU: Cost, Performance, and Scaling Secrets"</p>
+        </footer>
+    </div>
+</body>
+</html>

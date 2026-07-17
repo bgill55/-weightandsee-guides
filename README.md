@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/177_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/178_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/running-the-pink-floyd-llm-on-your-own-gpu-cost-performance-and-scaling-secrets/">
+<img src="guides/running-the-pink-floyd-llm-on-your-own-gpu-cost-performance-and-scaling-secrets/thumbnail.jpg" width="300" alt="Running The Pink Floyd Llm On Your Own Gpu Cost Performance And Scaling Secrets"><br>
+<b>Running The Pink Floyd Llm On Your Own Gpu Cost Performance And Scaling Secrets</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-hands-on-the-open-source-ai-agent-that-codes-talks-and-never-ph/">
 <img src="guides/lm-studio-bionic-hands-on-the-open-source-ai-agent-that-codes-talks-and-never-ph/thumbnail.jpg" width="300" alt="Lm Studio Bionic Hands On The Open Source Ai Agent That Codes Talks And Never Ph"><br>
@@ -31,12 +37,6 @@
 <b>Roblox Ai Builder Vs Unity 10 Faster Game Creation Real Indie Test</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-review-free-local-ai-agent-for-developers/">
-<img src="guides/lm-studio-bionic-review-free-local-ai-agent-for-developers/thumbnail.jpg" width="300" alt="Lm Studio Bionic Review Free Local Ai Agent For Developers"><br>
-<b>Lm Studio Bionic Review Free Local Ai Agent For Developers</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![76](https://img.shields.io/badge/76-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![77](https://img.shields.io/badge/77-blue?style=flat-square) |
 | **Model Deep Dives** | ![58](https://img.shields.io/badge/58-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Running The Pink Floyd Llm On Your Own Gpu Cost Performance And Scaling Secrets](https://bgill55.github.io/-weightandsee-guides/guides/running-the-pink-floyd-llm-on-your-own-gpu-cost-performance-and-scaling-secrets/)** — 2026-07-17
 - **[Roblox Ai Builder Vs Unity 10 Faster Game Creation Real Indie Test](https://bgill55.github.io/-weightandsee-guides/guides/roblox-ai-builder-vs-unity-10-faster-game-creation-real-indie-test/)** — 2026-07-16
 - **[Grok Build Review Opensource Coding Agent Powered By Xais Grok45](https://bgill55.github.io/-weightandsee-guides/guides/grok-build-review-opensource-coding-agent-powered-by-xais-grok45/)** — 2026-07-16
 - **[Hallo4D Flux 2 Endtoend Ai Video Creation Review](https://bgill55.github.io/-weightandsee-guides/guides/hallo4d-flux-2-endtoend-ai-video-creation-review/)** — 2026-07-16
