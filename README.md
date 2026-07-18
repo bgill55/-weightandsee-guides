@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/180_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/181_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/agent-memory-showdown-memgpt-vs-wikimemory-vs-claude-4-builtin-memory/">
+<img src="guides/agent-memory-showdown-memgpt-vs-wikimemory-vs-claude-4-builtin-memory/thumbnail.jpg" width="300" alt="Agent Memory Showdown Memgpt Vs Wikimemory Vs Claude 4 Builtin Memory"><br>
+<b>Agent Memory Showdown Memgpt Vs Wikimemory Vs Claude 4 Builtin Memory</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/running-kimi-k3-locally-on-a-rtx-4090-setup-quantization-cost-breakdown/">
 <img src="guides/running-kimi-k3-locally-on-a-rtx-4090-setup-quantization-cost-breakdown/thumbnail.jpg" width="300" alt="Running Kimi K3 Locally On A Rtx 4090 Setup Quantization Cost Breakdown"><br>
@@ -31,12 +37,6 @@
 <b>Ingesting The Enterprise One Pass Codebase Analysis With Claude Opus 48</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/running-the-pink-floyd-llm-on-your-own-gpu-cost-performance-and-scaling-secrets/">
-<img src="guides/running-the-pink-floyd-llm-on-your-own-gpu-cost-performance-and-scaling-secrets/thumbnail.jpg" width="300" alt="Running The Pink Floyd Llm On Your Own Gpu Cost Performance And Scaling Secrets"><br>
-<b>Running The Pink Floyd Llm On Your Own Gpu Cost Performance And Scaling Secrets</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![78](https://img.shields.io/badge/78-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![79](https://img.shields.io/badge/79-blue?style=flat-square) |
 | **Model Deep Dives** | ![59](https://img.shields.io/badge/59-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Agent Memory Showdown Memgpt Vs Wikimemory Vs Claude 4 Builtin Memory](https://bgill55.github.io/-weightandsee-guides/guides/agent-memory-showdown-memgpt-vs-wikimemory-vs-claude-4-builtin-memory/)** — 2026-07-18
 - **[Ingesting The Enterprise One Pass Codebase Analysis With Claude Opus 48](https://bgill55.github.io/-weightandsee-guides/guides/ingesting-the-enterprise-one-pass-codebase-analysis-with-claude-opus-48/)** — 2026-07-17
 - **[Running The Pink Floyd Llm On Your Own Gpu Cost Performance And Scaling Secrets](https://bgill55.github.io/-weightandsee-guides/guides/running-the-pink-floyd-llm-on-your-own-gpu-cost-performance-and-scaling-secrets/)** — 2026-07-17
 - **[Roblox Ai Builder Vs Unity 10 Faster Game Creation Real Indie Test](https://bgill55.github.io/-weightandsee-guides/guides/roblox-ai-builder-vs-unity-10-faster-game-creation-real-indie-test/)** — 2026-07-16
