@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/181_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/182_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/">
+<img src="guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/thumbnail.jpg" width="300" alt="Home Server Blueprint Running Llama 4 Grok 3 For Private Family Ai On A Rtx 6090"><br>
+<b>Home Server Blueprint Running Llama 4 Grok 3 For Private Family Ai On A Rtx 6090</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/agent-memory-showdown-memgpt-vs-wikimemory-vs-claude-4-builtin-memory/">
 <img src="guides/agent-memory-showdown-memgpt-vs-wikimemory-vs-claude-4-builtin-memory/thumbnail.jpg" width="300" alt="Agent Memory Showdown Memgpt Vs Wikimemory Vs Claude 4 Builtin Memory"><br>
@@ -31,12 +37,6 @@
 <b>Running Kimi K3 Locally On A Rtx 4090 Setup Quantization Cost Breakdown</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/ingesting-the-enterprise-one-pass-codebase-analysis-with-claude-opus-48/">
-<img src="guides/ingesting-the-enterprise-one-pass-codebase-analysis-with-claude-opus-48/thumbnail.jpg" width="300" alt="Ingesting The Enterprise One Pass Codebase Analysis With Claude Opus 48"><br>
-<b>Ingesting The Enterprise One Pass Codebase Analysis With Claude Opus 48</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![79](https://img.shields.io/badge/79-blue?style=flat-square) |
 | **Model Deep Dives** | ![59](https://img.shields.io/badge/59-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -211,6 +211,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Home Server Blueprint Running Llama 4 Grok 3 For Private Family Ai On A Rtx 6090](https://bgill55.github.io/-weightandsee-guides/guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/)** — 2026-07-18
 - **[Last30Days Skill Review The First Ai Agent That Scores Research With Realmoney O](https://bgill55.github.io/-weightandsee-guides/guides/last30days-skill-review-the-first-ai-agent-that-scores-research-with-realmoney-o/)** — 2026-07-14
 - **[How Xs Mcp Api Hooks Enable Seamless Onprem Llm Pipelines](https://bgill55.github.io/-weightandsee-guides/guides/how-xs-mcp-api-hooks-enable-seamless-onprem-llm-pipelines/)** — 2026-07-01
 - **[Stop Babysitting Ai Build Selfdebugging Agent Loops With Daedalus](https://bgill55.github.io/-weightandsee-guides/guides/stop-babysitting-ai-build-selfdebugging-agent-loops-with-daedalus/)** — 2026-07-01
