@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/179_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/180_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/running-kimi-k3-locally-on-a-rtx-4090-setup-quantization-cost-breakdown/">
+<img src="guides/running-kimi-k3-locally-on-a-rtx-4090-setup-quantization-cost-breakdown/thumbnail.jpg" width="300" alt="Running Kimi K3 Locally On A Rtx 4090 Setup Quantization Cost Breakdown"><br>
+<b>Running Kimi K3 Locally On A Rtx 4090 Setup Quantization Cost Breakdown</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/ingesting-the-enterprise-one-pass-codebase-analysis-with-claude-opus-48/">
 <img src="guides/ingesting-the-enterprise-one-pass-codebase-analysis-with-claude-opus-48/thumbnail.jpg" width="300" alt="Ingesting The Enterprise One Pass Codebase Analysis With Claude Opus 48"><br>
@@ -31,12 +37,6 @@
 <b>Running The Pink Floyd Llm On Your Own Gpu Cost Performance And Scaling Secrets</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-hands-on-the-open-source-ai-agent-that-codes-talks-and-never-ph/">
-<img src="guides/lm-studio-bionic-hands-on-the-open-source-ai-agent-that-codes-talks-and-never-ph/thumbnail.jpg" width="300" alt="Lm Studio Bionic Hands On The Open Source Ai Agent That Codes Talks And Never Ph"><br>
-<b>Lm Studio Bionic Hands On The Open Source Ai Agent That Codes Talks And Never Ph</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![78](https://img.shields.io/badge/78-blue?style=flat-square) |
-| **Model Deep Dives** | ![58](https://img.shields.io/badge/58-blue?style=flat-square) |
+| **Model Deep Dives** | ![59](https://img.shields.io/badge/59-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![24](https://img.shields.io/badge/24-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
@@ -144,6 +144,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Running Kimi K3 Locally On A Rtx 4090 Setup Quantization Cost Breakdown](https://bgill55.github.io/-weightandsee-guides/guides/running-kimi-k3-locally-on-a-rtx-4090-setup-quantization-cost-breakdown/)** — 2026-07-17
 - **[Lm Studio Bionic Hands On The Open Source Ai Agent That Codes Talks And Never Ph](https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-hands-on-the-open-source-ai-agent-that-codes-talks-and-never-ph/)** — 2026-07-17
 - **[Lm Studio Bionic Review Free Local Ai Agent For Developers](https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-review-free-local-ai-agent-for-developers/)** — 2026-07-16
 - **[The System Prompt Leaks What Chatgpt V5 Gemini 3 Are Hiding](https://bgill55.github.io/-weightandsee-guides/guides/the-system-prompt-leaks-what-chatgpt-v5-gemini-3-are-hiding/)** — 2026-07-15
