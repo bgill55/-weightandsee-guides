@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/182_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/183_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-architecture-of-agnosticism-how-opencode-routes-75-models/">
+<img src="guides/the-architecture-of-agnosticism-how-opencode-routes-75-models/thumbnail.jpg" width="300" alt="The Architecture Of Agnosticism How Opencode Routes 75 Models"><br>
+<b>The Architecture Of Agnosticism How Opencode Routes 75 Models</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/">
 <img src="guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/thumbnail.jpg" width="300" alt="Home Server Blueprint Running Llama 4 Grok 3 For Private Family Ai On A Rtx 6090"><br>
@@ -31,12 +37,6 @@
 <b>Agent Memory Showdown Memgpt Vs Wikimemory Vs Claude 4 Builtin Memory</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/running-kimi-k3-locally-on-a-rtx-4090-setup-quantization-cost-breakdown/">
-<img src="guides/running-kimi-k3-locally-on-a-rtx-4090-setup-quantization-cost-breakdown/thumbnail.jpg" width="300" alt="Running Kimi K3 Locally On A Rtx 4090 Setup Quantization Cost Breakdown"><br>
-<b>Running Kimi K3 Locally On A Rtx 4090 Setup Quantization Cost Breakdown</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![79](https://img.shields.io/badge/79-blue?style=flat-square) |
-| **Model Deep Dives** | ![59](https://img.shields.io/badge/59-blue?style=flat-square) |
+| **Model Deep Dives** | ![60](https://img.shields.io/badge/60-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
@@ -145,6 +145,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[The Architecture Of Agnosticism How Opencode Routes 75 Models](https://bgill55.github.io/-weightandsee-guides/guides/the-architecture-of-agnosticism-how-opencode-routes-75-models/)** — 2026-07-19
 - **[Running Kimi K3 Locally On A Rtx 4090 Setup Quantization Cost Breakdown](https://bgill55.github.io/-weightandsee-guides/guides/running-kimi-k3-locally-on-a-rtx-4090-setup-quantization-cost-breakdown/)** — 2026-07-17
 - **[Lm Studio Bionic Hands On The Open Source Ai Agent That Codes Talks And Never Ph](https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-hands-on-the-open-source-ai-agent-that-codes-talks-and-never-ph/)** — 2026-07-17
 - **[Lm Studio Bionic Review Free Local Ai Agent For Developers](https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-review-free-local-ai-agent-for-developers/)** — 2026-07-16
