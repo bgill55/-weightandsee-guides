@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/185_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/186_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/build-a-zero-latency-agent-with-flashrt-and-qwen36/">
+<img src="guides/build-a-zero-latency-agent-with-flashrt-and-qwen36/thumbnail.jpg" width="300" alt="Build A Zero Latency Agent With Flashrt And Qwen36"><br>
+<b>Build A Zero Latency Agent With Flashrt And Qwen36</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/nvidia-omniverse-agent-toolkit-2026-expansion-building-simulationready-worlds-wi/">
 <img src="guides/nvidia-omniverse-agent-toolkit-2026-expansion-building-simulationready-worlds-wi/thumbnail.jpg" width="300" alt="Nvidia Omniverse Agent Toolkit 2026 Expansion Building Simulationready Worlds Wi"><br>
@@ -31,12 +37,6 @@
 <b>Deploy Opencode Locally On A 2026 Gpu Server Zero Cloud Full Speed</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-architecture-of-agnosticism-how-opencode-routes-75-models/">
-<img src="guides/the-architecture-of-agnosticism-how-opencode-routes-75-models/thumbnail.jpg" width="300" alt="The Architecture Of Agnosticism How Opencode Routes 75 Models"><br>
-<b>The Architecture Of Agnosticism How Opencode Routes 75 Models</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![79](https://img.shields.io/badge/79-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![80](https://img.shields.io/badge/80-blue?style=flat-square) |
 | **Model Deep Dives** | ![62](https://img.shields.io/badge/62-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Build A Zero Latency Agent With Flashrt And Qwen36](https://bgill55.github.io/-weightandsee-guides/guides/build-a-zero-latency-agent-with-flashrt-and-qwen36/)** — 2026-07-20
 - **[Agent Memory Showdown Memgpt Vs Wikimemory Vs Claude 4 Builtin Memory](https://bgill55.github.io/-weightandsee-guides/guides/agent-memory-showdown-memgpt-vs-wikimemory-vs-claude-4-builtin-memory/)** — 2026-07-18
 - **[Ingesting The Enterprise One Pass Codebase Analysis With Claude Opus 48](https://bgill55.github.io/-weightandsee-guides/guides/ingesting-the-enterprise-one-pass-codebase-analysis-with-claude-opus-48/)** — 2026-07-17
 - **[Running The Pink Floyd Llm On Your Own Gpu Cost Performance And Scaling Secrets](https://bgill55.github.io/-weightandsee-guides/guides/running-the-pink-floyd-llm-on-your-own-gpu-cost-performance-and-scaling-secrets/)** — 2026-07-17
