@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/184_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/185_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/nvidia-omniverse-agent-toolkit-2026-expansion-building-simulationready-worlds-wi/">
+<img src="guides/nvidia-omniverse-agent-toolkit-2026-expansion-building-simulationready-worlds-wi/thumbnail.jpg" width="300" alt="Nvidia Omniverse Agent Toolkit 2026 Expansion Building Simulationready Worlds Wi"><br>
+<b>Nvidia Omniverse Agent Toolkit 2026 Expansion Building Simulationready Worlds Wi</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/deploy-opencode-locally-on-a-2026-gpu-server-zero-cloud-full-speed/">
 <img src="guides/deploy-opencode-locally-on-a-2026-gpu-server-zero-cloud-full-speed/thumbnail.jpg" width="300" alt="Deploy Opencode Locally On A 2026 Gpu Server Zero Cloud Full Speed"><br>
@@ -31,12 +37,6 @@
 <b>The Architecture Of Agnosticism How Opencode Routes 75 Models</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/">
-<img src="guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/thumbnail.jpg" width="300" alt="Home Server Blueprint Running Llama 4 Grok 3 For Private Family Ai On A Rtx 6090"><br>
-<b>Home Server Blueprint Running Llama 4 Grok 3 For Private Family Ai On A Rtx 6090</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![79](https://img.shields.io/badge/79-blue?style=flat-square) |
-| **Model Deep Dives** | ![61](https://img.shields.io/badge/61-blue?style=flat-square) |
+| **Model Deep Dives** | ![62](https://img.shields.io/badge/62-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
@@ -145,6 +145,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Nvidia Omniverse Agent Toolkit 2026 Expansion Building Simulationready Worlds Wi](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-omniverse-agent-toolkit-2026-expansion-building-simulationready-worlds-wi/)** — 2026-07-20
 - **[Deploy Opencode Locally On A 2026 Gpu Server Zero Cloud Full Speed](https://bgill55.github.io/-weightandsee-guides/guides/deploy-opencode-locally-on-a-2026-gpu-server-zero-cloud-full-speed/)** — 2026-07-19
 - **[The Architecture Of Agnosticism How Opencode Routes 75 Models](https://bgill55.github.io/-weightandsee-guides/guides/the-architecture-of-agnosticism-how-opencode-routes-75-models/)** — 2026-07-19
 - **[Running Kimi K3 Locally On A Rtx 4090 Setup Quantization Cost Breakdown](https://bgill55.github.io/-weightandsee-guides/guides/running-kimi-k3-locally-on-a-rtx-4090-setup-quantization-cost-breakdown/)** — 2026-07-17
