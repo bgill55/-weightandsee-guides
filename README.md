@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/189_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/190_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/hugging-face-guardrails-vs-openai-agent-api-security-showdown/">
+<img src="guides/hugging-face-guardrails-vs-openai-agent-api-security-showdown/thumbnail.jpg" width="300" alt="Hugging Face Guardrails Vs Openai Agent Api Security Showdown"><br>
+<b>Hugging Face Guardrails Vs Openai Agent Api Security Showdown</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-gemini-3s-new-security-architecture-lessons-for-future-agents/">
 <img src="guides/inside-gemini-3s-new-security-architecture-lessons-for-future-agents/thumbnail.jpg" width="300" alt="Inside Gemini 3S New Security Architecture Lessons For Future Agents"><br>
@@ -31,12 +37,6 @@
 <b>Gemini 36 Flash Vs Gpt 55 Turbo Who Wins The Speed Race</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/qwenimage30-vs-flux-2-local-rtx-4090-battle-for-the-best-opensource-generator/">
-<img src="guides/qwenimage30-vs-flux-2-local-rtx-4090-battle-for-the-best-opensource-generator/thumbnail.jpg" width="300" alt="Qwenimage30 Vs Flux 2 Local Rtx 4090 Battle For The Best Opensource Generator"><br>
-<b>Qwenimage30 Vs Flux 2 Local Rtx 4090 Battle For The Best Opensource Generator</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![83](https://img.shields.io/badge/83-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![84](https://img.shields.io/badge/84-blue?style=flat-square) |
 | **Model Deep Dives** | ![62](https://img.shields.io/badge/62-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Hugging Face Guardrails Vs Openai Agent Api Security Showdown](https://bgill55.github.io/-weightandsee-guides/guides/hugging-face-guardrails-vs-openai-agent-api-security-showdown/)** — 2026-07-22
 - **[Inside Gemini 3S New Security Architecture Lessons For Future Agents](https://bgill55.github.io/-weightandsee-guides/guides/inside-gemini-3s-new-security-architecture-lessons-for-future-agents/)** — 2026-07-22
 - **[Gemini 36 Flash Vs Gpt 55 Turbo Who Wins The Speed Race](https://bgill55.github.io/-weightandsee-guides/guides/gemini-36-flash-vs-gpt-55-turbo-who-wins-the-speed-race/)** — 2026-07-21
 - **[Qwenimage30 Vs Flux 2 Local Rtx 4090 Battle For The Best Opensource Generator](https://bgill55.github.io/-weightandsee-guides/guides/qwenimage30-vs-flux-2-local-rtx-4090-battle-for-the-best-opensource-generator/)** — 2026-07-21
