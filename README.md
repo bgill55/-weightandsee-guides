@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/190_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/191_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -31,12 +31,6 @@
 <b>Inside Gemini 3S New Security Architecture Lessons For Future Agents</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/gemini-36-flash-vs-gpt-55-turbo-who-wins-the-speed-race/">
-<img src="guides/gemini-36-flash-vs-gpt-55-turbo-who-wins-the-speed-race/thumbnail.jpg" width="300" alt="Gemini 36 Flash Vs Gpt 55 Turbo Who Wins The Speed Race"><br>
-<b>Gemini 36 Flash Vs Gpt 55 Turbo Who Wins The Speed Race</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +41,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![84](https://img.shields.io/badge/84-blue?style=flat-square) |
 | **Model Deep Dives** | ![62](https://img.shields.io/badge/62-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![26](https://img.shields.io/badge/26-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -219,6 +213,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Daedalus Lite Build Your Own Local Ai Coding Agent In Minutes](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-lite-build-your-own-local-ai-coding-agent-in-minutes/)** — 2026-07-23
 - **[Home Server Blueprint Running Llama 4 Grok 3 For Private Family Ai On A Rtx 6090](https://bgill55.github.io/-weightandsee-guides/guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/)** — 2026-07-18
 - **[Last30Days Skill Review The First Ai Agent That Scores Research With Realmoney O](https://bgill55.github.io/-weightandsee-guides/guides/last30days-skill-review-the-first-ai-agent-that-scores-research-with-realmoney-o/)** — 2026-07-14
 - **[How Xs Mcp Api Hooks Enable Seamless Onprem Llm Pipelines](https://bgill55.github.io/-weightandsee-guides/guides/how-xs-mcp-api-hooks-enable-seamless-onprem-llm-pipelines/)** — 2026-07-01
