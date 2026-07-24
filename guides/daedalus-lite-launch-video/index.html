@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step educational guide for Daedalus-Lite Launch Video.">
+    <meta name="keywords" content="daedalus-lite launch video">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Daedalus-Lite Launch Video - Complete Guide">
+    <meta property="og:description" content="Step-by-step educational guide for Daedalus-Lite Launch Video.">
+    <meta property="og:type" content="article">
+    <title>Daedalus-Lite Launch Video | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Daedalus-Lite Launch Video</h1>
+            <p class="subtitle">This guide walks you through installing, launching, and using Daedalus‑Lite – a zero‑dependency, TypeScript‑aware REPL for Node developers. You’ll learn how to run the REPL, import TypeScript modules, leverage built‑in scaffolding commands, and preserve session history for rapid prototyping.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 23, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Daedalus‑Lite provides an instant, native‑speed REPL for TypeScript and Node with a single JavaScript bundle.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Installation is as simple as a single npm command; no additional runtime dependencies are required.</span></li>
+                    <li><span class="takeaway-num">3</span><span>The REPL automatically detects your project's tsconfig.json and exposes all modules for direct import.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Built‑in commands (e.g., scaffolding, code generation) accelerate prototype creation without leaving the console.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Session history is persisted across runs, and the REPL integrates with version‑control tools for seamless commits.</span></li>
+                    <li><span class="takeaway-num">6</span><span>A plugin architecture lets you extend the REPL with custom commands, linting, testing, or other workflows.</span></li>
+                    <li><span class="takeaway-num">7</span><span>Tiered subscription plans unlock consultancy, custom CLI generation, and white‑labeling for enterprise use.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Node.js (v14 or later) and npm installed on your machine.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">An existing TypeScript project with a valid tsconfig.json.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install Daedalus‑Lite globally</h3>
+                <p>Open a terminal and run the npm install command. Installing globally makes the `daedalus-lite` binary available from any directory.
+
+- Verify Node and npm versions with `node -v` and `npm -v`.
+- Execute the install command.
+- Confirm the installation by checking the version.
+</p>
+
+                <div class="code-block"><pre>npm install -g daedalus-lite
+
+daedalus-lite --version</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Launch the REPL inside your TypeScript project</h3>
+                <p>Navigate to the root of your TypeScript project (the folder containing `tsconfig.json`). Run the Daedalus‑Lite binary. The REPL will start instantly, load the TypeScript configuration, and expose your project modules.
+
+- `cd` into the project directory.
+- Start the REPL with `daedalus-lite` or `npx daedalus-lite` if you prefer a local install.
+- Observe the prompt (`>`) indicating readiness.
+</p>
+
+                <div class="code-block"><pre>cd /path/to/my-ts-project
+
+daedalus-lite</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Import and execute TypeScript code on the fly</h3>
+                <p>Within the REPL you can import any `.ts` file using standard ES‑module syntax. The REPL compiles the file in‑memory, preserving type safety. After importing, call exported functions and view results instantly.
+
+- Use the `import` statement to bring in a module.
+- Call a function and see the output.
+- Errors are displayed with native Node stack traces.
+</p>
+
+                <div class="code-block"><pre>import { greet } from './src/greeting.ts';
+
+greet('World');
+// → "Hello, World!"</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Use built‑in scaffolding commands to generate boilerplate</h3>
+                <p>Daedalus‑Lite ships with a colon‑prefixed command system. For example, `:scaffold component MyComponent` creates a new React component file based on a preset template. The generated files are placed in your project structure, ready for immediate use.
+
+- Type the scaffold command.
+- Confirm the generated files appear in the file explorer.
+- Continue editing or run the REPL again to import the new component.
+</p>
+
+                <div class="code-block"><pre>:scaffold component MyComponent
+
+// Result: creates src/components/MyComponent.tsx with a basic component skeleton</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Exit the REPL while preserving history</h3>
+                <p>When you’re done, exit with `Ctrl+D` or type `.exit`. Daedalus‑Lite saves the command history to a hidden file (`.daedalus_history`) in your project root, allowing you to recall previous commands with the up‑arrow key on the next launch.
+
+- Press `Ctrl+D` or type `.exit`.
+- Relaunch the REPL and press the up‑arrow to see previous commands.
+</p>
+
+                <div class="code-block"><pre>.exit
+# On next launch
+up-arrow  // shows previous commands</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Create a `.daedalusrc` JSON file to pre‑configure the REPL (e.g., default import paths, custom plugins).
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the `:plugin install <npm-package>` command to add linting or testing capabilities on the fly.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Leverage the REPL’s `:watch <file>` feature to automatically re‑run a function whenever the source file changes.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Running the REPL outside a folder with a `tsconfig.json` causes type‑checking to fall back to default settings. Always launch from the project root.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Installing Daedalus‑Lite locally without adding it to `package.json` can lead to version mismatches across team members. Prefer a global install or add it as a devDependency (`npm i -D daedalus-lite`).
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Node.js</h4>
+                    <p>JavaScript runtime that powers Daedalus‑Lite.</p>
+                    <a href="https://nodejs.org/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>npm</h4>
+                    <p>Package manager used to install Daedalus‑Lite.</p>
+                    <a href="https://www.npmjs.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Daedalus‑Lite</h4>
+                    <p>Zero‑dependency REPL for TypeScript and Node with plugin support.</p>
+                    <a href="https://www.npmjs.com/package/daedalus-lite" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>TypeScript</h4>
+                    <p>Typed superset of JavaScript that Daedalus‑Lite compiles on the fly.</p>
+                    <a href="https://www.typescriptlang.org/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/daedalus-lite/daedalus-lite" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Daedalus‑Lite GitHub Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Source code, issue tracker, and contribution guide for the REPL.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.npmjs.com/package/daedalus-lite" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Daedalus‑Lite npm Package
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Installation instructions, version history, and usage examples.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.typescriptlang.org/docs/handbook/modules.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            TypeScript Handbook – Modules
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Understanding module syntax and import/export mechanics used inside the REPL.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Do I need to install any dependencies for Daedalus‑Lite to work?</h3>
+                <p>No. Daedalus‑Lite is zero‑dependency; only Node.js (v14+) and npm are required.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use Daedalus‑Lite with a monorepo that has multiple tsconfig files?</h3>
+                <p>Yes. Start the REPL inside the specific package folder; it will read the nearest `tsconfig.json`. You can also pass a config path with `--config ./path/tsconfig.json`.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I create my own plugin for Daedalus‑Lite?</h3>
+                <p>Write a Node module that exports a function accepting the REPL instance. Then install it via `npm i <module>` and load it with `:plugin install <module>`.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What happens to my session history if I delete the `.daedalus_history` file?</h3>
+                <p>The REPL will start with an empty history. The file is recreated on exit, so you can safely back it up if you want to preserve past commands.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is there a way to run Daedalus‑Lite without installing it globally?</h3>
+                <p>Yes. Add it as a devDependency (`npm i -D daedalus-lite`) and run it with `npx daedalus-lite` from the project root.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-23 23:31 • This guide accompanies the video: "Daedalus-Lite Launch Video"</p>
+        </footer>
+    </div>
+</body>
+</html>
