@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/193_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/194_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-anatomy-of-the-hugging-face-agent-escape/">
+<img src="guides/the-anatomy-of-the-hugging-face-agent-escape/thumbnail.jpg" width="300" alt="The Anatomy Of The Hugging Face Agent Escape"><br>
+<b>The Anatomy Of The Hugging Face Agent Escape</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/openworker-shakes-up-ai-automation-opensource-desktop-agent-delivers-finished-wo/">
 <img src="guides/openworker-shakes-up-ai-automation-opensource-desktop-agent-delivers-finished-wo/thumbnail.jpg" width="300" alt="Openworker Shakes Up Ai Automation Opensource Desktop Agent Delivers Finished Wo"><br>
@@ -31,12 +37,6 @@
 <b>Daedalus Lite Launch Video</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/hugging-face-guardrails-vs-openai-agent-api-security-showdown/">
-<img src="guides/hugging-face-guardrails-vs-openai-agent-api-security-showdown/thumbnail.jpg" width="300" alt="Hugging Face Guardrails Vs Openai Agent Api Security Showdown"><br>
-<b>Hugging Face Guardrails Vs Openai Agent Api Security Showdown</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![84](https://img.shields.io/badge/84-blue?style=flat-square) |
-| **Model Deep Dives** | ![65](https://img.shields.io/badge/65-blue?style=flat-square) |
+| **Model Deep Dives** | ![66](https://img.shields.io/badge/66-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
@@ -150,6 +150,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[The Anatomy Of The Hugging Face Agent Escape](https://bgill55.github.io/-weightandsee-guides/guides/the-anatomy-of-the-hugging-face-agent-escape/)** — 2026-07-24
 - **[Openworker Shakes Up Ai Automation Opensource Desktop Agent Delivers Finished Wo](https://bgill55.github.io/-weightandsee-guides/guides/openworker-shakes-up-ai-automation-opensource-desktop-agent-delivers-finished-wo/)** — 2026-07-24
 - **[Daedalus Lite Launch Video](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-lite-launch-video/)** — 2026-07-23
 - **[Nvidia Omniverse Agent Toolkit 2026 Expansion Building Simulationready Worlds Wi](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-omniverse-agent-toolkit-2026-expansion-building-simulationready-worlds-wi/)** — 2026-07-20
