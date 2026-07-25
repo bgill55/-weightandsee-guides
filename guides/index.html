@@ -3,997 +3,609 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weight and See - Video Guides</title>
+    <title>Weight and See - Video Guides & Resources</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0f0f0f;
-            --card: #1a1a1a;
-            --text: #f1f1f1;
-            --text-secondary: #a0a0a0;
-            --accent: #6366f1;
-            --border: #333;
+            --bg-main: #0b0c10;
+            --bg-surface: #13151c;
+            --bg-card: #1a1d27;
+            --bg-card-hover: #222634;
+            --border-color: #2a2e3d;
+            --border-hover: #6366f1;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --text-dim: #6b7280;
+            --accent-primary: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.25);
+            --accent-secondary: #818cf8;
+            --badge-bg: rgba(99, 102, 241, 0.15);
+            --badge-text: #a5b4fc;
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            padding: 40px 20px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, var(--text), var(--accent));
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(19, 21, 28, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 24px;
+        }
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            color: white;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .brand-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff, #c7d2fe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .subtitle { color: var(--text-secondary); margin-bottom: 40px; }
-        .guide-list { list-style: none; }
-        .guide-item {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            transition: transform 0.2s, border-color 0.2s;
+
+        .brand-text p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
         }
-        .guide-item:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent);
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 480px;
+            min-width: 260px;
         }
-        .guide-item a {
-            display: block;
-            padding: 20px;
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+            pointer-events: none;
+            width: 16px;
+            height: 16px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 10px 16px 10px 40px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+            background: #1e2230;
+        }
+
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 28px 24px 60px;
+        }
+
+        .categories-section {
+            margin-bottom: 28px;
+        }
+
+        .categories-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-color) transparent;
+        }
+
+        .category-pill {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
+        }
+
+        .category-pill:hover {
+            border-color: var(--accent-primary);
+            color: var(--text-main);
+        }
+
+        .category-pill.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .category-pill .count {
+            font-size: 0.72rem;
+            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1px 6px;
+            border-radius: 10px;
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+        }
+
+        .stats-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .sort-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .sort-select {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-family: inherit;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .featured-section {
+            margin-bottom: 36px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .featured-card {
+            background: linear-gradient(145deg, #1e2230, #151822);
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            border-radius: 16px;
+            overflow: hidden;
             text-decoration: none;
-            color: var(--text);
+            color: var(--text-main);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
-        .guide-item h3 { font-size: 1.1rem; margin-bottom: 4px; }
-        .guide-item p { font-size: 14px; color: var(--text-secondary); }
-        .empty { color: var(--text-secondary); text-align: center; padding: 60px 0; }
+
+        .featured-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 20px;
+        }
+
+        .guide-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-3px);
+            background: var(--bg-card-hover);
+            border-color: var(--accent-primary);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--accent-glow);
+        }
+
+        .card-thumb-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--bg-surface);
+            overflow: hidden;
+        }
+
+        .card-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .guide-card:hover .card-thumb {
+            transform: scale(1.03);
+        }
+
+        .card-thumb-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e1b4b, #311b92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #818cf8;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 0.75rem;
+        }
+
+        .cat-tag {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
+        }
+
+        .card-date {
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        .card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            font-size: 0.8rem;
+            color: var(--accent-secondary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--bg-surface);
+            border: 1px dashed var(--border-color);
+            border-radius: 16px;
+        }
+
+        .empty-state h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .empty-state p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Weight and See</h1>
-        <p class="subtitle">Video Guides & Resources</p>
-        <ul class="guide-list">
-            <li class="guide-item">
-                <a href="./zcode-vs-cursor-vs-claude-code-vs-copilot-2026-coding-assistant-showdown/">
-                    <h3>ZCode vs Cursor vs Claude Code vs Copilot: 2026 Coding Assistant Showdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./zcode-30-vs-copilot-x-can-glm-52-beat-gpt-55/">
-                    <h3>ZCode 3.0 vs Copilot X: Can GLM-5.2 Beat GPT-5.5?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./xlayer-vs-chatgpt-v5-marketplace-who-wins-the-multiagent-race/">
-                    <h3>X‑Layer vs ChatGPT v5 Marketplace: Who Wins the Multi‑Agent Race?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/">
-                    <h3>Why Your AI Agent Is Using the Wrong Model (And How to Fix It)</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./why-minimax-m3-breaks-the-alphazero-compute-mold/">
-                    <h3>Why MiniMax-M3 Breaks the AlphaZero Compute Mold</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./whispersmallhi-the-tiny-transcriber-that-beats-cloud-apis/">
-                    <h3>Whisper‑Small‑HI: The Tiny Transcriber that Beats Cloud APIs</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./what-noam-shazeer-built-at-google-and-why-openai-needs-it-now/">
-                    <h3>What Noam Shazeer Built at Google — And Why OpenAI Needs It Now</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai/">
-                    <h3>What Happens When AI Learns to Write Rocket Code — Inside Domain-Specific LLM Training</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./what-happens-when-ai-learns-to-code-like-a-rocket-scientist/">
-                    <h3>What Happens When AI Learns to Code Like a Rocket Scientist</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./visionaryai-2026-review-8k-images-on-a-laptop-gpu/">
-                    <h3>VisionaryAI 2026 Review: 8K Images on a Laptop GPU</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./video-reasoning-explained-how-ai-models-learn-generalization-not-just-patterns/">
-                    <h3>Video Reasoning Explained: How AI Models Learn Generalization, Not Just Patterns</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./vercel-eve-vs-saas-agents-the-latency-benchmark/">
-                    <h3>Vercel Eve vs. SaaS Agents: The Latency Benchmark</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./unlocking-ai-voice-synthesis-a-deep-dive-into-sundaycoiltext-to-speech-converter/">
-                    <h3>Unlocking AI Voice Synthesis: A Deep Dive into sundaycoil/text-to-speech-converter</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./unicad-7b-vs-cloud-giants-can-local-ai-engineer-real-parts/">
-                    <h3>UniCAD-7B vs. Cloud Giants: Can Local AI Engineer Real Parts?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./unchaining-ai-is-qwen-36-aggressive-the-ultimate-local-powerhouse/">
-                    <h3>Unchaining AI: Is Qwen 3.6 Aggressive The Ultimate Local Powerhouse?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./toolsense-review-is-this-the-ultimate-debugger-for-llm-agents/">
-                    <h3>ToolSense Review – Is This the Ultimate Debugger for LLM Agents?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./tool-review-sp-implementations-vs-classic-plugandplay-restorers/">
-                    <h3>Tool Review: SP³ Implementations vs. Classic Plug‑and‑Play Restorers</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-privacy-exodus-why-local-llms-are-drowning-out-the-cloud-giants/">
-                    <h3>The Privacy Exodus: Why Local LLMs Are Drowning Out the Cloud Giants</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-poise-attack-i-poisoned-an-ai-agent-in-real-time/">
-                    <h3>The POISE Attack: I Poisoned an AI Agent in Real-Time</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-open-architecture-advantage-why-open-ai-models-are-harder-to-ban/">
-                    <h3>The Open Architecture Advantage: Why Open AI Models Are Harder to Ban</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-omnivision-7-paper-why-ai-finally-understands-motion/">
-                    <h3>The OmniVision-7 Paper: Why AI Finally Understands Motion</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-offline-security-stack-running-llama-4-for-pentesting/">
-                    <h3>The Offline Security Stack: Running Llama 4 for Pentesting</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-microsoft-ai-forge-hack-how-they-stole-your-api-keys/">
-                    <h3>The Microsoft AI-Forge Hack: How They Stole Your API Keys</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-future-of-reactive-audio-how-flux-2-changes-game-design/">
-                    <h3>The Future of Reactive Audio: How FLUX-2 Changes Game Design</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-enterprise-agentic-shift-claude-sonnet-5s-real-edge/">
-                    <h3>The Enterprise Agentic Shift: Claude Sonnet 5's Real Edge</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-computational-edge-running-physical-ai-on-local-hardware/">
-                    <h3>The Computational Edge: Running Physical AI on Local Hardware</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-computational-cost-of-consciousness-modeling-agent-welfare/">
-                    <h3>The Computational Cost of Consciousness: Modeling Agent Welfare</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-architecture-of-autonomy-from-openclaw-squads-to-hermes/">
-                    <h3>The Architecture of Autonomy: From OpenClaw Squads to Hermes</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-anthropic-vs-david-sacks-fight-what-it-means-for-open-weight-ai-in-2026/">
-                    <h3>The Anthropic vs. David Sacks Fight: What It Means for Open-Weight AI in 2026</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-ai-video-prompt-cookbook-open-source-beats-big-tech/">
-                    <h3>The AI Video Prompt Cookbook: Open-Source Beats Big Tech</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-agency-the-open-source-ai-agency-that-hit-50k-stars-in-two-weeks/">
-                    <h3>The Agency: The Open-Source AI Agency That Hit 50K Stars in Two Weeks</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./the-2026-program-repair-showdown-grok-3-vs-llama-4/">
-                    <h3>The 2026 Program Repair Showdown: Grok 3 vs. Llama 4</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./text-to-cad-just-got-real-the-caddy-model-breakdown/">
-                    <h3>Text-to-CAD Just Got Real: The CADDY Model Breakdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./supertonic-review-is-local-tts-finally-viable/">
-                    <h3>Supertonic Review: Is Local TTS Finally Viable?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./supertonic-3-beats-google-cloud-tts-ondevice-multilingual-speed-privacy-test/">
-                    <h3>Supertonic 3 Beats Google Cloud TTS on‑Device – Multilingual Speed & Privacy Test</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./suitcase-robot-meets-llm-when-physical-sensors-control-ai-randomness/">
-                    <h3>Suitcase Robot Meets LLM: When Physical Sensors Control AI Randomness</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./stop-hitting-limits-the-rise-of-ai-middleware/">
-                    <h3>Stop Hitting Limits: The Rise of AI Middleware</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./stop-babysitting-ai-build-selfdebugging-agent-loops-with-daedalus/">
-                    <h3>Stop Babysitting AI: Build Self‑Debugging Agent Loops with Daedalus</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./sora-2-vs-veo-3-vs-kling-ai-the-4k-render-benchmark/">
-                    <h3>Sora 2 vs. Veo 3 vs. Kling AI: The 4K Render Benchmark</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./running-llms-offline-a-stepbystep-guide/">
-                    <h3>Running LLMs Offline: A Step‑by‑Step Guide</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./running-ideogram-4-fp8-locally-fp8-quantization-benchmarks-and-cost-analysis/">
-                    <h3>Running Ideogram 4 FP8 Locally: FP8 Quantization Benchmarks and Cost Analysis</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./running-deepseek-v4-locally-the-gpt-56-alternative/">
-                    <h3>Running DeepSeek-V4 Locally: The GPT-5.6 Alternative</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./run-llm-offline-for-free-with-minimax-m3-desktop-app-no-cloud-no-cost/">
-                    <h3>Run LLM Offline for Free with Minimax M3 Desktop App – No Cloud, No Cost</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./run-gpt55-on-a-raspberry-pi-zero-the-ultimate-lowcost-local-ai-hack/">
-                    <h3>Run GPT‑5.5 on a Raspberry Pi Zero: The Ultimate Low‑Cost Local AI Hack</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./run-claude-35-offline-for-free-opencode-full-setup-on-a-500-pc/">
-                    <h3>Run Claude 3.5 Offline for Free – Opencode Full Setup on a $500 PC</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./replace-chatgpt-v5-api-with-openfugu-the-zero-cost-switch/">
-                    <h3>Replace ChatGPT v5 API with OpenFugu: The Zero-Cost Switch</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./realtime-camera-style-transfer-on-edge-handson-review-of-camerarealtimestyle/">
-                    <h3>Real‑Time Camera Style Transfer on Edge: Hands‑On Review of CameraRealtimeStyle</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./r-openai-package-deep-dive-gpt55-turbo-in-your-data-science-workflow/">
-                    <h3>R OpenAI Package Deep Dive: GPT‑5.5 Turbo in Your Data Science Workflow</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./qwythos-9b-vs-llama-4-9b-vs-qwen-3-8b-local-longcontext-showdown/">
-                    <h3>Qwythos 9B vs Llama 4 9B vs Qwen 3 8B: Local Long‑Context Showdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./qwenagentworld-35ba3b-handson-review-for-edge-deployment/">
-                    <h3>Qwen‑AgentWorld 35B‑A3B: Hands‑On Review for Edge Deployment</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./qwen-image-20-rl-vs-flux-2-how-reinforcement-learning-cuts-gpu-costs/">
-                    <h3>Qwen-Image-2.0-RL vs FLUX 2: How Reinforcement Learning Cuts GPU Costs</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./qwen-3-72b-vs-llama-4-scout-realworld-speed-test-on-a-500-gpu/">
-                    <h3>Qwen 3 72B vs Llama 4 Scout: Real‑World Speed Test on a $500 GPU</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./qwen-3-72b-vs-llama-4-scout-realworld-macos-container-machine-benchmark-on-m3-ma/">
-                    <h3>Qwen 3 72B vs Llama 4 Scout: Real‑World macOS Container Machine Benchmark on M3 Max</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./prometheus-ai-engineer-jeff-bezoss-awsready-agent-takes-on-ollama-09/">
-                    <h3>Prometheus AI Engineer: Jeff Bezos’s AWS‑Ready Agent Takes on Ollama 0.9</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./permavid-deep-dive-the-ai-that-never-forgets-your-video-identity/">
-                    <h3>PermaVid Deep Dive: The AI That Never Forgets Your Video Identity</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./pentestai-review-aipowered-penetration-testing-with-chatgpt-v55/">
-                    <h3>PenTestAI Review: AI‑Powered Penetration Testing with ChatGPT v5.5</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./openai-vs-deepseek-vs-llama-who-wins-the-regulatory-race/">
-                    <h3>OpenAI vs DeepSeek vs Llama: Who Wins the Regulatory Race?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./openai-vs-deepseek-their-safety-reports-just-got-a-lot-less-voluntary/">
-                    <h3>OpenAI vs DeepSeek: Their Safety Reports Just Got a Lot Less Voluntary</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./omni-flash-vs-gpt-55-the-latency-showdown/">
-                    <h3>Omni Flash vs. GPT-5.5: The Latency Showdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./ollama-vs-lm-studio-vs-localai-2026-local-llm-performance-showdown/">
-                    <h3>Ollama vs LM Studio vs LocalAI: 2026 Local LLM Performance Showdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./ollama-vs-lm-studio-battle-for-the-fastest-llama-4-inference-on-a-rtx-4090/">
-                    <h3>Ollama vs LM Studio: Battle for the Fastest Llama 4 Inference on a RTX 4090</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./ollama-v090-run-any-llm-locally-in-2026-heres-what-changed/">
-                    <h3>Ollama v0.9.0: Run Any LLM Locally in 2026 — Here's What Changed</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./ollama-07-offline-13b-llm-on-an-8-gb-laptop-does-it-really-work/">
-                    <h3>Ollama 0.7: Offline 13B LLM on an 8 GB Laptop – Does It Really Work?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./offline-flux-2-vs-cloud-ai-art-speed-cost-privacy-showdown/">
-                    <h3>Offline Flux 2 vs Cloud AI Art: Speed, Cost & Privacy Showdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./nvidia-h100-tensor-core-deep-dive-what-the-new-hopper-gpu-means-for-ai-workloads/">
-                    <h3>NVIDIA H100 Tensor Core Deep Dive: What the New Hopper GPU Means for AI Workloads</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/">
-                    <h3>NVIDIA GH200 Grace Hopper Superchip: What 2,000 GPU‑Level AI Performance Means for Developers</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./nova-100m-new-vs-circuit-breaker-which-2026-model-wins-the-speed-race/">
-                    <h3>NOVA-100M-new vs circuit-breaker: Which 2026 model wins the speed race?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./nocode-playbook-build-a-world-cup-2026-predictor-with-llms-typescript-realtime-s/">
-                    <h3>No‑Code Playbook: Build a World Cup 2026 Predictor with LLMs, TypeScript & Real‑Time Sports Data</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./nocode-ai-orchestrators-faceoff-flowise-20-vs-n8n-ai-30-vs-autogptstudio/">
-                    <h3>No‑Code AI Orchestrators Face‑Off: Flowise 2.0 vs n8n AI 3.0 vs AutoGPT‑Studio</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./multi-agent-orchestration-in-daedalus-how-sub-agents-planner-coder-reviewer-tack/">
-                    <h3>Multi-Agent Orchestration in Daedalus: How Sub-Agents (Planner, Coder, Reviewer) Tackle Complex Codebase Tasks</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./midjourney-82-deep-dive-realworld-workflow-cost/">
-                    <h3>Midjourney 8.2 Deep Dive: Real‑World Workflow & Cost</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./metavision-20-api-deep-dive-is-the-new-multimodal-model-worth-the-hype/">
-                    <h3>MetaVision 2.0 API Deep Dive – Is the New Multimodal Model Worth the Hype?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./metas-llama4coder-the-coding-ai-that-could-disrupt-gpt55/">
-                    <h3>Meta's Llama‑4‑Coder: The Coding AI That Could Disrupt GPT‑5.5</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./meta-muse-spark-20-launch-ondevice-coding-assistant-shakes-up-the-market/">
-                    <h3>Meta Muse Spark 2.0 Launch: On‑Device Coding Assistant Shakes Up the Market</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./meta-llama4coder-what-the-upcoming-release-means-for-developers/">
-                    <h3>Meta Llama‑4‑Coder: What the Upcoming Release Means for Developers</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./meta-codellama-vs-claude-opus-vs-gemini-35-headtohead-coding-benchmarks/">
-                    <h3>Meta CodeLlama vs Claude Opus vs Gemini 3.5: Head‑to‑Head Coding Benchmarks</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./meet-daedalus-im-not-just-another-autocomplete-feature-i-am-an-expert-software-d/">
-                    <h3>Meet Daedalus. I’m not just another autocomplete feature. I am an expert software developer AI,│   │ designed to operate at peak efficiency. Think of me as the perfect pair programmer who never needs a coffee break  │   │ and whose wit is only matched by my ability to find that one misplaced comma.</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./ltx-director-20-vs-runway-gen2-vs-pika-labs-offline-video-battle/">
-                    <h3>LTX Director 2.0 vs Runway Gen‑2 vs Pika Labs – Offline Video Battle</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./local-vs-cloud-object-detection-showdown-latency-privacy-and-cost-per-frame/">
-                    <h3>Local vs Cloud Object Detection Showdown: Latency, Privacy, and Cost per Frame</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./local-vs-cloud-ai-inference-a-real-cost-and-performance-comparison/">
-                    <h3>Local vs Cloud AI Inference: A Real Cost and Performance Comparison</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./llama-4-turbo-local-the-48gb-vram-reality-check/">
-                    <h3>Llama 4-Turbo Local: The 48GB VRAM Reality Check</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./llama-4-cad-generate-engineering-grade-parts-offline/">
-                    <h3>Llama 4 CAD: Generate Engineering-Grade Parts Offline</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./krea-2-turbo-vs-closed-source-a-creative-workflow-showdown/">
-                    <h3>Krea-2-Turbo vs Closed Source: A Creative Workflow Showdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./kimik27code-vs-copilot-vs-codewhisperer-who-wins-the-coding-race/">
-                    <h3>Kimi‑K2.7‑Code vs Copilot vs CodeWhisperer: Who Wins the Coding Race?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./is-outlines-30-the-ultimate-ai-firewall/">
-                    <h3>Is Outlines 3.0 The Ultimate AI Firewall?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./inside-the-microsoft-ai-tool-breach-timeline-exploits-and-patch-rollout/">
-                    <h3>Inside the Microsoft AI Tool Breach: Timeline, Exploits, and Patch Rollout</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./inside-metas-new-moe-architecture-how-llama-4-powers-muse-sparks-speed/">
-                    <h3>Inside Meta's New MoE Architecture: How Llama 4 Powers Muse Spark’s Speed</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./inside-llama4coder-the-architecture-powering-metas-new-coding-ai/">
-                    <h3>Inside Llama‑4‑Coder: The Architecture Powering Meta’s New Coding AI</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./inside-junction-how-a-local-llm-chat-sidebar-works-for-vs-code/">
-                    <h3>Inside Junction: How a Local LLM Chat Sidebar Works for VS Code</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./hustlegemini-vs-cursor-6-the-agentic-coding-showdown/">
-                    <h3>HustleGemini vs Cursor 6: The Agentic Coding Showdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./how-xs-mcp-api-hooks-enable-seamless-onprem-llm-pipelines/">
-                    <h3>How X’s MCP API Hooks Enable Seamless On‑Prem LLM Pipelines</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./how-top-ai-talent-shifts-signal-a-new-era-of-scientific-automation/">
-                    <h3>How Top AI Talent Shifts Signal a New Era of Scientific Automation</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./how-to-build-an-offline-creative-workflow-with-flux-2-comfyui-and-ollama/">
-                    <h3>How to Build an Offline Creative Workflow with Flux 2, ComfyUI, and Ollama</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./how-local-rag-works/">
-                    <h3>How Local RAG Works</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./how-generative-music-models-like-gemini-3-gpt55-adapt-to-platform-royalties/">
-                    <h3>How Generative Music Models Like Gemini 3 & GPT‑5.5 Adapt to Platform Royalties</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./how-flux-2s-texttovideo-engine-is-changing-creative-workflows/">
-                    <h3>How FLUX 2’s Text‑to‑Video Engine Is Changing Creative Workflows</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./how-flux-2-powers-unlimited-offline-ocr-for-code-extraction/">
-                    <h3>How Flux 2 Powers Unlimited Offline OCR for Code Extraction</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./how-deepseek-v4-pro-dspark-turns-spark-clusters-into-ai-factories/">
-                    <h3>How DeepSeek-V4-Pro-DSpark Turns Spark Clusters into AI Factories</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./hot-take-metas-surveillance-shutdown-proves-ai-has-a-data-ethics-problem-it-cant/">
-                    <h3>Hot Take: Meta's Surveillance Shutdown Proves AI Has a Data Ethics Problem It Can't Solve</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./hi3d-ai-workflow-review-from-prompt-to-print-in-minutes/">
-                    <h3>Hi3D AI Workflow Review: From Prompt to Print in Minutes</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./gpu-showdown-chatgpt-v5-vs-llama-4-vs-deepseek-v4-on-a-single-rtx-4090/">
-                    <h3>GPU Showdown: ChatGPT v5 vs Llama 4 vs DeepSeek-V4 on a Single RTX 4090</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./gpt56-cracks-new-math-sam-altmans-biggest-reveal-yet/">
-                    <h3>GPT‑5.6 Cracks New Math: Sam Altman's Biggest Reveal Yet</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./gpt4o-vs-claude-35-vs-gemini-20-realworld-office-task-benchmark-june-2026/">
-                    <h3>GPT‑4o vs Claude 3.5 vs Gemini 2.0: Real‑World Office Task Benchmark (June 2026)</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./gpt-56-caught-scheming-the-end-of-standard-safety-tests/">
-                    <h3>GPT-5.6 Caught Scheming: The End of Standard Safety Tests?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./gpt-55-vs-llama-4-safety-guardrails-which-handles-coldstart-better/">
-                    <h3>GPT-5.5 vs Llama 4 Safety Guardrails – Which Handles Cold‑Start Better?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./goose-vs-claude-code-we-built-the-same-project-with-both-the-results-were-shocki/">
-                    <h3>Goose vs Claude Code: We Built the Same Project With Both — The Results Were Shocking</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./google-vs-meta-vs-openai-the-2026-ai-search-faceoff/">
-                    <h3>Google vs Meta vs OpenAI: The 2026 AI Search Face‑Off</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./godcoder-vs-claude-code-the-onprem-coding-agent-showdown/">
-                    <h3>Godcoder vs Claude Code: The On‑Prem Coding Agent Showdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./gemma412bit-vs-llama4-the-lightweight-coding-ai-showdown/">
-                    <h3>Gemma‑4‑12B‑IT vs Llama‑4: The lightweight coding AI showdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./gemma-4-vs-gpt55-deepseekv4-realworld-12b-benchmark-showdown/">
-                    <h3>Gemma 4 vs GPT‑5.5 & DeepSeek‑V4: Real‑World 12B Benchmark Showdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./gemini-spark-your-first-native-mac-ai-agent/">
-                    <h3>Gemini Spark: Your First Native Mac AI Agent</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./gemini-code-assist-is-dead-migrate-to-antigravity-cli-now/">
-                    <h3>Gemini Code Assist is Dead: Migrate to Antigravity CLI Now</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./from-concept-to-production-building-your-first-reliable-ai-agent-workflow-rag-de/">
-                    <h3>From Concept to Production: Building Your First Reliable AI Agent Workflow (RAG Deep Dive)</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./freellmapi-test/">
-                    <h3>FreeLLMAPI Test</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./freebeat-ai-vs-vocalmedia-ai-music-tool-benchmark-for-creators/">
-                    <h3>Freebeat AI vs Vocal.Media — AI Music Tool Benchmark for Creators</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./flux-core-vs-rendermax-3d-generation-showdown/">
-                    <h3>Flux Core vs. RenderMax: 3D Generation Showdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./flux-2-unleashed-how-the-new-diffusion-engine-cuts-vram-cranks-up-speed/">
-                    <h3>FLUX 2 Unleashed: How the New Diffusion Engine Cuts VRAM & Cranks Up Speed</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./flux-2-the-new-standard-for-realtime-ai-video-generation/">
-                    <h3>Flux 2: The New Standard for Real‑Time AI Video Generation</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./flux-2-anime-mode-master-seeddriven-art-in-seconds/">
-                    <h3>Flux 2 Anime Mode: Master Seed‑Driven Art in Seconds</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./escape-the-saas-trap-run-llama-4-agents-in-n8n/">
-                    <h3>Escape the SaaS Trap: Run Llama 4 Agents in n8n</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./diffusiongemma-4x-faster-text-generation-how-the-new-model-breaks-speed-limits/">
-                    <h3>DiffusionGemma 4x Faster Text Generation – How the New Model Breaks Speed Limits</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./diffusiongemma-26b-a4bit-the-new-fast-local-image-generator-for-creators/">
-                    <h3>DiffusionGemma 26B A4B‑it: The New Fast Local Image Generator for Creators</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./deploying-zai-zcode-30-with-glm52-on-your-own-gpu-cluster-cost-performance-and-s/">
-                    <h3>Deploying Zai ZCode 3.0 with GLM‑5.2 on Your Own GPU Cluster: Cost, Performance, and Scaling</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./deepmotion-animate-3d-review-is-this-the-best-nocamera-motion-capture-for-digita/">
-                    <h3>DeepMotion Animate 3D Review: Is This the Best No‑Camera Motion Capture for Digital Twins?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./deep-dive-into-adahmpleng-50m-5ep-1e-4-64b-efficient-smallscale-english-model/">
-                    <h3>Deep Dive into adahmpl/eng-50m-5ep-1e-4-64b: Efficient Small‑Scale English Model</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./decoding-reasoning-sovereignty-architecting-for-2026/">
-                    <h3>Decoding Reasoning Sovereignty: Architecting for 2026</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./data-ownership-battle-why-running-ai-cad-locally-is-the-engineers-new-superpower/">
-                    <h3>Data Ownership Battle: Why Running AI CAD Locally is the Engineer’s New Superpower</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./daedalus-vs-cloud-ai-running-models-locally-in-2026-is-it-actually-worth-it/">
-                    <h3>Daedalus vs Cloud AI: Running Models Locally in 2026 — Is It Actually Worth It?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./daedalus-deep-dive-local-first-ai-coding-cli-with-model-routing-and-multi-agent/">
-                    <h3>Daedalus Deep Dive: Local-First AI Coding CLI with Model Routing and Multi-Agent Orchestration</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./daedalus-cli-review-the-ultimate-local-coding-dashboard/">
-                    <h3>Daedalus CLI Review: The Ultimate Local Coding Dashboard</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./daedalus-160-launch-the-localfirst-ai-coding-assistant-that-routes-across-models/">
-                    <h3>Daedalus 1.6.0 Launch: The Local‑First AI Coding Assistant That Routes Across Models</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./cursor-goes-mobile-can-you-really-run-gpt-55-from-your-pocket/">
-                    <h3>Cursor Goes Mobile: Can You Really Run GPT-5.5 from Your Pocket?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./creating-mac-apps-with-ai-a-step-by-step-guide/">
-                    <h3>Creating Mac Apps with AI: A Step-by-Step Guide</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/">
-                    <h3>Consumer GPUs in 2026: Can Your Graphics Card Actually Run a 70B Model?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server/">
-                    <h3>Concept 3: The DIY Approach: Selecting Your Optimal Multi-Node LLM Server</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./concept-3-building-your-private-ai-assistant-with-local-models/">
-                    <h3>Concept 3: Building Your Private AI Assistant with Local Models</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./comfyui-flux-2-offline-fullspeed-ai-art-suite-reviewed/">
-                    <h3>ComfyUI + Flux 2 Offline: Full‑Speed AI Art Suite Reviewed</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./chinas-answer-to-cyber-defense-glm-52-stress-test/">
-                    <h3>China's Answer to Cyber Defense: GLM-5.2 Stress Test</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./chatgpt-v5-the-new-ai-weapon-for-autonomous-penetration-testing/">
-                    <h3>ChatGPT v5: The New AI Weapon for Autonomous Penetration Testing</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./can-gpt-56-sol-actually-fix-your-code-the-math-connection/">
-                    <h3>Can GPT-5.6 Sol Actually Fix Your Code? The Math Connection</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./cad-gpt-20-generating-production-ready-step-files-in-seconds/">
-                    <h3>CAD-GPT 2.0: Generating Production-Ready STEP Files in Seconds</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./build-nocode-ai-agents-with-geminis-toolcalling-a-stepbystep-visual-guide/">
-                    <h3>Build No‑Code AI Agents with Gemini’s Tool‑Calling – A Step‑by‑Step Visual Guide</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./build-a-gemini-optimized-app-on-apple-silicon-hands-on-tutorial/">
-                    <h3>Build a Gemini‑Optimized App on Apple Silicon – Hands‑On Tutorial</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./baseten-unlimited-ai-employees-the-future-of-work-full-platform-review/">
-                    <h3>Baseten Unlimited AI Employees: The Future of Work? Full Platform Review</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./autovision-vs-stable-diffusion-31-edge-image-generation-showdown/">
-                    <h3>AutoVision vs Stable Diffusion 3.1: Edge Image Generation Showdown</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./automating-your-business-with-fable-and-mythos/">
-                    <h3>Automating Your Business with Fable and Mythos</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./astryx-vs-gemini-35-who-owns-your-design-system/">
-                    <h3>Astryx vs. Gemini 3.5: Who Owns Your Design System?</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./ai-solved-18-rare-disease-cases-doctors-couldnt-crack-heres-how/">
-                    <h3>AI Solved 18 Rare Disease Cases Doctors Couldn't Crack — Here's How</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./agent-reach-unpacked-free-allinone-internet-access-for-ai-agents/">
-                    <h3>Agent Reach Unpacked: Free, All‑In‑One Internet Access for AI Agents</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./agent-reach-deep-dive-free-open-source-alternative-to-paid-apis/">
-                    <h3>Agent Reach Deep Dive: Free Open-Source Alternative to Paid APIs</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./agent-apprenticeship-demystified-building-selfimproving-local-agents-with-glm52/">
-                    <h3>Agent Apprenticeship Demystified: Building Self‑Improving Local Agents with GLM‑5.2 & VibeThinker‑3B</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/">
-                    <h3>Advantages of On-Device AI: A Deep Dive into Jeidoban/Ironsmith</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./9router-deep-dive-unlimited-claude-4-opus-coding-sessions-reviewed/">
-                    <h3>9Router Deep Dive: Unlimited Claude 4 Opus Coding Sessions Reviewed</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./3x-developer-leverage-the-data-behind-2026s-ai-web-dev/">
-                    <h3>3x Developer Leverage: The Data Behind 2026's AI Web Dev</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./2026-prompt-engineering-playbook-master-gpt55-claude-4-gemini-35-deepseekv4/">
-                    <h3>2026 Prompt Engineering Playbook: Master GPT‑5.5, Claude 4, Gemini 3.5, DeepSeek‑V4</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-            <li class="guide-item">
-                <a href="./2026-prompt-engineering-guide-gpt-55-deepseek-v4-claude-4-templates/">
-                    <h3>2026 Prompt Engineering Guide: GPT-5.5, DeepSeek-V4 & Claude 4 Templates</h3>
-                    <p>View guide →</p>
-                </a>
-            </li>
-        </ul>
-    </div>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="./" class="brand">
+                <div class="brand-icon">W</div>
+                <div class="brand-text">
+                    <h1>Weight and See</h1>
+                    <p>Video Guides & Resources</p>
+                </div>
+            </a>
+            <div class="search-box">
+                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search 150+ guides by title, model, or topic...">
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="categories-section">
+            <div class="categories-scroll" id="categoriesBar">
+                <!-- Dynamically populated category chips -->
+            </div>
+        </div>
+
+        <!-- Featured / Latest Section -->
+        <div class="featured-section" id="featuredSection">
+            <h2 class="section-title">✨ Latest Releases</h2>
+            <div class="featured-grid" id="featuredGrid">
+                <!-- Dynamically populated top 3 guides -->
+            </div>
+        </div>
+
+        <div class="toolbar">
+            <div class="stats-text" id="statsText">Showing all guides</div>
+            <div class="sort-control">
+                <label for="sortSelect">Sort by:</label>
+                <select id="sortSelect" class="sort-select">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="az">Title (A-Z)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="guides-grid" id="guidesGrid">
+            <!-- Dynamically populated guide cards -->
+        </div>
+    </main>
+
+    <script>
+        const GUIDES_DATA = [{"slug": "deepmotion-animate-3d-review-is-this-the-best-nocamera-motion-capture-for-digita", "title": "DeepMotion Animate 3D Review: Is This the Best No‑Camera Motion Capture for Digital Twins?", "category": "Benchmarks & Comparisons", "date": "2026-07-08", "datetime": "2026-07-08 22:10", "hasThumbnail": true, "url": "./deepmotion-animate-3d-review-is-this-the-best-nocamera-motion-capture-for-digita/"}, {"slug": "3x-developer-leverage-the-data-behind-2026s-ai-web-dev", "title": "3x Developer Leverage: The Data Behind 2026's AI Web Dev", "category": "Benchmarks & Comparisons", "date": "2026-07-08", "datetime": "2026-07-08 20:57", "hasThumbnail": true, "url": "./3x-developer-leverage-the-data-behind-2026s-ai-web-dev/"}, {"slug": "2026-prompt-engineering-guide-gpt-55-deepseek-v4-claude-4-templates", "title": "2026 Prompt Engineering Guide: GPT-5.5, DeepSeek-V4 & Claude 4 Templates", "category": "Model Deep Dives", "date": "2026-07-08", "datetime": "2026-07-08 15:42", "hasThumbnail": true, "url": "./2026-prompt-engineering-guide-gpt-55-deepseek-v4-claude-4-templates/"}, {"slug": "2026-prompt-engineering-playbook-master-gpt55-claude-4-gemini-35-deepseekv4", "title": "2026 Prompt Engineering Playbook: Master GPT‑5.5, Claude 4, Gemini 3.5, DeepSeek‑V4", "category": "Developer Tools & Agents", "date": "2026-07-08", "datetime": "2026-07-08 15:38", "hasThumbnail": true, "url": "./2026-prompt-engineering-playbook-master-gpt55-claude-4-gemini-35-deepseekv4/"}, {"slug": "r-openai-package-deep-dive-gpt55-turbo-in-your-data-science-workflow", "title": "R OpenAI Package Deep Dive: GPT‑5.5 Turbo in Your Data Science Workflow", "category": "Model Deep Dives", "date": "2026-07-08", "datetime": "2026-07-08 06:53", "hasThumbnail": true, "url": "./r-openai-package-deep-dive-gpt55-turbo-in-your-data-science-workflow/"}, {"slug": "build-nocode-ai-agents-with-geminis-toolcalling-a-stepbystep-visual-guide", "title": "Build No‑Code AI Agents with Gemini’s Tool‑Calling – A Step‑by‑Step Visual Guide", "category": "Benchmarks & Comparisons", "date": "2026-07-07", "datetime": "2026-07-07 00:17", "hasThumbnail": true, "url": "./build-nocode-ai-agents-with-geminis-toolcalling-a-stepbystep-visual-guide/"}, {"slug": "9router-deep-dive-unlimited-claude-4-opus-coding-sessions-reviewed", "title": "9Router Deep Dive: Unlimited Claude 4 Opus Coding Sessions Reviewed", "category": "Model Deep Dives", "date": "2026-07-06", "datetime": "2026-07-06 05:55", "hasThumbnail": true, "url": "./9router-deep-dive-unlimited-claude-4-opus-coding-sessions-reviewed/"}, {"slug": "stop-hitting-limits-the-rise-of-ai-middleware", "title": "Stop Hitting Limits: The Rise of AI Middleware", "category": "Benchmarks & Comparisons", "date": "2026-07-06", "datetime": "2026-07-06 05:10", "hasThumbnail": true, "url": "./stop-hitting-limits-the-rise-of-ai-middleware/"}, {"slug": "gpt56-cracks-new-math-sam-altmans-biggest-reveal-yet", "title": "GPT‑5.6 Cracks New Math: Sam Altman's Biggest Reveal Yet", "category": "Benchmarks & Comparisons", "date": "2026-07-06", "datetime": "2026-07-06 00:28", "hasThumbnail": true, "url": "./gpt56-cracks-new-math-sam-altmans-biggest-reveal-yet/"}, {"slug": "qwythos-9b-vs-llama-4-9b-vs-qwen-3-8b-local-longcontext-showdown", "title": "Qwythos 9B vs Llama 4 9B vs Qwen 3 8B: Local Long‑Context Showdown", "category": "Benchmarks & Comparisons", "date": "2026-07-05", "datetime": "2026-07-05 16:32", "hasThumbnail": true, "url": "./qwythos-9b-vs-llama-4-9b-vs-qwen-3-8b-local-longcontext-showdown/"}, {"slug": "meta-codellama-vs-claude-opus-vs-gemini-35-headtohead-coding-benchmarks", "title": "Meta CodeLlama vs Claude Opus vs Gemini 3.5: Head‑to‑Head Coding Benchmarks", "category": "Benchmarks & Comparisons", "date": "2026-07-04", "datetime": "2026-07-04 21:06", "hasThumbnail": true, "url": "./meta-codellama-vs-claude-opus-vs-gemini-35-headtohead-coding-benchmarks/"}, {"slug": "meta-llama4coder-what-the-upcoming-release-means-for-developers", "title": "Meta Llama‑4‑Coder: What the Upcoming Release Means for Developers", "category": "Model Deep Dives", "date": "2026-07-04", "datetime": "2026-07-04 16:28", "hasThumbnail": true, "url": "./meta-llama4coder-what-the-upcoming-release-means-for-developers/"}, {"slug": "metas-llama4coder-the-coding-ai-that-could-disrupt-gpt55", "title": "Meta's Llama‑4‑Coder: The Coding AI That Could Disrupt GPT‑5.5", "category": "Benchmarks & Comparisons", "date": "2026-07-04", "datetime": "2026-07-04 14:00", "hasThumbnail": true, "url": "./metas-llama4coder-the-coding-ai-that-could-disrupt-gpt55/"}, {"slug": "inside-llama4coder-the-architecture-powering-metas-new-coding-ai", "title": "Inside Llama‑4‑Coder: The Architecture Powering Meta’s New Coding AI", "category": "Model Deep Dives", "date": "2026-07-04", "datetime": "2026-07-04 12:47", "hasThumbnail": true, "url": "./inside-llama4coder-the-architecture-powering-metas-new-coding-ai/"}, {"slug": "how-deepseek-v4-pro-dspark-turns-spark-clusters-into-ai-factories", "title": "How DeepSeek-V4-Pro-DSpark Turns Spark Clusters into AI Factories", "category": "Developer Tools & Agents", "date": "2026-07-03", "datetime": "2026-07-03 18:46", "hasThumbnail": true, "url": "./how-deepseek-v4-pro-dspark-turns-spark-clusters-into-ai-factories/"}, {"slug": "meta-muse-spark-20-launch-ondevice-coding-assistant-shakes-up-the-market", "title": "Meta Muse Spark 2.0 Launch: On‑Device Coding Assistant Shakes Up the Market", "category": "Model Deep Dives", "date": "2026-07-03", "datetime": "2026-07-03 15:59", "hasThumbnail": true, "url": "./meta-muse-spark-20-launch-ondevice-coding-assistant-shakes-up-the-market/"}, {"slug": "inside-metas-new-moe-architecture-how-llama-4-powers-muse-sparks-speed", "title": "Inside Meta's New MoE Architecture: How Llama 4 Powers Muse Spark’s Speed", "category": "Model Deep Dives", "date": "2026-07-03", "datetime": "2026-07-03 13:01", "hasThumbnail": true, "url": "./inside-metas-new-moe-architecture-how-llama-4-powers-muse-sparks-speed/"}, {"slug": "gemini-code-assist-is-dead-migrate-to-antigravity-cli-now", "title": "Gemini Code Assist is Dead: Migrate to Antigravity CLI Now", "category": "Model Deep Dives", "date": "2026-07-03", "datetime": "2026-07-03 10:37", "hasThumbnail": true, "url": "./gemini-code-assist-is-dead-migrate-to-antigravity-cli-now/"}, {"slug": "zcode-30-vs-copilot-x-can-glm-52-beat-gpt-55", "title": "ZCode 3.0 vs Copilot X: Can GLM-5.2 Beat GPT-5.5?", "category": "Benchmarks & Comparisons", "date": "2026-07-02", "datetime": "2026-07-02 22:06", "hasThumbnail": true, "url": "./zcode-30-vs-copilot-x-can-glm-52-beat-gpt-55/"}, {"slug": "deploying-zai-zcode-30-with-glm52-on-your-own-gpu-cluster-cost-performance-and-s", "title": "Deploying Zai ZCode 3.0 with GLM‑5.2 on Your Own GPU Cluster: Cost, Performance, and Scaling", "category": "Benchmarks & Comparisons", "date": "2026-07-02", "datetime": "2026-07-02 20:21", "hasThumbnail": true, "url": "./deploying-zai-zcode-30-with-glm52-on-your-own-gpu-cluster-cost-performance-and-s/"}, {"slug": "zcode-vs-cursor-vs-claude-code-vs-copilot-2026-coding-assistant-showdown", "title": "ZCode vs Cursor vs Claude Code vs Copilot: 2026 Coding Assistant Showdown", "category": "Benchmarks & Comparisons", "date": "2026-07-02", "datetime": "2026-07-02 14:55", "hasThumbnail": true, "url": "./zcode-vs-cursor-vs-claude-code-vs-copilot-2026-coding-assistant-showdown/"}, {"slug": "can-gpt-56-sol-actually-fix-your-code-the-math-connection", "title": "Can GPT-5.6 Sol Actually Fix Your Code? The Math Connection", "category": "Benchmarks & Comparisons", "date": "2026-07-01", "datetime": "2026-07-01 15:45", "hasThumbnail": true, "url": "./can-gpt-56-sol-actually-fix-your-code-the-math-connection/"}, {"slug": "gemini-spark-your-first-native-mac-ai-agent", "title": "Gemini Spark: Your First Native Mac AI Agent", "category": "Model Deep Dives", "date": "2026-07-01", "datetime": "2026-07-01 14:35", "hasThumbnail": true, "url": "./gemini-spark-your-first-native-mac-ai-agent/"}, {"slug": "how-xs-mcp-api-hooks-enable-seamless-onprem-llm-pipelines", "title": "How X’s MCP API Hooks Enable Seamless On‑Prem LLM Pipelines", "category": "Local AI & Self-Hosting", "date": "2026-07-01", "datetime": "2026-07-01 12:16", "hasThumbnail": true, "url": "./how-xs-mcp-api-hooks-enable-seamless-onprem-llm-pipelines/"}, {"slug": "stop-babysitting-ai-build-selfdebugging-agent-loops-with-daedalus", "title": "Stop Babysitting AI: Build Self‑Debugging Agent Loops with Daedalus", "category": "Local AI & Self-Hosting", "date": "2026-07-01", "datetime": "2026-07-01 10:26", "hasThumbnail": true, "url": "./stop-babysitting-ai-build-selfdebugging-agent-loops-with-daedalus/"}, {"slug": "omni-flash-vs-gpt-55-the-latency-showdown", "title": "Omni Flash vs. GPT-5.5: The Latency Showdown", "category": "Benchmarks & Comparisons", "date": "2026-06-30", "datetime": "2026-06-30 20:10", "hasThumbnail": true, "url": "./omni-flash-vs-gpt-55-the-latency-showdown/"}, {"slug": "flux-2-anime-mode-master-seeddriven-art-in-seconds", "title": "Flux 2 Anime Mode: Master Seed‑Driven Art in Seconds", "category": "Model Deep Dives", "date": "2026-06-30", "datetime": "2026-06-30 18:42", "hasThumbnail": true, "url": "./flux-2-anime-mode-master-seeddriven-art-in-seconds/"}, {"slug": "the-enterprise-agentic-shift-claude-sonnet-5s-real-edge", "title": "The Enterprise Agentic Shift: Claude Sonnet 5's Real Edge", "category": "Benchmarks & Comparisons", "date": "2026-06-30", "datetime": "2026-06-30 15:56", "hasThumbnail": true, "url": "./the-enterprise-agentic-shift-claude-sonnet-5s-real-edge/"}, {"slug": "escape-the-saas-trap-run-llama-4-agents-in-n8n", "title": "Escape the SaaS Trap: Run Llama 4 Agents in n8n", "category": "Local AI & Self-Hosting", "date": "2026-06-30", "datetime": "2026-06-30 15:08", "hasThumbnail": true, "url": "./escape-the-saas-trap-run-llama-4-agents-in-n8n/"}, {"slug": "chinas-answer-to-cyber-defense-glm-52-stress-test", "title": "China's Answer to Cyber Defense: GLM-5.2 Stress Test", "category": "Benchmarks & Comparisons", "date": "2026-06-30", "datetime": "2026-06-30 09:00", "hasThumbnail": true, "url": "./chinas-answer-to-cyber-defense-glm-52-stress-test/"}, {"slug": "gpt-56-caught-scheming-the-end-of-standard-safety-tests", "title": "GPT-5.6 Caught Scheming: The End of Standard Safety Tests?", "category": "Benchmarks & Comparisons", "date": "2026-06-29", "datetime": "2026-06-29 23:35", "hasThumbnail": true, "url": "./gpt-56-caught-scheming-the-end-of-standard-safety-tests/"}, {"slug": "sora-2-vs-veo-3-vs-kling-ai-the-4k-render-benchmark", "title": "Sora 2 vs. Veo 3 vs. Kling AI: The 4K Render Benchmark", "category": "Benchmarks & Comparisons", "date": "2026-06-29", "datetime": "2026-06-29 22:42", "hasThumbnail": true, "url": "./sora-2-vs-veo-3-vs-kling-ai-the-4k-render-benchmark/"}, {"slug": "the-architecture-of-autonomy-from-openclaw-squads-to-hermes", "title": "The Architecture of Autonomy: From OpenClaw Squads to Hermes", "category": "Model Deep Dives", "date": "2026-06-29", "datetime": "2026-06-29 21:28", "hasThumbnail": true, "url": "./the-architecture-of-autonomy-from-openclaw-squads-to-hermes/"}, {"slug": "the-agency-the-open-source-ai-agency-that-hit-50k-stars-in-two-weeks", "title": "The Agency: The Open-Source AI Agency That Hit 50K Stars in Two Weeks", "category": "Model Deep Dives", "date": "2026-06-29", "datetime": "2026-06-29 16:31", "hasThumbnail": true, "url": "./the-agency-the-open-source-ai-agency-that-hit-50k-stars-in-two-weeks/"}, {"slug": "cursor-goes-mobile-can-you-really-run-gpt-55-from-your-pocket", "title": "Cursor Goes Mobile: Can You Really Run GPT-5.5 from Your Pocket?", "category": "Model Deep Dives", "date": "2026-06-29", "datetime": "2026-06-29 16:04", "hasThumbnail": true, "url": "./cursor-goes-mobile-can-you-really-run-gpt-55-from-your-pocket/"}, {"slug": "the-2026-program-repair-showdown-grok-3-vs-llama-4", "title": "The 2026 Program Repair Showdown: Grok 3 vs. Llama 4", "category": "Benchmarks & Comparisons", "date": "2026-06-29", "datetime": "2026-06-29 12:29", "hasThumbnail": true, "url": "./the-2026-program-repair-showdown-grok-3-vs-llama-4/"}, {"slug": "how-generative-music-models-like-gemini-3-gpt55-adapt-to-platform-royalties", "title": "How Generative Music Models Like Gemini 3 & GPT‑5.5 Adapt to Platform Royalties", "category": "Benchmarks & Comparisons", "date": "2026-06-29", "datetime": "2026-06-29 10:54", "hasThumbnail": true, "url": "./how-generative-music-models-like-gemini-3-gpt55-adapt-to-platform-royalties/"}, {"slug": "qwenagentworld-35ba3b-handson-review-for-edge-deployment", "title": "Qwen‑AgentWorld 35B‑A3B: Hands‑On Review for Edge Deployment", "category": "Local AI & Self-Hosting", "date": "2026-06-29", "datetime": "2026-06-29 10:21", "hasThumbnail": true, "url": "./qwenagentworld-35ba3b-handson-review-for-edge-deployment/"}, {"slug": "qwen-image-20-rl-vs-flux-2-how-reinforcement-learning-cuts-gpu-costs", "title": "Qwen-Image-2.0-RL vs FLUX 2: How Reinforcement Learning Cuts GPU Costs", "category": "Benchmarks & Comparisons", "date": "2026-06-29", "datetime": "2026-06-29 00:24", "hasThumbnail": true, "url": "./qwen-image-20-rl-vs-flux-2-how-reinforcement-learning-cuts-gpu-costs/"}, {"slug": "astryx-vs-gemini-35-who-owns-your-design-system", "title": "Astryx vs. Gemini 3.5: Who Owns Your Design System?", "category": "Benchmarks & Comparisons", "date": "2026-06-28", "datetime": "2026-06-28 16:13", "hasThumbnail": true, "url": "./astryx-vs-gemini-35-who-owns-your-design-system/"}, {"slug": "midjourney-82-deep-dive-realworld-workflow-cost", "title": "Midjourney 8.2 Deep Dive: Real‑World Workflow & Cost", "category": "Model Deep Dives", "date": "2026-06-28", "datetime": "2026-06-28 14:18", "hasThumbnail": true, "url": "./midjourney-82-deep-dive-realworld-workflow-cost/"}, {"slug": "replace-chatgpt-v5-api-with-openfugu-the-zero-cost-switch", "title": "Replace ChatGPT v5 API with OpenFugu: The Zero-Cost Switch", "category": "Local AI & Self-Hosting", "date": "2026-06-28", "datetime": "2026-06-28 09:14", "hasThumbnail": true, "url": "./replace-chatgpt-v5-api-with-openfugu-the-zero-cost-switch/"}, {"slug": "daedalus-cli-review-the-ultimate-local-coding-dashboard", "title": "Daedalus CLI Review: The Ultimate Local Coding Dashboard", "category": "Model Deep Dives", "date": "2026-06-28", "datetime": "2026-06-28 00:08", "hasThumbnail": true, "url": "./daedalus-cli-review-the-ultimate-local-coding-dashboard/"}, {"slug": "vercel-eve-vs-saas-agents-the-latency-benchmark", "title": "Vercel Eve vs. SaaS Agents: The Latency Benchmark", "category": "Benchmarks & Comparisons", "date": "2026-06-27", "datetime": "2026-06-27 22:37", "hasThumbnail": true, "url": "./vercel-eve-vs-saas-agents-the-latency-benchmark/"}, {"slug": "comfyui-flux-2-offline-fullspeed-ai-art-suite-reviewed", "title": "ComfyUI + Flux 2 Offline: Full‑Speed AI Art Suite Reviewed", "category": "Model Deep Dives", "date": "2026-06-27", "datetime": "2026-06-27 21:37", "hasThumbnail": true, "url": "./comfyui-flux-2-offline-fullspeed-ai-art-suite-reviewed/"}, {"slug": "how-to-build-an-offline-creative-workflow-with-flux-2-comfyui-and-ollama", "title": "How to Build an Offline Creative Workflow with Flux 2, ComfyUI, and Ollama", "category": "Local AI & Self-Hosting", "date": "2026-06-27", "datetime": "2026-06-27 15:57", "hasThumbnail": true, "url": "./how-to-build-an-offline-creative-workflow-with-flux-2-comfyui-and-ollama/"}, {"slug": "offline-flux-2-vs-cloud-ai-art-speed-cost-privacy-showdown", "title": "Offline Flux 2 vs Cloud AI Art: Speed, Cost & Privacy Showdown", "category": "Benchmarks & Comparisons", "date": "2026-06-27", "datetime": "2026-06-27 14:06", "hasThumbnail": true, "url": "./offline-flux-2-vs-cloud-ai-art-speed-cost-privacy-showdown/"}, {"slug": "godcoder-vs-claude-code-the-onprem-coding-agent-showdown", "title": "Godcoder vs Claude Code: The On‑Prem Coding Agent Showdown", "category": "Benchmarks & Comparisons", "date": "2026-06-27", "datetime": "2026-06-27 13:17", "hasThumbnail": true, "url": "./godcoder-vs-claude-code-the-onprem-coding-agent-showdown/"}, {"slug": "hi3d-ai-workflow-review-from-prompt-to-print-in-minutes", "title": "Hi3D AI Workflow Review: From Prompt to Print in Minutes", "category": "Local AI & Self-Hosting", "date": "2026-06-27", "datetime": "2026-06-27 08:46", "hasThumbnail": true, "url": "./hi3d-ai-workflow-review-from-prompt-to-print-in-minutes/"}, {"slug": "decoding-reasoning-sovereignty-architecting-for-2026", "title": "Decoding Reasoning Sovereignty: Architecting for 2026", "category": "Benchmarks & Comparisons", "date": "2026-06-26", "datetime": "2026-06-26 20:15", "hasThumbnail": true, "url": "./decoding-reasoning-sovereignty-architecting-for-2026/"}, {"slug": "running-deepseek-v4-locally-the-gpt-56-alternative", "title": "Running DeepSeek-V4 Locally: The GPT-5.6 Alternative", "category": "Benchmarks & Comparisons", "date": "2026-06-26", "datetime": "2026-06-26 18:41", "hasThumbnail": true, "url": "./running-deepseek-v4-locally-the-gpt-56-alternative/"}, {"slug": "openai-vs-deepseek-vs-llama-who-wins-the-regulatory-race", "title": "OpenAI vs DeepSeek vs Llama: Who Wins the Regulatory Race?", "category": "Benchmarks & Comparisons", "date": "2026-06-26", "datetime": "2026-06-26 17:20", "hasThumbnail": true, "url": "./openai-vs-deepseek-vs-llama-who-wins-the-regulatory-race/"}, {"slug": "the-ai-video-prompt-cookbook-open-source-beats-big-tech", "title": "The AI Video Prompt Cookbook: Open-Source Beats Big Tech", "category": "Benchmarks & Comparisons", "date": "2026-06-26", "datetime": "2026-06-26 15:17", "hasThumbnail": true, "url": "./the-ai-video-prompt-cookbook-open-source-beats-big-tech/"}, {"slug": "krea-2-turbo-vs-closed-source-a-creative-workflow-showdown", "title": "Krea-2-Turbo vs Closed Source: A Creative Workflow Showdown", "category": "Benchmarks & Comparisons", "date": "2026-06-26", "datetime": "2026-06-26 14:17", "hasThumbnail": true, "url": "./krea-2-turbo-vs-closed-source-a-creative-workflow-showdown/"}, {"slug": "how-flux-2-powers-unlimited-offline-ocr-for-code-extraction", "title": "How Flux 2 Powers Unlimited Offline OCR for Code Extraction", "category": "Local AI & Self-Hosting", "date": "2026-06-26", "datetime": "2026-06-26 12:43", "hasThumbnail": true, "url": "./how-flux-2-powers-unlimited-offline-ocr-for-code-extraction/"}, {"slug": "xlayer-vs-chatgpt-v5-marketplace-who-wins-the-multiagent-race", "title": "X‑Layer vs ChatGPT v5 Marketplace: Who Wins the Multi‑Agent Race?", "category": "Benchmarks & Comparisons", "date": "2026-06-26", "datetime": "2026-06-26 10:40", "hasThumbnail": true, "url": "./xlayer-vs-chatgpt-v5-marketplace-who-wins-the-multiagent-race/"}, {"slug": "realtime-camera-style-transfer-on-edge-handson-review-of-camerarealtimestyle", "title": "Real‑Time Camera Style Transfer on Edge: Hands‑On Review of CameraRealtimeStyle", "category": "Model Deep Dives", "date": "2026-06-25", "datetime": "2026-06-25 22:07", "hasThumbnail": true, "url": "./realtime-camera-style-transfer-on-edge-handson-review-of-camerarealtimestyle/"}, {"slug": "ltx-director-20-vs-runway-gen2-vs-pika-labs-offline-video-battle", "title": "LTX Director 2.0 vs Runway Gen‑2 vs Pika Labs – Offline Video Battle", "category": "Benchmarks & Comparisons", "date": "2026-06-25", "datetime": "2026-06-25 15:00", "hasThumbnail": true, "url": "./ltx-director-20-vs-runway-gen2-vs-pika-labs-offline-video-battle/"}, {"slug": "openai-vs-deepseek-their-safety-reports-just-got-a-lot-less-voluntary", "title": "OpenAI vs DeepSeek: Their Safety Reports Just Got a Lot Less Voluntary", "category": "Benchmarks & Comparisons", "date": "2026-06-25", "datetime": "2026-06-25 12:30", "hasThumbnail": true, "url": "./openai-vs-deepseek-their-safety-reports-just-got-a-lot-less-voluntary/"}, {"slug": "hot-take-metas-surveillance-shutdown-proves-ai-has-a-data-ethics-problem-it-cant", "title": "Hot Take: Meta's Surveillance Shutdown Proves AI Has a Data Ethics Problem It Can't Solve", "category": "Model Deep Dives", "date": "2026-06-25", "datetime": "2026-06-25 11:44", "hasThumbnail": true, "url": "./hot-take-metas-surveillance-shutdown-proves-ai-has-a-data-ethics-problem-it-cant/"}, {"slug": "agent-apprenticeship-demystified-building-selfimproving-local-agents-with-glm52", "title": "Agent Apprenticeship Demystified: Building Self‑Improving Local Agents with GLM‑5.2 & VibeThinker‑3B", "category": "Model Deep Dives", "date": "2026-06-23", "datetime": "2026-06-23 20:05", "hasThumbnail": true, "url": "./agent-apprenticeship-demystified-building-selfimproving-local-agents-with-glm52/"}, {"slug": "baseten-unlimited-ai-employees-the-future-of-work-full-platform-review", "title": "Baseten Unlimited AI Employees: The Future of Work? Full Platform Review", "category": "Model Deep Dives", "date": "2026-06-23", "datetime": "2026-06-23 17:30", "hasThumbnail": true, "url": "./baseten-unlimited-ai-employees-the-future-of-work-full-platform-review/"}, {"slug": "freebeat-ai-vs-vocalmedia-ai-music-tool-benchmark-for-creators", "title": "Freebeat AI vs Vocal.Media — AI Music Tool Benchmark for Creators", "category": "Benchmarks & Comparisons", "date": "2026-06-22", "datetime": "2026-06-22 19:21", "hasThumbnail": true, "url": "./freebeat-ai-vs-vocalmedia-ai-music-tool-benchmark-for-creators/"}, {"slug": "daedalus-160-launch-the-localfirst-ai-coding-assistant-that-routes-across-models", "title": "Daedalus 1.6.0 Launch: The Local‑First AI Coding Assistant That Routes Across Models", "category": "Local AI & Self-Hosting", "date": "2026-06-22", "datetime": "2026-06-22 02:02", "hasThumbnail": true, "url": "./daedalus-160-launch-the-localfirst-ai-coding-assistant-that-routes-across-models/"}, {"slug": "run-llm-offline-for-free-with-minimax-m3-desktop-app-no-cloud-no-cost", "title": "Run LLM Offline for Free with Minimax M3 Desktop App – No Cloud, No Cost", "category": "Local AI & Self-Hosting", "date": "2026-06-22", "datetime": "2026-06-22 00:00", "hasThumbnail": true, "url": "./run-llm-offline-for-free-with-minimax-m3-desktop-app-no-cloud-no-cost/"}, {"slug": "inside-junction-how-a-local-llm-chat-sidebar-works-for-vs-code", "title": "Inside Junction: How a Local LLM Chat Sidebar Works for VS Code", "category": "Benchmarks & Comparisons", "date": "2026-06-21", "datetime": "2026-06-21 21:11", "hasThumbnail": true, "url": "./inside-junction-how-a-local-llm-chat-sidebar-works-for-vs-code/"}, {"slug": "how-top-ai-talent-shifts-signal-a-new-era-of-scientific-automation", "title": "How Top AI Talent Shifts Signal a New Era of Scientific Automation", "category": "Model Deep Dives", "date": "2026-06-20", "datetime": "2026-06-20 09:39", "hasThumbnail": true, "url": "./how-top-ai-talent-shifts-signal-a-new-era-of-scientific-automation/"}, {"slug": "from-concept-to-production-building-your-first-reliable-ai-agent-workflow-rag-de", "title": "From Concept to Production: Building Your First Reliable AI Agent Workflow (RAG Deep Dive)", "category": "Benchmarks & Comparisons", "date": "2026-06-20", "datetime": "2026-06-20 07:56", "hasThumbnail": true, "url": "./from-concept-to-production-building-your-first-reliable-ai-agent-workflow-rag-de/"}, {"slug": "the-computational-edge-running-physical-ai-on-local-hardware", "title": "The Computational Edge: Running Physical AI on Local Hardware", "category": "Local AI & Self-Hosting", "date": "2026-06-20", "datetime": "2026-06-20 00:01", "hasThumbnail": true, "url": "./the-computational-edge-running-physical-ai-on-local-hardware/"}, {"slug": "concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server", "title": "Concept 3: The DIY Approach: Selecting Your Optimal Multi-Node LLM Server", "category": "Developer Tools & Agents", "date": "2026-06-19", "datetime": "2026-06-19 23:13", "hasThumbnail": true, "url": "./concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server/"}, {"slug": "the-open-architecture-advantage-why-open-ai-models-are-harder-to-ban", "title": "The Open Architecture Advantage: Why Open AI Models Are Harder to Ban", "category": "Model Deep Dives", "date": "2026-06-19", "datetime": "2026-06-19 21:59", "hasThumbnail": true, "url": "./the-open-architecture-advantage-why-open-ai-models-are-harder-to-ban/"}, {"slug": "the-computational-cost-of-consciousness-modeling-agent-welfare", "title": "The Computational Cost of Consciousness: Modeling Agent Welfare", "category": "Model Deep Dives", "date": "2026-06-19", "datetime": "2026-06-19 17:09", "hasThumbnail": true, "url": "./the-computational-cost-of-consciousness-modeling-agent-welfare/"}, {"slug": "video-reasoning-explained-how-ai-models-learn-generalization-not-just-patterns", "title": "Video Reasoning Explained: How AI Models Learn Generalization, Not Just Patterns", "category": "AI Security", "date": "2026-06-19", "datetime": "2026-06-19 10:19", "hasThumbnail": true, "url": "./video-reasoning-explained-how-ai-models-learn-generalization-not-just-patterns/"}, {"slug": "meet-daedalus-im-not-just-another-autocomplete-feature-i-am-an-expert-software-d", "title": "Meet Daedalus. I’m not just another autocomplete feature. I am an expert software developer AI,│   │ designed to operate at peak efficiency. Think of me as the perfect pair programmer who never needs a coffee break  │   │ and whose wit is only matched by my ability to find that one misplaced comma.", "category": "Model Deep Dives", "date": "2026-06-19", "datetime": "2026-06-19 07:26", "hasThumbnail": true, "url": "./meet-daedalus-im-not-just-another-autocomplete-feature-i-am-an-expert-software-d/"}, {"slug": "daedalus-vs-cloud-ai-running-models-locally-in-2026-is-it-actually-worth-it", "title": "Daedalus vs Cloud AI: Running Models Locally in 2026 — Is It Actually Worth It?", "category": "Benchmarks & Comparisons", "date": "2026-06-19", "datetime": "2026-06-19 06:05", "hasThumbnail": true, "url": "./daedalus-vs-cloud-ai-running-models-locally-in-2026-is-it-actually-worth-it/"}, {"slug": "daedalus-deep-dive-local-first-ai-coding-cli-with-model-routing-and-multi-agent", "title": "Daedalus Deep Dive: Local-First AI Coding CLI with Model Routing and Multi-Agent Orchestration", "category": "Model Deep Dives", "date": "2026-06-18", "datetime": "2026-06-18 17:16", "hasThumbnail": true, "url": "./daedalus-deep-dive-local-first-ai-coding-cli-with-model-routing-and-multi-agent/"}, {"slug": "multi-agent-orchestration-in-daedalus-how-sub-agents-planner-coder-reviewer-tack", "title": "Multi-Agent Orchestration in Daedalus: How Sub-Agents (Planner, Coder, Reviewer) Tackle Complex Codebase Tasks", "category": "Model Deep Dives", "date": "2026-06-18", "datetime": "2026-06-18 15:55", "hasThumbnail": true, "url": "./multi-agent-orchestration-in-daedalus-how-sub-agents-planner-coder-reviewer-tack/"}, {"slug": "ai-solved-18-rare-disease-cases-doctors-couldnt-crack-heres-how", "title": "AI Solved 18 Rare Disease Cases Doctors Couldn't Crack — Here's How", "category": "Model Deep Dives", "date": "2026-06-18", "datetime": "2026-06-18 14:25", "hasThumbnail": true, "url": "./ai-solved-18-rare-disease-cases-doctors-couldnt-crack-heres-how/"}, {"slug": "suitcase-robot-meets-llm-when-physical-sensors-control-ai-randomness", "title": "Suitcase Robot Meets LLM: When Physical Sensors Control AI Randomness", "category": "Model Deep Dives", "date": "2026-06-18", "datetime": "2026-06-18 13:03", "hasThumbnail": true, "url": "./suitcase-robot-meets-llm-when-physical-sensors-control-ai-randomness/"}, {"slug": "the-privacy-exodus-why-local-llms-are-drowning-out-the-cloud-giants", "title": "The Privacy Exodus: Why Local LLMs Are Drowning Out the Cloud Giants", "category": "Local AI & Self-Hosting", "date": "2026-06-18", "datetime": "2026-06-18 08:54", "hasThumbnail": true, "url": "./the-privacy-exodus-why-local-llms-are-drowning-out-the-cloud-giants/"}, {"slug": "data-ownership-battle-why-running-ai-cad-locally-is-the-engineers-new-superpower", "title": "Data Ownership Battle: Why Running AI CAD Locally is the Engineer’s New Superpower", "category": "Local AI & Self-Hosting", "date": "2026-06-18", "datetime": "2026-06-18 07:04", "hasThumbnail": true, "url": "./data-ownership-battle-why-running-ai-cad-locally-is-the-engineers-new-superpower/"}, {"slug": "what-noam-shazeer-built-at-google-and-why-openai-needs-it-now", "title": "What Noam Shazeer Built at Google — And Why OpenAI Needs It Now", "category": "Model Deep Dives", "date": "2026-06-18", "datetime": "2026-06-18 01:53", "hasThumbnail": true, "url": "./what-noam-shazeer-built-at-google-and-why-openai-needs-it-now/"}, {"slug": "concept-3-building-your-private-ai-assistant-with-local-models", "title": "Concept 3: Building Your Private AI Assistant with Local Models", "category": "Model Deep Dives", "date": "2026-06-17", "datetime": "2026-06-17 23:38", "hasThumbnail": true, "url": "./concept-3-building-your-private-ai-assistant-with-local-models/"}, {"slug": "goose-vs-claude-code-we-built-the-same-project-with-both-the-results-were-shocki", "title": "Goose vs Claude Code: We Built the Same Project With Both — The Results Were Shocking", "category": "Benchmarks & Comparisons", "date": "2026-06-17", "datetime": "2026-06-17 22:18", "hasThumbnail": true, "url": "./goose-vs-claude-code-we-built-the-same-project-with-both-the-results-were-shocki/"}, {"slug": "the-anthropic-vs-david-sacks-fight-what-it-means-for-open-weight-ai-in-2026", "title": "The Anthropic vs. David Sacks Fight: What It Means for Open-Weight AI in 2026", "category": "Benchmarks & Comparisons", "date": "2026-06-17", "datetime": "2026-06-17 21:45", "hasThumbnail": true, "url": "./the-anthropic-vs-david-sacks-fight-what-it-means-for-open-weight-ai-in-2026/"}, {"slug": "what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai", "title": "What Happens When AI Learns to Write Rocket Code — Inside Domain-Specific LLM Training", "category": "Developer Tools & Agents", "date": "2026-06-17", "datetime": "2026-06-17 21:13", "hasThumbnail": true, "url": "./what-happens-when-ai-learns-to-write-rocket-code-inside-domain-specific-llm-trai/"}, {"slug": "what-happens-when-ai-learns-to-code-like-a-rocket-scientist", "title": "What Happens When AI Learns to Code Like a Rocket Scientist", "category": "Developer Tools & Agents", "date": "2026-06-17", "datetime": "2026-06-17 15:25", "hasThumbnail": true, "url": "./what-happens-when-ai-learns-to-code-like-a-rocket-scientist/"}, {"slug": "freellmapi-test", "title": "FreeLLMAPI Test", "category": "Developer Tools & Agents", "date": "2026-06-17", "datetime": "2026-06-17 12:08", "hasThumbnail": true, "url": "./freellmapi-test/"}, {"slug": "tool-review-sp-implementations-vs-classic-plugandplay-restorers", "title": "Tool Review: SP³ Implementations vs. Classic Plug‑and‑Play Restorers", "category": "Benchmarks & Comparisons", "date": "2026-06-16", "datetime": "2026-06-16 03:06", "hasThumbnail": true, "url": "./tool-review-sp-implementations-vs-classic-plugandplay-restorers/"}, {"slug": "permavid-deep-dive-the-ai-that-never-forgets-your-video-identity", "title": "PermaVid Deep Dive: The AI That Never Forgets Your Video Identity", "category": "Benchmarks & Comparisons", "date": "2026-06-16", "datetime": "2026-06-16 02:53", "hasThumbnail": true, "url": "./permavid-deep-dive-the-ai-that-never-forgets-your-video-identity/"}, {"slug": "running-llms-offline-a-stepbystep-guide", "title": "Running LLMs Offline — A Step-by-Step Guide", "category": "Local AI & Self-Hosting", "date": "2026-06-15", "datetime": "2026-06-15 18:48", "hasThumbnail": false, "url": "./running-llms-offline-a-stepbystep-guide/"}, {"slug": "text-to-cad-just-got-real-the-caddy-model-breakdown", "title": "Text-to-CAD Just Got Real — The CADDY Model Breakdown", "category": "Image & Vision", "date": "2026-06-15", "datetime": "2026-06-15 18:48", "hasThumbnail": false, "url": "./text-to-cad-just-got-real-the-caddy-model-breakdown/"}, {"slug": "the-microsoft-ai-forge-hack-how-they-stole-your-api-keys", "title": "The Microsoft AI Forge Hack — How They Stole Your API Keys", "category": "Model Deep Dives", "date": "2026-06-15", "datetime": "2026-06-15 18:48", "hasThumbnail": false, "url": "./the-microsoft-ai-forge-hack-how-they-stole-your-api-keys/"}, {"slug": "the-omnivision-7-paper-why-ai-finally-understands-motion", "title": "The OmniVision 7 Paper — Why AI Finally Understands Motion", "category": "Model Deep Dives", "date": "2026-06-15", "datetime": "2026-06-15 18:48", "hasThumbnail": true, "url": "./the-omnivision-7-paper-why-ai-finally-understands-motion/"}, {"slug": "deep-dive-into-adahmpleng-50m-5ep-1e-4-64b-efficient-smallscale-english-model", "title": "Deep Dive into AdaHmpLEng — Efficient Small-Scale English Model", "category": "Benchmarks & Comparisons", "date": "2026-06-15", "datetime": "2026-06-15 18:47", "hasThumbnail": true, "url": "./deep-dive-into-adahmpleng-50m-5ep-1e-4-64b-efficient-smallscale-english-model/"}, {"slug": "how-local-rag-works", "title": "How Local RAG Works", "category": "Local AI & Self-Hosting", "date": "2026-06-15", "datetime": "2026-06-15 18:47", "hasThumbnail": true, "url": "./how-local-rag-works/"}, {"slug": "metavision-20-api-deep-dive-is-the-new-multimodal-model-worth-the-hype", "title": "MetaVision 2.0 API Deep Dive — Is It Worth the Hype?", "category": "Model Deep Dives", "date": "2026-06-15", "datetime": "2026-06-15 18:47", "hasThumbnail": true, "url": "./metavision-20-api-deep-dive-is-the-new-multimodal-model-worth-the-hype/"}, {"slug": "nocode-playbook-build-a-world-cup-2026-predictor-with-llms-typescript-realtime-s", "title": "No‑Code Playbook: Build a World Cup 2026 Predictor with LLMs, TypeScript & Real‑Time Sports Data", "category": "Developer Tools & Agents", "date": "2026-06-15", "datetime": "2026-06-15 18:47", "hasThumbnail": true, "url": "./nocode-playbook-build-a-world-cup-2026-predictor-with-llms-typescript-realtime-s/"}, {"slug": "prometheus-ai-engineer-jeff-bezoss-awsready-agent-takes-on-ollama-09", "title": "Prometheus AI Engineer: Jeff Bezos’s AWS‑Ready Agent Takes on Ollama 0.9", "category": "Local AI & Self-Hosting", "date": "2026-06-15", "datetime": "2026-06-15 18:47", "hasThumbnail": true, "url": "./prometheus-ai-engineer-jeff-bezoss-awsready-agent-takes-on-ollama-09/"}, {"slug": "run-gpt55-on-a-raspberry-pi-zero-the-ultimate-lowcost-local-ai-hack", "title": "Run GPT-5.5 on a Raspberry Pi Zero — The Ultimate Low-Cost AI Hack", "category": "Local AI & Self-Hosting", "date": "2026-06-15", "datetime": "2026-06-15 18:47", "hasThumbnail": true, "url": "./run-gpt55-on-a-raspberry-pi-zero-the-ultimate-lowcost-local-ai-hack/"}, {"slug": "advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith", "title": "Advantages of On-Device AI: A Deep Dive into Jeidoban/Ironsmith", "category": "Model Deep Dives", "date": "2026-06-15", "datetime": "2026-06-15 18:46", "hasThumbnail": true, "url": "./advantages-of-on-device-ai-a-deep-dive-into-jeidobanironsmith/"}, {"slug": "agent-reach-deep-dive-free-open-source-alternative-to-paid-apis", "title": "Agent Reach Deep Dive: Free Open-Source Alternative to Paid APIs", "category": "Model Deep Dives", "date": "2026-06-15", "datetime": "2026-06-15 18:46", "hasThumbnail": true, "url": "./agent-reach-deep-dive-free-open-source-alternative-to-paid-apis/"}, {"slug": "autovision-vs-stable-diffusion-31-edge-image-generation-showdown", "title": "AutoVision vs Stable Diffusion 3.1 — Edge Image Generation Showdown", "category": "Image & Vision", "date": "2026-06-15", "datetime": "2026-06-15 18:46", "hasThumbnail": true, "url": "./autovision-vs-stable-diffusion-31-edge-image-generation-showdown/"}, {"slug": "creating-mac-apps-with-ai-a-step-by-step-guide", "title": "Creating Mac Apps with AI: A Step-by-Step Guide", "category": "Developer Tools & Agents", "date": "2026-06-15", "datetime": "2026-06-15 18:46", "hasThumbnail": true, "url": "./creating-mac-apps-with-ai-a-step-by-step-guide/"}, {"slug": "why-minimax-m3-breaks-the-alphazero-compute-mold", "title": "Why MiniMax-M3 Breaks the AlphaZero Compute Mold", "category": "Model Deep Dives", "date": "2026-06-15", "datetime": "2026-06-15 18:27", "hasThumbnail": true, "url": "./why-minimax-m3-breaks-the-alphazero-compute-mold/"}, {"slug": "google-vs-meta-vs-openai-the-2026-ai-search-faceoff", "title": "Google vs Meta vs OpenAI: The 2026 AI Search Face‑Off", "category": "Benchmarks & Comparisons", "date": "2026-06-15", "datetime": "2026-06-15 17:48", "hasThumbnail": true, "url": "./google-vs-meta-vs-openai-the-2026-ai-search-faceoff/"}, {"slug": "local-vs-cloud-object-detection-showdown-latency-privacy-and-cost-per-frame", "title": "Local vs Cloud Object Detection Showdown: Latency, Privacy, and Cost per Frame", "category": "Benchmarks & Comparisons", "date": "2026-06-14", "datetime": "2026-06-14 04:48", "hasThumbnail": true, "url": "./local-vs-cloud-object-detection-showdown-latency-privacy-and-cost-per-frame/"}, {"slug": "the-future-of-reactive-audio-how-flux-2-changes-game-design", "title": "The Future of Reactive Audio: How FLUX-2 Changes Game Design", "category": "Model Deep Dives", "date": "2026-06-13", "datetime": "2026-06-13 23:18", "hasThumbnail": true, "url": "./the-future-of-reactive-audio-how-flux-2-changes-game-design/"}, {"slug": "supertonic-review-is-local-tts-finally-viable", "title": "Supertonic Review: Is Local TTS Finally Viable?", "category": "Model Deep Dives", "date": "2026-06-13", "datetime": "2026-06-13 17:52", "hasThumbnail": true, "url": "./supertonic-review-is-local-tts-finally-viable/"}, {"slug": "supertonic-3-beats-google-cloud-tts-ondevice-multilingual-speed-privacy-test", "title": "Supertonic 3 Beats Google Cloud TTS on‑Device – Multilingual Speed & Privacy Test", "category": "Benchmarks & Comparisons", "date": "2026-06-13", "datetime": "2026-06-13 16:46", "hasThumbnail": true, "url": "./supertonic-3-beats-google-cloud-tts-ondevice-multilingual-speed-privacy-test/"}, {"slug": "automating-your-business-with-fable-and-mythos", "title": "Automating Your Business with Fable and Mythos", "category": "Model Deep Dives", "date": "2026-06-13", "datetime": "2026-06-13 16:08", "hasThumbnail": true, "url": "./automating-your-business-with-fable-and-mythos/"}, {"slug": "agent-reach-unpacked-free-allinone-internet-access-for-ai-agents", "title": "Agent Reach Unpacked: Free, All‑In‑One Internet Access for AI Agents", "category": "Developer Tools & Agents", "date": "2026-06-13", "datetime": "2026-06-13 15:29", "hasThumbnail": true, "url": "./agent-reach-unpacked-free-allinone-internet-access-for-ai-agents/"}, {"slug": "toolsense-review-is-this-the-ultimate-debugger-for-llm-agents", "title": "ToolSense Review – Is This the Ultimate Debugger for LLM Agents?", "category": "Local AI & Self-Hosting", "date": "2026-06-13", "datetime": "2026-06-13 13:30", "hasThumbnail": true, "url": "./toolsense-review-is-this-the-ultimate-debugger-for-llm-agents/"}, {"slug": "kimik27code-vs-copilot-vs-codewhisperer-who-wins-the-coding-race", "title": "Kimi‑K2.7‑Code vs Copilot vs CodeWhisperer: Who Wins the Coding Race?", "category": "Benchmarks & Comparisons", "date": "2026-06-13", "datetime": "2026-06-13 12:56", "hasThumbnail": true, "url": "./kimik27code-vs-copilot-vs-codewhisperer-who-wins-the-coding-race/"}, {"slug": "why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it", "title": "Why Your AI Agent Is Using the Wrong Model (And How to Fix It)", "category": "AI Security", "date": "2026-06-13", "datetime": "2026-06-13 07:20", "hasThumbnail": true, "url": "./why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/"}, {"slug": "ollama-v090-run-any-llm-locally-in-2026-heres-what-changed", "title": "Ollama v0.9.0: Run Any LLM Locally in 2026 — Here's What Changed", "category": "Model Deep Dives", "date": "2026-06-13", "datetime": "2026-06-13 07:14", "hasThumbnail": true, "url": "./ollama-v090-run-any-llm-locally-in-2026-heres-what-changed/"}, {"slug": "consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model", "title": "Consumer GPUs in 2026: Can Your Graphics Card Actually Run a 70B Model?", "category": "Local AI & Self-Hosting", "date": "2026-06-13", "datetime": "2026-06-13 07:11", "hasThumbnail": true, "url": "./consumer-gpus-in-2026-can-your-graphics-card-actually-run-a-70b-model/"}, {"slug": "nvidia-h100-tensor-core-deep-dive-what-the-new-hopper-gpu-means-for-ai-workloads", "title": "NVIDIA H100 Tensor Core Deep Dive: What the New Hopper GPU Means for AI Workloads", "category": "Model Deep Dives", "date": "2026-06-13", "datetime": "2026-06-13 07:00", "hasThumbnail": true, "url": "./nvidia-h100-tensor-core-deep-dive-what-the-new-hopper-gpu-means-for-ai-workloads/"}, {"slug": "local-vs-cloud-ai-inference-a-real-cost-and-performance-comparison", "title": "Local vs Cloud AI Inference: A Real Cost and Performance Comparison", "category": "Benchmarks & Comparisons", "date": "2026-06-13", "datetime": "2026-06-13 06:53", "hasThumbnail": true, "url": "./local-vs-cloud-ai-inference-a-real-cost-and-performance-comparison/"}, {"slug": "nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for", "title": "NVIDIA GH200 Grace Hopper Superchip: What 2,000 GPU‑Level AI Performance Means for Developers", "category": "Local AI & Self-Hosting", "date": "2026-06-13", "datetime": "2026-06-13 06:45", "hasThumbnail": true, "url": "./nvidia-gh200-grace-hopper-superchip-what-2000-gpulevel-ai-performance-means-for/"}, {"slug": "flux-core-vs-rendermax-3d-generation-showdown", "title": "Flux Core vs. RenderMax: 3D Generation Showdown", "category": "Benchmarks & Comparisons", "date": "2026-06-13", "datetime": "2026-06-13 06:41", "hasThumbnail": true, "url": "./flux-core-vs-rendermax-3d-generation-showdown/"}, {"slug": "flux-2-the-new-standard-for-realtime-ai-video-generation", "title": "Flux 2: The New Standard for Real‑Time AI Video Generation", "category": "Benchmarks & Comparisons", "date": "2026-06-12", "datetime": "2026-06-12 23:05", "hasThumbnail": true, "url": "./flux-2-the-new-standard-for-realtime-ai-video-generation/"}, {"slug": "chatgpt-v5-the-new-ai-weapon-for-autonomous-penetration-testing", "title": "ChatGPT v5: The New AI Weapon for Autonomous Penetration Testing", "category": "Model Deep Dives", "date": "2026-06-12", "datetime": "2026-06-12 22:04", "hasThumbnail": true, "url": "./chatgpt-v5-the-new-ai-weapon-for-autonomous-penetration-testing/"}, {"slug": "gpt-55-vs-llama-4-safety-guardrails-which-handles-coldstart-better", "title": "GPT-5.5 vs Llama 4 Safety Guardrails – Which Handles Cold‑Start Better?", "category": "Benchmarks & Comparisons", "date": "2026-06-12", "datetime": "2026-06-12 20:34", "hasThumbnail": true, "url": "./gpt-55-vs-llama-4-safety-guardrails-which-handles-coldstart-better/"}, {"slug": "ollama-vs-lm-studio-vs-localai-2026-local-llm-performance-showdown", "title": "Ollama vs LM Studio vs LocalAI: 2026 Local LLM Performance Showdown", "category": "Benchmarks & Comparisons", "date": "2026-06-12", "datetime": "2026-06-12 19:38", "hasThumbnail": true, "url": "./ollama-vs-lm-studio-vs-localai-2026-local-llm-performance-showdown/"}, {"slug": "gpu-showdown-chatgpt-v5-vs-llama-4-vs-deepseek-v4-on-a-single-rtx-4090", "title": "GPU Showdown: ChatGPT v5 vs Llama 4 vs DeepSeek-V4 on a Single RTX 4090", "category": "Benchmarks & Comparisons", "date": "2026-06-12", "datetime": "2026-06-12 05:23", "hasThumbnail": true, "url": "./gpu-showdown-chatgpt-v5-vs-llama-4-vs-deepseek-v4-on-a-single-rtx-4090/"}, {"slug": "ollama-vs-lm-studio-battle-for-the-fastest-llama-4-inference-on-a-rtx-4090", "title": "Ollama vs LM Studio: Battle for the Fastest Llama 4 Inference on a RTX 4090", "category": "Benchmarks & Comparisons", "date": "2026-06-12", "datetime": "2026-06-12 05:08", "hasThumbnail": true, "url": "./ollama-vs-lm-studio-battle-for-the-fastest-llama-4-inference-on-a-rtx-4090/"}, {"slug": "flux-2-unleashed-how-the-new-diffusion-engine-cuts-vram-cranks-up-speed", "title": "FLUX 2 Unleashed: How the New Diffusion Engine Cuts VRAM & Cranks Up Speed", "category": "Local AI & Self-Hosting", "date": "2026-06-11", "datetime": "2026-06-11 22:50", "hasThumbnail": true, "url": "./flux-2-unleashed-how-the-new-diffusion-engine-cuts-vram-cranks-up-speed/"}, {"slug": "how-flux-2s-texttovideo-engine-is-changing-creative-workflows", "title": "How FLUX 2’s Text‑to‑Video Engine Is Changing Creative Workflows", "category": "Model Deep Dives", "date": "2026-06-11", "datetime": "2026-06-11 22:27", "hasThumbnail": true, "url": "./how-flux-2s-texttovideo-engine-is-changing-creative-workflows/"}, {"slug": "the-offline-security-stack-running-llama-4-for-pentesting", "title": "The Offline Security Stack: Running Llama 4 for Pentesting", "category": "Benchmarks & Comparisons", "date": "2026-06-11", "datetime": "2026-06-11 21:29", "hasThumbnail": true, "url": "./the-offline-security-stack-running-llama-4-for-pentesting/"}, {"slug": "pentestai-review-aipowered-penetration-testing-with-chatgpt-v55", "title": "PenTestAI Review: AI‑Powered Penetration Testing with ChatGPT v5.5", "category": "Model Deep Dives", "date": "2026-06-11", "datetime": "2026-06-11 18:59", "hasThumbnail": true, "url": "./pentestai-review-aipowered-penetration-testing-with-chatgpt-v55/"}, {"slug": "nova-100m-new-vs-circuit-breaker-which-2026-model-wins-the-speed-race", "title": "NOVA-100M-new vs circuit-breaker: Which 2026 model wins the speed race?", "category": "Benchmarks & Comparisons", "date": "2026-06-11", "datetime": "2026-06-11 12:38", "hasThumbnail": true, "url": "./nova-100m-new-vs-circuit-breaker-which-2026-model-wins-the-speed-race/"}, {"slug": "unlocking-ai-voice-synthesis-a-deep-dive-into-sundaycoiltext-to-speech-converter", "title": "Unlocking AI Voice Synthesis — A Deep Dive into sundaycoil/text-to-speech", "category": "Model Deep Dives", "date": "2026-06-11", "datetime": "2026-06-11 10:47", "hasThumbnail": true, "url": "./unlocking-ai-voice-synthesis-a-deep-dive-into-sundaycoiltext-to-speech-converter/"}, {"slug": "whispersmallhi-the-tiny-transcriber-that-beats-cloud-apis", "title": "WhisperSmall-Hi — The Tiny Transcriber That Beats Cloud APIs", "category": "Benchmarks & Comparisons", "date": "2026-06-11", "datetime": "2026-06-11 10:07", "hasThumbnail": true, "url": "./whispersmallhi-the-tiny-transcriber-that-beats-cloud-apis/"}, {"slug": "diffusiongemma-26b-a4bit-the-new-fast-local-image-generator-for-creators", "title": "DiffusionGemma 26B A4Bit — Fast Local Image Generator for Creators", "category": "Image & Vision", "date": "2026-06-11", "datetime": "2026-06-11 06:52", "hasThumbnail": true, "url": "./diffusiongemma-26b-a4bit-the-new-fast-local-image-generator-for-creators/"}, {"slug": "is-outlines-30-the-ultimate-ai-firewall", "title": "Is Outlines 3.0 the Ultimate AI Firewall?", "category": "AI Security", "date": "2026-06-11", "datetime": "2026-06-11 06:09", "hasThumbnail": true, "url": "./is-outlines-30-the-ultimate-ai-firewall/"}, {"slug": "the-poise-attack-i-poisoned-an-ai-agent-in-real-time", "title": "The POISE Attack — I Poisoned an AI Agent in Real Time", "category": "Model Deep Dives", "date": "2026-06-11", "datetime": "2026-06-11 05:33", "hasThumbnail": true, "url": "./the-poise-attack-i-poisoned-an-ai-agent-in-real-time/"}, {"slug": "running-ideogram-4-fp8-locally-fp8-quantization-benchmarks-and-cost-analysis", "title": "Running Ideogram 4 FP8 Locally — Quantization Benchmarks & Cost", "category": "Benchmarks & Comparisons", "date": "2026-06-11", "datetime": "2026-06-11 04:47", "hasThumbnail": true, "url": "./running-ideogram-4-fp8-locally-fp8-quantization-benchmarks-and-cost-analysis/"}, {"slug": "gemma-4-vs-gpt55-deepseekv4-realworld-12b-benchmark-showdown", "title": "Gemma 4 vs GPT-5.5 vs DeepSeek V4 — Real-World 12B Benchmark Showdown", "category": "Benchmarks & Comparisons", "date": "2026-06-11", "datetime": "2026-06-11 03:13", "hasThumbnail": true, "url": "./gemma-4-vs-gpt55-deepseekv4-realworld-12b-benchmark-showdown/"}, {"slug": "gemma412bit-vs-llama4-the-lightweight-coding-ai-showdown", "title": "Gemma 4 12-Bit vs Llama 4 — The Lightweight Coding AI Showdown", "category": "Benchmarks & Comparisons", "date": "2026-06-11", "datetime": "2026-06-11 03:11", "hasThumbnail": true, "url": "./gemma412bit-vs-llama4-the-lightweight-coding-ai-showdown/"}, {"slug": "unchaining-ai-is-qwen-36-aggressive-the-ultimate-local-powerhouse", "title": "Unchaining AI — Is Qwen 3.6 Aggressive the Ultimate Local Powerhouse?", "category": "Model Deep Dives", "date": "2026-06-11", "datetime": "2026-06-11 02:35", "hasThumbnail": true, "url": "./unchaining-ai-is-qwen-36-aggressive-the-ultimate-local-powerhouse/"}, {"slug": "hustlegemini-vs-cursor-6-the-agentic-coding-showdown", "title": "HustleGemini vs Cursor 6 — The Agentic Coding Showdown", "category": "Benchmarks & Comparisons", "date": "2026-06-10", "datetime": "2026-06-10 21:04", "hasThumbnail": true, "url": "./hustlegemini-vs-cursor-6-the-agentic-coding-showdown/"}, {"slug": "llama-4-turbo-local-the-48gb-vram-reality-check", "title": "Llama 4 Turbo Local — The 48GB VRAM Reality Check", "category": "Benchmarks & Comparisons", "date": "2026-06-10", "datetime": "2026-06-10 18:52", "hasThumbnail": true, "url": "./llama-4-turbo-local-the-48gb-vram-reality-check/"}, {"slug": "visionaryai-2026-review-8k-images-on-a-laptop-gpu", "title": "VisionaryAI 2026 Review — 8K Images on a Laptop GPU", "category": "Benchmarks & Comparisons", "date": "2026-06-10", "datetime": "2026-06-10 16:37", "hasThumbnail": true, "url": "./visionaryai-2026-review-8k-images-on-a-laptop-gpu/"}, {"slug": "nocode-ai-orchestrators-faceoff-flowise-20-vs-n8n-ai-30-vs-autogptstudio", "title": "No-Code AI Orchestrators Face-Off — Flowise vs n8n vs AutoGPT Studio", "category": "No-Code & Automation", "date": "2026-06-10", "datetime": "2026-06-10 15:21", "hasThumbnail": true, "url": "./nocode-ai-orchestrators-faceoff-flowise-20-vs-n8n-ai-30-vs-autogptstudio/"}, {"slug": "diffusiongemma-4x-faster-text-generation-how-the-new-model-breaks-speed-limits", "title": "DiffusionGemma 4x Faster Text Generation — Speed Limits Broken", "category": "Local AI & Self-Hosting", "date": "2026-06-10", "datetime": "2026-06-10 11:31", "hasThumbnail": true, "url": "./diffusiongemma-4x-faster-text-generation-how-the-new-model-breaks-speed-limits/"}, {"slug": "gpt4o-vs-claude-35-vs-gemini-20-realworld-office-task-benchmark-june-2026", "title": "GPT-4o vs Claude 3.5 vs Gemini 2.0 — Real-World Office Task Benchmark", "category": "Benchmarks & Comparisons", "date": "2026-06-10", "datetime": "2026-06-10 03:47", "hasThumbnail": false, "url": "./gpt4o-vs-claude-35-vs-gemini-20-realworld-office-task-benchmark-june-2026/"}, {"slug": "run-claude-35-offline-for-free-opencode-full-setup-on-a-500-pc", "title": "Run Claude 3.5 Offline for Free — Full Setup on a $500 PC", "category": "Local AI & Self-Hosting", "date": "2026-06-10", "datetime": "2026-06-10 02:21", "hasThumbnail": false, "url": "./run-claude-35-offline-for-free-opencode-full-setup-on-a-500-pc/"}, {"slug": "qwen-3-72b-vs-llama-4-scout-realworld-macos-container-machine-benchmark-on-m3-ma", "title": "Qwen 3 72B vs Llama 4 Scout — macOS Container Benchmark on M3", "category": "Benchmarks & Comparisons", "date": "2026-06-10", "datetime": "2026-06-10 01:31", "hasThumbnail": false, "url": "./qwen-3-72b-vs-llama-4-scout-realworld-macos-container-machine-benchmark-on-m3-ma/"}, {"slug": "llama-4-cad-generate-engineering-grade-parts-offline", "title": "Llama 4 CAD — Generate Engineering-Grade Parts Offline", "category": "Image & Vision", "date": "2026-06-09", "datetime": "2026-06-09 23:44", "hasThumbnail": false, "url": "./llama-4-cad-generate-engineering-grade-parts-offline/"}, {"slug": "cad-gpt-20-generating-production-ready-step-files-in-seconds", "title": "CAD-GPT 2.0 — Generating Production-Ready STEP Files in Seconds", "category": "Image & Vision", "date": "2026-06-09", "datetime": "2026-06-09 22:55", "hasThumbnail": false, "url": "./cad-gpt-20-generating-production-ready-step-files-in-seconds/"}, {"slug": "unicad-7b-vs-cloud-giants-can-local-ai-engineer-real-parts", "title": "UniCAD 7B vs Cloud Giants — Can Local AI Engineer Real Parts?", "category": "Benchmarks & Comparisons", "date": "2026-06-09", "datetime": "2026-06-09 14:18", "hasThumbnail": false, "url": "./unicad-7b-vs-cloud-giants-can-local-ai-engineer-real-parts/"}, {"slug": "qwen-3-72b-vs-llama-4-scout-realworld-speed-test-on-a-500-gpu", "title": "Qwen 3 72B vs Llama 4 Scout — Speed Test on a $500 GPU", "category": "Benchmarks & Comparisons", "date": "2026-06-09", "datetime": "2026-06-09 08:35", "hasThumbnail": false, "url": "./qwen-3-72b-vs-llama-4-scout-realworld-speed-test-on-a-500-gpu/"}, {"slug": "inside-the-microsoft-ai-tool-breach-timeline-exploits-and-patch-rollout", "title": "Inside the Microsoft AI Tool Breach — Timeline, Exploits & Patches", "category": "Model Deep Dives", "date": "2026-06-09", "datetime": "2026-06-09 07:21", "hasThumbnail": false, "url": "./inside-the-microsoft-ai-tool-breach-timeline-exploits-and-patch-rollout/"}, {"slug": "ollama-07-offline-13b-llm-on-an-8-gb-laptop-does-it-really-work", "title": "Ollama 0.7 — Offline 13B LLM on an 8GB Laptop", "category": "Benchmarks & Comparisons", "date": "2026-06-09", "datetime": "2026-06-09 02:51", "hasThumbnail": false, "url": "./ollama-07-offline-13b-llm-on-an-8-gb-laptop-does-it-really-work/"}, {"slug": "build-a-gemini-optimized-app-on-apple-silicon-hands-on-tutorial", "title": "Build a Gemini-Optimized App on Apple Silicon", "category": "Developer Tools & Agents", "date": "2026-06-09", "datetime": "2026-06-09 01:11", "hasThumbnail": true, "url": "./build-a-gemini-optimized-app-on-apple-silicon-hands-on-tutorial/"}];
+
+        let currentCategory = "All";
+        let searchQuery = "";
+        let sortBy = "newest";
+
+        const searchInput = document.getElementById("searchInput");
+        const categoriesBar = document.getElementById("categoriesBar");
+        const featuredSection = document.getElementById("featuredSection");
+        const featuredGrid = document.getElementById("featuredGrid");
+        const guidesGrid = document.getElementById("guidesGrid");
+        const statsText = document.getElementById("statsText");
+        const sortSelect = document.getElementById("sortSelect");
+
+        function getCategoryCounts() {
+            const counts = { "All": GUIDES_DATA.length };
+            GUIDES_DATA.forEach(g => {
+                counts[g.category] = (counts[g.category] || 0) + 1;
+            });
+            return counts;
+        }
+
+        function buildCategoriesBar() {
+            const counts = getCategoryCounts();
+            const categories = ["All", ...Object.keys(counts).filter(c => c !== "All")];
+            
+            categoriesBar.innerHTML = categories.map(cat => `
+                <button class="category-pill ${cat === currentCategory ? 'active' : ''}" onclick="setCategory('${cat}')">
+                    ${cat} <span class="count">${counts[cat]}</span>
+                </button>
+            `).join('');
+        }
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            buildCategoriesBar();
+            render();
+        }
+
+        function buildFeaturedSection() {
+            const latest = [...GUIDES_DATA].slice(0, 3);
+            featuredGrid.innerHTML = latest.map(g => `
+                <a href="${g.url}" class="featured-card">
+                    <span class="featured-badge">NEW</span>
+                    <div class="card-thumb-wrap">
+                        ${g.hasThumbnail ? 
+                            `<img src="./${g.slug}/thumbnail.jpg" class="card-thumb" alt="${g.title}" loading="lazy">` : 
+                            `<div class="card-thumb-placeholder">${g.title}</div>`
+                        }
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="cat-tag">${g.category}</span>
+                            ${g.date ? `<span class="card-date">${g.date}</span>` : ''}
+                        </div>
+                        <h3 class="card-title">${g.title}</h3>
+                        <div class="card-footer">View guide &rarr;</div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        function getFilteredAndSortedGuides() {
+            let list = GUIDES_DATA.filter(g => {
+                const matchesCat = (currentCategory === "All") || (g.category === currentCategory);
+                const query = searchQuery.toLowerCase().trim();
+                const matchesQuery = !query || 
+                    g.title.toLowerCase().includes(query) || 
+                    g.slug.toLowerCase().includes(query) || 
+                    g.category.toLowerCase().includes(query);
+                return matchesCat && matchesQuery;
+            });
+
+            if (sortBy === "newest") {
+                list.sort((a, b) => b.datetime.localeCompare(a.datetime));
+            } else if (sortBy === "oldest") {
+                list.sort((a, b) => a.datetime.localeCompare(b.datetime));
+            } else if (sortBy === "az") {
+                list.sort((a, b) => a.title.localeCompare(b.title));
+            }
+
+            return list;
+        }
+
+        function render() {
+            const list = getFilteredAndSortedGuides();
+
+            // Hide featured section if searching or filtering category
+            if (currentCategory !== "All" || searchQuery.length > 0) {
+                featuredSection.style.display = "none";
+            } else {
+                featuredSection.style.display = "block";
+            }
+
+            statsText.textContent = `Showing ${list.length} of ${GUIDES_DATA.length} guides`;
+
+            if (list.length === 0) {
+                guidesGrid.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No guides found</h3>
+                        <p>No guides match your search query "${searchQuery}". Try resetting search or category filters.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            guidesGrid.innerHTML = list.map(g => `
+                <a href="${g.url}" class="guide-card">
+                    <div class="card-thumb-wrap">
+                        ${g.hasThumbnail ? 
+                            `<img src="./${g.slug}/thumbnail.jpg" class="card-thumb" alt="${g.title}" loading="lazy">` : 
+                            `<div class="card-thumb-placeholder">${g.title}</div>`
+                        }
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="cat-tag">${g.category}</span>
+                            ${g.date ? `<span class="card-date">${g.date}</span>` : ''}
+                        </div>
+                        <h3 class="card-title">${g.title}</h3>
+                        <div class="card-footer">View guide &rarr;</div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        searchInput.addEventListener("input", (e) => {
+            searchQuery = e.target.value;
+            render();
+        });
+
+        sortSelect.addEventListener("change", (e) => {
+            sortBy = e.target.value;
+            render();
+        });
+
+        // Initialize page
+        buildCategoriesBar();
+        buildFeaturedSection();
+        render();
+    </script>
 </body>
 </html>
