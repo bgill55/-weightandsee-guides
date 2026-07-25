@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/156_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/195_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,21 +20,21 @@
 
 <table><tr>
 <td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/deepmotion-animate-3d-review-is-this-the-best-nocamera-motion-capture-for-digita/">
-<img src="guides/deepmotion-animate-3d-review-is-this-the-best-nocamera-motion-capture-for-digita/thumbnail.jpg" width="300" alt="Deepmotion Animate 3D Review Is This The Best Nocamera Motion Capture For Digita"><br>
-<b>Deepmotion Animate 3D Review Is This The Best Nocamera Motion Capture For Digita</b>
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/build-your-first-ai-agent-the-openforgerl-guide/">
+<img src="guides/build-your-first-ai-agent-the-openforgerl-guide/thumbnail.jpg" width="300" alt="Build Your First Ai Agent The Openforgerl Guide"><br>
+<b>Build Your First Ai Agent The Openforgerl Guide</b>
 </a>
 </td>
 <td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/3x-developer-leverage-the-data-behind-2026s-ai-web-dev/">
-<img src="guides/3x-developer-leverage-the-data-behind-2026s-ai-web-dev/thumbnail.jpg" width="300" alt="3X Developer Leverage The Data Behind 2026S Ai Web Dev"><br>
-<b>3X Developer Leverage The Data Behind 2026S Ai Web Dev</b>
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-anatomy-of-the-hugging-face-agent-escape/">
+<img src="guides/the-anatomy-of-the-hugging-face-agent-escape/thumbnail.jpg" width="300" alt="The Anatomy Of The Hugging Face Agent Escape"><br>
+<b>The Anatomy Of The Hugging Face Agent Escape</b>
 </a>
 </td>
 <td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/2026-prompt-engineering-guide-gpt-55-deepseek-v4-claude-4-templates/">
-<img src="guides/2026-prompt-engineering-guide-gpt-55-deepseek-v4-claude-4-templates/thumbnail.jpg" width="300" alt="2026 Prompt Engineering Guide Gpt 55 Deepseek V4 Claude 4 Templates"><br>
-<b>2026 Prompt Engineering Guide Gpt 55 Deepseek V4 Claude 4 Templates</b>
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/openworker-shakes-up-ai-automation-opensource-desktop-agent-delivers-finished-wo/">
+<img src="guides/openworker-shakes-up-ai-automation-opensource-desktop-agent-delivers-finished-wo/thumbnail.jpg" width="300" alt="Openworker Shakes Up Ai Automation Opensource Desktop Agent Delivers Finished Wo"><br>
+<b>Openworker Shakes Up Ai Automation Opensource Desktop Agent Delivers Finished Wo</b>
 </a>
 </td>
 </tr></table>
@@ -45,9 +45,9 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![66](https://img.shields.io/badge/66-blue?style=flat-square) |
-| **Model Deep Dives** | ![48](https://img.shields.io/badge/48-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![84](https://img.shields.io/badge/84-blue?style=flat-square) |
+| **Model Deep Dives** | ![67](https://img.shields.io/badge/67-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,24 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Hugging Face Guardrails Vs Openai Agent Api Security Showdown](https://bgill55.github.io/-weightandsee-guides/guides/hugging-face-guardrails-vs-openai-agent-api-security-showdown/)** — 2026-07-22
+- **[Inside Gemini 3S New Security Architecture Lessons For Future Agents](https://bgill55.github.io/-weightandsee-guides/guides/inside-gemini-3s-new-security-architecture-lessons-for-future-agents/)** — 2026-07-22
+- **[Gemini 36 Flash Vs Gpt 55 Turbo Who Wins The Speed Race](https://bgill55.github.io/-weightandsee-guides/guides/gemini-36-flash-vs-gpt-55-turbo-who-wins-the-speed-race/)** — 2026-07-21
+- **[Qwenimage30 Vs Flux 2 Local Rtx 4090 Battle For The Best Opensource Generator](https://bgill55.github.io/-weightandsee-guides/guides/qwenimage30-vs-flux-2-local-rtx-4090-battle-for-the-best-opensource-generator/)** — 2026-07-21
+- **[Build A Zero Latency Agent With Flashrt And Qwen36](https://bgill55.github.io/-weightandsee-guides/guides/build-a-zero-latency-agent-with-flashrt-and-qwen36/)** — 2026-07-20
+- **[Agent Memory Showdown Memgpt Vs Wikimemory Vs Claude 4 Builtin Memory](https://bgill55.github.io/-weightandsee-guides/guides/agent-memory-showdown-memgpt-vs-wikimemory-vs-claude-4-builtin-memory/)** — 2026-07-18
+- **[Ingesting The Enterprise One Pass Codebase Analysis With Claude Opus 48](https://bgill55.github.io/-weightandsee-guides/guides/ingesting-the-enterprise-one-pass-codebase-analysis-with-claude-opus-48/)** — 2026-07-17
+- **[Running The Pink Floyd Llm On Your Own Gpu Cost Performance And Scaling Secrets](https://bgill55.github.io/-weightandsee-guides/guides/running-the-pink-floyd-llm-on-your-own-gpu-cost-performance-and-scaling-secrets/)** — 2026-07-17
+- **[Roblox Ai Builder Vs Unity 10 Faster Game Creation Real Indie Test](https://bgill55.github.io/-weightandsee-guides/guides/roblox-ai-builder-vs-unity-10-faster-game-creation-real-indie-test/)** — 2026-07-16
+- **[Grok Build Review Opensource Coding Agent Powered By Xais Grok45](https://bgill55.github.io/-weightandsee-guides/guides/grok-build-review-opensource-coding-agent-powered-by-xais-grok45/)** — 2026-07-16
+- **[Hallo4D Flux 2 Endtoend Ai Video Creation Review](https://bgill55.github.io/-weightandsee-guides/guides/hallo4d-flux-2-endtoend-ai-video-creation-review/)** — 2026-07-16
+- **[Infrastructure Deep Dive Setting Up Daedalus Sandbox Model Router](https://bgill55.github.io/-weightandsee-guides/guides/infrastructure-deep-dive-setting-up-daedalus-sandbox-model-router/)** — 2026-07-15
+- **[Daedalus Vs Github Copilot Local First Ai Coding That Keeps Your Code Private](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-github-copilot-local-first-ai-coding-that-keeps-your-code-private/)** — 2026-07-15
+- **[How To Analyze 1M Messages For Pennies The Agnost Architecture](https://bgill55.github.io/-weightandsee-guides/guides/how-to-analyze-1m-messages-for-pennies-the-agnost-architecture/)** — 2026-07-14
+- **[Juggler Vs Cursor The First Opensource Gui Coding Agent Takes On Headless Bots](https://bgill55.github.io/-weightandsee-guides/guides/juggler-vs-cursor-the-first-opensource-gui-coding-agent-takes-on-headless-bots/)** — 2026-07-14
+- **[Claude Code Under Fire Realworld Espionage Risks Exposed](https://bgill55.github.io/-weightandsee-guides/guides/claude-code-under-fire-realworld-espionage-risks-exposed/)** — 2026-07-11
+- **[Flux 22 Vs Sora 2 Which Ai Video Engine Wins The Creative Race](https://bgill55.github.io/-weightandsee-guides/guides/flux-22-vs-sora-2-which-ai-video-engine-wins-the-creative-race/)** — 2026-07-10
+- **[The Death Of The Desktop Why Agentos Replaces Your Gui](https://bgill55.github.io/-weightandsee-guides/guides/the-death-of-the-desktop-why-agentos-replaces-your-gui/)** — 2026-07-08
 - **[Deepmotion Animate 3D Review Is This The Best Nocamera Motion Capture For Digita](https://bgill55.github.io/-weightandsee-guides/guides/deepmotion-animate-3d-review-is-this-the-best-nocamera-motion-capture-for-digita/)** — 2026-07-08
 - **[3X Developer Leverage The Data Behind 2026S Ai Web Dev](https://bgill55.github.io/-weightandsee-guides/guides/3x-developer-leverage-the-data-behind-2026s-ai-web-dev/)** — 2026-07-08
 - **[Build Nocode Ai Agents With Geminis Toolcalling A Stepbystep Visual Guide](https://bgill55.github.io/-weightandsee-guides/guides/build-nocode-ai-agents-with-geminis-toolcalling-a-stepbystep-visual-guide/)** — 2026-07-07
@@ -132,6 +150,24 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Build Your First Ai Agent The Openforgerl Guide](https://bgill55.github.io/-weightandsee-guides/guides/build-your-first-ai-agent-the-openforgerl-guide/)** — 2026-07-25
+- **[The Anatomy Of The Hugging Face Agent Escape](https://bgill55.github.io/-weightandsee-guides/guides/the-anatomy-of-the-hugging-face-agent-escape/)** — 2026-07-24
+- **[Openworker Shakes Up Ai Automation Opensource Desktop Agent Delivers Finished Wo](https://bgill55.github.io/-weightandsee-guides/guides/openworker-shakes-up-ai-automation-opensource-desktop-agent-delivers-finished-wo/)** — 2026-07-24
+- **[Daedalus Lite Launch Video](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-lite-launch-video/)** — 2026-07-23
+- **[Nvidia Omniverse Agent Toolkit 2026 Expansion Building Simulationready Worlds Wi](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-omniverse-agent-toolkit-2026-expansion-building-simulationready-worlds-wi/)** — 2026-07-20
+- **[Deploy Opencode Locally On A 2026 Gpu Server Zero Cloud Full Speed](https://bgill55.github.io/-weightandsee-guides/guides/deploy-opencode-locally-on-a-2026-gpu-server-zero-cloud-full-speed/)** — 2026-07-19
+- **[The Architecture Of Agnosticism How Opencode Routes 75 Models](https://bgill55.github.io/-weightandsee-guides/guides/the-architecture-of-agnosticism-how-opencode-routes-75-models/)** — 2026-07-19
+- **[Running Kimi K3 Locally On A Rtx 4090 Setup Quantization Cost Breakdown](https://bgill55.github.io/-weightandsee-guides/guides/running-kimi-k3-locally-on-a-rtx-4090-setup-quantization-cost-breakdown/)** — 2026-07-17
+- **[Lm Studio Bionic Hands On The Open Source Ai Agent That Codes Talks And Never Ph](https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-hands-on-the-open-source-ai-agent-that-codes-talks-and-never-ph/)** — 2026-07-17
+- **[Lm Studio Bionic Review Free Local Ai Agent For Developers](https://bgill55.github.io/-weightandsee-guides/guides/lm-studio-bionic-review-free-local-ai-agent-for-developers/)** — 2026-07-16
+- **[The System Prompt Leaks What Chatgpt V5 Gemini 3 Are Hiding](https://bgill55.github.io/-weightandsee-guides/guides/the-system-prompt-leaks-what-chatgpt-v5-gemini-3-are-hiding/)** — 2026-07-15
+- **[Anatomy Of An Agent Deconstructing The Finn Loops 3 Skills](https://bgill55.github.io/-weightandsee-guides/guides/anatomy-of-an-agent-deconstructing-the-finn-loops-3-skills/)** — 2026-07-14
+- **[Google Search 2026 Is The Click Finally Dead](https://bgill55.github.io/-weightandsee-guides/guides/google-search-2026-is-the-click-finally-dead/)** — 2026-07-14
+- **[Project Sand Reviewed Can Spacexs Office Ai Agent Beat Claude Cowork And Microso](https://bgill55.github.io/-weightandsee-guides/guides/project-sand-reviewed-can-spacexs-office-ai-agent-beat-claude-cowork-and-microso/)** — 2026-07-14
+- **[Inside The Claude Code Espionage Campaign Research Breakdown](https://bgill55.github.io/-weightandsee-guides/guides/inside-the-claude-code-espionage-campaign-research-breakdown/)** — 2026-07-11
+- **[The First Ai Silicon Tradesecret Battle What It Means For Future Chips](https://bgill55.github.io/-weightandsee-guides/guides/the-first-ai-silicon-tradesecret-battle-what-it-means-for-future-chips/)** — 2026-07-10
+- **[Build A Nocode Autonomous Debugging Pipeline With Flowise And Gemini 3](https://bgill55.github.io/-weightandsee-guides/guides/build-a-nocode-autonomous-debugging-pipeline-with-flowise-and-gemini-3/)** — 2026-07-10
+- **[Why The Desktop Is Dying Inside Agentos](https://bgill55.github.io/-weightandsee-guides/guides/why-the-desktop-is-dying-inside-agentos/)** — 2026-07-08
 - **[2026 Prompt Engineering Guide Gpt 55 Deepseek V4 Claude 4 Templates](https://bgill55.github.io/-weightandsee-guides/guides/2026-prompt-engineering-guide-gpt-55-deepseek-v4-claude-4-templates/)** — 2026-07-08
 - **[R Openai Package Deep Dive Gpt55 Turbo In Your Data Science Workflow](https://bgill55.github.io/-weightandsee-guides/guides/r-openai-package-deep-dive-gpt55-turbo-in-your-data-science-workflow/)** — 2026-07-08
 - **[9Router Deep Dive Unlimited Claude 4 Opus Coding Sessions Reviewed](https://bgill55.github.io/-weightandsee-guides/guides/9router-deep-dive-unlimited-claude-4-opus-coding-sessions-reviewed/)** — 2026-07-06
@@ -180,6 +216,7 @@
 - **[The POISE Attack — I Poisoned an AI Agent in Real Time](https://bgill55.github.io/-weightandsee-guides/guides/the-poise-attack-i-poisoned-an-ai-agent-in-real-time/)** — 2026-06-11
 - **[Unchaining AI — Is Qwen 3.6 Aggressive the Ultimate Local Powerhouse?](https://bgill55.github.io/-weightandsee-guides/guides/unchaining-ai-is-qwen-36-aggressive-the-ultimate-local-powerhouse/)** — 2026-06-11
 - **[Inside the Microsoft AI Tool Breach — Timeline, Exploits & Patches](https://bgill55.github.io/-weightandsee-guides/guides/inside-the-microsoft-ai-tool-breach-timeline-exploits-and-patch-rollout/)** — 2026-06-09
+- **[Daedalus Lite Build Your Own Local Ai Coding Agent In Minutes](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-lite-build-your-own-local-ai-coding-agent-in-minutes/)**
 
 ---
 
@@ -187,6 +224,8 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Home Server Blueprint Running Llama 4 Grok 3 For Private Family Ai On A Rtx 6090](https://bgill55.github.io/-weightandsee-guides/guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/)** — 2026-07-18
+- **[Last30Days Skill Review The First Ai Agent That Scores Research With Realmoney O](https://bgill55.github.io/-weightandsee-guides/guides/last30days-skill-review-the-first-ai-agent-that-scores-research-with-realmoney-o/)** — 2026-07-14
 - **[How Xs Mcp Api Hooks Enable Seamless Onprem Llm Pipelines](https://bgill55.github.io/-weightandsee-guides/guides/how-xs-mcp-api-hooks-enable-seamless-onprem-llm-pipelines/)** — 2026-07-01
 - **[Stop Babysitting Ai Build Selfdebugging Agent Loops With Daedalus](https://bgill55.github.io/-weightandsee-guides/guides/stop-babysitting-ai-build-selfdebugging-agent-loops-with-daedalus/)** — 2026-07-01
 - **[Escape The Saas Trap Run Llama 4 Agents In N8N](https://bgill55.github.io/-weightandsee-guides/guides/escape-the-saas-trap-run-llama-4-agents-in-n8n/)** — 2026-06-30

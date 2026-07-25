@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A side‑by‑side benchmark that pits the freshly open‑sourced Grok Build against the heavyweight closed‑source coding agents Codex and Claude Code, revealing spee">
+    <meta name="keywords" content="Grok Build, coding agent, xAI, open source AI, LLM coding tools">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Grok Build Review: Open‑Source Coding Agent Powered by xAI’s Grok‑4.5 - Deep Dive Analysis">
+    <meta property="og:description" content="A side‑by‑side benchmark that pits the freshly open‑sourced Grok Build against the heavyweight closed‑source coding agents Codex and Claude Code, revealing speed, accuracy, token limits, and real‑worl">
+    <meta property="og:type" content="article">
+    <title>Grok Build Review: Open‑Source Coding Agent Powered by xAI’s Grok‑4.5 | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Deep Dive Analysis</span>
+            <h1>Grok Build Review: Open‑Source Coding Agent Powered by xAI’s Grok‑4.5</h1>
+            <p class="subtitle">This deep dive reviews the open-source Grok Build coding agent, powered by xAI's Grok-4.5 model, comparing its performance against proprietary giants like Codex and Claude Code. It analyzes the agent's massive 128k token context window, local inference capabilities, and its integration into CI/CD pipelines.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 16, 2026</span>
+                <span>4 Findings</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
+
+            <div class="finding">
+                <h3>Massive 128k Token Context Window</h3>
+                <p>Grok Build supports a context window of 128,000 tokens, allowing it to ingest entire full-stack applications—including React frontends, Node.js backends, and migration scripts—in a single prompt. In benchmark tests, this allowed the agent to maintain coherence across twelve files during refactoring, whereas competitors like Codex and Claude Code often lost track of utility functions once conversations exceeded a few thousand tokens.</p>
+            </div>
+
+            <div class="finding">
+                <h3>High-Performance Local Inference</h3>
+                <p>The agent features a modular architecture that supports local inference engines. When configured on a workstation with two RTX 5090s (48GB VRAM), Grok Build achieved approximately 40ms latency for code generation. This is faster than the round-trip time to most commercial API endpoints, offering a responsive experience for local development.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Automated CI/CD Integration</h3>
+                <p>Grok Build can be integrated directly into continuous integration pipelines using a standard YAML configuration file. In tests, the agent successfully scanned code diffs, identified edge cases, and automatically generated unit tests for a Python microservice, achieving 85% code coverage on the first pass.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Hardware Demands vs. Data Privacy</h3>
+                <p>The primary trade-off for local inference is the significant hardware requirement. The benchmark rig utilized 48GB of video memory. While this creates a high barrier to entry for individual developers, the ability to keep training data and code context on-premise offers a compelling value proposition for engineering teams prioritizing data privacy.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">Grok Build is built on a hybrid tech stack featuring a Rust-based Terminal User Interface (TUI) and a Python agent core, communicating via gRPC. It utilizes the Grok-4.5 model, which can be accessed via the xAI API or run locally with CUDA acceleration. The system uses an Agent Client Protocol (ACP) defined in Protobuf for extensibility, a Docker container for safe code execution (sandboxing), and a plugin architecture to support custom tools like linters and compilers.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <div class="card">
+
+                <div class="research-item">
+                    <div class="source">xAI News</div>
+                    <div class="detail">Announced the open-source release of Grok Build, highlighting its extensible nature and integration with xAI's Grok-4.5 model.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Grok Build Repository</div>
+                    <div class="detail">Documents the architecture, including the Rust frontend, Python core, and the use of Docker for execution sandboxing. It provides installation methods via pip and Docker.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Weight and See Benchmark</div>
+                    <div class="detail">Conducted side-by-side comparisons of Grok Build, Codex, and Claude Code, measuring context retention, latency, and code generation quality.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
+
+            <div class="implication">
+                High-Performance Open Source — Grok Build demonstrates that open-source agents can now match or exceed the performance of closed-source models in specific scenarios like large-context refactoring.
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#OpenSourcevsClosed</span>
+                <span class="tag">#GrokBuild</span>
+                <span class="tag">#codingagent</span>
+                <span class="tag">#xAI</span>
+                <span class="tag">#opensourceAI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-16 02:45 • This guide accompanies the video: "Grok Build Review: Open‑Source Coding Agent Powered by xAI’s Grok‑4.5"</p>
+        </footer>
+    </div>
+</body>
+</html>

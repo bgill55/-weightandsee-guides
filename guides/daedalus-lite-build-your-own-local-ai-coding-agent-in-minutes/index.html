@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="What's possible with Daedalus-Lite - Architectural & Domain Guide demonstrating advanced TypeScript middleware patterns.">
+    <meta name="keywords" content="TypeScript, Node.js, AI Agent, Ollama, LM Studio, Middleware Router">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="What's Possible with Daedalus-Lite | Architectural & Domain Guide">
+    <meta property="og:description" content="Explore real-world use cases and middleware architecture patterns built on the Daedalus-Lite AI CLI template — from financial and legal tools to custom workflow chains.">
+    <meta property="og:type" content="article">
+    <title>What's Possible with Daedalus-Lite | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #020617;
+            --bg-secondary: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-light: #7dd3fc;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --border: #334155;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #020617;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.6rem;
+        }
+        
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .code-block {
+            background: #090d16;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #7dd3fc;
+        }
+
+        .pattern-banner {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(234, 179, 8, 0.03));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .pattern-banner h2 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .pattern-banner p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Architecture & Domain Guide</span>
+            <h1>What's Possible with Daedalus-Lite</h1>
+            <p class="subtitle">An architectural deep dive into custom AI agent middleware design patterns.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 23, 2026</span>
+                <span>8 Use Cases</span>
+            </div>
+        </header>
+
+        <div class="pattern-banner" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(56, 189, 248, 0.03)); border-color: rgba(34, 197, 94, 0.25);">
+            <h2 style="color: var(--accent-light); margin-bottom: 8px;"><span class="icon">🎮</span> Try the Live Sandbox</h2>
+            <p style="margin-bottom: 16px;">
+                Before building locally, try the interactive web REPL shell live in your browser (no signup required) or check out the official project homepage.
+            </p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px;">
+                <a href="https://bgill55.github.io/daedalus-lite/live-demo.html" target="_blank" style="background: var(--accent); color: #020617; padding: 10px 20px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">🎮 Launch Web REPL Sandbox</a>
+                <a href="https://bgill55.github.io/daedalus-lite/" target="_blank" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); padding: 10px 20px; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">🌐 Visit Official Homepage</a>
+            </div>
+            <div style="text-align: center; margin-top: 16px; background: #090d16; padding: 16px; border: 1px solid var(--border); border-radius: 8px;">
+                <p style="color: var(--text-secondary); font-size: 13px; margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Interactive CLI Terminal Loop Demo</p>
+                <img src="https://bgill55.github.io/daedalus-lite/terminal-demo.gif" alt="Daedalus-Lite Terminal Loop Demo" style="max-width: 100%; border-radius: 6px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+            </div>
+        </div>
+
+        <div class="pattern-banner">
+            <h2>The Middleware Architecture Pattern</h2>
+            <p>
+                Daedalus-Lite is built around a lean <code>InMemoryRouter</code> that supports registering a pipeline of middleware functions.
+                Each middleware can intercept the request payload (pre-processing), yield to next stages, and inspect or modify the generated text payload (post-processing) before it reaches the consumer.
+                This unlocks limitless extension patterns.
+            </p>
+            <div class="code-block" style="margin-top: 16px;"><pre><code>export const myMiddleware: Middleware = async (req, next) => {
+  // 1. PRE-PROCESS: Modify the prompt or parameters before model dispatch
+  req.prompt = `Custom instructions... \n${req.prompt}`;
+  
+  // 2. DISPATCH: Yield control down the middleware chain to the model
+  const response = await next();
+  
+  // 3. POST-PROCESS: Format, validate, filter, or log the final response payload
+  response.choices[0].message.content += '\n\n---\nGenerated by Custom Agent';
+  return response;
+};</code></pre></div>
+        </div>
+
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚀</span> 1. Financial Assistant Middleware</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7;">Prepends financial advisory rules, safety parameters, and enforces post-processed regulatory disclaimers onto the model response.</p>
+                <div class="code-block"><pre><code>import type { Middleware } from './types.js';
+
+export const financialGuardMiddleware: Middleware = async (req, next) => {
+  // Pre-process: enforce guidelines
+  req.prompt = `You are a financial assistant. Always include disclaimers. Never give specific stock advice. Answer in plain language. User question: ${req.prompt}`;
+  
+  const response = await next();
+  
+  // Post-process: ensure disclaimer is present
+  const content = response.choices[0].message.content;
+  if (!content.includes('consult a financial advisor')) {
+    response.choices[0].message.content += '\n\n *This is not financial advice. Consult a qualified professional.*';
+  }
+  return response;
+};</code></pre></div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚀</span> 2. Code Review Bot</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7;">Intercepts diff patches or pull request bodies, prepends a strict review rubric, and structures the analysis into categorized severity levels.</p>
+                <div class="code-block"><pre><code>import type { Middleware } from './types.js';
+
+export const codeReviewMiddleware: Middleware = async (req, next) => {
+  req.prompt = `You are a senior code reviewer. Review the following code for:
+1. Security vulnerabilities
+2. Performance issues
+3. Code style violations
+4. Missing error handling
+5. Test coverage gaps
+
+Format your response as a checklist with severity levels (CRITICAL, WARNING, INFO).
+Code to review:
+${req.prompt}`;
+
+  return next();
+};</code></pre></div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚀</span> 3. Legal Document Analyzer</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7;">Injects jurisdiction guidelines, checklists of interest (obligations, risks), and forces the LLM to output a clean, parsable JSON structure.</p>
+                <div class="code-block"><pre><code>import type { Middleware } from './types.js';
+
+export const legalMiddleware: Middleware = async (req, next) => {
+  req.prompt = `You are a legal document analyst. Identify:
+- Key clauses and obligations
+- Potential risks
+- Missing standard provisions
+- Jurisdiction-specific concerns
+
+Document: ${req.prompt}
+Output as a structured JSON object with sections: summary, risks, recommendations.`;
+
+  return next();
+};</code></pre></div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚀</span> 4. Medical Triage Assistant</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7;">Enforces HIPAA-style privacy boundaries and strict instructions to not diagnose, steering the output to triage categorization and safety disclaimers.</p>
+                <div class="code-block"><pre><code>import type { Middleware } from './types.js';
+
+export const medicalTriageMiddleware: Middleware = async (req, next) => {
+  req.prompt = `You are a medical triage assistant. You do NOT diagnose. You do NOT prescribe. You help users understand when to seek professional care.
+Symptom description: ${req.prompt}
+
+Respond with:
+1. Urgency level (EMERGENCY / URGENT / ROUTINE / SELF-CARE)
+2. Recommended next steps
+3. Questions to ask their doctor
+
+Always include: "This is not medical advice. Consult a healthcare provider."`;
+
+  return next();
+};</code></pre></div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚀</span> 5. Customer Support RAG Agent</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7;">Injects support knowledge base variables directly into the context stream and analyzes output sentiment to automatically flag or escalate frustrated interactions.</p>
+                <div class="code-block"><pre><code>import type { Middleware } from './types.js';
+
+const knowledgeBase = `
+Product: Acme SaaS Platform
+Pricing: $29/mo Basic, $99/mo Pro, $299/mo Enterprise
+Refund policy: 30-day money-back guarantee
+Support hours: 24/7 chat, email response within 4 hours
+`;
+
+export const supportMiddleware: Middleware = async (req, next) => {
+  req.prompt = `You are a customer support agent for Acme SaaS. Use the following knowledge base to answer questions. Be helpful, concise, and empathetic.
+Knowledge Base:
+${knowledgeBase}
+
+Customer: ${req.prompt}`;
+
+  const response = await next();
+  
+  // Sentiment check - if customer seems frustrated, escalate
+  if (req.prompt.match(/angry|frustrated|unacceptable|refund|cancel/i)) {
+    response.choices[0].message.content += '\n\n---\n[SYSTEM] I\'ve flagged this for our priority support team. Someone will follow up within 30 minutes.';
+  }
+  return response;
+};</code></pre></div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚀</span> 6. Language Tutor</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7;">Injects vocabulary levels, target languages, corrections, and translations dynamically according to the active user's system profile.</p>
+                <div class="code-block"><pre><code>import type { Middleware } from './types.js';
+
+export const languageTutorMiddleware: Middleware = async (req, next) => {
+  const level = 'intermediate'; // Could be dynamic from user profile
+  const targetLanguage = 'Spanish';
+
+  req.prompt = `You are a ${targetLanguage} language tutor at ${level} level.
+- Respond primarily in ${targetLanguage}
+- Provide English translations in parentheses for new vocabulary
+- Correct any grammar mistakes in the user's ${targetLanguage}
+- Keep responses at ${level} reading level
+
+Student: ${req.prompt}`;
+
+  return next();
+};</code></pre></div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚀</span> 7. Structured Data Extraction Pipeline</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7;">Pre-processes prompt instructions with JSON schemas (e.g. entities, relationships) to extract clean database payloads from messy log transcripts.</p>
+                <div class="code-block"><pre><code>import type { Middleware } from './types.js';
+
+export const extractionMiddleware: Middleware = async (req, next) => {
+  req.prompt = `Extract structured data from the following text. Return ONLY valid JSON with these fields:
+- entities: [{name, type, mentions}]
+- dates: [{date, context}]
+- relationships: [{source, target, type}]
+- summary: string
+
+Text: ${req.prompt}`;
+
+  return next();
+};</code></pre></div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🚀</span> 8. Multi-Step Workflow Orchestrator</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7;">Chains multiple middleware functions in an execution array to handle logging, authentication, rate limits, schema formatting, and error catching.</p>
+                <div class="code-block"><pre><code>import { InMemoryRouter } from './router.js';
+import { errorHandlerMiddleware } from './middleware.js';
+
+const router = new InMemoryRouter({
+  openaiApiKey: process.env.OPENAI_API_KEY,
+  defaultModel: 'gpt-4',
+  temperature: 0.7,
+});
+
+// Chain middleware in order
+router.use(loggingMiddleware);       // Log all requests
+router.use(authMiddleware);          // Validate API keys/tokens
+router.use(rateLimitMiddleware);     // Rate limiting
+router.use(contextInjector);         // Inject system context
+router.use(responseFormatter);       // Format output
+router.use(errorHandlerMiddleware);  // Catch errors last</code></pre></div>
+            </div>
+        </section>
+        
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📦</span> Flagship Assistance Ready</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">
+                    This exact middleware pattern is what drives the fully featured AI coding assistant, <strong>Daedalus</strong>. While Daedalus-Lite provides the clean, zero-dependency foundation router and REPL, you can scale it into multi-agent workflows, local indexes, PR checkers, and custom CLI developer templates.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-top: 12px;">
+                    Get the template setup and packaging PDF manual to build your customized CLI. Commercial rights are fully included.
+                </p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Built with <a href="https://github.com/bgill55/daedalus-lite" target="_blank">Daedalus-Lite Template</a></p>
+            <p style="margin-top: 8px; font-size: 12px; color: var(--text-secondary);">Weight and See © 2026. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
