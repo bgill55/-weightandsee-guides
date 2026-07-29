@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A data-driven showdown comparing Anthropic's Claude Opus 5 against OpenAI's GPT-5.5 and Claude's own Fable 5, focusing on the disruptive $5/$25 pricing model an">
+    <meta name="keywords" content="Claude Opus 5, GPT-5.5, AI Benchmarking, API Pricing, Agentic Coding">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Anatomy of an Agent: Inside Claude Opus 5's Architecture - Deep Dive Analysis">
+    <meta property="og:description" content="A data-driven showdown comparing Anthropic's Claude Opus 5 against OpenAI's GPT-5.5 and Claude's own Fable 5, focusing on the disruptive $5/$25 pricing model and benchmark results on Frontier-Bench an">
+    <meta property="og:type" content="article">
+    <title>Anatomy of an Agent: Inside Claude Opus 5's Architecture | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Deep Dive Analysis</span>
+            <h1>Anatomy of an Agent: Inside Claude Opus 5's Architecture</h1>
+            <p class="subtitle">This deep‑dive examines Anthropic's Claude Opus 5 architecture, its disruptive $5/$25 per‑million‑token pricing, and how it stacks up against OpenAI's GPT‑5.5 and Anthropic's own Claude Fable 5 on key agentic benchmarks such as Frontier‑Bench, OSWorld 2.0, and Zapier AutomationBench.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 29, 2026</span>
+                <span>5 Findings</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
+
+            <div class="finding">
+                <h3>Pricing disruption</h3>
+                <p>Claude Opus 5 charges $5 per million input tokens and $25 per million output tokens, delivering roughly a 50 % cost reduction compared with OpenAI's GPT‑5.5 pricing for comparable workloads.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Performance boost over Fable 5</h3>
+                <p>Anthropic reports a 1.5× performance improvement over Claude Fable 5 on agentic tasks, with higher success rates on multi‑turn tool‑use scenarios.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Benchmark superiority</h3>
+                <p>On Frontier‑Bench, OSWorld 2.0, and Zapier AutomationBench, Opus 5 consistently outperforms GPT‑5.5 and Fable 5, achieving higher scores on complex file‑manipulation, web‑browsing, and multi‑step API integration tasks.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Hybrid architecture</h3>
+                <p>Opus 5 combines a large transformer core with a dynamic tool‑use loop, allowing the model to invoke external tools (code execution, spreadsheet APIs) and retain state across many turns, enabling long‑horizon agentic workflows.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Fast mode option</h3>
+                <p>A Fast mode provides a 2.5× speed increase at double the standard price, giving developers a trade‑off between latency and cost for time‑critical applications.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">Claude Opus 5 is built on a hybrid reasoning system that blends a standard transformer backbone with a dynamic tool‑use loop. At inference time the model can call external tools—such as code runners, spreadsheet editors, or web browsers—and keep the resulting state across multiple turns, enabling long‑context, multi‑step agentic tasks. The architecture also supports test‑time compute scaling, where higher effort levels increase internal reasoning depth. Fast mode accelerates inference by allocating extra compute, trading cost for latency.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <div class="card">
+
+                <div class="research-item">
+                    <div class="source">Anthropic announcement – Introducing Claude Opus 5</div>
+                    <div class="detail">Official product release describing the new pricing model, performance goals, and hybrid reasoning capabilities.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Anthropic docs – What’s new in Claude Opus 5</div>
+                    <div class="detail">Technical documentation covering model parameters, Fast mode, and API usage examples.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">InfoWorld article – Anthropic releases ‘more efficient’ Claude Opus 5 AI model</div>
+                    <div class="detail">Third‑party analysis summarizing the cost‑performance claims and benchmark highlights.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
+
+            <div class="implication">
+                The reduced cost per token democratizes access to high‑performance agentic AI, enabling startups and midsize firms to run sophisticated automation pipelines that were previously cost‑prohibitive.
+            </div>
+
+            <div class="implication">
+                OpenAI and other providers face heightened competitive pressure to revisit their pricing and efficiency strategies, potentially accelerating the overall pace of AI‑driven workflow automation.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💭</span> Expert Analysis</h2>
+            <div class="analysis-block">
+                The benchmark results suggest Claude Opus 5 delivers a genuine cost‑performance edge, especially for high‑volume, tool‑heavy workflows. However, the public benchmarks lack full methodological transparency, making it hard to verify the 1.5× claim across diverse real‑world tasks. Pricing advantages are compelling, but Fast mode’s double‑price trade‑off may limit its appeal for budget‑sensitive deployments. Finally, while the hybrid architecture promises reduced latency for long‑context tasks, actual latency gains will depend on the underlying hardware and the complexity of invoked tools.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> References & Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.anthropic.com/news/claude-opus-5" target="_blank" style="color: var(--accent-light); text-decoration: none;">Introducing Claude Opus 5 – Anthropic</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official announcement detailing the model’s capabilities, pricing, and positioning.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://platform.claude.com/docs/en/about-claude/models/whats-new-opus-5" target="_blank" style="color: var(--accent-light); text-decoration: none;">What’s new in Claude Opus 5 – Anthropic Docs</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Documentation of API parameters, Fast mode, and usage guidelines.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.infoworld.com/article/4201551/anthropic-releases-more-efficient-claude-opus-5.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">Anthropic releases ‘more efficient’ Claude Opus 5 AI model – InfoWorld</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Industry coverage summarizing cost and performance claims.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How does the $5/$25 pricing model compare to GPT‑5.5?</h3>
+                <p>Opus 5 charges $5 per million input tokens and $25 per million output tokens, roughly half the cost of GPT‑5.5’s enterprise tier pricing for equivalent token volumes.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Which benchmarks were used to evaluate Opus 5’s performance?</h3>
+                <p>Performance was measured on Frontier‑Bench (tool‑use tasks), OSWorld 2.0 (agentic reasoning), and Zapier AutomationBench (multi‑step API automation).</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How can I access Claude Opus 5 via the Anthropic API?</h3>
+                <p>Use the Anthropic SDK with the model name "claude-opus-5"; for example:
+```python
+import anthropic
+client = anthropic.Client(api_key="YOUR_KEY")
+response = client.completions.create(
+    model="claude-opus-5",
+    max_tokens=1024,
+    temperature=0.0,
+    messages=[{"role": "user", "content": "Your prompt here"}]
+)
+print(response.completion)
+```</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is Fast mode and when should I use it?</h3>
+                <p>Fast mode trades double the standard price for a 2.5× speed increase by allocating extra compute at inference time; it is useful for latency‑sensitive tasks where cost is less critical.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Does Opus 5 support long context windows for agentic coding?</h3>
+                <p>Yes, the hybrid architecture retains state across many turns, enabling long‑horizon coding sessions and large‑diff handling without the latency spikes seen in earlier models.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#ClaudeOpus5</span>
+                <span class="tag">#GPT55</span>
+                <span class="tag">#AIBenchmarking</span>
+                <span class="tag">#APIPricing</span>
+                <span class="tag">#AI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-29 01:21 • This guide accompanies the video: "Anatomy of an Agent: Inside Claude Opus 5's Architecture"</p>
+        </footer>
+    </div>
+</body>
+</html>

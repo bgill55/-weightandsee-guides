@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/195_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/196_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/anatomy-of-an-agent-inside-claude-opus-5s-architecture/">
+<img src="guides/anatomy-of-an-agent-inside-claude-opus-5s-architecture/thumbnail.jpg" width="300" alt="Anatomy Of An Agent Inside Claude Opus 5S Architecture"><br>
+<b>Anatomy Of An Agent Inside Claude Opus 5S Architecture</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/build-your-first-ai-agent-the-openforgerl-guide/">
 <img src="guides/build-your-first-ai-agent-the-openforgerl-guide/thumbnail.jpg" width="300" alt="Build Your First Ai Agent The Openforgerl Guide"><br>
@@ -31,12 +37,6 @@
 <b>The Anatomy Of The Hugging Face Agent Escape</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/openworker-shakes-up-ai-automation-opensource-desktop-agent-delivers-finished-wo/">
-<img src="guides/openworker-shakes-up-ai-automation-opensource-desktop-agent-delivers-finished-wo/thumbnail.jpg" width="300" alt="Openworker Shakes Up Ai Automation Opensource Desktop Agent Delivers Finished Wo"><br>
-<b>Openworker Shakes Up Ai Automation Opensource Desktop Agent Delivers Finished Wo</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![84](https://img.shields.io/badge/84-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![85](https://img.shields.io/badge/85-blue?style=flat-square) |
 | **Model Deep Dives** | ![67](https://img.shields.io/badge/67-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Anatomy Of An Agent Inside Claude Opus 5S Architecture](https://bgill55.github.io/-weightandsee-guides/guides/anatomy-of-an-agent-inside-claude-opus-5s-architecture/)** — 2026-07-29
 - **[Hugging Face Guardrails Vs Openai Agent Api Security Showdown](https://bgill55.github.io/-weightandsee-guides/guides/hugging-face-guardrails-vs-openai-agent-api-security-showdown/)** — 2026-07-22
 - **[Inside Gemini 3S New Security Architecture Lessons For Future Agents](https://bgill55.github.io/-weightandsee-guides/guides/inside-gemini-3s-new-security-architecture-lessons-for-future-agents/)** — 2026-07-22
 - **[Gemini 36 Flash Vs Gpt 55 Turbo Who Wins The Speed Race](https://bgill55.github.io/-weightandsee-guides/guides/gemini-36-flash-vs-gpt-55-turbo-who-wins-the-speed-race/)** — 2026-07-21
