@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We pit Anthropic's new Claude Opus 5 against OpenAI's GPT-5.5 across coding accuracy, massive context windows, and office workflow integration to see which mode">
+    <meta name="keywords" content="Claude Opus 5, GPT-5.5, AI Benchmark, Coding AI, Office Productivity">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Coding with Claude Opus 5: The New Standard? - Deep Dive Analysis">
+    <meta property="og:description" content="We pit Anthropic's new Claude Opus 5 against OpenAI's GPT-5.5 across coding accuracy, massive context windows, and office workflow integration to see which model actually earns your subscription in 20">
+    <meta property="og:type" content="article">
+    <title>Coding with Claude Opus 5: The New Standard? | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Deep Dive Analysis</span>
+            <h1>Coding with Claude Opus 5: The New Standard?</h1>
+            <p class="subtitle">This deep dive analyzes the competitive landscape of AI coding assistants in 2026 by comparing Anthropic's Claude Opus 5 against OpenAI's GPT-5.5. It evaluates critical performance metrics including HumanEval Python benchmarks, massive context window capabilities, and real-time IDE integration features, ultimately assessing which model offers superior engineering velocity.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 29, 2026</span>
+                <span>5 Findings</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
+
+            <div class="finding">
+                <h3>New Benchmark Standard</h3>
+                <p>Claude Opus 5 achieved a 98.2% accuracy on the HumanEval Python pass@1 benchmark, significantly outperforming GPT-5.5 and shattering previous performance ceilings for code correctness.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Robust Long-Context Handling</h3>
+                <p>In stress tests involving 200,000 tokens of legacy Java code, Opus 5 maintained perfect reference tracking across forty class files without hallucinating variables or losing scope, a major improvement over earlier versions.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Integrated Artifacts 2.0 Protocol</h3>
+                <p>The new Artifacts 2.0 protocol allows for real-time rendering previews directly within the IDE terminal, removing the friction of switching to browser tabs required by GPT-5.5 and enabling a continuous conversational workflow.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Autonomous Debugging Capabilities</h3>
+                <p>Opus 5 connects directly to CI/CD streams, such as GitHub Actions, to parse raw XML error logs in real-time and auto-generate fixes like dependency version conflicts without manual copy-pasting.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Efficiency and Cost</h3>
+                <p>Utilizing a sparse mixture-of-experts architecture, Opus 5 routes fewer parameters for simple queries, resulting in a pricing model that is 12% lower per million input tokens than GPT-5.5.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">Claude Opus 5 utilizes a sparse mixture-of-experts architecture, which optimizes computational efficiency by routing simpler queries to a subset of parameters while engaging the full model for complex logic. This is paired with an advanced attention mechanism that vastly outperforms standard transformers in handling long-range dependencies. These technical advancements allow the model to maintain coherence over massive 200,000-token context windows, accurately mapping dependency graphs within monolithic repositories without hallucination.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <div class="card">
+
+                <div class="research-item">
+                    <div class="source">HumanEval Python Benchmark</div>
+                    <div class="detail">The primary dataset used to determine coding accuracy, where Opus 5 scored 98.2% compared to GPT-5.5's lower score.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Internal Legacy Java Refactoring Test</div>
+                    <div class="detail">A custom stress test involving a 200,000-token prompt containing legacy Java code to evaluate reference tracking and scope maintenance.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">GitHub Actions CI/CD Pipeline</div>
+                    <div class="detail">Used to test the model's ability to interact with tool streams, specifically parsing XML logs to identify dependency conflicts.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
+
+            <div class="implication">
+                Anthropic establishes a new standard for AI-assisted engineering, likely forcing OpenAI to innovate on tool integration and context handling.
+            </div>
+
+            <div class="implication">
+                The reduction in cost and latency makes high-end AI coding capabilities more accessible for continuous deployment workflows.
+            </div>
+
+            <div class="implication">
+                Developers may shift away from general-purpose models like GPT-5.5 toward specialized coding agents that integrate deeper into the IDE and terminal environments.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💭</span> Expert Analysis</h2>
+            <div class="analysis-block">
+                The benchmark results presented represent a fundamental shift in the utility of LLMs for software engineering, moving beyond simple autocompletion to holistic repository management. The elimination of hallucinations in large-context windows is a critical breakthrough that solves one of the biggest pain points in enterprise refactoring. However, while Opus 5 clearly dominates technical implementation, GPT-5.5's continued superiority in creative reasoning suggests a bifurcated market where developers may maintain subscriptions to both models for different tasks.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> References & Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://gemini.google.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">Google Gemini</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — A competing AI service mentioned in the featured links.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <strong>Full Benchmark Suite and API Guide</strong>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Referenced in the video description as the source for detailed testing methodologies and prompt templates used.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Is Claude Opus 5 better than GPT-5.5 at creative writing?</h3>
+                <p>No, GPT-5.5 still holds a slight edge in creative writing tasks and multi-step logic puzzles requiring broad world knowledge.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is Claude Opus 5 more expensive to use than GPT-5.5?</h3>
+                <p>No, Claude Opus 5 is actually 12% cheaper per million input tokens due to its efficient sparse mixture-of-experts architecture.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can Opus 5 fix CI/CD errors automatically?</h3>
+                <p>Yes, it can connect directly to CI/CD streams like GitHub Actions, parse error logs in real-time, and propose fixes for issues like dependency conflicts.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is the Artifacts 2.0 protocol?</h3>
+                <p>It is a feature that streams rendered code previews directly within the IDE terminal, allowing developers to visualize changes without opening a separate browser tab.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#ClaudeOpus5</span>
+                <span class="tag">#GPT55</span>
+                <span class="tag">#AIBenchmark</span>
+                <span class="tag">#CodingAI</span>
+                <span class="tag">#AI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-29 09:00 • This guide accompanies the video: "Coding with Claude Opus 5: The New Standard?"</p>
+        </footer>
+    </div>
+</body>
+</html>
