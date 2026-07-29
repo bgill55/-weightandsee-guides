@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/199_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/197_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,21 +20,21 @@
 
 <table><tr>
 <td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-llama-4-powers-buzzs-decentralized-mesh/">
-<img src="guides/how-llama-4-powers-buzzs-decentralized-mesh/thumbnail.jpg" width="300" alt="How Llama 4 Powers Buzzs Decentralized Mesh"><br>
-<b>How Llama 4 Powers Buzzs Decentralized Mesh</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/why-buzz-chose-local-llama-4-over-the-cloud/">
-<img src="guides/why-buzz-chose-local-llama-4-over-the-cloud/thumbnail.jpg" width="300" alt="Why Buzz Chose Local Llama 4 Over The Cloud"><br>
-<b>Why Buzz Chose Local Llama 4 Over The Cloud</b>
-</a>
-</td>
-<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/coding-with-claude-opus-5-the-new-standard/">
 <img src="guides/coding-with-claude-opus-5-the-new-standard/thumbnail.jpg" width="300" alt="Coding With Claude Opus 5 The New Standard"><br>
 <b>Coding With Claude Opus 5 The New Standard</b>
+</a>
+</td>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/anatomy-of-an-agent-inside-claude-opus-5s-architecture/">
+<img src="guides/anatomy-of-an-agent-inside-claude-opus-5s-architecture/thumbnail.jpg" width="300" alt="Anatomy Of An Agent Inside Claude Opus 5S Architecture"><br>
+<b>Anatomy Of An Agent Inside Claude Opus 5S Architecture</b>
+</a>
+</td>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/build-your-first-ai-agent-the-openforgerl-guide/">
+<img src="guides/build-your-first-ai-agent-the-openforgerl-guide/thumbnail.jpg" width="300" alt="Build Your First Ai Agent The Openforgerl Guide"><br>
+<b>Build Your First Ai Agent The Openforgerl Guide</b>
 </a>
 </td>
 </tr></table>
@@ -45,9 +45,9 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![87](https://img.shields.io/badge/87-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![86](https://img.shields.io/badge/86-blue?style=flat-square) |
 | **Model Deep Dives** | ![67](https://img.shields.io/badge/67-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![26](https://img.shields.io/badge/26-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,7 +59,6 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
-- **[Why Buzz Chose Local Llama 4 Over The Cloud](https://bgill55.github.io/-weightandsee-guides/guides/why-buzz-chose-local-llama-4-over-the-cloud/)** — 2026-07-29
 - **[Coding With Claude Opus 5 The New Standard](https://bgill55.github.io/-weightandsee-guides/guides/coding-with-claude-opus-5-the-new-standard/)** — 2026-07-29
 - **[Anatomy Of An Agent Inside Claude Opus 5S Architecture](https://bgill55.github.io/-weightandsee-guides/guides/anatomy-of-an-agent-inside-claude-opus-5s-architecture/)** — 2026-07-29
 - **[Hugging Face Guardrails Vs Openai Agent Api Security Showdown](https://bgill55.github.io/-weightandsee-guides/guides/hugging-face-guardrails-vs-openai-agent-api-security-showdown/)** — 2026-07-22
@@ -227,7 +226,6 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
-- **[How Llama 4 Powers Buzzs Decentralized Mesh](https://bgill55.github.io/-weightandsee-guides/guides/how-llama-4-powers-buzzs-decentralized-mesh/)** — 2026-07-29
 - **[Home Server Blueprint Running Llama 4 Grok 3 For Private Family Ai On A Rtx 6090](https://bgill55.github.io/-weightandsee-guides/guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/)** — 2026-07-18
 - **[Last30Days Skill Review The First Ai Agent That Scores Research With Realmoney O](https://bgill55.github.io/-weightandsee-guides/guides/last30days-skill-review-the-first-ai-agent-that-scores-research-with-realmoney-o/)** — 2026-07-14
 - **[How Xs Mcp Api Hooks Enable Seamless Onprem Llm Pipelines](https://bgill55.github.io/-weightandsee-guides/guides/how-xs-mcp-api-hooks-enable-seamless-onprem-llm-pipelines/)** — 2026-07-01
