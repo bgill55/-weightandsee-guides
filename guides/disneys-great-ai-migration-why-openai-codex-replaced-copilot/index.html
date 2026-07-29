@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A strategic analysis of Disney's massive enterprise shift from GitHub Copilot to OpenAI's Codex. We explore the technical and business reasons behind the decisi">
+    <meta name="keywords" content="Disney AI, OpenAI Codex, GitHub Copilot, Enterprise AI, GPT 5.5">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Disney's Great AI Migration: Why OpenAI Codex Replaced Copilot - Deep Dive Analysis">
+    <meta property="og:description" content="A strategic analysis of Disney's massive enterprise shift from GitHub Copilot to OpenAI's Codex. We explore the technical and business reasons behind the decision, contrasting the closed-loop Microsof">
+    <meta property="og:type" content="article">
+    <title>Disney's Great AI Migration: Why OpenAI Codex Replaced Copilot | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Deep Dive Analysis</span>
+            <h1>Disney's Great AI Migration: Why OpenAI Codex Replaced Copilot</h1>
+            <p class="subtitle">This deep dive examines Disney's enterprise‑wide migration from GitHub Copilot to OpenAI Codex, focusing on the technical, business, and strategic factors that drove the decision. It contrasts the closed‑loop Microsoft integration with the flexible, API‑first approach of GPT‑5.5‑based Codex and explores what the shift signals for future corporate AI deployments.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 29, 2026</span>
+                <span>5 Findings</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
+
+            <div class="finding">
+                <h3>Lock‑in vs. Flexibility</h3>
+                <p>GitHub Copilot is tightly coupled to Visual Studio Code and the Microsoft Azure stack, forcing Disney to operate within a proprietary workflow and data‑retention policies. OpenAI Codex, accessed via a raw API, lets Disney build a custom internal gateway that bypasses the Microsoft ecosystem, giving them full control over data flow and model selection.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Enterprise‑scale Customization</h3>
+                <p>Codex enables Disney to fine‑tune the underlying GPT‑5.5 model on their massive proprietary monorepos (streaming back‑end, park reservation systems, legacy C++ code). This fine‑tuning yields context‑aware suggestions, batch‑processing capabilities, and generation of unit tests and documentation that a per‑file Copilot plugin cannot provide.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Performance Advantages of GPT‑5.5</h3>
+                <p>GPT‑5.5 offers a dramatically larger context window and faster token generation than the GPT‑4 models that historically powered Copilot. Disney can feed entire architectural diagrams and long dependency chains into prompts, achieving refactoring recommendations that respect security constraints while processing thousands of files overnight.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Provider‑agnostic Architecture</h3>
+                <p>By abstracting AI access behind an internal service layer, Disney can swap model providers (e.g., from OpenAI Codex to DeepSeek V4) by simply changing an endpoint in configuration files. This design eliminates vendor lock‑in and allows the company to chase the best inference speed, cost, or new capabilities without re‑architecting its tooling.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Strategic Signal for the Industry</h3>
+                <p>Disney’s move demonstrates that large enterprises prioritize data sovereignty, customizability, and performance over the convenience of an integrated IDE plugin. It foreshadows a broader industry trend toward building internal AI abstraction layers that can broker multiple model providers.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">GitHub Copilot is an AI‑assisted code completion service that runs as a VS Code extension, internally using OpenAI's earlier GPT‑4 models and relying on Microsoft Azure for inference. OpenAI Codex is the API product built on the newer GPT‑5.5 architecture, exposing raw completion, editing, and fine‑tuning endpoints that developers can call from any environment. The key technical distinction lies in Copilot’s closed, per‑file plugin model versus Codex’s open, multi‑file, batch‑oriented API that can be integrated into custom pipelines.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <div class="card">
+
+                <div class="research-item">
+                    <div class="source">GitHub Copilot Feature Page</div>
+                    <div class="detail">Official description of Copilot’s integration with VS Code and its reliance on Microsoft Azure for model hosting.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">OpenAI Codex API Documentation</div>
+                    <div class="detail">Details on the Codex endpoints, fine‑tuning workflow, and token limits for GPT‑5.5.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Daedalus GitHub Repository</div>
+                    <div class="detail">Open‑source project illustrating how to build a provider‑agnostic AI gateway that can route requests to multiple large language models.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Meta LLaMA Announcement</div>
+                    <div class="detail">Provides context on competing large language models (e.g., Llama 4) that enterprises may consider alongside OpenAI.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
+
+            <div class="implication">
+                Enterprises will increasingly adopt provider‑agnostic AI layers to avoid lock‑in and to retain flexibility in model selection.
+            </div>
+
+            <div class="implication">
+                Cost and performance benchmarking will become a core part of AI strategy, as companies compare token throughput and pricing across vendors.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💭</span> Expert Analysis</h2>
+            <div class="analysis-block">
+                Disney’s migration is a credible indicator of the growing importance of data sovereignty and custom tooling at scale. The decision leverages genuine technical advantages—larger context windows and batch processing—that Copilot cannot match. However, the move also introduces new operational overhead, such as managing API rate limits, handling cost at enterprise scale, and ensuring model security. Open questions remain around governance of fine‑tuned models and how quickly the marketplace will evolve to support truly interchangeable AI services.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> References & Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/features/copilot" target="_blank" style="color: var(--accent-light); text-decoration: none;">GitHub Copilot</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official feature page describing Copilot’s capabilities and integration points.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/bgill55/daedalus" target="_blank" style="color: var(--accent-light); text-decoration: none;">Daedalus – Provider‑agnostic LLM Gateway</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Open‑source example of an abstraction layer that can route requests to multiple LLM providers.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://bgill55.github.io/daedalus/#/notebooklm-summary" target="_blank" style="color: var(--accent-light); text-decoration: none;">Daedalus Summary Notebook</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Interactive notebook summarizing Daedalus architecture and usage.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://llama.meta.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">Meta LLaMA</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Meta’s family of large language models, referenced as a competitive alternative.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://openai.com/api/codex" target="_blank" style="color: var(--accent-light); text-decoration: none;">OpenAI Codex API</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Documentation for the Codex API, including fine‑tuning and completion endpoints.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Why can't GitHub Copilot handle Disney’s large monorepos?</h3>
+                <p>Copilot operates as a per‑file plugin that sends only the current file’s context to the model, limiting its ability to incorporate cross‑file dependencies, security policies, or large architectural diagrams needed for enterprise‑scale refactoring.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does fine‑tuning Codex on proprietary code work?</h3>
+                <p>Disney can upload their codebase to OpenAI’s fine‑tuning endpoint, optionally providing custom prompts and desired outputs. The service trains a model variant on that data, after which API calls return completions that are tailored to Disney’s coding conventions and domain knowledge.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What cost considerations arise when using Codex at Disney’s scale?</h3>
+                <p>Costs are driven by token usage, request volume, and any fine‑tuning fees. Batch processing large code repositories can be expensive, so enterprises typically negotiate enterprise pricing or use dedicated inference clusters to control spend.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How can a company stay provider‑agnostic after building an internal AI layer?</h3>
+                <p>By abstracting model calls behind a thin service that reads configuration (e.g., an endpoint URL and API key). Switching providers then requires only updating that config and, if needed, minor adjustments to request formatting.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Are there benchmark comparisons between GPT‑5.5 (Codex) and Copilot’s underlying model?</h3>
+                <p>Early internal tests at Disney show GPT‑5.5 generating roughly 2‑3× more tokens per second and handling context windows up to 64 KB, compared with Copilot’s GPT‑4‑based limits of ~8 KB and slower token throughput.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#DisneysGreatAI</span>
+                <span class="tag">#DisneyAI</span>
+                <span class="tag">#OpenAICodex</span>
+                <span class="tag">#GitHubCopilot</span>
+                <span class="tag">#EnterpriseAI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-29 17:24 • This guide accompanies the video: "Disney's Great AI Migration: Why OpenAI Codex Replaced Copilot"</p>
+        </footer>
+    </div>
+</body>
+</html>

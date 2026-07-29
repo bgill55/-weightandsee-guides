@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/199_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/200_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/disneys-great-ai-migration-why-openai-codex-replaced-copilot/">
+<img src="guides/disneys-great-ai-migration-why-openai-codex-replaced-copilot/thumbnail.jpg" width="300" alt="Disneys Great Ai Migration Why Openai Codex Replaced Copilot"><br>
+<b>Disneys Great Ai Migration Why Openai Codex Replaced Copilot</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/why-disney-just-fired-github-copilot-for-openai-codex/">
 <img src="guides/why-disney-just-fired-github-copilot-for-openai-codex/thumbnail.jpg" width="300" alt="Why Disney Just Fired Github Copilot For Openai Codex"><br>
@@ -31,12 +37,6 @@
 <b>Running Llama 4 Locally The Tech Behind Buzz</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/coding-with-claude-opus-5-the-new-standard/">
-<img src="guides/coding-with-claude-opus-5-the-new-standard/thumbnail.jpg" width="300" alt="Coding With Claude Opus 5 The New Standard"><br>
-<b>Coding With Claude Opus 5 The New Standard</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![87](https://img.shields.io/badge/87-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![88](https://img.shields.io/badge/88-blue?style=flat-square) |
 | **Model Deep Dives** | ![68](https://img.shields.io/badge/68-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Disneys Great Ai Migration Why Openai Codex Replaced Copilot](https://bgill55.github.io/-weightandsee-guides/guides/disneys-great-ai-migration-why-openai-codex-replaced-copilot/)** — 2026-07-29
 - **[Why Disney Just Fired Github Copilot For Openai Codex](https://bgill55.github.io/-weightandsee-guides/guides/why-disney-just-fired-github-copilot-for-openai-codex/)** — 2026-07-29
 - **[Coding With Claude Opus 5 The New Standard](https://bgill55.github.io/-weightandsee-guides/guides/coding-with-claude-opus-5-the-new-standard/)** — 2026-07-29
 - **[Anatomy Of An Agent Inside Claude Opus 5S Architecture](https://bgill55.github.io/-weightandsee-guides/guides/anatomy-of-an-agent-inside-claude-opus-5s-architecture/)** — 2026-07-29
