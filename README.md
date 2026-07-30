@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/200_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/201_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-autonomous-local-ai-developer-workbench-with-multi-agent-orchestrat/">
+<img src="guides/daedalus-cli-autonomous-local-ai-developer-workbench-with-multi-agent-orchestrat/thumbnail.jpg" width="300" alt="Daedalus Cli Autonomous Local Ai Developer Workbench With Multi Agent Orchestrat"><br>
+<b>Daedalus Cli Autonomous Local Ai Developer Workbench With Multi Agent Orchestrat</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/disneys-great-ai-migration-why-openai-codex-replaced-copilot/">
 <img src="guides/disneys-great-ai-migration-why-openai-codex-replaced-copilot/thumbnail.jpg" width="300" alt="Disneys Great Ai Migration Why Openai Codex Replaced Copilot"><br>
@@ -31,12 +37,6 @@
 <b>Why Disney Just Fired Github Copilot For Openai Codex</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/running-llama-4-locally-the-tech-behind-buzz/">
-<img src="guides/running-llama-4-locally-the-tech-behind-buzz/thumbnail.jpg" width="300" alt="Running Llama 4 Locally The Tech Behind Buzz"><br>
-<b>Running Llama 4 Locally The Tech Behind Buzz</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![88](https://img.shields.io/badge/88-blue?style=flat-square) |
 | **Model Deep Dives** | ![68](https://img.shields.io/badge/68-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![25](https://img.shields.io/badge/25-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![26](https://img.shields.io/badge/26-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -229,6 +229,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Daedalus Cli Autonomous Local Ai Developer Workbench With Multi Agent Orchestrat](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-autonomous-local-ai-developer-workbench-with-multi-agent-orchestrat/)** — 2026-07-30
 - **[Home Server Blueprint Running Llama 4 Grok 3 For Private Family Ai On A Rtx 6090](https://bgill55.github.io/-weightandsee-guides/guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/)** — 2026-07-18
 - **[Last30Days Skill Review The First Ai Agent That Scores Research With Realmoney O](https://bgill55.github.io/-weightandsee-guides/guides/last30days-skill-review-the-first-ai-agent-that-scores-research-with-realmoney-o/)** — 2026-07-14
 - **[How Xs Mcp Api Hooks Enable Seamless Onprem Llm Pipelines](https://bgill55.github.io/-weightandsee-guides/guides/how-xs-mcp-api-hooks-enable-seamless-onprem-llm-pipelines/)** — 2026-07-01
