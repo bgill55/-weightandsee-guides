@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/201_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/202_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli/">
+<img src="guides/daedalus-cli/thumbnail.jpg" width="300" alt="Daedalus Cli"><br>
+<b>Daedalus Cli</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-autonomous-local-ai-developer-workbench-with-multi-agent-orchestrat/">
 <img src="guides/daedalus-cli-autonomous-local-ai-developer-workbench-with-multi-agent-orchestrat/thumbnail.jpg" width="300" alt="Daedalus Cli Autonomous Local Ai Developer Workbench With Multi Agent Orchestrat"><br>
 <b>Daedalus Cli Autonomous Local Ai Developer Workbench With Multi Agent Orchestrat</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/disneys-great-ai-migration-why-openai-codex-replaced-copilot/">
 <img src="guides/disneys-great-ai-migration-why-openai-codex-replaced-copilot/thumbnail.jpg" width="300" alt="Disneys Great Ai Migration Why Openai Codex Replaced Copilot"><br>
 <b>Disneys Great Ai Migration Why Openai Codex Replaced Copilot</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/why-disney-just-fired-github-copilot-for-openai-codex/">
-<img src="guides/why-disney-just-fired-github-copilot-for-openai-codex/thumbnail.jpg" width="300" alt="Why Disney Just Fired Github Copilot For Openai Codex"><br>
-<b>Why Disney Just Fired Github Copilot For Openai Codex</b>
 </a>
 </td>
 </tr></table>
@@ -49,7 +49,7 @@
 | **Model Deep Dives** | ![68](https://img.shields.io/badge/68-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![26](https://img.shields.io/badge/26-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![10](https://img.shields.io/badge/10-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -272,6 +272,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[Daedalus Cli](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli/)** — 2026-07-30
 - **[2026 Prompt Engineering Playbook Master Gpt55 Claude 4 Gemini 35 Deepseekv4](https://bgill55.github.io/-weightandsee-guides/guides/2026-prompt-engineering-playbook-master-gpt55-claude-4-gemini-35-deepseekv4/)** — 2026-07-08
 - **[How Deepseek V4 Pro Dspark Turns Spark Clusters Into Ai Factories](https://bgill55.github.io/-weightandsee-guides/guides/how-deepseek-v4-pro-dspark-turns-spark-clusters-into-ai-factories/)** — 2026-07-03
 - **[Concept 3 The Diy Approach Selecting Your Optimal Multi Node Llm Server](https://bgill55.github.io/-weightandsee-guides/guides/concept-3-the-diy-approach-selecting-your-optimal-multi-node-llm-server/)** — 2026-06-19
