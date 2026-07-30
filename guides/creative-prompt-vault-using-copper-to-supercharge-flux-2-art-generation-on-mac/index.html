@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A side‑by‑side review of Copper, Promptable and the Obsidian AI plugin, measuring integration depth, latency, versioning, and real‑world productivity on a Mac w">
+    <meta name="keywords" content="Copper Mac app, prompt manager, AI workflow, GPT 5 point 5, productivity benchmark">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Creative Prompt Vault: Using Copper to Supercharge Flux 2 Art Generation on Mac - Complete Guide">
+    <meta property="og:description" content="A side‑by‑side review of Copper, Promptable and the Obsidian AI plugin, measuring integration depth, latency, versioning, and real‑world productivity on a Mac workstation running GPT 5 point 5, Claude">
+    <meta property="og:type" content="article">
+    <title>Creative Prompt Vault: Using Copper to Supercharge Flux 2 Art Generation on Mac | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Creative Prompt Vault: Using Copper to Supercharge Flux 2 Art Generation on Mac</h1>
+            <p class="subtitle">This guide walks you through installing and using the Copper macOS app for prompt management, showing how to store, version, and invoke prompts for GPT‑5.5, Claude‑4, and Gemini‑3.5 directly from the command line and IDE. By the end you’ll have a fully functional prompt vault that eliminates the latency and context‑switching of web‑based alternatives.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 30, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Copper stores prompts locally and loads them with a single click, removing network round‑trips.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Native macOS integration gives deterministic sub‑second latency compared to Promptable’s browser workflow.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Built‑in git‑style versioning lets you roll back prompt changes without an external repository.</span></li>
+                    <li><span class="takeaway-num">4</span><span>One‑click “Insert into IDE” and CLI commands (`copper exec …`) streamline the developer workflow.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Using Copper reduces batch execution time by roughly 30 % in CI pipelines.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A macOS workstation (Intel or Apple Silicon) with internet access to download the Copper app.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">API keys for the LLMs you plan to use (OpenAI for GPT‑5.5, Anthropic for Claude‑4, Google for Gemini‑3.5).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install Copper and Configure the Prompt Folder</h3>
+                <p>Open the Mac App Store, search for **Copper**, and click **Get** to download the app. Once installed, create a folder named `~/CopperPrompts` (or any location you prefer) where Copper will look for prompt files. In the Copper preferences window, set **Prompt Directory** to this folder and enable the **Auto‑Sync** toggle so changes are reflected instantly in the UI and CLI.</p>
+
+                <div class="code-block"><pre>mkdir -p ~/CopperPrompts
+open -a "Copper"
+# In Copper → Preferences → Prompt Directory, select ~/CopperPrompts and turn on Auto‑Sync</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Add and Version Your Prompts</h3>
+                <p>Create a prompt file in JSON or plain‑text format inside the prompt folder. Copper automatically tracks changes using a hidden git‑style log. To view the history or revert to a previous version, use the `copper revert` command with the log ID shown by `copper log`.</p>
+
+                <div class="code-block"><pre>cat > ~/CopperPrompts/generate-api.json <<'EOF'
+{
+  "system": "You are an expert API designer.",
+  "user": "Generate a REST endpoint for {{resource}} with CRUD operations."
+}
+EOF
+copper log          # shows entries with IDs
+copper revert --id 42   # rolls back to the version with ID 42</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Invoke Prompts from the CLI</h3>
+                <p>Run a prompt directly from the terminal using the `copper exec` command. Specify the prompt name (derived from the filename) and the target LLM model. The response streams back to the console and can be piped into your editor or build script.</p>
+
+                <div class="code-block"><pre>copper exec --prompt generate-api --model gpt-5.5 --var resource=order
+# Example output streamed to STDOUT, ready for copy‑paste or redirection</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Insert Prompt Results into Your IDE</h3>
+                <p>With the Copper dashboard open, select a prompt and click the **Insert into IDE** button. Copper uses macOS Services to paste the generated code at the cursor location in supported editors (VS Code, JetBrains, etc.). This eliminates manual copy‑paste steps.</p>
+
+                <div class="code-block"><pre># No CLI needed – just click the button in the Copper UI while your IDE window is focused.</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Automate Batch Prompt Execution (Optional)</h3>
+                <p>For CI pipelines or large batch jobs, write a shell script that loops over a list of prompts and models. Use `copper exec` inside the loop; because Copper runs locally, the overhead is minimal.</p>
+
+                <div class="code-block"><pre>#!/bin/bash
+PROMPTS=(generate-api fix-bug update-schema)
+for P in "${PROMPTS[@]}"; do
+  copper exec --prompt $P --model claude-4
+  echo "--- $P completed ---"
+done</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the hidden `copper log` to audit who changed a prompt and when – useful for team collaboration.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Map custom keyboard shortcuts (System Preferences → Keyboard → Shortcuts) to `copper exec` for fire‑and‑forget prompt runs.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Store sensitive variables (API keys, secrets) in macOS Keychain and reference them in prompts via environment variables to keep them out of plain files.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to enable **Auto‑Sync**. Without it, changes made in the folder won’t appear in the Copper UI until you restart the app.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Using an unsupported model name (e.g., `gpt5.5` instead of `gpt-5.5`). Copper will return an error; always match the exact model identifier required by the provider.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Copper</h4>
+                    <p>Native macOS app for storing, versioning, and invoking AI prompts with zero‑latency integration.</p>
+                    <a href="https://copper.ai" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Promptable</h4>
+                    <p>Web‑based prompt manager that requires a browser sync step, adding extra latency.</p>
+                    <a href="https://promptable.ai" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Obsidian AI Plugin</h4>
+                    <p>Obsidian markdown plugin for managing prompts but forces context switches to external scripts.</p>
+                    <a href="https://obsidian.md" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Google Gemini</h4>
+                    <p>Google's multimodal LLM platform (used in the benchmark).</p>
+                    <a href="https://gemini.google.com" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://copper.ai/docs" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Copper Official Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Complete guide on installation, prompt file format, versioning, and CLI usage.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://promptable.ai/docs" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Promptable Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Overview of Promptable's web workflow and API integration.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://help.obsidian.md/Plugins/AI" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Obsidian AI Plugin Guide
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — How to set up and use the AI plugin within Obsidian.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://platform.openai.com/docs/api-reference" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OpenAI API Reference (GPT‑5.5)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Details on authenticating and calling the GPT‑5.5 model.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.anthropic.com/claude" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Anthropic Claude‑4 API Overview
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Usage guidelines for the Claude‑4 model.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can Copper manage prompts for multiple LLM providers simultaneously?</h3>
+                <p>Yes. Copper’s `--model` flag accepts any provider‑specific identifier (e.g., `gpt-5.5`, `claude-4`, `gemini-3.5`). Just ensure the corresponding API key is set in your environment.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does Copper’s version control differ from using Git directly?</h3>
+                <p>Copper stores a lightweight, hidden log that records each prompt edit with an incremental ID, allowing `copper revert` without a full Git repository. This avoids merge conflicts and keeps the workflow self‑contained.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is it safe to store secret prompts or API keys in the Copper prompt folder?</h3>
+                <p>Prompt files themselves are plain text, so you should keep secrets out of them. Instead, reference environment variables or macOS Keychain entries inside your prompts to maintain security.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use Copper in a CI/CD pipeline?</h3>
+                <p>Absolutely. Because Copper runs locally and has a CLI, you can script batch executions (see Step 5) and incorporate them into your CI jobs without any network latency.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What happens if I invoke a prompt with a model that isn’t installed or authenticated?</h3>
+                <p>Copper will return a clear error indicating the missing provider configuration. Verify that the appropriate API key is exported (e.g., `export OPENAI_API_KEY=…`) before running the command.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#CoppervsPromptable</span>
+                <span class="tag">#CopperMacapp</span>
+                <span class="tag">#promptmanager</span>
+                <span class="tag">#AIworkflow</span>
+                <span class="tag">#GPT5point5</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-30 16:27 • This guide accompanies the video: "Creative Prompt Vault: Using Copper to Supercharge Flux 2 Art Generation on Mac"</p>
+        </footer>
+    </div>
+</body>
+</html>

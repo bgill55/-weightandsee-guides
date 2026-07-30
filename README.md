@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/203_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/204_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/creative-prompt-vault-using-copper-to-supercharge-flux-2-art-generation-on-mac/">
+<img src="guides/creative-prompt-vault-using-copper-to-supercharge-flux-2-art-generation-on-mac/thumbnail.jpg" width="300" alt="Creative Prompt Vault Using Copper To Supercharge Flux 2 Art Generation On Mac"><br>
+<b>Creative Prompt Vault Using Copper To Supercharge Flux 2 Art Generation On Mac</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/copper-deep-dive-the-ultimate-mac-prompt-manager-reviewed/">
 <img src="guides/copper-deep-dive-the-ultimate-mac-prompt-manager-reviewed/thumbnail.jpg" width="300" alt="Copper Deep Dive The Ultimate Mac Prompt Manager Reviewed"><br>
@@ -31,12 +37,6 @@
 <b>Daedalus Cli</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-autonomous-local-ai-developer-workbench-with-multi-agent-orchestrat/">
-<img src="guides/daedalus-cli-autonomous-local-ai-developer-workbench-with-multi-agent-orchestrat/thumbnail.jpg" width="300" alt="Daedalus Cli Autonomous Local Ai Developer Workbench With Multi Agent Orchestrat"><br>
-<b>Daedalus Cli Autonomous Local Ai Developer Workbench With Multi Agent Orchestrat</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![89](https://img.shields.io/badge/89-blue?style=flat-square) |
 | **Model Deep Dives** | ![68](https://img.shields.io/badge/68-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![26](https://img.shields.io/badge/26-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -230,6 +230,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Creative Prompt Vault Using Copper To Supercharge Flux 2 Art Generation On Mac](https://bgill55.github.io/-weightandsee-guides/guides/creative-prompt-vault-using-copper-to-supercharge-flux-2-art-generation-on-mac/)** — 2026-07-30
 - **[Daedalus Cli Autonomous Local Ai Developer Workbench With Multi Agent Orchestrat](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-autonomous-local-ai-developer-workbench-with-multi-agent-orchestrat/)** — 2026-07-30
 - **[Home Server Blueprint Running Llama 4 Grok 3 For Private Family Ai On A Rtx 6090](https://bgill55.github.io/-weightandsee-guides/guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/)** — 2026-07-18
 - **[Last30Days Skill Review The First Ai Agent That Scores Research With Realmoney O](https://bgill55.github.io/-weightandsee-guides/guides/last30days-skill-review-the-first-ai-agent-that-scores-research-with-realmoney-o/)** — 2026-07-14
