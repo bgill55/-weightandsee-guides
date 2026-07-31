@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/205_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/206_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-specfirst-architecture/">
+<img src="guides/daedalus-cli-specfirst-architecture/thumbnail.jpg" width="300" alt="Daedalus Cli Specfirst Architecture"><br>
+<b>Daedalus Cli Specfirst Architecture</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/why-your-agents-hallucinate-the-spec-first-solution/">
 <img src="guides/why-your-agents-hallucinate-the-spec-first-solution/thumbnail.jpg" width="300" alt="Why Your Agents Hallucinate The Spec First Solution"><br>
@@ -31,12 +37,6 @@
 <b>Creative Prompt Vault Using Copper To Supercharge Flux 2 Art Generation On Mac</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/copper-deep-dive-the-ultimate-mac-prompt-manager-reviewed/">
-<img src="guides/copper-deep-dive-the-ultimate-mac-prompt-manager-reviewed/thumbnail.jpg" width="300" alt="Copper Deep Dive The Ultimate Mac Prompt Manager Reviewed"><br>
-<b>Copper Deep Dive The Ultimate Mac Prompt Manager Reviewed</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![89](https://img.shields.io/badge/89-blue?style=flat-square) |
-| **Model Deep Dives** | ![69](https://img.shields.io/badge/69-blue?style=flat-square) |
+| **Model Deep Dives** | ![70](https://img.shields.io/badge/70-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
@@ -155,6 +155,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Daedalus Cli Specfirst Architecture](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-specfirst-architecture/)** — 2026-07-30
 - **[Why Your Agents Hallucinate The Spec First Solution](https://bgill55.github.io/-weightandsee-guides/guides/why-your-agents-hallucinate-the-spec-first-solution/)** — 2026-07-30
 - **[Running Llama 4 Locally The Tech Behind Buzz](https://bgill55.github.io/-weightandsee-guides/guides/running-llama-4-locally-the-tech-behind-buzz/)** — 2026-07-29
 - **[Build Your First Ai Agent The Openforgerl Guide](https://bgill55.github.io/-weightandsee-guides/guides/build-your-first-ai-agent-the-openforgerl-guide/)** — 2026-07-25
