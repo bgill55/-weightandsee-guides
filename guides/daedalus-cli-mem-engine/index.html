@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step educational guide for Daedalus CLI Σ-Mem Engine.">
+    <meta name="keywords" content="daedalus cli σ-mem engine">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Daedalus CLI Σ-Mem Engine - Deep Dive Analysis">
+    <meta property="og:description" content="Step-by-step educational guide for Daedalus CLI Σ-Mem Engine.">
+    <meta property="og:type" content="article">
+    <title>Daedalus CLI Σ-Mem Engine | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Deep Dive Analysis</span>
+            <h1>Daedalus CLI Σ-Mem Engine</h1>
+            <p class="subtitle">This deep dive explores the Daedalus CLI Σ-Mem Engine, an architecture designed to solve the issue of AI agent memory retention and reliability. It examines the engine's unique 'Reward and Penalty' loop system, which uses a local SQLite vault to persist logic, learn from hallucinations, and prevent repetitive failures without external vector databases.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 31, 2026</span>
+                <span>4 Findings</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
+
+            <div class="finding">
+                <h3>Retention of 'Negative Space' Data</h3>
+                <p>Unlike standard systems that discard errors, the Daedalus Σ-Mem Engine retains all turns, including hallucinations and syntax errors. This data is treated as 'negative space' or a 'don't do this' map, which helps the agent identify and avoid failure patterns rather than looping on mistakes.</p>
+            </div>
+
+            <div class="finding">
+                <h3>CI/CD Pipeline for Thought Processes</h3>
+                <p> The engine functions like a continuous integration pipeline for LLM outputs. It follows a structured loop: 'Coder generates code' → 'Debugger verifies build' → 'System adjusts reliability score'. If a build passes, the logic is saved; if it hallucinates, it is pruned or penalized.</p>
+            </div>
+
+            <div class="finding">
+                <h3>'Soft Ban' Safety Threshold (i > 7)</h3>
+                <p>To prevent the instant deletion of potentially useful context, the system implements a failure threshold. If a specific path fails repeatedly and the failure index hits 7 (i > 7), the path is marked as 'toxic.' It is not instantly wiped but is drastically lowered in influence, serving as a 'soft ban' that keeps context clean but leaves a trail.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Local SQLite Vault Architecture</h3>
+                <p>The engine runs entirely inside a standard SQLite file rather than relying on external vector databases like Pinecone or Milvus. This architecture allows for zero latency, no network lag, and full data privacy, as the 'Vault' acts as a single source of truth stored locally on the user's machine.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">The Daedalus Σ-Mem Engine addresses the limitation of context windows in LLMs by implementing a dynamic, stateful memory system. It uses a metadata tagging system to assign reliability scores to specific memory nodes or code paths. By leveraging SQL to manage vector-like relationships, the engine performs semantic search and state management without the overhead of dedicated vector infrastructure. This allows the agent to 'brute-force' its own learning process by rapidly generating, testing, and scoring iterations locally.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <div class="card">
+
+                <div class="research-item">
+                    <div class="source">Video Visuals / OCR</div>
+                    <div class="detail">The terminal output displayed in the video explicitly shows the logic flow: 'Verify Build' → 'Adjust Score' → 'Prune or Save'. It also confirms the 'i > 7' threshold for handling bad paths safely.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Video Script</div>
+                    <div class="detail">Analysis of the dialogue reveals that the engine updates internal weights in real-time during verification loops, effectively 'learning to code by brute-forcing its own mistakes.'</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
+
+            <div class="implication">
+                Implication 1 — Reduced Infrastructure Dependency: Developers can build persistent, stateful AI agents without the cost or complexity of managing external vector databases, using standard SQL instead.
+            </div>
+
+            <div class="implication">
+                Implication 2 — Enhanced Agent Autonomy: By implementing a penalty loop, agents become capable of self-correction and 'survival of the fittest' logic selection, reducing the need for human intervention in debugging loops.
+            </div>
+
+            <div class="implication">
+                Implication 3 — Privacy and Portability: The reliance on a local SQLite file ensures that all agent memory and learning history remain grounded on the user's machine, facilitating easier data portability and compliance.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💭</span> Expert Analysis</h2>
+            <div class="analysis-block">
+                The Daedalus approach is significant because it challenges the assumption that sophisticated AI memory requires large-scale, cloud-native vector stores. By embedding the Σ-Mem logic directly into SQLite, it offers a highly efficient, low-latency alternative that is particularly well-suited for local development and edge computing scenarios. The 'soft ban' mechanism (i > 7) is a clever heuristic that balances the need to ignore failures with the necessity of retaining context for debugging. However, while the brute-force iteration method is effective for finding working solutions, users should monitor compute resource usage, as the agent may generate and discard a high volume of failed code paths before converging on a solution.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> References & Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/search?q=Daedalus+CLI+Sigma-Mem+Engine" target="_blank" style="color: var(--accent-light); text-decoration: none;">Daedalus CLI Σ-Mem Engine</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Repository and documentation for the Daedalus CLI tool featuring the Σ-Mem Engine.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.sqlite.org" target="_blank" style="color: var(--accent-light); text-decoration: none;">SQLite Database System</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The self-contained, serverless SQL engine used as the backend for the Local SQLite Vault.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Does the Daedalus engine delete failed code immediately?</h3>
+                <p>No. To avoid losing context, it uses a 'soft ban' system. If a path fails (specifically if i > 7), its influence is drastically lowered and archived, but it is not instantly wiped, preventing the agent from falling into the same rabbit hole repeatedly.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Why does the engine keep hallucinations and syntax errors?</h3>
+                <p>It treats 'negative space' as data. By retaining errors with metadata tags, the system builds a penalty map that prevents the agent from re-attempting known bad logic paths.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do I need a vector database like Pinecone to run Daedalus?</h3>
+                <p>No. The Σ-Mem Engine runs inside a standard, local SQLite file, providing semantic search and memory capabilities without requiring external vector databases or API calls.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-31 23:24 • This guide accompanies the video: "Daedalus CLI Σ-Mem Engine"</p>
+        </footer>
+    </div>
+</body>
+</html>
