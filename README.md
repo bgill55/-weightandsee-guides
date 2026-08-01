@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/206_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/207_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_JULY_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/no-code-agent-mastery-build-a-sigma-mem-powered-autonomous-assistant-in-minutes/">
+<img src="guides/no-code-agent-mastery-build-a-sigma-mem-powered-autonomous-assistant-in-minutes/thumbnail.jpg" width="300" alt="No Code Agent Mastery Build A Sigma Mem Powered Autonomous Assistant In Minutes"><br>
+<b>No Code Agent Mastery Build A Sigma Mem Powered Autonomous Assistant In Minutes</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-specfirst-architecture/">
 <img src="guides/daedalus-cli-specfirst-architecture/thumbnail.jpg" width="300" alt="Daedalus Cli Specfirst Architecture"><br>
@@ -31,12 +37,6 @@
 <b>Why Your Agents Hallucinate The Spec First Solution</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/creative-prompt-vault-using-copper-to-supercharge-flux-2-art-generation-on-mac/">
-<img src="guides/creative-prompt-vault-using-copper-to-supercharge-flux-2-art-generation-on-mac/thumbnail.jpg" width="300" alt="Creative Prompt Vault Using Copper To Supercharge Flux 2 Art Generation On Mac"><br>
-<b>Creative Prompt Vault Using Copper To Supercharge Flux 2 Art Generation On Mac</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![89](https://img.shields.io/badge/89-blue?style=flat-square) |
-| **Model Deep Dives** | ![70](https://img.shields.io/badge/70-blue?style=flat-square) |
+| **Model Deep Dives** | ![71](https://img.shields.io/badge/71-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
@@ -155,6 +155,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[No Code Agent Mastery Build A Sigma Mem Powered Autonomous Assistant In Minutes](https://bgill55.github.io/-weightandsee-guides/guides/no-code-agent-mastery-build-a-sigma-mem-powered-autonomous-assistant-in-minutes/)** — 2026-07-31
 - **[Daedalus Cli Specfirst Architecture](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-specfirst-architecture/)** — 2026-07-30
 - **[Why Your Agents Hallucinate The Spec First Solution](https://bgill55.github.io/-weightandsee-guides/guides/why-your-agents-hallucinate-the-spec-first-solution/)** — 2026-07-30
 - **[Running Llama 4 Locally The Tech Behind Buzz](https://bgill55.github.io/-weightandsee-guides/guides/running-llama-4-locally-the-tech-behind-buzz/)** — 2026-07-29

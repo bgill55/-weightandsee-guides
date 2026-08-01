@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We walk viewers through creating a fully autonomous LLM agent that uses the new Sigma Mem hierarchical memory system, all without writing a single line of code.">
+    <meta name="keywords" content="Sigma Mem, LLM agents, no‑code AI, hierarchical memory, autonomous assistant">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="No Code Agent Mastery: Build a Sigma Mem Powered Autonomous Assistant in Minutes - Complete Guide">
+    <meta property="og:description" content="We walk viewers through creating a fully autonomous LLM agent that uses the new Sigma Mem hierarchical memory system, all without writing a single line of code. By wiring together open‑source componen">
+    <meta property="og:type" content="article">
+    <title>No Code Agent Mastery: Build a Sigma Mem Powered Autonomous Assistant in Minutes | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>No Code Agent Mastery: Build a Sigma Mem Powered Autonomous Assistant in Minutes</h1>
+            <p class="subtitle">This guide demonstrates how to build a fully autonomous LLM agent equipped with hierarchical memory using the Sigma Mem system and a visual orchestration tool. You will learn to solve persistent memory issues in agents without writing code by visually wiring short-term working memory to long-term archival storage. The tutorial covers setting up the environment, configuring your LLM provider (local or cloud), and deploying an agent capable of maintaining state across sessions.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>July 31, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Sigma Mem utilizes a tiered architecture that separates immediate context (RAM) from deep archival storage, solving the memory problem in LLM agents.</span></li>
+                    <li><span class="takeaway-num">2</span><span>You can build complex autonomous agents using a drag-and-drop visual interface, eliminating the need for Python scripts or manual retrieval chains.</span></li>
+                    <li><span class="takeaway-num">3</span><span>The system is provider-agnostic, allowing you to wire in local models like Llama 4 or connect to cloud APIs like ChatGPT 5.5.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Hierarchical memory reduces hallucinations by approximately 40% in multi-step tasks by allowing the agent to verify facts against its own memory bank.</span></li>
+                    <li><span class="takeaway-num">5</span><span>The visual orchestration tool handles state management automatically, ensuring the agent retains its 'mind' even if the system crashes or restarts.</span></li>
+                    <li><span class="takeaway-num">6</span><span>Deployment is rapid, with functional task-tracking agents capable of remembering project details across sessions buildable in under ten minutes.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Installation of the visual orchestration tool (compatible with Sigma Mem extensions).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">An API key for a cloud LLM (e.g., OpenAI) or a local GPU setup capable of running models like Llama.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with node-based programming concepts (dragging, dropping, and linking nodes).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install the Orchestration Tool and Sigma Mem Extension</h3>
+                <p>Begin by installing the visual orchestration platform on your local machine. Once installed, open the marketplace within the tool and search for the 'Sigma Mem' extension. Install the extension to enable the hierarchical memory nodes and the external cortex functionality.</p>
+
+                <div class="code-block"><pre># Example CLI command if the tool supports package management
+orchestrator install sigma-mem-extension
+
+# Or via the user interface:
+# Navigate to Marketplace > Search 'Sigma Mem' > Click 'Add to Canvas'</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Configure the LLM Node (Local or Cloud)</h3>
+                <p>Drag an LLM node onto the canvas. Open the properties panel to define your inference provider. If using a cloud API, paste your API key into the designated field. If using a local model, select your GPU device. The tool will auto-detect your model capabilities. Configure the model parameter (e.g., 'llama-4' or 'gpt-5.5') in the settings.</p>
+
+                <div class="code-block"><pre>{
+  "provider": "local",
+  "model": "llama-4",
+  "gpu_device": "auto",
+  "temperature": 0.7
+}
+
+# OR for Cloud:
+# {
+#   "provider": "openai",
+#   "api_key": "YOUR_API_KEY_HERE",
+#   "model": "gpt-5.5-turbo"
+# }</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Integrate the Sigma Mem Hierarchical Node</h3>
+                <p>Drag a Sigma Mem node onto the canvas. This node manages the tiered architecture. Link the 'Context Output' of your LLM node to the 'Input' of the Sigma Mem node. Ensure the 'Recall Output' of the Sigma Mem node is linked back into the LLM's context window loop. This creates the cycle where short-term memory is compressed into long-term storage.</p>
+
+                <div class="code-block"><pre># Visual Linkage Logic:
+# LLM_Node.output -> Sigma_Mem_Node.input
+# Sigma_Mem_Node.recall -> LLM_Node.context_window
+
+# Sigma Mem Node Config:
+{
+  "memory_layers": [
+    {"type": "short_term", "retention": "5min"},
+    {"type": "archival", "storage": "vector_db"}
+  ],
+  "auto_compress": true
+}</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Define Trigger Conditions and Workflow</h3>
+                <p>Configure the specific triggers that activate the agent. In the properties panel of the orchestration tool, define the events that prompt the LLM to write to memory or read from it. For example, set a trigger to archive context to long-term memory after 5 interactions or when a session ends.</p>
+
+                <div class="code-block"><pre>{
+  "triggers": [
+    {
+      "event": "interaction_count > 5",
+      "action": "compress_to_archival"
+    },
+    {
+      "event": "session_end",
+      "action": "save_state"
+    }
+  ]
+}</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Deploy and Validate Memory Persistence</h3>
+                <p>Start the agent workflow directly from the canvas. Perform a sequence of tasks, then stop the agent or simulate a crash. Restart the agent and query it about the previous tasks. Verify that the agent retrieves the correct context from the Sigma Mem node without hallucinating.</p>
+
+                <div class="code-block"><pre># CLI command to start the visual workflow
+orchestrator run --workflow "sigma_agent_project.json"
+
+# Validation Query Input:
+# "What was the status of the project details we discussed in the last session?"</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the 'auto-detect' feature in the LLM node properties to ensure your local GPU settings are optimized before linking the memory node.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> For critical business workflows, increase the archival compression frequency to ensure no data is lost if the agent terminates unexpectedly.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Test your memory retrieval with complex, multi-step queries to benchmark the 40% hallucination reduction against a standard context window setup.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Sigma Mem acts as an external cortex; ensure your storage backend has enough disk space allocated for the vector database if running locally.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Unlinked Nodes — Forgetting to link the 'Recall Output' of the Sigma Mem node back to the LLM context window will result in an agent that cannot access its memories.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Resource Exhaustion — Running a local Llama 4 model with a large vector database on a GPU with insufficient VRAM will cause the agent to crash during memory retrieval.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Incorrect API Keys — Pasting an invalid API key in the properties panel will cause the workflow to hang indefinitely without generating a memory write.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Sigma Mem</h4>
+                    <p>A hierarchical memory system that layers short-term working memory with deep archival storage for LLM agents.</p>
+                    <a href="https://url-if-known.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Visual Orchestration Tool</h4>
+                    <p>A no-code platform for wiring together LLM components via drag-and-drop nodes.</p>
+                    <a href="https://url-if-known.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Llama 4</h4>
+                    <p>Local open-source LLM compatible with the orchestration tool.</p>
+                    <a href="https://url-if-known.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>ChatGPT 5.5</h4>
+                    <p>Cloud-based LLM API available for integration via API key.</p>
+                    <a href="https://url-if-known.com" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://url-if-known.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Sigma Mem Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation on configuring tiered memory architecture.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://url-if-known.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Visual Agent Orchestration Guide
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Best practices for connecting nodes without code.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Do I need to write Python code to use Sigma Mem?</h3>
+                <p>No, the visual orchestration tool allows you to implement Sigma Mem by dragging, dropping, and linking nodes, with no manual coding required.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I run this agent completely offline?</h3>
+                <p>Yes, if you configure the LLM node to use a local model like Llama 4 and run the orchestration tool on your local hardware.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What happens to the agent's memory if the computer crashes?</h3>
+                <p>Sigma Mem acts as an external cortex and maintains state separately. Upon restart, the agent retrieves its context from the long-term storage bank.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does this reduce hallucinations?</h3>
+                <p>By storing facts in a hierarchical memory bank, the agent verifies information against its own history rather than relying solely on the immediate context window.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#NoCodeAgent</span>
+                <span class="tag">#SigmaMem</span>
+                <span class="tag">#LLMagents</span>
+                <span class="tag">#nocodeAI</span>
+                <span class="tag">#hierarchicalmemory</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-07-31 20:44 • This guide accompanies the video: "No Code Agent Mastery: Build a Sigma Mem Powered Autonomous Assistant in Minutes"</p>
+        </footer>
+    </div>
+</body>
+</html>
