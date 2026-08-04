@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/212_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/213_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-windows-crash-fix-how-v3133-restores-autonomous-buildfix-loops/">
+<img src="guides/daedalus-windows-crash-fix-how-v3133-restores-autonomous-buildfix-loops/thumbnail.jpg" width="300" alt="Daedalus Windows Crash Fix How V3133 Restores Autonomous Buildfix Loops"><br>
+<b>Daedalus Windows Crash Fix How V3133 Restores Autonomous Buildfix Loops</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-coding-agent/">
 <img src="guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-coding-agent/thumbnail.jpg" width="300" alt="Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Coding Agent"><br>
@@ -31,12 +37,6 @@
 <b>Inside Harness The Engine Powering Deepseeks Coding Agent</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/wiz-sensor-vs-ai-agent-threats-real-world-review/">
-<img src="guides/wiz-sensor-vs-ai-agent-threats-real-world-review/thumbnail.jpg" width="300" alt="Wiz Sensor Vs Ai Agent Threats Real World Review"><br>
-<b>Wiz Sensor Vs Ai Agent Threats Real World Review</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![91](https://img.shields.io/badge/91-blue?style=flat-square) |
-| **Model Deep Dives** | ![74](https://img.shields.io/badge/74-blue?style=flat-square) |
+| **Model Deep Dives** | ![75](https://img.shields.io/badge/75-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
@@ -157,6 +157,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Daedalus Windows Crash Fix How V3133 Restores Autonomous Buildfix Loops](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-windows-crash-fix-how-v3133-restores-autonomous-buildfix-loops/)** — 2026-08-04
 - **[Inside Harness The Engine Powering Deepseeks Coding Agent](https://bgill55.github.io/-weightandsee-guides/guides/inside-harness-the-engine-powering-deepseeks-coding-agent/)** — 2026-08-04
 - **[Why Y Combinator Open Sourced Its Ai Agent Backbone](https://bgill55.github.io/-weightandsee-guides/guides/why-y-combinator-open-sourced-its-ai-agent-backbone/)** — 2026-08-01
 - **[Daedalus Cli Mem Engine](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-mem-engine/)** — 2026-07-31

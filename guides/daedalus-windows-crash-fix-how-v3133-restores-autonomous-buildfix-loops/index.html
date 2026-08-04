@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A breaking‑news style deep dive into Daedalus' rapid Windows stability updates (v3.13.1‑v3.13.3), showing the before‑and‑after of five terminal crashes turned i">
+    <meta name="keywords" content="Daedalus, Windows crash fix, autonomous build fix, gpt‑oss‑120b, dev‑tool update">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Daedalus Windows Crash Fix: How v3.13.3 Restores Autonomous Build‑Fix Loops - Deep Dive Analysis">
+    <meta property="og:description" content="A breaking‑news style deep dive into Daedalus' rapid Windows stability updates (v3.13.1‑v3.13.3), showing the before‑and‑after of five terminal crashes turned into zero crashes, and explaining why the">
+    <meta property="og:type" content="article">
+    <title>Daedalus Windows Crash Fix: How v3.13.3 Restores Autonomous Build‑Fix Loops | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Deep Dive Analysis</span>
+            <h1>Daedalus Windows Crash Fix: How v3.13.3 Restores Autonomous Build‑Fix Loops</h1>
+            <p class="subtitle">This deep‑dive examines the rapid Windows stability updates in Daedalus v3.13.1‑v3.13.3, focusing on the crash‑fix that eliminates the 0xC0000142 error, the false‑revert prevention for valid edits, and the new routing floor that keeps build‑fix tasks on a high‑tier model. By dissecting the underlying problems and the patches applied, we see how Daedalus now enables uninterrupted autonomous coding loops on Windows platforms.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 04, 2026</span>
+                <span>5 Findings</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
+
+            <div class="finding">
+                <h3>Crash Fix Eliminates 0xC0000142 Termination</h3>
+                <p>The original crash stemmed from child processes inheriting the parent’s stdio. When the parent’s stdin pipe closed, the entire process group terminated, yielding exit code 3221225794 (0xC0000142). The fix rewrites `src/tools/builtin/terminal.ts` to ignore stdin, pipe stdout/stderr, and detach children into their own process groups, preventing Ctrl‑C from killing downstream `tsc` compilations.</p>
+            </div>
+
+            <div class="finding">
+                <h3>False‑Revert Prevention Preserves Valid Edits</h3>
+                <p>Previously, Daedalus would revert a patch if a pre‑existing type error in the file was mistakenly flagged as newly introduced after the edit. The new logic creates a temporary baseline before applying edits and diffs only newly generated diagnostics, ensuring legitimate changes survive even in noisy codebases.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Routing Floor Keeps Build‑Fix Tasks on High‑Tier Models</h3>
+                <p>Without a routing floor, the router could downgrade tasks to a lower‑capability model (e.g., `freellmapi‑cf‑meta‑llama‑4‑scout‑17b`) after a few trivial turns, leading to hallucinated tool names and missed build‑related keywords. The floor forces any turn containing keywords like `build`, `tsc`, `type‑error`, or `refactor` to stay on models with at least 120 B parameters (e.g., `gpt‑oss‑120b`).</p>
+            </div>
+
+            <div class="finding">
+                <h3>Combined Patches Yield Zero Crashes in Real‑World Benchmarks</h3>
+                <p>Testing on the `prompt‑vault` project showed a dramatic shift: prior to the updates, the autonomous agent stalled after five crashes; after applying v3.13.3, the agent experienced zero crashes, maintained continuous use of the 120 B model, automatically recovered from bad patches, and compiled the project with zero diagnostics.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Simple Upgrade Path Enables Immediate Benefits</h3>
+                <p>Users can adopt all three fixes instantly via a single npm command (`npm install -g daedalus-cli`) followed by `daedalus-cli start` in their project directory, requiring no manual code changes.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">Daedalus is an autonomous coding agent that orchestrates child processes (e.g., TypeScript compilation) to iteratively refactor code. On Windows, process termination semantics differ from Unix, especially regarding inherited stdio handles and signal propagation. Additionally, Daedalus relies on a routing layer that selects large language models based on task complexity, and it uses diagnostic diffing to decide whether a patch should be kept or reverted.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <div class="card">
+
+                <div class="research-item">
+                    <div class="source">Daedalus Windows Stability & Build‑Fix Robustness Update (v3.13.1‑v3.13.3)</div>
+                    <div class="detail">Official release notes detailing the three patches and their impact on crash rates and build reliability.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Issue #42 – Windows Terminal Crash Fix</div>
+                    <div class="detail">GitHub issue describing the 0xC0000142 crash, root cause analysis, and the code changes to `terminal.ts`.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Issue #41 – Routing Floor for Build‑Fix Tasks</div>
+                    <div class="detail">Discussion of the model‑downgrade problem and the introduction of a keyword‑based routing floor.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Issue #40 – False‑Revert of Valid Edits</div>
+                    <div class="detail">Explanation of how pre‑existing type errors caused erroneous reverts and the baseline‑diff solution.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Live Validation Results on prompt‑vault (Windows type‑safety refactor)</div>
+                    <div class="detail">Benchmark script and results showing zero crashes after applying v3.13.3.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
+
+            <div class="implication">
+                Stable autonomous build loops enable continuous integration pipelines on Windows to run AI‑driven refactoring without manual intervention, reducing downtime and developer overhead.
+            </div>
+
+            <div class="implication">
+                The routing floor ensures critical build tasks remain on high‑capacity models, improving correctness and lowering the risk of hallucinated tool usage in production environments.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💭</span> Expert Analysis</h2>
+            <div class="analysis-block">
+                The patches address long‑standing Windows‑specific edge cases that have hampered Daedalus adoption in enterprise CI settings. By handling stdio inheritance correctly and adding a robust routing guard, the updates provide tangible reliability gains. However, the solution still depends on the availability of large models (≥120 B parameters) and may incur higher compute costs. Future work should explore lighter‑weight fallbacks and cross‑platform abstractions to broaden accessibility.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> References & Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/bgill55/daedalus" target="_blank" style="color: var(--accent-light); text-decoration: none;">Daedalus GitHub Repository</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Main source code and documentation for the Daedalus autonomous coding agent.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/bgill55/daedalus/issues/42" target="_blank" style="color: var(--accent-light); text-decoration: none;">Issue #42 – Windows Terminal Crash Fix</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Detailed discussion and code changes that resolve the 0xC0000142 crash.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/bgill55/daedalus/issues/41" target="_blank" style="color: var(--accent-light); text-decoration: none;">Issue #41 – Routing Floor for Build‑Fix Tasks</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Implementation of the routing floor to keep critical tasks on high‑tier models.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/bgill55/daedalus/issues/40" target="_blank" style="color: var(--accent-light); text-decoration: none;">Issue #40 – False‑Revert of Valid Edits Fixed</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Fix that prevents legitimate patches from being erroneously reverted.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://bgill55.github.io/daedalus/#/windows-terminal-crash-fix" target="_blank" style="color: var(--accent-light); text-decoration: none;">Daedalus Windows Stability & Build‑Fix Robustness Update</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official announcement summarizing the three updates and benchmark outcomes.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How do I upgrade to the crash‑fix version?</h3>
+                <p>Run `npm install -g daedalus-cli` to install the latest CLI, then execute `daedalus-cli start` inside your project directory.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Will the fixes work on macOS or Linux?</h3>
+                <p>The stdio‑inheritance fix is Windows‑specific; the false‑revert and routing floor improvements are cross‑platform and will apply on all OSes.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do the patches increase resource usage?</h3>
+                <p>The routing floor may keep the agent on larger models (≥120 B), which can raise GPU/CPU usage and cost. The other fixes have negligible performance impact.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How can I verify that the crash‑fix is active?</h3>
+                <p>After upgrading, run a build‑fix loop that previously triggered the 0xC0000142 error. If the process no longer terminates and logs show the detached child process, the fix is in effect.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I customize the routing floor keywords?</h3>
+                <p>Yes. The routing configuration (`routing.json`) contains a `keep_on_intelligence_keywords` array; you can add or remove keywords to control model selection for specific tasks.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#DaedalusWindowsCrash</span>
+                <span class="tag">#Daedalus</span>
+                <span class="tag">#Windowscrashfix</span>
+                <span class="tag">#autonomousbuildfix</span>
+                <span class="tag">#gptoss120b</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-04 15:34 • This guide accompanies the video: "Daedalus Windows Crash Fix: How v3.13.3 Restores Autonomous Build‑Fix Loops"</p>
+        </footer>
+    </div>
+</body>
+</html>
