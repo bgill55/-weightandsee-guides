@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/211_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/212_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-coding-agent/">
+<img src="guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-coding-agent/thumbnail.jpg" width="300" alt="Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Coding Agent"><br>
+<b>Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Coding Agent</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-harness-the-engine-powering-deepseeks-coding-agent/">
 <img src="guides/inside-harness-the-engine-powering-deepseeks-coding-agent/thumbnail.jpg" width="300" alt="Inside Harness The Engine Powering Deepseeks Coding Agent"><br>
@@ -31,12 +37,6 @@
 <b>Wiz Sensor Vs Ai Agent Threats Real World Review</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/why-y-combinator-open-sourced-its-ai-agent-backbone/">
-<img src="guides/why-y-combinator-open-sourced-its-ai-agent-backbone/thumbnail.jpg" width="300" alt="Why Y Combinator Open Sourced Its Ai Agent Backbone"><br>
-<b>Why Y Combinator Open Sourced Its Ai Agent Backbone</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![90](https://img.shields.io/badge/90-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![91](https://img.shields.io/badge/91-blue?style=flat-square) |
 | **Model Deep Dives** | ![74](https://img.shields.io/badge/74-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Coding Agent](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-coding-agent/)** — 2026-08-04
 - **[Wiz Sensor Vs Ai Agent Threats Real World Review](https://bgill55.github.io/-weightandsee-guides/guides/wiz-sensor-vs-ai-agent-threats-real-world-review/)** — 2026-08-03
 - **[Copper Deep Dive The Ultimate Mac Prompt Manager Reviewed](https://bgill55.github.io/-weightandsee-guides/guides/copper-deep-dive-the-ultimate-mac-prompt-manager-reviewed/)** — 2026-07-30
 - **[Disneys Great Ai Migration Why Openai Codex Replaced Copilot](https://bgill55.github.io/-weightandsee-guides/guides/disneys-great-ai-migration-why-openai-codex-replaced-copilot/)** — 2026-07-29
