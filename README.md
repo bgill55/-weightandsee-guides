@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/209_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/210_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/wiz-sensor-vs-ai-agent-threats-real-world-review/">
+<img src="guides/wiz-sensor-vs-ai-agent-threats-real-world-review/thumbnail.jpg" width="300" alt="Wiz Sensor Vs Ai Agent Threats Real World Review"><br>
+<b>Wiz Sensor Vs Ai Agent Threats Real World Review</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/why-y-combinator-open-sourced-its-ai-agent-backbone/">
 <img src="guides/why-y-combinator-open-sourced-its-ai-agent-backbone/thumbnail.jpg" width="300" alt="Why Y Combinator Open Sourced Its Ai Agent Backbone"><br>
@@ -31,12 +37,6 @@
 <b>Daedalus Cli Mem Engine</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/no-code-agent-mastery-build-a-sigma-mem-powered-autonomous-assistant-in-minutes/">
-<img src="guides/no-code-agent-mastery-build-a-sigma-mem-powered-autonomous-assistant-in-minutes/thumbnail.jpg" width="300" alt="No Code Agent Mastery Build A Sigma Mem Powered Autonomous Assistant In Minutes"><br>
-<b>No Code Agent Mastery Build A Sigma Mem Powered Autonomous Assistant In Minutes</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![89](https://img.shields.io/badge/89-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![90](https://img.shields.io/badge/90-blue?style=flat-square) |
 | **Model Deep Dives** | ![73](https://img.shields.io/badge/73-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Wiz Sensor Vs Ai Agent Threats Real World Review](https://bgill55.github.io/-weightandsee-guides/guides/wiz-sensor-vs-ai-agent-threats-real-world-review/)** — 2026-08-03
 - **[Copper Deep Dive The Ultimate Mac Prompt Manager Reviewed](https://bgill55.github.io/-weightandsee-guides/guides/copper-deep-dive-the-ultimate-mac-prompt-manager-reviewed/)** — 2026-07-30
 - **[Disneys Great Ai Migration Why Openai Codex Replaced Copilot](https://bgill55.github.io/-weightandsee-guides/guides/disneys-great-ai-migration-why-openai-codex-replaced-copilot/)** — 2026-07-29
 - **[Why Disney Just Fired Github Copilot For Openai Codex](https://bgill55.github.io/-weightandsee-guides/guides/why-disney-just-fired-github-copilot-for-openai-codex/)** — 2026-07-29
