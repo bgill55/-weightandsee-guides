@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A news analysis of the general availability launch of Databricks Unity AI Gateway. This video breaks down how the new Rust-powered proxy acts as a unified contr">
+    <meta name="keywords" content="Databricks, AI Governance, Unity AI Gateway, Smart Routing, Enterprise AI">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="How Rust & Delta Lake Power a Quadrillion Token Gateway - Complete Guide">
+    <meta property="og:description" content="A news analysis of the general availability launch of Databricks Unity AI Gateway. This video breaks down how the new Rust-powered proxy acts as a unified control plane for enterprise AI, governing tr">
+    <meta property="og:type" content="article">
+    <title>How Rust & Delta Lake Power a Quadrillion Token Gateway | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>How Rust & Delta Lake Power a Quadrillion Token Gateway</h1>
+            <p class="subtitle">This guide walks you through deploying Databricks Unity AI Gateway – a Rust‑powered proxy that routes LLM traffic, enforces security policies, and logs token usage in Delta Lake. You’ll learn how to start the gateway, configure endpoints, apply policies, and monitor token‑level analytics using the Python SDK and REST API.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 05, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>The Unity AI Gateway provides a single control plane for all LLM calls, eliminating the need to embed model‑specific logic in your application.</span></li>
+                    <li><span class="takeaway-num">2</span><span>A Rust proxy handles request inspection and smart routing at native speed, supporting hundreds of thousands of requests per second.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Token‑level usage is recorded in Delta Lake tables, enabling real‑time cost tracking and auditability.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Built‑in fallback routing automatically switches to an alternate model (e.g., Llama 4) when the primary model hits rate limits.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Policy‑driven guardrails enforce role‑based access, rate limits, and content safety without code changes.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.9+ with `pip` installed</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Databricks workspace access and a personal access token with Unity Catalog permissions</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Kubernetes cluster (or Docker) to host the stateless Rust proxy</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install the Databricks SDK and configure authentication</h3>
+                <p>Install the official Databricks Python SDK, then set your workspace URL and personal access token as environment variables. The SDK will be used to create endpoints, apply policies, and query usage data.</p>
+
+                <div class="code-block"><pre>pip install databricks-sdk
+
+# Set environment variables (Linux/macOS)
+export DATABRICKS_HOST="https://adb-1234567890123456.18.azuredatabricks.net"
+export DATABRICKS_TOKEN="dapiXXXXXXXXXXXXXXXXXXXXXXXX"
+
+# Verify the SDK can connect
+python - <<'PY'
+import databricks.sdk as dbx
+client = dbx.Client()
+print('Connected to workspace:', client.host)
+PY</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Deploy the Unity AI Gateway proxy</h3>
+                <p>Run the gateway binary with a configuration file that points to your Kubernetes cluster and Delta Lake storage. The proxy starts in under fifteen seconds and begins listening for LLM traffic.</p>
+
+                <div class="code-block"><pre>gateway start --config unity.yaml
+
+# Example unity.yaml (replace placeholders)
+# unity.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: unity-gateway-config
+data:
+  delta_lake_path: "s3://my-delta-lake/tokens/"
+  kubernetes_context: "my‑k8s‑cluster"
+  allowed_providers: "openai,anthropic,custom"
+</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Create a unified LLM endpoint via the Python SDK</h3>
+                <p>Define an endpoint that abstracts the underlying model provider. The SDK returns a URL you’ll use in your application instead of the provider’s direct API endpoint.</p>
+
+                <div class="code-block"><pre>import databricks.sdk as dbx
+
+gateway = dbx.UnityAIGateway()
+endpoint = gateway.create_endpoint(
+    name="my-llm",
+    model="openai-chatgpt-5-point-5",
+    provider="openai"
+)
+print('Endpoint URL:', endpoint.url)
+</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Apply a rate‑limit policy to control token spend</h3>
+                <p>Create a JSON policy that caps daily token usage for a team or service. Attach the policy to the endpoint so the Rust proxy enforces it on every request.</p>
+
+                <div class="code-block"><pre>policy = {
+    "name": "rate-limit-team-a",
+    "type": "rate_limit",
+    "limit": 100000,
+    "window": "day",
+    "principal": "team_a"
+}
+
+gateway.apply_policy(endpoint_id=endpoint.id, policy=policy)
+print('Policy applied to endpoint')
+</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Send a request through the gateway and monitor token usage</h3>
+                <p>Use `curl` (or any HTTP client) to call the gateway URL. The proxy will route the request, apply policies, and log each token to Delta Lake. Then query the usage table to see real‑time cost analytics.</p>
+
+                <div class="code-block"><pre># Example request via curl
+curl -X POST https://gateway.databricks.com/v1/completions \
+     -H "Authorization: Bearer $DATABRICKS_TOKEN" \
+     -d '{"model":"chatgpt-5.5","prompt":"Generate quest intro"}'
+
+# Query token usage with the SDK
+usage = gateway.query_usage(start="2026-07-01", end="2026-07-31")
+for row in usage:
+    print(f"User {row.user} spent {row.tokens} tokens costing ${row.cost:.2f}")
+</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Enable Delta Lake partitioning by date (`year=2026/month=07`) to keep query latency under a second for large token volumes.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Configure multiple model providers in `unity.yaml` and assign a cost‑weight to each; the Rust proxy will automatically select the cheapest provider that satisfies the prompt.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the gateway’s built‑in health endpoint (`/healthz`) to integrate with Kubernetes liveness/readiness probes for zero‑downtime scaling.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to grant the gateway service principal read/write access to the Unity Catalog. Without proper permissions, the proxy cannot enforce policies or write token logs.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Mis‑formatting the policy JSON (e.g., using a string for the numeric limit). The SDK will raise a validation error and the policy will not be applied.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Unity AI Gateway</h4>
+                    <p>Databricks‑hosted Rust proxy that routes LLM traffic, enforces policies, and logs token usage in Delta Lake.</p>
+                    <a href="https://www.databricks.com/product/unity-ai-gateway" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Databricks Python SDK</h4>
+                    <p>Official SDK to manage Unity AI Gateway resources, endpoints, policies, and usage analytics.</p>
+                    <a href="https://github.com/databricks/databricks-sdk-py" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Delta Lake</h4>
+                    <p>Open‑source storage layer that provides ACID transactions and scalable metadata for token‑level logs.</p>
+                    <a href="https://delta.io/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Kubernetes</h4>
+                    <p>Container orchestration platform used to run the stateless Rust proxy at scale.</p>
+                    <a href="https://kubernetes.io/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Rust</h4>
+                    <p>Systems programming language used for the high‑performance proxy core.</p>
+                    <a href="https://www.rust-lang.org/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.databricks.com/unity-ai-gateway/index.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Databricks Unity AI Gateway Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official guide covering installation, configuration, and advanced features of the gateway.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.delta.io/latest/index.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Delta Lake Documentation – Transaction Log & Performance Tips
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Detailed reference on how to structure Delta tables for fast token‑level analytics.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://rust-lang.github.io/async-book/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Building High‑Performance Proxies with Rust
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Tutorial on async Rust patterns useful for extending the gateway’s routing logic.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.databricks.com/unity-catalog/index.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Managing Access with Unity Catalog
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — How to configure roles, permissions, and metadata that the gateway relies on for policy enforcement.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can I add a custom model provider that isn’t listed in the default connectors?</h3>
+                <p>Yes. Define a custom connector in `unity.yaml` with the target URL and authentication method, then reference its name when creating an endpoint via the SDK.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does the gateway decide which model to route a request to?</h3>
+                <p>The Rust proxy evaluates the request’s security tags and cost‑weight metadata, then selects the cheapest model that satisfies the policy constraints. If the primary model is rate‑limited, it falls back to the next eligible model.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Where are token usage logs stored and how can I query them?</h3>
+                <p>Each request and response is streamed into Delta Lake as a Parquet entry. Use Spark SQL or the Python SDK’s `query_usage` method to aggregate tokens per user, project, or time window.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What happens if the gateway process crashes?</h3>
+                <p>Because the proxy is stateless, Kubernetes will automatically restart the pod. All request logs are persisted in Delta Lake, so no data is lost.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is there a way to monitor fallback events in real time?</h3>
+                <p>Enable the gateway’s metrics endpoint (`/metrics`) and integrate with Prometheus; the metric `fallback_count` increments each time a request is rerouted to an alternate model.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#UnityAIGateway</span>
+                <span class="tag">#Databricks</span>
+                <span class="tag">#AIGovernance</span>
+                <span class="tag">#SmartRouting</span>
+                <span class="tag">#AI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-05 01:02 • This guide accompanies the video: "How Rust & Delta Lake Power a Quadrillion Token Gateway"</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/215_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/216_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-rust-delta-lake-power-a-quadrillion-token-gateway/">
+<img src="guides/how-rust-delta-lake-power-a-quadrillion-token-gateway/thumbnail.jpg" width="300" alt="How Rust Delta Lake Power A Quadrillion Token Gateway"><br>
+<b>How Rust Delta Lake Power A Quadrillion Token Gateway</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/why-your-ai-agent-is-too-slow-and-how-zero-mem-fixes-it/">
 <img src="guides/why-your-ai-agent-is-too-slow-and-how-zero-mem-fixes-it/thumbnail.jpg" width="300" alt="Why Your Ai Agent Is Too Slow And How Zero Mem Fixes It"><br>
 <b>Why Your Ai Agent Is Too Slow And How Zero Mem Fixes It</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-agent/">
 <img src="guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-agent/thumbnail.jpg" width="300" alt="Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Agent"><br>
 <b>Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Agent</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-windows-crash-fix-how-v3133-restores-autonomous-buildfix-loops/">
-<img src="guides/daedalus-windows-crash-fix-how-v3133-restores-autonomous-buildfix-loops/thumbnail.jpg" width="300" alt="Daedalus Windows Crash Fix How V3133 Restores Autonomous Buildfix Loops"><br>
-<b>Daedalus Windows Crash Fix How V3133 Restores Autonomous Buildfix Loops</b>
 </a>
 </td>
 </tr></table>
@@ -48,7 +48,7 @@
 | **Benchmarks & Comparisons** | ![93](https://img.shields.io/badge/93-blue?style=flat-square) |
 | **Model Deep Dives** | ![75](https://img.shields.io/badge/75-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
-| **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
+| **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
@@ -275,6 +275,7 @@
 
 *Threats, vulnerabilities, and defenses in the AI era*
 
+- **[How Rust Delta Lake Power A Quadrillion Token Gateway](https://bgill55.github.io/-weightandsee-guides/guides/how-rust-delta-lake-power-a-quadrillion-token-gateway/)** — 2026-08-05
 - **[Video Reasoning Explained How Ai Models Learn Generalization Not Just Patterns](https://bgill55.github.io/-weightandsee-guides/guides/video-reasoning-explained-how-ai-models-learn-generalization-not-just-patterns/)** — 2026-06-19
 - **[Why Your Ai Agent Is Using The Wrong Model And How To Fix It](https://bgill55.github.io/-weightandsee-guides/guides/why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/)** — 2026-06-13
 - **[Is Outlines 3.0 the Ultimate AI Firewall?](https://bgill55.github.io/-weightandsee-guides/guides/is-outlines-30-the-ultimate-ai-firewall/)** — 2026-06-11
