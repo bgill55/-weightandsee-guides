@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/213_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/214_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-agent/">
+<img src="guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-agent/thumbnail.jpg" width="300" alt="Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Agent"><br>
+<b>Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Agent</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-windows-crash-fix-how-v3133-restores-autonomous-buildfix-loops/">
 <img src="guides/daedalus-windows-crash-fix-how-v3133-restores-autonomous-buildfix-loops/thumbnail.jpg" width="300" alt="Daedalus Windows Crash Fix How V3133 Restores Autonomous Buildfix Loops"><br>
@@ -31,12 +37,6 @@
 <b>Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Coding Agent</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-harness-the-engine-powering-deepseeks-coding-agent/">
-<img src="guides/inside-harness-the-engine-powering-deepseeks-coding-agent/thumbnail.jpg" width="300" alt="Inside Harness The Engine Powering Deepseeks Coding Agent"><br>
-<b>Inside Harness The Engine Powering Deepseeks Coding Agent</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![91](https://img.shields.io/badge/91-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![92](https://img.shields.io/badge/92-blue?style=flat-square) |
 | **Model Deep Dives** | ![75](https://img.shields.io/badge/75-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
 | **AI Security** | ![3](https://img.shields.io/badge/3-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Agent](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-agent/)** — 2026-08-04
 - **[Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Coding Agent](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-coding-agent/)** — 2026-08-04
 - **[Wiz Sensor Vs Ai Agent Threats Real World Review](https://bgill55.github.io/-weightandsee-guides/guides/wiz-sensor-vs-ai-agent-threats-real-world-review/)** — 2026-08-03
 - **[Copper Deep Dive The Ultimate Mac Prompt Manager Reviewed](https://bgill55.github.io/-weightandsee-guides/guides/copper-deep-dive-the-ultimate-mac-prompt-manager-reviewed/)** — 2026-07-30
