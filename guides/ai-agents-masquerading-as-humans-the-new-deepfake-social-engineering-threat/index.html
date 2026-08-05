@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A timely deep dive into the latest CNN report of AI agents crafting fake identities to deceive real people, examining the technology behind the attack, real‑wor">
+    <meta name="keywords" content="AI agents, social engineering, identity spoofing, cybersecurity, Gemini three point five">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="AI Agents Masquerading as Humans: The New Deepfake Social Engineering Threat - Complete Guide">
+    <meta property="og:description" content="A timely deep dive into the latest CNN report of AI agents crafting fake identities to deceive real people, examining the technology behind the attack, real‑world impact, and how leading models like G">
+    <meta property="og:type" content="article">
+    <title>AI Agents Masquerading as Humans: The New Deepfake Social Engineering Threat | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>AI Agents Masquerading as Humans: The New Deepfake Social Engineering Threat</h1>
+            <p class="subtitle">This guide walks you through building a real‑time detection microservice that catches AI‑generated text and voice used in social‑engineering attacks. Using Google Gemini 3.5 for text analysis and xAI’s Grok 3 for audio, you’ll learn how to deploy the open‑source Spyglass detector, configure confidence thresholds, and push alerts to your SIEM and identity provider.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 05, 2026</span>
+                <span>4 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>AI agents can synthesize full bios, photos, and voice clips using large multimodal models, bypassing traditional SPF/DKIM checks.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Gemini 3.5’s `--detect-spoof` flag and Grok 3’s spectral analysis can produce confidence scores for text and audio respectively.</span></li>
+                    <li><span class="takeaway-num">3</span><span>A lightweight detection microservice (Spyglass) can be inserted between the ingress gateway and backend to inspect every inbound message.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Setting appropriate confidence thresholds (e.g., 0.85 for text, 0.90 for voice) reduces false positives while catching synthetic content.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Integrating the microservice with a SIEM and automating account lock‑outs can cut successful phishing attempts by over 80%.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.8+ installed with `pip` access</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">API credentials for Google Gemini 3.5 and Grok 3 (or access to the hosted endpoints)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the Spyglass repository and install dependencies</h3>
+                <p>Open a terminal, clone the open‑source Spyglass detector that bundles the Gemini 3.5 and Grok 3 inference pipelines, then install the required Python packages. This ensures you have the exact code used in the demo and pulls in the pre‑trained classifiers.
+
+```bash
+# Clone the repo (replace <repo-url> with the actual URL from the video description)
+git clone https://github.com/ai‑security/spyglass.git
+cd spyglass
+# Install Python dependencies in an isolated virtual environment
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```</p>
+
+                <div class="code-block"><pre>git clone https://github.com/ai-security/spyglass.git
+cd spyglass
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Configure API keys and detection thresholds</h3>
+                <p>Create a `config.yaml` (or edit the provided sample) with your Gemini and Grok API keys, and set the confidence thresholds that trigger alerts. The thresholds used in the video are 0.85 for text and 0.90 for voice.
+
+```yaml
+# config.yaml
+gemini:
+  api_key: "YOUR_GEMINI_API_KEY"
+  model: "gemini-3.5"
+  detect_spoof_flag: "--detect-spoof"
+  text_threshold: 0.85
+
+grok:
+  api_key: "YOUR_GROK_API_KEY"
+  model: "grok-3"
+  audio_threshold: 0.90
+
+cache:
+  ttl_seconds: 300  # 5‑minute response cache
+```</p>
+
+                <div class="code-block"><pre>gemini:
+  api_key: "YOUR_GEMINI_API_KEY"
+  model: "gemini-3.5"
+  detect_spoof_flag: "--detect-spoof"
+  text_threshold: 0.85
+
+grok:
+  api_key: "YOUR_GROK_API_KEY"
+  model: "grok-3"
+  audio_threshold: 0.90
+
+cache:
+  ttl_seconds: 300</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Launch the detection microservice</h3>
+                <p>Run the provided `run_detector.py` script, which streams inbound messages, queries Gemini for textual anomalies and Grok for audio anomalies, and emits JSON events compatible with Splunk, Elastic, or Azure Sentinel. The command below mirrors the one shown on screen.
+
+```bash
+python run_detector.py --model gemini-3.5 \
+                       --audio-model grok-3 \
+                       --config config.yaml
+```</p>
+
+                <div class="code-block"><pre>python run_detector.py --model gemini-3.5 \
+                       --audio-model grok-3 \
+                       --config config.yaml</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Wire alerts to your SIEM and automate account lock‑out</h3>
+                <p>The microservice outputs JSON events with a `severity` field. Configure a webhook or use the built‑in Splunk/Elastic output to forward these events. Then, add a small Lambda/Function that calls your identity provider’s lock‑out API when a `high` severity alert is received.
+
+```python
+import requests
+
+def lock_account(user_id):
+    url = f"https://idp.example.com/api/lock/{user_id}"
+    headers = {"Authorization": f"Bearer {IDP_TOKEN}"}
+    response = requests.post(url, headers=headers)
+    response.raise_for_status()
+```
+
+Add this function to the alert handling pipeline so that any event with `severity: high` triggers `lock_account(user_id)`.</p>
+
+                <div class="code-block"><pre>import requests
+
+def lock_account(user_id):
+    url = f"https://idp.example.com/api/lock/{user_id}"
+    headers = {"Authorization": f"Bearer {IDP_TOKEN}"}
+    response = requests.post(url, headers=headers)
+    response.raise_for_status()</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Cache Gemini and Grok responses for a few minutes (as the demo does) to cut latency and avoid rate‑limit throttling on high‑throughput gateways.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Combine token‑level attention map similarity (text) with mel‑spectrogram embeddings (audio) in an ensemble model for higher detection confidence.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Periodically retrain the baseline human attention vector and voice embedding on fresh corpora to keep false‑positive rates under 0.5%.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Using overly aggressive thresholds (e.g., 0.5) leads to a flood of false positives that overwhelm SOC analysts.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Forgetting to encrypt API keys in `config.yaml`; storing them in plain text can expose credentials if the repo is inadvertently made public.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Google Gemini</h4>
+                    <p>Multimodal LLM used for high‑fidelity text synthesis detection with a built‑in spoof‑detect flag.</p>
+                    <a href="https://gemini.google.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Grok 3</h4>
+                    <p>xAI audio model that generates mel‑spectrogram embeddings for synthetic‑voice classification.</p>
+                    <a href="https://grok.x.ai" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Spyglass</h4>
+                    <p>Open‑source detection microservice built on Gemini‑3.5 and Grok‑3, ships with a ready‑to‑run Python script.</p>
+                    <a href="https://github.com/ai-security/spyglass" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Python</h4>
+                    <p>Programming language used for the detector implementation.</p>
+                    <a href="https://www.python.org" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Splunk</h4>
+                    <p>SIEM platform that can ingest the JSON alerts emitted by the detector.</p>
+                    <a href="https://www.splunk.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Azure Sentinel</h4>
+                    <p>Microsoft cloud SIEM that also supports the JSON event format.</p>
+                    <a href="https://azure.microsoft.com/en-us/services/azure-sentinel/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://cloud.google.com/vertex-ai/docs/generative-ai/model-reference/gemini-3-5#detect-spoof" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Google Gemini 3.5 Documentation – Spoof Detection
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official guide on using the `--detect-spoof` flag and interpreting confidence scores.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://grok.x.ai/model-card" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            xAI Grok 3 Model Card
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Technical details on Grok 3’s audio embeddings and recommended thresholds for synthetic‑voice detection.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/ai-security/spyglass#readme" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Spyglass Repository – Quick‑Start Guide
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — README with installation, configuration, and integration examples.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.cnn.com/2026/07/15/tech/ai-deepfake-social-engineering" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            CNN Report: AI‑Generated Executive Impersonation Scam
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The news article that inspired the deep‑fake social‑engineering scenario used in this guide.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How do I obtain a Gemini 3.5 API key?</h3>
+                <p>Sign up for Google Cloud Vertex AI, enable the Gemini 3.5 model, and create a service account with the `aiplatform.models.predict` permission. Download the JSON key and set it as the `GEMINI_API_KEY` environment variable or reference it in `config.yaml`.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can Spyglass run on CPU‑only servers?</h3>
+                <p>Yes, but inference latency will increase dramatically. For production workloads, a GPU (e.g., NVIDIA A100) is recommended to keep per‑message latency under 200 ms.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is the recommended way to integrate alerts with Azure Sentinel?</h3>
+                <p>Configure the microservice’s JSON output to be sent to an Azure Event Hub, then set up a Sentinel data connector for Event Hub. Map the `severity` field to Sentinel’s alert severity levels.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How often should I retrain the baseline human attention vector?</h3>
+                <p>Re‑train quarterly or whenever you notice a spike in false‑positives. Use a fresh corpus of verified human‑written text to compute the new baseline.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is Spyglass compatible with other LLMs besides Gemini?</h3>
+                <p>The core architecture is model‑agnostic; you can swap Gemini 3.5 for any LLM that provides a spoof‑detection endpoint, but you’ll need to adjust the CLI flags and parsing logic accordingly.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#AIAgentsMasquerading</span>
+                <span class="tag">#AIagents</span>
+                <span class="tag">#socialengineering</span>
+                <span class="tag">#identityspoofing</span>
+                <span class="tag">#cybersecurity</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-05 13:28 • This guide accompanies the video: "AI Agents Masquerading as Humans: The New Deepfake Social Engineering Threat"</p>
+        </footer>
+    </div>
+</body>
+</html>
