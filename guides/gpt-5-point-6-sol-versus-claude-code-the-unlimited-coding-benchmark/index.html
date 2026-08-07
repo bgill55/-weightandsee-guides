@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A direct performance and cost analysis of the new GPT 5 point 6 Sol coding model against Anthropic's Claude Code and leading open-source alternatives like DeepS">
+    <meta name="keywords" content="GPT 5 point 6, Sol, Claude Code, Coding AI, Benchmark">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="GPT 5 point 6 Sol versus Claude Code: The Unlimited Coding Benchmark - Complete Guide">
+    <meta property="og:description" content="A direct performance and cost analysis of the new GPT 5 point 6 Sol coding model against Anthropic's Claude Code and leading open-source alternatives like DeepSeek V4.">
+    <meta property="og:type" content="article">
+    <title>GPT 5 point 6 Sol versus Claude Code: The Unlimited Coding Benchmark | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>GPT 5 point 6 Sol versus Claude Code: The Unlimited Coding Benchmark</h1>
+            <p class="subtitle">This guide walks you through integrating the new GPT‑5‑point‑6‑Sol coding model into a CI/CD pipeline, letting you leverage its 2.5× speed advantage and lower token‑generation cost over Claude Code. By the end you’ll have a reproducible CI step that sends code snippets to the model, validates the returned code, and either commits it automatically or flags it for review.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 06, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>GPT‑5‑point‑6‑Sol generates 45 tokens / sec versus 18 tps for Claude Code, delivering a 2.5× speed boost on identical RTX 4090 hardware.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Token‑cost drops to $0.12 / k‑tokens, compared with $0.35 / k‑tokens for Claude, cutting a five‑person team’s monthly budget from ~$850 to ~$300.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Code correctness is higher: 482/500 benchmark tasks solved vs 401 for Claude, meaning fewer false‑positive completions and less manual debugging.</span></li>
+                    <li><span class="takeaway-num">4</span><span>The model stays stable up to 100 concurrent sessions and uses only 7.2 GB RAM, enabling higher parallelism on the same GPU.</span></li>
+                    <li><span class="takeaway-num">5</span><span>A simple curl‑based CI step can be added to any pipeline (GitHub Actions, GitLab CI, Azure Pipelines) with minimal latency (≈50 ms) and full audit logging.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">OpenAI API access with a valid API key (pay‑as‑you‑go plan).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A CI platform that supports shell commands (e.g., GitHub Actions, GitLab CI).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic command‑line tools: `curl`, `jq` (JSON parser), and a unit‑test runner for your language (e.g., `pytest`, `npm test`).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Store the OpenAI API key securely in your CI environment</h3>
+                <p>Log in to the OpenAI dashboard, generate a new secret API key, and add it to your CI system as an encrypted secret (e.g., `OPENAI_API_KEY`). This ensures the key isn’t exposed in logs or the repository. In GitHub Actions, go to Settings → Secrets → Actions and create a new secret named `OPENAI_API_KEY`.</p>
+
+                <div class="code-block"><pre>## GitHub Actions secret creation (via UI)
+# No CLI code needed; just paste the key into the secret field.
+</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Add a CI job that calls the GPT‑5‑point‑6‑Sol completion endpoint</h3>
+                <p>Create a new step in your CI workflow that uses `curl` to send a code snippet (the prompt) to the OpenAI completions API. Set the model name to `gpt-5-point-6-sol`, limit `max_tokens` to a reasonable size, and request deterministic output with `temperature: 0`. The response will be JSON containing the generated code.</p>
+
+                <div class="code-block"><pre>```yaml
+# .github/workflows/code-gen.yml
+name: Code Generation CI
+on: [push]
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Call GPT‑5‑point‑6‑Sol
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          PROMPT=$(cat path/to/your/prompt.txt)
+          RESPONSE=$(curl -s https://api.openai.com/v1/completions \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $OPENAI_API_KEY" \
+            -d '{
+              "model": "gpt-5-point-6-sol",
+              "prompt": "'$PROMPT'",
+              "max_tokens": 256,
+              "temperature": 0,
+              "n": 1,
+              "stop": null
+            }')
+          echo "$RESPONSE" > response.json
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Extract the generated code from the JSON response</h3>
+                <p>Parse the `response.json` file with `jq` to pull out the first choice's `text` field. Write the extracted code to a temporary file that your test runner can consume.</p>
+
+                <div class="code-block"><pre>```bash
+# Extract generated code
+GENERATED_CODE=$(jq -r '.choices[0].text' response.json)
+# Save to a file
+echo "$GENERATED_CODE" > generated_code.py  # adjust extension as needed
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Run your unit‑test suite against the generated code</h3>
+                <p>Invoke your project's test command (e.g., `pytest` for Python) against the newly created file. Capture the exit code to decide whether to auto‑commit or raise a manual review flag.</p>
+
+                <div class="code-block"><pre>```bash
+# Execute tests
+pytest generated_code.py
+TEST_RESULT=$?
+if [ $TEST_RESULT -eq 0 ]; then
+  echo "Tests passed – auto‑committing"
+  git config user.name "ci-bot"
+  git config user.email "ci@example.com"
+  git add generated_code.py
+  git commit -m "🤖 Auto‑generated code from GPT‑5‑point‑6‑Sol"
+  git push origin HEAD
+else
+  echo "Tests failed – flagging for review"
+  # Optionally create an issue or send a Slack alert
+fi
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5 (optional): Log request metadata for compliance and cost tracking</h3>
+                <p>Append the request ID, token usage, and cost to a log file or send it to a SIEM system. This satisfies audit requirements and helps you monitor the $0.12 / k‑token expense.</p>
+
+                <div class="code-block"><pre>```bash
+# Log usage
+REQUEST_ID=$(jq -r '.id' response.json)
+TOKENS_USED=$(jq -r '.usage.total_tokens' response.json)
+COST=$(awk "BEGIN {print $TOKENS_USED/1000*0.12}")
+echo "$(date) | ID:$REQUEST_ID | Tokens:$TOKENS_USED | Cost:$COST" >> usage.log
+# Send to external SIEM (example via HTTP POST)
+curl -X POST -H "Content-Type: application/json" -d "{\"id\":\"$REQUEST_ID\",\"tokens\":$TOKENS_USED,\"cost\":$COST}" https://siem.example.com/ingest
+```</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the streaming API (`/v1/chat/completions` with `stream=true`) to shave an extra 10‑20 ms off latency for interactive assistants.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Batch multiple prompts in a single request when possible to reduce per‑call overhead and stay under the 4096‑token limit.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Set `temperature: 0` and `top_p: 1` for deterministic code generation, which simplifies testing and reduces flaky builds.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Enable OpenAI’s request‑level logging (`log_level: 'info'`) to get detailed usage stats for budgeting.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Cache frequent snippet prompts locally; identical prompts will return the same code, saving tokens.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to URL‑encode the prompt – large code snippets can break the JSON payload; use `--data-binary @file.json` for safety.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Ignoring rate‑limit headers (`x-ratelimit-remaining`) – exceeding limits will cause 429 errors and stall your CI pipeline.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Assuming the model respects project‑specific style guides – always run a linter after generation.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 4: Not accounting for token‑overage costs – a runaway loop can quickly exceed the $0.12 / k‑token budget.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 5: Parsing JSON with `sed` instead of `jq` – brittle and prone to break if OpenAI changes response format.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>OpenAI API (gpt-5-point-6-sol)</h4>
+                    <p>State‑of‑the‑art LLM for code generation with 45 tps token speed and low per‑token cost.</p>
+                    <a href="https://platform.openai.com/docs/api-reference/completions" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Claude Code</h4>
+                    <p>Anthropic’s coding LLM used as a benchmark comparator.</p>
+                    <a href="https://github.com/anthropics/claude-code" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>DeepSeek V4</h4>
+                    <p>Open‑source coding model that can be self‑hosted but incurs electricity cost at scale.</p>
+                    <a href="https://github.com/deepseek-ai/deepseek-coder" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>curl</h4>
+                    <p>Command‑line tool for HTTP requests, used to call the OpenAI endpoint.</p>
+                    <a href="https://curl.se/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>jq</h4>
+                    <p>Lightweight JSON processor for extracting fields from API responses.</p>
+                    <a href="https://stedolan.github.io/jq/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://platform.openai.com/docs/api-reference/completions" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OpenAI Completion API Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Full reference for request parameters, streaming, and rate‑limit handling.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/anthropics/claude-code" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Claude Code Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Source code and benchmark scripts for Anthropic’s coding model.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/deepseek-ai/deepseek-coder" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            DeepSeek V4 Open‑Source Model
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Instructions for self‑hosting the DeepSeek coding model.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.notion.so/AI-Code-CI-Best-Practices-8f2e1c9c3b5c4a69b7c2f0d9e1a2e3f4" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            CI/CD Best Practices for AI‑Generated Code
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Guidelines on testing, security, and cost monitoring when automating LLM code generation.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How much will it cost to generate 1 million tokens with GPT‑5‑point‑6‑Sol?</h3>
+                <p>At $0.12 per 1k tokens, 1 million tokens cost $120. Compare that to $350 for Claude Code.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is the model safe to use for proprietary code?</h3>
+                <p>OpenAI logs each request, which can be streamed to a SIEM for audit. You can also restrict the model to organization‑specific token vocabularies to reduce data leakage risk.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I fine‑tune GPT‑5‑point‑6‑Sol for my internal libraries?</h3>
+                <p>Yes, OpenAI offers fine‑tuning on the base model, but the out‑of‑the‑box version already supports most languages and often eliminates the need for custom tuning.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What happens if the CI job exceeds the OpenAI rate limit?</h3>
+                <p>The API returns HTTP 429. Implement exponential back‑off in your script (e.g., `sleep $((2**RETRY))`) and respect the `Retry-After` header.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does concurrency affect performance?</h3>
+                <p>The benchmark shows GPT‑5‑point‑6‑Sol maintains throughput up to 100 concurrent sessions, while Claude Code drops ~30 % after 30 threads. This makes the former far more suitable for parallel CI pipelines.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#GPT5point</span>
+                <span class="tag">#GPT5point6</span>
+                <span class="tag">#Sol</span>
+                <span class="tag">#ClaudeCode</span>
+                <span class="tag">#CodingAI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-06 22:09 • This guide accompanies the video: "GPT 5 point 6 Sol versus Claude Code: The Unlimited Coding Benchmark"</p>
+        </footer>
+    </div>
+</body>
+</html>
