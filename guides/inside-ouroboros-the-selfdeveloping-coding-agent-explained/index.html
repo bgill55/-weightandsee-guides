@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A side‑by‑side benchmark showdown that pits the self‑developing Ouroboros coding agent against GitHub Copilot, revealing speed, accuracy and adaptability differ">
+    <meta name="keywords" content="Ouroboros, GitHub Copilot, AI coding agent, benchmark, autonomous development">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Inside Ouroboros: The Self‑Developing Coding Agent Explained - Complete Guide">
+    <meta property="og:description" content="A side‑by‑side benchmark showdown that pits the self‑developing Ouroboros coding agent against GitHub Copilot, revealing speed, accuracy and adaptability differences while unpacking why Ouroboros’s ev">
+    <meta property="og:type" content="article">
+    <title>Inside Ouroboros: The Self‑Developing Coding Agent Explained | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Inside Ouroboros: The Self‑Developing Coding Agent Explained</h1>
+            <p class="subtitle">This guide walks you through installing, configuring, and running the Ouroboros self‑developing coding agent, reproducing the benchmark that shows it outperforming GitHub Copilot, and integrating the agent into a CI pipeline (with optional Docker and Terraform support). By the end you’ll have a live Ouroboros instance that continuously improves its model after each inference.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 10, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Ouroboros generates correct code in ~0.84 s vs. Copilot’s 2.1 s, delivering >200 % higher throughput.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Unit‑test pass rate rises to 92 % compared with Copilot’s 68 %, cutting compilation errors by 27 %.</span></li>
+                    <li><span class="takeaway-num">3</span><span>A lightweight self‑training loop rewrites model weights after every inference, enabling continuous improvement without redeploy.</span></li>
+                    <li><span class="takeaway-num">4</span><span>The optimizer adds only ~0.12 s per update, so net latency remains lower than Copilot.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Running Ouroboros locally preserves proprietary code privacy – no external API calls are required.</span></li>
+                    <li><span class="takeaway-num">6</span><span>CI integration reduces code‑review turnaround from hours to minutes and eliminates stale merge‑conflict suggestions.</span></li>
+                    <li><span class="takeaway-num">7</span><span>The workflow works on a single container; you can provision the same environment on cloud GPUs via a Terraform module.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A machine with an NVIDIA RTX 4090 (or comparable GPU) and Ubuntu 22.04 installed.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.9+, pip, and Git.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">CUDA toolkit compatible with your driver (e.g., CUDA 12.1).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Docker (for containerised CI) and Terraform (optional for cloud provisioning).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the Ouroboros repository and set up a Python environment</h3>
+                <p>Create a dedicated folder, clone the open‑source Ouroboros repo, and install the CLI and dependencies in an isolated virtual environment. This ensures a reproducible setup and avoids polluting the host Python packages.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/yourorg/ouroboros.git
+cd ouroboros
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install ouroboros-cli</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Verify GPU drivers and install the CUDA toolkit</h3>
+                <p>Make sure the NVIDIA driver and CUDA runtime are correctly installed so that the model can leverage the RTX 4090. The `nvidia-smi` command should list the GPU, and `nvcc --version` should report the CUDA version you plan to use.</p>
+
+                <div class="code-block"><pre>nvidia-smi
+# Example output shows RTX 4090 with driver 525.xx
+nvcc --version
+# Expected output: Cuda compilation tools, release 12.1, V12.1.105</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Run Ouroboros with the auto‑update flag</h3>
+                <p>Start the agent on a sample project. The `--auto-update` flag tells Ouroboros to write updated checkpoints to a local vector store after each inference, then reload the new model for the next request.</p>
+
+                <div class="code-block"><pre>ouroboros run --repo ./myapp --auto-update</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Containerise the workflow (optional) – Dockerfile & CI script</h3>
+                <p>Wrap the installation and run steps in a Docker image so the same environment can be used in CI pipelines. The Dockerfile installs CUDA, the CLI, and copies your repository. A minimal CI script demonstrates how to trigger Ouroboros on every pull request.</p>
+
+                <div class="code-block"><pre>FROM nvidia/cuda:12.1-runtime-ubuntu22.04
+RUN apt-get update && apt-get install -y python3 python3-venv git
+WORKDIR /app
+COPY . /app
+RUN python3 -m venv venv && \
+    . venv/bin/activate && \
+    pip install -r requirements.txt ouroboros-cli
+CMD ["bash", "-c", "source venv/bin/activate && ouroboros run --repo . --auto-update"]
+---
+# .gitlab-ci.yml (example)
+stages:
+  - test
+run_ouroboros:
+  stage: test
+  image: your-docker-registry/ouroboros:latest
+  script:
+    - ouroboros run --repo ./myapp --auto-update</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Deploy to a cloud GPU instance via Terraform (optional)</h3>
+                <p>If you prefer a managed GPU VM, use the provided Terraform module. It provisions an Ubuntu 22.04 VM with an RTX 4090‑equivalent GPU, installs the Docker runtime, and pulls the Ouroboros image automatically.</p>
+
+                <div class="code-block"><pre>terraform {
+  required_providers {
+    aws = { source = "hashicorp/aws" version = "~> 5.0" }
+  }
+}
+resource "aws_instance" "gpu" {
+  ami           = "ami-0abcdef1234567890"   # Ubuntu 22.04
+  instance_type = "g4dn.xlarge"           # NVIDIA T4 (replace with appropriate GPU)
+  root_block_device {
+    volume_size = 200
+  }
+  user_data = <<-EOF
+    #!/bin/bash
+    apt-get update && apt-get install -y docker.io
+    docker run -d --gpus all your-docker-registry/ouroboros:latest
+  EOF
+}
+output "public_ip" { value = aws_instance.gpu.public_ip }</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Mount a persistent volume for the vector store (e.g., `-v ./store:/app/store`) so model checkpoints survive container restarts.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Pin the CUDA version in your Dockerfile to avoid subtle incompatibilities between driver and runtime.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Start with a low learning‑rate (e.g., 1e‑5) in the optimizer to prevent catastrophic forgetting during the self‑update step.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Out‑of‑memory crashes – the RTX 4090 has 24 GB VRAM; ensure batch sizes and model precision (FP16) are configured to stay below the limit.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Incorrect permissions on the checkpoint directory – the agent cannot write updates if the folder is read‑only; set `chmod -R 775 ./store` before first run.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Using an outdated pip version – older pip may fail to install the `ouroboros-cli` wheel; always upgrade via `pip install --upgrade pip`.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Ouroboros (GitHub repository)</h4>
+                    <p>Open‑source self‑developing coding agent that rewrites its own weights after each inference.</p>
+                    <a href="https://github.com/yourorg/ouroboros" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>ouroboros-cli</h4>
+                    <p>Command‑line interface for running Ouroboros locally and managing model updates.</p>
+                    <a href="https://pypi.org/project/ouroboros-cli/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>GitHub Copilot</h4>
+                    <p>AI‑powered code completion service by GitHub, used as the benchmark baseline.</p>
+                    <a href="https://github.com/features/copilot" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Docker</h4>
+                    <p>Container platform used to encapsulate the Ouroboros environment for CI/CD pipelines.</p>
+                    <a href="https://www.docker.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Terraform</h4>
+                    <p>Infrastructure‑as‑code tool that provisions GPU‑enabled cloud VMs for running Ouroboros.</p>
+                    <a href="https://www.terraform.io/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>NVIDIA CUDA Toolkit</h4>
+                    <p>Provides GPU‑accelerated libraries and compilers required by the model.</p>
+                    <a href="https://developer.nvidia.com/cuda-toolkit" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/yourorg/ouroboros#benchmark-results" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Ouroboros Repository – README & Benchmarks
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Detailed benchmark methodology, hardware specs, and instructions for reproducing the results shown in the video.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2305.12345" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Self‑Training Loops for LLMs – Research Paper
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Academic background on recurrent self‑training and on‑device weight updates, the core idea behind Ouroboros.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.github.com/copilot" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            GitHub Copilot Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation for the baseline tool used in the comparison.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://developer.nvidia.com/cuda-best-practices" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            CUDA Performance Best Practices
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Guidelines for maximizing GPU utilization and avoiding memory bottlenecks.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Terraform AWS Provider – GPU Instance Types
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Reference for selecting GPU‑enabled instance types and configuring user‑data scripts.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Do I need an RTX 4090 to run Ouroboros, or can I use a smaller GPU?</h3>
+                <p>A high‑end GPU like the RTX 4090 is recommended for the benchmark numbers shown, but the agent can run on any CUDA‑compatible GPU. Expect higher latency and possibly out‑of‑memory errors on smaller cards.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does the self‑update mechanism avoid corrupting the model?</h3>
+                <p>Ouroboros uses a lightweight optimizer with a very low learning rate and validates the updated weights against a held‑out test set before writing the checkpoint. If the validation fails, the update is discarded.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I integrate Ouroboros into an existing CI/CD system like GitHub Actions?</h3>
+                <p>Yes. The Docker image can be used as a job step, and the `ouroboros run` command can be invoked on each pull‑request checkout. The updated model checkpoint can be committed back to the repository as part of the pipeline.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is any of my proprietary code sent to external services when using Ouroboros?</h3>
+                <p>No. All inference and model updates happen locally; only the Docker image and the repository are involved, so code never leaves your infrastructure.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What are the security implications of storing model checkpoints in the repo?</h3>
+                <p>Model checkpoints are binary files; ensure the repository’s access controls (e.g., private repo, branch protection) are configured. You may also place checkpoints in a separate, encrypted storage volume if needed.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#OuroborosvsCopilot</span>
+                <span class="tag">#Ouroboros</span>
+                <span class="tag">#GitHubCopilot</span>
+                <span class="tag">#AIcodingagent</span>
+                <span class="tag">#benchmark</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-10 23:37 • This guide accompanies the video: "Inside Ouroboros: The Self‑Developing Coding Agent Explained"</p>
+        </footer>
+    </div>
+</body>
+</html>
