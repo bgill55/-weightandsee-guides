@@ -377,11 +377,11 @@
         <header class="header">
             <span class="badge">Complete Guide</span>
             <h1>Daedalus v3.30.10</h1>
-            <p class="subtitle">This guide walks through using Daedalus v3.30.10, a terminal‑based local‑first multi‑agent workbench that automates code generation, test creation, and Git workflow. It demonstrates how to prompt Daedalus to add functions, generate Jest tests, and merge changes automatically while preserving best practices.</p>
+            <p class="subtitle">This guide walks you through the Daedalus v3.30.10 CLI, showing how to quickly scaffold a helper function, auto‑generate Jest tests, and complete a fully‑merged pull request—all from a single prompt. It covers installation, project initialization, test‑driven development, and Git workflow automation.</p>
             <div class="meta">
                 <span>By Weight and See</span>
-                <span>August 18, 2026</span>
-                <span>6 Steps</span>
+                <span>August 19, 2026</span>
+                <span>5 Steps</span>
             </div>
         </header>
 
@@ -389,11 +389,11 @@
             <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
             <div class="card">
                 <ul class="takeaway-list">
-                    <li><span class="takeaway-num">1</span><span>Daedalus eliminates the need for manual JSON configs by parsing project context through a simple slash‑spec prompt.</span></li>
-                    <li><span class="takeaway-num">2</span><span>The tool automatically creates a test‑first implementation: it writes Jest tests first, then generates the production code to satisfy them.</span></li>
-                    <li><span class="takeaway-num">3</span><span>Git integration is seamless; Daedalus opens feature branches, commits, creates PRs, and merges to main while squashing commits.</span></li>
-                    <li><span class="takeaway-num">4</span><span>State persistence via MCP roots allows incremental feature development across sessions.</span></li>
-                    <li><span class="takeaway-num">5</span><span>Daedalus’s built‑in delivery log tracks spec goals, giving instant feedback on feature completion.</span></li>
+                    <li><span class="takeaway-num">1</span><span>Daedalus uses a slash spec to load project rules automatically, eliminating the need for a heavy JSON config.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The tool is test‑driven: it writes Jest tests first, then generates implementation code to satisfy those tests.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Git workflow is fully automated—Daedalus opens a PR, squashes commits, merges into main, and cleans the feature branch.</span></li>
+                    <li><span class="takeaway-num">4</span><span>MCP roots preserve state across sessions, enabling incremental feature development without losing context.</span></li>
+                    <li><span class="takeaway-num">5</span><span>From prompt to merged PR, Daedalus can finish the entire feature cycle in seconds, drastically reducing manual overhead.</span></li>
                 </ul>
             </div>
         </section>
@@ -402,9 +402,9 @@
             <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
             <div class="card">
                 <ul>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Node.js (≥14) and npm or yarn installed</li>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">Git configured with remote repository access</li>
-                    <li style="padding: 6px 0; color: var(--text-secondary);">A local JavaScript/TypeScript project with a `package.json` and Jest installed</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Node.js 18+ (required for Jest and Daedalus CLI)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Git configured with a remote (e.g., GitHub)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with terminal usage and JavaScript testing</li>
                 </ul>
             </div>
         </section>
@@ -414,73 +414,78 @@
 
             <div class="step">
                 <span class="step-num">1</span>
-                <h3>1. Install the Daedalus CLI</h3>
-                <p>Download and install the latest Daedalus binary from the official repository. The CLI is available as a pre‑compiled binary for Linux, macOS, and Windows. After installing, add it to your PATH.</p>
+                <h3>Step 1: Install the Daedalus CLI</h3>
+                <p>Download and install the latest Daedalus binary or use npm. The CLI is cross‑platform and ships with the MCP filesystem bundled.</p>
 
-                <div class="code-block"><pre>curl -L https://github.com/daedalus/cli/releases/download/v3.30.10/daedalus-v3.30.10-linux-amd64.tar.gz | tar xz && mv daedalus-v3.30.10-linux-amd64/daedalus /usr/local/bin/
-# Verify installation
- daedalus --version  # outputs 3.30.10</pre></div>
+                <div class="code-block"><pre>```bash
+# Using npm
+npm install -g @daedalus/cli
+
+# Or download the binary
+curl -L https://daedalus.ai/download/daedalus-v3.30.10-linux-x64 -o daedalus
+chmod +x daedalus
+mv daedalus /usr/local/bin/daedalus
+```</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">2</span>
-                <h3>2. Bootstrap the Daedalus Workspace</h3>
-                <p>Navigate to your project root and run the bootstrap command. This loads project rules and starts the MCP filesystem in the background. The slash‑spec syntax will be ready for use immediately.</p>
+                <h3>Step 2: Initialize your project with a slash spec</h3>
+                <p>Create a new project directory, navigate into it, and run the init command. The slash spec automatically loads project rules and starts the MCP filesystem in the background.</p>
 
-                <div class="code-block"><pre>cd /path/to/your/project
- daedalus bootstrap
-# You should see logs like:
-# [INFO] Project rules loaded
-# [INFO] MCP filesystem active</pre></div>
+                <div class="code-block"><pre>```bash
+mkdir my-app && cd my-app
+
+daedalus init \
+  --spec "/project/spec" \
+  --root .
+# The CLI will output: "Project rules loaded. MCP filesystem running."```</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">3</span>
-                <h3>3. Prompt Daedalus to Add a Helper Function</h3>
-                <p>Use a simple natural‑language prompt to ask Daedalus to create a new helper. The CLI interprets the request, locates the appropriate file, and prepares an implementation plan.</p>
+                <h3>Step 3: Prompt Daedalus to add a helper function</h3>
+                <p>Use the CLI prompt to request a new helper. Daedalus parses the context and knows where to place the new logic.</p>
 
-                <div class="code-block"><pre>daedalus prompt "Add a helper function to validate semantic version strings"
-# Expected output:
-# • Adding function validateVersion in src/utils/version.js
-# • Generating Jest tests first</pre></div>
+                <div class="code-block"><pre>```bash
+# Ask for a version validation helper
+ daedalus prompt "Add helper function to validate semantic version strings in src/utils/version.ts"
+```
+The CLI will print a plan and generate the file skeleton.</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">4</span>
-                <h3>4. Generate Tests and Implementation</h3>
-                <p>Daedalus will automatically write a Jest test file and then generate the implementation code that passes those tests. No manual test writing is required.</p>
+                <h3>Step 4: Auto‑generate Jest tests and implementation</h3>
+                <p>Daedalus creates a Jest test file first, then writes implementation code that satisfies those tests. The test file is placed in the appropriate test directory.</p>
 
-                <div class="code-block"><pre># Daedalus runs internally; the result will be files:
-# tests/utils/validateVersion.test.js
-# src/utils/validateVersion.js
-# Verify tests:
- npm test
-# All tests should pass</pre></div>
+                <div class="code-block"><pre>```bash
+# After the previous prompt, Daedalus outputs:
+# ✅ Created test file: tests/utils/validateVersion.test.ts
+# ✅ Created implementation: src/utils/version.ts
+
+# Run the tests to verify
+npm test
+# Jest will report the tests pass instantly. ```</pre></div>
             </div>
 
             <div class="step">
                 <span class="step-num">5</span>
-                <h3>5. Let Daedalus Handle Git Workflow</h3>
-                <p>Once the code and tests are in place, Daedalus will create a feature branch, commit the changes, open a PR, and merge to main if checks pass. It also cleans up the feature branch afterward.</p>
+                <h3>Step 5: Commit, push, and merge via auto‑PR</h3>
+                <p>Daedalus automatically creates a feature branch, commits the generated files, opens a PR, and merges it back into main when checks pass. It cleans up the branch after merging.</p>
 
-                <div class="code-block"><pre>daedalus git --auto-merge
-# The CLI will output something like:
-# • Created branch feature/validate-version
-# • Committed 3 files
-# • Opened PR #42
-# • Merged to main and deleted feature branch</pre></div>
-            </div>
+                <div class="code-block"><pre>```bash
+# Daedalus handles this behind the scenes:
+# 1. Creates branch: feature/add-version-helper
+# 2. Commits changes
+# 3. Opens PR on GitHub
+# 4. Squashes and merges into main
+# 5. Deletes feature branch
 
-            <div class="step">
-                <span class="step-num">6</span>
-                <h3>6. Review the Delivery Log</h3>
-                <p>Check Daedalus’s delivery log to confirm that all spec goals have been met and the feature is fully integrated.</p>
-
-                <div class="code-block"><pre>daedalus delivery-log
-# Sample output:
-# ✅ Feature: validateVersion added
-# ✅ Tests passed
-# ✅ PR merged into main</pre></div>
+# To see the log:
+daedalus delivery-log
+```
+The output confirms the feature is integrated.</pre></div>
             </div>
         </section>
 
@@ -488,15 +493,15 @@
             <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Use the `daedalus config` command to adjust default test frameworks or linting rules if your project deviates from Jest.
+                <strong>Pro Tip:</strong> Use `daedalus watch` to keep the MCP filesystem in sync while you edit files manually.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> When working on large refactors, split prompts into smaller, focused requests to keep the implementation plan manageable.
+                <strong>Pro Tip:</strong> Configure `daedalus config set git.remote https://github.com/your-org/your-repo.git` to avoid prompts for remote URLs.
             </div>
 
             <div class="tip">
-                <strong>Pro Tip:</strong> Leverage the `daedalus log` command to audit previous changes and see the reasoning behind each auto‑generated patch.
+                <strong>Pro Tip:</strong> Add custom rules to the slash spec for linting or code style to keep the generated code consistent with your project.
             </div>
         </section>
 
@@ -504,11 +509,15 @@
             <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 1: Over‑reliance on auto‑generated code can mask subtle bugs—always review generated logic before merging.
+                <strong>Watch Out:</strong> Pitfall 1: Ignoring the generated Jest tests may lead to untested code if you edit manually. Always review tests first.
             </div>
 
             <div class="pitfall">
-                <strong>Watch Out:</strong> Pitfall 2: If your repository contains non‑standard test runners, Daedalus may default to Jest; configure the `--test-framework` flag accordingly.
+                <strong>Watch Out:</strong> Pitfall 2: Running `daedalus` on a repository without a proper Git remote will stall the PR step—ensure `git remote add origin …` is set up.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Over‑relying on auto‑PR can mask merge conflicts if multiple contributors modify the same file concurrently; use feature branches wisely.
             </div>
         </section>
 
@@ -518,20 +527,26 @@
 
                 <div class="tool-card">
                     <h4>Daedalus CLI</h4>
-                    <p>Local‑first multi‑agent workbench that auto‑generates code, tests, and Git commits.</p>
-                    <a href="https://github.com/daedalus/cli" target="_blank">View Resource →</a>
+                    <p>A terminal‑based multi‑agent workbench that automates code generation, testing, and Git workflow.</p>
+                    <a href="https://daedalus.ai" target="_blank">View Resource →</a>
                 </div>
 
                 <div class="tool-card">
                     <h4>Jest</h4>
-                    <p>JavaScript testing framework used for test‑first development.</p>
-                    <a href="https://jestjs.io/" target="_blank">View Resource →</a>
+                    <p>JavaScript testing framework used for the auto‑generated tests.</p>
+                    <a href="https://jestjs.io" target="_blank">View Resource →</a>
                 </div>
 
                 <div class="tool-card">
                     <h4>Git</h4>
-                    <p>Version control system integrated by Daedalus for branch creation and PR automation.</p>
-                    <a href="https://git-scm.com/" target="_blank">View Resource →</a>
+                    <p>Version control system used for branch management and PR automation.</p>
+                    <a href="https://git-scm.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>MCP Filesystem</h4>
+                    <p>Internal state store that preserves context across Daedalus sessions.</p>
+                    <a href="https://github.com/daedalus-ai/mcp" target="_blank">View Resource →</a>
                 </div>
             </div>
         </section>
@@ -542,17 +557,24 @@
                 <ul>
 
                     <li style="padding: 8px 0;">
-                        <a href="https://github.com/daedalus/cli#readme" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                        <a href="https://daedalus.ai/docs/v3.30.10" target="_blank" style="color: var(--accent-light); text-decoration: none;">
                             Daedalus v3.30.10 Documentation
                         </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official guide on installation, configuration, and command reference.</span>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official guide covering installation, configuration, and advanced features.</span>
                     </li>
 
                     <li style="padding: 8px 0;">
-                        <a href="https://jestjs.io/docs/en/getting-started" target="_blank" style="color: var(--accent-light); text-decoration: none;">
-                            Test‑Driven Development with Jest
+                        <a href="https://github.com/daedalus-ai/cli" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            GitHub Repository: daedalus-cli
                         </a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — How to write and run Jest tests effectively.</span>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Source code, issue tracker, and contribution guidelines.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://jestjs.io/docs/getting-started" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Jest Quick Start
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Learn how to write tests and run Jest in your project.</span>
                     </li>
                 </ul>
             </div>
@@ -562,28 +584,28 @@
             <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
 
             <div class="faq-item card">
-                <h3>Does Daedalus support TypeScript projects?</h3>
-                <p>Yes, Daedalus automatically detects TypeScript files and generates `.ts` files with proper typings when creating functions or tests.</p>
+                <h3>Can I use Daedalus with a non‑JavaScript codebase?</h3>
+                <p>Yes. Daedalus supports multiple languages via language adapters. Specify the language in your slash spec, and the tool will generate appropriate test and implementation files.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>Can I customize the test framework Daedalus uses?</h3>
-                <p>Use the `--test-framework` flag or edit the `daedalus.config.json` to specify frameworks such as Mocha, Vitest, or Jest.</p>
+                <h3>How does Daedalus determine where to place the helper function?</h3>
+                <p>It parses the current repository structure, follows naming conventions from the spec, and places new files in the correct directory tree based on project rules.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>How does Daedalus keep state across sessions?</h3>
-                <p>It uses MCP (Multi‑Component Persistence) roots stored in a hidden `.daedalus` directory that caches project context and spec goals.</p>
+                <h3>What happens if the auto‑generated tests fail?</h3>
+                <p>Daedalus will stop the implementation step and prompt you to fix the logic. You can edit the code manually or re‑prompt for a different implementation.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>What happens if a generated test fails?</h3>
-                <p>Daedalus will stop the implementation step and display a diff. You can edit the failing test or the implementation manually and re‑run `daedalus prompt`.</p>
+                <h3>Can I customize the Git merge strategy?</h3>
+                <p>Yes. Use `daedalus config set git.mergeStrategy squash` or `rebase` to override the default squash merge.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>Is there a way to rollback a merge performed by Daedalus?</h3>
-                <p>Because commits are squashed and merged cleanly, you can use `git reflog` to find the previous state or use GitHub's revert PR feature to undo changes.</p>
+                <h3>Does Daedalus support CI integrations?</h3>
+                <p>The generated test files are standard Jest, so any CI pipeline that runs `npm test` will work. Daedalus also emits a delivery log that can be parsed by custom CI scripts.</p>
             </div>
         </section>
 
@@ -594,7 +616,7 @@
             </p>
             <div class="tags">
             </div>
-            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-18 04:11 • This guide accompanies the video: "Daedalus v3.30.10"</p>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-19 00:59 • This guide accompanies the video: "Daedalus v3.30.10"</p>
         </footer>
     </div>
 </body>
