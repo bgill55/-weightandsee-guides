@@ -59,7 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
-- **[Weight And See Open Source Ai Hub](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-open-source-ai-hub/)** — 2026-08-20
+- **[Weight And See Open Source Ai Hub](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-open-source-ai-hub/)** — 2026-08-21
 - **[Cursor Launches Origin Code Hosting Platform As Github Outage Exposes Opening In](https://bgill55.github.io/-weightandsee-guides/guides/cursor-launches-origin-code-hosting-platform-as-github-outage-exposes-opening-in/)** — 2026-08-18
 - **[Techcrunch Ai Stripe Will Reportedly Acquire Ai Gateway Startup Openrouter For 7](https://bgill55.github.io/-weightandsee-guides/guides/techcrunch-ai-stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7/)** — 2026-08-17
 - **[Hermes Agent Setup Guide](https://bgill55.github.io/-weightandsee-guides/guides/hermes-agent-setup-guide/)** — 2026-08-17
