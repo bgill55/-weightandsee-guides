@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step educational guide for Weight and See Open-Source AI Hub.">
+    <meta name="keywords" content="weight and see open-source ai hub">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Weight and See Open-Source AI Hub - Complete Guide">
+    <meta property="og:description" content="Step-by-step educational guide for Weight and See Open-Source AI Hub.">
+    <meta property="og:type" content="article">
+    <title>Weight and See Open-Source AI Hub | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Weight and See Open-Source AI Hub</h1>
+            <p class="subtitle">This guide walks through setting up and running the Weight and See Open‑Source AI Hub, covering repository cloning, Docker‑based stack launch, using the unified CLI to invoke agents, and adding new agents via JSON manifests. It also explains the underlying communication patterns with NATS JetStream and Redis service registry, and offers best‑practice tips for contributors.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 20, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>The Hub bundles a Docker compose stack that includes model serving, Redis queues, and a Svelte UI, all started with a single `weight‑and‑see launch` command.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Agents are defined by JSON‑schema manifests and exposed through a unified CLI (`wsee run --agent <name> --input <file>`), enabling instant latency and cost comparisons.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Inter‑process communication is handled by NATS JetStream, which guarantees at‑least‑once delivery and back‑pressure handling for both CPU‑heavy vision models and GPU‑accelerated LLMs.</span></li>
+                    <li><span class="takeaway-num">4</span><span>GPU‑bound LLMs run in TensorRT‑optimized containers registered in Redis; the Hub routes requests based on provider capabilities such as batch size and VRAM.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Adding a new agent is trivial: drop a `manifest.json` into the `agents/` directory, restart the NATS bus, and the CLI can immediately invoke the new tool.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Git and a working terminal</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Docker Desktop or Docker Engine</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Go (1.20+) for compiling any Go‑based components</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Redis server (local or via Docker)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">NATS server with JetStream enabled</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the Hub Repository</h3>
+                <p>Open a terminal and clone the Weight and See repository from GitHub. Navigate into the project directory before running any further commands.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/weight-and-see/hub.git
+cd hub</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Install Dependencies and Build the CLI</h3>
+                <p>The project uses a Makefile for quick setup. Running `make install` will fetch Go dependencies, build the `weight-and-see` binary, and install it into your `$PATH`.</p>
+
+                <div class="code-block"><pre>make install
+# Verify installation
+weight-and-see --version</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Launch the Docker Compose Stack</h3>
+                <p>Start the full AI stack with Docker Compose. This will spin up containers for model serving, Redis, and the lightweight Svelte UI. The launch script also auto‑discovers available agents via their JSON manifests.</p>
+
+                <div class="code-block"><pre>weight-and-see launch
+# Or, if you prefer Docker Compose directly:
+# docker compose up -d</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Run an Agent via the Unified CLI</h3>
+                <p>Invoke any discovered agent by specifying its name and input file. The CLI publishes a request to the relevant NATS subject and streams real‑time metrics back to the terminal.</p>
+
+                <div class="code-block"><pre>wsee run --agent security --input file.pdf
+# Example output:
+# [INFO] Security scan started
+# [METRICS] latency=120ms token_cost=0.02</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Add a Custom Agent</h3>
+                <p>Create a new agent by writing a `manifest.json` in the `agents/` folder. Restart the NATS bus (`weight-and-see restart-bus`) and the CLI will now recognize the new agent without recompiling the core.</p>
+
+                <div class="code-block"><pre>// agents/ocr-agent/manifest.json
+{
+  "name": "ocr",
+  "description": "OCR text extraction from images",
+  "entry_point": "python ocr.py",
+  "parameters": {"image": "string"}
+}
+# Restart bus
+weight-and-see restart-bus
+# Test the new agent
+wsee run --agent ocr --input image.png</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the `-v` flag with `wsee run` to enable verbose logging and inspect the raw NATS payloads for debugging.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Leverage the Redis service registry by adding custom provider annotations; this allows the Hub to automatically select the GPU provider with the highest VRAM for heavy LLM workloads.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> When developing new agents, run the GitHub Actions CI locally (`act`) to catch linting and integration test failures before opening a PR.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to restart the NATS bus after adding a new `manifest.json` will result in the CLI not recognizing the agent. Restarting the bus is as simple as `weight-and-see restart-bus`.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Using `make install` on a machine without Go 1.20+ will cause compilation errors for the Go‑based core. Ensure your Go version matches the project’s minimum requirement.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Docker</h4>
+                    <p>Container runtime used to host model servers, Redis, and the UI.</p>
+                    <a href="https://www.docker.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Docker Compose</h4>
+                    <p>Orchestration tool for bringing up the multi‑container stack.</p>
+                    <a href="https://docs.docker.com/compose/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>NATS JetStream</h4>
+                    <p>Message bus that provides at‑least‑once delivery and back‑pressure handling for agent communication.</p>
+                    <a href="https://nats.io/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Redis</h4>
+                    <p>Key‑value store used as a service registry and queue backend.</p>
+                    <a href="https://redis.io/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>TensorRT</h4>
+                    <p>NVIDIA's high‑performance inference optimizer for GPU‑accelerated LLM containers.</p>
+                    <a href="https://developer.nvidia.com/tensorrt" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Svelte</h4>
+                    <p>Frontend framework powering the lightweight UI.</p>
+                    <a href="https://svelte.dev/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>OneCLI</h4>
+                    <p>Core CLI framework that the Hub builds on, providing command parsing and agent wrappers.</p>
+                    <a href="https://github.com/onecli/onecli" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Go</h4>
+                    <p>Primary language for the core Hub and service registry.</p>
+                    <a href="https://golang.org/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Rust</h4>
+                    <p>Used for performance‑critical components such as the NATS bus wrapper.</p>
+                    <a href="https://www.rust-lang.org/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/onecli/onecli" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OneCLI GitHub Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official source code, installation instructions, and releases for the OneCLI framework.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.onecli.dev/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OneCLI Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Comprehensive guide on setting up, authoring agents, and CI pipelines.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://gemini.google.com/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Google Gemini Official Resource
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Reference implementation for a multi‑modal model used as a demo adapter in the Hub.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.nats.io/nats-concepts/jetstream" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            NATS JetStream Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Detailed overview of message bus configuration and back‑pressure handling.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How do I update the model image used by the Hub?</h3>
+                <p>Edit the `onecli.yaml` file, change the `model` and `image` fields to the desired Docker image, then restart the Docker stack with `weight-and-see launch`.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I run the Hub entirely locally without Docker?</h3>
+                <p>The current distribution relies on Docker for container isolation. Running the Go binaries directly would require manually setting up Redis and NATS JetStream, which is not supported by the bundled scripts.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What if my GPU memory is limited and I want to run a large LLM?</h3>
+                <p>You can configure the TensorRT container to use mixed precision (FP16) and set the `batch_size` in the service registry to a smaller value. The Hub will automatically pick the provider with the lowest VRAM usage that still meets the request.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I contribute a new benchmark suite?</h3>
+                <p>Add a YAML benchmark definition to the `benchmarks/` directory, run the GitHub Actions workflow locally to verify it, and submit a pull request. The CI will execute the benchmark against all registered agents.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-20 23:14 • This guide accompanies the video: "Weight and See Open-Source AI Hub"</p>
+        </footer>
+    </div>
+</body>
+</html>

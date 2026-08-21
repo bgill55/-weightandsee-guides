@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/271_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/272_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-open-source-ai-hub/">
+<img src="guides/weight-and-see-open-source-ai-hub/thumbnail.jpg" width="300" alt="Weight And See Open Source Ai Hub"><br>
+<b>Weight And See Open Source Ai Hub</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/onecli-oss-sandboxed-agent-harness-for-teams/">
 <img src="guides/onecli-oss-sandboxed-agent-harness-for-teams/thumbnail.jpg" width="300" alt="Onecli Oss Sandboxed Agent Harness For Teams"><br>
@@ -31,12 +37,6 @@
 <b>Onecli The Open Source Agent Harness That Keeps Your Ai Truly Local</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/binance-introduces-agent-os-to-connect-ai-applications-to-financial-infrastructu/">
-<img src="guides/binance-introduces-agent-os-to-connect-ai-applications-to-financial-infrastructu/thumbnail.jpg" width="300" alt="Binance Introduces Agent Os To Connect Ai Applications To Financial Infrastructu"><br>
-<b>Binance Introduces Agent Os To Connect Ai Applications To Financial Infrastructu</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![121](https://img.shields.io/badge/121-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![122](https://img.shields.io/badge/122-blue?style=flat-square) |
 | **Model Deep Dives** | ![93](https://img.shields.io/badge/93-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Weight And See Open Source Ai Hub](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-open-source-ai-hub/)** — 2026-08-20
 - **[Cursor Launches Origin Code Hosting Platform As Github Outage Exposes Opening In](https://bgill55.github.io/-weightandsee-guides/guides/cursor-launches-origin-code-hosting-platform-as-github-outage-exposes-opening-in/)** — 2026-08-18
 - **[Techcrunch Ai Stripe Will Reportedly Acquire Ai Gateway Startup Openrouter For 7](https://bgill55.github.io/-weightandsee-guides/guides/techcrunch-ai-stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7/)** — 2026-08-17
 - **[Hermes Agent Setup Guide](https://bgill55.github.io/-weightandsee-guides/guides/hermes-agent-setup-guide/)** — 2026-08-17
