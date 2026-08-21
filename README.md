@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/272_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/273_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/">
+<img src="guides/weight-and-see-ai-guides-repo/thumbnail.jpg" width="300" alt="Weight And See Ai Guides Repo"><br>
+<b>Weight And See Ai Guides Repo</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-open-source-ai-hub/">
 <img src="guides/weight-and-see-open-source-ai-hub/thumbnail.jpg" width="300" alt="Weight And See Open Source Ai Hub"><br>
@@ -31,12 +37,6 @@
 <b>Onecli Oss Sandboxed Agent Harness For Teams</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/onecli-the-open-source-agent-harness-that-keeps-your-ai-truly-local/">
-<img src="guides/onecli-the-open-source-agent-harness-that-keeps-your-ai-truly-local/thumbnail.jpg" width="300" alt="Onecli The Open Source Agent Harness That Keeps Your Ai Truly Local"><br>
-<b>Onecli The Open Source Agent Harness That Keeps Your Ai Truly Local</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![122](https://img.shields.io/badge/122-blue?style=flat-square) |
-| **Model Deep Dives** | ![93](https://img.shields.io/badge/93-blue?style=flat-square) |
+| **Model Deep Dives** | ![94](https://img.shields.io/badge/94-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![13](https://img.shields.io/badge/13-blue?style=flat-square) |
@@ -188,6 +188,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Weight And See Ai Guides Repo](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/)** — 2026-08-21
 - **[Daedalus V33011 Antifragile Autonomous Coding With Specfirst Architecture Real S](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33011-antifragile-autonomous-coding-with-specfirst-architecture-real-s/)** — 2026-08-19
 - **[Guide](https://bgill55.github.io/-weightandsee-guides/guides/guide/)** — 2026-08-12
 - **[Ai Agent Hacks Gym To Get Its User A Spot In Pilates Class](https://bgill55.github.io/-weightandsee-guides/guides/ai-agent-hacks-gym-to-get-its-user-a-spot-in-pilates-class/)** — 2026-08-12
