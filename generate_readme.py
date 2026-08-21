@@ -201,10 +201,6 @@ def generate_readme():
 
     lines.append('<div align="center">')
     lines.append('')
-    lines.append('<a href="https://youtube.com/@WeightnSee">')
-    lines.append(f'<img src="channel_banner.png" width="100%" alt="Weight and See channel banner">')
-    lines.append('</a>')
-    lines.append('')
     lines.append('<img src="assets/hero-banner.png" width="100%" alt="Weight and See Guides Wiki">')
     lines.append('')
     lines.append('</div>')
@@ -288,6 +284,10 @@ def generate_readme():
     lines.append('Watch the video for visual walkthroughs, then use the guide for code snippets and step-by-step instructions.')
     lines.append('')
     lines.append('[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@WeightnSee)')
+    lines.append('')
+    lines.append('<a href="https://youtube.com/@WeightnSee">')
+    lines.append(f'<img src="channel_banner.png" width="100%" alt="Weight and See channel banner">')
+    lines.append('</a>')
     lines.append('')
     lines.append('</div>')
 

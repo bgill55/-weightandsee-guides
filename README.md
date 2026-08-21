@@ -1,9 +1,5 @@
 <div align="center">
 
-<a href="https://youtube.com/@WeightnSee">
-<img src="channel_banner.png" width="100%" alt="Weight and See channel banner">
-</a>
-
 <img src="assets/hero-banner.png" width="100%" alt="Weight and See Guides Wiki">
 
 </div>
@@ -389,5 +385,9 @@ Each guide corresponds to a video on the [Weight and See](https://youtube.com/@W
 Watch the video for visual walkthroughs, then use the guide for code snippets and step-by-step instructions.
 
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@WeightnSee)
+
+<a href="https://youtube.com/@WeightnSee">
+<img src="channel_banner.png" width="100%" alt="Weight and See channel banner">
+</a>
 
 </div>
