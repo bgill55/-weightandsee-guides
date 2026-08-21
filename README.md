@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/273_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/274_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/claude-5-token-vomit-cleaner-handson-review/">
+<img src="guides/claude-5-token-vomit-cleaner-handson-review/thumbnail.jpg" width="300" alt="Claude 5 Token Vomit Cleaner Handson Review"><br>
+<b>Claude 5 Token Vomit Cleaner Handson Review</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/">
 <img src="guides/weight-and-see-ai-guides-repo/thumbnail.jpg" width="300" alt="Weight And See Ai Guides Repo"><br>
@@ -31,12 +37,6 @@
 <b>Weight And See Open Source Ai Hub</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/onecli-oss-sandboxed-agent-harness-for-teams/">
-<img src="guides/onecli-oss-sandboxed-agent-harness-for-teams/thumbnail.jpg" width="300" alt="Onecli Oss Sandboxed Agent Harness For Teams"><br>
-<b>Onecli Oss Sandboxed Agent Harness For Teams</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![122](https://img.shields.io/badge/122-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![123](https://img.shields.io/badge/123-blue?style=flat-square) |
 | **Model Deep Dives** | ![94](https://img.shields.io/badge/94-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Claude 5 Token Vomit Cleaner Handson Review](https://bgill55.github.io/-weightandsee-guides/guides/claude-5-token-vomit-cleaner-handson-review/)** — 2026-08-21
 - **[Weight And See Open Source Ai Hub](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-open-source-ai-hub/)** — 2026-08-21
 - **[Cursor Launches Origin Code Hosting Platform As Github Outage Exposes Opening In](https://bgill55.github.io/-weightandsee-guides/guides/cursor-launches-origin-code-hosting-platform-as-github-outage-exposes-opening-in/)** — 2026-08-18
 - **[Techcrunch Ai Stripe Will Reportedly Acquire Ai Gateway Startup Openrouter For 7](https://bgill55.github.io/-weightandsee-guides/guides/techcrunch-ai-stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7/)** — 2026-08-17
