@@ -20,15 +20,15 @@
 
 <table><tr>
 <td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/claude-5-token-vomit-cleaner-handson-review/">
-<img src="guides/claude-5-token-vomit-cleaner-handson-review/thumbnail.jpg" width="300" alt="Claude 5 Token Vomit Cleaner Handson Review"><br>
-<b>Claude 5 Token Vomit Cleaner Handson Review</b>
-</a>
-</td>
-<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/">
 <img src="guides/weight-and-see-ai-guides-repo/thumbnail.jpg" width="300" alt="Weight And See Ai Guides Repo"><br>
 <b>Weight And See Ai Guides Repo</b>
+</a>
+</td>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/claude-5-token-vomit-cleaner-handson-review/">
+<img src="guides/claude-5-token-vomit-cleaner-handson-review/thumbnail.jpg" width="300" alt="Claude 5 Token Vomit Cleaner Handson Review"><br>
+<b>Claude 5 Token Vomit Cleaner Handson Review</b>
 </a>
 </td>
 <td align="center" width="33%">
