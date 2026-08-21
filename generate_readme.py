@@ -201,6 +201,10 @@ def generate_readme():
 
     lines.append('<div align="center">')
     lines.append('')
+    lines.append('<a href="https://youtube.com/@WeightnSee">')
+    lines.append(f'<img src="channel_banner.png" width="100%" alt="Weight and See channel banner">')
+    lines.append('</a>')
+    lines.append('')
     lines.append('<img src="assets/hero-banner.png" width="100%" alt="Weight and See Guides Wiki">')
     lines.append('')
     lines.append('</div>')
@@ -737,9 +741,37 @@ def generate_index_html():
             color: var(--text-muted);
             font-size: 0.9rem;
         }}
+
+        .index-banner-wrap {{
+            max-width: 1280px;
+            margin: 20px auto 0;
+            padding: 0 24px;
+        }}
+
+        .index-banner {{
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 240px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }}
+
+        .index-banner-wrap a:hover .index-banner {{
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.25);
+        }}
     </style>
 </head>
 <body>
+    <div class="index-banner-wrap">
+        <a href="https://youtube.com/@WeightnSee" target="_blank" rel="noopener" title="Visit Weight and See on YouTube">
+            <img class="index-banner" src="../channel_banner.png" alt="Weight and See channel banner">
+        </a>
+    </div>
     <header class="site-header">
         <div class="header-inner">
             <a href="./" class="brand">

@@ -1,5 +1,9 @@
 <div align="center">
 
+<a href="https://youtube.com/@WeightnSee">
+<img src="channel_banner.png" width="100%" alt="Weight and See channel banner">
+</a>
+
 <img src="assets/hero-banner.png" width="100%" alt="Weight and See Guides Wiki">
 
 </div>
