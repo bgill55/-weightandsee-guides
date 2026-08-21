@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/272_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/271_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -49,7 +49,7 @@
 | **Model Deep Dives** | ![93](https://img.shields.io/badge/93-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![14](https://img.shields.io/badge/14-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![13](https://img.shields.io/badge/13-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -352,7 +352,6 @@
 - **[Creating Mac Apps With Ai A Step By Step Guide](https://bgill55.github.io/-weightandsee-guides/guides/creating-mac-apps-with-ai-a-step-by-step-guide/)** — 2026-06-15
 - **[Agent Reach Unpacked Free Allinone Internet Access For Ai Agents](https://bgill55.github.io/-weightandsee-guides/guides/agent-reach-unpacked-free-allinone-internet-access-for-ai-agents/)** — 2026-06-13
 - **[Build a Gemini-Optimized App on Apple Silicon](https://bgill55.github.io/-weightandsee-guides/guides/build-a-gemini-optimized-app-on-apple-silicon-hands-on-tutorial/)** — 2026-06-09
-- **[Inside Harness The Engine Powering Deepseeks Coding Agent](https://bgill55.github.io/-weightandsee-guides/guides/inside-harness-the-engine-powering-deepseeks-coding-agent/)**
 
 ---
 
