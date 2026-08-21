@@ -100,6 +100,7 @@ TITLE_OVERRIDES = {
 }
 
 CATEGORY_OVERRIDES = {
+    "weight-and-see-ai-guides-repo": "Model Deep Dives",
     "build-a-gemini-optimized-app-on-apple-silicon-hands-on-tutorial": "Developer Tools & Agents",
     "build-a-nocode-claude-fable-5-agent-in-5-minutes-no-coding-required": "No-Code & Automation",
     "claude-fable-5-desktop-test-realworld-speed-on-a-hyperv-vm": "Developer Tools & Agents",
@@ -960,6 +961,7 @@ def generate_index_html():
         }});
 
         // Initialize page
+        searchInput.placeholder = `Search ${{GUIDES_DATA.length}}+ guides by title, model, or topic...`;
         buildCategoriesBar();
         buildFeaturedSection();
         render();

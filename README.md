@@ -45,8 +45,8 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![123](https://img.shields.io/badge/123-blue?style=flat-square) |
-| **Model Deep Dives** | ![93](https://img.shields.io/badge/93-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![122](https://img.shields.io/badge/122-blue?style=flat-square) |
+| **Model Deep Dives** | ![94](https://img.shields.io/badge/94-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![13](https://img.shields.io/badge/13-blue?style=flat-square) |
@@ -59,7 +59,6 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
-- **[Weight And See Ai Guides Repo](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/)** — 2026-08-21
 - **[Weight And See Open Source Ai Hub](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-open-source-ai-hub/)** — 2026-08-21
 - **[Cursor Launches Origin Code Hosting Platform As Github Outage Exposes Opening In](https://bgill55.github.io/-weightandsee-guides/guides/cursor-launches-origin-code-hosting-platform-as-github-outage-exposes-opening-in/)** — 2026-08-18
 - **[Techcrunch Ai Stripe Will Reportedly Acquire Ai Gateway Startup Openrouter For 7](https://bgill55.github.io/-weightandsee-guides/guides/techcrunch-ai-stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7/)** — 2026-08-17
@@ -189,6 +188,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Weight And See Ai Guides Repo](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/)** — 2026-08-21
 - **[Daedalus V33011 Antifragile Autonomous Coding With Specfirst Architecture Real S](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33011-antifragile-autonomous-coding-with-specfirst-architecture-real-s/)** — 2026-08-19
 - **[Guide](https://bgill55.github.io/-weightandsee-guides/guides/guide/)** — 2026-08-12
 - **[Ai Agent Hacks Gym To Get Its User A Spot In Pilates Class](https://bgill55.github.io/-weightandsee-guides/guides/ai-agent-hacks-gym-to-get-its-user-a-spot-in-pilates-class/)** — 2026-08-12
