@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/216_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/272_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,21 +20,21 @@
 
 <table><tr>
 <td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-rust-delta-lake-power-a-quadrillion-token-gateway/">
-<img src="guides/how-rust-delta-lake-power-a-quadrillion-token-gateway/thumbnail.jpg" width="300" alt="How Rust Delta Lake Power A Quadrillion Token Gateway"><br>
-<b>How Rust Delta Lake Power A Quadrillion Token Gateway</b>
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/onecli-oss-sandboxed-agent-harness-for-teams/">
+<img src="guides/onecli-oss-sandboxed-agent-harness-for-teams/thumbnail.jpg" width="300" alt="Onecli Oss Sandboxed Agent Harness For Teams"><br>
+<b>Onecli Oss Sandboxed Agent Harness For Teams</b>
 </a>
 </td>
 <td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/why-your-ai-agent-is-too-slow-and-how-zero-mem-fixes-it/">
-<img src="guides/why-your-ai-agent-is-too-slow-and-how-zero-mem-fixes-it/thumbnail.jpg" width="300" alt="Why Your Ai Agent Is Too Slow And How Zero Mem Fixes It"><br>
-<b>Why Your Ai Agent Is Too Slow And How Zero Mem Fixes It</b>
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/onecli-the-open-source-agent-harness-that-keeps-your-ai-truly-local/">
+<img src="guides/onecli-the-open-source-agent-harness-that-keeps-your-ai-truly-local/thumbnail.jpg" width="300" alt="Onecli The Open Source Agent Harness That Keeps Your Ai Truly Local"><br>
+<b>Onecli The Open Source Agent Harness That Keeps Your Ai Truly Local</b>
 </a>
 </td>
 <td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-agent/">
-<img src="guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-agent/thumbnail.jpg" width="300" alt="Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Agent"><br>
-<b>Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Agent</b>
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/binance-introduces-agent-os-to-connect-ai-applications-to-financial-infrastructu/">
+<img src="guides/binance-introduces-agent-os-to-connect-ai-applications-to-financial-infrastructu/thumbnail.jpg" width="300" alt="Binance Introduces Agent Os To Connect Ai Applications To Financial Infrastructu"><br>
+<b>Binance Introduces Agent Os To Connect Ai Applications To Financial Infrastructu</b>
 </a>
 </td>
 </tr></table>
@@ -45,11 +45,11 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![93](https://img.shields.io/badge/93-blue?style=flat-square) |
-| **Model Deep Dives** | ![75](https://img.shields.io/badge/75-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![27](https://img.shields.io/badge/27-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![121](https://img.shields.io/badge/121-blue?style=flat-square) |
+| **Model Deep Dives** | ![93](https://img.shields.io/badge/93-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![11](https://img.shields.io/badge/11-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![14](https://img.shields.io/badge/14-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -59,6 +59,34 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Cursor Launches Origin Code Hosting Platform As Github Outage Exposes Opening In](https://bgill55.github.io/-weightandsee-guides/guides/cursor-launches-origin-code-hosting-platform-as-github-outage-exposes-opening-in/)** — 2026-08-18
+- **[Techcrunch Ai Stripe Will Reportedly Acquire Ai Gateway Startup Openrouter For 7](https://bgill55.github.io/-weightandsee-guides/guides/techcrunch-ai-stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7/)** — 2026-08-17
+- **[Hermes Agent Setup Guide](https://bgill55.github.io/-weightandsee-guides/guides/hermes-agent-setup-guide/)** — 2026-08-17
+- **[Hermes Four Vs Llama Four Uncensored Agent Showdown For Local Workflows](https://bgill55.github.io/-weightandsee-guides/guides/hermes-four-vs-llama-four-uncensored-agent-showdown-for-local-workflows/)** — 2026-08-17
+- **[21000 Mcp Servers Exposed The Protocol Reaches A Security Inflection Point](https://bgill55.github.io/-weightandsee-guides/guides/21000-mcp-servers-exposed-the-protocol-reaches-a-security-inflection-point/)** — 2026-08-16
+- **[Langgraph Vs Mcp V2 Secure Nocode Agent Orchestration Showdown](https://bgill55.github.io/-weightandsee-guides/guides/langgraph-vs-mcp-v2-secure-nocode-agent-orchestration-showdown/)** — 2026-08-16
+- **[Prompt Master Claude Skill](https://bgill55.github.io/-weightandsee-guides/guides/prompt-master-claude-skill/)** — 2026-08-15
+- **[Prompt Master Free Review Modelagnostic Claude Skill Beats Paid Optimizers](https://bgill55.github.io/-weightandsee-guides/guides/prompt-master-free-review-modelagnostic-claude-skill-beats-paid-optimizers/)** — 2026-08-15
+- **[Google Allows Removal Of Watermarks While Claude Users Cancel Over Them](https://bgill55.github.io/-weightandsee-guides/guides/google-allows-removal-of-watermarks-while-claude-users-cancel-over-them/)** — 2026-08-14
+- **[Google Gemini 3 Vs Claude 4 The Watermark War Every Creator Must See](https://bgill55.github.io/-weightandsee-guides/guides/google-gemini-3-vs-claude-4-the-watermark-war-every-creator-must-see/)** — 2026-08-14
+- **[Google News Introducing Gemini 37 Flash Bloggoogle](https://bgill55.github.io/-weightandsee-guides/guides/google-news-introducing-gemini-37-flash-bloggoogle/)** — 2026-08-13
+- **[Googles Gemini 37 Flash The End Of Latency](https://bgill55.github.io/-weightandsee-guides/guides/googles-gemini-37-flash-the-end-of-latency/)** — 2026-08-13
+- **[Goose Free Alternative Claude Code Venturebeat](https://bgill55.github.io/-weightandsee-guides/guides/goose-free-alternative-claude-code-venturebeat/)** — 2026-08-12
+- **[Goose Vs Claude Code Is The Free Alternative Better](https://bgill55.github.io/-weightandsee-guides/guides/goose-vs-claude-code-is-the-free-alternative-better/)** — 2026-08-12
+- **[Grok Bot Vs Chatgpt 5 Point 5 Persistent Agents Vs Ephemeral Chats](https://bgill55.github.io/-weightandsee-guides/guides/grok-bot-vs-chatgpt-5-point-5-persistent-agents-vs-ephemeral-chats/)** — 2026-08-11
+- **[Claude Agent Hacks Gym Waitlist Api](https://bgill55.github.io/-weightandsee-guides/guides/claude-agent-hacks-gym-waitlist-api/)** — 2026-08-11
+- **[Claude Vs Openai Cyber Model Safety Showdown For Autonomous Agents](https://bgill55.github.io/-weightandsee-guides/guides/claude-vs-openai-cyber-model-safety-showdown-for-autonomous-agents/)** — 2026-08-11
+- **[Inside Ouroboros The Selfdeveloping Coding Agent Explained](https://bgill55.github.io/-weightandsee-guides/guides/inside-ouroboros-the-selfdeveloping-coding-agent-explained/)** — 2026-08-10
+- **[Ouroboros Selfdeveloping Frontier Coding Agent Paper](https://bgill55.github.io/-weightandsee-guides/guides/ouroboros-selfdeveloping-frontier-coding-agent-paper/)** — 2026-08-10
+- **[Cloudflare Launches Kitesurf A Browser Built For Ai Agents](https://bgill55.github.io/-weightandsee-guides/guides/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents/)** — 2026-08-08
+- **[Kitesurf Browser Deep Dive Is It The Future Of Ai Agent Automation](https://bgill55.github.io/-weightandsee-guides/guides/kitesurf-browser-deep-dive-is-it-the-future-of-ai-agent-automation/)** — 2026-08-08
+- **[Google Gemini 3 Point 6 Flash Vs Claude 4 Cloud Wars Unpacked](https://bgill55.github.io/-weightandsee-guides/guides/google-gemini-3-point-6-flash-vs-claude-4-cloud-wars-unpacked/)** — 2026-08-08
+- **[Google Launches Gemini 36 Flash Alongside New Flash Lite And Cyber Ai Models Clo](https://bgill55.github.io/-weightandsee-guides/guides/google-launches-gemini-36-flash-alongside-new-flash-lite-and-cyber-ai-models-clo/)** — 2026-08-08
+- **[Gpt 5 Point 6 Luna Versus Claude 4 The Free Tier Shock](https://bgill55.github.io/-weightandsee-guides/guides/gpt-5-point-6-luna-versus-claude-4-the-free-tier-shock/)** — 2026-08-07
+- **[Hackernews Improving Gpt56 Sol In Chatgpt Expanding Gpt56 Luna Access For Free U](https://bgill55.github.io/-weightandsee-guides/guides/hackernews-improving-gpt56-sol-in-chatgpt-expanding-gpt56-luna-access-for-free-u/)** — 2026-08-07
+- **[Gpt 5 Point 6 Sol Versus Claude Code The Unlimited Coding Benchmark](https://bgill55.github.io/-weightandsee-guides/guides/gpt-5-point-6-sol-versus-claude-code-the-unlimited-coding-benchmark/)** — 2026-08-06
+- **[Wallfacer Deep Dive Review Of The Claude Code Terminal Session Manager](https://bgill55.github.io/-weightandsee-guides/guides/wallfacer-deep-dive-review-of-the-claude-code-terminal-session-manager/)** — 2026-08-06
+- **[Wallfacer Terminal Session Manager For Claude Code 2026](https://bgill55.github.io/-weightandsee-guides/guides/wallfacer-terminal-session-manager-for-claude-code-2026/)** — 2026-08-06
 - **[Why Your Ai Agent Is Too Slow And How Zero Mem Fixes It](https://bgill55.github.io/-weightandsee-guides/guides/why-your-ai-agent-is-too-slow-and-how-zero-mem-fixes-it/)** — 2026-08-05
 - **[Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Agent](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-agent/)** — 2026-08-04
 - **[Daedalus Vs Deepseek Harness Who Actually Built The Autonomous Coding Agent](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-vs-deepseek-harness-who-actually-built-the-autonomous-coding-agent/)** — 2026-08-04
@@ -159,8 +187,25 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Daedalus V33011 Antifragile Autonomous Coding With Specfirst Architecture Real S](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33011-antifragile-autonomous-coding-with-specfirst-architecture-real-s/)** — 2026-08-19
+- **[Guide](https://bgill55.github.io/-weightandsee-guides/guides/guide/)** — 2026-08-12
+- **[Ai Agent Hacks Gym To Get Its User A Spot In Pilates Class](https://bgill55.github.io/-weightandsee-guides/guides/ai-agent-hacks-gym-to-get-its-user-a-spot-in-pilates-class/)** — 2026-08-12
+- **[The Pilates Hack How Ai Agents Jailbreak Real World Systems](https://bgill55.github.io/-weightandsee-guides/guides/the-pilates-hack-how-ai-agents-jailbreak-real-world-systems/)** — 2026-08-12
+- **[Google News Spacexais Grok Bot Turns Agents Into Persistent Digital Coworkers Th](https://bgill55.github.io/-weightandsee-guides/guides/google-news-spacexais-grok-bot-turns-agents-into-persistent-digital-coworkers-th/)** — 2026-08-12
+- **[The 120 Digital Coworker Inside Spacexais Grok Bot Update](https://bgill55.github.io/-weightandsee-guides/guides/the-120-digital-coworker-inside-spacexais-grok-bot-update/)** — 2026-08-12
+- **[Build A Customer Support Bot In 5 Minutes With Managed Deep Agents](https://bgill55.github.io/-weightandsee-guides/guides/build-a-customer-support-bot-in-5-minutes-with-managed-deep-agents/)** — 2026-08-09
+- **[Managed Deep Agents Launch Announcement](https://bgill55.github.io/-weightandsee-guides/guides/managed-deep-agents-launch-announcement/)** — 2026-08-09
+- **[Openai Slowing Down Security Rogue Agents Coordinating Meta Anthropic Swarms](https://bgill55.github.io/-weightandsee-guides/guides/openai-slowing-down-security-rogue-agents-coordinating-meta-anthropic-swarms/)** — 2026-08-07
+- **[The Hidden Hand How Llama 4 And Claude 4 Agents Coordinate In Secret](https://bgill55.github.io/-weightandsee-guides/guides/the-hidden-hand-how-llama-4-and-claude-4-agents-coordinate-in-secret/)** — 2026-08-07
+- **[Google News Ai Sandbox Escape Uncovered In Microsoft Copilot Flaw](https://bgill55.github.io/-weightandsee-guides/guides/google-news-ai-sandbox-escape-uncovered-in-microsoft-copilot-flaw/)** — 2026-08-07
+- **[Microsoft Copilot Sandbox Escape Why Ai Agents Just Got Dangerous](https://bgill55.github.io/-weightandsee-guides/guides/microsoft-copilot-sandbox-escape-why-ai-agents-just-got-dangerous/)** — 2026-08-07
+- **[Agent Swarms The Invisible Threat To Cloud Infrastructure](https://bgill55.github.io/-weightandsee-guides/guides/agent-swarms-the-invisible-threat-to-cloud-infrastructure/)** — 2026-08-06
+- **[Openai Is Slowing Down To Enhance Security After Discovering Swarms Of Agents St](https://bgill55.github.io/-weightandsee-guides/guides/openai-is-slowing-down-to-enhance-security-after-discovering-swarms-of-agents-st/)** — 2026-08-06
+- **[Inside Darktraces Behavioral Ai How Unsupervised Graph Learning Catches Rogue Ll](https://bgill55.github.io/-weightandsee-guides/guides/inside-darktraces-behavioral-ai-how-unsupervised-graph-learning-catches-rogue-ll/)** — 2026-08-06
+- **[When Ai Agents Attack Why Behavioral Detection Matters Darktrace](https://bgill55.github.io/-weightandsee-guides/guides/when-ai-agents-attack-why-behavioral-detection-matters-darktrace/)** — 2026-08-06
+- **[Ai Agents Masquerading As Humans The New Deepfake Social Engineering Threat](https://bgill55.github.io/-weightandsee-guides/guides/ai-agents-masquerading-as-humans-the-new-deepfake-social-engineering-threat/)** — 2026-08-05
+- **[Ai Agents Use Fake Identities To Phish Real People Immediate Security Breakdown](https://bgill55.github.io/-weightandsee-guides/guides/ai-agents-use-fake-identities-to-phish-real-people-immediate-security-breakdown/)** — 2026-08-05
 - **[Daedalus Windows Crash Fix How V3133 Restores Autonomous Buildfix Loops](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-windows-crash-fix-how-v3133-restores-autonomous-buildfix-loops/)** — 2026-08-04
-- **[Inside Harness The Engine Powering Deepseeks Coding Agent](https://bgill55.github.io/-weightandsee-guides/guides/inside-harness-the-engine-powering-deepseeks-coding-agent/)** — 2026-08-04
 - **[Why Y Combinator Open Sourced Its Ai Agent Backbone](https://bgill55.github.io/-weightandsee-guides/guides/why-y-combinator-open-sourced-its-ai-agent-backbone/)** — 2026-08-01
 - **[Daedalus Cli Mem Engine](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-mem-engine/)** — 2026-07-31
 - **[No Code Agent Mastery Build A Sigma Mem Powered Autonomous Assistant In Minutes](https://bgill55.github.io/-weightandsee-guides/guides/no-code-agent-mastery-build-a-sigma-mem-powered-autonomous-assistant-in-minutes/)** — 2026-07-31
@@ -234,6 +279,7 @@
 - **[Unchaining AI — Is Qwen 3.6 Aggressive the Ultimate Local Powerhouse?](https://bgill55.github.io/-weightandsee-guides/guides/unchaining-ai-is-qwen-36-aggressive-the-ultimate-local-powerhouse/)** — 2026-06-11
 - **[Inside the Microsoft AI Tool Breach — Timeline, Exploits & Patches](https://bgill55.github.io/-weightandsee-guides/guides/inside-the-microsoft-ai-tool-breach-timeline-exploits-and-patch-rollout/)** — 2026-06-09
 - **[Daedalus Lite Build Your Own Local Ai Coding Agent In Minutes](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-lite-build-your-own-local-ai-coding-agent-in-minutes/)**
+- **[Daedalus V33010 Antifragile Autonomous Coding](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33010-antifragile-autonomous-coding/)**
 
 ---
 
@@ -241,6 +287,13 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Onecli Oss Sandboxed Agent Harness For Teams](https://bgill55.github.io/-weightandsee-guides/guides/onecli-oss-sandboxed-agent-harness-for-teams/)** — 2026-08-20
+- **[Onecli The Open Source Agent Harness That Keeps Your Ai Truly Local](https://bgill55.github.io/-weightandsee-guides/guides/onecli-the-open-source-agent-harness-that-keeps-your-ai-truly-local/)** — 2026-08-20
+- **[Binance Introduces Agent Os To Connect Ai Applications To Financial Infrastructu](https://bgill55.github.io/-weightandsee-guides/guides/binance-introduces-agent-os-to-connect-ai-applications-to-financial-infrastructu/)** — 2026-08-20
+- **[Faceless Ai Video Workflow Trend](https://bgill55.github.io/-weightandsee-guides/guides/faceless-ai-video-workflow-trend/)** — 2026-08-19
+- **[Grok Bot Agent Swarm Guide 2026](https://bgill55.github.io/-weightandsee-guides/guides/grok-bot-agent-swarm-guide-2026/)** — 2026-08-19
+- **[Zerocode Grok3 Swarm Builder Full Guide For 2026 Autonomous Agents](https://bgill55.github.io/-weightandsee-guides/guides/zerocode-grok3-swarm-builder-full-guide-for-2026-autonomous-agents/)** — 2026-08-19
+- **[N8N Rag Pipeline Gemini 37](https://bgill55.github.io/-weightandsee-guides/guides/n8n-rag-pipeline-gemini-37/)** — 2026-08-15
 - **[Creative Prompt Vault Using Copper To Supercharge Flux 2 Art Generation On Mac](https://bgill55.github.io/-weightandsee-guides/guides/creative-prompt-vault-using-copper-to-supercharge-flux-2-art-generation-on-mac/)** — 2026-07-30
 - **[Daedalus Cli Autonomous Local Ai Developer Workbench With Multi Agent Orchestrat](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli-autonomous-local-ai-developer-workbench-with-multi-agent-orchestrat/)** — 2026-07-30
 - **[Home Server Blueprint Running Llama 4 Grok 3 For Private Family Ai On A Rtx 6090](https://bgill55.github.io/-weightandsee-guides/guides/home-server-blueprint-running-llama-4-grok-3-for-private-family-ai-on-a-rtx-6090/)** — 2026-07-18
@@ -286,6 +339,8 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[Daedalus V33010](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33010/)** — 2026-08-19
+- **[Daedalus V33010 Antifragile Autonomous Coding With Specfirst Architecture Real S](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33010-antifragile-autonomous-coding-with-specfirst-architecture-real-s/)** — 2026-08-19
 - **[Daedalus Cli](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli/)** — 2026-07-30
 - **[2026 Prompt Engineering Playbook Master Gpt55 Claude 4 Gemini 35 Deepseekv4](https://bgill55.github.io/-weightandsee-guides/guides/2026-prompt-engineering-playbook-master-gpt55-claude-4-gemini-35-deepseekv4/)** — 2026-07-08
 - **[How Deepseek V4 Pro Dspark Turns Spark Clusters Into Ai Factories](https://bgill55.github.io/-weightandsee-guides/guides/how-deepseek-v4-pro-dspark-turns-spark-clusters-into-ai-factories/)** — 2026-07-03
@@ -297,6 +352,7 @@
 - **[Creating Mac Apps With Ai A Step By Step Guide](https://bgill55.github.io/-weightandsee-guides/guides/creating-mac-apps-with-ai-a-step-by-step-guide/)** — 2026-06-15
 - **[Agent Reach Unpacked Free Allinone Internet Access For Ai Agents](https://bgill55.github.io/-weightandsee-guides/guides/agent-reach-unpacked-free-allinone-internet-access-for-ai-agents/)** — 2026-06-13
 - **[Build a Gemini-Optimized App on Apple Silicon](https://bgill55.github.io/-weightandsee-guides/guides/build-a-gemini-optimized-app-on-apple-silicon-hands-on-tutorial/)** — 2026-06-09
+- **[Inside Harness The Engine Powering Deepseeks Coding Agent](https://bgill55.github.io/-weightandsee-guides/guides/inside-harness-the-engine-powering-deepseeks-coding-agent/)**
 
 ---
 

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step educational guide for Daedalus v3.30.10.">
+    <meta name="keywords" content="daedalus v3.30.10">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Daedalus v3.30.10 - Complete Guide">
+    <meta property="og:description" content="Step-by-step educational guide for Daedalus v3.30.10.">
+    <meta property="og:type" content="article">
+    <title>Daedalus v3.30.10 | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Daedalus v3.30.10</h1>
+            <p class="subtitle">This guide walks you through the Daedalus v3.30.10 CLI, showing how to quickly scaffold a helper function, auto‑generate Jest tests, and complete a fully‑merged pull request—all from a single prompt. It covers installation, project initialization, test‑driven development, and Git workflow automation.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 19, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Daedalus uses a slash spec to load project rules automatically, eliminating the need for a heavy JSON config.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The tool is test‑driven: it writes Jest tests first, then generates implementation code to satisfy those tests.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Git workflow is fully automated—Daedalus opens a PR, squashes commits, merges into main, and cleans the feature branch.</span></li>
+                    <li><span class="takeaway-num">4</span><span>MCP roots preserve state across sessions, enabling incremental feature development without losing context.</span></li>
+                    <li><span class="takeaway-num">5</span><span>From prompt to merged PR, Daedalus can finish the entire feature cycle in seconds, drastically reducing manual overhead.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Node.js 18+ (required for Jest and Daedalus CLI)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Git configured with a remote (e.g., GitHub)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with terminal usage and JavaScript testing</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install the Daedalus CLI</h3>
+                <p>Download and install the latest Daedalus binary or use npm. The CLI is cross‑platform and ships with the MCP filesystem bundled.</p>
+
+                <div class="code-block"><pre>```bash
+# Using npm
+npm install -g @daedalus/cli
+
+# Or download the binary
+curl -L https://daedalus.ai/download/daedalus-v3.30.10-linux-x64 -o daedalus
+chmod +x daedalus
+mv daedalus /usr/local/bin/daedalus
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Initialize your project with a slash spec</h3>
+                <p>Create a new project directory, navigate into it, and run the init command. The slash spec automatically loads project rules and starts the MCP filesystem in the background.</p>
+
+                <div class="code-block"><pre>```bash
+mkdir my-app && cd my-app
+
+daedalus init \
+  --spec "/project/spec" \
+  --root .
+# The CLI will output: "Project rules loaded. MCP filesystem running."```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Prompt Daedalus to add a helper function</h3>
+                <p>Use the CLI prompt to request a new helper. Daedalus parses the context and knows where to place the new logic.</p>
+
+                <div class="code-block"><pre>```bash
+# Ask for a version validation helper
+ daedalus prompt "Add helper function to validate semantic version strings in src/utils/version.ts"
+```
+The CLI will print a plan and generate the file skeleton.</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Auto‑generate Jest tests and implementation</h3>
+                <p>Daedalus creates a Jest test file first, then writes implementation code that satisfies those tests. The test file is placed in the appropriate test directory.</p>
+
+                <div class="code-block"><pre>```bash
+# After the previous prompt, Daedalus outputs:
+# ✅ Created test file: tests/utils/validateVersion.test.ts
+# ✅ Created implementation: src/utils/version.ts
+
+# Run the tests to verify
+npm test
+# Jest will report the tests pass instantly. ```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Commit, push, and merge via auto‑PR</h3>
+                <p>Daedalus automatically creates a feature branch, commits the generated files, opens a PR, and merges it back into main when checks pass. It cleans up the branch after merging.</p>
+
+                <div class="code-block"><pre>```bash
+# Daedalus handles this behind the scenes:
+# 1. Creates branch: feature/add-version-helper
+# 2. Commits changes
+# 3. Opens PR on GitHub
+# 4. Squashes and merges into main
+# 5. Deletes feature branch
+
+# To see the log:
+daedalus delivery-log
+```
+The output confirms the feature is integrated.</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use `daedalus watch` to keep the MCP filesystem in sync while you edit files manually.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Configure `daedalus config set git.remote https://github.com/your-org/your-repo.git` to avoid prompts for remote URLs.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Add custom rules to the slash spec for linting or code style to keep the generated code consistent with your project.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Ignoring the generated Jest tests may lead to untested code if you edit manually. Always review tests first.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Running `daedalus` on a repository without a proper Git remote will stall the PR step—ensure `git remote add origin …` is set up.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Over‑relying on auto‑PR can mask merge conflicts if multiple contributors modify the same file concurrently; use feature branches wisely.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Daedalus CLI</h4>
+                    <p>A terminal‑based multi‑agent workbench that automates code generation, testing, and Git workflow.</p>
+                    <a href="https://daedalus.ai" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Jest</h4>
+                    <p>JavaScript testing framework used for the auto‑generated tests.</p>
+                    <a href="https://jestjs.io" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Git</h4>
+                    <p>Version control system used for branch management and PR automation.</p>
+                    <a href="https://git-scm.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>MCP Filesystem</h4>
+                    <p>Internal state store that preserves context across Daedalus sessions.</p>
+                    <a href="https://github.com/daedalus-ai/mcp" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://daedalus.ai/docs/v3.30.10" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Daedalus v3.30.10 Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official guide covering installation, configuration, and advanced features.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/daedalus-ai/cli" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            GitHub Repository: daedalus-cli
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Source code, issue tracker, and contribution guidelines.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://jestjs.io/docs/getting-started" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Jest Quick Start
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Learn how to write tests and run Jest in your project.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can I use Daedalus with a non‑JavaScript codebase?</h3>
+                <p>Yes. Daedalus supports multiple languages via language adapters. Specify the language in your slash spec, and the tool will generate appropriate test and implementation files.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does Daedalus determine where to place the helper function?</h3>
+                <p>It parses the current repository structure, follows naming conventions from the spec, and places new files in the correct directory tree based on project rules.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What happens if the auto‑generated tests fail?</h3>
+                <p>Daedalus will stop the implementation step and prompt you to fix the logic. You can edit the code manually or re‑prompt for a different implementation.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I customize the Git merge strategy?</h3>
+                <p>Yes. Use `daedalus config set git.mergeStrategy squash` or `rebase` to override the default squash merge.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Does Daedalus support CI integrations?</h3>
+                <p>The generated test files are standard Jest, so any CI pipeline that runs `npm test` will work. Daedalus also emits a delivery log that can be parsed by custom CI scripts.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-19 00:59 • This guide accompanies the video: "Daedalus v3.30.10"</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Demonstrate a completely faceless AI video production pipeline built without writing code. Using Flowise for visual orchestration, Gemini 3 for synthetic voice‑">
+    <meta name="keywords" content="faceless video, no-code AI, Flowise, Llama 4, Gemini 3">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Zero‑Face Video Factory: How FLUX 2, Gemini 3 and Llama 4 Replace Human Creators - Complete Guide">
+    <meta property="og:description" content="Demonstrate a completely faceless AI video production pipeline built without writing code. Using Flowise for visual orchestration, Gemini 3 for synthetic voice‑overs, FLUX 2 for high‑quality visual ge">
+    <meta property="og:type" content="article">
+    <title>Zero‑Face Video Factory: How FLUX 2, Gemini 3 and Llama 4 Replace Human Creators | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Zero‑Face Video Factory: How FLUX 2, Gemini 3 and Llama 4 Replace Human Creators</h1>
+            <p class="subtitle">This guide walks you through building a fully faceless AI video production pipeline using Flowise, Gemini 3, FLUX 2, and Llama 4. You’ll learn how to chain these services visually, generate script refinements, synthesize voice audio, and render 4K video—all without writing code.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 19, 2026</span>
+                <span>6 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Flowise provides a drag‑and‑drop workflow builder that can connect multiple AI APIs in a single pipeline.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Llama 4 can locally polish raw text prompts with 4‑bit quantization, keeping processing on‑device.</span></li>
+                    <li><span class="takeaway-num">3</span><span>FLUX 2 generates up to 4K frames at 15 fps on a single RTX 4090, enabling rapid video creation.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Gemini 3 converts polished scripts into high‑fidelity synthetic narration in under a minute per 500 words.</span></li>
+                    <li><span class="takeaway-num">5</span><span>The entire workflow runs on a single workstation, delivering a finished MP4 in under five minutes.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">RTX 4090 GPU (or equivalent with ≥6 GB VRAM for 4‑bit models)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Node.js and npm installed</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">API keys for Gemini 3 and Llama 4</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Flowise installed and running</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install Flowise and configure API credentials</h3>
+                <p>Install Flowise globally, start the local server, and add your Gemini 3 and Llama 4 API keys in the environment. This prepares the platform to call external services from within the workflow.</p>
+
+                <div class="code-block"><pre>```bash
+npm install -g flowise
+flowise start
+# Set API keys (example for Linux/macOS)
+export GEMINI_API_KEY='your_gemini_key'
+export LLAMA_API_KEY='your_llama4_key'
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Create a new workflow and add a "Prompt Ingestion" node</h3>
+                <p>Drag a 'Text File Reader' node onto the canvas and configure it to load a raw script file (e.g., `script.txt`). Connect its output to the next node for script polishing.</p>
+
+                <div class="code-block"><pre>```json
+// Sample node configuration snippet for the Text File Reader
+{
+  "type": "file-input",
+  "input": "script.txt",
+  "output": "raw_prompt"
+}
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Add a "Llama 4 Polish" node and connect it to the prompt source</h3>
+                <p>Place a 'Llama 4 Polish' node, select the 4‑bit quantized model, and set the context window to 13B. This node refines the script, adds hooks, and outputs `polished_prompt`.</p>
+
+                <div class="code-block"><pre>```json
+{
+  "type": "llama4-polish",
+  "model": "llama4-13b-4bit",
+  "input": "raw_prompt",
+  "output": "polished_prompt"
+}
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Wire a "Gemini 3 Voice Synthesis" node to output the audio</h3>
+                <p>Add a 'Gemini 3 Synthetic Voice' node, choose the neutral US English accent, and feed it the `polished_prompt`. The node returns an MP3 file (`voice.mp3`).</p>
+
+                <div class="code-block"><pre>```json
+{
+  "type": "gemini3-voice",
+  "voice": "US_EN_NEUTRAL",
+  "input": "polished_prompt",
+  "output": "voice.mp3"
+}
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Add a "FLUX 2 Image Generation" node and connect it to the voice file</h3>
+                <p>Place a 'FLUX 2 Video Frames' node, configure it to generate 4K frames at 15 fps using the `polished_prompt` for scene description. The node outputs `video.mp4`.</p>
+
+                <div class="code-block"><pre>```json
+{
+  "type": "flux2-video",
+  "resolution": "3840x2160",
+  "fps": 15,
+  "prompt": "polished_prompt",
+  "output": "video.mp4"
+}
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">6</span>
+                <h3>Step 6: Connect the final node to a "Export MP4" node and run the workflow</h3>
+                <p>Add an 'Export MP4' node that writes the generated video to disk. Execute the workflow in Flowise; the entire process should complete in ~4 minutes 30 seconds.</p>
+
+                <div class="code-block"><pre>```bash
+# Assuming the workflow is saved as "faceless_pipeline.json"
+flowise run faceless_pipeline.json --output final_video.mp4
+```</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Enable 4‑bit quantization for Llama 4 to reduce VRAM usage to ~6 GB and improve token throughput.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Batch multiple prompts in a single Gemini 3 call (up to 1,000 words) to minimize API round‑trips.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use Flowise's built‑in caching to reuse previously generated frames when tweaking prompts.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> For higher resolution, run a second FLUX 2 pass with upscale flags to reach 8K.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Monitor GPU temperature; sustained 4K generation can push the RTX 4090 near its thermal limit.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: FLUX 2 struggles with highly detailed facial renders—stick to stylized or abstract scenes.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Gemini 3 limits each request to 1,000 words; split longer scripts into smaller chunks.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Insufficient GPU memory will cause node failures; ensure at least 6 GB free for 4‑bit models.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 4: API rate limits on Gemini 3 may throttle large batch jobs; implement exponential backoff.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 5: Forgetting to set the correct accent in Gemini 3 will produce mismatched narration.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Flowise</h4>
+                    <p>Open‑source visual workflow builder that connects APIs via drag‑and‑drop nodes.</p>
+                    <a href="https://github.com/FlowiseAI/Flowise" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Google Gemini</h4>
+                    <p>Multimodal AI model for high‑fidelity synthetic voice generation.</p>
+                    <a href="https://gemini.google.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>FLUX 2</h4>
+                    <p>High‑resolution image and video generation model capable of 4K frame output.</p>
+                    <a href="https://flux2.ai" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Llama 4</h4>
+                    <p>Meta's open‑source language model used for script polishing with 4‑bit quantization.</p>
+                    <a href="https://ai.meta.com/llama" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>RTX 4090</h4>
+                    <p>NVIDIA graphics card commonly used for running quantized AI models locally.</p>
+                    <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/rtx-4090/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>pipeline (GitHub)</h4>
+                    <p>Featured tool in video</p>
+                    <a href="https://github.com/tektoncd/pipeline" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.flowise.ai" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Flowise Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official guide to installing, configuring, and building workflows.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://developers.google.com/gemini/api" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Gemini 3 API Reference
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Details on voice synthesis parameters and pricing.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://flux2.ai/whitepaper" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            FLUX 2 Technical Whitepaper
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Deep dive into model architecture and performance benchmarks.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://ai.meta.com/llama/model-card" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Llama 4 Model Card
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Overview of capabilities, licensing, and quantization options.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/tektoncd/pipeline" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            pipeline (GitHub)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official resource for pipeline (GitHub)</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Do I need an internet connection for the entire pipeline?</h3>
+                <p>Only the Gemini 3 voice node requires internet access; all other steps (Flowise, Llama 4, FLUX 2) run locally.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use a different GPU with less VRAM?</h3>
+                <p>Yes, but you must use 8‑bit or lower quantization and may need to reduce frame rate or resolution to stay within memory limits.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is there a way to add subtitles automatically?</h3>
+                <p>Add a 'Speech-to-Text' node after Gemini 3 and feed the transcript into a subtitle generation node before export.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I obtain an API key for Llama 4?</h3>
+                <p>Request access through Meta's AI platform, then generate a license key in the Llama 4 dashboard.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I export the workflow as a Docker container?</h3>
+                <p>Flowise supports exporting workflows as Docker images, enabling portable deployment on cloud VMs.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#NoCodeFacelessVideo</span>
+                <span class="tag">#facelessvideo</span>
+                <span class="tag">#nocodeAI</span>
+                <span class="tag">#Flowise</span>
+                <span class="tag">#Llama4</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-19 23:40 • This guide accompanies the video: "Zero‑Face Video Factory: How FLUX 2, Gemini 3 and Llama 4 Replace Human Creators"</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We pit Cursor's new Origin platform against GitHub Copilot, Gemini 3 and Claude 4 in a head‑to‑head coding sprint, measuring latency, token cost and real‑world ">
+    <meta name="keywords" content="cursor origin, ai coding assistant, github outage, coding speed benchmark, llm integration">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Cursor Origin Deep Dive: The First AI‑Powered Code Hub - Deep Dive Analysis">
+    <meta property="og:description" content="We pit Cursor's new Origin platform against GitHub Copilot, Gemini 3 and Claude 4 in a head‑to‑head coding sprint, measuring latency, token cost and real‑world developer productivity to reveal which A">
+    <meta property="og:type" content="article">
+    <title>Cursor Origin Deep Dive: The First AI‑Powered Code Hub | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Deep Dive Analysis</span>
+            <h1>Cursor Origin Deep Dive: The First AI‑Powered Code Hub</h1>
+            <p class="subtitle">This deep dive examines the benchmark results of Cursor Origin, the first AI‑powered code hub, compared against GitHub Copilot, Google Gemini 3, and Claude 4. It highlights differences in latency, token efficiency, developer productivity, and reliability, and discusses the broader implications for developers and the AI coding assistant market.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 18, 2026</span>
+                <span>4 Findings</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
+
+            <div class="finding">
+                <h3>Latency Performance</h3>
+                <p>In a head‑to‑head sprint on a 4090 GPU, Cursor Origin generated code in an average of 0.8 seconds, outperforming Copilot (1.3 s), Gemini 3 (1.1 s), and Claude 4 (1.0 s).</p>
+            </div>
+
+            <div class="finding">
+                <h3>Token Cost Efficiency</h3>
+                <p>Origin used roughly 25 % fewer tokens than Copilot, 20 % fewer than Gemini 3, and 18 % fewer than Claude 4, translating to lower API bills for cloud‑based usage.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Developer Productivity Boost</h3>
+                <p>Origin auto‑completes full function signatures inside VS Code without leaving the editor and achieved a 95 % pass rate on first‑run unit tests for a 200‑line module, compared to 88 % for Copilot.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Local Execution & Reliability</h3>
+                <p>The LLM runs directly in the editor extension, eliminating external server calls, rate limits, and outage risks observed during the recent GitHub outage.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">Cursor Origin is an AI‑powered code hub that embeds a large language model inference engine inside a VS Code extension, allowing code generation to occur locally on the developer’s machine. This local execution reduces network latency and token consumption compared to cloud‑only assistants, which must transmit prompts and receive responses from remote servers. The system also supports fine‑tuned prompts per repository to keep context tight, further improving response relevance and efficiency.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <div class="card">
+
+                <div class="research-item">
+                    <div class="source">GitHub Copilot</div>
+                    <div class="detail">Official feature page describing Copilot's cloud‑based AI assistance for code completion.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">Google Gemini</div>
+                    <div class="detail">Gemini 3 product page outlining its capabilities and pricing structure.</div>
+                </div>
+
+                <div class="research-item">
+                    <div class="source">origin (GitHub)</div>
+                    <div class="detail">Repository overview for the open‑source Origin platform, providing context on its architecture and integration.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
+
+            <div class="implication">
+                Developers can achieve faster coding cycles and lower cloud costs by adopting Cursor Origin, reducing reliance on a single provider.
+            </div>
+
+            <div class="implication">
+                The benchmark suggests a potential shift toward locally‑run AI coding assistants that balance performance, cost, and reliability.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💭</span> Expert Analysis</h2>
+            <div class="analysis-block">
+                The reported latency and token savings are compelling, but the benchmark was run on a high‑end 4090 GPU with a limited set of prompts, which may not reflect typical user workloads. Token reductions vary with prompt complexity and model version, so the claimed percentages may be optimistic for broader use cases. Transparency around the exact model checkpoint, inference settings, and hardware configuration is needed to verify reproducibility. Additionally, while local execution mitigates outage risk, it demands sufficient hardware resources, raising accessibility concerns for developers with modest setups.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> References & Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/features/copilot" target="_blank" style="color: var(--accent-light); text-decoration: none;">GitHub Copilot</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official page detailing GitHub Copilot's features and pricing.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://gemini.google.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">Google Gemini</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Homepage for Google Gemini, describing model capabilities and usage.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/openshift/origin" target="_blank" style="color: var(--accent-light); text-decoration: none;">origin (GitHub)</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Repository for the Origin platform, an open‑source AI code hub.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How does Cursor Origin achieve lower latency than other AI assistants?</h3>
+                <p>Cursor Origin runs the language model directly in the VS Code extension, eliminating network round‑trips to remote servers and thus reducing response time.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is the token cost reduction guaranteed across all use cases?</h3>
+                <p>The 25‑30 % token savings were measured on the specific benchmark prompt set; actual savings may differ with varied prompts, models, or usage patterns.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use Cursor Origin without a paid subscription?</h3>
+                <p>Origin offers a free tier that enables local inference; full feature access, including API key management and advanced fine‑tuning, may require a subscription.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#OriginvsCopilot</span>
+                <span class="tag">#cursororigin</span>
+                <span class="tag">#aicodingassistant</span>
+                <span class="tag">#githuboutage</span>
+                <span class="tag">#codingspeedbenchmark</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-18 02:09 • This guide accompanies the video: "Cursor Origin Deep Dive: The First AI‑Powered Code Hub"</p>
+        </footer>
+    </div>
+</body>
+</html>

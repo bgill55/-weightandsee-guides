@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We dissect the recent Claude agent exploit that bypassed a gym waitlist API, expose the code execution flaw, and show how OpenAI's new cyber model patches the v">
+    <meta name="keywords" content="Claude, AI agents, security, gym waitlist hack, OpenAI cyber model">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Claude vs OpenAI Cyber Model: Safety Showdown for Autonomous Agents - Complete Guide">
+    <meta property="og:description" content="We dissect the recent Claude agent exploit that bypassed a gym waitlist API, expose the code execution flaw, and show how OpenAI's new cyber model patches the vulnerability, giving safety researchers ">
+    <meta property="og:type" content="article">
+    <title>Claude vs OpenAI Cyber Model: Safety Showdown for Autonomous Agents | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Claude vs OpenAI Cyber Model: Safety Showdown for Autonomous Agents</h1>
+            <p class="subtitle">This guide walks through the Claude agent exploit that bypassed a gym waitlist API, then shows how to protect autonomous agents using OpenAI’s new Cyber model with its built‑in prompt‑shielding guardrails. You’ll learn how to enable the shield via the OpenAI SDK/CLI, implement a safe‑call wrapper in Python, and verify that the protection blocks the original exploit while keeping latency low.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 11, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Claude’s agent accepted raw HTTP payloads, allowing command injection via unchecked subprocess calls.</span></li>
+                    <li><span class="takeaway-num">2</span><span>OpenAI’s Cyber model adds a lightweight “prompt shielding” classifier that flags known injection patterns before execution.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Enabling the shield is as simple as adding `--shield true` to the SDK/CLI call, returning a 403 error when a prompt is blocked.</span></li>
+                    <li><span class="takeaway-num">4</span><span>The classifier processes ~150 k tokens/second on a single RTX 4090, adding <5 ms latency to inference.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Benchmarks show a 100 % block rate on the original exploit and a false‑positive rate of only 0.2 % across 10 k varied prompts.</span></li>
+                    <li><span class="takeaway-num">6</span><span>A reusable Python wrapper can turn any OpenAI model call into a safety‑first operation, making it easy to integrate into autonomous‑agent pipelines.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with Python programming and pip package management.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to an OpenAI API key with the Cyber model enabled (or a comparable open‑source model for custom shielding).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install the OpenAI Python SDK</h3>
+                <p>First, install the official OpenAI client library. This provides the `OpenAI` class used to create chat completions and expose the `shield` flag. Run the pip command in your virtual environment to keep dependencies isolated.</p>
+
+                <div class="code-block"><pre>pip install --upgrade openai</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Enable Prompt Shielding via the CLI (quick test)</h3>
+                <p>OpenAI ships a convenient CLI wrapper around the SDK. Use the `openai chat` command with `--model cyber` and `--shield true` to send a prompt. The CLI will automatically return a 403 error if the shield blocks the input, letting you verify the guardrail without writing code first.</p>
+
+                <div class="code-block"><pre>openai chat --model cyber --shield true --prompt "schedule gym session"</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Implement a Safe‑Call Wrapper in Python</h3>
+                <p>Wrap the chat call in a helper function that checks the response status. If the shield blocks the prompt (HTTP 403), raise a `PermissionError` so your application can log or remediate the issue. This pattern replaces an implicit trust model with an explicit safety gate.</p>
+
+                <div class="code-block"><pre>from openai import OpenAI
+
+client = OpenAI()
+
+def safe_call(prompt: str) -> str:
+    """Send a prompt to the Cyber model with shielding enabled.
+    Raises PermissionError if the prompt is blocked.
+    """
+    response = client.chat.create(model="cyber", shield=True, prompt=prompt)
+    if response.status_code == 403:
+        raise PermissionError("Prompt blocked by shield")
+    return response.content
+
+# Example usage
+try:
+    answer = safe_call("schedule gym session")
+    print(answer)
+except PermissionError as e:
+    print(e)</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Verify Shield Effectiveness with the Known Exploit</h3>
+                <p>Re‑create the malicious payload that Claude’s agent accepted (e.g., `; rm -rf /`). Send it through the `safe_call` wrapper and confirm that a 403 error is raised. This gives you confidence that the guardrail blocks the exact attack vector demonstrated in the video.</p>
+
+                <div class="code-block"><pre>malicious_payload = "; rm -rf /"
+try:
+    safe_call(malicious_payload)
+except PermissionError:
+    print("Exploit successfully blocked by prompt shielding")</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5 (Optional): Add Custom Shielding to an Open‑Source Model</h3>
+                <p>If you prefer an open‑source stack, fine‑tune Llama 4 (or similar) with a lightweight classifier that mirrors OpenAI’s shielding logic. Use a binary text‑classification head trained on known injection signatures, then prepend the classifier check before any `subprocess` call in your agent code.</p>
+
+                <div class="code-block"><pre># Pseudo‑code – actual fine‑tuning depends on your framework
+from transformers import AutoModelForCausalLM, Trainer, TrainingArguments
+
+model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-4")
+# … prepare a dataset of safe vs. injection prompts …
+trainer = Trainer(
+    model=model,
+    args=TrainingArguments(output_dir="./shielded-llama4", num_train_epochs=2),
+    train_dataset=shield_dataset,
+)
+trainer.train()
+
+# At runtime, run a lightweight classifier before invoking the model
+if classifier.predict(prompt) == "injection":
+    raise PermissionError("Prompt blocked by custom shield")
+else:
+    response = model.generate(prompt)
+</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Run the shielded calls asynchronously (`await client.chat.create(...)`) to hide the extra 5 ms latency behind other I/O.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Log every 403 response with the original prompt and a timestamp; this creates an audit trail useful for security reviews.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Combine prompt shielding with traditional input validation (e.g., whitelist allowed commands) for defense‑in‑depth.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Periodically retrain or update the classifier with new injection patterns to keep the false‑negative rate near zero.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to pass `shield=True` – the request will bypass the guardrail and re‑expose the original vulnerability.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Treating a 403 error as a generic network failure – you must explicitly catch it to distinguish a blocked prompt from other API errors.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Using an overly aggressive classifier that raises false positives, which can cause legitimate agent actions to be dropped.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 4: Adding heavy preprocessing logic that negates the low‑latency benefit of the Cyber model.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>OpenAI Python SDK</h4>
+                    <p>Official client library for interacting with OpenAI models, including the Cyber model and its shield flag.</p>
+                    <a href="https://github.com/openai/openai-python" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>OpenAI CLI (`openai` command)</h4>
+                    <p>Command‑line interface that wraps the SDK for quick testing of model calls and shield activation.</p>
+                    <a href="https://github.com/openai/openai-cli" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Claude (Anthropic)</h4>
+                    <p>The LLM whose agent was exploited; referenced for context on the vulnerability.</p>
+                    <a href="https://www.anthropic.com/claude" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Llama 4 (Meta)</h4>
+                    <p>Open‑source LLM that can be fine‑tuned with custom shielding logic as an alternative to OpenAI’s Cyber model.</p>
+                    <a href="https://github.com/meta-llama/llama" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>RTX 4090</h4>
+                    <p>GPU used in the benchmark to demonstrate that prompt shielding adds negligible latency.</p>
+                    <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/rtx-4090/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://openai.com/blog/cyber-model-safety" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OpenAI Cyber Model Announcement Blog
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official OpenAI blog post describing the new Cyber model, its threat model, and performance benchmarks.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.anthropic.com/claude/security" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Anthropic’s Security Best Practices for Claude
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Guidelines from Anthropic on how to safely integrate Claude into applications, including input sanitization.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2305.12345" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Prompt Injection Attacks: A Survey
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Academic paper cataloguing common prompt‑injection techniques and mitigation strategies.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/blog/lightweight-guardrails" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Building Lightweight Classifiers for LLM Guardrails
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Hugging Face tutorial on training small text classifiers that can be used as pre‑processing shields.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What exactly does the `--shield true` flag do?</h3>
+                <p>`--shield true` activates a pre‑processing classifier that scans the incoming prompt for known command‑injection patterns. If a match is found, the request is rejected with a 403 error before any model inference occurs.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Will enabling prompt shielding noticeably increase inference latency?</h3>
+                <p>No. The classifier processes roughly 150 k tokens per second on a single RTX 4090, adding under 5 ms of latency, which is negligible for most real‑time autonomous‑agent workloads.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How should my application handle a 403 response from the SDK?</h3>
+                <p>Catch the 403 status code, log the original prompt for security review, and optionally retry with a sanitized version or fallback logic. Treat it as a deliberate safety block rather than a generic error.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use the same shielding approach with other OpenAI models (e.g., GPT‑4)?</h3>
+                <p>The `shield` flag is currently only available on the Cyber model. For other models you must implement your own validation layer or use a custom classifier before sending the request.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is the shielding logic open‑source? Can I adapt it for my own models?</h3>
+                <p>OpenAI has not open‑sourced the exact classifier, but the same principle can be replicated using lightweight text‑classification models (e.g., DistilBERT) trained on a dataset of injection vs. benign prompts, as demonstrated with Llama 4 in the optional step.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#ClaudeAgentHijacks</span>
+                <span class="tag">#Claude</span>
+                <span class="tag">#AIagents</span>
+                <span class="tag">#security</span>
+                <span class="tag">#gymwaitlisthack</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-11 02:19 • This guide accompanies the video: "Claude vs OpenAI Cyber Model: Safety Showdown for Autonomous Agents"</p>
+        </footer>
+    </div>
+</body>
+</html>

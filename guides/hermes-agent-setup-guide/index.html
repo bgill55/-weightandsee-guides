@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A hands‑on, step‑by‑step walkthrough that shows viewers how to set up an uncensored Hermes Four autonomous agent on a consumer‑grade GPU using the latest 4‑bit ">
+    <meta name="keywords" content="hermes four, local deployment, quantization, autonomous agent, open source ai">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Hermes Four vs Llama Four: Uncensored Agent Showdown for Local Workflows - Complete Guide">
+    <meta property="og:description" content="A hands‑on, step‑by‑step walkthrough that shows viewers how to set up an uncensored Hermes Four autonomous agent on a consumer‑grade GPU using the latest 4‑bit GGUF quantization, giving them a ready‑t">
+    <meta property="og:type" content="article">
+    <title>Hermes Four vs Llama Four: Uncensored Agent Showdown for Local Workflows | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Hermes Four vs Llama Four: Uncensored Agent Showdown for Local Workflows</h1>
+            <p class="subtitle">This guide walks you through installing and running the Hermes‑Four autonomous agent on a consumer‑grade GPU using 4‑bit GGUF quantization. It covers cloning the repo, setting up a Python environment, loading the model, initializing the agent, and running a sample prompt, with optional task scheduling and long‑term memory integration.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 17, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Hermes‑Four uses 4‑bit GGUF quantization to shrink the 175‑B model to ~1.8 GB, enabling 12 GB VRAM usage on an RTX 4090.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The framework is uncensored, giving full control over output and allowing custom safety layers.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Hermes achieves ~43 % faster token throughput than Llama 4 (50 tokens/s vs. 35 tokens/s on identical hardware).</span></li>
+                    <li><span class="takeaway-num">4</span><span>A lightweight prompt‑engineering and integrated task scheduler reduce latency to <250 ms per turn.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Memory buffers can be kept on‑GPU (memory_size parameter) and long‑term context can be stored in FAISS or Weaviate.</span></li>
+                    <li><span class="takeaway-num">6</span><span>3‑bit quantization is a viable option for lower‑VRAM GPUs like the RTX 3090, trading a small perplexity drop for ~8 GB memory usage.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.10+ with CUDA 12‑compatible drivers and a GPU with ≥12 GB VRAM (24 GB recommended for 4090).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic knowledge of Git, virtual environments, and installing Python packages via pip.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the Hermes Repo and Download the 4‑bit Model</h3>
+                <p>Clone the official Hermes repository from GitHub and download the 4‑bit GGUF model from Hugging Face. The download is under 2 GB and can be done with `wget` or your browser.</p>
+
+                <div class="code-block"><pre>```bash
+git clone https://github.com/hermes-ai/hermes.git
+cd hermes
+wget https://huggingface.co/hermes/gguf/resolve/main/hermes-four-4bit.gguf
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Set Up a Python 3.10 Virtual Environment and Install Dependencies</h3>
+                <p>Create a clean virtual environment, activate it, and install the required libraries: transformers for model handling and bitsandbytes for 4‑bit quantization.</p>
+
+                <div class="code-block"><pre>```bash
+python -m venv venv
+source venv/bin/activate
+pip install transformers==4.40.0 bitsandbytes==0.41.0
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Load the 4‑bit Model and Tokenizer</h3>
+                <p>Use Hugging Face’s `AutoModelForCausalLM` and `AutoTokenizer` to load the GGUF file, automatically mapping layers to the GPU and applying 4‑bit quantization.</p>
+
+                <div class="code-block"><pre>```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+model = AutoModelForCausalLM.from_pretrained(
+    "hermes-four-4bit.gguf",
+    device_map="auto",
+    quantization_config=dict(bits=4)
+)
+tokenizer = AutoTokenizer.from_pretrained("hermes-four-4bit.gguf")
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Initialize the Agent and Memory Buffer</h3>
+                <p>Create an `Agent` instance from the Hermes library, specifying a rolling memory buffer size to keep recent turns on‑GPU.</p>
+
+                <div class="code-block"><pre>```python
+from hermes import Agent
+agent = Agent(model, tokenizer, memory_size=256)
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Run a Test Prompt and (Optional) Set Up a Task Scheduler</h3>
+                <p>Execute a simple prompt to verify low latency and optionally configure a cron‑style task scheduler for autonomous daily runs.</p>
+
+                <div class="code-block"><pre>```python
+# Quick test prompt
+response = agent.run("Write a short poem about night skies.")
+print(response)
+
+# Optional: daily summary scheduler
+from hermes.utils import TaskScheduler
+scheduler = TaskScheduler(agent)
+scheduler.add_task("daily_summary", cron="0 8 * * *")
+scheduler.start()
+```</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If you hit OOM errors, try lowering `memory_size` or switch to 3‑bit quantization (`bits=3`).
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use `torch.cuda.empty_cache()` after heavy memory operations to keep VRAM free for subsequent runs.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Patch the `safety_checker` module to a custom rule set if you need an uncensored but safe agent.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall: Forgetting to set `device_map="auto"` leads to out‑of‑memory errors because the model defaults to CPU.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall: Using the default Llama 4 safety layer adds extra tokens for censorship, slowing inference and reducing usable output length.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Hermes</h4>
+                    <p>Open‑source autonomous agent framework built on Llama 4.</p>
+                    <a href="https://github.com/hermes-ai/hermes" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Hugging Face</h4>
+                    <p>Model hub hosting the 4‑bit GGUF version of Hermes‑Four.</p>
+                    <a href="https://huggingface.co/hermes/gguf" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Transformers</h4>
+                    <p>Hugging Face library for loading and running language models.</p>
+                    <a href="https://huggingface.co/docs/transformers/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>bitsandbytes</h4>
+                    <p>CUDA‑accelerated library for efficient 4‑bit (and 3‑bit) quantization.</p>
+                    <a href="https://github.com/TimDettmers/bitsandbytes" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>FAISS</h4>
+                    <p>Facebook AI Similarity Search – vector store for long‑term memory.</p>
+                    <a href="https://github.com/facebookresearch/faiss" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Weaviate</h4>
+                    <p>Vector database for embedding storage and retrieval.</p>
+                    <a href="https://www.semi.technology/developers/weaviate" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>TaskScheduler</h4>
+                    <p>Utility from `hermes.utils` for cron‑style autonomous task scheduling.</p>
+                    <a href="https://github.com/hermes-ai/hermes/blob/main/hermes/utils.py" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/hermes-ai/hermes" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Hermes Repository on GitHub
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Full source code, documentation, and issue tracker for the Hermes framework.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/hermes/gguf" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Hermes‑Four 4‑bit GGUF Model on Hugging Face
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Model card detailing the 4‑bit quantized weights and usage instructions.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/docs/transformers/main_classes/model#transformers.AutoModelForCausalLM.from_pretrained" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Transformers Documentation – Quantization
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Guide to loading models with custom quantization settings.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/TimDettmers/bitsandbytes#installation" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            bitsandbytes Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Installation guide and usage examples for 4‑bit quantization.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/facebookresearch/faiss" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            FAISS Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Instructions for building and using FAISS for vector similarity search.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can I run Hermes‑Four on an RTX 3090?</h3>
+                <p>Yes – switch to 3‑bit quantization (`bits=3`) which reduces VRAM usage to ~8 GB while keeping most of the model’s performance.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I add a custom safety layer?</h3>
+                <p>Replace the `safety_checker` module in the Hermes repo with your own implementation that enforces desired rules while keeping the agent uncensored.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What if I have less than 12 GB of GPU memory?</h3>
+                <p>Use 3‑bit quantization or run the model in CPU‑only mode with `device_map="cpu"`, though inference will be much slower.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I integrate external APIs or tools into the agent?</h3>
+                <p>Yes – use Hermes’s prompt‑chaining and tool‑call syntax to invoke external services, ensuring the calls stay within the local environment.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#DeployaLightning</span>
+                <span class="tag">#hermesfour</span>
+                <span class="tag">#localdeployment</span>
+                <span class="tag">#quantization</span>
+                <span class="tag">#autonomousagent</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-17 01:55 • This guide accompanies the video: "Hermes Four vs Llama Four: Uncensored Agent Showdown for Local Workflows"</p>
+        </footer>
+    </div>
+</body>
+</html>

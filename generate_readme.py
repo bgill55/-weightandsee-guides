@@ -123,16 +123,19 @@ def slug_to_title(slug):
 
 def get_guide_title_and_text(slug):
     html_path = os.path.join(GUIDES_DIR, slug, "index.html")
-    if os.path.exists(html_path):
-        with open(html_path, "r", encoding="utf-8", errors="ignore") as f:
-            content = f.read()
-        title_match = re.search(r"<title>([^<]+)</title>", content)
-        title = title_match.group(1).split("|")[0].strip() if title_match else slug
-        body_match = re.search(r"<body[^>]*>(.*?)</body>", content, re.DOTALL)
-        body_text = body_match.group(1) if body_match else content[:2000]
-        body_text = re.sub(r"<[^>]+>", " ", body_text)
-        return title, body_text[:2000].lower()
-    return slug, ""
+    try:
+        if os.path.exists(html_path):
+            with open(html_path, "r", encoding="utf-8", errors="ignore") as f:
+                content = f.read()
+            title_match = re.search(r"<title>([^<]+)</title>", content)
+            title = title_match.group(1).split("|")[0].strip() if title_match else slug_to_title(slug)
+            body_match = re.search(r"<body[^>]*>(.*?)</body>", content, re.DOTALL)
+            body_text = body_match.group(1) if body_match else content[:2000]
+            body_text = re.sub(r"<[^>]+>", " ", body_text)
+            return title, body_text[:2000].lower()
+    except Exception as e:
+        print(f"[Warning] Failed to read {html_path}: {e}")
+    return slug_to_title(slug), ""
 
 
 def categorize_slug(slug):
@@ -151,15 +154,18 @@ def categorize_slug(slug):
 
 def get_guide_datetime(slug):
     html_path = os.path.join(GUIDES_DIR, slug, "index.html")
-    if os.path.exists(html_path):
-        with open(html_path, "r", encoding="utf-8", errors="ignore") as f:
-            content = f.read()
-        match = re.search(r'(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2})', content)
-        if match:
-            return match.group(1)
-        match = re.search(r'(\d{4}-\d{2}-\d{2})', content)
-        if match:
-            return match.group(1)
+    try:
+        if os.path.exists(html_path):
+            with open(html_path, "r", encoding="utf-8", errors="ignore") as f:
+                content = f.read()
+            match = re.search(r'(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2})', content)
+            if match:
+                return match.group(1)
+            match = re.search(r'(\d{4}-\d{2}-\d{2})', content)
+            if match:
+                return match.group(1)
+    except Exception as e:
+        print(f"[Warning] Failed to read datetime for {html_path}: {e}")
     return "0000-00-00 00:00"
 
 
@@ -286,7 +292,10 @@ def generate_readme():
 
 def generate_index_html():
     """Generate modern, interactive guides/index.html web page."""
-    all_slugs = [d.name for d in os.scandir(GUIDES_DIR) if d.is_dir() and d.name != "index.html"]
+    if not os.path.exists(GUIDES_DIR):
+        all_slugs = []
+    else:
+        all_slugs = [d.name for d in os.scandir(GUIDES_DIR) if d.is_dir() and d.name != "index.html"]
     
     guides_data = []
     for slug in all_slugs:
@@ -940,6 +949,7 @@ if __name__ == "__main__":
     print(f"README.md generated with {total} guides in {len(CATEGORIES)} categories")
 
     index_html_content = generate_index_html()
+    os.makedirs(GUIDES_DIR, exist_ok=True)
     index_html_path = os.path.join(GUIDES_DIR, "index.html")
     with open(index_html_path, "w", encoding="utf-8") as f:
         f.write(index_html_content)
