@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/278_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/279_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-machine-pantheon/">
+<img src="guides/the-machine-pantheon/thumbnail.jpg" width="300" alt="The Machine Pantheon"><br>
+<b>The Machine Pantheon</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/build-your-personal-ai-assistant-grok-bot-telegram-in-5-minutes/">
 <img src="guides/build-your-personal-ai-assistant-grok-bot-telegram-in-5-minutes/thumbnail.jpg" width="300" alt="Build Your Personal Ai Assistant Grok Bot Telegram In 5 Minutes"><br>
@@ -31,12 +37,6 @@
 <b>Instinct Ai Agent Review Realtime X Integration Pricing And Latency</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/ozbrain-vs-langchain-knowledge-store-latency-cost-and-privacy-showdown/">
-<img src="guides/ozbrain-vs-langchain-knowledge-store-latency-cost-and-privacy-showdown/thumbnail.jpg" width="300" alt="Ozbrain Vs Langchain Knowledge Store Latency Cost And Privacy Showdown"><br>
-<b>Ozbrain Vs Langchain Knowledge Store Latency Cost And Privacy Showdown</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![125](https://img.shields.io/badge/125-blue?style=flat-square) |
-| **Model Deep Dives** | ![94](https://img.shields.io/badge/94-blue?style=flat-square) |
+| **Model Deep Dives** | ![95](https://img.shields.io/badge/95-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![15](https://img.shields.io/badge/15-blue?style=flat-square) |
@@ -191,6 +191,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[The Machine Pantheon](https://bgill55.github.io/-weightandsee-guides/guides/the-machine-pantheon/)** — 2026-08-22
 - **[Weight And See Ai Guides Repo](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/)** — 2026-08-21
 - **[Daedalus V33011 Antifragile Autonomous Coding With Specfirst Architecture Real S](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33011-antifragile-autonomous-coding-with-specfirst-architecture-real-s/)** — 2026-08-19
 - **[Guide](https://bgill55.github.io/-weightandsee-guides/guides/guide/)** — 2026-08-12
