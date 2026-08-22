@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/274_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/275_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/flowevo-unpacked-the-selfevolving-agent-that-turns-workflows-into-code/">
+<img src="guides/flowevo-unpacked-the-selfevolving-agent-that-turns-workflows-into-code/thumbnail.jpg" width="300" alt="Flowevo Unpacked The Selfevolving Agent That Turns Workflows Into Code"><br>
+<b>Flowevo Unpacked The Selfevolving Agent That Turns Workflows Into Code</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/claude-5-token-vomit-cleaner-handson-review/">
 <img src="guides/claude-5-token-vomit-cleaner-handson-review/thumbnail.jpg" width="300" alt="Claude 5 Token Vomit Cleaner Handson Review"><br>
 <b>Claude 5 Token Vomit Cleaner Handson Review</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/">
 <img src="guides/weight-and-see-ai-guides-repo/thumbnail.jpg" width="300" alt="Weight And See Ai Guides Repo"><br>
 <b>Weight And See Ai Guides Repo</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-open-source-ai-hub/">
-<img src="guides/weight-and-see-open-source-ai-hub/thumbnail.jpg" width="300" alt="Weight And See Open Source Ai Hub"><br>
-<b>Weight And See Open Source Ai Hub</b>
 </a>
 </td>
 </tr></table>
@@ -49,7 +49,7 @@
 | **Model Deep Dives** | ![94](https://img.shields.io/badge/94-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![13](https://img.shields.io/badge/13-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![14](https://img.shields.io/badge/14-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -342,6 +342,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[Flowevo Unpacked The Selfevolving Agent That Turns Workflows Into Code](https://bgill55.github.io/-weightandsee-guides/guides/flowevo-unpacked-the-selfevolving-agent-that-turns-workflows-into-code/)** — 2026-08-21
 - **[Daedalus V33010](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33010/)** — 2026-08-19
 - **[Daedalus V33010 Antifragile Autonomous Coding With Specfirst Architecture Real S](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33010-antifragile-autonomous-coding-with-specfirst-architecture-real-s/)** — 2026-08-19
 - **[Daedalus Cli](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-cli/)** — 2026-07-30
