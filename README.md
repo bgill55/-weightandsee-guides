@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/276_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/277_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/instinct-ai-agent-review-realtime-x-integration-pricing-and-latency/">
+<img src="guides/instinct-ai-agent-review-realtime-x-integration-pricing-and-latency/thumbnail.jpg" width="300" alt="Instinct Ai Agent Review Realtime X Integration Pricing And Latency"><br>
+<b>Instinct Ai Agent Review Realtime X Integration Pricing And Latency</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/ozbrain-vs-langchain-knowledge-store-latency-cost-and-privacy-showdown/">
 <img src="guides/ozbrain-vs-langchain-knowledge-store-latency-cost-and-privacy-showdown/thumbnail.jpg" width="300" alt="Ozbrain Vs Langchain Knowledge Store Latency Cost And Privacy Showdown"><br>
@@ -31,12 +37,6 @@
 <b>Flowevo Unpacked The Selfevolving Agent That Turns Workflows Into Code</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/claude-5-token-vomit-cleaner-handson-review/">
-<img src="guides/claude-5-token-vomit-cleaner-handson-review/thumbnail.jpg" width="300" alt="Claude 5 Token Vomit Cleaner Handson Review"><br>
-<b>Claude 5 Token Vomit Cleaner Handson Review</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![124](https://img.shields.io/badge/124-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![125](https://img.shields.io/badge/125-blue?style=flat-square) |
 | **Model Deep Dives** | ![94](https://img.shields.io/badge/94-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Instinct Ai Agent Review Realtime X Integration Pricing And Latency](https://bgill55.github.io/-weightandsee-guides/guides/instinct-ai-agent-review-realtime-x-integration-pricing-and-latency/)** — 2026-08-22
 - **[Ozbrain Vs Langchain Knowledge Store Latency Cost And Privacy Showdown](https://bgill55.github.io/-weightandsee-guides/guides/ozbrain-vs-langchain-knowledge-store-latency-cost-and-privacy-showdown/)** — 2026-08-21
 - **[Claude 5 Token Vomit Cleaner Handson Review](https://bgill55.github.io/-weightandsee-guides/guides/claude-5-token-vomit-cleaner-handson-review/)** — 2026-08-21
 - **[Weight And See Open Source Ai Hub](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-open-source-ai-hub/)** — 2026-08-21
