@@ -46,10 +46,10 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![125](https://img.shields.io/badge/125-blue?style=flat-square) |
-| **Model Deep Dives** | ![95](https://img.shields.io/badge/95-blue?style=flat-square) |
+| **Model Deep Dives** | ![94](https://img.shields.io/badge/94-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![15](https://img.shields.io/badge/15-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![16](https://img.shields.io/badge/16-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -191,7 +191,6 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
-- **[The Machine Pantheon](https://bgill55.github.io/-weightandsee-guides/guides/the-machine-pantheon/)** — 2026-08-22
 - **[Weight And See Ai Guides Repo](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/)** — 2026-08-21
 - **[Daedalus V33011 Antifragile Autonomous Coding With Specfirst Architecture Real S](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33011-antifragile-autonomous-coding-with-specfirst-architecture-real-s/)** — 2026-08-19
 - **[Guide](https://bgill55.github.io/-weightandsee-guides/guides/guide/)** — 2026-08-12
@@ -345,6 +344,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[The Machine Pantheon](https://bgill55.github.io/-weightandsee-guides/guides/the-machine-pantheon/)** — 2026-08-22
 - **[Build Your Personal Ai Assistant Grok Bot Telegram In 5 Minutes](https://bgill55.github.io/-weightandsee-guides/guides/build-your-personal-ai-assistant-grok-bot-telegram-in-5-minutes/)** — 2026-08-22
 - **[Flowevo Unpacked The Selfevolving Agent That Turns Workflows Into Code](https://bgill55.github.io/-weightandsee-guides/guides/flowevo-unpacked-the-selfevolving-agent-that-turns-workflows-into-code/)** — 2026-08-21
 - **[Daedalus V33010](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33010/)** — 2026-08-19

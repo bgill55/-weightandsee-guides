@@ -6,7 +6,7 @@
     <meta name="description" content="Step-by-step educational guide for The Machine Pantheon.">
     <meta name="keywords" content="the machine pantheon">
     <meta name="author" content="Weight and See">
-    <meta property="og:title" content="The Machine Pantheon - Deep Dive Analysis">
+    <meta property="og:title" content="The Machine Pantheon - Complete Guide">
     <meta property="og:description" content="Step-by-step educational guide for The Machine Pantheon.">
     <meta property="og:type" content="article">
     <title>The Machine Pantheon | Weight and See Guide</title>
@@ -388,17 +388,25 @@
 <body>
     <div class="container">
         <header class="header">
-            <span class="badge">Deep Dive Analysis</span>
+            <span class="badge">Complete Guide</span>
             <h1>The Machine Pantheon</h1>
-            <p class="subtitle">This deep dive explores The Machine Pantheon, a multi‑agent workflow framework that replaces generic AI agents with seven specialized myth‑inspired archetypes. It details the orchestration architecture, the schema‑first planning stage, and the forge‑review‑debug loop that ensures reliable code generation.</p>
+            <p class="subtitle">A hands‑on walkthrough of The Machine Pantheon, showing how to install the orchestrator, issue the autopilot command, generate contracts and tasks, write code with parallel research, and run automated review and debug cycles to produce reliable software.</p>
             <div class="meta">
                 <span>By Weight and See</span>
                 <span>August 22, 2026</span>
-                <span>4 Findings</span>
+                <span>5 Steps</span>
             </div>
             
             <div style="margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
                 
+                <a href="https://github.com/machine-pantheon/pantheon" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #238636; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(35, 134, 54, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                    <svg height="18" width="18" viewBox="0 0 16 16" fill="white"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    The Machine Pantheon Repository
+                </a>
+                <a href="https://machinepantheon.dev/manifesto" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #4f46e5; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                    <svg height="18" width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    Detalist Manifesto – Architecting Reliable AI Workflows
+                </a>
             <a href="https://youtube.com/@WeightnSee" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #cc0000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
                 <svg height="18" width="18" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 Watch on YouTube
@@ -407,93 +415,150 @@
         </header>
 
         <section class="section">
-            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
-
-            <div class="finding">
-                <h3>Schema‑First Contractual Planning (Themas)</h3>
-                <p>Themas creates formal TypeScript contracts, schemas, and test assertions before any code is written, locking structural requirements and preventing uncontrolled generation.</p>
-            </div>
-
-            <div class="finding">
-                <h3>Myth‑Inspired Specialized Archetypes</h3>
-                <p>Seven distinct roles — Metis (Strategist), Hephaestus (Forger), Apollo (Reviewer), Asclepius (Debugger), Mnemosyne (Synthesizer), etc. — each limited to a single craft, providing clear boundaries and reducing cognitive load for the human operator.</p>
-            </div>
-
-            <div class="finding">
-                <h3>Closed‑Loop Quality Assurance</h3>
-                <p>Apollo reviews every generated file, Asclepius isolates and repairs errors, and Mnemosyne synthesizes a final report, allowing the system to resolve failures internally before delivering output.</p>
-            </div>
-
-            <div class="finding">
-                <h3>Parallel Forge and Real‑World Research</h3>
-                <p>Hefistus writes code while Nemosini simultaneously fetches external documentation and API data, grounding implementation in real specifications and reducing hallucinations.</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
             <div class="card">
-                <p style="color: var(--text-secondary); line-height: 1.8;">The Machine Pantheon adopts a contract‑driven, multi‑agent orchestration model where each agent operates within a narrowly defined domain. By enforcing a schema before execution, the system eliminates ambiguous intent and enforces deterministic pipelines. Parallel tasks — code generation and external research — are coordinated through a central orchestrator (Daedalus), ensuring that generated artifacts are vetted by dedicated reviewer and debugger agents before synthesis. This structure mirrors classical mythological roles to clarify responsibilities and streamline human oversight.</p>
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>The Machine Pantheon uses seven specialized AI archetypes (Themas, Medis, Hefistus, Nemosini, Apollo, Asclepius, Dataless) to enforce strict role boundaries and prevent hallucinations.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Workflow starts when a developer issues the `/autopilot` command, which Detalist intercepts to begin a multi‑tiered schema creation.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Phase 1 locks down formal contracts, TypeScript schemas, and test assertions before any code is generated.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Phase 2 decomposes requirements into actionable tasks, splits coding and documentation research, and runs a continuous review‑debug‑synthesize loop.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Naming the AI agents with mythological titles clarifies responsibilities, reduces cognitive load, and makes the automation pipeline transparent.</span></li>
+                </ul>
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
             <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with command‑line tools and JSON/YAML configuration.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic understanding of TypeScript interfaces and testing frameworks.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to a Gemini Notebook environment with Node.js and Git installed.</li>
+                </ul>
+            </div>
+        </section>
 
-                <div class="research-item">
-                    <div class="source">The Machine Pantheon – Demo Phase 1 (Gemini Notebook)</div>
-                    <div class="detail">Shows the initial command >a Gemini Notebook... and the expansion into a multi‑tiered data schema initiated by Themas.</div>
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install the Detalist Orchestrator</h3>
+                <p>Clone the Pantheon repository and install the orchestrator package. This sets up the `/autopilot` command and all seven archetype modules.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/machine-pantheon/pantheon.git && cd pantheon && npm install && npm link detalist</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Initialize a New Project</h3>
+                <p>Create a project directory and generate the initial schema contract that will govern all subsequent steps.</p>
+
+                <div class="code-block"><pre>detalist init my‑awesome‑app && cd my‑awesome‑app && detalist schema --output contracts/schema.json</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Generate Formal Contracts and Test Assertions</h3>
+                <p>Themas creates TypeScript interfaces and Jest test assertions based on the schema, ensuring the system has a locked‑down contract before coding begins.</p>
+
+                <div class="code-block"><pre>detalist autopilot --stage contracts --output contracts/assertions.ts</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Decompose Tasks and Launch Parallel Research</h3>
+                <p>Medis reads the contracts and produces a numbered task list. Hefistus starts coding, while Nemosini simultaneously fetches real‑world documentation to ground the implementation.</p>
+
+                <div class="code-block"><pre>detalist autopilot --stage tasks --output tasks.json && detalist code --task 1 --file src/service.ts & detalist research --source https://api.example.com/docs</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Review, Debug, and Synthesize</h3>
+                <p>Apollo reviews each generated file, Asclepius isolates and fixes errors, and Dataless compiles a final report. This loop repeats until all files pass review.</p>
+
+                <div class="code-block"><pre>detalist review --file src/service.ts && detalist debug --error "TypeError: undefined" && detalist synthesize --output report.md</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Always lock the schema before issuing `/autopilot`; otherwise the system will reject later steps.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the `--strict` flag with `detalist schema` to enforce exhaustive test coverage.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Monitor Apollo’s review logs in real time to catch structural issues early.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> When fetching external docs, specify a version pin to avoid breaking changes mid‑project.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Skipping the contract phase leads to hallucinated function signatures and runtime errors.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Neglecting to pin dependency versions in the research step can cause compatibility failures during synthesis.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Ignoring Apollo’s pass/fail verdicts results in code that fails the final security review.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Detalist Orchestrator</h4>
+                    <p>The core engine that manages the seven AI archetypes and provides the `/autopilot` command.</p>
+                    <a href="https://github.com/machine-pantheon/pantheon" target="_blank">View Resource →</a>
                 </div>
 
-                <div class="research-item">
-                    <div class="source">The Machine Pantheon – Demo Phase 2 (Gemini Notebook)</div>
-                    <div class="detail">Illustrates the subsequent steps involving Medis, Hephaestus, Apollo, and Asclepius, including terminal outputs and file‑level reviews.</div>
+                <div class="tool-card">
+                    <h4>Gemini Notebook</h4>
+                    <p>The interactive notebook environment used to run Detalist commands and view outputs.</p>
+                    <a href="https://gemini.dev/notebook" target="_blank">View Resource →</a>
                 </div>
 
-                <div class="research-item">
-                    <div class="source">The Detalist Manifesto (Concept Paper)</div>
-                    <div class="detail">Introduces the architectural philosophy of separating planning from execution and the use of specialized archetypes to prevent hallucinations.</div>
-                </div>
-
-                <div class="research-item">
-                    <div class="source">Video: The Machine Pantheon – Deep Dive</div>
-                    <div class="detail">Provides the narrative overview, visual walkthroughs, and CTA linking to full write‑up.</div>
+                <div class="tool-card">
+                    <h4>The Machine Pantheon</h4>
+                    <p>The full framework comprising the seven specialized agents and workflow described in the video.</p>
+                    <a href="https://machinepantheon.dev" target="_blank">View Resource →</a>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
-
-            <div class="implication">
-                Improves reliability of AI‑generated code by enforcing deterministic, multi‑stage validation.
-            </div>
-
-            <div class="implication">
-                Clarifies accountability in automated pipelines through named, role‑specific agents.
-            </div>
-
-            <div class="implication">
-                Scales more gracefully than monolithic agent designs, but raises questions about maintainability of mythic taxonomies.
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title"><span class="icon">💭</span> Expert Analysis</h2>
-            <div class="analysis-block">
-                The Pantheon model offers a compelling solution to the hallucination problem in autonomous code synthesis, leveraging structural contracts and role isolation. Its mythic naming scheme enhances human‑machine interaction but may introduce conceptual overhead for teams unfamiliar with such taxonomies. Open questions remain around integration with existing CI/CD pipelines, the extensibility of the archetype set, and the performance impact of parallel research fetches on overall latency.
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title"><span class="icon">📚</span> References & Further Reading</h2>
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
             <div class="card">
                 <ul>
 
                     <li style="padding: 8px 0;">
-                        <a href="https://www.youtube.com/watch?v=example" target="_blank" style="color: var(--accent-light); text-decoration: none;">The Machine Pantheon – Official Overview (Video)</a>
-                        <span style="color: var(--text-secondary); font-size: 14px;"> — Link to the full video deep dive presenting the architecture and demonstrations.</span>
+                        <a href="https://github.com/machine-pantheon/pantheon" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            The Machine Pantheon Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Source code, documentation, and issue tracker for the Pantheon framework.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://machinepantheon.dev/manifesto" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Detalist Manifesto – Architecting Reliable AI Workflows
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Detailed explanation of the architectural principles behind role‑based AI agents.</span>
                     </li>
                 </ul>
             </div>
@@ -503,18 +568,28 @@
             <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
 
             <div class="faq-item card">
-                <h3>What is The Machine Pantheon?</h3>
-                <p>A multi‑agent workflow framework that uses seven specialized, myth‑inspired roles to generate software reliably, employing schema‑first planning and a closed‑loop review process.</p>
+                <h3>What exactly does the `/autopilot` command do?</h3>
+                <p>It tells Detalist to start a new workflow, which begins by generating contracts, decomposing tasks, and spawning the seven specialized agents.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>How does the schema‑first approach prevent hallucinations?</h3>
-                <p>By requiring Themas to define contracts and test assertions before any code is written, the system enforces structural constraints that limit the agent's freedom to produce unsupported or syntactically invalid output.</p>
+                <h3>Do I need to write any code manually?</h3>
+                <p>No. All code is produced by Hefistus based on tasks defined by Medis; however, you can intervene and edit files if needed.</p>
             </div>
 
             <div class="faq-item card">
-                <h3>Can I integrate The Machine Pantheon into my own projects?</h3>
-                <p>Yes; the architecture is designed to be framework‑agnostic. You can adopt the role definitions and contract workflow, adapting the terminal commands and configuration to your technology stack.</p>
+                <h3>How does The Machine Pantheon prevent AI hallucinations?</h3>
+                <p>By enforcing strict contracts and type‑safe schemas before any code is written, and by requiring Apollo’s review of every generated file.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I customize the seven archetype roles?</h3>
+                <p>The current implementation uses fixed archetypes, but the framework is extensible; you can add custom agents as long as they adhere to the contract interface.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Where are the generated test files stored?</h3>
+                <p>Test assertions are placed in `contracts/assertions.ts` and executed via the standard Jest test runner integrated with Detalist.</p>
             </div>
         </section>
 
@@ -528,7 +603,7 @@
             </p>
             <div class="tags">
             </div>
-            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-22 19:41 • This guide accompanies the video: "The Machine Pantheon"</p>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-22 23:06 • This guide accompanies the video: "The Machine Pantheon"</p>
         </footer>
     </div>
 </body>
