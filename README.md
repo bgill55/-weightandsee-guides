@@ -344,7 +344,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
-- **[The Machine Pantheon](https://bgill55.github.io/-weightandsee-guides/guides/the-machine-pantheon/)** — 2026-08-22
+- **[The Machine Pantheon](https://bgill55.github.io/-weightandsee-guides/guides/the-machine-pantheon/)** — 2026-08-23
 - **[Build Your Personal Ai Assistant Grok Bot Telegram In 5 Minutes](https://bgill55.github.io/-weightandsee-guides/guides/build-your-personal-ai-assistant-grok-bot-telegram-in-5-minutes/)** — 2026-08-22
 - **[Flowevo Unpacked The Selfevolving Agent That Turns Workflows Into Code](https://bgill55.github.io/-weightandsee-guides/guides/flowevo-unpacked-the-selfevolving-agent-that-turns-workflows-into-code/)** — 2026-08-21
 - **[Daedalus V33010](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33010/)** — 2026-08-19
