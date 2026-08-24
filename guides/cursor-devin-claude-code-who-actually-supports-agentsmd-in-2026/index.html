@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anthropic's Claude Code refuses to read the community-standard AGENTS.md file, forcing developers to maintain duplicate CLAUDE.md files or use clever workaround">
+    <meta name="keywords" content="AGENTS.md, CLAUDE.md, Claude Code, coding agents, AI development workflow">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Cursor, Devin, Claude Code: Who Actually Supports AGENTS.md in 2026? - Complete Guide">
+    <meta property="og:description" content="Anthropic's Claude Code refuses to read the community-standard AGENTS.md file, forcing developers to maintain duplicate CLAUDE.md files or use clever workarounds like '@AGENTS.md' imports and symlinks">
+    <meta property="og:type" content="article">
+    <title>Cursor, Devin, Claude Code: Who Actually Supports AGENTS.md in 2026? | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .channel-banner {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 28px 0 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Cursor, Devin, Claude Code: Who Actually Supports AGENTS.md in 2026?</h1>
+            <p class="subtitle">This guide covers the AGENTS.md compatibility gap in 2026: Cursor and Devin read the community-standard AGENTS.md natively, while Anthropic's Claude Code only reads CLAUDE.md and has declared AGENTS.md support 'not planned' despite 5,200+ upvotes on the feature request. You'll learn five practical workarounds — symlinks, imports, build-step generation, scripted header injection, and CI environment-variable injection — so you can keep one canonical context file across every coding agent.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 23, 2026</span>
+                <span>4 Steps</span>
+            </div>
+            
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                
+                <a href="https://gist.github.com/yurukusa/d36197848911f025add142abefcde685" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #238636; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(35, 134, 54, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                    <svg height="18" width="18" viewBox="0 0 16 16" fill="white"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    Does Claude Code read AGENTS.md? No — it reads CLAUDE.md. GitHub Repo
+                </a>
+                <a href="https://github.com/anthropics/claude-code" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #4f46e5; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                    <svg height="18" width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    Claude Code
+                </a>
+            <a href="https://youtube.com/@WeightnSee" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #cc0000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                <svg height="18" width="18" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                Watch on YouTube
+            </a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Claude Code reads only CLAUDE.md; Anthropic has officially stated AGENTS.md support is 'not planned for now,' leaving the GitHub feature request (opened August 2025, 5,200+ upvotes) unresolved for over a year.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Cursor and Devin both treat AGENTS.md at the project root as the authoritative context file with zero extra configuration — adopt it as your single source of truth.</span></li>
+                    <li><span class="takeaway-num">3</span><span>The fastest workaround is a symlink (`ln -s AGENTS.md CLAUDE.md`): Claude Code follows it transparently, but it breaks on Windows without admin privileges.</span></li>
+                    <li><span class="takeaway-num">4</span><span>A minimal CLAUDE.md containing only the line `@AGENTS.md` uses Claude Code's import directive to pull in the full AGENTS.md content at runtime — but fails silently if the path is wrong.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Teams report spending ~4 hours per week syncing duplicate context files, and stale CLAUDE.md files cause real failures: agents apply wrong linting rules, skip required test suites, or miss security policies defined only in AGENTS.md.</span></li>
+                    <li><span class="takeaway-num">6</span><span>For multi-agent teams, generate CLAUDE.md from AGENTS.md via a pre-commit hook or CI job, concatenating a Claude-specific comment header on top — no special formatting is required.</span></li>
+                    <li><span class="takeaway-num">7</span><span>Recommended strategy: standardize on AGENTS.md, prefer Cursor/Devin for native support, and layer the symlink or import workaround only when Claude Code is mandatory.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">An existing repository with (or a plan to create) an AGENTS.md file at the project root</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Claude Code CLI installed and authenticated, plus Git and a POSIX-compatible shell (macOS/Linux; Windows users need Developer Mode or admin rights for symlinks)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to a CI pipeline such as GitHub Actions if you want the automated sync workarounds</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Make AGENTS.md your canonical context file</h3>
+                <p>Write all agent-facing project instructions into AGENTS.md at the repository root. Cursor and Devin will pick it up natively with no further setup. Organize it into explicit sections — build/install commands, test suite invocation, linting rules, coding conventions, and security policies — because agents rely on this file for behavior like which tests are mandatory and which credentials must never be logged. This file becomes the single source of truth every later step derives from.</p>
+
+                <div class="code-block"><pre># AGENTS.md
+
+## Build & Test
+- Install deps: `npm ci`
+- Run tests: `npm test -- --run`
+- Lint: `npm run lint`
+
+## Conventions
+- TypeScript strict mode; no `any`
+- Every API change requires an integration test
+
+## Security Policy
+- Never log credentials, tokens, or secrets
+- Secrets must come from environment variables only</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Apply the quick symlink workaround for Claude Code</h3>
+                <p>From your project root, create a symbolic link named CLAUDE.md pointing at AGENTS.md using `ln -s AGENTS.md CLAUDE.md`. Claude Code follows the symlink and reads the AGENTS.md content transparently, so there is no duplication to maintain. Commit the symlink to git so collaborators get it automatically. Caveat: symlink creation on Windows requires admin privileges (or Developer Mode), so macOS/Linux-heavy teams benefit most from this approach.</p>
+
+                <div class="code-block"><pre>cd /path/to/project
+ln -s AGENTS.md CLAUDE.md
+git add CLAUDE.md
+git commit -m "chore: link CLAUDE.md to canonical AGENTS.md"</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Use the zero-maintenance import workaround</h3>
+                <p>If you want to avoid symlinks entirely, create a CLAUDE.md that contains exactly one line: `@AGENTS.md`. Claude Code processes the `@` import directive at runtime and pulls in the full AGENTS.md content, reading everything below it normally. This works cross-platform (no Windows symlink problem) and stays in sync automatically because there is only ever one copy of the content. Verify it works by asking Claude Code to summarize its loaded project instructions — import directives fail silently if the path is misspelled.</p>
+
+                <div class="code-block"><pre># Create the minimal import-only CLAUDE.md
+echo '@AGENTS.md' > CLAUDE.md
+
+# Resulting file contents:
+# @AGENTS.md</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Automate CLAUDE.md generation with a pre-commit hook</h3>
+                <p>For teams that need Claude-specific notes alongside shared instructions, write a small shell script that concatenates a comment header onto the AGENTS.md content and writes the result to CLAUDE.md. Wire it into a pre-commit hook (e.g., via pre-commit) triggered whenever AGENTS.md changes. This guarantees both files stay in sync without manual intervention, survives Windows (it commits a plain file, not a symlink), and lets you inject Claude Code–specific guidance that Cursor and Devin simply ignore. Never hand-edit the generated CLAUDE.md — edits are overwritten on the next sync.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Does Claude Code read AGENTS.md? No — it reads CLAUDE.md.</h4>
+                    <p>Featured tool in video</p>
+                    <a href="https://gist.github.com/yurukusa/d36197848911f025add142abefcde685" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Claude Code</h4>
+                    <p>Featured tool in video</p>
+                    <a href="https://github.com/anthropics/claude-code" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://gist.github.com/yurukusa/d36197848911f025add142abefcde685" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Does Claude Code read AGENTS.md? No — it reads CLAUDE.md.
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official resource for Does Claude Code read AGENTS.md? No — it reads CLAUDE.md.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/anthropics/claude-code" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Claude Code
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official resource for Claude Code</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <a href="https://youtube.com/@WeightnSee" target="_blank" rel="noopener" title="Visit Weight and See on YouTube">
+                <img class="channel-banner" src="../../channel_banner.png" alt="Weight and See channel banner">
+            </a>
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#whyclaudecode</span>
+                <span class="tag">#agentsmd</span>
+                <span class="tag">#claudemd</span>
+                <span class="tag">#claudecode</span>
+                <span class="tag">#codingagents</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-23 22:00 • This guide accompanies the video: "Cursor, Devin, Claude Code: Who Actually Supports AGENTS.md in 2026?"</p>
+        </footer>
+    </div>
+</body>
+</html>
