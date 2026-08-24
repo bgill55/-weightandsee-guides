@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We walk through building a visual no‑code AI agent that monitors inventory updates, flags malicious slopsquatting entries, and cross‑checks LLM responses with r">
+    <meta name="keywords" content="supply chain risk, AI hallucination, slopsquatting, no‑code AI, ERP security">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Inside Slopsquatting: How AI Hallucinations Weaponize Supply‑Chain Data - Complete Guide">
+    <meta property="og:description" content="We walk through building a visual no‑code AI agent that monitors inventory updates, flags malicious slopsquatting entries, and cross‑checks LLM responses with real‑time verification, giving supply cha">
+    <meta property="og:type" content="article">
+    <title>Inside Slopsquatting: How AI Hallucinations Weaponize Supply‑Chain Data | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .channel-banner {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 28px 0 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Inside Slopsquatting: How AI Hallucinations Weaponize Supply‑Chain Data</h1>
+            <p class="subtitle">This guide walks you through building a no‑code AI watchdog that detects and blocks slopsquatting—malicious fabricated inventory records—using a lightweight LLM inference node and a real‑time verification step. It covers configuration, scaling, and audit logging so supply‑chain teams can protect against AI hallucinations with minimal custom code.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 23, 2026</span>
+                <span>5 Steps</span>
+            </div>
+            
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                
+                <a href="https://n8n.io" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #4f46e5; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                    <svg height="18" width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    n8n
+                </a>
+            <a href="https://youtube.com/@WeightnSee" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #cc0000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                <svg height="18" width="18" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                Watch on YouTube
+            </a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Slopsquatting exploits AI hallucinations by inserting fake SKU or quantity data into ERP feeds, potentially causing millions in freight cost and stockouts.</span></li>
+                    <li><span class="takeaway-num">2</span><span>A three‑layer watchdog (event collector, LLM inference, verifier) can catch and roll back fraudulent entries in real time.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Using a quantized ChatGPT 5.5 int8 model with low temperature (0.1) and deterministic settings drastically reduces hallucinations.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Verification involves querying the ERP API with a signed JWT and comparing the response to the LLM’s suggestion; mismatches trigger alerts and rollbacks.</span></li>
+                    <li><span class="takeaway-num">5</span><span>The platform auto‑provisions Docker containers and a RabbitMQ queue; scaling workers to 8 can sustain 12,000 inventory events per minute on a single RTX 4090.</span></li>
+                    <li><span class="takeaway-num">6</span><span>All actions are logged to an immutable append‑only store; audit logs can be queried with a CLI for compliance reporting.</span></li>
+                    <li><span class="takeaway-num">7</span><span>JWT expiry of 5 minutes and SHA‑256 payload hashing prevent replay attacks and tampering.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access to the ERP change‑log API and stock endpoint (e.g., https://erp.example.com/api/stock).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">An n8n account with the no‑code platform and Docker installed on the host machine.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">An OpenAI API key for ChatGPT 5.5 or access to Google Gemini for inference.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A GPU capable of running int8 quantized models (RTX 4090 recommended).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Create and Upload the Watchdog YAML</h3>
+                <p>Open the n8n drag‑and‑drop UI, click "New Workflow", and paste the following YAML into the editor. This defines the event watcher, LLM node, verifier, and alert webhook. Save the file as `watchdog.yaml` and upload it through the UI.</p>
+
+                <div class="code-block"><pre>```yaml
+watcher:
+  source: erp_change_log
+  filter: event.type == "inventory_update"
+llm:
+  model: chatgpt_5_point_5_int8
+  temperature: 0.1
+  max_tokens: 256
+verifier:
+  endpoint: https://erp.example.com/api/stock
+  auth: jwt
+alert:
+  webhook: https://hooks.example.com/alert
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Configure the LLM Inference Node</h3>
+                <p>In the workflow editor, add an LLM node and select the quantized ChatGPT 5.5 model. Set the temperature to 0.1 and max_tokens to 256 to keep outputs deterministic. Attach the node to the event watcher so it receives each inventory_update event.</p>
+
+                <div class="code-block"><pre>```json
+{
+  "type": "llm",
+  "model": "chatgpt_5_point_5_int8",
+  "temperature": 0.1,
+  "maxTokens": 256
+}
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Set Up the Verification Module</h3>
+                <p>Add an HTTP Request node that calls the ERP stock endpoint. Configure authentication to use a JWT token that expires in 5 minutes. Extract SKU and quantity from the LLM output, send a GET request, and compare the JSON response. If the values differ, route the flow to the alert webhook and trigger a rollback action.</p>
+
+                <div class="code-block"><pre>```http
+GET https://erp.example.com/api/stock?sku={sku}&qty={qty}
+Authorization: Bearer {jwt}
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Scale with a Worker Pool</h3>
+                <p>Open the workflow settings, add the `workers: 8` property to the YAML, and restart the workflow. This spawns eight parallel containers that pull events from the RabbitMQ queue, ensuring at‑least‑once delivery and low latency.</p>
+
+                <div class="code-block"><pre>```yaml
+workers: 8
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Enable Audit Logging and Run Reports</h3>
+                <p>The platform automatically writes each event, LLM suggestion, API response, and alert to an immutable store. Use the CLI to query logs: `audit query --since 24h` will generate a CSV for compliance. Verify hash integrity by inspecting the SHA‑256 field.</p>
+
+                <div class="code-block"><pre>```
+audit query --since 24h > audit_24h.csv
+```</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Run the int8 quantized model on a GPU to keep latency below 300 ms for real‑time order processing.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Configure the JWT to refresh every 5 minutes to eliminate replay attack windows.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Attach a webhook to Slack or Opsgenie so alerts surface immediately in your incident response channel.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Enable the platform’s health monitor to auto‑restart containers that exceed a 2‑second processing threshold.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Store the JWT secret in a secure vault (e.g., HashiCorp Vault) and rotate it monthly.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Using a high temperature (e.g., >0.7) will increase hallucinations and trigger false positives.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Skipping JWT signing or using a static token makes the verifier vulnerable to replay attacks.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Under‑provisioning the RabbitMQ queue depth can cause back‑pressure and event loss at peak load.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>n8n</h4>
+                    <p>No‑code workflow automation platform that auto‑provisions Docker containers and RabbitMQ queues.</p>
+                    <a href="https://n8n.io" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>OpenAI API</h4>
+                    <p>API endpoint for accessing ChatGPT models, including the quantized 5.5 version used here.</p>
+                    <a href="https://openai.com/api" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Google Gemini</h4>
+                    <p>Alternative LLM API that can be swapped in for the ChatGPT node.</p>
+                    <a href="https://gemini.google.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>ChatGPT 5.5 (int8)</h4>
+                    <p>Quantized 8‑bit version of ChatGPT 5.5 optimized for speed and low resource usage.</p>
+                    <a href="https://openai.com/research" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Docker</h4>
+                    <p>Container runtime used by the platform to host the LLM and worker processes.</p>
+                    <a href="https://www.docker.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>RabbitMQ</h4>
+                    <p>Message queue that guarantees at‑least‑once delivery of ERP events to workers.</p>
+                    <a href="https://www.rabbitmq.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>RTX 4090</h4>
+                    <p>High‑performance GPU used to run the int8 quantized model with sub‑300 ms latency.</p>
+                    <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/rtx-4090/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>JWT</h4>
+                    <p>JSON Web Token used to authenticate API requests and prevent replay attacks.</p>
+                    <a href="https://jwt.io" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.n8n.io/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            n8n Documentation – Workflow Editor
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official guide on creating and deploying workflows in n8n.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://platform.openai.com/docs/api-reference/chat" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OpenAI API Reference – Chat Completions
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Detailed API docs for accessing ChatGPT models.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://ai.google.dev/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Google Gemini Developer Docs
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — API reference and usage examples for Gemini.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.docker.com/get-started/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Docker Basics – Running Containers
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Step‑by‑step tutorial for launching containers.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.rabbitmq.com/tutorials/tutorial-one-python.html" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            RabbitMQ Concepts – Queues and Exchanges
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Fundamental concepts for message queue design.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How do I switch from ChatGPT 5.5 to Google Gemini in the workflow?</h3>
+                <p>Replace the `llm.model` field with `gemini_pro` and adjust the temperature/top‑p settings. Then update the `auth` section to use Gemini’s API key in the HTTP request node.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What happens if the ERP API rate‑limits my requests?</h3>
+                <p>The verifier node should implement exponential back‑off and a retry counter. If the rate limit is exceeded, the workflow can send a delay event and retry after the `Retry-After` header.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I scale beyond 8 workers?</h3>
+                <p>Yes. Increase the `workers` value in the YAML and ensure RabbitMQ has enough pre‑fetch settings. Monitor queue depth and adjust container memory accordingly.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I verify that the audit log is tamper‑proof?</h3>
+                <p>Check that each log entry includes a SHA‑256 hash of the original payload and the JWT claims. Use the CLI to compute a hash of the stored payload and compare it to the logged hash.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is the JWT secret stored securely?</h3>
+                <p>Store the secret in a vault service (e.g., HashiCorp Vault) and reference it in the workflow via environment variables. Do not hard‑code the secret in the YAML.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <a href="https://youtube.com/@WeightnSee" target="_blank" rel="noopener" title="Visit Weight and See on YouTube">
+                <img class="channel-banner" src="../../channel_banner.png" alt="Weight and See channel banner">
+            </a>
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#nocodeaiguardrails</span>
+                <span class="tag">#supplychainrisk</span>
+                <span class="tag">#aihallucination</span>
+                <span class="tag">#slopsquatting</span>
+                <span class="tag">#nocodeai</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-23 18:24 • This guide accompanies the video: "Inside Slopsquatting: How AI Hallucinations Weaponize Supply‑Chain Data"</p>
+        </footer>
+    </div>
+</body>
+</html>

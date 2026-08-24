@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/280_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/281_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-slopsquatting-how-ai-hallucinations-weaponize-supplychain-data/">
+<img src="guides/inside-slopsquatting-how-ai-hallucinations-weaponize-supplychain-data/thumbnail.jpg" width="300" alt="Inside Slopsquatting How Ai Hallucinations Weaponize Supplychain Data"><br>
+<b>Inside Slopsquatting How Ai Hallucinations Weaponize Supplychain Data</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/how-to-stop-aipowered-inventory-hijacks-inside-the-new-guardrail-suite/">
 <img src="guides/how-to-stop-aipowered-inventory-hijacks-inside-the-new-guardrail-suite/thumbnail.jpg" width="300" alt="How To Stop Aipowered Inventory Hijacks Inside The New Guardrail Suite"><br>
 <b>How To Stop Aipowered Inventory Hijacks Inside The New Guardrail Suite</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-machine-pantheon/">
 <img src="guides/the-machine-pantheon/thumbnail.jpg" width="300" alt="The Machine Pantheon"><br>
 <b>The Machine Pantheon</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/build-your-personal-ai-assistant-grok-bot-telegram-in-5-minutes/">
-<img src="guides/build-your-personal-ai-assistant-grok-bot-telegram-in-5-minutes/thumbnail.jpg" width="300" alt="Build Your Personal Ai Assistant Grok Bot Telegram In 5 Minutes"><br>
-<b>Build Your Personal Ai Assistant Grok Bot Telegram In 5 Minutes</b>
 </a>
 </td>
 </tr></table>
@@ -48,7 +48,7 @@
 | **Benchmarks & Comparisons** | ![125](https://img.shields.io/badge/125-blue?style=flat-square) |
 | **Model Deep Dives** | ![94](https://img.shields.io/badge/94-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
-| **AI Security** | ![4](https://img.shields.io/badge/4-blue?style=flat-square) |
+| **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![17](https://img.shields.io/badge/17-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
@@ -333,6 +333,7 @@
 
 *Threats, vulnerabilities, and defenses in the AI era*
 
+- **[Inside Slopsquatting How Ai Hallucinations Weaponize Supplychain Data](https://bgill55.github.io/-weightandsee-guides/guides/inside-slopsquatting-how-ai-hallucinations-weaponize-supplychain-data/)** — 2026-08-23
 - **[How Rust Delta Lake Power A Quadrillion Token Gateway](https://bgill55.github.io/-weightandsee-guides/guides/how-rust-delta-lake-power-a-quadrillion-token-gateway/)** — 2026-08-05
 - **[Video Reasoning Explained How Ai Models Learn Generalization Not Just Patterns](https://bgill55.github.io/-weightandsee-guides/guides/video-reasoning-explained-how-ai-models-learn-generalization-not-just-patterns/)** — 2026-06-19
 - **[Why Your Ai Agent Is Using The Wrong Model And How To Fix It](https://bgill55.github.io/-weightandsee-guides/guides/why-your-ai-agent-is-using-the-wrong-model-and-how-to-fix-it/)** — 2026-06-13
