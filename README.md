@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/284_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/285_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/google-gemini-desktop-app-adds-avatars-why-this-is-a-gamechanger-for-ai-workspac/">
+<img src="guides/google-gemini-desktop-app-adds-avatars-why-this-is-a-gamechanger-for-ai-workspac/thumbnail.jpg" width="300" alt="Google Gemini Desktop App Adds Avatars Why This Is A Gamechanger For Ai Workspac"><br>
+<b>Google Gemini Desktop App Adds Avatars Why This Is A Gamechanger For Ai Workspac</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/anthropics-75-b-ipo-could-it-shatter-spacexs-record/">
 <img src="guides/anthropics-75-b-ipo-could-it-shatter-spacexs-record/thumbnail.jpg" width="300" alt="Anthropics 75 B Ipo Could It Shatter Spacexs Record"><br>
 <b>Anthropics 75 B Ipo Could It Shatter Spacexs Record</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/free-12month-gemini-for-students-is-google-really-giving-the-edge/">
 <img src="guides/free-12month-gemini-for-students-is-google-really-giving-the-edge/thumbnail.jpg" width="300" alt="Free 12Month Gemini For Students Is Google Really Giving The Edge"><br>
 <b>Free 12Month Gemini For Students Is Google Really Giving The Edge</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/cursor-devin-claude-code-who-actually-supports-agentsmd-in-2026/">
-<img src="guides/cursor-devin-claude-code-who-actually-supports-agentsmd-in-2026/thumbnail.jpg" width="300" alt="Cursor Devin Claude Code Who Actually Supports Agentsmd In 2026"><br>
-<b>Cursor Devin Claude Code Who Actually Supports Agentsmd In 2026</b>
 </a>
 </td>
 </tr></table>
@@ -49,7 +49,7 @@
 | **Model Deep Dives** | ![95](https://img.shields.io/badge/95-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![19](https://img.shields.io/badge/19-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![20](https://img.shields.io/badge/20-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -346,6 +346,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[Google Gemini Desktop App Adds Avatars Why This Is A Gamechanger For Ai Workspac](https://bgill55.github.io/-weightandsee-guides/guides/google-gemini-desktop-app-adds-avatars-why-this-is-a-gamechanger-for-ai-workspac/)** — 2026-08-24
 - **[Free 12Month Gemini For Students Is Google Really Giving The Edge](https://bgill55.github.io/-weightandsee-guides/guides/free-12month-gemini-for-students-is-google-really-giving-the-edge/)** — 2026-08-24
 - **[Cursor Devin Claude Code Who Actually Supports Agentsmd In 2026](https://bgill55.github.io/-weightandsee-guides/guides/cursor-devin-claude-code-who-actually-supports-agentsmd-in-2026/)** — 2026-08-23
 - **[How To Stop Aipowered Inventory Hijacks Inside The New Guardrail Suite](https://bgill55.github.io/-weightandsee-guides/guides/how-to-stop-aipowered-inventory-hijacks-inside-the-new-guardrail-suite/)** — 2026-08-23
