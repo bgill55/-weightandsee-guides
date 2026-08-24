@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/283_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/284_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/anthropics-75-b-ipo-could-it-shatter-spacexs-record/">
+<img src="guides/anthropics-75-b-ipo-could-it-shatter-spacexs-record/thumbnail.jpg" width="300" alt="Anthropics 75 B Ipo Could It Shatter Spacexs Record"><br>
+<b>Anthropics 75 B Ipo Could It Shatter Spacexs Record</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/free-12month-gemini-for-students-is-google-really-giving-the-edge/">
 <img src="guides/free-12month-gemini-for-students-is-google-really-giving-the-edge/thumbnail.jpg" width="300" alt="Free 12Month Gemini For Students Is Google Really Giving The Edge"><br>
@@ -31,12 +37,6 @@
 <b>Cursor Devin Claude Code Who Actually Supports Agentsmd In 2026</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-slopsquatting-how-ai-hallucinations-weaponize-supplychain-data/">
-<img src="guides/inside-slopsquatting-how-ai-hallucinations-weaponize-supplychain-data/thumbnail.jpg" width="300" alt="Inside Slopsquatting How Ai Hallucinations Weaponize Supplychain Data"><br>
-<b>Inside Slopsquatting How Ai Hallucinations Weaponize Supplychain Data</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![125](https://img.shields.io/badge/125-blue?style=flat-square) |
-| **Model Deep Dives** | ![94](https://img.shields.io/badge/94-blue?style=flat-square) |
+| **Model Deep Dives** | ![95](https://img.shields.io/badge/95-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![19](https://img.shields.io/badge/19-blue?style=flat-square) |
@@ -191,6 +191,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Anthropics 75 B Ipo Could It Shatter Spacexs Record](https://bgill55.github.io/-weightandsee-guides/guides/anthropics-75-b-ipo-could-it-shatter-spacexs-record/)** — 2026-08-24
 - **[Weight And See Ai Guides Repo](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/)** — 2026-08-21
 - **[Daedalus V33011 Antifragile Autonomous Coding With Specfirst Architecture Real S](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33011-antifragile-autonomous-coding-with-specfirst-architecture-real-s/)** — 2026-08-19
 - **[Guide](https://bgill55.github.io/-weightandsee-guides/guides/guide/)** — 2026-08-12
