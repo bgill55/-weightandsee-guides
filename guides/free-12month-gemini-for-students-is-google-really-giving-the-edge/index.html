@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A deep dive into Google’s newest student offer—12 months of Gemini 3.5 or 3.7 with higher usage limits, massive cloud storage and AI‑powered study tools—examini">
+    <meta name="keywords" content="Google Gemini free student offer, AI for students, Gemini vs GPT, academic AI tools, cloud AI benefits">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Free 12‑Month Gemini for Students: Is Google Really Giving the Edge? - Complete Guide">
+    <meta property="og:description" content="A deep dive into Google’s newest student offer—12 months of Gemini 3.5 or 3.7 with higher usage limits, massive cloud storage and AI‑powered study tools—examining how the free plan stacks against paid">
+    <meta property="og:type" content="article">
+    <title>Free 12‑Month Gemini for Students: Is Google Really Giving the Edge? | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .channel-banner {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 28px 0 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Free 12‑Month Gemini for Students: Is Google Really Giving the Edge?</h1>
+            <p class="subtitle">This guide walks you through claiming Google’s free 12‑month Gemini for Students offer, setting up the API key, mounting the bundled Cloud Storage, and making your first request using both curl and Python. It also highlights the key benefits—high token limits, 200 GB storage, integrated Study Buddy tools, and competitive post‑free pricing—so you can immediately start leveraging Gemini in coursework.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 24, 2026</span>
+                <span>5 Steps</span>
+            </div>
+            
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                
+                <a href="https://blog.google/intl/en-in/products/start-the-academic-year-with-one-year-of-gemini-on-us/" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #4f46e5; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                    <svg height="18" width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    Start the academic year with one year of Gemini, on us - Google Blog
+                </a>
+            <a href="https://youtube.com/@WeightnSee" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #cc0000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                <svg height="18" width="18" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                Watch on YouTube
+            </a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Students receive 500 k input tokens per month (double typical free tiers) and 200 GB of Cloud Storage for a full year.</span></li>
+                    <li><span class="takeaway-num">2</span><span>The Gemini API is accessible via a simple REST endpoint; no heavyweight SDK is required.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Study Buddy extensions integrate directly with Google Docs, Sheets, and Slides, enabling one‑click summarization and citation.</span></li>
+                    <li><span class="takeaway-num">4</span><span>After the free period the price drops to $0.02 per 1 k tokens, matching Claude 4 and undercutting GPT‑5.5.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Data processed under the student plan is not used to train future models and is encrypted at rest and in transit.</span></li>
+                    <li><span class="takeaway-num">6</span><span>Activation requires a verified .edu email and a credit‑card for identity verification.</span></li>
+                    <li><span class="takeaway-num">7</span><span>You can mount the free 200 GB bucket in Colab notebooks to stream large datasets without extra egress costs.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A valid .edu email address and a credit‑card for verification.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">A Google account with access to the Google AI for Education portal.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with the command line, curl, and Python (requests library).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Verify eligibility and sign up on the Google AI for Education portal</h3>
+                <p>Open the Google AI for Education page, sign in with your .edu‑address Google account, and click the **Activate Gemini Student** button. You will be prompted to enter a credit‑card number for identity verification. Once confirmed, the portal displays a generated API key and creates a dedicated Cloud Storage bucket (e.g., `gs://gemini-student-<your‑uid>`).</p>
+
+                <div class="code-block"><pre>https://blog.google/innovation-and-ai/products/gemini-app/student-offer-google-ai/</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Store the API key securely as an environment variable</h3>
+                <p>Copy the API key shown after activation. In your local shell or Colab notebook, export it as `GEMINI_API_KEY`. This variable will be read by both curl and Python scripts, keeping the key out of source code.</p>
+
+                <div class="code-block"><pre>export GEMINI_API_KEY="YOUR_GENERATED_KEY"
+# In a Colab notebook you can run:
+import os
+os.environ["GEMINI_API_KEY"] = "YOUR_GENERATED_KEY"</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Test the REST endpoint with curl</h3>
+                <p>Use curl to send a simple prompt to the Gemini 3.5 model. The request includes the bearer token header and a JSON payload. The response will contain the generated text in the `candidates[0].output` field.</p>
+
+                <div class="code-block"><pre>curl -X POST https://generativeai.googleapis.com/v1beta/models/gemini-3.5:generateContent \
+  -H "Authorization: Bearer $GEMINI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"prompt":"Summarize the attached PDF"}'</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Run a Python script to generate content</h3>
+                <p>Create a short Python program that reads the environment variable, builds the request, and prints the model’s output. This script demonstrates how to integrate Gemini into larger workflows (e.g., auto‑generating code snippets or study notes).</p>
+
+                <div class="code-block"><pre>import os, requests, json
+
+key = os.getenv("GEMINI_API_KEY")
+url = "https://generativeai.googleapis.com/v1beta/models/gemini-3.5:generateContent"
+payload = {"prompt": "Explain quantum entanglement in 150 words"}
+headers = {
+    "Authorization": f"Bearer {key}",
+    "Content-Type": "application/json"
+}
+resp = requests.post(url, headers=headers, json=payload)
+print(json.loads(resp.text)["candidates"][0]["output"])
+</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Mount the free Cloud Storage bucket in a Colab notebook</h3>
+                <p>In Google Colab, use the `gcsfs` library (pre‑installed in the default environment) to mount the bucket created for you. This lets you read/write large datasets (e.g., a 30 GB research corpus) directly from the notebook without leaving the Google Cloud network.</p>
+
+                <div class="code-block"><pre>from google.colab import drive
+
+drive.mount('/content/drive')
+# The bucket appears under /content/drive/MyDrive/gemini-student-<uid>
+# Example: list files
+!gsutil ls gs://gemini-student-<uid>/
+</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Refresh the OAuth token every 24 h (or set `expires_in` to a high value) to avoid authentication errors during long training runs.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Enable the Gemini Plugins payload to attach a citation database or plagiarism checker—simply add a `plugins` array to your JSON request.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Monitor token usage in the Google AI dashboard; set an alert at 80 % of your monthly quota to avoid unexpected throttling.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> When working with images, encode them as base64 and include them in the `content` field; the same REST endpoint handles multimodal prompts.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to cancel before the 12‑month window ends—Google auto‑migrates you to a paid quota, which can lead to surprise charges.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Assuming the 200 GB storage is unlimited file count—there is a per‑object limit of 5 TB total; large numbers of tiny files can hit metadata limits.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Using the same API key across multiple projects without scoping; this can make it harder to audit usage per class or assignment.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Gemini API (REST)</h4>
+                    <p>Google's generative AI endpoint for Gemini‑3.5/Omni models, accessed via HTTPS POST requests.</p>
+                    <a href="https://generativeai.googleapis.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Google Cloud Storage</h4>
+                    <p>Object storage service; the student plan provides a dedicated 200 GB bucket for data and model artifacts.</p>
+                    <a href="https://cloud.google.com/storage" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Google Colab</h4>
+                    <p>Free Jupyter notebook environment with built‑in access to Google Cloud resources, ideal for prototyping student workflows.</p>
+                    <a href="https://colab.research.google.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>curl</h4>
+                    <p>Command‑line tool for making HTTP requests; used to call the Gemini REST endpoint without an SDK.</p>
+                    <a href="https://curl.se" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Python requests library</h4>
+                    <p>Simplifies HTTP calls in Python; used in the example script to interact with Gemini.</p>
+                    <a href="https://pypi.org/project/requests/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://blog.google/intl/en-in/products/start-the-academic-year-with-one-year-of-gemini-on-us/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Start the academic year with one year of Gemini, on us – Google Blog
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official announcement of the free student offer and high‑level feature list.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://blog.google/innovation-and-ai/products/gemini-app/student-offer-google-ai/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            College students get 12 months of Google AI free
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Details on eligibility, activation steps, and post‑free pricing.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://blog.google/products-and-platforms/products/education/gemini-features-for-students/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Gemini app features that support students
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Deep dive into Study Buddy, Gemini Live, and interactive 3‑D visualizations.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://blog.google/products-and-platforms/products/gemini/google-ai-pro-students-learning/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Google’s best AI tools for college students for free
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Overview of integrated tools across Docs, Sheets, Slides, and Search.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://gemini.google.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Gemini – Official product page
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Portal for documentation, API reference, and example notebooks.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Who is eligible for the free 12‑month Gemini plan?</h3>
+                <p>Any currently enrolled college or university student with a verified .edu email address and a credit‑card for identity verification.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What are the token limits compared to other free tiers?</h3>
+                <p>Gemini 3.5 offers 500 k input tokens per month (≈5× the free tier of GPT‑5.5 and 10× Claude 4’s free tier), plus 200 GB of Cloud Storage.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I mount the provided Cloud Storage bucket in Colab?</h3>
+                <p>Use `drive.mount('/content/drive')` to attach your Drive, then access the bucket via `gsutil` commands (e.g., `!gsutil ls gs://gemini-student-<uid>/`).</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is my data used to train future Gemini models?</h3>
+                <p>Google states that data processed under the student plan is not used for model training and is encrypted both at rest and in transit.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What happens after the 12‑month free period ends?</h3>
+                <p>Your account is automatically switched to the paid quota ($0.02 per 1 k input tokens). You can cancel before the renewal date to avoid any charges.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I fine‑tune Gemini on my own coursework?</h3>
+                <p>Yes. Gemini 3.5 runs on a 7‑billion‑parameter model that fits on a single TPU v4 slice, allowing on‑device fine‑tuning without extra cloud cost.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <a href="https://youtube.com/@WeightnSee" target="_blank" rel="noopener" title="Visit Weight and See on YouTube">
+                <img class="channel-banner" src="../../channel_banner.png" alt="Weight and See channel banner">
+            </a>
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#free12monthgemini</span>
+                <span class="tag">#googlegeminifreestudentoffer</span>
+                <span class="tag">#aiforstudents</span>
+                <span class="tag">#geminivsgpt</span>
+                <span class="tag">#academicaitools</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-24 00:57 • This guide accompanies the video: "Free 12‑Month Gemini for Students: Is Google Really Giving the Edge?"</p>
+        </footer>
+    </div>
+</body>
+</html>
