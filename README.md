@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/285_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/286_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/review-gamedevbench-the-first-game-development-agent-benchmark/">
+<img src="guides/review-gamedevbench-the-first-game-development-agent-benchmark/thumbnail.jpg" width="300" alt="Review Gamedevbench The First Game Development Agent Benchmark"><br>
+<b>Review Gamedevbench The First Game Development Agent Benchmark</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/google-gemini-desktop-app-adds-avatars-why-this-is-a-gamechanger-for-ai-workspac/">
 <img src="guides/google-gemini-desktop-app-adds-avatars-why-this-is-a-gamechanger-for-ai-workspac/thumbnail.jpg" width="300" alt="Google Gemini Desktop App Adds Avatars Why This Is A Gamechanger For Ai Workspac"><br>
@@ -31,12 +37,6 @@
 <b>Anthropics 75 B Ipo Could It Shatter Spacexs Record</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/free-12month-gemini-for-students-is-google-really-giving-the-edge/">
-<img src="guides/free-12month-gemini-for-students-is-google-really-giving-the-edge/thumbnail.jpg" width="300" alt="Free 12Month Gemini For Students Is Google Really Giving The Edge"><br>
-<b>Free 12Month Gemini For Students Is Google Really Giving The Edge</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![125](https://img.shields.io/badge/125-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![126](https://img.shields.io/badge/126-blue?style=flat-square) |
 | **Model Deep Dives** | ![95](https://img.shields.io/badge/95-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Review Gamedevbench The First Game Development Agent Benchmark](https://bgill55.github.io/-weightandsee-guides/guides/review-gamedevbench-the-first-game-development-agent-benchmark/)** — 2026-08-24
 - **[Instinct Ai Agent Review Realtime X Integration Pricing And Latency](https://bgill55.github.io/-weightandsee-guides/guides/instinct-ai-agent-review-realtime-x-integration-pricing-and-latency/)** — 2026-08-22
 - **[Ozbrain Vs Langchain Knowledge Store Latency Cost And Privacy Showdown](https://bgill55.github.io/-weightandsee-guides/guides/ozbrain-vs-langchain-knowledge-store-latency-cost-and-privacy-showdown/)** — 2026-08-21
 - **[Claude 5 Token Vomit Cleaner Handson Review](https://bgill55.github.io/-weightandsee-guides/guides/claude-5-token-vomit-cleaner-handson-review/)** — 2026-08-21
