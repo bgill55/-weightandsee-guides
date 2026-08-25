@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/286_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/287_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-claude-4-why-ai-coders-are-switching-in-2026/">
+<img src="guides/inside-claude-4-why-ai-coders-are-switching-in-2026/thumbnail.jpg" width="300" alt="Inside Claude 4 Why Ai Coders Are Switching In 2026"><br>
+<b>Inside Claude 4 Why Ai Coders Are Switching In 2026</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/review-gamedevbench-the-first-game-development-agent-benchmark/">
 <img src="guides/review-gamedevbench-the-first-game-development-agent-benchmark/thumbnail.jpg" width="300" alt="Review Gamedevbench The First Game Development Agent Benchmark"><br>
@@ -31,12 +37,6 @@
 <b>Google Gemini Desktop App Adds Avatars Why This Is A Gamechanger For Ai Workspac</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/anthropics-75-b-ipo-could-it-shatter-spacexs-record/">
-<img src="guides/anthropics-75-b-ipo-could-it-shatter-spacexs-record/thumbnail.jpg" width="300" alt="Anthropics 75 B Ipo Could It Shatter Spacexs Record"><br>
-<b>Anthropics 75 B Ipo Could It Shatter Spacexs Record</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![126](https://img.shields.io/badge/126-blue?style=flat-square) |
-| **Model Deep Dives** | ![95](https://img.shields.io/badge/95-blue?style=flat-square) |
+| **Model Deep Dives** | ![96](https://img.shields.io/badge/96-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![20](https://img.shields.io/badge/20-blue?style=flat-square) |
@@ -192,6 +192,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Inside Claude 4 Why Ai Coders Are Switching In 2026](https://bgill55.github.io/-weightandsee-guides/guides/inside-claude-4-why-ai-coders-are-switching-in-2026/)** — 2026-08-25
 - **[Anthropics 75 B Ipo Could It Shatter Spacexs Record](https://bgill55.github.io/-weightandsee-guides/guides/anthropics-75-b-ipo-could-it-shatter-spacexs-record/)** — 2026-08-24
 - **[Weight And See Ai Guides Repo](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/)** — 2026-08-21
 - **[Daedalus V33011 Antifragile Autonomous Coding With Specfirst Architecture Real S](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33011-antifragile-autonomous-coding-with-specfirst-architecture-real-s/)** — 2026-08-19
