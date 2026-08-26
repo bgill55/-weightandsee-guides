@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/287_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/288_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-portable-computer-vs-gpt-5-point-5-on-latency-and-cost/">
+<img src="guides/local-vs-cloud-portable-computer-vs-gpt-5-point-5-on-latency-and-cost/thumbnail.jpg" width="300" alt="Local Vs Cloud Portable Computer Vs Gpt 5 Point 5 On Latency And Cost"><br>
+<b>Local Vs Cloud Portable Computer Vs Gpt 5 Point 5 On Latency And Cost</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-claude-4-why-ai-coders-are-switching-in-2026/">
 <img src="guides/inside-claude-4-why-ai-coders-are-switching-in-2026/thumbnail.jpg" width="300" alt="Inside Claude 4 Why Ai Coders Are Switching In 2026"><br>
@@ -31,12 +37,6 @@
 <b>Review Gamedevbench The First Game Development Agent Benchmark</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/google-gemini-desktop-app-adds-avatars-why-this-is-a-gamechanger-for-ai-workspac/">
-<img src="guides/google-gemini-desktop-app-adds-avatars-why-this-is-a-gamechanger-for-ai-workspac/thumbnail.jpg" width="300" alt="Google Gemini Desktop App Adds Avatars Why This Is A Gamechanger For Ai Workspac"><br>
-<b>Google Gemini Desktop App Adds Avatars Why This Is A Gamechanger For Ai Workspac</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![126](https://img.shields.io/badge/126-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![127](https://img.shields.io/badge/127-blue?style=flat-square) |
 | **Model Deep Dives** | ![96](https://img.shields.io/badge/96-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Local Vs Cloud Portable Computer Vs Gpt 5 Point 5 On Latency And Cost](https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-portable-computer-vs-gpt-5-point-5-on-latency-and-cost/)** — 2026-08-25
 - **[Review Gamedevbench The First Game Development Agent Benchmark](https://bgill55.github.io/-weightandsee-guides/guides/review-gamedevbench-the-first-game-development-agent-benchmark/)** — 2026-08-24
 - **[Instinct Ai Agent Review Realtime X Integration Pricing And Latency](https://bgill55.github.io/-weightandsee-guides/guides/instinct-ai-agent-review-realtime-x-integration-pricing-and-latency/)** — 2026-08-22
 - **[Ozbrain Vs Langchain Knowledge Store Latency Cost And Privacy Showdown](https://bgill55.github.io/-weightandsee-guides/guides/ozbrain-vs-langchain-knowledge-store-latency-cost-and-privacy-showdown/)** — 2026-08-21

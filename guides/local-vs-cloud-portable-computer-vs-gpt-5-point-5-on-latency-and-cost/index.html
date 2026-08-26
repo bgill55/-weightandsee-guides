@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We pit Perplexity's Portable Computer—a fully local AI agent running on Nvidia RTX hardware—against the leading cloud model GPT 5 point 5, measuring real‑world ">
+    <meta name="keywords" content="Portable Computer, local AI inference, GPT 5 point 5, cost comparison, AI privacy">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Local vs Cloud: Portable Computer vs GPT 5 point 5 on Latency and Cost - Complete Guide">
+    <meta property="og:description" content="We pit Perplexity's Portable Computer—a fully local AI agent running on Nvidia RTX hardware—against the leading cloud model GPT 5 point 5, measuring real‑world latency, token‑free operation, and total">
+    <meta property="og:type" content="article">
+    <title>Local vs Cloud: Portable Computer vs GPT 5 point 5 on Latency and Cost | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .channel-banner {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 28px 0 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Local vs Cloud: Portable Computer vs GPT 5 point 5 on Latency and Cost</h1>
+            <p class="subtitle">This guide walks you through setting up Perplexity’s Portable Computer on an Nvidia RTX workstation, benchmarking its latency against GPT‑5.5, and deploying it via Docker. It covers hardware prep, model quantization, CI/CD integration, and cost‑analysis so you can decide whether a local solution meets your needs.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>August 25, 2026</span>
+                <span>5 Steps</span>
+            </div>
+            
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                
+                <a href="https://github.com/perplexity-ai/portable-computer/blob/main/docs/README.md" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #238636; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(35, 134, 54, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                    <svg height="18" width="18" viewBox="0 0 16 16" fill="white"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    Portable Computer Documentation GitHub Repo
+                </a>
+                <a href="https://thenewstack.io/perplexity-portable-computer-nvidia/" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #4f46e5; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                    <svg height="18" width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    Perplexity’s Computer agent can now run locally — if you can afford it - The New Stack
+                </a>
+            <a href="https://youtube.com/@WeightnSee" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #cc0000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                <svg height="18" width="18" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                Watch on YouTube
+            </a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>A single RTX 4090 can serve a 7‑Billion‑parameter Llama 4 model with ~2 s latency, close to GPT‑5.5’s 1 s cloud response.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Local inference eliminates token billing; a 1,000‑token batch costs ~10× less than GPT‑5.5 in API fees.</span></li>
+                    <li><span class="takeaway-num">3</span><span>Monthly electricity and depreciation for a dedicated RTX 4090 stay under $30, versus $300+ in token costs for equivalent traffic.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Docker images pre‑configured for Llama 4, Qwen 3, and PPLX 27B enable a REST API that mirrors GPT‑5.5’s signature.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Quantization tooling (`quantize_tool --bits 3 --target gpu`) reduces VRAM usage by 30 % and lets you run larger models on lower‑end GPUs.</span></li>
+                    <li><span class="takeaway-num">6</span><span>The security sandbox blocks outbound traffic, ensuring data never leaves your premises unless you explicitly approve hybrid escalation.</span></li>
+                    <li><span class="takeaway-num">7</span><span>CI/CD pipelines can embed inference as a job (`./run_inference.sh --model llama4 --input $FILE`) without exposing API keys.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Linux machine with an Nvidia RTX GPU (RTX 4090 recommended, RTX 3080 acceptable with 3‑bit quantization).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">CUDA 12.x, cuDNN, and NVIDIA driver 550+ installed.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Docker Engine 20+ and Docker Compose installed.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.10+ and pip for dependency installation.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Prepare the Hardware & Drivers</h3>
+                <p>Ensure your GPU drivers, CUDA toolkit, and cuDNN libraries are up to date. Verify the GPU is recognized by running `nvidia-smi`. Install Docker and Docker Compose for container deployment.</p>
+
+                <div class="code-block"><pre>```bash
+# Install NVIDIA drivers (Ubuntu example)
+sudo apt update && sudo apt install -y nvidia-driver-550 nvidia-dkms-550 nvidia-utils-550
+# Verify GPU
+nvidia-smi
+# Install Docker
+sudo apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io
+sudo usermod -aG docker $USER
+# Log out/in to apply group changes
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Clone Portable Computer & Install Dependencies</h3>
+                <p>Download the Portable Computer repo, create a virtual environment, and install Python dependencies. The repository bundles the agent harness, inference engine, and model weights.</p>
+
+                <div class="code-block"><pre>```bash
+git clone https://github.com/perplexity-ai/portable-computer.git
+cd portable-computer
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+# Optionally pull pre‑bundled model weights
+python scripts/download_models.py
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Run Quantized Llama 4 Inference</h3>
+                <p>Launch the Llama 4 model quantized to 4‑bit. The command starts a local inference server that responds via the same REST API as GPT‑5.5.</p>
+
+                <div class="code-block"><pre>```bash
+python -m llama.run --model llama4 --quant 4bit --port 8080
+# Test with curl
+curl -X POST http://localhost:8080/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model":"llama4","messages":[{"role":"user","content":"Hello"}]}'
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Benchmark Latency and Throughput</h3>
+                <p>Use the provided benchmark script to send 150‑token prompts and measure average latency under different concurrency levels. The script logs token counts, response times, and power usage.</p>
+
+                <div class="code-block"><pre>```bash
+# Run a single‑request benchmark
+./benchmark.sh --prompt "What is AI?" --tokens 150
+# Run a concurrency benchmark with 4 workers
+./benchmark.sh --prompt "Explain quantum computing." --tokens 150 --workers 4
+# The script outputs JSON with avg_latency, max_latency, and power_consumption
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Deploy via Docker for Production</h3>
+                <p>Pull the pre‑built Docker image or build locally, then expose the inference endpoint. Docker’s single command mirrors the cloud API signature, making migration painless.</p>
+
+                <div class="code-block"><pre>```bash
+# Pull the latest image
+docker pull perplexityai/llama4:latest
+# Run the container
+docker run -d --gpus all -p 8080:80 perplexityai/llama4:latest
+# Verify endpoint is reachable
+curl http://localhost:8080/v1/chat/completions -H "Content-Type: application/json" -d '{"model":"llama4","messages":[{"role":"user","content":"Hello"}]}'
+```</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use `uvicorn --workers 4 --port 8080 main:app` to increase concurrent request handling on high‑core CPUs.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Enable GPU memory pooling (`torch.cuda.set_per_process_memory_fraction(0.8, 0)`) to avoid out‑of‑memory errors when scaling up.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Run the quantization tool before model deployment to save VRAM: `quantize_tool --bits 3 --target gpu --model qwen3.8`.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Add a `--dry-run` flag to the inference script to validate PII filtering before production.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Keep the Docker image updated nightly via a GitHub Actions workflow that rebuilds from the latest repo commit.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to install CUDA/cuDNN can lead to `RuntimeError: CUDA not available` even with a GPU.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Using 4‑bit quantization on an RTX 3080 without disabling `torch.backends.cudnn.benchmark` may cause occasional stalls.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Exposing the inference endpoint without rate limiting can lead to denial‑of‑service from accidental overload.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Portable Computer</h4>
+                    <p>A fully local AI agent stack that runs inference on Nvidia GPUs, includes agent harness, sandbox, and hybrid escalation.</p>
+                    <a href="https://github.com/perplexity-ai/portable-computer" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Docker</h4>
+                    <p>Containerization platform used to ship pre‑configured inference images with REST APIs.</p>
+                    <a href="https://www.docker.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>uvicorn</h4>
+                    <p>ASGI server used to run the inference service with multiple workers.</p>
+                    <a href="https://www.uvicorn.org" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>quantize_tool</h4>
+                    <p>CLI tool to perform GPU‑targeted 3‑bit/4‑bit quantization of large language models.</p>
+                    <a href="https://github.com/perplexity-ai/quantize_tool" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>GitHub Actions</h4>
+                    <p>CI/CD platform used to automate inference tests and deployment pipelines.</p>
+                    <a href="https://github.com/features/actions" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://thenewstack.io/perplexity-portable-computer-nvidia/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Perplexity’s Portable Computer can now run locally — if you can afford it
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — New Stack article covering the hardware requirements and cost analysis of the Portable Computer.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.marktechpost.com/2026/08/25/perplexity-ships-portable-computer-on-nvidia-dgx-spark-local-harness-os-enforced-sandbox-and-zero-per-token-cost-for-local-steps/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Perplexity Ships Portable Computer on NVIDIA DGX Spark: Local Harness, OS‑Enforced Sandbox, and Zero Per‑Token Cost for Local Steps
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — MarkTechPost review detailing the architecture, security sandbox, and hybrid escalation capabilities.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/perplexity-ai/portable-computer/blob/main/docs/README.md" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Portable Computer Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official repository documentation with installation guides, benchmarking scripts, and deployment options.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>Can I run the Portable Computer on a Windows machine?</h3>
+                <p>The current release targets Linux. Windows support is planned, but for now you need a WSL2 environment or a native Linux distribution.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is the maximum model size I can run on an RTX 4090?</h3>
+                <p>With 4‑bit quantization, you can run up to ~27 B parameter models (Qwen 3.8, PPLX 27B). 3‑bit quantization expands this to ~30 B on the same GPU.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does the system handle concurrent requests?</h3>
+                <p>Launch multiple `uvicorn` workers (e.g., `uvicorn --workers 4`) or use Docker Compose to spin up several service instances. Benchmarks show average latency stays below 2.5 s with four workers.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What are the security guarantees?</h3>
+                <p>The sandbox blocks outbound network traffic by default, and the PII classifier flags any data that would be sent to the cloud. Hybrid escalation requires explicit user approval.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is there a cost for using the local models?</h3>
+                <p>No token billing occurs. Costs are limited to electricity, GPU depreciation, and any cloud escalation you opt into.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <a href="https://youtube.com/@WeightnSee" target="_blank" rel="noopener" title="Visit Weight and See on YouTube">
+                <img class="channel-banner" src="../../channel_banner.png" alt="Weight and See channel banner">
+            </a>
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#localaivs</span>
+                <span class="tag">#portablecomputer</span>
+                <span class="tag">#localaiinference</span>
+                <span class="tag">#gpt5point5</span>
+                <span class="tag">#costcomparison</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-08-25 21:25 • This guide accompanies the video: "Local vs Cloud: Portable Computer vs GPT 5 point 5 on Latency and Cost"</p>
+        </footer>
+    </div>
+</body>
+</html>
