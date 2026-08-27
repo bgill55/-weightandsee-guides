@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/289_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/290_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/muse-glimmer-metas-open-source-ai-model-for-consumer-hardware/">
+<img src="guides/muse-glimmer-metas-open-source-ai-model-for-consumer-hardware/thumbnail.jpg" width="300" alt="Muse Glimmer Metas Open Source Ai Model For Consumer Hardware"><br>
+<b>Muse Glimmer Metas Open Source Ai Model For Consumer Hardware</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/how-design-systems-can-fix-ai-slop-a-guide-for-engineers-and-product-designers/">
 <img src="guides/how-design-systems-can-fix-ai-slop-a-guide-for-engineers-and-product-designers/thumbnail.jpg" width="300" alt="How Design Systems Can Fix Ai Slop A Guide For Engineers And Product Designers"><br>
@@ -31,12 +37,6 @@
 <b>Local Vs Cloud Portable Computer Vs Gpt 5 Point 5 On Latency And Cost</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-claude-4-why-ai-coders-are-switching-in-2026/">
-<img src="guides/inside-claude-4-why-ai-coders-are-switching-in-2026/thumbnail.jpg" width="300" alt="Inside Claude 4 Why Ai Coders Are Switching In 2026"><br>
-<b>Inside Claude 4 Why Ai Coders Are Switching In 2026</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![127](https://img.shields.io/badge/127-blue?style=flat-square) |
 | **Model Deep Dives** | ![96](https://img.shields.io/badge/96-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![21](https://img.shields.io/badge/21-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -296,6 +296,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Muse Glimmer Metas Open Source Ai Model For Consumer Hardware](https://bgill55.github.io/-weightandsee-guides/guides/muse-glimmer-metas-open-source-ai-model-for-consumer-hardware/)** — 2026-08-27
 - **[Onecli Oss Sandboxed Agent Harness For Teams](https://bgill55.github.io/-weightandsee-guides/guides/onecli-oss-sandboxed-agent-harness-for-teams/)** — 2026-08-20
 - **[Onecli The Open Source Agent Harness That Keeps Your Ai Truly Local](https://bgill55.github.io/-weightandsee-guides/guides/onecli-the-open-source-agent-harness-that-keeps-your-ai-truly-local/)** — 2026-08-20
 - **[Binance Introduces Agent Os To Connect Ai Applications To Financial Infrastructu](https://bgill55.github.io/-weightandsee-guides/guides/binance-introduces-agent-os-to-connect-ai-applications-to-financial-infrastructu/)** — 2026-08-20
