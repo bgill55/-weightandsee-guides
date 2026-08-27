@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/288_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/289_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-design-systems-can-fix-ai-slop-a-guide-for-engineers-and-product-designers/">
+<img src="guides/how-design-systems-can-fix-ai-slop-a-guide-for-engineers-and-product-designers/thumbnail.jpg" width="300" alt="How Design Systems Can Fix Ai Slop A Guide For Engineers And Product Designers"><br>
+<b>How Design Systems Can Fix Ai Slop A Guide For Engineers And Product Designers</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-portable-computer-vs-gpt-5-point-5-on-latency-and-cost/">
 <img src="guides/local-vs-cloud-portable-computer-vs-gpt-5-point-5-on-latency-and-cost/thumbnail.jpg" width="300" alt="Local Vs Cloud Portable Computer Vs Gpt 5 Point 5 On Latency And Cost"><br>
 <b>Local Vs Cloud Portable Computer Vs Gpt 5 Point 5 On Latency And Cost</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-claude-4-why-ai-coders-are-switching-in-2026/">
 <img src="guides/inside-claude-4-why-ai-coders-are-switching-in-2026/thumbnail.jpg" width="300" alt="Inside Claude 4 Why Ai Coders Are Switching In 2026"><br>
 <b>Inside Claude 4 Why Ai Coders Are Switching In 2026</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/review-gamedevbench-the-first-game-development-agent-benchmark/">
-<img src="guides/review-gamedevbench-the-first-game-development-agent-benchmark/thumbnail.jpg" width="300" alt="Review Gamedevbench The First Game Development Agent Benchmark"><br>
-<b>Review Gamedevbench The First Game Development Agent Benchmark</b>
 </a>
 </td>
 </tr></table>
@@ -49,7 +49,7 @@
 | **Model Deep Dives** | ![96](https://img.shields.io/badge/96-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![34](https://img.shields.io/badge/34-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![20](https://img.shields.io/badge/20-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![21](https://img.shields.io/badge/21-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -349,6 +349,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[How Design Systems Can Fix Ai Slop A Guide For Engineers And Product Designers](https://bgill55.github.io/-weightandsee-guides/guides/how-design-systems-can-fix-ai-slop-a-guide-for-engineers-and-product-designers/)** — 2026-08-26
 - **[Google Gemini Desktop App Adds Avatars Why This Is A Gamechanger For Ai Workspac](https://bgill55.github.io/-weightandsee-guides/guides/google-gemini-desktop-app-adds-avatars-why-this-is-a-gamechanger-for-ai-workspac/)** — 2026-08-24
 - **[Free 12Month Gemini For Students Is Google Really Giving The Edge](https://bgill55.github.io/-weightandsee-guides/guides/free-12month-gemini-for-students-is-google-really-giving-the-edge/)** — 2026-08-24
 - **[Cursor Devin Claude Code Who Actually Supports Agentsmd In 2026](https://bgill55.github.io/-weightandsee-guides/guides/cursor-devin-claude-code-who-actually-supports-agentsmd-in-2026/)** — 2026-08-23
