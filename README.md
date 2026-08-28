@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/291_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/292_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/ai-video-production-101-how-gemini-omni-11-flash-simplifies-your-workflow/">
+<img src="guides/ai-video-production-101-how-gemini-omni-11-flash-simplifies-your-workflow/thumbnail.jpg" width="300" alt="Ai Video Production 101 How Gemini Omni 11 Flash Simplifies Your Workflow"><br>
+<b>Ai Video Production 101 How Gemini Omni 11 Flash Simplifies Your Workflow</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/visualizing-caskg-from-skill-graph-construction-to-counterfactual-probes/">
 <img src="guides/visualizing-caskg-from-skill-graph-construction-to-counterfactual-probes/thumbnail.jpg" width="300" alt="Visualizing Caskg From Skill Graph Construction To Counterfactual Probes"><br>
@@ -31,12 +37,6 @@
 <b>Muse Glimmer Metas Open Source Ai Model For Consumer Hardware</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-design-systems-can-fix-ai-slop-a-guide-for-engineers-and-product-designers/">
-<img src="guides/how-design-systems-can-fix-ai-slop-a-guide-for-engineers-and-product-designers/thumbnail.jpg" width="300" alt="How Design Systems Can Fix Ai Slop A Guide For Engineers And Product Designers"><br>
-<b>How Design Systems Can Fix Ai Slop A Guide For Engineers And Product Designers</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![128](https://img.shields.io/badge/128-blue?style=flat-square) |
-| **Model Deep Dives** | ![96](https://img.shields.io/badge/96-blue?style=flat-square) |
+| **Model Deep Dives** | ![97](https://img.shields.io/badge/97-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![21](https://img.shields.io/badge/21-blue?style=flat-square) |
@@ -194,6 +194,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Ai Video Production 101 How Gemini Omni 11 Flash Simplifies Your Workflow](https://bgill55.github.io/-weightandsee-guides/guides/ai-video-production-101-how-gemini-omni-11-flash-simplifies-your-workflow/)** — 2026-08-28
 - **[Inside Claude 4 Why Ai Coders Are Switching In 2026](https://bgill55.github.io/-weightandsee-guides/guides/inside-claude-4-why-ai-coders-are-switching-in-2026/)** — 2026-08-25
 - **[Anthropics 75 B Ipo Could It Shatter Spacexs Record](https://bgill55.github.io/-weightandsee-guides/guides/anthropics-75-b-ipo-could-it-shatter-spacexs-record/)** — 2026-08-24
 - **[Weight And See Ai Guides Repo](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/)** — 2026-08-21
