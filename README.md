@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/290_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/291_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/visualizing-caskg-from-skill-graph-construction-to-counterfactual-probes/">
+<img src="guides/visualizing-caskg-from-skill-graph-construction-to-counterfactual-probes/thumbnail.jpg" width="300" alt="Visualizing Caskg From Skill Graph Construction To Counterfactual Probes"><br>
+<b>Visualizing Caskg From Skill Graph Construction To Counterfactual Probes</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/muse-glimmer-metas-open-source-ai-model-for-consumer-hardware/">
 <img src="guides/muse-glimmer-metas-open-source-ai-model-for-consumer-hardware/thumbnail.jpg" width="300" alt="Muse Glimmer Metas Open Source Ai Model For Consumer Hardware"><br>
@@ -31,12 +37,6 @@
 <b>How Design Systems Can Fix Ai Slop A Guide For Engineers And Product Designers</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-portable-computer-vs-gpt-5-point-5-on-latency-and-cost/">
-<img src="guides/local-vs-cloud-portable-computer-vs-gpt-5-point-5-on-latency-and-cost/thumbnail.jpg" width="300" alt="Local Vs Cloud Portable Computer Vs Gpt 5 Point 5 On Latency And Cost"><br>
-<b>Local Vs Cloud Portable Computer Vs Gpt 5 Point 5 On Latency And Cost</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![127](https://img.shields.io/badge/127-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![128](https://img.shields.io/badge/128-blue?style=flat-square) |
 | **Model Deep Dives** | ![96](https://img.shields.io/badge/96-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Visualizing Caskg From Skill Graph Construction To Counterfactual Probes](https://bgill55.github.io/-weightandsee-guides/guides/visualizing-caskg-from-skill-graph-construction-to-counterfactual-probes/)** — 2026-08-27
 - **[Local Vs Cloud Portable Computer Vs Gpt 5 Point 5 On Latency And Cost](https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-portable-computer-vs-gpt-5-point-5-on-latency-and-cost/)** — 2026-08-25
 - **[Review Gamedevbench The First Game Development Agent Benchmark](https://bgill55.github.io/-weightandsee-guides/guides/review-gamedevbench-the-first-game-development-agent-benchmark/)** — 2026-08-24
 - **[Instinct Ai Agent Review Realtime X Integration Pricing And Latency](https://bgill55.github.io/-weightandsee-guides/guides/instinct-ai-agent-review-realtime-x-integration-pricing-and-latency/)** — 2026-08-22
