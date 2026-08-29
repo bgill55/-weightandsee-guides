@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/293_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/294_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/tencent-hy4-preview-770b-coding-model-explained/">
+<img src="guides/tencent-hy4-preview-770b-coding-model-explained/thumbnail.jpg" width="300" alt="Tencent Hy4 Preview 770B Coding Model Explained"><br>
+<b>Tencent Hy4 Preview 770B Coding Model Explained</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-hades-supply-chain-campaign-how-ai-coding-assistants-became-attack-vectors/">
 <img src="guides/the-hades-supply-chain-campaign-how-ai-coding-assistants-became-attack-vectors/thumbnail.jpg" width="300" alt="The Hades Supply Chain Campaign How Ai Coding Assistants Became Attack Vectors"><br>
@@ -31,12 +37,6 @@
 <b>Ai Video Production 101 How Gemini Omni 11 Flash Simplifies Your Workflow</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/visualizing-caskg-from-skill-graph-construction-to-counterfactual-probes/">
-<img src="guides/visualizing-caskg-from-skill-graph-construction-to-counterfactual-probes/thumbnail.jpg" width="300" alt="Visualizing Caskg From Skill Graph Construction To Counterfactual Probes"><br>
-<b>Visualizing Caskg From Skill Graph Construction To Counterfactual Probes</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![128](https://img.shields.io/badge/128-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![129](https://img.shields.io/badge/129-blue?style=flat-square) |
 | **Model Deep Dives** | ![98](https://img.shields.io/badge/98-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Tencent Hy4 Preview 770B Coding Model Explained](https://bgill55.github.io/-weightandsee-guides/guides/tencent-hy4-preview-770b-coding-model-explained/)** — 2026-08-29
 - **[Visualizing Caskg From Skill Graph Construction To Counterfactual Probes](https://bgill55.github.io/-weightandsee-guides/guides/visualizing-caskg-from-skill-graph-construction-to-counterfactual-probes/)** — 2026-08-27
 - **[Local Vs Cloud Portable Computer Vs Gpt 5 Point 5 On Latency And Cost](https://bgill55.github.io/-weightandsee-guides/guides/local-vs-cloud-portable-computer-vs-gpt-5-point-5-on-latency-and-cost/)** — 2026-08-25
 - **[Review Gamedevbench The First Game Development Agent Benchmark](https://bgill55.github.io/-weightandsee-guides/guides/review-gamedevbench-the-first-game-development-agent-benchmark/)** — 2026-08-24
