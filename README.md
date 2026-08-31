@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/297_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/298_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/agenthq-revolutionizing-multi-agent-orchestration-with-an-interactive-office-the/">
+<img src="guides/agenthq-revolutionizing-multi-agent-orchestration-with-an-interactive-office-the/thumbnail.jpg" width="300" alt="Agenthq Revolutionizing Multi Agent Orchestration With An Interactive Office The"><br>
+<b>Agenthq Revolutionizing Multi Agent Orchestration With An Interactive Office The</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/no-code-ai-agents-with-gemini-notebook-automating-workflows/">
 <img src="guides/no-code-ai-agents-with-gemini-notebook-automating-workflows/thumbnail.jpg" width="300" alt="No Code Ai Agents With Gemini Notebook Automating Workflows"><br>
@@ -31,12 +37,6 @@
 <b>Criticl How Weak Models Guide Strong Ai In Real Time</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-escalating-ai-feud-openais-cut-off-with-spacex-owned-cursor/">
-<img src="guides/the-escalating-ai-feud-openais-cut-off-with-spacex-owned-cursor/thumbnail.jpg" width="300" alt="The Escalating Ai Feud Openais Cut Off With Spacex Owned Cursor"><br>
-<b>The Escalating Ai Feud Openais Cut Off With Spacex Owned Cursor</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![130](https://img.shields.io/badge/130-blue?style=flat-square) |
 | **Model Deep Dives** | ![99](https://img.shields.io/badge/99-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![36](https://img.shields.io/badge/36-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -302,6 +302,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Agenthq Revolutionizing Multi Agent Orchestration With An Interactive Office The](https://bgill55.github.io/-weightandsee-guides/guides/agenthq-revolutionizing-multi-agent-orchestration-with-an-interactive-office-the/)** — 2026-08-31
 - **[Muse Glimmer Metas Open Source Ai Model For Consumer Hardware](https://bgill55.github.io/-weightandsee-guides/guides/muse-glimmer-metas-open-source-ai-model-for-consumer-hardware/)** — 2026-08-27
 - **[Onecli Oss Sandboxed Agent Harness For Teams](https://bgill55.github.io/-weightandsee-guides/guides/onecli-oss-sandboxed-agent-harness-for-teams/)** — 2026-08-20
 - **[Onecli The Open Source Agent Harness That Keeps Your Ai Truly Local](https://bgill55.github.io/-weightandsee-guides/guides/onecli-the-open-source-agent-harness-that-keeps-your-ai-truly-local/)** — 2026-08-20
