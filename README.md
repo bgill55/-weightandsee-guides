@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/296_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/297_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/no-code-ai-agents-with-gemini-notebook-automating-workflows/">
+<img src="guides/no-code-ai-agents-with-gemini-notebook-automating-workflows/thumbnail.jpg" width="300" alt="No Code Ai Agents With Gemini Notebook Automating Workflows"><br>
+<b>No Code Ai Agents With Gemini Notebook Automating Workflows</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/criticl-how-weak-models-guide-strong-ai-in-real-time/">
 <img src="guides/criticl-how-weak-models-guide-strong-ai-in-real-time/thumbnail.jpg" width="300" alt="Criticl How Weak Models Guide Strong Ai In Real Time"><br>
 <b>Criticl How Weak Models Guide Strong Ai In Real Time</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-escalating-ai-feud-openais-cut-off-with-spacex-owned-cursor/">
 <img src="guides/the-escalating-ai-feud-openais-cut-off-with-spacex-owned-cursor/thumbnail.jpg" width="300" alt="The Escalating Ai Feud Openais Cut Off With Spacex Owned Cursor"><br>
 <b>The Escalating Ai Feud Openais Cut Off With Spacex Owned Cursor</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/tencent-hy4-preview-770b-coding-model-explained/">
-<img src="guides/tencent-hy4-preview-770b-coding-model-explained/thumbnail.jpg" width="300" alt="Tencent Hy4 Preview 770B Coding Model Explained"><br>
-<b>Tencent Hy4 Preview 770B Coding Model Explained</b>
 </a>
 </td>
 </tr></table>
@@ -49,7 +49,7 @@
 | **Model Deep Dives** | ![99](https://img.shields.io/badge/99-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![35](https://img.shields.io/badge/35-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![21](https://img.shields.io/badge/21-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -356,6 +356,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[No Code Ai Agents With Gemini Notebook Automating Workflows](https://bgill55.github.io/-weightandsee-guides/guides/no-code-ai-agents-with-gemini-notebook-automating-workflows/)** — 2026-08-31
 - **[How Design Systems Can Fix Ai Slop A Guide For Engineers And Product Designers](https://bgill55.github.io/-weightandsee-guides/guides/how-design-systems-can-fix-ai-slop-a-guide-for-engineers-and-product-designers/)** — 2026-08-26
 - **[Google Gemini Desktop App Adds Avatars Why This Is A Gamechanger For Ai Workspac](https://bgill55.github.io/-weightandsee-guides/guides/google-gemini-desktop-app-adds-avatars-why-this-is-a-gamechanger-for-ai-workspac/)** — 2026-08-24
 - **[Free 12Month Gemini For Students Is Google Really Giving The Edge](https://bgill55.github.io/-weightandsee-guides/guides/free-12month-gemini-for-students-is-google-really-giving-the-edge/)** — 2026-08-24
