@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/298_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/299_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_AUGUST_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/tool-review-how-cursor-ai-enhances-traditional-ransomware-tactics/">
+<img src="guides/tool-review-how-cursor-ai-enhances-traditional-ransomware-tactics/thumbnail.jpg" width="300" alt="Tool Review How Cursor Ai Enhances Traditional Ransomware Tactics"><br>
+<b>Tool Review How Cursor Ai Enhances Traditional Ransomware Tactics</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/agenthq-revolutionizing-multi-agent-orchestration-with-an-interactive-office-the/">
 <img src="guides/agenthq-revolutionizing-multi-agent-orchestration-with-an-interactive-office-the/thumbnail.jpg" width="300" alt="Agenthq Revolutionizing Multi Agent Orchestration With An Interactive Office The"><br>
@@ -31,12 +37,6 @@
 <b>No Code Ai Agents With Gemini Notebook Automating Workflows</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/criticl-how-weak-models-guide-strong-ai-in-real-time/">
-<img src="guides/criticl-how-weak-models-guide-strong-ai-in-real-time/thumbnail.jpg" width="300" alt="Criticl How Weak Models Guide Strong Ai In Real Time"><br>
-<b>Criticl How Weak Models Guide Strong Ai In Real Time</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![130](https://img.shields.io/badge/130-blue?style=flat-square) |
-| **Model Deep Dives** | ![99](https://img.shields.io/badge/99-blue?style=flat-square) |
+| **Model Deep Dives** | ![100](https://img.shields.io/badge/100-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![36](https://img.shields.io/badge/36-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
@@ -196,6 +196,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Tool Review How Cursor Ai Enhances Traditional Ransomware Tactics](https://bgill55.github.io/-weightandsee-guides/guides/tool-review-how-cursor-ai-enhances-traditional-ransomware-tactics/)** — 2026-08-31
 - **[The Escalating Ai Feud Openais Cut Off With Spacex Owned Cursor](https://bgill55.github.io/-weightandsee-guides/guides/the-escalating-ai-feud-openais-cut-off-with-spacex-owned-cursor/)** — 2026-08-29
 - **[The Hades Supply Chain Campaign How Ai Coding Assistants Became Attack Vectors](https://bgill55.github.io/-weightandsee-guides/guides/the-hades-supply-chain-campaign-how-ai-coding-assistants-became-attack-vectors/)** — 2026-08-29
 - **[Ai Video Production 101 How Gemini Omni 11 Flash Simplifies Your Workflow](https://bgill55.github.io/-weightandsee-guides/guides/ai-video-production-101-how-gemini-omni-11-flash-simplifies-your-workflow/)** — 2026-08-28
