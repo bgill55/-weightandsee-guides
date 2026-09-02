@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A data‑driven showdown that pits Google’s brand‑new Gemini 3.8 Flash Preview against its predecessor, Anthropic’s Fable 5.1, and the upcoming GPT 6 Astra, using">
+    <meta name="keywords" content="Gemini 3.8 Flash, AI coding benchmark, model speed, cost per token, software engineering">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Inside Gemini 3.8 Flash: The Coding Assistant Redefining Speed and Cost - Complete Guide">
+    <meta property="og:description" content="A data‑driven showdown that pits Google’s brand‑new Gemini 3.8 Flash Preview against its predecessor, Anthropic’s Fable 5.1, and the upcoming GPT 6 Astra, using the same coding benchmark suite that te">
+    <meta property="og:type" content="article">
+    <title>Inside Gemini 3.8 Flash: The Coding Assistant Redefining Speed and Cost | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .channel-banner {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 28px 0 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Inside Gemini 3.8 Flash: The Coding Assistant Redefining Speed and Cost</h1>
+            <p class="subtitle">This guide walks you through reproducing the Gemini 3.8 Flash Preview coding benchmark and exposing the model via a FastAPI endpoint. You will clone the open‑source harness, configure 8‑bit quantization on an RTX 4090, run the HumanEval/MBPP/BigCodeBench suites, and set up a low‑latency inference service for CI pipelines.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>September 01, 2026</span>
+                <span>5 Steps</span>
+            </div>
+            
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                
+                <a href="https://arxiv.org/abs/2107.03374" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #4f46e5; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                    <svg height="18" width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    HumanEval Benchmark Paper
+                </a>
+            <a href="https://youtube.com/@WeightnSee" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #cc0000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                <svg height="18" width="18" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                Watch on YouTube
+            </a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Gemini 3.8 Flash achieves ~2× faster inference and ~33 % lower token cost versus its predecessor thanks to a sparse Mixture‑of‑Experts routing layer.</span></li>
+                    <li><span class="takeaway-num">2</span><span>Running the benchmark at 8‑bit quantization on a single RTX 4090 yields sub‑13 s average HumanEval latency while staying under 14.2 GB VRAM.</span></li>
+                    <li><span class="takeaway-num">3</span><span>The open‑source benchmark harness uses Ray to parallelise eight processes and outputs JSON + HTML reports for easy comparison.</span></li>
+                    <li><span class="takeaway-num">4</span><span>A thin FastAPI wrapper can stream token probabilities, enabling early‑stop logic and integration with CI linting tools.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Proper GPU driver, CUDA, and Rust toolchain setup are essential to hit the advertised performance numbers.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">RTX 4090 (or equivalent) with up‑to‑date NVIDIA driver and CUDA 12.x installed</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.9+ and pip, plus Rust toolchain (`rustup`) for any native extensions</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Access token for Gemini 3.8 Flash Preview (Google internal or via API key)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic familiarity with Ray, FastAPI, and YAML configuration files</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Clone the benchmark repository and install dependencies</h3>
+                <p>Open a terminal, clone the public benchmark harness (the repo contains the `run_bench.py` script, Ray integration, and example YAML files), then install Python and Rust dependencies. The repository also ships a helper script that validates the GPU driver version before proceeding.</p>
+
+                <div class="code-block"><pre>git clone https://github.com/google/gemini-3.8-flash-benchmark.git
+cd gemini-3.8-flash-benchmark
+# Install Python requirements
+pip install -r requirements.txt
+# Install Rust toolchain (needed for the custom tokeniser)
+rustup default stable
+rustup component add rustc cargo
+# Verify GPU driver and CUDA
+./scripts/validate_gpu.sh</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Create a YAML config file for the benchmark run</h3>
+                <p>Copy the provided template `config_template.yaml` to `config.yaml` and edit the fields to match your hardware, quantisation mode, and dataset paths. The config tells the runner which model ID to load, which GPUs to use, and how many parallel Ray workers to spawn.</p>
+
+                <div class="code-block"><pre>cp config_template.yaml config.yaml
+
+# config.yaml
+model_id: "gemini-3-8-flash-preview"
+api_key: "YOUR_GOOGLE_API_KEY"
+quantization: "q8_0"
+devices: [0,1,2,3]  # RTX 4090 indices (adjust if you have fewer GPUs)
+hardware:
+  vrams: [14.2]  # GB per GPU (for reporting)
+datasets:
+  - name: "humaneval"
+    path: "./datasets/humaneval"
+  - name: "mbpp"
+    path: "./datasets/mbpp"
+  - name: "bigcodebench"
+    path: "./datasets/bigcodebench"
+ray:
+  num_workers: 8
+  cpus_per_worker: 4</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Run the benchmark suite</h3>
+                <p>With the config in place, launch the benchmark using the single‑command interface. Ray will spawn eight parallel processes, each feeding the model with 8‑bit quantised inputs. Results are streamed to `results/` as JSON and a rendered HTML chart.</p>
+
+                <div class="code-block"><pre>python run_bench.py \
+  --config config.yaml \
+  --outdir results
+
+# Example output snippet
+# results/gemini-3-8-flash-preview_humaneval.json
+# {
+#   "task": "HumanEval",
+#   "avg_latency_sec": 12.7,
+#   "pass@1": 0.924,
+#   "token_cost_usd_per_1k": 0.014,
+#   "max_vram_gb": 14.2
+# }</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Deploy a FastAPI inference endpoint for CI integration</h3>
+                <p>Wrap the model behind a lightweight FastAPI service that streams token probabilities. The endpoint accepts a JSON payload with the code snippet, target language, and max tokens, returning completions and per‑token log‑probabilities. Use `uvicorn` to serve the app on a GPU‑attached host.</p>
+
+                <div class="code-block"><pre># app.py
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import os, json
+import torch
+from google.cloud import aiplatform
+
+app = FastAPI()
+
+class CompletionRequest(BaseModel):
+    code: str
+    language: str = "python"
+    max_tokens: int = 256
+    stop_threshold: float = 0.2  # stop when confidence < 20%
+
+# Initialise Gemini client (replace with your actual client library)
+client = aiplatform.gapic.PredictionServiceClient()
+model_name = f"projects/YOUR_PROJECT/locations/us-central1/publishers/google/models/gemini-3-8-flash-preview"
+
+@app.post("/complete")
+async def complete(req: CompletionRequest):
+    payload = {
+        "instances": [{"prompt": req.code, "max_output_tokens": req.max_tokens}],
+        "parameters": {"temperature": 0.0, "top_p": 1.0}
+    }
+    try:
+        response = client.predict(name=model_name, payload=payload)
+        # Assume response contains `candidates` with `content` and `logprobs`
+        completion = response.predictions[0]["content"]
+        logprobs = response.predictions[0].get("logprobs", [])
+        # Early‑stop logic based on confidence
+        for i, lp in enumerate(logprobs):
+            if lp < req.stop_threshold:
+                completion = completion[:i]
+                break
+        return {"completion": completion, "logprobs": logprobs}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+# Run with: uvicorn app:app --host 0.0.0.0 --port 8000 --workers 2
+</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Visualise and compare results</h3>
+                <p>Open the generated `results/report.html` in a browser to see latency distributions, token‑cost breakdowns, and pass@1 curves for all three models (Gemini 3.8 Flash, Anthropic Fable 5.1, GPT‑6 Astra). Export the CSV for downstream analysis or feed it into a cost‑model spreadsheet.</p>
+
+                <div class="code-block"><pre>open results/report.html
+# Or generate a CSV summary manually
+python scripts/summarise_results.py --input-dir results --output summary.csv</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Pin the CUDA version used during benchmarking (e.g., `export CUDA_VISIBLE_DEVICES=0,1,2,3`) to avoid accidental GPU switching.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Enable Torch’s compile mode (`torch.compile`) for a 5‑10 % latency boost on the inference loop.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If you run out of VRAM, lower the batch size in `config.yaml` (`batch_size: 1`) – the model still hits the speed target because of the sparse MoE routing.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Cache the model locally (`--cache_dir ~/.cache/gemini`) to avoid repeated download latency during CI runs.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Using a mismatched CUDA driver (e.g., CUDA 11.x) – the 8‑bit kernels will fall back to FP32, inflating latency and memory usage.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Forgetting to set the `api_key` in the YAML file – the runner will abort with an authentication error before any benchmark starts.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 3: Running the FastAPI server without `uvicorn --workers >1` on a multi‑GPU box can cause the GPU to be monopolised by a single request, negating parallelism.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Git</h4>
+                    <p>Version control system used to clone the benchmark repository</p>
+                    <a href="https://git-scm.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Python</h4>
+                    <p>Primary language for the benchmark harness and FastAPI service</p>
+                    <a href="https://www.python.org/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Rust</h4>
+                    <p>Used for native tokeniser extensions that accelerate preprocessing</p>
+                    <a href="https://www.rust-lang.org/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Ray</h4>
+                    <p>Distributed execution framework that parallelises the benchmark across eight workers</p>
+                    <a href="https://docs.ray.io/en/latest/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>FastAPI</h4>
+                    <p>Lightweight web framework for exposing the model as a REST endpoint</p>
+                    <a href="https://fastapi.tiangolo.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Uvicorn</h4>
+                    <p>ASGI server that runs the FastAPI app in production</p>
+                    <a href="https://www.uvicorn.org/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Google Gemini API</h4>
+                    <p>Endpoint that hosts the Gemini 3.8 Flash Preview model</p>
+                    <a href="https://gemini.google.com" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>CUDA Toolkit</h4>
+                    <p>NVIDIA's platform for GPU‑accelerated computing required for 8‑bit quantisation</p>
+                    <a href="https://developer.nvidia.com/cuda-toolkit" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://gemini.google.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Gemini 3.8 Flash Preview – Official Google Announcement
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — High‑level product page with model specs and pricing.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2107.03374" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            HumanEval Benchmark Paper
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Original description of the HumanEval code generation benchmark.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.ray.io/en/latest/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Ray Distributed Execution Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Guides on scaling Python workloads across multiple GPUs.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://fastapi.tiangolo.com/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            FastAPI – Building APIs with Python
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Tutorials and best practices for creating high‑performance REST services.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/abs/2205.05198" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Sparse Mixture‑of‑Experts in Transformers
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Technical background on the MoE routing layer used by Gemini 3.8 Flash.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How do I obtain an API key for Gemini 3.8 Flash Preview?</h3>
+                <p>Request access through the internal Google AI portal or, if you are an external partner, sign up for the Gemini Preview program; the key is then added to `api_key` in the YAML config.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I run the benchmark on a different GPU (e.g., RTX 3080)?</h3>
+                <p>Yes, but expect higher latency and memory usage; you may need to lower `batch_size` and switch to `q4_0` quantisation to stay within VRAM limits.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What if I want to use 16‑bit (FP16) instead of 8‑bit quantisation?</h3>
+                <p>Change `quantization: "q8_0"` to `quantization: "fp16"` in the config. FP16 offers slightly higher accuracy but reduces the cost advantage and increases VRAM consumption (~2 GB more per GPU).</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I interpret the `pass@1` metric?</h3>
+                <p>`pass@1` is the probability that the model’s first generated solution passes all unit tests for a given task. A higher value indicates better code correctness on the first attempt.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I integrate the FastAPI endpoint into a GitHub Actions CI pipeline?</h3>
+                <p>Yes. In your workflow, start the FastAPI service in the background (`uvicorn app:app &`), then invoke the `/complete` endpoint with `curl` or a Python HTTP client to generate code suggestions, and finally run your linter against the returned `logprobs` to flag low‑confidence snippets.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <a href="https://youtube.com/@WeightnSee" target="_blank" rel="noopener" title="Visit Weight and See on YouTube">
+                <img class="channel-banner" src="../../channel_banner.png" alt="Weight and See channel banner">
+            </a>
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#gemini38flash</span>
+                <span class="tag">#aicodingbenchmark</span>
+                <span class="tag">#modelspeed</span>
+                <span class="tag">#costpertoken</span>
+                <span class="tag">#ai</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-09-01 21:15 • This guide accompanies the video: "Inside Gemini 3.8 Flash: The Coding Assistant Redefining Speed and Cost"</p>
+        </footer>
+    </div>
+</body>
+</html>
