@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/300_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/301_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/agentic-harness-engineering-automating-ai-coding-agent-evolution/">
+<img src="guides/agentic-harness-engineering-automating-ai-coding-agent-evolution/thumbnail.jpg" width="300" alt="Agentic Harness Engineering Automating Ai Coding Agent Evolution"><br>
+<b>Agentic Harness Engineering Automating Ai Coding Agent Evolution</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/inside-gemini-38-flash-the-coding-assistant-redefining-speed-and-cost/">
 <img src="guides/inside-gemini-38-flash-the-coding-assistant-redefining-speed-and-cost/thumbnail.jpg" width="300" alt="Inside Gemini 38 Flash The Coding Assistant Redefining Speed And Cost"><br>
@@ -31,12 +37,6 @@
 <b>Tool Review How Cursor Ai Enhances Traditional Ransomware Tactics</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/agenthq-revolutionizing-multi-agent-orchestration-with-an-interactive-office-the/">
-<img src="guides/agenthq-revolutionizing-multi-agent-orchestration-with-an-interactive-office-the/thumbnail.jpg" width="300" alt="Agenthq Revolutionizing Multi Agent Orchestration With An Interactive Office The"><br>
-<b>Agenthq Revolutionizing Multi Agent Orchestration With An Interactive Office The</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![131](https://img.shields.io/badge/131-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![132](https://img.shields.io/badge/132-blue?style=flat-square) |
 | **Model Deep Dives** | ![100](https://img.shields.io/badge/100-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![36](https://img.shields.io/badge/36-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Agentic Harness Engineering Automating Ai Coding Agent Evolution](https://bgill55.github.io/-weightandsee-guides/guides/agentic-harness-engineering-automating-ai-coding-agent-evolution/)** — 2026-09-01
 - **[Inside Gemini 38 Flash The Coding Assistant Redefining Speed And Cost](https://bgill55.github.io/-weightandsee-guides/guides/inside-gemini-38-flash-the-coding-assistant-redefining-speed-and-cost/)** — 2026-09-01
 - **[Criticl How Weak Models Guide Strong Ai In Real Time](https://bgill55.github.io/-weightandsee-guides/guides/criticl-how-weak-models-guide-strong-ai-in-real-time/)** — 2026-08-30
 - **[Tencent Hy4 Preview 770B Coding Model Explained](https://bgill55.github.io/-weightandsee-guides/guides/tencent-hy4-preview-770b-coding-model-explained/)** — 2026-08-29
