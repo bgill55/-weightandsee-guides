@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/301_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/302_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-marathon-engine/">
+<img src="guides/daedalus-marathon-engine/thumbnail.jpg" width="300" alt="Daedalus Marathon Engine"><br>
+<b>Daedalus Marathon Engine</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/agentic-harness-engineering-automating-ai-coding-agent-evolution/">
 <img src="guides/agentic-harness-engineering-automating-ai-coding-agent-evolution/thumbnail.jpg" width="300" alt="Agentic Harness Engineering Automating Ai Coding Agent Evolution"><br>
@@ -31,12 +37,6 @@
 <b>Inside Gemini 38 Flash The Coding Assistant Redefining Speed And Cost</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/tool-review-how-cursor-ai-enhances-traditional-ransomware-tactics/">
-<img src="guides/tool-review-how-cursor-ai-enhances-traditional-ransomware-tactics/thumbnail.jpg" width="300" alt="Tool Review How Cursor Ai Enhances Traditional Ransomware Tactics"><br>
-<b>Tool Review How Cursor Ai Enhances Traditional Ransomware Tactics</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![132](https://img.shields.io/badge/132-blue?style=flat-square) |
-| **Model Deep Dives** | ![100](https://img.shields.io/badge/100-blue?style=flat-square) |
+| **Model Deep Dives** | ![101](https://img.shields.io/badge/101-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![36](https://img.shields.io/badge/36-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
@@ -198,6 +198,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Daedalus Marathon Engine](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-marathon-engine/)** — 2026-09-02
 - **[Tool Review How Cursor Ai Enhances Traditional Ransomware Tactics](https://bgill55.github.io/-weightandsee-guides/guides/tool-review-how-cursor-ai-enhances-traditional-ransomware-tactics/)** — 2026-08-31
 - **[The Escalating Ai Feud Openais Cut Off With Spacex Owned Cursor](https://bgill55.github.io/-weightandsee-guides/guides/the-escalating-ai-feud-openais-cut-off-with-spacex-owned-cursor/)** — 2026-08-29
 - **[The Hades Supply Chain Campaign How Ai Coding Assistants Became Attack Vectors](https://bgill55.github.io/-weightandsee-guides/guides/the-hades-supply-chain-campaign-how-ai-coding-assistants-became-attack-vectors/)** — 2026-08-29
