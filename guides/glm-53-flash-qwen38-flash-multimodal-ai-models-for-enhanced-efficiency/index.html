@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the groundbreaking GLM-5.3-Flash and Qwen3.8-Flash models from Hugging Face, designed to revolutionize multimodal AI applications with their reduced par">
+    <meta name="keywords" content="GLM-5.3-Flash, Qwen3.8-Flash, multimodal AI, Hugging Face, efficient models">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="GLM-5.3-Flash & Qwen3.8-Flash: Multimodal AI Models for Enhanced Efficiency - Complete Guide">
+    <meta property="og:description" content="Explore the groundbreaking GLM-5.3-Flash and Qwen3.8-Flash models from Hugging Face, designed to revolutionize multimodal AI applications with their reduced parameters and advanced hybrid attention ar">
+    <meta property="og:type" content="article">
+    <title>GLM-5.3-Flash & Qwen3.8-Flash: Multimodal AI Models for Enhanced Efficiency | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .channel-banner {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 28px 0 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>GLM-5.3-Flash & Qwen3.8-Flash: Multimodal AI Models for Enhanced Efficiency</h1>
+            <p class="subtitle">This guide covers the GLM-5.3-Flash and Qwen3.8-Flash models from Hugging Face, including their architecture, usage, and performance. It provides a step-by-step walkthrough of loading, fine-tuning, and deploying these multimodal AI models.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>September 02, 2026</span>
+                <span>5 Steps</span>
+            </div>
+            
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                
+                <a href="https://huggingface.co/zai-org/GLM-5.3-Flash" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #4f46e5; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                    <svg height="18" width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    GLM-5.3-Flash - Hugging Face
+                </a>
+            <a href="https://youtube.com/@WeightnSee" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #cc0000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                <svg height="18" width="18" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                Watch on YouTube
+            </a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>GLM-5.3-Flash and Qwen3.8-Flash are multimodal AI models with reduced parameters for better efficiency and performance.</span></li>
+                    <li><span class="takeaway-num">2</span><span>These models use a hybrid architecture combining sparse and linear attention.</span></li>
+                    <li><span class="takeaway-num">3</span><span>They support up to 1,000,000 tokens and have a manifold-constrained hyper-connections (mHC) architecture.</span></li>
+                    <li><span class="takeaway-num">4</span><span>The models can be loaded and fine-tuned using the Hugging Face Transformers library.</span></li>
+                    <li><span class="takeaway-num">5</span><span>They can be deployed in edge environments using ONNX export.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.x</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Hugging Face Transformers library</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">PyTorch</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Load the GLM-5.3-Flash model</h3>
+                <p>Load the GLM-5.3-Flash model using the Hugging Face Transformers CLI, specifying the device and maximum context length.</p>
+
+                <div class="code-block"><pre>python -m transformers.cli.run --model GLM-5.3-Flash --device cuda --max_length 8192</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Load the Qwen3.8-Flash model</h3>
+                <p>Load the Qwen3.8-Flash model with half‑precision (float16) and automatic device mapping for efficient GPU usage.</p>
+
+                <div class="code-block"><pre>from transformers import AutoModelForCausalLM, AutoTokenizer
+
+tokenizer = AutoTokenizer.from_pretrained("Qwen3.8-Flash")
+model = AutoModelForCausalLM.from_pretrained(
+    "Qwen3.8-Flash",
+    torch_dtype="float16",
+    device_map="auto"
+)</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Enable multimodal configuration</h3>
+                <p>Activate the built‑in vision encoder by loading the model with a config that sets `multimodal=True`.</p>
+
+                <div class="code-block"><pre>from transformers import AutoConfig, AutoModelForCausalLM
+
+config = AutoConfig.from_pretrained("GLM-5.3-Flash", multimodal=True)
+model = AutoModelForCausalLM.from_pretrained("GLM-5.3-Flash", config=config)</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Fine‑tune the model on domain data</h3>
+                <p>Use the Hugging Face `Trainer` API with mixed‑precision (`fp16`) to fine‑tune on a custom dataset while keeping memory usage low.</p>
+
+                <div class="code-block"><pre>from transformers import Trainer, TrainingArguments
+
+trainer = Trainer(
+    model=model,
+    args=TrainingArguments(
+        output_dir="./fine_tuned",
+        per_device_train_batch_size=4,
+        learning_rate=2e-5,
+        num_train_epochs=3,
+        fp16=True,
+    ),
+    train_dataset=my_dataset,
+)
+trainer.train()</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: Export to ONNX for edge deployment</h3>
+                <p>Convert the fine‑tuned model to ONNX format, which reduces runtime overhead and enables serving via FastAPI or other lightweight runtimes.</p>
+
+                <div class="code-block"><pre>python -m transformers.onnx --model Qwen3.8-Flash --output qwen3_8_flash.onnx --opset 15</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use the `--max_length` flag when launching the CLI to unlock the full 8k token window.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Set `torch_dtype="float16"` (or `bfloat16` on supported hardware) to halve VRAM consumption without sacrificing accuracy.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Leverage `device_map="auto"` so large models are automatically sharded across available GPUs.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to pass `multimodal=True` in the config, which disables the vision encoder and leads to unexpected output shapes.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Omitting the `--max_length` flag, causing token truncation for long‑context inputs.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Hugging Face Transformers</h4>
+                    <p>A Python library for state‑of‑the‑art NLP and multimodal models.</p>
+                    <a href="https://huggingface.co/transformers/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>PyTorch</h4>
+                    <p>An open‑source deep learning framework used by the Transformers library.</p>
+                    <a href="https://pytorch.org/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>bitsandbytes</h4>
+                    <p>Library for 4‑bit quantization to dramatically reduce model size and VRAM usage.</p>
+                    <a href="https://github.com/TimDettmers/bitsandbytes" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Models - Hugging Face</h4>
+                    <p>Featured tool in video</p>
+                    <a href="https://huggingface.co/models" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>N/A</h4>
+                    <p>Featured tool in video</p>
+                    <a href="https://huggingface.co/zai-org/GLM-5.3-Flash/raw/main/README.md" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Hugging Face</h4>
+                    <p>Featured tool in video</p>
+                    <a href="https://huggingface.co" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/zai-org/GLM-5.3-Flash" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            GLM-5.3-Flash model page (Hugging Face)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official model card with detailed specs, usage examples, and download links.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Qwen3.8-Flash‑Next model page (Hugging Face)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Model card describing the multimodal capabilities and benchmark results.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/unsloth/GLM-5.3-Flash-FP8" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            GLM‑5.3‑Flash‑FP8 quantized variant (unsloth)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — FP8 quantized version for even lower memory footprint.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/docs/transformers/main_classes/trainer" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Transformers Trainer API documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Guide to fine‑tuning models with the Trainer class.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/docs/transformers/serialization#export-to-onnx" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            ONNX export guide for Transformers
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Step‑by‑step instructions for converting models to ONNX.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/models" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Models - Hugging Face
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official resource for Models - Hugging Face</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co/zai-org/GLM-5.3-Flash/raw/main/README.md" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            N/A
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official resource for N/A</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Hugging Face
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official resource for Hugging Face</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>What is the maximum context length supported by GLM-5.3-Flash?</h3>
+                <p>GLM-5.3-Flash can handle up to 8,192 tokens out of the box; the model can be extended to 1 000 000 tokens with custom configuration.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I enable the vision encoder for multimodal inference?</h3>
+                <p>Load the model with `AutoConfig.from_pretrained(..., multimodal=True)` and then pass a dictionary `{"text": "...", "image": image_tensor}` to `model.generate`.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I run these models on a single RTX 4090?</h3>
+                <p>Yes. With 4‑bit quantization via bitsandbytes, both models stay under ~10 GB VRAM even with the vision encoder active.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is there a way to benchmark latency on my hardware?</h3>
+                <p>Use the built‑in utility: `python -m transformers.utils.benchmark --model GLM-5.3-Flash --seq_len 4096 --batch_size 1`.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I export the fine‑tuned model for edge deployment?</h3>
+                <p>Run `python -m transformers.onnx --model Qwen3.8-Flash --output qwen3_8_flash.onnx --opset 15` and serve the ONNX file with a lightweight runtime such as FastAPI.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <a href="https://youtube.com/@WeightnSee" target="_blank" rel="noopener" title="Visit Weight and See on YouTube">
+                <img class="channel-banner" src="../../channel_banner.png" alt="Weight and See channel banner">
+            </a>
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#glm</span>
+                <span class="tag">#glm53flash</span>
+                <span class="tag">#qwen38flash</span>
+                <span class="tag">#multimodalai</span>
+                <span class="tag">#huggingface</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-09-02 23:20 • This guide accompanies the video: "GLM-5.3-Flash & Qwen3.8-Flash: Multimodal AI Models for Enhanced Efficiency"</p>
+        </footer>
+    </div>
+</body>
+</html>
