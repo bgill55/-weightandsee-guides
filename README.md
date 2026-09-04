@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/307_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/308_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![134](https://img.shields.io/badge/134-blue?style=flat-square) |
-| **Model Deep Dives** | ![103](https://img.shields.io/badge/103-blue?style=flat-square) |
+| **Model Deep Dives** | ![104](https://img.shields.io/badge/104-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![37](https://img.shields.io/badge/37-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
@@ -303,6 +303,7 @@
 - **[Inside the Microsoft AI Tool Breach — Timeline, Exploits & Patches](https://bgill55.github.io/-weightandsee-guides/guides/inside-the-microsoft-ai-tool-breach-timeline-exploits-and-patch-rollout/)** — 2026-06-09
 - **[Daedalus Lite Build Your Own Local Ai Coding Agent In Minutes](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-lite-build-your-own-local-ai-coding-agent-in-minutes/)**
 - **[Daedalus V33010 Antifragile Autonomous Coding](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33010-antifragile-autonomous-coding/)**
+- **[Why Local First Ai Always Wins Inside Daedalus](https://bgill55.github.io/-weightandsee-guides/guides/why-local-first-ai-always-wins-inside-daedalus/)**
 
 ---
 
