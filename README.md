@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/304_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/305_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/algorithmic-governance-can-ai-fix-human-government-corruption/">
+<img src="guides/algorithmic-governance-can-ai-fix-human-government-corruption/thumbnail.jpg" width="300" alt="Algorithmic Governance Can Ai Fix Human Government Corruption"><br>
+<b>Algorithmic Governance Can Ai Fix Human Government Corruption</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/why-anthropic-paused-ai-model-training-the-motivated-reasoning-crisis/">
 <img src="guides/why-anthropic-paused-ai-model-training-the-motivated-reasoning-crisis/thumbnail.jpg" width="300" alt="Why Anthropic Paused Ai Model Training The Motivated Reasoning Crisis"><br>
@@ -31,12 +37,6 @@
 <b>Glm 53 Flash Qwen38 Flash Multimodal Ai Models For Enhanced Efficiency</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/daedalus-marathon-engine/">
-<img src="guides/daedalus-marathon-engine/thumbnail.jpg" width="300" alt="Daedalus Marathon Engine"><br>
-<b>Daedalus Marathon Engine</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![132](https://img.shields.io/badge/132-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![133](https://img.shields.io/badge/133-blue?style=flat-square) |
 | **Model Deep Dives** | ![103](https://img.shields.io/badge/103-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![36](https://img.shields.io/badge/36-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Algorithmic Governance Can Ai Fix Human Government Corruption](https://bgill55.github.io/-weightandsee-guides/guides/algorithmic-governance-can-ai-fix-human-government-corruption/)** — 2026-09-03
 - **[Agentic Harness Engineering Automating Ai Coding Agent Evolution](https://bgill55.github.io/-weightandsee-guides/guides/agentic-harness-engineering-automating-ai-coding-agent-evolution/)** — 2026-09-01
 - **[Inside Gemini 38 Flash The Coding Assistant Redefining Speed And Cost](https://bgill55.github.io/-weightandsee-guides/guides/inside-gemini-38-flash-the-coding-assistant-redefining-speed-and-cost/)** — 2026-09-01
 - **[Criticl How Weak Models Guide Strong Ai In Real Time](https://bgill55.github.io/-weightandsee-guides/guides/criticl-how-weak-models-guide-strong-ai-in-real-time/)** — 2026-08-30
