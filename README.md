@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/305_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/306_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/can-ai-fix-government-the-incorruptible-machine-dilemma/">
+<img src="guides/can-ai-fix-government-the-incorruptible-machine-dilemma/thumbnail.jpg" width="300" alt="Can Ai Fix Government The Incorruptible Machine Dilemma"><br>
+<b>Can Ai Fix Government The Incorruptible Machine Dilemma</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/algorithmic-governance-can-ai-fix-human-government-corruption/">
 <img src="guides/algorithmic-governance-can-ai-fix-human-government-corruption/thumbnail.jpg" width="300" alt="Algorithmic Governance Can Ai Fix Human Government Corruption"><br>
@@ -31,12 +37,6 @@
 <b>Why Anthropic Paused Ai Model Training The Motivated Reasoning Crisis</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/glm-53-flash-qwen38-flash-multimodal-ai-models-for-enhanced-efficiency/">
-<img src="guides/glm-53-flash-qwen38-flash-multimodal-ai-models-for-enhanced-efficiency/thumbnail.jpg" width="300" alt="Glm 53 Flash Qwen38 Flash Multimodal Ai Models For Enhanced Efficiency"><br>
-<b>Glm 53 Flash Qwen38 Flash Multimodal Ai Models For Enhanced Efficiency</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![133](https://img.shields.io/badge/133-blue?style=flat-square) |
 | **Model Deep Dives** | ![103](https://img.shields.io/badge/103-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![36](https://img.shields.io/badge/36-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![37](https://img.shields.io/badge/37-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -309,6 +309,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Can Ai Fix Government The Incorruptible Machine Dilemma](https://bgill55.github.io/-weightandsee-guides/guides/can-ai-fix-government-the-incorruptible-machine-dilemma/)** — 2026-09-04
 - **[Agenthq Revolutionizing Multi Agent Orchestration With An Interactive Office The](https://bgill55.github.io/-weightandsee-guides/guides/agenthq-revolutionizing-multi-agent-orchestration-with-an-interactive-office-the/)** — 2026-08-31
 - **[Muse Glimmer Metas Open Source Ai Model For Consumer Hardware](https://bgill55.github.io/-weightandsee-guides/guides/muse-glimmer-metas-open-source-ai-model-for-consumer-hardware/)** — 2026-08-27
 - **[Onecli Oss Sandboxed Agent Harness For Teams](https://bgill55.github.io/-weightandsee-guides/guides/onecli-oss-sandboxed-agent-harness-for-teams/)** — 2026-08-20
