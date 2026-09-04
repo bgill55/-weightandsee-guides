@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/306_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/307_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/nvidia-acquires-hugging-face-for-13b-corporate-tech-concentration-and-open-sourc/">
+<img src="guides/nvidia-acquires-hugging-face-for-13b-corporate-tech-concentration-and-open-sourc/thumbnail.jpg" width="300" alt="Nvidia Acquires Hugging Face For 13B Corporate Tech Concentration And Open Sourc"><br>
+<b>Nvidia Acquires Hugging Face For 13B Corporate Tech Concentration And Open Sourc</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/can-ai-fix-government-the-incorruptible-machine-dilemma/">
 <img src="guides/can-ai-fix-government-the-incorruptible-machine-dilemma/thumbnail.jpg" width="300" alt="Can Ai Fix Government The Incorruptible Machine Dilemma"><br>
@@ -31,12 +37,6 @@
 <b>Algorithmic Governance Can Ai Fix Human Government Corruption</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/why-anthropic-paused-ai-model-training-the-motivated-reasoning-crisis/">
-<img src="guides/why-anthropic-paused-ai-model-training-the-motivated-reasoning-crisis/thumbnail.jpg" width="300" alt="Why Anthropic Paused Ai Model Training The Motivated Reasoning Crisis"><br>
-<b>Why Anthropic Paused Ai Model Training The Motivated Reasoning Crisis</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![133](https://img.shields.io/badge/133-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![134](https://img.shields.io/badge/134-blue?style=flat-square) |
 | **Model Deep Dives** | ![103](https://img.shields.io/badge/103-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![37](https://img.shields.io/badge/37-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Nvidia Acquires Hugging Face For 13B Corporate Tech Concentration And Open Sourc](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-acquires-hugging-face-for-13b-corporate-tech-concentration-and-open-sourc/)** — 2026-09-04
 - **[Algorithmic Governance Can Ai Fix Human Government Corruption](https://bgill55.github.io/-weightandsee-guides/guides/algorithmic-governance-can-ai-fix-human-government-corruption/)** — 2026-09-03
 - **[Agentic Harness Engineering Automating Ai Coding Agent Evolution](https://bgill55.github.io/-weightandsee-guides/guides/agentic-harness-engineering-automating-ai-coding-agent-evolution/)** — 2026-09-01
 - **[Inside Gemini 38 Flash The Coding Assistant Redefining Speed And Cost](https://bgill55.github.io/-weightandsee-guides/guides/inside-gemini-38-flash-the-coding-assistant-redefining-speed-and-cost/)** — 2026-09-01
