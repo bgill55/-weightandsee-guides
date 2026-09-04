@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Technical guide and architectural breakdown of Daedalus, a sovereign local-first multi-agent AI system.">
-    <meta name="keywords" content="Daedalus, Local First AI, Machine Pantheon, Multi Agent Systems, Open Source AI, Sovereign Computing">
+    <meta name="description" content="Discover why local-first AI is the future of software freedom, eliminating dependence on corporate monopolies and ensuring true sovereignty over your code and d">
+    <meta name="keywords" content="local-first AI, AI sovereignty, model jailbreaks, Daedalus, open-source AI">
     <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Why Local-First AI Always Wins: Inside Daedalus - Deep Dive Analysis">
+    <meta property="og:description" content="Discover why local-first AI is the future of software freedom, eliminating dependence on corporate monopolies and ensuring true sovereignty over your code and data.">
+    <meta property="og:type" content="article">
     <title>Why Local-First AI Always Wins: Inside Daedalus | Weight and See Guide</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,148 +20,577 @@
             --bg-card: #1f2937;
             --text-primary: #f3f4f6;
             --text-secondary: #9ca3af;
-            --accent: #6366f1;
+            --accent: #4f46e5;
             --accent-light: #818cf8;
             --green: #10b981;
-            --cyan: #06b6d4;
+            --yellow: #f59e0b;
+            --red: #ef4444;
             --border: #374151;
         }
+        
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
-            padding: 40px 20px;
         }
-        .container { max-width: 900px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
         .badge {
-            background: var(--accent);
-            color: #fff;
-            padding: 4px 14px;
-            border-radius: 9999px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        h1 { font-size: 2.3rem; margin: 16px 0 10px; font-weight: 800; line-height: 1.2; }
-        .subtitle { color: var(--text-secondary); font-size: 1.1rem; }
-        .card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 28px;
-        }
-        h2 { font-size: 1.5rem; margin-bottom: 14px; color: var(--accent-light); border-left: 4px solid var(--accent); padding-left: 12px; }
-        p { margin-bottom: 14px; color: var(--text-primary); font-size: 1.02rem; }
-        ul, ol { margin-left: 24px; margin-bottom: 16px; color: var(--text-secondary); }
-        li { margin-bottom: 8px; }
-        code { font-family: 'Fira Code', monospace; background: #0004; padding: 2px 6px; border-radius: 4px; color: var(--cyan); }
-        pre {
-            background: #030712;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            overflow-x: auto;
-            margin-bottom: 16px;
-        }
-        pre code { background: transparent; padding: 0; color: #38bdf8; font-size: 0.95rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
-        .stat-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
-        .stat-box .num { font-size: 1.8rem; font-weight: 700; color: var(--green); }
-        .stat-box .label { font-size: 0.85rem; color: var(--text-secondary); }
-        .trilogy-box {
-            background: linear-gradient(135deg, rgba(99,102,241,0.1) 0%, rgba(16,185,129,0.1) 100%);
-            border: 1px solid var(--accent);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 24px 0;
-        }
-        .cta-btn {
             display: inline-block;
             background: var(--accent);
             color: white;
-            text-decoration: none;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 600;
-            padding: 12px 24px;
-            border-radius: 8px;
-            margin-top: 12px;
-            transition: background 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
         }
-        .cta-btn:hover { background: var(--accent-light); }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .finding {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .finding h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--accent-light);
+        }
+        
+        .finding p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .analysis-block {
+            background: rgba(99, 102, 241, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .research-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .research-item:last-child {
+            border-bottom: none;
+        }
+        
+        .research-item .source {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 14px;
+        }
+        
+        .research-item .detail {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        
+        .implication {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .channel-banner {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 28px 0 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <span class="badge">Trilogy Finale | Part 3 of 3</span>
+        <header class="header">
+            <span class="badge">Deep Dive Analysis</span>
             <h1>Why Local-First AI Always Wins: Inside Daedalus</h1>
-            <p class="subtitle">Architectural sovereignty, zero telemetry, and multi-model agent orchestration without cloud masters.</p>
+            <p class="subtitle">This deep dive explores Daedalus, a local‑first AI coding assistant built to give developers full sovereignty over their code, data, and compute. It explains Daedalus' modular architecture, multi‑agent Pantheon, and why a local‑first approach is positioned to win against cloud‑centric AI monopolies.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>September 04, 2026</span>
+                <span>5 Findings</span>
+            </div>
+            
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                
+                <a href="https://github.com/bgill55/Daedalus" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #238636; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(35, 134, 54, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                    <svg height="18" width="18" viewBox="0 0 16 16" fill="white"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    Daedalus GitHub Repository
+                </a>
+                <a href="https://ollama.com" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #4f46e5; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                    <svg height="18" width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    Ollama
+                </a>
+            <a href="https://youtube.com/@WeightnSee" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #cc0000; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3); transition: transform 0.15s ease, background 0.15s ease;">
+                <svg height="18" width="18" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                Watch on YouTube
+            </a>
+            </div>
         </header>
 
-        <div class="trilogy-box">
-            <h3 style="margin-bottom: 10px; color: #fff;">🎬 The AI Sovereignty Trilogy</h3>
-            <p>This technical guide is the companion to Part 3 of our 3-part YouTube series:</p>
-            <ul>
-                <li><strong>Part 1:</strong> Can AI Replace Corrupt Politicians? (The Fatal Trap) &bull; <a href="https://www.youtube.com/watch?v=1WmeGLGmn4Y" style="color: var(--accent-light);" target="_blank">Watch Video</a></li>
-                <li><strong>Part 2:</strong> Did NVIDIA Just Buy Open Source AI? (The $13B Monopoly) &bull; <a href="https://www.youtube.com/watch?v=kDderiiTS1I" style="color: var(--accent-light);" target="_blank">Watch Video</a></li>
-                <li><strong>Part 3:</strong> Why Local-First AI Always Wins: Inside Daedalus &bull; <a href="https://www.youtube.com/watch?v=qtFE4s8hFfY" style="color: var(--accent-light);" target="_blank">Watch Video</a></li>
-            </ul>
-        </div>
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔬</span> Key Findings</h2>
 
-        <div class="card">
-            <h2>1. The Thesis: Why Centralized Cloud AI is a Trap</h2>
-            <p>Every query sent to a centralized API is subject to terms of service changes, latency spikes, silent model degradation, billing cliffs, and content censorship. When hardware and software are monopolized, developers become digital sharecroppers.</p>
-            <p><strong>The Local-First Antidote:</strong></p>
-            <ul>
-                <li><strong>Data Gravity Stays Local:</strong> Zero telemetry. Model weights, source code, and private context never exit your local machine.</li>
-                <li><strong>Offline Resilience:</strong> If your ISP drops or cables are cut, your development environment continues at full velocity.</li>
-                <li><strong>True Reproducibility:</strong> Fixed local weights produce predictable outputs without surprise cloud deprecations.</li>
-            </ul>
-        </div>
+            <div class="finding">
+                <h3>Local‑First AI Guarantees Sovereignty</h3>
+                <p>Daedalus runs entirely on the developer's workstation, storing model weights locally and eliminating any reliance on external API tokens or cloud services. This ensures that no corporation can revoke access, throttle usage, or harvest proprietary code.</p>
+            </div>
 
-        <div class="card">
-            <h2>2. The Machine Pantheon Architecture</h2>
-            <p>Rather than relying on a single monolithic model to perform every software development task, Daedalus orchestrates specialized agent archetypes across local hardware:</p>
-            <div class="grid">
-                <div class="stat-box">
-                    <div class="num">Athena</div>
-                    <div class="label">Strategic Planning & Architecture</div>
+            <div class="finding">
+                <h3>Modular Pantheon Architecture</h3>
+                <p>Daedalus orchestrates seven specialized agents (Themis, Metis, Hephaestus, Mnemosyne, Apollo, Asclepius, and the Daedalus orchestrator) that each have a single, well‑defined responsibility. This reduces hallucination, enforces “ground, do not guess,” and creates a disciplined software assembly line.</p>
+            </div>
+
+            <div class="finding">
+                <h3>B‑R‑A‑G Workflow Eliminates Context Rot</h3>
+                <p>The Build‑Retrieve‑Audit‑Generate loop decomposes tasks (Metis), pulls relevant context (Mnemosyne), validates output in an air‑gapped sandbox (Apollo), and finally generates production‑ready commits (Hephaestus). Hard git checkpoint tags and automatic rollbacks keep the repository clean.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Model Flexibility via the Aegis Router</h3>
+                <p>Daedalus can hot‑swap between frontier cloud models and fully offline Ollama instances without restarting the session. The router routes each request to the best‑performing model, falling back gracefully when a model becomes unavailable.</p>
+            </div>
+
+            <div class="finding">
+                <h3>Continuous Negative Learning</h3>
+                <p>Failed builds or bug‑fix attempts are logged into a Sigma‑Mem anti‑pattern database. Future agent runs automatically receive warnings about known pitfalls, preventing repeat mistakes and continuously improving the system.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚙️</span> Technical Background</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); line-height: 1.8;">Daedalus is implemented in Python and Rust with CUDA acceleration for GPU inference. Its core components include a Context Engine for persistent memory, a Failure Immune System for resilience, and a Causal World Model for predictive analytics. Model routing is handled by a Mixture‑of‑Experts (MoE) layer that can address up to 23 providers, both local (Ollama) and cloud‑based.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📄</span> Research Context</h2>
+            <div class="card">
+
+                <div class="research-item">
+                    <div class="source">Daedalus GitHub Repository</div>
+                    <div class="detail">Open‑source code, Developer Bible, and technical whitepaper are hosted at https://github.com/bgill55/Daedalus.</div>
                 </div>
-                <div class="stat-box">
-                    <div class="num">Hephaestus</div>
-                    <div class="label">Deep Code Synthesis & Refactoring</div>
+
+                <div class="research-item">
+                    <div class="source">Weight and See – AI Sovereignty Series</div>
+                    <div class="detail">Three‑part YouTube series that frames the corporate techno‑feudalism problem and introduces Daedalus as the sovereign solution.</div>
                 </div>
-                <div class="stat-box">
-                    <div class="num">Hermes</div>
-                    <div class="label">Fast Tool Routing & Inter-process IPC</div>
+
+                <div class="research-item">
+                    <div class="source">Ollama Documentation</div>
+                    <div class="detail">Provides the `brew install ollama && ollama serve` command and model pulling (`ollama pull qwen2.5-coder:7b`).</div>
                 </div>
-                <div class="stat-box">
-                    <div class="num">Apollo</div>
-                    <div class="label">Automated Verification & Diagnostics</div>
+
+                <div class="research-item">
+                    <div class="source">NVIDIA acquisition of Hugging Face</div>
+                    <div class="detail">Illustrates the risk of consolidating model hubs under a single corporate roof, motivating the local‑first approach.</div>
                 </div>
             </div>
-            <p>This decoupled design enables mixing quantizations (e.g. Q4_K_M for fast reasoning on consumer GPUs, full FP16 for critical code verification) seamlessly.</p>
-        </div>
+        </section>
 
-        <div class="card">
-            <h2>3. The Developer Bible & Local Stack</h2>
-            <p>Daedalus operates on strict software principles codified in its Developer Bible:</p>
-            <ol>
-                <li><strong>Deterministic State Machines:</strong> Workspaces maintain discrete transactional state, preventing runaway recursive hallucinations.</li>
-                <li><strong>Zero Speech/Context Leaks:</strong> Structured prompts enforce hard boundary isolation between planning, synthesis, and execution tiers.</li>
-                <li><strong>Local UI & HUD:</strong> Real-time token throughput, memory headroom, and task trees rendered locally without third-party tracking.</li>
-            </ol>
-            <pre><code># Clone and inspect the sovereign codebase
-git clone https://github.com/bgill55/daedalus.git
-cd daedalus
-cat docs/manifesto.md
-cat docs/the-pantheon.md</code></pre>
-            <a href="https://github.com/bgill55/daedalus" class="cta-btn" target="_blank">Explore the Daedalus GitHub Repo &rarr;</a>
-        </div>
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🔮</span> Implications</h2>
+
+            <div class="implication">
+                Developers gain full control over code, models, and compute, eliminating cloud lock‑in and per‑token costs.
+            </div>
+
+            <div class="implication">
+                Local‑first AI reduces data‑leakage risk, preserving confidentiality for proprietary projects.
+            </div>
+
+            <div class="implication">
+                Sovereign AI ecosystems can foster independent innovation, breaking the monopoly of a few large AI providers.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💭</span> Expert Analysis</h2>
+            <div class="analysis-block">
+                Daedalus showcases a compelling blend of rigorous software engineering practices with cutting‑edge LLM capabilities. By enforcing observable actions for every agent claim, it mitigates hallucination—a chronic issue in generic AI assistants. However, the approach demands substantial local hardware (GPU, RAM) and careful configuration, which may limit adoption among smaller teams. Future work should evaluate scalability of the Pantheon model and the long‑term maintenance burden of a fully offline stack.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> References & Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/bgill55/Daedalus" target="_blank" style="color: var(--accent-light); text-decoration: none;">Daedalus GitHub Repository</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official source code, documentation, and the Developer Bible for Daedalus.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://ollama.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">Ollama – Local LLM Runtime</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Tool for running large language models locally; used by Daedalus for offline inference.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.youtube.com/WeightAndSee" target="_blank" style="color: var(--accent-light); text-decoration: none;">Weight and See – AI Sovereignty Series</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — YouTube channel hosting the three‑part series that introduces the concept of AI sovereignty and Daedalus.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://www.nvidia.com/en-us/blog/nvidia-acquires-hugging-face/" target="_blank" style="color: var(--accent-light); text-decoration: none;">NVIDIA Acquires Hugging Face</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — News article providing context for corporate consolidation of AI model hubs.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://gemini.google.com" target="_blank" style="color: var(--accent-light); text-decoration: none;">Google Gemini Official Resource</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation and source repository for Google Gemini.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://huggingface.co" target="_blank" style="color: var(--accent-light); text-decoration: none;">Hugging Face Official Resource</a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official documentation and source repository for Hugging Face.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How do I install Daedalus locally?</h3>
+                <p>Clone the repository, install Python dependencies, and run the health check. Example:
+```bash
+git clone https://github.com/bgill55/Daedalus.git
+cd Daedalus
+pip install -r requirements.txt
+# Install Ollama (if not already installed)
+brew install ollama && ollama serve
+# Pull a local model
+ollama pull qwen2.5-coder:7b
+# Verify the installation
+ daedalus doctor
+# Start the Daedalus server
+ daedalus serve
+```</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can Daedalus operate completely offline?</h3>
+                <p>Yes. After pulling the required models (e.g., via `ollama pull`), all Daedalus components—including the Aegis Router, Pantheon agents, and the web UI—run on the local machine without any external network calls.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Which models are compatible with Daedalus?</h3>
+                <p>Daedalus can route requests to any model served by Ollama (e.g., Qwen2.5‑Coder, Llama‑3) as well as cloud providers supported by its MoE router (e.g., Google Gemini). Model selection is handled automatically by the Aegis Router based on availability and confidence.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How does Daedalus ensure reliability when a model fails?</h3>
+                <p>The Failure Immune System monitors model health. If a model returns an error, the Aegis Router transparently falls back to a healthy local model, and the system logs the incident in Sigma‑Mem for future negative‑learning.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is there a UI for monitoring Daedalus activity?</h3>
+                <p>Yes. Daedalus ships with a local web UI on port 3888. It streams real‑time telemetry via Server‑Sent Events, showing agent reasoning, CPU/RAM usage, model routing status, and git checkpoint information.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <a href="https://youtube.com/@WeightnSee" target="_blank" rel="noopener" title="Visit Weight and See on YouTube">
+                <img class="channel-banner" src="../../channel_banner.png" alt="Weight and See channel banner">
+            </a>
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-09-04 08:49 • This guide accompanies the video: "Why Local-First AI Always Wins: Inside Daedalus"</p>
+        </footer>
     </div>
 </body>
 </html>
