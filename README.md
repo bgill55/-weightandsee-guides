@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/308_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/309_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/news-analysis-breaking-story-openais-gpt-6-astra-shatters-benchmarks-in-cybersec/">
+<img src="guides/news-analysis-breaking-story-openais-gpt-6-astra-shatters-benchmarks-in-cybersec/thumbnail.jpg" width="300" alt="News Analysis Breaking Story Openais Gpt 6 Astra Shatters Benchmarks In Cybersec"><br>
+<b>News Analysis Breaking Story Openais Gpt 6 Astra Shatters Benchmarks In Cybersec</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/why-local-first-ai-always-wins-inside-daedalus/">
 <img src="guides/why-local-first-ai-always-wins-inside-daedalus/thumbnail.jpg" width="300" alt="Why Local First Ai Always Wins Inside Daedalus"><br>
@@ -31,12 +37,6 @@
 <b>Nvidia Acquires Hugging Face For 13B Corporate Tech Concentration And Open Sourc</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/can-ai-fix-government-the-incorruptible-machine-dilemma/">
-<img src="guides/can-ai-fix-government-the-incorruptible-machine-dilemma/thumbnail.jpg" width="300" alt="Can Ai Fix Government The Incorruptible Machine Dilemma"><br>
-<b>Can Ai Fix Government The Incorruptible Machine Dilemma</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![134](https://img.shields.io/badge/134-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![135](https://img.shields.io/badge/135-blue?style=flat-square) |
 | **Model Deep Dives** | ![104](https://img.shields.io/badge/104-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![37](https://img.shields.io/badge/37-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[News Analysis Breaking Story Openais Gpt 6 Astra Shatters Benchmarks In Cybersec](https://bgill55.github.io/-weightandsee-guides/guides/news-analysis-breaking-story-openais-gpt-6-astra-shatters-benchmarks-in-cybersec/)** — 2026-09-05
 - **[Nvidia Acquires Hugging Face For 13B Corporate Tech Concentration And Open Sourc](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-acquires-hugging-face-for-13b-corporate-tech-concentration-and-open-sourc/)** — 2026-09-04
 - **[Algorithmic Governance Can Ai Fix Human Government Corruption](https://bgill55.github.io/-weightandsee-guides/guides/algorithmic-governance-can-ai-fix-human-government-corruption/)** — 2026-09-03
 - **[Agentic Harness Engineering Automating Ai Coding Agent Evolution](https://bgill55.github.io/-weightandsee-guides/guides/agentic-harness-engineering-automating-ai-coding-agent-evolution/)** — 2026-09-01
