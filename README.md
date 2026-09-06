@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/310_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/311_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/selfhosting-vs-cloud-ai-the-control-war-unpacked/">
+<img src="guides/selfhosting-vs-cloud-ai-the-control-war-unpacked/thumbnail.jpg" width="300" alt="Selfhosting Vs Cloud Ai The Control War Unpacked"><br>
+<b>Selfhosting Vs Cloud Ai The Control War Unpacked</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-gpt-6-astra-debacle-agi-claims-vs-independent-evaluations/">
 <img src="guides/the-gpt-6-astra-debacle-agi-claims-vs-independent-evaluations/thumbnail.jpg" width="300" alt="The Gpt 6 Astra Debacle Agi Claims Vs Independent Evaluations"><br>
@@ -31,12 +37,6 @@
 <b>News Analysis Breaking Story Openais Gpt 6 Astra Shatters Benchmarks In Cybersec</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/why-local-first-ai-always-wins-inside-daedalus/">
-<img src="guides/why-local-first-ai-always-wins-inside-daedalus/thumbnail.jpg" width="300" alt="Why Local First Ai Always Wins Inside Daedalus"><br>
-<b>Why Local First Ai Always Wins Inside Daedalus</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![136](https://img.shields.io/badge/136-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![137](https://img.shields.io/badge/137-blue?style=flat-square) |
 | **Model Deep Dives** | ![104](https://img.shields.io/badge/104-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![37](https://img.shields.io/badge/37-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Selfhosting Vs Cloud Ai The Control War Unpacked](https://bgill55.github.io/-weightandsee-guides/guides/selfhosting-vs-cloud-ai-the-control-war-unpacked/)** — 2026-09-06
 - **[The Gpt 6 Astra Debacle Agi Claims Vs Independent Evaluations](https://bgill55.github.io/-weightandsee-guides/guides/the-gpt-6-astra-debacle-agi-claims-vs-independent-evaluations/)** — 2026-09-05
 - **[News Analysis Breaking Story Openais Gpt 6 Astra Shatters Benchmarks In Cybersec](https://bgill55.github.io/-weightandsee-guides/guides/news-analysis-breaking-story-openais-gpt-6-astra-shatters-benchmarks-in-cybersec/)** — 2026-09-05
 - **[Nvidia Acquires Hugging Face For 13B Corporate Tech Concentration And Open Sourc](https://bgill55.github.io/-weightandsee-guides/guides/nvidia-acquires-hugging-face-for-13b-corporate-tech-concentration-and-open-sourc/)** — 2026-09-04
