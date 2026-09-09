@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/311_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/312_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/agent-oracles-understanding-self-evolving-execution-structures/">
+<img src="guides/agent-oracles-understanding-self-evolving-execution-structures/thumbnail.jpg" width="300" alt="Agent Oracles Understanding Self Evolving Execution Structures"><br>
+<b>Agent Oracles Understanding Self Evolving Execution Structures</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/selfhosting-vs-cloud-ai-the-control-war-unpacked/">
 <img src="guides/selfhosting-vs-cloud-ai-the-control-war-unpacked/thumbnail.jpg" width="300" alt="Selfhosting Vs Cloud Ai The Control War Unpacked"><br>
@@ -31,12 +37,6 @@
 <b>The Gpt 6 Astra Debacle Agi Claims Vs Independent Evaluations</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/news-analysis-breaking-story-openais-gpt-6-astra-shatters-benchmarks-in-cybersec/">
-<img src="guides/news-analysis-breaking-story-openais-gpt-6-astra-shatters-benchmarks-in-cybersec/thumbnail.jpg" width="300" alt="News Analysis Breaking Story Openais Gpt 6 Astra Shatters Benchmarks In Cybersec"><br>
-<b>News Analysis Breaking Story Openais Gpt 6 Astra Shatters Benchmarks In Cybersec</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![137](https://img.shields.io/badge/137-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![138](https://img.shields.io/badge/138-blue?style=flat-square) |
 | **Model Deep Dives** | ![104](https://img.shields.io/badge/104-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![37](https://img.shields.io/badge/37-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -74,6 +74,7 @@
 - **[Instinct Ai Agent Review Realtime X Integration Pricing And Latency](https://bgill55.github.io/-weightandsee-guides/guides/instinct-ai-agent-review-realtime-x-integration-pricing-and-latency/)** — 2026-08-22
 - **[Ozbrain Vs Langchain Knowledge Store Latency Cost And Privacy Showdown](https://bgill55.github.io/-weightandsee-guides/guides/ozbrain-vs-langchain-knowledge-store-latency-cost-and-privacy-showdown/)** — 2026-08-21
 - **[Claude 5 Token Vomit Cleaner Handson Review](https://bgill55.github.io/-weightandsee-guides/guides/claude-5-token-vomit-cleaner-handson-review/)** — 2026-08-21
+- **[Weight And See Ai Guides Repo](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/)** — 2026-08-21
 - **[Weight And See Open Source Ai Hub](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-open-source-ai-hub/)** — 2026-08-21
 - **[Cursor Launches Origin Code Hosting Platform As Github Outage Exposes Opening In](https://bgill55.github.io/-weightandsee-guides/guides/cursor-launches-origin-code-hosting-platform-as-github-outage-exposes-opening-in/)** — 2026-08-18
 - **[Techcrunch Ai Stripe Will Reportedly Acquire Ai Gateway Startup Openrouter For 7](https://bgill55.github.io/-weightandsee-guides/guides/techcrunch-ai-stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7/)** — 2026-08-17
@@ -203,6 +204,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Agent Oracles Understanding Self Evolving Execution Structures](https://bgill55.github.io/-weightandsee-guides/guides/agent-oracles-understanding-self-evolving-execution-structures/)** — 2026-09-09
 - **[Why Local First Ai Always Wins Inside Daedalus](https://bgill55.github.io/-weightandsee-guides/guides/why-local-first-ai-always-wins-inside-daedalus/)** — 2026-09-04
 - **[Why Anthropic Paused Ai Model Training The Motivated Reasoning Crisis](https://bgill55.github.io/-weightandsee-guides/guides/why-anthropic-paused-ai-model-training-the-motivated-reasoning-crisis/)** — 2026-09-03
 - **[Glm 53 Flash Qwen38 Flash Multimodal Ai Models For Enhanced Efficiency](https://bgill55.github.io/-weightandsee-guides/guides/glm-53-flash-qwen38-flash-multimodal-ai-models-for-enhanced-efficiency/)** — 2026-09-02
@@ -213,7 +215,6 @@
 - **[Ai Video Production 101 How Gemini Omni 11 Flash Simplifies Your Workflow](https://bgill55.github.io/-weightandsee-guides/guides/ai-video-production-101-how-gemini-omni-11-flash-simplifies-your-workflow/)** — 2026-08-28
 - **[Inside Claude 4 Why Ai Coders Are Switching In 2026](https://bgill55.github.io/-weightandsee-guides/guides/inside-claude-4-why-ai-coders-are-switching-in-2026/)** — 2026-08-25
 - **[Anthropics 75 B Ipo Could It Shatter Spacexs Record](https://bgill55.github.io/-weightandsee-guides/guides/anthropics-75-b-ipo-could-it-shatter-spacexs-record/)** — 2026-08-24
-- **[Weight And See Ai Guides Repo](https://bgill55.github.io/-weightandsee-guides/guides/weight-and-see-ai-guides-repo/)** — 2026-08-21
 - **[Daedalus V33011 Antifragile Autonomous Coding With Specfirst Architecture Real S](https://bgill55.github.io/-weightandsee-guides/guides/daedalus-v33011-antifragile-autonomous-coding-with-specfirst-architecture-real-s/)** — 2026-08-19
 - **[Guide](https://bgill55.github.io/-weightandsee-guides/guides/guide/)** — 2026-08-12
 - **[Ai Agent Hacks Gym To Get Its User A Spot In Pilates Class](https://bgill55.github.io/-weightandsee-guides/guides/ai-agent-hacks-gym-to-get-its-user-a-spot-in-pilates-class/)** — 2026-08-12
@@ -423,9 +424,5 @@ Each guide corresponds to a video on the [Weight and See](https://youtube.com/@W
 Watch the video for visual walkthroughs, then use the guide for code snippets and step-by-step instructions.
 
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@WeightnSee)
-
-<a href="https://youtube.com/@WeightnSee">
-<img src="channel_banner.png" width="100%" alt="Weight and See channel banner">
-</a>
 
 </div>

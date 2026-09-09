@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We dive deep into procedural graphs—the architectural breakthrough that allows advanced AI agents to plan, adapt, and execute complex tasks by structuring their">
+    <meta name="keywords" content="procedural graphs, llm architecture, ai agent design, workflow automation, autonomous agents">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Agent Oracles: Understanding Self-Evolving Execution Structures - Complete Guide">
+    <meta property="og:description" content="We dive deep into procedural graphs—the architectural breakthrough that allows advanced AI agents to plan, adapt, and execute complex tasks by structuring their thought process as self-evolving execut">
+    <meta property="og:type" content="article">
+    <title>Agent Oracles: Understanding Self-Evolving Execution Structures | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Agent Oracles: Understanding Self-Evolving Execution Structures</h1>
+            <p class="subtitle">This guide provides a deep dive into procedural graphs, an advanced architectural pattern that governs next-generation AI agents. It explains how these self-evolving execution structures move beyond simple conversational prompting to build complex internal decision trees, enabling true autonomous workflow orchestration for tasks like CI pipeline automation.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>September 09, 2026</span>
+                <span>4 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Procedural graphs are structural architectures, not just advanced prompts; they define explicit flow control and state management for AI agents.</span></li>
+                    <li><span class="takeaway-num">2</span><span>These systems function by building internal decision trees that determine the next verifiable step, replacing linear sequential prompting.</span></li>
+                    <li><span class="takeaway-num">3</span><span>The core mechanism involves specialized 'function nodes' that route data through pre-defined, executable logic rather than generating text guesses.</span></li>
+                    <li><span class="takeaway-num">4</span><span>Architectural control over the model’s execution path is achieved primarily through structured JSON output and explicit function calling stacks.</span></li>
+                    <li><span class="takeaway-num">5</span><span>A practical use case demonstrated is automating unit test generation for a CI pipeline by structuring analysis steps (codebase -> specialized function node -> final output).</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Familiarity with advanced software architecture patterns (e.g., State Machines, Directed Acyclic Graphs).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Understanding of structured data formats, specifically JSON Schema validation and OpenAPI specifications.</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Basic knowledge of LLM API interaction and function calling mechanisms.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Define the Graph Structure (The Workflow Blueprint)</h3>
+                <p>Before coding, map out the entire workflow as a Directed Acyclic Graph (DAG). Identify all possible input states, decision points (nodes), and required output formats. Each connection between nodes represents a verifiable transition condition.</p>
+
+                <div class="code-block"><pre>graph_definition = {
+    'Start': {'input': 'Codebase Structure', 'next': ['AnalysisNode']},
+    'AnalysisNode': {'output_schema': 'JSON', 'transitions': ['TestGenNode', 'ErrorNode']}
+}</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Implement the Input and Initial Node Handler</h3>
+                <p>The first node must accept external data (e.g., a codebase directory or API payload). This handler is responsible for transforming raw, unstructured input into the structured format required by the graph's subsequent nodes.</p>
+
+                <div class="code-block"><pre>def handle_input(raw_data: str) -> dict:
+    # Example: Extracting file list and metadata
+    return {
+        "files": extract_file_list(raw_data),
+        "context": "CI Pipeline Setup"
+    }</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Integrate Specialized Function Nodes</h3>
+                <p>Implement the core logic within dedicated, verifiable function nodes. Instead of letting the LLM 'guess' the next step, the graph routes data to a specific Python/API function (e.g., `analyze_codebase(structure)`), which executes deterministic code.</p>
+
+                <div class="code-block"><pre>def analyze_codebase(file_list: list) -> dict:
+    # Deterministic analysis logic
+    results = []
+    for file in file_list:
+        if 'test' not in file['name']:
+            results.append(f"Potential test required for {file['name']}")
+    return {"analysis": results, "status": "Completed"}</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Execute and Validate State Transitions</h3>
+                <p>The execution engine must manage the internal state (the current data payload) and validate that the output of one node perfectly matches the required input schema of the next. This prevents 'hallucinated' flow control.</p>
+
+                <div class="code-block"><pre># Pseudocode for execution loop
+while graph.is_active(current_state):
+    next_node = determine_transition(current_state)
+    if not validate_schema(next_node, current_state.output):
+        raise SchemaMismatchError("Transition failed.")
+    execute_node(next_node, current_state.output)</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Optimize the graph for failure paths: Explicitly define 'error nodes' and recovery logic (e.g., retry mechanisms or human handover points) to make agents robust.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use dedicated state management libraries rather than relying on session variables; treat the entire process payload as a single, immutable context object.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Decouple the LLM from execution: Use the LLM solely for interpreting intent and determining *which* function node to call, but let deterministic code execute the actual task.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Over-reliance on prompt engineering: Treating complex workflow logic as a single text prompt will fail when state or volume increases.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Ignoring schema validation: Failing to enforce strict JSON schemas between nodes leads to brittle pipelines where slight data format changes break the entire system.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> State drift: Allowing the internal state payload to become unstructured or too large, causing memory leaks and unpredictable behavior.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>LLM API (OpenAI/Anthropic)</h4>
+                    <p>Provides the core intelligence for interpreting user intent and selecting the correct function node within the graph.</p>
+                    <a href="https://api.openai.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Graph State Engine Libraries</h4>
+                    <p>Conceptual frameworks (e.g., LangChain, CrewAI) used to manage the flow control and state transitions between nodes.</p>
+                    <a href="N/A (Conceptual Framework)" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How is a procedural graph different from simple function calling?</h3>
+                <p>Simple function calling allows an LLM to identify *one* required tool/function. A procedural graph orchestrates *sequences* of functions, managing the state and output flow between multiple, conditional steps.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What is the role of structured JSON in this architecture?</h3>
+                <p>Structured JSON serves as the single source of truth (the 'internal state') that must pass successfully from one node's output to the next node's expected input, ensuring data integrity throughout the workflow.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Do I need a dedicated database for internal state management?</h3>
+                <p>While simple graphs can use in-memory state, complex, multi-session agents require persistent storage (like Redis or a relational DB) to maintain context and graph execution history across multiple calls.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://arxiv.org/search/?query=state+machine+ai" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Designing State Machines for AI
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Academic resources detailing how finite state machines are applied to autonomous agent design.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://swagger.io/docs/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OpenAPI Specification (OAS)
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — The industry standard for defining and validating the input and output schemas of functions within a procedural graph.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#HowSelf</span>
+                <span class="tag">#proceduralgraphs</span>
+                <span class="tag">#llmarchitecture</span>
+                <span class="tag">#aiagentdesign</span>
+                <span class="tag">#workflowautomation</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-09-09 13:21 • This guide accompanies the video: "Agent Oracles: Understanding Self-Evolving Execution Structures"</p>
+        </footer>
+    </div>
+</body>
+</html>
