@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/312_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/313_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-rise-of-mcp-servers-how-autonomous-ai-agents-are-building-their-own-ecosyste/">
+<img src="guides/the-rise-of-mcp-servers-how-autonomous-ai-agents-are-building-their-own-ecosyste/thumbnail.jpg" width="300" alt="The Rise Of Mcp Servers How Autonomous Ai Agents Are Building Their Own Ecosyste"><br>
+<b>The Rise Of Mcp Servers How Autonomous Ai Agents Are Building Their Own Ecosyste</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/agent-oracles-understanding-self-evolving-execution-structures/">
 <img src="guides/agent-oracles-understanding-self-evolving-execution-structures/thumbnail.jpg" width="300" alt="Agent Oracles Understanding Self Evolving Execution Structures"><br>
@@ -31,12 +37,6 @@
 <b>Selfhosting Vs Cloud Ai The Control War Unpacked</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-gpt-6-astra-debacle-agi-claims-vs-independent-evaluations/">
-<img src="guides/the-gpt-6-astra-debacle-agi-claims-vs-independent-evaluations/thumbnail.jpg" width="300" alt="The Gpt 6 Astra Debacle Agi Claims Vs Independent Evaluations"><br>
-<b>The Gpt 6 Astra Debacle Agi Claims Vs Independent Evaluations</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![138](https://img.shields.io/badge/138-blue?style=flat-square) |
-| **Model Deep Dives** | ![104](https://img.shields.io/badge/104-blue?style=flat-square) |
+| **Model Deep Dives** | ![105](https://img.shields.io/badge/105-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![37](https://img.shields.io/badge/37-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
@@ -204,6 +204,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[The Rise Of Mcp Servers How Autonomous Ai Agents Are Building Their Own Ecosyste](https://bgill55.github.io/-weightandsee-guides/guides/the-rise-of-mcp-servers-how-autonomous-ai-agents-are-building-their-own-ecosyste/)** — 2026-09-11
 - **[Agent Oracles Understanding Self Evolving Execution Structures](https://bgill55.github.io/-weightandsee-guides/guides/agent-oracles-understanding-self-evolving-execution-structures/)** — 2026-09-09
 - **[Why Local First Ai Always Wins Inside Daedalus](https://bgill55.github.io/-weightandsee-guides/guides/why-local-first-ai-always-wins-inside-daedalus/)** — 2026-09-04
 - **[Why Anthropic Paused Ai Model Training The Motivated Reasoning Crisis](https://bgill55.github.io/-weightandsee-guides/guides/why-anthropic-paused-ai-model-training-the-motivated-reasoning-crisis/)** — 2026-09-03
