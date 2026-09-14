@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/313_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/314_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-local-llm-switchboards-work-running-ai-models-without-cloud-subscriptions/">
+<img src="guides/how-local-llm-switchboards-work-running-ai-models-without-cloud-subscriptions/thumbnail.jpg" width="300" alt="How Local Llm Switchboards Work Running Ai Models Without Cloud Subscriptions"><br>
+<b>How Local Llm Switchboards Work Running Ai Models Without Cloud Subscriptions</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-rise-of-mcp-servers-how-autonomous-ai-agents-are-building-their-own-ecosyste/">
 <img src="guides/the-rise-of-mcp-servers-how-autonomous-ai-agents-are-building-their-own-ecosyste/thumbnail.jpg" width="300" alt="The Rise Of Mcp Servers How Autonomous Ai Agents Are Building Their Own Ecosyste"><br>
@@ -31,12 +37,6 @@
 <b>Agent Oracles Understanding Self Evolving Execution Structures</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/selfhosting-vs-cloud-ai-the-control-war-unpacked/">
-<img src="guides/selfhosting-vs-cloud-ai-the-control-war-unpacked/thumbnail.jpg" width="300" alt="Selfhosting Vs Cloud Ai The Control War Unpacked"><br>
-<b>Selfhosting Vs Cloud Ai The Control War Unpacked</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![138](https://img.shields.io/badge/138-blue?style=flat-square) |
-| **Model Deep Dives** | ![105](https://img.shields.io/badge/105-blue?style=flat-square) |
+| **Model Deep Dives** | ![106](https://img.shields.io/badge/106-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![37](https://img.shields.io/badge/37-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
@@ -204,6 +204,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[How Local Llm Switchboards Work Running Ai Models Without Cloud Subscriptions](https://bgill55.github.io/-weightandsee-guides/guides/how-local-llm-switchboards-work-running-ai-models-without-cloud-subscriptions/)** — 2026-09-14
 - **[The Rise Of Mcp Servers How Autonomous Ai Agents Are Building Their Own Ecosyste](https://bgill55.github.io/-weightandsee-guides/guides/the-rise-of-mcp-servers-how-autonomous-ai-agents-are-building-their-own-ecosyste/)** — 2026-09-11
 - **[Agent Oracles Understanding Self Evolving Execution Structures](https://bgill55.github.io/-weightandsee-guides/guides/agent-oracles-understanding-self-evolving-execution-structures/)** — 2026-09-09
 - **[Why Local First Ai Always Wins Inside Daedalus](https://bgill55.github.io/-weightandsee-guides/guides/why-local-first-ai-always-wins-inside-daedalus/)** — 2026-09-04
