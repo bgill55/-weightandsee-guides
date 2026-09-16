@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/314_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/315_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -20,6 +20,12 @@
 
 <table><tr>
 <td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/ai-memory-isnt-a-service-how-plain-text-files-are-changing-how-llms-learn-and-re/">
+<img src="guides/ai-memory-isnt-a-service-how-plain-text-files-are-changing-how-llms-learn-and-re/thumbnail.jpg" width="300" alt="Ai Memory Isnt A Service How Plain Text Files Are Changing How Llms Learn And Re"><br>
+<b>Ai Memory Isnt A Service How Plain Text Files Are Changing How Llms Learn And Re</b>
+</a>
+</td>
+<td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/how-local-llm-switchboards-work-running-ai-models-without-cloud-subscriptions/">
 <img src="guides/how-local-llm-switchboards-work-running-ai-models-without-cloud-subscriptions/thumbnail.jpg" width="300" alt="How Local Llm Switchboards Work Running Ai Models Without Cloud Subscriptions"><br>
 <b>How Local Llm Switchboards Work Running Ai Models Without Cloud Subscriptions</b>
@@ -29,12 +35,6 @@
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-rise-of-mcp-servers-how-autonomous-ai-agents-are-building-their-own-ecosyste/">
 <img src="guides/the-rise-of-mcp-servers-how-autonomous-ai-agents-are-building-their-own-ecosyste/thumbnail.jpg" width="300" alt="The Rise Of Mcp Servers How Autonomous Ai Agents Are Building Their Own Ecosyste"><br>
 <b>The Rise Of Mcp Servers How Autonomous Ai Agents Are Building Their Own Ecosyste</b>
-</a>
-</td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/agent-oracles-understanding-self-evolving-execution-structures/">
-<img src="guides/agent-oracles-understanding-self-evolving-execution-structures/thumbnail.jpg" width="300" alt="Agent Oracles Understanding Self Evolving Execution Structures"><br>
-<b>Agent Oracles Understanding Self Evolving Execution Structures</b>
 </a>
 </td>
 </tr></table>
@@ -49,7 +49,7 @@
 | **Model Deep Dives** | ![106](https://img.shields.io/badge/106-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![37](https://img.shields.io/badge/37-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
-| **Developer Tools & Agents** | ![22](https://img.shields.io/badge/22-blue?style=flat-square) |
+| **Developer Tools & Agents** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **No-Code & Automation** | ![1](https://img.shields.io/badge/1-blue?style=flat-square) |
 
@@ -373,6 +373,7 @@
 
 *AI-powered coding assistants, agents, and developer workflows*
 
+- **[Ai Memory Isnt A Service How Plain Text Files Are Changing How Llms Learn And Re](https://bgill55.github.io/-weightandsee-guides/guides/ai-memory-isnt-a-service-how-plain-text-files-are-changing-how-llms-learn-and-re/)** — 2026-09-16
 - **[No Code Ai Agents With Gemini Notebook Automating Workflows](https://bgill55.github.io/-weightandsee-guides/guides/no-code-ai-agents-with-gemini-notebook-automating-workflows/)** — 2026-08-31
 - **[How Design Systems Can Fix Ai Slop A Guide For Engineers And Product Designers](https://bgill55.github.io/-weightandsee-guides/guides/how-design-systems-can-fix-ai-slop-a-guide-for-engineers-and-product-designers/)** — 2026-08-26
 - **[Google Gemini Desktop App Adds Avatars Why This Is A Gamechanger For Ai Workspac](https://bgill55.github.io/-weightandsee-guides/guides/google-gemini-desktop-app-adds-avatars-why-this-is-a-gamechanger-for-ai-workspac/)** — 2026-08-24
