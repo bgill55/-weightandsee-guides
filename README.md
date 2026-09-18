@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/315_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/316_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-quantization-playbook-running-giant-models-locally-without-a-data-center/">
+<img src="guides/the-quantization-playbook-running-giant-models-locally-without-a-data-center/thumbnail.jpg" width="300" alt="The Quantization Playbook Running Giant Models Locally Without A Data Center"><br>
+<b>The Quantization Playbook Running Giant Models Locally Without A Data Center</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/ai-memory-isnt-a-service-how-plain-text-files-are-changing-how-llms-learn-and-re/">
 <img src="guides/ai-memory-isnt-a-service-how-plain-text-files-are-changing-how-llms-learn-and-re/thumbnail.jpg" width="300" alt="Ai Memory Isnt A Service How Plain Text Files Are Changing How Llms Learn And Re"><br>
@@ -31,12 +37,6 @@
 <b>How Local Llm Switchboards Work Running Ai Models Without Cloud Subscriptions</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-rise-of-mcp-servers-how-autonomous-ai-agents-are-building-their-own-ecosyste/">
-<img src="guides/the-rise-of-mcp-servers-how-autonomous-ai-agents-are-building-their-own-ecosyste/thumbnail.jpg" width="300" alt="The Rise Of Mcp Servers How Autonomous Ai Agents Are Building Their Own Ecosyste"><br>
-<b>The Rise Of Mcp Servers How Autonomous Ai Agents Are Building Their Own Ecosyste</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![138](https://img.shields.io/badge/138-blue?style=flat-square) |
 | **Model Deep Dives** | ![106](https://img.shields.io/badge/106-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![37](https://img.shields.io/badge/37-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![38](https://img.shields.io/badge/38-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -317,6 +317,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[The Quantization Playbook Running Giant Models Locally Without A Data Center](https://bgill55.github.io/-weightandsee-guides/guides/the-quantization-playbook-running-giant-models-locally-without-a-data-center/)** — 2026-09-18
 - **[Can Ai Fix Government The Incorruptible Machine Dilemma](https://bgill55.github.io/-weightandsee-guides/guides/can-ai-fix-government-the-incorruptible-machine-dilemma/)** — 2026-09-04
 - **[Agenthq Revolutionizing Multi Agent Orchestration With An Interactive Office The](https://bgill55.github.io/-weightandsee-guides/guides/agenthq-revolutionizing-multi-agent-orchestration-with-an-interactive-office-the/)** — 2026-08-31
 - **[Muse Glimmer Metas Open Source Ai Model For Consumer Hardware](https://bgill55.github.io/-weightandsee-guides/guides/muse-glimmer-metas-open-source-ai-model-for-consumer-hardware/)** — 2026-08-27
