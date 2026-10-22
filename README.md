@@ -8,9 +8,9 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/316_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/317_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
-![Updated](https://img.shields.io/badge/UPDATED_SEPTEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
+![Updated](https://img.shields.io/badge/UPDATED_OCTOBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
 </div>
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/rigcheck-vs-manual-gpu-verification-which-one-should-you-trust/">
+<img src="guides/rigcheck-vs-manual-gpu-verification-which-one-should-you-trust/thumbnail.jpg" width="300" alt="Rigcheck Vs Manual Gpu Verification Which One Should You Trust"><br>
+<b>Rigcheck Vs Manual Gpu Verification Which One Should You Trust</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/the-quantization-playbook-running-giant-models-locally-without-a-data-center/">
 <img src="guides/the-quantization-playbook-running-giant-models-locally-without-a-data-center/thumbnail.jpg" width="300" alt="The Quantization Playbook Running Giant Models Locally Without A Data Center"><br>
@@ -31,12 +37,6 @@
 <b>Ai Memory Isnt A Service How Plain Text Files Are Changing How Llms Learn And Re</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/how-local-llm-switchboards-work-running-ai-models-without-cloud-subscriptions/">
-<img src="guides/how-local-llm-switchboards-work-running-ai-models-without-cloud-subscriptions/thumbnail.jpg" width="300" alt="How Local Llm Switchboards Work Running Ai Models Without Cloud Subscriptions"><br>
-<b>How Local Llm Switchboards Work Running Ai Models Without Cloud Subscriptions</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![138](https://img.shields.io/badge/138-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![139](https://img.shields.io/badge/139-blue?style=flat-square) |
 | **Model Deep Dives** | ![106](https://img.shields.io/badge/106-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![38](https://img.shields.io/badge/38-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Rigcheck Vs Manual Gpu Verification Which One Should You Trust](https://bgill55.github.io/-weightandsee-guides/guides/rigcheck-vs-manual-gpu-verification-which-one-should-you-trust/)** — 2026-10-22
 - **[Selfhosting Vs Cloud Ai The Control War Unpacked](https://bgill55.github.io/-weightandsee-guides/guides/selfhosting-vs-cloud-ai-the-control-war-unpacked/)** — 2026-09-06
 - **[The Gpt 6 Astra Debacle Agi Claims Vs Independent Evaluations](https://bgill55.github.io/-weightandsee-guides/guides/the-gpt-6-astra-debacle-agi-claims-vs-independent-evaluations/)** — 2026-09-05
 - **[News Analysis Breaking Story Openais Gpt 6 Astra Shatters Benchmarks In Cybersec](https://bgill55.github.io/-weightandsee-guides/guides/news-analysis-breaking-story-openais-gpt-6-astra-shatters-benchmarks-in-cybersec/)** — 2026-09-05
