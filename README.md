@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/317_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/318_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_OCTOBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-enterprise-on-prem-pivot-why-open-weights-80-cloud-price-cuts-collide/">
+<img src="guides/the-enterprise-on-prem-pivot-why-open-weights-80-cloud-price-cuts-collide/thumbnail.jpg" width="300" alt="The Enterprise On Prem Pivot Why Open Weights 80 Cloud Price Cuts Collide"><br>
+<b>The Enterprise On Prem Pivot Why Open Weights 80 Cloud Price Cuts Collide</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/rigcheck-vs-manual-gpu-verification-which-one-should-you-trust/">
 <img src="guides/rigcheck-vs-manual-gpu-verification-which-one-should-you-trust/thumbnail.jpg" width="300" alt="Rigcheck Vs Manual Gpu Verification Which One Should You Trust"><br>
@@ -31,12 +37,6 @@
 <b>The Quantization Playbook Running Giant Models Locally Without A Data Center</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/ai-memory-isnt-a-service-how-plain-text-files-are-changing-how-llms-learn-and-re/">
-<img src="guides/ai-memory-isnt-a-service-how-plain-text-files-are-changing-how-llms-learn-and-re/thumbnail.jpg" width="300" alt="Ai Memory Isnt A Service How Plain Text Files Are Changing How Llms Learn And Re"><br>
-<b>Ai Memory Isnt A Service How Plain Text Files Are Changing How Llms Learn And Re</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![139](https://img.shields.io/badge/139-blue?style=flat-square) |
-| **Model Deep Dives** | ![106](https://img.shields.io/badge/106-blue?style=flat-square) |
+| **Model Deep Dives** | ![107](https://img.shields.io/badge/107-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![38](https://img.shields.io/badge/38-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
@@ -205,6 +205,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[The Enterprise On Prem Pivot Why Open Weights 80 Cloud Price Cuts Collide](https://bgill55.github.io/-weightandsee-guides/guides/the-enterprise-on-prem-pivot-why-open-weights-80-cloud-price-cuts-collide/)** — 2026-10-26
 - **[How Local Llm Switchboards Work Running Ai Models Without Cloud Subscriptions](https://bgill55.github.io/-weightandsee-guides/guides/how-local-llm-switchboards-work-running-ai-models-without-cloud-subscriptions/)** — 2026-09-14
 - **[The Rise Of Mcp Servers How Autonomous Ai Agents Are Building Their Own Ecosyste](https://bgill55.github.io/-weightandsee-guides/guides/the-rise-of-mcp-servers-how-autonomous-ai-agents-are-building-their-own-ecosyste/)** — 2026-09-11
 - **[Agent Oracles Understanding Self Evolving Execution Structures](https://bgill55.github.io/-weightandsee-guides/guides/agent-oracles-understanding-self-evolving-execution-structures/)** — 2026-09-09
