@@ -8,9 +8,9 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/319_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/320_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
-![Updated](https://img.shields.io/badge/UPDATED_OCTOBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
+![Updated](https://img.shields.io/badge/UPDATED_NOVEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
 </div>
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/ai-agents-coding-assistants-how-to-build-autonomous-developers/">
+<img src="guides/ai-agents-coding-assistants-how-to-build-autonomous-developers/thumbnail.jpg" width="300" alt="Ai Agents Coding Assistants How To Build Autonomous Developers"><br>
+<b>Ai Agents Coding Assistants How To Build Autonomous Developers</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/klein-tts-x15-micro-checkpoints-vs-hurston-1-a-head-to-head-voice-cloning-showdo/">
 <img src="guides/klein-tts-x15-micro-checkpoints-vs-hurston-1-a-head-to-head-voice-cloning-showdo/thumbnail.jpg" width="300" alt="Klein Tts X15 Micro Checkpoints Vs Hurston 1 A Head To Head Voice Cloning Showdo"><br>
@@ -31,12 +37,6 @@
 <b>The Enterprise On Prem Pivot Why Open Weights 80 Cloud Price Cuts Collide</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/rigcheck-vs-manual-gpu-verification-which-one-should-you-trust/">
-<img src="guides/rigcheck-vs-manual-gpu-verification-which-one-should-you-trust/thumbnail.jpg" width="300" alt="Rigcheck Vs Manual Gpu Verification Which One Should You Trust"><br>
-<b>Rigcheck Vs Manual Gpu Verification Which One Should You Trust</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![140](https://img.shields.io/badge/140-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![141](https://img.shields.io/badge/141-blue?style=flat-square) |
 | **Model Deep Dives** | ![107](https://img.shields.io/badge/107-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![38](https://img.shields.io/badge/38-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Ai Agents Coding Assistants How To Build Autonomous Developers](https://bgill55.github.io/-weightandsee-guides/guides/ai-agents-coding-assistants-how-to-build-autonomous-developers/)** — 2026-11-04
 - **[Klein Tts X15 Micro Checkpoints Vs Hurston 1 A Head To Head Voice Cloning Showdo](https://bgill55.github.io/-weightandsee-guides/guides/klein-tts-x15-micro-checkpoints-vs-hurston-1-a-head-to-head-voice-cloning-showdo/)** — 2026-10-28
 - **[Rigcheck Vs Manual Gpu Verification Which One Should You Trust](https://bgill55.github.io/-weightandsee-guides/guides/rigcheck-vs-manual-gpu-verification-which-one-should-you-trust/)** — 2026-10-22
 - **[Selfhosting Vs Cloud Ai The Control War Unpacked](https://bgill55.github.io/-weightandsee-guides/guides/selfhosting-vs-cloud-ai-the-control-war-unpacked/)** — 2026-09-06

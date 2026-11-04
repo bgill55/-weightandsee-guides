@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This video explores how to create AI-powered coding agents using open-source tools like Copilot and Windsurf, focusing on practical workflows and productivity g">
+    <meta name="keywords" content="AI agents, coding assistants, Copilot, Windsurf, open-source">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="AI Agents & Coding Assistants: How to Build Autonomous Developers - Complete Guide">
+    <meta property="og:description" content="This video explores how to create AI-powered coding agents using open-source tools like Copilot and Windsurf, focusing on practical workflows and productivity gains. It demonstrates how these agents c">
+    <meta property="og:type" content="article">
+    <title>AI Agents & Coding Assistants: How to Build Autonomous Developers | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>AI Agents & Coding Assistants: How to Build Autonomous Developers</h1>
+            <p class="subtitle">This guide walks developers through building autonomous coding agents that leverage Microsoft Copilot and the open‑source Windsurf framework to automate repetitive tasks such as unit test generation and CI integration. It covers installation, configuration, agent creation, and deployment in a real‑world workflow, including a practical example of pulling real‑time Google Trends data with pytrends.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>November 04, 2026</span>
+                <span>5 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>1. Copilot can be integrated programmatically via the VS Code API and the Copilot CLI for automated code generation.</span></li>
+                    <li><span class="takeaway-num">2</span><span>2. Windsurf acts as an orchestration layer that connects multiple LLMs, making it easy to build multi‑step agents.</span></li>
+                    <li><span class="takeaway-num">3</span><span>3. A minimal agent can generate unit tests, commit them, and trigger a CI pipeline automatically.</span></li>
+                    <li><span class="takeaway-num">4</span><span>4. Real‑time data extraction (e.g., Google Trends) can be automated and fed into the agent for dynamic content generation.</span></li>
+                    <li><span class="takeaway-num">5</span><span>5. Proper environment variable management and CI configuration are critical for secure, repeatable agent runs.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Node.js 20+ (or npm 10+)</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Python 3.12+ (or 3.10+ for pytrends)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install VS Code, Copilot Extension, and the Copilot CLI</h3>
+                <p>1️⃣ Install Visual Studio Code from https://code.visualstudio.com/. 2️⃣ Open VS Code, go to Extensions, search for "GitHub Copilot" and click Install. 3️⃣ Install the Copilot CLI globally with npm to enable script‑based interaction.
+
+```bash
+# Install the Copilot CLI
+npm install -g @github/cli
+# Authenticate with GitHub (will open browser)
+gh auth login
+# Verify Copilot CLI is installed
+copilot --help
+```</p>
+
+                <div class="code-block"><pre>```bash
+# Example: list Copilot suggestions via CLI
+copilot suggest --file example.py --line 10
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Set Up Environment Variables and Install Windsurf</h3>
+                <p>Create a `.env` file at the project root and add your OpenAI API key (or any LLM key) and GitHub token for authentication. Then install Windsurf via npm and initialize a new agent project.
+
+```bash
+# Create .env
+cat <<EOF > .env
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxx
+GITHUB_TOKEN=ghp_yyyyyyyyyyyyyyyyyyyy
+EOF
+
+# Install Windsurf
+npm install windsurf
+
+# Initialize a Windsurf agent project
+windsurf init
+```
+
+Windsurf will scaffold a `agent.js` file and a `config.json` for agent settings.</p>
+
+                <div class="code-block"><pre>```javascript
+// agent.js
+const windsurf = require('windsurf');
+const agent = windsurf.agent({
+  name: 'TestGenerator',
+  llm: 'openai',
+  model: 'gpt-4o-mini',
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+module.exports = agent;
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Build an Agent to Generate Unit Tests Using Copilot</h3>
+                <p>Use Windsurf’s task orchestration to call the Copilot CLI, parse the generated snippet, and write it to a test file. The agent will also commit the file to Git and push to a remote branch.
+
+```javascript
+// agent.js (continued)
+const { execSync } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+
+agent.addTask('generate-tests', async (repoPath) => {
+  // Assume current repo has a file "app.js"
+  const targetFile = path.join(repoPath, 'app.js');
+  // Ask Copilot to generate tests for the file
+  const suggestion = execSync(`copilot suggest --file ${targetFile} --line 1 --prompt "Generate Jest unit tests for this file."`, {
+    encoding: 'utf-8',
+  });
+  const testFile = path.join(repoPath, 'app.test.js');
+  fs.writeFileSync(testFile, suggestion);
+  // Git add/commit/push
+  execSync(`git add ${testFile}`, { cwd: repoPath });
+  execSync(`git commit -m "Add autogenerated unit tests"`, { cwd: repoPath });
+  execSync(`git push origin HEAD:autogen-tests`, { cwd: repoPath });
+});
+
+module.exports = agent;
+```
+
+Run the agent with the path to your repository.
+
+```bash
+node agent.js /path/to/your/repo
+```</p>
+
+                <div class="code-block"><pre>```bash
+# Example run
+node agent.js ./my-sample-app
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Automate the Agent with GitHub Actions CI</h3>
+                <p>Create a GitHub Actions workflow that triggers on pushes to the main branch, sets up Node and Python, installs dependencies, and runs the agent to generate tests. The workflow will also run Jest to verify the tests.
+
+```yaml
+# .github/workflows/ai-agent.yml
+name: AI Agent CI
+on:
+  push:
+    branches: [ main ]
+jobs:
+  agent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Copilot CLI
+        run: npm install -g @github/cli
+      - name: Run AI Agent
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node agent.js .
+      - name: Run Jest
+        run: npm test
+```</p>
+
+                <div class="code-block"><pre>```yaml
+# Example workflow snippet
+- name: Run AI Agent
+  env:
+    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  run: node agent.js .
+```</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">5</span>
+                <h3>Step 5: (Optional) Fetch Real‑Time Google Trends Data with pytrends</h3>
+                <p>If your agent needs live data (e.g., trending election queries), install pytrends and fetch the data in Python. This can be called from the agent as an external script.
+
+```bash
+pip install pytrends
+```
+
+```python
+# fetch_trends.py
+from pytrends.request import TrendReq
+
+def get_trends(keyword, timeframe='now 1-d'):
+    pytrends = TrendReq(hl='en-US', tz=360)
+    pytrends.build_payload([keyword], cat=0, timeframe=timeframe)
+    data = pytrends.interest_over_time()
+    return data
+
+if __name__ == "__main__":
+    print(get_trends('2026 us election results'))
+```
+
+You can invoke this script from the agent to supply dynamic prompts to Copilot.
+
+```javascript
+const { spawnSync } = require('child_process');
+const trendData = spawnSync('python', ['fetch_trends.py', '2026 us election results'], {
+  encoding: 'utf-8',
+}).stdout;
+// Pass trendData as part of the Copilot prompt
+```</p>
+
+                <div class="code-block"><pre>```python
+print(get_trends('2026 us election results'))
+```</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use a dedicated Git branch (e.g., `autogen-tests`) for generated code so you can review and merge manually—this keeps the main branch clean.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Cache the Copilot CLI binary in CI to reduce startup time; copy it into the Docker image or use a pre‑built action like `actions/setup-node` with a custom script.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> When generating tests, include a prompt that specifies the testing framework (Jest, Mocha, etc.) and the language version to avoid syntax mismatches.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to set the `OPENAI_API_KEY` in the CI environment leads to authentication errors—always store secrets in the repository settings.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Over‑generating tests can produce flaky or incomplete tests; add a linting step to validate the generated test file before committing.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Visual Studio Code</h4>
+                    <p>Code editor with built‑in Copilot integration</p>
+                    <a href="https://code.visualstudio.com/" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>GitHub Copilot</h4>
+                    <p>LLM‑powered coding assistant for generating code snippets</p>
+                    <a href="https://github.com/features/copilot" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Windsurf</h4>
+                    <p>Open‑source framework for orchestrating LLM agents</p>
+                    <a href="https://github.com/yourorg/windsurf" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>pytrends</h4>
+                    <p>Python library for querying Google Trends data</p>
+                    <a href="https://github.com/GeneralMills/pytrends" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>GitHub Actions</h4>
+                    <p>CI/CD platform integrated with GitHub</p>
+                    <a href="https://github.com/features/actions" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Jest</h4>
+                    <p>JavaScript testing framework</p>
+                    <a href="https://jestjs.io/" target="_blank">View Resource →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How do I authenticate Copilot in a CI environment?</h3>
+                <p>Use the `gh auth login` command to generate a machine‑readable token and store it in GitHub Secrets as `GITHUB_TOKEN`. Then export it in your workflow before running the Copilot CLI.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use a different LLM instead of OpenAI?</h3>
+                <p>Yes. Windsurf supports multiple LLM backends; change the `llm` and `model` fields in the agent configuration to the provider you prefer (e.g., Anthropic, Cohere).</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What if Copilot generates syntax errors?</h3>
+                <p>Run a linter (e.g., ESLint) on the generated file before committing. You can also add a validation step in the agent that checks the file with `node --check` or similar.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Is it safe to commit generated tests to the repo?</h3>
+                <p>Commit only after reviewing the changes. Use a dedicated branch and pull request workflow to ensure code quality.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.github.com/en/copilot" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            GitHub Copilot Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Official guide for installing and using Copilot</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/yourorg/windsurf" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Windsurf GitHub Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Source code and examples for building LLM agents</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://pytrends.github.io/pytrends/" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            pytrends Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — How to query Google Trends programmatically</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#AIAgents</span>
+                <span class="tag">#codingassistants</span>
+                <span class="tag">#Copilot</span>
+                <span class="tag">#Windsurf</span>
+                <span class="tag">#AI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-11-04 07:36 • This guide accompanies the video: "AI Agents & Coding Assistants: How to Build Autonomous Developers"</p>
+        </footer>
+    </div>
+</body>
+</html>
