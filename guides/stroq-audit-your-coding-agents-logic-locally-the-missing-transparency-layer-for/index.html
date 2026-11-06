@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dive into Stroq, the open‑source tool that lets you audit exactly what your AI coding assistant is doing behind the scenes. We’ll show how to set up a local aud">
+    <meta name="keywords" content="Stroq, AI coding agent, audit trail, transparency, local debugging">
+    <meta name="author" content="Weight and See">
+    <meta property="og:title" content="Stroq: Audit Your Coding Agent's Logic Locally – The Missing Transparency Layer for AI Developers - Complete Guide">
+    <meta property="og:description" content="Dive into Stroq, the open‑source tool that lets you audit exactly what your AI coding assistant is doing behind the scenes. We’ll show how to set up a local audit trail, decode the agent’s decision fl">
+    <meta property="og:type" content="article">
+    <title>Stroq: Audit Your Coding Agent's Logic Locally – The Missing Transparency Layer for AI Developers | Weight and See Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #4f46e5;
+            --accent-light: #818cf8;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --border: #374151;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+        }
+        
+        .section-title .icon {
+            font-size: 1.8rem;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .takeaway-list {
+            list-style: none;
+        }
+        
+        .takeaway-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .takeaway-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-num {
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .step-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            color: #a5f3fc;
+        }
+        
+        .tip {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip strong {
+            color: var(--green);
+        }
+        
+        .pitfall {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .pitfall strong {
+            color: var(--red);
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .tool-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .tool-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-card a {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: var(--yellow);
+        }
+        
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 24px 16px; }
+            .meta { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <span class="badge">Complete Guide</span>
+            <h1>Stroq: Audit Your Coding Agent's Logic Locally – The Missing Transparency Layer for AI Developers</h1>
+            <p class="subtitle">Stroq is an open‑source transparency layer that lets developers audit the logic of any AI coding assistant locally. By intercepting API calls, logging prompts, responses, and internal state to a JSON audit trail, Stroq turns opaque AI code generation into a verifiable, replayable workflow. This guide walks you through installing Stroq, configuring your LLM provider, capturing audit logs, replaying decisions, and generating human‑readable reports—all with concrete CLI commands and configuration snippets.</p>
+            <div class="meta">
+                <span>By Weight and See</span>
+                <span>November 06, 2026</span>
+                <span>4 Steps</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🎯</span> Key Takeaways</h2>
+            <div class="card">
+                <ul class="takeaway-list">
+                    <li><span class="takeaway-num">1</span><span>Stroq adds only 5‑10 ms of latency per request, making it virtually transparent for typical AI coding pipelines.</span></li>
+                    <li><span class="takeaway-num">2</span><span>It works with any REST‑based LLM provider (OpenAI, Anthropic, etc.) by acting as a proxy that logs every interaction.</span></li>
+                    <li><span class="takeaway-num">3</span><span>A single command `stroq run --agent openai-codex --log ./audit.log` starts real‑time JSON logging of prompts, token streams, and internal flags.</span></li>
+                    <li><span class="takeaway-num">4</span><span>You can replay logged sessions with `stroq replay --log ./audit.log --output ./replay.json` to debug specific decisions without re‑running the whole pipeline.</span></li>
+                    <li><span class="takeaway-num">5</span><span>Stroq can export a concise, human‑readable report (table of actions, decisions, confidence scores) for pull‑requests or security audits.</span></li>
+                    <li><span class="takeaway-num">6</span><span>The audit trail includes timestamps, raw prompt, raw response, and the agent’s internal state dictionary for full traceability.</span></li>
+                    <li><span class="takeaway-num">7</span><span>All configuration is done via environment variables and CLI flags—no complex SDK integration required.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Prerequisites</h2>
+            <div class="card">
+                <ul>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Stroq CLI installed (`pip install stroq` or `cargo install stroq`).</li>
+                    <li style="padding: 6px 0; color: var(--text-secondary);">Valid API credentials for your chosen LLM provider (e.g., `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📝</span> Step-by-Step Guide</h2>
+
+            <div class="step">
+                <span class="step-num">1</span>
+                <h3>Step 1: Install the Stroq CLI</h3>
+                <p>Download and install the Stroq command‑line tool. Using pip is the quickest on most Linux/macOS environments; using cargo is recommended if you prefer Rust‑based tooling. The installation creates the `stroq` executable in your PATH.</p>
+
+                <div class="code-block"><pre>pip install stroq
+# or
+cargo install stroq</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">2</span>
+                <h3>Step 2: Export your LLM provider API key</h3>
+                <p>Set the appropriate environment variable for the provider you intend to use. Stroq reads these variables automatically; never hard‑code keys in scripts. For OpenAI use `OPENAI_API_KEY`, for Anthropic use `ANTHROPIC_API_KEY`.</p>
+
+                <div class="code-block"><pre>export OPENAI_API_KEY=sk-your-openai-key
+# or
+export ANTHROPIC_API_KEY=ant-your-anthropic-key</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">3</span>
+                <h3>Step 3: Start an audit session</h3>
+                <p>Run Stroq with the `--agent` flag to specify the coding assistant (e.g., `openai-codex`) and the `--log` flag to define where the JSON audit trail will be written. The command runs the agent normally while Stroq intercepts each request/response.</p>
+
+                <div class="code-block"><pre>stroq run --agent openai-certs --log ./audit.log</pre></div>
+            </div>
+
+            <div class="step">
+                <span class="step-num">4</span>
+                <h3>Step 4: Replay and inspect logged decisions</h3>
+                <p>Use the replay subcommand to convert the raw audit log into a structured JSON file (`replay.json`). This output contains a step‑by‑step view of prompts, responses, timestamps, and internal flags, enabling targeted debugging.</p>
+
+                <div class="code-block"><pre>stroq replay --log ./audit.log --output ./replay.json</pre></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">💡</span> Pro Tips</h2>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Use absolute paths for `--log` and `--output` to avoid confusion when you move or copy the project directory.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Add `--verbose` to the `stroq run` command to see real‑time logging of intercepted requests on stdout.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> Store API keys in a secrets manager or `.env` file and load them with `dotenv` rather than printing them to shell history.
+            </div>
+
+            <div class="tip">
+                <strong>Pro Tip:</strong> If you need to replay only a specific time window, filter the audit log with `jq 'select(.timestamp >= "2024-09-01T12:00:00Z" and .timestamp <= "2024-09-01T12:30:00Z")'` before feeding it to `stroq replay`.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Common Pitfalls</h2>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 1: Forgetting to set the API key results in authentication errors and empty audit logs. Always verify `echo $OPENAI_API_KEY` or `echo $ANTHROPIC_API_KEY` before running Stroq.
+            </div>
+
+            <div class="pitfall">
+                <strong>Watch Out:</strong> Pitfall 2: Writing the audit log to a directory you don’t have write permissions for (e.g., `/var/log/stroq`). Use a writable location like `./audit.log` or `/tmp/stroq/audit.log` for testing.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">🛠️</span> Tools & Resources</h2>
+            <div class="tool-grid">
+
+                <div class="tool-card">
+                    <h4>Stroq</h4>
+                    <p>Open‑source CLI tool that intercepts AI coding assistant API calls and writes a local JSON audit trail.</p>
+                    <a href="https://github.com/stroq/stroq" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>OpenAI API</h4>
+                    <p>REST API for OpenAI models (e.g., GPT‑4, Codex) used by Stroq as a provider.</p>
+                    <a href="https://platform.openai.com/docs/api-reference" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>Anthropic API</h4>
+                    <p>REST API for Anthropic’s Claude models, also supported by Stroq.</p>
+                    <a href="https://docs.anthropic.com/en/api" target="_blank">View Resource →</a>
+                </div>
+
+                <div class="tool-card">
+                    <h4>openai-codex</h4>
+                    <p>The OpenAI Codex agent that generates code completions; used as an example `--agent` in Stroq commands.</p>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+            <div class="faq-item card">
+                <h3>How does Stroq affect the latency of my AI coding assistant?</h3>
+                <p>Stroq adds roughly 5‑10 ms of overhead per request on a typical RTX 4090. This is negligible compared to the usual 200 ms round‑trip time of LLM APIs.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>Can I use Stroq with providers other than OpenAI and Anthropic?</h3>
+                <p>Yes. Stroq acts as a generic proxy for any REST‑based LLM provider that exposes a standard chat/completion endpoint. Simply set the appropriate API key and use the provider‑specific agent name.</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>What information is stored in the audit log?</h3>
+                <p>Each entry contains a timestamp, the raw prompt sent to the agent, the raw response received, and the agent’s internal state dictionary (including flags, confidence scores, and token usage).</p>
+            </div>
+
+            <div class="faq-item card">
+                <h3>How do I debug a specific mistake shown in the audit log?</h3>
+                <p>Use `stroq replay` to generate a step‑by‑step JSON view, locate the problematic request/response pair, and adjust your prompt template or agent configuration. Replay only the relevant segment to verify the fix without rerunning the entire pipeline.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><span class="icon">📚</span> Further Reading</h2>
+            <div class="card">
+                <ul>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://github.com/stroq/stroq" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Stroq GitHub Repository
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Full source code, README, and detailed installation instructions for Stroq.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://platform.openai.com/docs/api-reference" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            OpenAI API Documentation
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Reference for authentication, endpoints, and request/response formats used by Stroq.</span>
+                    </li>
+
+                    <li style="padding: 8px 0;">
+                        <a href="https://docs.anthropic.com/en/api" target="_blank" style="color: var(--accent-light); text-decoration: none;">
+                            Anthropic API Guide
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 14px;"> — Comprehensive guide for using Anthropic models via REST, compatible with Stroq.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Created by <strong>Weight and See</strong> — Your signal through the noise of AI.</p>
+            <p style="margin-top: 8px;">
+                <a href="https://youtube.com/@WeightnSee" target="_blank">Subscribe on YouTube</a>
+            </p>
+            <div class="tags">
+                <span class="tag">#Stroq</span>
+                <span class="tag">#AIcodingagent</span>
+                <span class="tag">#audittrail</span>
+                <span class="tag">#transparency</span>
+                <span class="tag">#AI</span>
+            </div>
+            <p style="margin-top: 24px; font-size: 12px;">Generated on 2026-11-06 07:01 • This guide accompanies the video: "Stroq: Audit Your Coding Agent's Logic Locally – The Missing Transparency Layer for AI Developers"</p>
+        </footer>
+    </div>
+</body>
+</html>

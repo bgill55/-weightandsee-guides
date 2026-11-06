@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/320_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/321_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_NOVEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/stroq-audit-your-coding-agents-logic-locally-the-missing-transparency-layer-for/">
+<img src="guides/stroq-audit-your-coding-agents-logic-locally-the-missing-transparency-layer-for/thumbnail.jpg" width="300" alt="Stroq Audit Your Coding Agents Logic Locally The Missing Transparency Layer For"><br>
+<b>Stroq Audit Your Coding Agents Logic Locally The Missing Transparency Layer For</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/ai-agents-coding-assistants-how-to-build-autonomous-developers/">
 <img src="guides/ai-agents-coding-assistants-how-to-build-autonomous-developers/thumbnail.jpg" width="300" alt="Ai Agents Coding Assistants How To Build Autonomous Developers"><br>
@@ -31,12 +37,6 @@
 <b>Klein Tts X15 Micro Checkpoints Vs Hurston 1 A Head To Head Voice Cloning Showdo</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/the-enterprise-on-prem-pivot-why-open-weights-80-cloud-price-cuts-collide/">
-<img src="guides/the-enterprise-on-prem-pivot-why-open-weights-80-cloud-price-cuts-collide/thumbnail.jpg" width="300" alt="The Enterprise On Prem Pivot Why Open Weights 80 Cloud Price Cuts Collide"><br>
-<b>The Enterprise On Prem Pivot Why Open Weights 80 Cloud Price Cuts Collide</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -47,7 +47,7 @@
 |----------|-------|
 | **Benchmarks & Comparisons** | ![141](https://img.shields.io/badge/141-blue?style=flat-square) |
 | **Model Deep Dives** | ![107](https://img.shields.io/badge/107-blue?style=flat-square) |
-| **Local AI & Self-Hosting** | ![38](https://img.shields.io/badge/38-blue?style=flat-square) |
+| **Local AI & Self-Hosting** | ![39](https://img.shields.io/badge/39-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
 | **Image & Vision** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -321,6 +321,7 @@
 
 *Run powerful AI models on your own hardware — no cloud required*
 
+- **[Stroq Audit Your Coding Agents Logic Locally The Missing Transparency Layer For](https://bgill55.github.io/-weightandsee-guides/guides/stroq-audit-your-coding-agents-logic-locally-the-missing-transparency-layer-for/)** — 2026-11-06
 - **[The Quantization Playbook Running Giant Models Locally Without A Data Center](https://bgill55.github.io/-weightandsee-guides/guides/the-quantization-playbook-running-giant-models-locally-without-a-data-center/)** — 2026-09-18
 - **[Can Ai Fix Government The Incorruptible Machine Dilemma](https://bgill55.github.io/-weightandsee-guides/guides/can-ai-fix-government-the-incorruptible-machine-dilemma/)** — 2026-09-04
 - **[Agenthq Revolutionizing Multi Agent Orchestration With An Interactive Office The](https://bgill55.github.io/-weightandsee-guides/guides/agenthq-revolutionizing-multi-agent-orchestration-with-an-interactive-office-the/)** — 2026-08-31
