@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/321_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/322_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_NOVEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/unleashing-pvz-agent-artifacts-the-nextgen-game-automation-tool/">
+<img src="guides/unleashing-pvz-agent-artifacts-the-nextgen-game-automation-tool/thumbnail.jpg" width="300" alt="Unleashing Pvz Agent Artifacts The Nextgen Game Automation Tool"><br>
+<b>Unleashing Pvz Agent Artifacts The Nextgen Game Automation Tool</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/stroq-audit-your-coding-agents-logic-locally-the-missing-transparency-layer-for/">
 <img src="guides/stroq-audit-your-coding-agents-logic-locally-the-missing-transparency-layer-for/thumbnail.jpg" width="300" alt="Stroq Audit Your Coding Agents Logic Locally The Missing Transparency Layer For"><br>
@@ -31,12 +37,6 @@
 <b>Ai Agents Coding Assistants How To Build Autonomous Developers</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/klein-tts-x15-micro-checkpoints-vs-hurston-1-a-head-to-head-voice-cloning-showdo/">
-<img src="guides/klein-tts-x15-micro-checkpoints-vs-hurston-1-a-head-to-head-voice-cloning-showdo/thumbnail.jpg" width="300" alt="Klein Tts X15 Micro Checkpoints Vs Hurston 1 A Head To Head Voice Cloning Showdo"><br>
-<b>Klein Tts X15 Micro Checkpoints Vs Hurston 1 A Head To Head Voice Cloning Showdo</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -45,7 +45,7 @@
 
 | Category | Count |
 |----------|-------|
-| **Benchmarks & Comparisons** | ![141](https://img.shields.io/badge/141-blue?style=flat-square) |
+| **Benchmarks & Comparisons** | ![142](https://img.shields.io/badge/142-blue?style=flat-square) |
 | **Model Deep Dives** | ![107](https://img.shields.io/badge/107-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![39](https://img.shields.io/badge/39-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
@@ -59,6 +59,7 @@
 
 *Head-to-head model showdowns and real-world performance tests*
 
+- **[Unleashing Pvz Agent Artifacts The Nextgen Game Automation Tool](https://bgill55.github.io/-weightandsee-guides/guides/unleashing-pvz-agent-artifacts-the-nextgen-game-automation-tool/)** — 2026-11-09
 - **[Ai Agents Coding Assistants How To Build Autonomous Developers](https://bgill55.github.io/-weightandsee-guides/guides/ai-agents-coding-assistants-how-to-build-autonomous-developers/)** — 2026-11-04
 - **[Klein Tts X15 Micro Checkpoints Vs Hurston 1 A Head To Head Voice Cloning Showdo](https://bgill55.github.io/-weightandsee-guides/guides/klein-tts-x15-micro-checkpoints-vs-hurston-1-a-head-to-head-voice-cloning-showdo/)** — 2026-10-28
 - **[Rigcheck Vs Manual Gpu Verification Which One Should You Trust](https://bgill55.github.io/-weightandsee-guides/guides/rigcheck-vs-manual-gpu-verification-which-one-should-you-trust/)** — 2026-10-22
