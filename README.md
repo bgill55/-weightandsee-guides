@@ -8,7 +8,7 @@
 
 <div align="center">
 
-![Guides](https://img.shields.io/badge/322_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
+![Guides](https://img.shields.io/badge/323_GUIDES-blue?style=for-the-badge&logo=booktype&logoColor=white)
 ![Categories](https://img.shields.io/badge/7_CATEGORIES-green?style=for-the-badge&logo=folder-open&logoColor=white)
 ![Updated](https://img.shields.io/badge/UPDATED_NOVEMBER_2026-orange?style=for-the-badge&logo=simpleicons&logoColor=white)
 
@@ -19,6 +19,12 @@
 ## Latest Guides
 
 <table><tr>
+<td align="center" width="33%">
+<a href="https://bgill55.github.io/-weightandsee-guides/guides/googles-48-agent-swarm-just-found-a-lost-maya-pyramid-in-72-hours/">
+<img src="guides/googles-48-agent-swarm-just-found-a-lost-maya-pyramid-in-72-hours/thumbnail.jpg" width="300" alt="Googles 48 Agent Swarm Just Found A Lost Maya Pyramid In 72 Hours"><br>
+<b>Googles 48 Agent Swarm Just Found A Lost Maya Pyramid In 72 Hours</b>
+</a>
+</td>
 <td align="center" width="33%">
 <a href="https://bgill55.github.io/-weightandsee-guides/guides/unleashing-pvz-agent-artifacts-the-nextgen-game-automation-tool/">
 <img src="guides/unleashing-pvz-agent-artifacts-the-nextgen-game-automation-tool/thumbnail.jpg" width="300" alt="Unleashing Pvz Agent Artifacts The Nextgen Game Automation Tool"><br>
@@ -31,12 +37,6 @@
 <b>Stroq Audit Your Coding Agents Logic Locally The Missing Transparency Layer For</b>
 </a>
 </td>
-<td align="center" width="33%">
-<a href="https://bgill55.github.io/-weightandsee-guides/guides/ai-agents-coding-assistants-how-to-build-autonomous-developers/">
-<img src="guides/ai-agents-coding-assistants-how-to-build-autonomous-developers/thumbnail.jpg" width="300" alt="Ai Agents Coding Assistants How To Build Autonomous Developers"><br>
-<b>Ai Agents Coding Assistants How To Build Autonomous Developers</b>
-</a>
-</td>
 </tr></table>
 
 ---
@@ -46,7 +46,7 @@
 | Category | Count |
 |----------|-------|
 | **Benchmarks & Comparisons** | ![142](https://img.shields.io/badge/142-blue?style=flat-square) |
-| **Model Deep Dives** | ![107](https://img.shields.io/badge/107-blue?style=flat-square) |
+| **Model Deep Dives** | ![108](https://img.shields.io/badge/108-blue?style=flat-square) |
 | **Local AI & Self-Hosting** | ![39](https://img.shields.io/badge/39-blue?style=flat-square) |
 | **AI Security** | ![5](https://img.shields.io/badge/5-blue?style=flat-square) |
 | **Developer Tools & Agents** | ![23](https://img.shields.io/badge/23-blue?style=flat-square) |
@@ -208,6 +208,7 @@
 
 *In-depth analysis of cutting-edge AI models and architectures*
 
+- **[Googles 48 Agent Swarm Just Found A Lost Maya Pyramid In 72 Hours](https://bgill55.github.io/-weightandsee-guides/guides/googles-48-agent-swarm-just-found-a-lost-maya-pyramid-in-72-hours/)** — 2026-11-11
 - **[The Enterprise On Prem Pivot Why Open Weights 80 Cloud Price Cuts Collide](https://bgill55.github.io/-weightandsee-guides/guides/the-enterprise-on-prem-pivot-why-open-weights-80-cloud-price-cuts-collide/)** — 2026-10-26
 - **[How Local Llm Switchboards Work Running Ai Models Without Cloud Subscriptions](https://bgill55.github.io/-weightandsee-guides/guides/how-local-llm-switchboards-work-running-ai-models-without-cloud-subscriptions/)** — 2026-09-14
 - **[The Rise Of Mcp Servers How Autonomous Ai Agents Are Building Their Own Ecosyste](https://bgill55.github.io/-weightandsee-guides/guides/the-rise-of-mcp-servers-how-autonomous-ai-agents-are-building-their-own-ecosyste/)** — 2026-09-11
